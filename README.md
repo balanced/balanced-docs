@@ -7,23 +7,36 @@ This is how our documentation is generated!
 
 ## Contributing
 
+Any minor contributions, even a simple grammar fix are greatly
+apprecaited.
+
+1. Check for open issues or open a fresh issue to start a discussion around a feature idea or a bug.
+1. Fork the repository on Github to start making your changes to the develop branch (or branch off of it).
+1. Send a pull request!
+
+Make sure to add yourself to `CONTRIBUTORS`. We will showcase the
+`CONTRIBUTORS` file on our [COMMUNITY PAGE](https://balancedpayments.com/community).
 
 ## Getting Started
 
 ### Installing
 
-* python setup.py develop
+* `python setup.py develop`
 * `pip install -r requirements.txt`
 * `make clean`
 
-### The API reference
-
 #### Generating
 
-To generate the API reference, just issue a:
+To generate the [API reference](https://balancedpayments.com/docs/api), just issue a:
 
 ```bash
 make api
+```
+
+To generate the [overview](https://balancedpayments.com/docs/overview) reference, just issue a:
+
+```bash
+make overview
 ```
 
 ##### How do I preview?
@@ -37,6 +50,7 @@ typically looks like:
 OR
 
     Build finished. The HTML pages are in ${SOME_ABSOLUTE_PATH}/balanced-docs/api/html
+
 
 ## How do I add some new documentation for the reference?
 
@@ -130,9 +144,9 @@ demonstrate the corresponding fields on the left hand side of the documentation.
 
 The `dcode` directive stands for **(d)**ynamic **(cod)**e
 **(e)**executor. What happens here, is that a scenario, named
-`bank_account_create`, which is located under the
-`reference/scenarios` path, is executed and the results that are
-rendered return the three things we mentioned above.
+`bank_account_create`, which is located under the `scenarios`
+directory, is executed and the results that are rendered return the
+three things we mentioned above.
 
 ### Can you elaborate a bit more on how the `dcode` directive works?
 
