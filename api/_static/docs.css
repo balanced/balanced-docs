@@ -1,0 +1,159 @@
+body {
+  background: none;
+}
+#container {
+  padding: 41px 0 0 55px;
+}
+.headerlink {
+  display: none;
+}
+.langbar {
+  background: #c6c7c9;
+  /* Old browsers */
+
+  background: -moz-linear-gradient(top, #c6c7c9 0%, #b3b5b8 100%);
+  /* FF3.6+ */
+
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #c6c7c9), color-stop(100%, #b3b5b8));
+  /* Chrome,Safari4+ */
+
+  background: -webkit-linear-gradient(top, #c6c7c9 0%, #b3b5b8 100%);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -o-linear-gradient(top, #c6c7c9 0%, #b3b5b8 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(top, #c6c7c9 0%, #b3b5b8 100%);
+  /* IE10+ */
+
+  background: linear-gradient(to bottom, #c6c7c9 0%, #b3b5b8 100%);
+  /* W3C */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c6c7c9', endColorstr='#b3b5b8', GradientType=0);
+  /* IE6-9 */
+
+  height: 48px;
+  left: 0;
+  position: fixed;
+  top: 40px;
+  width: 100%;
+}
+.langbar p {
+  float: right;
+  font-style: italic;
+  margin: 13px 400px 0 0;
+}
+.langbar ul {
+  float: right;
+  margin: 0 -475px 0 0;
+  overflow: auto;
+  padding-top: 10px;
+  list-style: none;
+}
+.langbar ul li {
+  color: #626365;
+  cursor: pointer;
+  float: left;
+  font-weight: bold;
+  margin: 0 20px 0 0;
+  padding: 3px 10px;
+  text-transform: uppercase;
+}
+.langbar ul li.selected {
+  color: #fff;
+  background: #666;
+  border: 1px solid #525252;
+  border-radius: 20px;
+  margin-top: -1px;
+}
+.documentwrapper {
+  background: #FEF8EF;
+  border-left: 1px solid #FCF1DD;
+  margin-left: 640px;
+  padding-top: 55px;
+}
+.error-header,
+h4 {
+  color: #AE9161;
+  font-style: italic;
+  margin: 0;
+  text-transform: uppercase;
+}
+.document {
+  margin-left: -640px;
+}
+.document .section {
+  padding-bottom: 50px;
+  padding-right: 50px;
+}
+.document .section h1,
+.document .section h2,
+.document .section h3,
+.document .section h4,
+.document .section h5,
+.document .section p {
+  padding-right: 50px;
+  width: 590px;
+}
+.document .section > .method-section {
+  overflow: hidden;
+  width: 100%;
+}
+.document .section > .method-section > h3 {
+  float: left;
+  margin: 0;
+}
+.document .section > .method-section > p {
+  clear: left;
+  float: left;
+  margin: 0 0 9px 0;
+}
+.document .section > .method-section .method-description {
+  clear: left;
+  float: left;
+  width: 590px;
+}
+.document .section > .method-section .method-examples {
+  margin-left: 640px;
+  padding-left: 50px;
+}
+.document .section > .method-section .method-examples .definition pre {
+  font-weight: bold;
+}
+.docutils {
+  margin: 0;
+}
+.docutils dt {
+  float: left;
+  text-align: right;
+  width: 120px;
+}
+.docutils dt::after {
+  content: ":";
+}
+.docutils dd {
+  margin-bottom: 5px;
+  margin-left: 135px;
+  overflow: auto;
+}
+.docutils dd em {
+  width: 100%;
+  float: left;
+}
+.nested1 {
+  overflow: auto;
+}
+.nested1 > dt {
+  width: 100%;
+  text-align: left;
+}
+.nested1 > dd {
+  float: left;
+  margin: 10px 0 0 50px;
+}
+.nested1 > dd > dl.docutils > dt {
+  text-align: right;
+}
+footer {
+  margin-top: 0;
+}

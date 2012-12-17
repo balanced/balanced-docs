@@ -1,0 +1,203 @@
+#!/usr/bin/env python
+"""
+Expands custom directives to vanilla rST markup.
+"""
+from argparse import ArgumentParser
+import logging
+import itertools
+import re
+import sys
+
+from doxx import pilo, pez, dcode, wag
+
+
+logger = logging.getLogger(__name__)
+
+
+class DirectiveParser(object):
+
+    def __init__(self, name, generator):
+        self.name = name
+        self.generator = generator
+        self.args = []
+        self.opts = {}
+        self.opt_continue = None
+        self.content = []
+        self.done = False
+        self.trailer = None
+        self.indent = None
+        self._consume = self._consume_header
+
+    @classmethod
+    def probe(cls, line):
+        match = re.match(cls._header_re, line)
+        if not match:
+            return None
+        return match.group('name')
+
+    def __call__(self, line):
+        self._consume(line)
+
+    def render(self):
+        indent = ' ' * self.indent
+        for l in self.generator(self.args, self.opts, self.content):
+            yield indent + l
+
+    # this parses the
+    # .. <directive-name>:: <args>
+    # obviously args is optional
+    _header_re = r'(?P<indent>\s*?)\.\.\s+?(?P<name>.+?)::(\s(?P<arg>.+))?'
+
+    # this parses the option directive under
+    # .. <directive-name>:: <args>
+    #    :<option>:
+    #
+    _option_re = r'\s*?:(?P<name>.+?):(\s+?(?P<value>.+))?'
+
+    def _consume_header(self, line):
+        m = re.match(self._header_re, line)
+        if not m:
+            raise ValueError('Invalid {} directive header'.format(
+                self.name))
+        name = m.group('name')
+        if self.name != name:
+            raise ValueError('Wrong {} directive header'.format(self.name))
+        if m.group('arg'):
+            self.args += m.group('arg').strip().split()
+        self.indent = self._indent(line)
+        self._consume = self._consume_block_option
+
+    def _consume_block_option(self, line):
+        if not line.strip():
+            self._consume = self._consume_block_content
+            return
+        if self._indent(line) <= self.indent:
+            self._done(line)
+            return
+        m = re.match(self._option_re, line)
+        if m:
+            if m.group('value') is None:
+                self.opts[m.group('name')] = None
+            else:
+                self.opts[m.group('name')] = m.group('value').strip()
+            self.opt_continue = (m.group('name'), m.start('value'))
+        else:
+            if (self.opt_continue is not None and
+                    len(line) - len(line.lstrip()) == self.opt_continue[1]):
+                self.opts[self.opt_continue[0]] += ' ' + line.strip()
+            else:
+                self.opt_continue = None
+                self.args.append(line.strip())
+
+    def _consume_block_content(self, line):
+        if line.strip():
+            indent = self._indent(line)
+            if indent <= self.indent:
+                self._done(line)
+                return
+        if self.content or line[self.indent + 3:]:
+            self.content.append(line[self.indent + 3:])
+
+    def _consume_done(self, line):
+        raise ValueError('Directive {} has been fully parsed'.format(
+            self.name))
+
+    @staticmethod
+    def _indent(line):
+        return len(line) - len(line.lstrip())
+
+    def _done(self, trailer=None):
+        self.done = True
+        self.trailer = trailer
+        self._consume = self._consume_done
+
+
+# I don't want to add this default directive to every single file
+# and I don't want to include it. Just hack it here for now.
+dcode.DCodeDefaultDirective.script = 'scripts/dcode-unittest -d balanced/'
+
+
+DIRECTIVES = {
+    'pilo': pilo.run,
+    'pez': pez.run,
+    'dcode': dcode.run,
+    'wag-route': wag.route_run,
+    'wag-error': wag.error_run,
+    'dcode-default': dcode.DCodeDefaultDirective.set
+}
+
+
+def expand_directives(fo, disabled):
+    directive = None
+    for line in fo:
+        if not directive:
+            name = DirectiveParser.probe(line)
+            if name and name in DIRECTIVES and name not in disabled:
+                directive = DirectiveParser(name, DIRECTIVES[name])
+            else:
+                yield line
+                continue
+        directive(line)
+        if not directive.done:
+            continue
+        for line in directive.render():
+            yield line
+            yield '\n'
+        yield '\n'
+        if directive.trailer:
+            line = directive.trailer
+            name = DirectiveParser.probe(line)
+            if name and name in DIRECTIVES and name not in disabled:
+                directive = DirectiveParser(name, DIRECTIVES[name])
+                directive(line)
+                continue
+            else:
+                yield line
+        directive = None
+    if directive:
+        directive('')
+        for line in directive.render():
+            yield line
+            yield '\n'
+        yield '\n'
+
+
+def main():
+    # command line
+    parser = ArgumentParser()
+    parser.add_argument('source',
+        nargs='?',
+        metavar='PATH',
+        default=None,
+        help='PATH to rST file to expand, otherise read from stdin.')
+    parser.add_argument('-l', '--log-level',
+        metavar='LEVEL',
+        choices=['debug', 'info', 'warn', 'error'],
+        default='warn')
+    parser.add_argument('-d', '--disable',
+        dest='disabled',
+        metavar='DIRECTIVE-NAME',
+        choices=DIRECTIVES.keys(),
+        action='append',
+        default=[])
+    args = parser.parse_args()
+
+    # logging
+    root_logger = logging.getLogger()
+    formatter = logging.Formatter('%(message)s')
+    handler = logging.StreamHandler(sys.stderr)
+    handler.setFormatter(formatter)
+    root_logger.addHandler(handler)
+    root_logger.setLevel(getattr(logging, args.log_level.upper()))
+
+    # expand
+    if args.source == '-':
+        fo = sys.stdin
+    else:
+        fo = open(args.source, 'r')
+    for line in expand_directives(fo, args.disabled):
+        print line,
+
+
+if __name__ == '__main__':
+    main()
