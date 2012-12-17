@@ -163,7 +163,7 @@ like this:
 .. dcode-default::
     :section-chars: ~
     :section-depth: 1
-    :script: scripts/dcode-scenario -d api/scenarios
+    :script: scripts/dcode-scenario -d scenarios
     :directive: code-block
     :nospec: True
 ```
