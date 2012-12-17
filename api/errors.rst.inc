@@ -11,7 +11,31 @@ required parameter was missing, a bank account failed tokenization, etc),
 
   .. container:: method-description
 
-    .. pez:: balanced_service.views:HTTPException
+    ``status_code`` 
+        **string**. HTTP response code of the exception. 
+     
+    ``status`` 
+        **string**.  
+     
+    ``additional`` 
+        **string**. Any additional information that may describe how to resolve the issue. 
+     
+    ``category_type`` 
+        **string**. The type of the exception. Values: ``request``, 
+        ``banking``, or ``logical`` 
+     
+    ``category_code`` 
+        **string**. The code of the exception. 
+     
+    ``extras`` 
+        **object**. Any extra information associated with this exception. 
+     
+    ``description`` 
+        **string**. Description of the exception 
+     
+    ``request_id`` 
+        **string**. An ID that can be used to identify and debug the exception. 
+     
 
   .. container:: method-examples
 
