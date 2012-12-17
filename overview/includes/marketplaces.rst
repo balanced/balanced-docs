@@ -53,7 +53,7 @@ Person
 Business
 ''''''''
 
-.. dcode:: account_underwrite_merchant
+.. dcode:: account_underwrite_business
 
 
 On Success (201 CREATED)

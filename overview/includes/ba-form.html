@@ -1,0 +1,35 @@
+<form action="#" method="POST" id="bank-account-form">
+    <fieldset>
+        <legend>Bank Account Information</legend>
+        <label>Account Holder's Name
+            <input type="text"
+                   autocomplete="off"
+                   placeholder="Bank Account Holder's name"
+                   class="ba-name">
+        </label>
+        <label>Routing Number
+            <input type="text"
+                   autocomplete="off"
+                   placeholder="Routing Number"
+                   class="ba-rn">
+        </label>
+        <label>Account Number
+            <input type="text"
+                   autocomplete="off"
+                   placeholder="Account Number"
+                   class="ba-an">
+        </label>
+        <label>Account Type
+            <select>
+                <option value='' disabled selected style='display:none;'>
+                    Select Account Type
+                </option>
+                <option value="checking">CHECKING</option>
+                <option value="savings">SAVINGS</option>
+            </select>
+        </label>
+        <button type="submit" class="btn">
+            Tokenize
+        </button>
+    </fieldset>
+</form>

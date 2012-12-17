@@ -1,0 +1,10 @@
+a.headerlink:visited {
+  color: #261a3b;
+}
+
+a.headerlink {
+  font: 12px arial;
+  text-decoration: none;
+  padding: 1px 2px;
+  opacity: 1;
+}
