@@ -186,6 +186,25 @@ Sounds simple, right? You're right! It is.
 
 ### How can I test the language code actually works correctly?
 
+Here's the language scenarios currently supported:
+
+* `php-scenario`
+* `ruby-scenario`
+* `python-scenario`
+
+The `php-scenario` script actually executes the
+`./scripts/dcode-scenario`, so executing the `bank_account_create`
+scenario is similar to executing a snippet like this:
+
+```bash
+./scripts/dcode-scenario \
+    -l debug  \
+    --execute-lang php  \
+    --disable-lang python  \
+    --disable-lang ruby  \
+    -d scenarios bank_account_create
+```
+
 #### PHP
 
 ```bash
@@ -202,18 +221,5 @@ Sounds simple, right? You're right! It is.
 
 ```bash
 ./scripts/python-scenario bank_account_create
-```oo
-
-
-This is how we execute the **PHP** **bank_account_create** scenario - which
-is basically what the `php-scenario` script does.
-
-```bash
-./scripts/dcode-scenario \
-    -l debug  \
-    --execute-lang php  \
-    --disable-lang python  \
-    --disable-lang ruby  \
-    -d scenarios bank_account_create
-
 ```
+
