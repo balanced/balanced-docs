@@ -7,7 +7,7 @@ This is how our documentation is generated!
 
 ## Contributing
 
-Any minor contributions, even a simple grammar fix are greatly
+Any minor contributions, even simple grammar fixes are greatly
 apprecaited.
 
 1. Check for open issues or open a fresh issue to start a discussion around a feature idea or a bug.
