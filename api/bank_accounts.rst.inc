@@ -20,9 +20,6 @@ Creates a new bank account.
   ``account_number`` 
       *required* **string**. Bank account number. Length must be **>=** ``1``. 
    
-  ``bank_code`` 
-      *required* **string**. Bank account code. Length must be **=** ``9``. 
-   
   ``routing_number`` 
       *required* **string**. Bank account code. Length must be **=** ``9``. 
    
