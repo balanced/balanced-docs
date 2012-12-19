@@ -15,12 +15,19 @@ apprecaited.
 1. Send a pull request!
 
 Make sure to add yourself to `CONTRIBUTORS`. We will showcase the
-`CONTRIBUTORS` file on our [COMMUNITY PAGE](https://balancedpayments.com/community).
+`CONTRIBUTORS` file on our
+[COMMUNITY PAGE](https://balancedpayments.com/community).
+
+After your pull request, email support [@] balancedpayments.com with
+your address and the link to your pull request with your address and
+your t-shirt size so we can send you awesome
+[Balanced t-shirt!](https://twitter.com/damon_sf/status/266768984744017920/photo/1)
 
 ## Getting Started
 
 ### Installing
 
+* `mkvirtualenv balanced-docs`
 * `python setup.py develop`
 * `pip install -r requirements.txt`
 * `make clean`
