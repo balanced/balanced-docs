@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 % if request is UNDEFINED:
-Balanced::Card.save()
+Balanced::Card.invalidate()
 
 % else:
 ${main.ruby_boilerplate()}
