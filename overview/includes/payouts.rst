@@ -61,8 +61,8 @@ of some simple javascript:
    // collect the data from the form.
    var bankAccountData = {
        name: $form.find('.ba-name').val(),
-       account_number: $form.find('.ba-rn').val(),
-       routing_number: $form.find('.ba-an').val(),
+       account_number: $form.find('.ba-an').val(),
+       routing_number: $form.find('.ba-rn').val(),
        type: $form.find('select').val()
    };
 
@@ -174,6 +174,8 @@ There are three possible values for the ``status`` field on a credit:
   Unfortunately, not all banks comply with ACH network policies and may respond
   after three business days with a rejection. As soon as Balanced receives the
   rejection, the status is updated to ``failed``
+
+.. _payouts.best_practices:
 
 Best Practices
 --------------

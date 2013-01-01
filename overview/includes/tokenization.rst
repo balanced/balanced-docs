@@ -18,6 +18,7 @@ we've built a `full example page`_ that's already put together for you. We're pu
 this here as we're going to reference it in the :ref:`payouts` and the :ref:`processing`
 tutorials.
 
+Here's another `jsFiddle demo`_ that demonstrates bank account tokenization.
 
 .. _tok.including:
 
@@ -316,6 +317,12 @@ Example:
 General Bank Account Validation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. note::
+   :class: alert alert-warning
+
+   Account numbers can not be validated in real time. More on
+   :ref:`bank accounts best practices <payouts.best_practices>`.
+
 Performs a suite of checks on the submitted bank account data and
 returns a dictionary of errors. Will return an empty dictionary if there
 are no errors.
@@ -332,9 +339,9 @@ Example:
 .. code-block:: javascript
 
     balanced.bankAccount.validate({
-        bank_code,
-        account_number,
-        name
+        '321174851',
+        '09877765432111111',
+        'Tommy Q. CopyPasta'
     })
 
 Forms
@@ -374,3 +381,4 @@ Simple Bank Account Form
 .. _LUHN check: http://en.wikipedia.org/wiki/Luhn_algorithm
 .. _MICR Routing Number Format: http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format
 .. _jQuery: http://www.jquery.com
+.. _jsFiddle demo: http://jsfiddle.net/mahmoudimus/DGDkt/11/

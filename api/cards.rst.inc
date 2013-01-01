@@ -93,7 +93,6 @@ information is returned when creating the card.
 .. cssclass:: method-section
 
 
-
 list all cards
 --------------
 
@@ -127,6 +126,20 @@ Update information in a card
 
   .. dcode:: card_update
 
+.. cssclass:: method-section
+
+invalidating a card
+-------------------
+
+Invalidating a card will mark the card as invalid, so it may not be charged.
+
+.. container:: method-description
+
+  .. no request
+
+.. container:: method-examples
+
+  .. dcode:: card_invalidate
 
 .. cssclass:: method-section
 
