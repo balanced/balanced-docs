@@ -52,16 +52,12 @@ captured behind the scenes automatically.
   ``account_uri`` 
       *optional* **string**.  
    
+  ``on_behalf_of_uri`` 
+      *optional* **string**. The account of a merchant, usually a seller or service provider, that 
+      is associated with this card charge or bank account debit. 
+   
   ``merchant_uri`` 
-      *optional* **string**. URI referencing the merchant account on behalf of whom the 
-      debit is being done. This is different from marketplace. 
-      In a peer-to-peer transaction, there are three parties: 
-   
-      1. Marketplace 
-      2. Seller/Service provider 
-      3. Buyer 
-   
-      This merchant account represents 2. 
+      *optional* **string**.  
    
   ``hold_uri`` 
       *optional* **string**. If no ``hold`` is provided one my be generated and captured if the 

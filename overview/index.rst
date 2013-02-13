@@ -26,6 +26,5 @@
 .. include:: includes/payouts.rst
 .. include:: includes/processing.rst
 .. include:: includes/marketplaces.rst
-.. include:: includes/faq.rst
 .. include:: includes/reference.rst
 .. include:: includes/bestpractices.rst

@@ -42,3 +42,4 @@ The API conforms to the design principles of Representational State Transfer
 .. include:: debits.rst.inc
 .. include:: holds.rst.inc
 .. include:: refunds.rst.inc
+.. include:: events.rst.inc

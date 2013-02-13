@@ -123,7 +123,7 @@ In order to stay compliant and to provide evidence that you're not aggregating,
 when charging cards on your marketplace, all associated charges should be done
 on behalf of the merchant. You must associate charges with the merchant's
 account - this is very easy, simply pass the merchant account's ``uri`` via
-the ``merchant_uri`` parameter on the charge you're issuing.
+the ``on_behalf_of`` parameter on the charge you're issuing.
 
 .. todo:: show example
 

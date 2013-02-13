@@ -111,7 +111,33 @@ fee per operation is listed below:
 
 How does Balanced take its cut?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Balanced will create invoices to collect fees daily. These invoices can be
+viewed under the ``invoices`` tab of the Balanced dashboard. These fees are
+debited from the bank account attached to the owner account of the
+marketplace. Please note that Balanced will never take fees from the operating
+capital (escrow account) of the marketplace.
 
+Example:
+''''''''
+
+- A buyer pays for a service on Monday from a third-party merchant. You charge
+  the buyer $10, which increases your escrow balance by $10.
+
+  * Balanced will invoice you, on Monday for 2.9% of $10 (or 29¢), plus 30¢,
+    and debit your bank account for a total of 59¢.
+
+- On Wednesday, the third-party merchant completes performing a service for the
+  buyer, and the buyer acknowledges this. You credit out payment to the
+  merchant, likely keeping a portion to pay your fees. Perhaps you pay out $7
+  to the merchant, leaving you with $3 in your escrow account.
+
+  * Balanced will invoice you, on Wednesday, 25¢ for this ACH credit.
+
+- The $3 that is left from the buyer's $10 is your revenue from this order. You
+  decide to credit this to your own bank account on Friday.
+
+  * Balanced doesn't charge you for this credit, as credits to owner accounts
+    are free.
 
 Popular Use Cases
 -----------------
@@ -185,6 +211,10 @@ many :ref:`support channels <support>`.
      - `balanced-php`_
      - `balanced-php tests`_
      - Balanced
+   * - java
+     - `balanced-java`_
+     - `balanced-java tests`_
+     - Balanced
    * - perl
      - `Business-BalancedPayments`_
      - `Business-BalancedPayments tests`_
@@ -199,6 +229,9 @@ many :ref:`support channels <support>`.
 
 .. _balanced-ruby: https://github.com/balanced/balanced-ruby
 .. _balanced-ruby tests: https://github.com/balanced/balanced-ruby/tree/master/spec
+
+.. _balanced-java: https://github.com/balanced/balanced-java
+.. _balanced-java tests: https://github.com/balanced/balanced-java/tree/master/src/test
 
 .. _Business-BalancedPayments: https://github.com/Crowdtilt/Business-BalancedPayments
 .. _Business-BalancedPayments tests: https://github.com/Crowdtilt/Business-BalancedPayments/tree/master/t
