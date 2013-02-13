@@ -2,7 +2,7 @@
 
 mkdir -p scenarios/$1
 touch scenarios/$1/metadata.py;
-for lang in 'ruby' 'python' 'php' 'curl' 'java';
+for lang in 'ruby' 'python' 'php' 'curl';
 do
     touch scenarios/$1/$lang.mako;
 done

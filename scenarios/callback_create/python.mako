@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 % if request is UNDEFINED:
-    balanced.Callback.save()
+    balanced.Callback().save()
 
 % else:
     ${main.python_boilerplate()}

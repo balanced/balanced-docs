@@ -1,7 +1,8 @@
 <%namespace file='/_main.mako' name='main'/>
 % if request is UNDEFINED:
-balanced.Event.find
+balanced.Callback.query
+
 % else:
 ${main.python_boilerplate()}
-event = balanced.Event.find("${request['uri']}")
+callbacks = balanced.Callback.query.all();
 % endif

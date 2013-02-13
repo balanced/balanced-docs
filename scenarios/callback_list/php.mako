@@ -1,7 +1,9 @@
 <%namespace file='/_main.mako' name='main'/>
 % if request is UNDEFINED:
-    Balanced\Event::get
+    \Balanced\Callback->all()
+
 % else:
     ${main.php_boilerplate()}
-    $event = Balanced\Event::get("${request['uri']}");
+    \Balanced\Callback->all()
+
 % endif

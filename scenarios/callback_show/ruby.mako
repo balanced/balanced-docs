@@ -1,7 +1,7 @@
 <%namespace file='/_main.mako' name='main'/>
 % if request is UNDEFINED:
-    Balanced::Event.find()
+    Balanced::Callback.find()
 % else:
     ${main.ruby_boilerplate()}
-    event = Balanced::Event.find('${request['uri']}')
+    callback = Balanced::Callback.find('${request['uri']}')
 % endif
