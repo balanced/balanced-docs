@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 % if request is UNDEFINED:
-balanced.Account.add_card
+balanced.Account.add_bank_account
 
 % else:
 ${main.python_boilerplate()}

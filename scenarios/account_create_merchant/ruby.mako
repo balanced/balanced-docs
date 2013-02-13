@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 % if request is UNDEFINED:
-Balanced::Account.add_card
+Balanced::Account.add_bank_account
 
 % else:
 ${main.ruby_boilerplate()}
