@@ -157,7 +157,7 @@ There are three possible values for the ``status`` field on a credit:
   As soon as the credit is created through the API, the status shows
   as ``pending``. This indicates that Balanced received the information for the
   credit and will begin processing. The ACH network itself processes transactions
-  in a batch format. Batch submissions are processed at 3pm on business days.
+  in a batch format. Batch submissions are processed at 3pm PST on business days.
   If the credit is created after 3pm PST, it will not be submitted for processing
   until 3pm PST the next business day.
 
