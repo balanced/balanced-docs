@@ -4,16 +4,16 @@ events
 .. _events:
 
 You can configure events to be published via a ``POST`` to the endpoint of your
-choice via :ref:`callback <callbacks>`. Once configured, events are accessible via the
+choice via callbacks. Once configured, events are accessible via the
 :ref:`events <events>` endpoint.
 
 Event types
 -----------
 
-All resources (accounts, holds, credits etc) are evented. The format of the
-type field is ``resource.event_type`` where ``event_type`` is one of
-``created``, ``updated``, ``deleted``, as well as some transaction specific
-event types ``succeeded``, ``failed``, and ``canceled``.
+All transactional resources (accounts, holds, credits etc) are evented.
+The format of the type field is ``resource.event_type`` where ``event_type`` is
+one of ``created``, ``updated``, ``deleted``, as well as some transaction
+specific event types ``succeeded``, ``failed``, and ``canceled``.
 
 Transactional Events
 ~~~~~~~~~~~~~~~~~~~~
@@ -77,38 +77,6 @@ refund.succeeded
  
 refund.updated 
     Occurs whenever a refund is updated. 
- 
-
-Funding Instrument Events
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-card.created 
-    Occurs whenever a new card is created. 
- 
-card.deleted 
-    Occurs whenever a card is deleted. 
- 
-card.updated 
-    Occurs whenever a card is updated. 
- 
-bank_account.created 
-    Occurs whenever a new bank_account is created. 
- 
-bank_account.deleted 
-    Occurs whenever a bank_account is deleted. 
- 
-bank_account.updated 
-    Occurs whenever a bank_account is updated. 
- 
-
-Account Events
-~~~~~~~~~~~~~~
-
-account.created 
-    Occurs whenever a new account is created. 
- 
-account.updated 
-    Occurs whenever a account is updated. 
  
 
 .. cssclass:: method-section
