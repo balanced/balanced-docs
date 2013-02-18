@@ -36,7 +36,7 @@ following script on your page.
   :class: alert alert-info
 
   This may not work on very old browsers. For more information on how to
-  support older browsers, `quicksmode`_ provides a tutorial on how to get
+  support older browsers, `quirksmode`_ provides a tutorial on how to get
   javascript ``<script>`` includes to play nicely.
 
 
@@ -376,7 +376,7 @@ Simple Bank Account Form
 
 
 
-.. _quicksmode: http://www.quirksmode.org/js/placejs.html
+.. _quirksmode: http://www.quirksmode.org/js/placejs.html
 .. _full example page: https://gist.github.com/2662770
 .. _LUHN check: http://en.wikipedia.org/wiki/Luhn_algorithm
 .. _MICR Routing Number Format: http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format
