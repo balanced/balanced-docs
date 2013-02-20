@@ -1,0 +1,78 @@
+bank account verifications
+==========================
+
+Before you can debit a bank account you need to verify that you have access to
+it. Balanced allows you to do this by creating a Bank Account Verification for a
+Bank Account which will result in two random amounts being credited into the
+bank account. The amounts of these two deposits must be sent back as
+the `amount_1` and `amount_2` params when subsequently updating this
+verification. These deposits will appear on the bank accounts statement as
+`Balanced verification`. (see `Confirm a Bank Account Verification`_).
+
+If you fail to verify the bank account you must create a new verification and
+begin the process again. You can only create one verification at a time and the
+trial deposits should show in the bank account within 2 business days.
+
+
+.. cssclass:: method-section
+
+Create a Bank Account Verification for a Bank Account
+-------------------------------------------------------
+
+Creates a new bank account verification.
+
+.. container:: method-description
+
+
+.. container:: method-examples
+
+  .. dcode:: bank_account_verification_create
+
+
+.. cssclass:: method-section
+
+Retrieve a Bank Account Verification for a Bank Account
+-------------------------------------------------------
+
+.. container:: method-description
+
+  .. no request
+
+.. container:: method-examples
+
+  .. dcode:: bank_account_verification_show
+
+
+.. cssclass:: method-section
+
+List All Bank Account Verifications for a Bank Account
+------------------------------------------------------
+
+.. container:: method-description
+
+  ``limit``
+      *optional* integer. Defaults to ``10``.
+
+  ``offset``
+      *optional* integer. Defaults to ``0``.
+
+.. container:: method-examples
+
+  .. dcode:: bank_account_verification_list
+
+
+.. cssclass:: method-section
+
+Confirm a Bank Account Verification
+-----------------------------------
+
+Confirms the trial deposit amounts. For the *test* environment the trial
+deposit amounts are always 1 and 1.
+
+.. container:: method-description
+
+  .. no request
+
+.. container:: method-examples
+
+  .. dcode:: bank_account_verification_update

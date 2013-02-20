@@ -36,6 +36,7 @@ The API conforms to the design principles of Representational State Transfer
 .. include:: authentication.rst.inc
 .. include:: errors.rst.inc
 .. include:: bank_accounts.rst.inc
+.. include:: bank_account_verifications.rst.inc
 .. include:: cards.rst.inc
 .. include:: accounts.rst.inc
 .. include:: credits.rst.inc

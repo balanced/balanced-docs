@@ -3,8 +3,9 @@
 Debits
 ======
 
-Currently, Balanced supports only card transactions for debits. To debit an
-account, i.e. charge a card, you must create a new debit resource.
+Currently, Balanced supports only card transactions (`info on ACH debits`_) for
+debits. To debit an account, i.e. charge a card, you must create a new debit
+resource.
 
 
 .. cssclass:: method-section
@@ -20,9 +21,10 @@ create a new debit
 Debits an account. Returns a ``uri`` that  can later be used to reference this
 debit.
 
-Successful creation of a debit will return an associated ``hold``
+Successful creation of a debit using a card will return an associated ``hold``
 mapping as part of the response. This :ref:`hold <holds>` was created and
-captured behind the scenes automatically.
+captured behind the scenes automatically. For ACH debits there is no
+corresponding hold.
 
 .. container:: method-description
 
@@ -173,3 +175,6 @@ Issues a refund for a particular debit. This creates a :ref:`refund <refunds>`.
 .. container:: method-examples
 
    .. dcode:: debit_refund
+
+
+.. _info on ACH debits: http://github.com/balanced/balanced-api/issues/2
