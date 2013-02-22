@@ -11,7 +11,7 @@ Tutorial
 --------
 
 At a high level, we're going to implement the process for creating a charge.
-Here's how we're going ot accomplish this:
+Here's how we're going to accomplish this:
 
 * Securely collecting credit card information with ``balanced.js``
 * Securely submitting that information to Balanced

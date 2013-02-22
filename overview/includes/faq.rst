@@ -59,8 +59,9 @@ credit).
 How does Balanced invoice Marketplaces for fees owed?
 -----------------------------------------------------
 
-Balanced sums up fees on a weekly basis (Tuesday) and bills them to
-the primary bank account on file.
+Balanced sums up fees on daily and bills them to
+the primary bank account on file. Invoices are provided via the Balanced
+Dashboard.
 
 
 How does security and PCI compliance work?
@@ -119,7 +120,7 @@ information.
 What are the terms of service for a marketplace?
 ------------------------------------------------
 
-Marketplaces must agree to the Balanced Marketplace Agreement. And
+Marketplaces must agree to the ``Balanced Marketplace Agreement``. And
 important term in the agreement is that the marketplace must include a
 snippet of terms and conditions in its own Terms of Service which
 covers the relationship between the marketplace's customer and
@@ -136,8 +137,8 @@ Where can I get credit card logos and other useful images?
 ----------------------------------------------------------
 
 Balanced provides credit card logos which you can download or serve
-from Balanced's servers. Balanced also provides "Powered By Balanced
-Payments" imagery which can help customers feel confident using the
+from Balanced's servers. Balanced also provides ``Powered by Balanced``
+imagery which can help customers feel confident using the
 marketplace's payment processing.
 
 
@@ -152,7 +153,7 @@ communications to its customers.
 Does Balanced offer volume discounts?
 -------------------------------------
 
-Yes! Please contact Balanced.
+Yes! Please contact Balanced via email support@balancedpayments.com.
 
 
 How do sales tax and income taxes work?
@@ -167,3 +168,5 @@ transaction volume in one year.
 
 
 .. _Form 1099K: http://www.irs.gov/pub/irs-pdf/i1099k.pdf
+.. _Powered by Balanced: http://www.quora.com/Balanced/I-am-in-the-process-of-adding-Balanced-to-my-site-and-want-to-use-the-Balanced-logo-Is-that-allowed
+.. _Balanced Marketplace Agreement: https://www.balancedpayments.com/terms

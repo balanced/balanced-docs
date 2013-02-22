@@ -59,20 +59,24 @@ corresponding hold.
       is associated with this card charge or bank account debit. 
    
   ``merchant_uri`` 
-      *optional* **string**.  
+      *optional* **string**. **Deprecated** The account of a merchant, usually a seller or service 
+      provider, that is associated with this card charge or bank account 
+      debit. Deprecated in favour of ``on_behalf_of_uri``. 
    
   ``hold_uri`` 
       *optional* **string**. If no ``hold`` is provided one my be generated and captured if the 
       funding source is a card. 
    
   ``source_uri`` 
-      *optional* **string**.  
+      *optional* **string**. URI of a specific bank account or card to be debited. 
    
   ``bank_account_uri`` 
-      *optional* **string**.  
+      *optional* **string**. **Deprecated** 
+      This field is deprecated in favour of ``source_uri``. 
    
   ``card_uri`` 
-      *optional* **string**.  
+      *optional* **string**. **Deprecated** 
+      This field is deprecated in favour of ``source_uri``. 
    
 
 .. container:: method-examples

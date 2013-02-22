@@ -2,7 +2,7 @@ bank account verifications
 ==========================
 
 Before you can debit a bank account you need to verify that you have access to
-it. Balanced allows you to do this by creating a Bank Account Verification for a
+it. Balanced allows you to do this by creating a Verification for a
 Bank Account which will result in two random amounts being credited into the
 bank account. The amounts of these two deposits must be sent back as
 the `amount_1` and `amount_2` params when subsequently updating this
@@ -16,8 +16,8 @@ trial deposits should show in the bank account within 2 business days.
 
 .. cssclass:: method-section
 
-Create a Bank Account Verification for a Bank Account
--------------------------------------------------------
+Verifying a Bank Account
+------------------------
 
 Creates a new bank account verification.
 
@@ -31,8 +31,8 @@ Creates a new bank account verification.
 
 .. cssclass:: method-section
 
-Retrieve a Bank Account Verification for a Bank Account
--------------------------------------------------------
+Retrieve a Verification for a Bank Account
+------------------------------------------
 
 .. container:: method-description
 
@@ -45,8 +45,8 @@ Retrieve a Bank Account Verification for a Bank Account
 
 .. cssclass:: method-section
 
-List All Bank Account Verifications for a Bank Account
-------------------------------------------------------
+List All Verifications for a Bank Account
+-----------------------------------------
 
 .. container:: method-description
 
