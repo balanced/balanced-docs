@@ -1,7 +1,7 @@
 .. _processing:
 
-Processing
-==========
+Balanced Processing
+===================
 
 Balanced Processing provides a complete solution for accepting credit
 card payments in a simple, secure manner, relieving you from the hassles of PCI
@@ -11,7 +11,7 @@ Tutorial
 --------
 
 At a high level, we're going to implement the process for creating a charge.
-Here's how we're going ot accomplish this:
+Here's how we're going to accomplish this:
 
 * Securely collecting credit card information with ``balanced.js``
 * Securely submitting that information to Balanced
@@ -259,6 +259,9 @@ Here's an example on how to capture a hold:
 
 Testing
 -------
+
+Test credit card numbers
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 These cards will be accepted in our system only for a **TEST** marketplace.
 

@@ -25,6 +25,7 @@
 .. include:: includes/tokenization.rst
 .. include:: includes/payouts.rst
 .. include:: includes/processing.rst
+.. include:: includes/bank_account_debits.rst
 .. include:: includes/marketplaces.rst
 .. include:: includes/reference.rst
 .. include:: includes/bestpractices.rst

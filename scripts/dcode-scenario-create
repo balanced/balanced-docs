@@ -1,8 +1,13 @@
 #!/bin/bash
 
-mkdir -p scenarios/$1
-touch scenarios/$1/metadata.py;
-for lang in 'ruby' 'python' 'php' 'curl';
+for action in 'create' 'list' 'show' 'update' 'delete';
 do
-    touch scenarios/$1/$lang.mako;
+    mkdir -p scenarios/$1_$action
+    pushd scenarios/$1_$action;
+    touch metadata.py;
+    for lang in 'ruby' 'python' 'php' 'curl';
+    do
+        touch $lang.mako;
+    done
+    popd;
 done
