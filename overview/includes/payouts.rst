@@ -1,7 +1,7 @@
 .. _payouts:
 
-Payouts
-=======
+Balanced Payouts
+================
 
 Balanced Payouts is a stand-alone service for sending money to your seller's
 bank account via the ACH network. You can use Balanced Payouts with your
@@ -141,6 +141,7 @@ doesn't cascade and you might want to group these credits again.
 However, you and your customers can rest assured that this bank account
 has been deleted from our systems.
 
+
 Credit's Status Field
 ---------------------
 
@@ -175,89 +176,19 @@ There are three possible values for the ``status`` field on a credit:
   after three business days with a rejection. As soon as Balanced receives the
   rejection, the status is updated to ``failed``
 
-.. _payouts.best_practices:
 
-Best Practices
+Payout Methods
 --------------
 
-Automated Clearing House transactions are asynchronous, requiring upfront effort
-in educating your consumers and setting the appropriate expectations to deliver
-a great product.
+Currently Balanced only supports payouts to bank accounts via ACH but we will
+add more. All of this is publicly tracked via github issues. For example:
 
-There are a few simple best practices that can dramatically increase user
-convenience, allowing for a much more enjoyable experience and minimizing
-problematic encounters.
+* `Payouts via Check <https://github.com/balanced/balanced-api/issues/69>`_
+* `Pushing to Cards <https://github.com/balanced/balanced-api/issues/32>`_
 
-Sending a payout for the first time
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Comment on those that would be useful to you or create issues for ones you'd
+like to see supported!
 
-There’s a very small chance the first payout to a customer can fail. This is
-usually due to the customer accidentally providing an incorrect bank account
-number.
-
-Balanced validates bank routing numbers in real-time using the
-`FedACH directory`_, but since bank accounts are not standardized, incorrect
-bank account numbers are not caught until the payout fails and Balanced
-is notified (3) three to (5) give business days after submission!
-
-Our statistics show that most of the time, your users will provide the correct
-bank routing and account numbers with the help of a properly designed and robust
-form. Their payout will appear the next business day, as expected. Once a
-successful payout has been made, future credits to that bank account
-will continue to take one business day when issued before the
-:ref:`next-day cut-offs <payouts.cutoff>`.
-
-However, if a payout fails, we’ll notify you via email and the dashboard. We're
-working on implementing web hooks, you can follow our progress on
-`github issue #70`_. Go ahead and add your +1 in the comments section to
-receive updates on our progress.
-
-Help your users avoid mistakes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Due to the nature of the ACH network, failure notifications can be delayed
-for up to (4) four business days! This can be extremely inconvenient and
-frustrating to your users and your business, since some merchants rely on
-speedy ACH payments for operating capital.
-
-For example, an account number typo can, on average, cause payment delays by
-up to (3) three to (5) five business days!
-
-Our recommendation, for mitigating these user experience issues, is to properly
-invest time in building a robust and reliable form to acquire merchant
-bank account information properly.
-
-Here are some tips:
-
-#. Display a check image to illustrate which number is the routing number vs.
-   account number.
-
-   We've conveniently provided one - however, you may choose to design your
-   own:
-
-   .. figure:: https://s3.amazonaws.com/justice.web/docs/check_image.png
-
-#. US routing numbers are 9 digits and are usually located in the lower left
-   corner of most checks. Common aliases to **routing number**:
-
-   * RTN (Routing Transit Number)
-   * ABA
-   * `Bank code`_
-
-#. Routing numbers are used to set up direct deposit transfers. You can use this
-   as an aid to your customers who are inquiring whether or not they have the
-   right routing number.
-
-#. Balanced has provided very useful routing number validators in our
-   :ref:`balanced.js <tok.validators.banks>` library.
-   Be sure to use these helper functions to build a robust form.
-
-#. Set your customer's expectation that payments might be delayed by up to
-   (3) three to (5) five business days if incorrect information is provided.
-
-#. Highlight to your customers that *wire transfer numbers* are **NOT** the same
-   as the routing number, and they are **NOT** the same as the bank account
-   number. Be sure to clarify this when asking your users for their information.
 
 Canceling Credits
 -----------------
@@ -273,6 +204,30 @@ credit.
 When referencing a specific credit, please provide the credit's ``uri`` so that
 we may quickly proceed with fulfilling your request.
 
+
+Pre-funding Your Account
+------------------------
+
+Any payout issued requires maintaining sufficient money in your Balanced account.
+
+If you do not have a sufficient balance, Balanced will return a ``409`` http
+status code, stating that you do not have sufficient funds to cover your
+desired ACH operation.
+
+As a result, you will have to add funds from your bank account to your account
+via the Balanced `dashboard`_.
+
+.. tip::
+
+   We advise that you transfer a large amount in you Balanced account or you
+   may request that Balanced always keep a constant amount in your account for
+   you. We're publically tracking this on `github issue #132`_ and appreciate your input
+
+Transfers may take 2-5 days for the funds to become available; alternatively, you
+may fund your account **instantly** with :ref:`Balanced Processing! <processing>`
+
+
+
 Testing
 -------
 
@@ -286,8 +241,8 @@ the `FedACH directory`_.
 To aid you while integrating, Balanced provides special routing and
 account numbers that can simulate various scenarios that can go wrong.
 
-Test Numbers
-~~~~~~~~~~~~
+Test Bank Account Numbers
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. list-table::
    :widths: 15 20 40
@@ -321,6 +276,7 @@ Test Numbers
      - ``9900000005``
      - Transitions credit state to ``failed``
 
+
 Examples
 ~~~~~~~~
 
@@ -344,6 +300,7 @@ simulating failed status
 
 .. dcode:: credit_failed_state
 
+
 Request Logs
 ~~~~~~~~~~~~
 
@@ -351,26 +308,7 @@ As you integrate and test :ref:`payouts`, you may find it useful to view
 all your sanitized API request logs. They are viewable via the logs section
 in the `dashboard`_
 
-Pre-funding Your Account
-------------------------
 
-Any payout issued requires maintaining sufficient money in your Balanced account.
-
-If you do not have a sufficient balance, Balanced will return a ``409`` http
-status code, stating that you do not have sufficient funds to cover your
-desired ACH operation.
-
-As a result, you will have to add funds from your bank account to your account
-via the Balanced `dashboard`_.
-
-.. tip::
-
-   We advise that you transfer a large amount in you Balanced account or you
-   may request that Balanced always keep a constant amount in your account for
-   you. We're publically tracking this on `github issue #132`_ and appreciate your input
-
-Transfers may take 2-5 days for the funds to become available; alternatively, you
-may fund your account **instantly** with :ref:`Balanced Processing! <processing>`
 
 .. _payouts.cutoff:
 
@@ -420,17 +358,92 @@ at **3:00 PM Pacific (PT)**.
 .. [*] Assumes that day is a working business day -- does not fall on a
        weekend or a `federal reserve holiday <bank holidays>`_.
 
-Payout Methods
+
+.. _payouts.best_practices:
+
+Best Practices
 --------------
 
-Currently Balanced only supports payouts to bank accounts via ACH but we will
-add more. All of this is publicly tracked via github issues. For example:
+Automated Clearing House transactions are asynchronous, requiring upfront effort
+in educating your consumers and setting the appropriate expectations to deliver
+a great product.
 
-* `Payouts via Check <https://github.com/balanced/balanced-api/issues/69>`_
-* `Pushing to Cards <https://github.com/balanced/balanced-api/issues/32>`_
+There are a few simple best practices that can dramatically increase user
+convenience, allowing for a much more enjoyable experience and minimizing
+problematic encounters.
 
-Comment on those that would be useful to you or create issues for ones you'd
-like to see supported!
+
+Sending a payout for the first time
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There’s a very small chance the first payout to a customer can fail. This is
+usually due to the customer accidentally providing an incorrect bank account
+number.
+
+Balanced validates bank routing numbers in real-time using the
+`FedACH directory`_, but since bank accounts are not standardized, incorrect
+bank account numbers are not caught until the payout fails and Balanced
+is notified (3) three to (5) give business days after submission!
+
+Our statistics show that most of the time, your users will provide the correct
+bank routing and account numbers with the help of a properly designed and robust
+form. Their payout will appear the next business day, as expected. Once a
+successful payout has been made, future credits to that bank account
+will continue to take one business day when issued before the
+:ref:`next-day cut-offs <payouts.cutoff>`.
+
+However, if a payout fails, we’ll notify you via email and the dashboard. We're
+working on implementing web hooks, you can follow our progress on
+`github issue #70`_. Go ahead and add your +1 in the comments section to
+receive updates on our progress.
+
+
+Help your users avoid mistakes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Due to the nature of the ACH network, failure notifications can be delayed
+for up to (4) four business days! This can be extremely inconvenient and
+frustrating to your users and your business, since some merchants rely on
+speedy ACH payments for operating capital.
+
+For example, an account number typo can, on average, cause payment delays by
+up to (3) three to (5) five business days!
+
+Our recommendation, for mitigating these user experience issues, is to properly
+invest time in building a robust and reliable form to acquire merchant
+bank account information properly.
+
+Here are some tips:
+
+#. Display a check image to illustrate which number is the routing number vs.
+   account number.
+
+   We've conveniently provided one - however, you may choose to design your
+   own:
+
+   .. figure:: https://s3.amazonaws.com/justice.web/docs/check_image.png
+
+#. US routing numbers are 9 digits and are usually located in the lower left
+   corner of most checks. Common aliases to **routing number**:
+
+   * RTN (Routing Transit Number)
+   * ABA
+   * `Bank code`_
+
+#. Routing numbers are used to set up direct deposit transfers. You can use this
+   as an aid to your customers who are inquiring whether or not they have the
+   right routing number.
+
+#. Balanced has provided very useful routing number validators in our
+   :ref:`balanced.js <tok.validators.banks>` library.
+   Be sure to use these helper functions to build a robust form.
+
+#. Set your customer's expectation that payments might be delayed by up to
+   (3) three to (5) five business days if incorrect information is provided.
+
+#. Highlight to your customers that *wire transfer numbers* are **NOT** the same
+   as the routing number, and they are **NOT** the same as the bank account
+   number. Be sure to clarify this when asking your users for their information.
 
 
 .. _sample page: https://gist.github.com/2662770

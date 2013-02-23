@@ -1,7 +1,7 @@
 .. _processing:
 
-Processing
-==========
+Balanced Processing
+===================
 
 Balanced Processing provides a complete solution for accepting credit
 card payments in a simple, secure manner, relieving you from the hassles of PCI
@@ -259,6 +259,9 @@ Here's an example on how to capture a hold:
 
 Testing
 -------
+
+Test credit card numbers
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 These cards will be accepted in our system only for a **TEST** marketplace.
 
