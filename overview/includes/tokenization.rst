@@ -1,17 +1,16 @@
 
 .. _tokenization:
 
+Getting Started
+===============
+
 Tokenizing Sensitive Information
-================================
+--------------------------------
 
 Balanced provides a PCI-compliant javascript library, dubbed ``balanced.js``
 which, when included on your website, enables secure collection of payment and
 sensitive information without touching your servers, keeping you completely
 outside of PCI and regulatory scope.
-
-
-Getting Started
----------------
 
 This getting started is a reference to ``balanced.js`` and for your convenience
 we've built a `full example page`_ that's already put together for you. We're putting

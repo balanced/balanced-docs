@@ -7,6 +7,6 @@
    shopping cart
    accounting
 
-Best Practices
-==============
+.. Best Practices
+.. ==============
 
