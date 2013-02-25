@@ -17,7 +17,7 @@ we've built a `full example page`_ that's already put together for you. We're pu
 this here as we're going to reference it in the :ref:`payouts` and the :ref:`processing`
 tutorials.
 
-Here's another `jsFiddle demo`_ that demonstrates bank account tokenization.
+Here's another `jsFiddle demo`_ that demonstrates bank account tokenization and we've also got a `jsFiddle for tokenizing cards`_.
 
 .. _tok.including:
 
@@ -381,3 +381,4 @@ Simple Bank Account Form
 .. _MICR Routing Number Format: http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format
 .. _jQuery: http://www.jquery.com
 .. _jsFiddle demo: http://jsfiddle.net/mahmoudimus/DGDkt/11/
+.. _jsFiddle for tokenizing cards: http://jsfiddle.net/mjallday/BtXfr/

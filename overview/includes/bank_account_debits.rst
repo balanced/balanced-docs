@@ -11,6 +11,10 @@ This process of verification is done using micro-deposits. These are test
 credits to the specified bank account for random amounts which must be passed
 back to Balanced to verify that they were successfully received.
 
+The process of verifying a bank account takes 1-2 business days since Balanced
+must send the money to the bank account being verified and it must also show up
+on the bank account's statement in order for you to view the amounts sent.
+
 We have complete examples for both the Python and Ruby client libraries:
 
 - `Complete example using Python`_
