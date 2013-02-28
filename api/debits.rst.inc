@@ -52,7 +52,7 @@ captured behind the scenes automatically.
   ``account_uri`` 
       *optional* **string**.  
    
-  ``on_behalf_of_uri`` 
+  ``on_behalf_of`` 
       *optional* **string**. The account of a merchant, usually a seller or service provider, that 
       is associated with this card charge or bank account debit. 
    
