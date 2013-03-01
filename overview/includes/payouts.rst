@@ -383,7 +383,7 @@ number.
 Balanced validates bank routing numbers in real-time using the
 `FedACH directory`_, but since bank accounts are not standardized, incorrect
 bank account numbers are not caught until the payout fails and Balanced
-is notified (3) three to (5) give business days after submission!
+is notified (3) three to (5) five business days after submission!
 
 Our statistics show that most of the time, your users will provide the correct
 bank routing and account numbers with the help of a properly designed and robust
