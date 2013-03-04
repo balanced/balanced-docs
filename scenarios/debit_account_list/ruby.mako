@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 % if request is UNDEFINED:
-Balanced::Account.credits
+Balanced::Account.debits
 
 % else:
 ${main.ruby_boilerplate()}
