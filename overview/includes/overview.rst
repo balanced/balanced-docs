@@ -181,7 +181,8 @@ fee per operation is listed below:
   ============================ ===============
     operation                    cost to you
   ============================ ===============
-  successful charge                 2.9% + 30¢
+  successful credit card charge     2.9% + 30¢
+  successful bank account charge      1% + 30¢
   chargeback                            $15.00
   refund                                    $0
   failure                                   $0
