@@ -1,3 +1,5 @@
+.. _bank-account-verifications:
+
 bank account verifications
 ==========================
 
@@ -23,6 +25,7 @@ Creates a new bank account verification.
 
 .. container:: method-description
 
+  .. no request
 
 .. container:: method-examples
 
@@ -34,6 +37,8 @@ Creates a new bank account verification.
 Retrieve a Verification for a Bank Account
 ------------------------------------------
 
+Gets the verification for a bank account.
+
 .. container:: method-description
 
   .. no request
@@ -41,24 +46,6 @@ Retrieve a Verification for a Bank Account
 .. container:: method-examples
 
   .. dcode:: bank_account_verification_show
-
-
-.. cssclass:: method-section
-
-List All Verifications for a Bank Account
------------------------------------------
-
-.. container:: method-description
-
-  ``limit``
-      *optional* integer. Defaults to ``10``.
-
-  ``offset``
-      *optional* integer. Defaults to ``0``.
-
-.. container:: method-examples
-
-  .. dcode:: bank_account_verification_list
 
 
 .. cssclass:: method-section
