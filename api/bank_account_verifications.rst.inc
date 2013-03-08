@@ -45,24 +45,6 @@ Retrieve a Verification for a Bank Account
 
 .. cssclass:: method-section
 
-List All Verifications for a Bank Account
------------------------------------------
-
-.. container:: method-description
-
-  ``limit``
-      *optional* integer. Defaults to ``10``.
-
-  ``offset``
-      *optional* integer. Defaults to ``0``.
-
-.. container:: method-examples
-
-  .. dcode:: bank_account_verification_list
-
-
-.. cssclass:: method-section
-
 Confirm a Bank Account Verification
 -----------------------------------
 
