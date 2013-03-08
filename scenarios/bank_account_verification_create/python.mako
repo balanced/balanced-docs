@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 % if request is UNDEFINED:
-    balanced.BankAccountVerification().save()
+    balanced.Verification().save()
 
 % else:
     ${main.python_boilerplate()}

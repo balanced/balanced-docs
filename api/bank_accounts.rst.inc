@@ -5,7 +5,7 @@ You'll eventually want to be able to credit bank accounts without having to
 ask your users for their information over and over again. To do this, you'll
 need to create a bank account object.
 
-**NOTE** To debit a bank account you must first :ref:`verify it <Bank Account Verifications>`.
+**NOTE** To debit a bank account you must first :ref:`verify it <bank-account-verifications>`.
 
 .. cssclass:: method-section
 

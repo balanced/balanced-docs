@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 % if request is UNDEFINED:
-    \Balanced\BankAccountVerification->save()
+    \Balanced\Verification->save()
 
 % else:
     ${main.php_boilerplate()}

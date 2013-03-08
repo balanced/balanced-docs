@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 % if request is UNDEFINED:
-    balanced.BankAccountVerification().save()
+    balanced.Verification.save
 
 % else:
     ${main.python_boilerplate()}
@@ -9,6 +9,6 @@ verification = bank_account.verification
     % for k, v in payload.iteritems():
 verification.${k} = ${v}
     % endfor
-verification.save()
+verification.save
 
 % endif
