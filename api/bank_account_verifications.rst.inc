@@ -1,3 +1,5 @@
+.. _bank-account-verifications:
+
 bank account verifications
 ==========================
 
@@ -23,6 +25,7 @@ Creates a new bank account verification.
 
 .. container:: method-description
 
+  .. no request
 
 .. container:: method-examples
 
@@ -33,6 +36,8 @@ Creates a new bank account verification.
 
 Retrieve a Verification for a Bank Account
 ------------------------------------------
+
+Gets the verification for a bank account.
 
 .. container:: method-description
 

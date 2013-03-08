@@ -50,7 +50,6 @@ import balanced
 balanced.config.root_uri = "${api_location}"
 %endif
 balanced.configure("${api_key}")
-
 </%def>
 
 <%def name="ruby_boilerplate()">
