@@ -3,6 +3,9 @@
 refunds
 =======
 
+Refunds typically take one business day to reflect on a card statement, but it's possible for the issuing bank to take five business days to process the refund.
+
+
 .. cssclass:: method-section
 
 issue a refund
