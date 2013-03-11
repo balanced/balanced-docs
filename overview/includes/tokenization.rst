@@ -1,4 +1,3 @@
-
 .. _tokenization:
 
 Getting Started
@@ -338,9 +337,9 @@ Example:
 .. code-block:: javascript
 
     balanced.bankAccount.validate({
-        '321174851',
-        '09877765432111111',
-        'Tommy Q. CopyPasta'
+        bank_code:'321174851',
+        account_number:'09877765432111111',
+        name:'Tommy Q. CopyPasta'
     })
 
 Forms
