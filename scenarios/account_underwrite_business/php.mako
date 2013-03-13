@@ -19,7 +19,7 @@ $merchant_data = array(
     ),
 );
 
-$account = $marketplace->createAccount();
+$account = $marketplace->createMerchant($email, $merchant_data);
 
 try {
     $account->promoteToMerchant($merchant_data);
