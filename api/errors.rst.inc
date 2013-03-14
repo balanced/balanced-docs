@@ -5,7 +5,7 @@ Standard HTTP status codes are used to communicate the success or
 failure of a request. A code in the ``2xx`` range indicates success, ``4xx``
 indicates an error that resulted from the provided information (e.g. a
 required parameter was missing, a bank account failed tokenization, etc),
-``5xx`` indicates an error with Balanced's servers.
+``5xx`` indicates an error with Balanced's servers. More: `List of errors`_.
 
 .. container:: method-section
 
@@ -60,3 +60,5 @@ required parameter was missing, a bank account failed tokenization, etc),
     **405** method not allowed: http method used is not allowed for the requested uri.
 
     **500, 502, 503, 504** internal server error: something went wrong on Balanced's side.
+
+.. _list of errors: https://github.com/balanced/balanced-api/blob/master/errors.rst
