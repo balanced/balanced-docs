@@ -12,7 +12,7 @@ $merchant_data = array(
 % endfor
 );
 
-$account = $marketplace->createAccount();
+$account = $marketplace->createMerchant($email, $merchant_data);
 
 try {
     $account->promoteToMerchant($merchant_data);
