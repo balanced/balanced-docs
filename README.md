@@ -32,6 +32,32 @@ your t-shirt size so we can send you awesome
 * `pip install -r requirements.txt`
 * `make clean`
 
+When you're done running all the `balanced-docs` requirements above, in order to setup the
+php environment to execute correctly, you must make sure you have php enabled correctly.
+
+If you do not have an `/etc/php.ini` you need to create one in your system. Usually this
+file is at `/etc/php.ini.default`. So execute these steps:
+
+```bash
+sudo cp /etc/php.ini.default /etc/php.ini
+sudo vim /etc/php.ini
+```
+
+Find the `detect_unicode` directive in your `/etc/php.ini`. Make sure it's turned off. If it doesn't exist,
+just add it and set it explicitly to `off`. I usually have something like this:
+
+```ini
+; PHP's default character set is set to empty.
+; http://php.net/default-charset
+;default_charset = "iso-8859-1"
+
+detect_unicode = off
+```
+
+So, search for `default_charset` and just add the `detect_unicode = off` directive in your file.
+
+Then save the file when you're done.
+
 #### Generating
 
 To generate the [API reference](https://balancedpayments.com/docs/api), just issue a:

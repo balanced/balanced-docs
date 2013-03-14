@@ -46,7 +46,6 @@ def bootstrap_php(path):
             stdin=download.stdout,
             stdout=subprocess.PIPE
         )
-        download.stdout.close()
         output = php_cli.communicate()[0]
         logger.info(output)
         # composer downloaded and ready to rock.
