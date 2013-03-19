@@ -157,7 +157,7 @@ has been underwritten.
   ``person`` 
       .. cssclass:: nested1 
    
-      *optional* **object**.  
+      *required* **object**.  
           ``name`` 
               *required* **string**. Sequence of characters. 
    
