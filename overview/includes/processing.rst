@@ -53,7 +53,7 @@ of some simple javascript:
 
    // TODO: Replace this with your marketplace URI
    var marketplaceUri = '{YOUR-MARKETPLACE-URI}';
-   var $form = $('#credit=card-form');
+   var $form = $('#credit-card-form');
 
    // collect the data from the form.
    var creditCardData = {
