@@ -31,9 +31,9 @@ corresponding hold.
   ``amount`` 
       *optional* **integer**. If the resolving URI references a hold then this is hold amount. You can 
       always capture less than the hold amount (e.g. a partial capture). 
-      Otherwise its the maximum per debit amount for your marketplace. Value must be >= the minimum per debit ``amount`` for *your* 
-      marketplace. Value must be <= the maximum per debit ``amount`` for *your* 
-      marketplace. 
+      Otherwise its the maximum per debit amount for your marketplace. Value must be >= the minimum per debit ``amount`` for your 
+      marketplace. Value must be <= the maximum per debit ``amount`` for your 
+      marketplace.
    
   ``appears_on_statement_as`` 
       *optional* **string**. Text that will appear on the buyer's statement. Characters that can be 
