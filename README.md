@@ -1,21 +1,21 @@
 # Balanced Docs
 
-This is the framework that we use to run Balanced's documentation against against our API servers and generate
-the documentation in html form.
+This project generates Balanced documentation. There are three types of documentation:
 
-This is how our documentation is generated!
+- [Overiew](https://www.balancedpayments.com/docs/overview)
+- [Reference](https://www.balancedpayments.com/docs/api)
+- [Specification](https://github.com/balanced/balanced-api)
+
 
 ## Contributing
 
-Any minor contributions, even simple grammar fixes are greatly
-apprecaited.
+Any minor contributions, even simple grammar fixes are greatly apprecaited.
 
 1. Check for open issues or open a fresh issue to start a discussion around a feature idea or a bug.
 1. Fork the repository on Github to start making your changes to the develop branch (or branch off of it).
 1. Send a pull request!
 
-Make sure to add yourself to `CONTRIBUTORS`. We will showcase the
-`CONTRIBUTORS` file on our
+Make sure to add yourself to `CONTRIBUTORS`. We will showcase the `CONTRIBUTORS` file on our
 [COMMUNITY PAGE](https://balancedpayments.com/community).
 
 After your pull request, email support [@] balancedpayments.com with
@@ -28,7 +28,6 @@ your t-shirt size so we can send you awesome
 ### Installing
 
 * `mkvirtualenv balanced-docs`
-* `python setup.py develop`
 * `pip install -r requirements.txt`
 * `make clean`
 
@@ -60,29 +59,40 @@ Then save the file when you're done.
 
 #### Generating
 
-To generate the [API reference](https://balancedpayments.com/docs/api), just issue a:
-
-```bash
-make api
-```
-
-To generate the [overview](https://balancedpayments.com/docs/overview) reference, just issue a:
+To generate the [overview](https://balancedpayments.com/docs/overview), do:
 
 ```bash
 make overview
 ```
 
+To generate the [reference](https://balancedpayments.com/docs/api), do:
+
+```bash
+make reference
+```
+
+To generate the [specification](https://github.com/balanced/balanced-api), do:
+
+```bash
+make specification
+```
+
 ##### How do I preview?
 
 To preview the generated `api` or `overview` reference, just open up
-the html path printed by the `Makefile` in your local browser. It
-typically looks like:
+the html path printed by the `Makefile` in your local browser. 
+
+It typically looks like this for the [overview](https://balancedpayments.com/docs/overview):
 
     Build finished. The HTML pages are in ${SOME_ABSOLUTE_PATH}/balanced-docs/overview/html
 
-OR
+Like this for the [reference](https://balancedpayments.com/docs/api):
 
     Build finished. The HTML pages are in ${SOME_ABSOLUTE_PATH}/balanced-docs/api/html
+
+And like this for the [specification](https://github.com/balanced/balanced-api):
+
+    Build finished. The HTML pages are in ${SOME_ABSOLUTE_PATH}/balanced-docs/api/rst
 
 
 ## How do I add some new documentation for the reference?
