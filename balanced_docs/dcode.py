@@ -5,7 +5,7 @@ Use the `dcode-default` directive to set default options:
 
 .. dcode-default: [key]
     :cache: true
-    :record: /tmp/dcode.track
+    :record: /tmp/dcode.record
     :script: some-script
     :{script-option-1}:
     ...
@@ -23,9 +23,12 @@ And the `dcode` directive to capture generated rST:
 Note that default options can be overridden by `dcode`.
 """
 from collections import defaultdict
+import functools
+import hashlib
 import logging
 import os
 import pipes
+import re
 import shlex
 import subprocess
 import sys
@@ -33,7 +36,8 @@ import sys
 from docutils import nodes
 from docutils.parsers.rst import directives, Directive
 from docutils.statemachine import ViewList
-from pprint import pprint
+from timeit import itertools
+from sphinx.domains import std
 
 logger = logging.getLogger(__name__)
 
@@ -42,15 +46,28 @@ class DCodeDefaultDirective(Directive):
 
     class Registry(dict):
 
-        def __init__(self):
-            super(DCodeDefaultDirective.Registry, self).__init__(
-                script=None,
-                cache=False,
-                record=None,
-                ignore=False,
-            )
+        def __init__(self, parent, **kwargs):
+            self.parent = parent
+            super(type(self), self).__init__(**kwargs)
 
-    registry = defaultdict(Registry)
+        def __getitem__(self, key):
+            try:
+                return super(type(self), self).__getitem__(key)
+            except KeyError:
+                return self.parent[key]
+
+    default_registry = Registry(
+        None,
+        script=None,
+        cache=False,
+        record=None,
+        ignore=False,
+        section_include=None,
+        section_chars='~^',
+    )
+
+    registry = defaultdict(functools.partial(Registry, default_registry))
+    registry[None] = default_registry
 
     @classmethod
     def expand(cls, args, options):
@@ -66,6 +83,10 @@ class DCodeDefaultDirective(Directive):
             cls.registry[key]['record'] = os.path.expanduser(options['record'])
         if 'ignore' in options:
             cls.registry[key]['ignore'] = True
+        if 'section-chars' in options:
+            cls.registry[key]['section_chars'] = options['section-chars']
+        if 'section-include' in options:
+            cls.registry[key]['section_include'] = options['section-include'].split()
         return []
 
     # Directive
@@ -82,6 +103,8 @@ class DCodeDefaultDirective(Directive):
         'ignore': directives.flag,
         'record': directives.unchanged,
         'ignore': directives.unchanged,
+        'section-chars': '~^',
+        'section-include': directives.unchanged,
     }
 
     has_content = False
@@ -129,6 +152,16 @@ class DCodeDirective(Directive):
         else:
             record = DCodeDefaultDirective.registry[key]['record']
 
+        # section-*
+        if 'section-chars' in options:
+            section_chars = options['section-chars']
+        else:
+            section_chars = DCodeDefaultDirective.registry[key]['section_chars']
+        if 'section-include' in options:
+            section_include = options['section-include'].split()
+        else:
+            section_include = DCodeDefaultDirective.registry[key]['section_include']
+
         # kwargs
         kwargs = dict(
             (k, v.split())
@@ -138,21 +171,36 @@ class DCodeDirective(Directive):
 
         # generate
         if not script:
-            import ipdb; ipdb.set_trace()
-        writer = _ViewWriter(ViewList())
+            raise ValueError('No scripts for key "{0}"'.format(key))
+        view = ViewList()
+
+        def write(l):
+            view.append(l if l.strip() else '', '<dcode>')
+
+        if section_include:
+            write = _SectionFilter(
+                section_chars,
+                section_include,
+                write,
+            )
+
         if not ignore:
             if isinstance(content, list):
                 content = '\n'.join(content)
             _generate(
                 cache=cache,
                 record=record,
-                writer=writer,
+                write=write,
                 script=script,
                 args=args,
                 kwargs=kwargs,
                 content=content,
             )
-        return writer.view
+
+        if section_include:
+            write.done()
+
+        return view
 
     # Directive
 
@@ -166,12 +214,14 @@ class DCodeDirective(Directive):
         'cache': directives.flag,
         'script': directives.unchanged,
         'record': directives.unchanged,
+        'section-include': directives.unchanged,
+        'section-chars': directives.unchanged,
     }
 
     has_content = True
 
     def run(self):
-        view = run(self.arguments, self.options, self.content)
+        view = self.expand(self.arguments, self.options, self.content)
         node = nodes.section()
         node.document = self.state.document
         self.state.nested_parse(view, 0, node, match_titles=1)
@@ -179,6 +229,78 @@ class DCodeDirective(Directive):
 
 
 # internals
+
+class _SectionFilter(object):
+
+    INCLUDE_SEPARATOR = '.'
+
+    def __init__(self, chars, include, write):
+        self.chars = chars
+        self.write = write
+        self.filtered = False
+        self.include = [
+            map(str.lower, i.split(self.INCLUDE_SEPARATOR))
+            for i in include
+        ]
+        self._depth = 0
+        self._chars = None
+        self._h = None
+
+    def __call__(self, l):
+        if self._h:
+            if self._is_section(self._h, l):
+                self._on_section(self._h, l)
+            else:
+                self._write(self._h)
+                self._write(l)
+            self._h = None
+            return
+        if l and not l[0].isspace():
+            self._h = l
+            return
+        self._write(l)
+
+    def done(self):
+        if self._h:
+            self._write(self._h)
+            self._h = None
+
+    def _write(self, l):
+        if self.filtered:
+            self.write(l)
+
+    def _is_section(self, heading, adornment):
+        h = heading.rstrip()
+        a = adornment.rstrip()
+        return (
+            a and
+            len(a) == len(h) and
+            not a[0].isalnum() and
+            len(set(a)) == 1
+        )
+
+    def _on_section(self, heading, adorment):
+        if self.filtered:
+            if adorment[0] in self._chars:
+                self._write(heading)
+                self._write(adorment)
+            else:
+                logger.debug('filtering off for "%s", "%s"', heading, adorment)
+                self.filtered = False
+                self._depth = 0
+        else:
+            if self.chars[self._depth] != adorment[0]:
+                self._depth = 0
+            else:
+                for i in self.include:
+                    if len(i) <= self._depth:
+                        continue
+                    if i[self._depth] == heading.lower():
+                        self._depth += 1
+                        if len(i) == self._depth:
+                            logger.debug('filtering on for "%s", "%s"', heading, adorment)
+                            self._chars = self.chars[self._depth:]
+                            self.filtered = True
 
 
 class _Writer(object):
@@ -215,28 +337,7 @@ class _Writer(object):
         raise NotImplementedError()
 
 
-class _ViewWriter(_Writer):
-    def __init__(self, view):
-        super(_ViewWriter, self).__init__()
-        self.view = view
-        self.buffer = ''
-
-    def line(self, *args):
-        line = ''
-        if self.buffer:
-            line += self.buffer
-            self.buffer = ''
-        line += self._indentation + ' '.join(map(str, args))
-        self.view.append(line if line.strip() else '', '<autopilo>')
-        self._fragment = False
-
-    def fragment(self, *args):
-        fragment = self._indentation + ' '.join(map(str, args))
-        self.buffer += fragment
-        self._fragment = True
-
-
-def _execute(script, args, kwargs, content):
+def _execute(script, args, kwargs, content, record=None):
     cmd = (
         shlex.split(script.encode('utf-8')) +
         args +
@@ -244,6 +345,9 @@ def _execute(script, args, kwargs, content):
     )
     sh_cmd = ' '.join(pipes.quote(p) for p in cmd)
     logger.debug('executing "%s"', sh_cmd)
+    if record:
+        with open(record, 'a') as fo:
+            fo.write(sh_cmd + '\n')
     proc = subprocess.Popen(
         cmd,
         stdin=subprocess.PIPE,
@@ -265,8 +369,18 @@ _CACHE = {
 }
 
 
-def _cache_key(script, args, kwargs):
-    raise NotImplemented()
+def _cache_key(script, args, kwargs, content):
+    m = hashlib.md5()
+    m.update(script)
+    for arg in sorted(args):
+        m.update(arg)
+    for k, v in sorted(kwargs.items()):
+        m.update(k)
+        for vv in v:
+            m.update(vv)
+    for l in content:
+        m.update(l)
+    return m.hexdigest()
 
 
 def _generate(
@@ -276,24 +390,18 @@ def _generate(
         args,
         kwargs,
         content,
-        writer
+        write
     ):
-
-    if False and cache:
+    if cache:
         key = _cache_key(script, args, kwargs, content)
         if key in _CACHE:
             logger.debug('cache hit "%s"', key)
             result = _CACHE[key]
         else:
-            result = _execute(script, args, kwargs, content)
+            result = _execute(script, args, kwargs, content, record)
             logger.debug('cache store "%s"', key)
             _CACHE[key] = result
     else:
-        result = _execute(script, args, kwargs, content)
-
+        result = _execute(script, args, kwargs, content, record)
     for line in result.splitlines():
-        writer.line(line)
-
-    if False and record:
-        with open(record, 'a') as fo:
-            fo.write(name + '\n')
+        write(line)

@@ -35,10 +35,10 @@ def expand_directives(fo, disabled):
         directive(line)
         if not directive.done:
             continue
-        for line in directive.render():
+        logger.debug('expanding directive "%s"', directive.name)
+        expansion = [l + '\n' for l in directive.render()]
+        for line in expand_directives(expansion, disabled):
             yield line
-            yield '\n'
-        yield '\n'
         if directive.trailer:
             line = directive.trailer
             name = DirectiveParser.probe(line)
@@ -56,22 +56,21 @@ def expand_directives(fo, disabled):
         directive = None
     if directive:
         directive('')
-        for line in directive.render():
+        logger.debug('expanding directive "%s"', directive.name)
+        expansion = [l + '\n' for l in directive.render()]
+        for line in expand_directives(expansion, disabled):
             yield line
-            yield '\n'
-        yield '\n'
 
 
 DEFAULT_RST = """\
 
 .. dcode-default::
     :cache:
-    :directive: code-block
+    :record: /tmp/dcode.record
 
 .. dcode-default:: scenario
-    :script: scenario.py -c scenario.cache -d scenarios
-    :section-chars: ^
-    :section-depth: 2
+    :script: ./scenario.py -c scenario.cache
+    :section-chars: ^~
 
 .. dcode-default:: view
     :script: ./rst.py view
@@ -93,7 +92,8 @@ DEFAULT_RST = """\
 
 def create_arg_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument('source',
+    parser.add_argument(
+        'source',
         nargs='?',
         metavar='PATH',
         default=None,
@@ -105,7 +105,8 @@ def create_arg_parser():
         default=logging.INFO,
         action=LogLevelAction,
     )
-    parser.add_argument('-d', '--disable',
+    parser.add_argument(
+        '-d', '--disable',
         dest='disabled',
         metavar='DIRECTIVE',
         help='Disable expansion of DIRECTIVE. None are disabled by default.',

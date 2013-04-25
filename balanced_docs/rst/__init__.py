@@ -130,7 +130,7 @@ class DirectiveParser(object):
                 self._done(line)
                 return
         if self.content or line[self.indent + 3:]:
-            self.content.append(line[self.indent + 3:])
+            self.content.append(line[self.indent + 3:].rstrip())
 
     def _consume_done(self, line):
         raise ValueError('Directive {} has been fully parsed'.format(self.name))
@@ -156,7 +156,7 @@ class Overrides(dict):
             parser(l)
         parser.done()
         return Overrides([
-            (bullet[0].strip(), '\n'.join(bullet[1:]).strip())
+            (bullet[0].strip(), '\n'.join(bullet[1:]))
             for bullet in parser.bullets if bullet
         ])
 

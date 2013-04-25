@@ -1325,7 +1325,7 @@ def create_arg_parser():
         help='PATH to scenario context cache file. No caching by default.',
     )
     parser.add_argument(
-        '--section-chars',
+        '--sections',
         metavar='CHARS',
         default='~^',
         help='String of CHARS to use for section headings.',
@@ -1351,7 +1351,7 @@ def generate(write, req, resp, section_chars):
     write(section_chars[0] * len('Response')); write('\n\n')
 
     write('Headers\n')
-    write(section_chars[1] * len('Body')); write('\n\n')
+    write(section_chars[1] * len('Headers')); write('\n\n')
 
     write('.. code::\n')
     with write:
@@ -1397,7 +1397,7 @@ def main():
             if name not in SCENARIOS:
                 raise ValueError('Invalid scenario "{}"'.format(name))
             req, resp = SCENARIOS[name](ctx)
-            generate(write, req, resp, args.section_chars)
+            generate(write, req, resp, args.sections)
     finally:
         if args.cache:
             logger.debug('saving context to cache "%s"', args.cache)
