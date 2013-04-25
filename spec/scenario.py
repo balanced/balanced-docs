@@ -1,46 +1,202 @@
 #!/usr/bin/env python
 """
+Backend for the scenario dcode rST directive.
+
+For example:
+
+    .. dcode: scenario
+        ...
+
+Maps to:
+
+    def main():
+        ...
+
 """
 import argparse
-from collections import OrderedDict
 import json
 import logging
+import os
 import sys
 
+import balanced
+
+from balanced_docs import LogLevelAction, memoized, BlockWriter
+from pprint import pprint
+
+
 logger = logging.getLogger(__name__)
+
+
+PERSON_MERCHANT = {
+    'type': 'person',
+    'name': 'William James',
+    'tax_id': '393-48-3992',
+    'street_address': '167 West 74th Street',
+    'postal_code': '10023',
+    'dob': '1842-01-01',
+    'phone_number': '+16505551234',
+    'country_code': 'USA',
+    }
+
+BUSINESS_PRINCIPAL = {
+    'name': 'William James',
+    'tax_id': '393483992',
+    'street_address': '167 West 74th Street',
+    'postal_code': '10023',
+    'dob': '1842-01-01',
+    'phone_number': '+16505551234',
+    'country_code': 'USA',
+    }
+
+BUSINESS_MERCHANT = {
+    'type': 'business',
+    'name': 'Levain Bakery',
+    'tax_id': '253912384',
+    'street_address': '167 West 74th Street',
+    'postal_code': '10023',
+    'phone_number': '+16505551234',
+    'country_code': 'USA',
+    'person': BUSINESS_PRINCIPAL,
+    }
+
+CARD = {
+    'street_address': '123 Fake Street',
+    'city': 'Jollywood',
+    'postal_code': '90210',
+    'name': 'Johnny Fresh',
+    'card_number': '4444424444444440',
+    'expiration_month': 12,
+    'expiration_year': 2013,
+    }
+
+BANK_ACCOUNT = {
+    'name': 'Homer Jay',
+    'account_number': '112233a',
+    'bank_code': '121042882',
+    }
 
 
 class Context(object):
 
     @classmethod
-    def load(cls):
-        raise NotImplemented()
+    def load(cls, io):
+        return cls(json.load(io))
 
     def save(self, io):
-        raise NotImplemented()
+        cache = {
+            'secret': self.secret,
+            'buyer_uri': self.buyer_uri,
+            'merchant_uri': self.merchant_uri,
+        }
+        json.dump(cache, io, indent=4)
 
-    def format(self, req, resp):
-        block = OrderedDict()
-        if req:
-            block['Request'] = self._format_request(req)
-        if resp:
-            block['Response'] = self._format_response(resp)
-        return json.dumps([block], indent=4)
+    class Interface(object):
 
-    def url_for(self, **kwargs):
-        raise NotImplemented()
+        def __init__(self, parent, org):
+            self.parent = parent
+            self.org = org
 
-    def get(self, url):
-        raise NotImplemented()
+        def __getattr__(self, *args, **kwargs):
+            return self.org.__getattr__(self, *args, **kwargs)
 
-    def post(self, url, data):
-        raise NotImplemented()
+        def _record(self, r):
+            req = {}
+            if getattr(r.request, 'data', None):
+                req['body'] = json.dumps(json.loads(r.request.data), indent=4)
+            resp = {
+                'headers': [
+                    ('Status', '{} {}'.format(r.status_code, r.raw.reason)),
+                ],
+                'body': r.content,
+            }
+            self.parent.last_req, self.parent.last_resp = req, resp
 
-    def put(self, url, data):
-        raise NotImplemented()
+        def get(self, *args, **kwargs):
+            resp = self.org.get(*args, **kwargs)
+            self._record(resp)
+            return resp
 
-    def data(self, url, data):
-        raise NotImplemented()
+        def post(self, *args, **kwargs):
+            resp = self.org.post(*args, **kwargs)
+            self._record(resp)
+            return resp
+
+        def put(self, *args, **kwargs):
+            resp = self.org.put(*args, **kwargs)
+            self._record(resp)
+            return resp
+
+        def delete(self, *args, **kwargs):
+            resp = self.org.delete(*args, **kwargs)
+            self._record(resp)
+            return resp
+
+    def __init__(self, cache=None):
+        cache = cache or {}
+        self.secret = cache.get('secret')
+        self.buyer_uri = cache.get('buyer_uri')
+        self.merchant_uri = cache.get('merchant_uri')
+        balanced.Resource.http_client.interface = self.Interface(
+            parent=self,
+            org=balanced.Resource.http_client.interface,
+        )
+
+    @property
+    @memoized
+    def marketplace(self):
+        if not self.secret:
+            logger.debug('creating api key')
+            self.secret = balanced.APIKey().save().secret
+        balanced.configure(self.secret)
+        try:
+            marketplace = balanced.Marketplace.mine
+        except balanced.exc.NoResultFound:
+            logger.debug('creating marketplace')
+            marketplace = balanced.Marketplace().save()
+        return marketplace
+
+    @property
+    @memoized
+    def merchant(self):
+        if self.merchant_uri:
+            try:
+                return balanced.Account.find(self.merchant_uri)
+            except balanced.exc.HTTPError:
+                pass
+        logger.debug('creating merchant')
+        bank_account = self.marketplace.create_bank_account(**BANK_ACCOUNT)
+        merchant = self.marketplace.create_merchant(
+            None,
+            merchant=PERSON_MERCHANT,
+            bank_account_uri=bank_account.uri
+        )
+        self.merchant_uri = merchant.uri
+        return merchant
+
+    @property
+    @memoized
+    def bank_account(self):
+        return self.merchant.bank_accounts[0]
+
+    @property
+    @memoized
+    def buyer(self):
+        if self.buyer_uri:
+            try:
+                return balanced.Account.find(self.buyer_uri)
+            except balanced.exc.HTTPError:
+                pass
+        logger.debug('creating buyer')
+        card = self.marketplace.create_card(**CARD)
+        buyer = self.marketplace.create_buyer(None, card.uri)
+        self.buyer_uri = buyer.uri
+        return buyer
+
+    @property
+    @memoized
+    def card(self):
+        return self.buyer.cards[0]
 
 
 def scenario(f):
@@ -52,31 +208,25 @@ def scenario(f):
 def credits_index(ctx):
     ctx.bank_account.credit(amount=1254)
     ctx.bank_account.credit(amount=431)
-    url = ctx.url_for('credits.index')
-    return ctx.get(url)
+    ctx.marketplace.credits_uri += '?limit=2'
+    ctx.marketplace.credits[0:2]
+    return ctx.last_req, ctx.last_resp
 
 
 @scenario
 def credits_show(ctx):
     credit = ctx.bank_account.credit(amount=1254)
-    url = ctx.url_for('credits.show', credit=credit.id)
-    return ctx.get(url)
+    balanced.Credit.find(credit.uri)
+    return ctx.last_req, ctx.last_resp
 
 
 @scenario
 def credits_create(ctx):
-    url = ctx.url_for('credits.create')
-    payload = {
-        'amount': 1234,
-        'description': 'Something descriptive',
-        'bank_account': {
-            'account_number': '12341234',
-            'bank_code': '325182797',
-            'name': 'Fit Finlay',
-            'account_type': 'checking',
-        },
-    }
-    return ctx.post(url, payload)
+    ctx.bank_account.credit(
+        amount=1254,
+        description='Something descriptive',
+    )
+    return ctx.last_req, ctx.last_resp
 
 
 @scenario
@@ -269,7 +419,7 @@ def cards_associate(ctx):
 
 
 @scenario
-def bank_account_create(self):
+def bank_account_create(ctx):
     url = self.url_for('bank_accounts.create')
     payload = self._bank_account_payload()
     data = self.to_json(payload)
@@ -281,7 +431,7 @@ def bank_account_create(self):
 
 
 @scenario
-def bank_account_show(self):
+def bank_account_show(ctx):
     bank_account = bank_accounts.create(marketplace=self.mp)
     self.session.flush()
     url = self.url_for('bank_accounts.show', bank_account=bank_account)
@@ -291,7 +441,7 @@ def bank_account_show(self):
 
 
 @scenario
-def bank_account_index(self):
+def bank_account_index(ctx):
     bank_accounts.create(marketplace=self.mp)
     bank_accounts.create(marketplace=self.mp)
     url = self.url_for('bank_accounts.index')
@@ -301,7 +451,7 @@ def bank_account_index(self):
 
 
 @scenario
-def bank_account_associate(self):
+def bank_account_associate(ctx):
     bank_account = bank_accounts.create(marketplace=self.mp)
     self.session.flush()
     account_uri = self.url_for(
@@ -320,7 +470,7 @@ def bank_account_associate(self):
 
 
 @scenario
-def bank_account_delete(self):
+def bank_account_delete(ctx):
     bank_account = bank_accounts.create(marketplace=self.mp)
     self.session.flush()
     url = self.url_for(
@@ -330,7 +480,7 @@ def bank_account_delete(self):
 
 
 @scenario
-def accpint_bank_account_index(self):
+def accpint_bank_account_index(ctx):
     self.account.add_bank_account(
         bank_accounts.create(marketplace=self.mp))
     self.account.add_bank_account(
@@ -345,7 +495,7 @@ def accpint_bank_account_index(self):
 
 
 @scenario
-def account_cards_index(self):
+def account_cards_index(ctx):
     self.account.add_card(cards.create(marketplace=self.mp))
     self.account.add_card(cards.create(marketplace=self.mp))
     url = self.url_for(
@@ -358,7 +508,7 @@ def account_cards_index(self):
 
 
 @scenario
-def accounts_create_buyer(self):
+def accounts_create_buyer(ctx):
     card = cards.create(marketplace=self.mp)
     self.session.flush()
     card_uri = self.url_for(
@@ -378,7 +528,7 @@ def accounts_create_buyer(self):
 
 
 @scenario
-def accounts_create_business_merchant(self):
+def accounts_create_business_merchant(ctx):
     url = self.url_for('accounts.create', marketplace=self.mp)
     payload = accounts.create_payload_business_merchant()
     data = self.to_json(payload)
@@ -390,7 +540,7 @@ def accounts_create_business_merchant(self):
 
 
 @scenario
-def accounts_create_person_merchant(self):
+def accounts_create_person_merchant(ctx):
     url = self.url_for('accounts.create', marketplace=self.mp)
     payload = accounts.create_payload_person_merchant()
     data = self.to_json(payload)
@@ -402,7 +552,7 @@ def accounts_create_person_merchant(self):
 
 
 @scenario
-def accounts_index(self):
+def accounts_index(ctx):
     accounts.create_business_merchant_account(marketplace=self.mp)
     accounts.create_buyer(marketplace=self.mp)
     accounts.create_person_merchant(marketplace=self.mp)
@@ -414,7 +564,7 @@ def accounts_index(self):
 
 
 @scenario
-def accounts_show(self):
+def accounts_show(ctx):
     buyer = accounts.create_buyer(marketplace=self.mp)
     self.session.flush()
     url = self.url_for('accounts.show', marketplace=self.mp, account=buyer)
@@ -424,7 +574,7 @@ def accounts_show(self):
 
 
 @scenario
-def accounts_update(self):
+def accounts_update(ctx):
     card = cards.create(marketplace=self.mp)
     self.session.flush()
     card_uri = self.url_for(
@@ -450,7 +600,7 @@ def accounts_update(self):
 
 
 @scenario
-def accounts_promote_buyer(self):
+def accounts_promote_buyer(ctx):
     buyer = accounts.create_buyer(marketplace=self.mp)
     self.session.flush()
     url = self.url_for(
@@ -466,7 +616,7 @@ def accounts_promote_buyer(self):
 
 
 @scenario
-def api_keys_create(self):
+def api_keys_create(ctx):
     url = self.url_for('api_keys.create')
     payload = {
         'meta': {
@@ -482,7 +632,7 @@ def api_keys_create(self):
 
 
 @scenario
-def api_keys_update(self):
+def api_keys_update(ctx):
     api_key = api_keys.create(user=self.mp_owner)
     self.session.flush()
     url = self.url_for('api_keys.update', api_key=api_key)
@@ -500,7 +650,7 @@ def api_keys_update(self):
 
 
 @scenario
-def api_keys_show(self):
+def api_keys_show(ctx):
     api_key = api_keys.create(user=self.mp_owner)
     self.session.flush()
     url = self.url_for('api_keys.show', api_key=api_key)
@@ -510,7 +660,7 @@ def api_keys_show(self):
 
 
 @scenario
-def api_keys_delete(self):
+def api_keys_delete(ctx):
     api_key = api_keys.create(user=self.mp_owner)
     self.session.flush()
     url = self.url_for('api_keys.delete', api_key=api_key)
@@ -520,7 +670,7 @@ def api_keys_delete(self):
 
 
 @scenario
-def api_keys_index(self):
+def api_keys_index(ctx):
     api_keys.create(user=self.mp_owner)
     api_keys.create(user=self.mp_owner)
     api_keys.create(user=self.mp_owner)
@@ -531,7 +681,7 @@ def api_keys_index(self):
 
 
 @scenario
-def debits_index(self):
+def debits_index(ctx):
     transactions.create_debit(
         account=self.account,
         amount=1254
@@ -548,7 +698,7 @@ def debits_index(self):
 
 
 @scenario
-def debits_show(self):
+def debits_show(ctx):
     debit = transactions.create_debit(
         account=self.account,
         amount=1254
@@ -561,7 +711,7 @@ def debits_show(self):
 
 
 @scenario
-def debits_update(self):
+def debits_update(ctx):
     debit = transactions.create_debit(
         account=self.account,
         amount=1254
@@ -584,7 +734,7 @@ def debits_update(self):
 
 
 @scenario
-def debits_create(self):
+def debits_create(ctx):
     url = self.url_for(
         'debits.create',
         marketplace=self.mp,
@@ -605,7 +755,7 @@ def debits_create(self):
 
 
 @scenario
-def refunds_show(self):
+def refunds_show(ctx):
     debit = transactions.create_debit(
         account=self.account,
         amount=1254,
@@ -619,7 +769,7 @@ def refunds_show(self):
 
 
 @scenario
-def refunds_index(self):
+def refunds_index(ctx):
     d1 = transactions.create_debit(
         account=self.account,
         amount=1254
@@ -643,7 +793,7 @@ def refunds_index(self):
 
 
 @scenario
-def refunds_update(self):
+def refunds_update(ctx):
     debit = transactions.create_debit(
         account=self.account,
         amount=1254
@@ -669,7 +819,7 @@ def refunds_update(self):
 
 
 @scenario
-def refunds_create(self):
+def refunds_create(ctx):
     debit = transactions.create_debit(
         account=self.account,
         amount=1254,
@@ -695,7 +845,7 @@ def refunds_create(self):
 
 
 @scenario
-def debit_refunds_create(self):
+def debit_refunds_create(ctx):
     debit = transactions.create_debit(
         account=self.account,
         amount=1254,
@@ -716,7 +866,7 @@ def debit_refunds_create(self):
 
 
 @scenario
-def holds_create(self):
+def holds_create(ctx):
     url = self.url_for(
         'holds.create', marketplace=self.mp, account=self.buyer)
     payload = {
@@ -735,7 +885,7 @@ def holds_create(self):
 
 
 @scenario
-def holds_show(self):
+def holds_show(ctx):
     hold = holds.create(
         account=self.buyer, amount=1233, description='Something sour')
     self.session.flush()
@@ -747,7 +897,7 @@ def holds_show(self):
 
 
 @scenario
-def holds_index(self):
+def holds_index(ctx):
     holds.create(
         account=self.buyer, amount=1233, description='Something sweet')
     holds.create(
@@ -765,7 +915,7 @@ def holds_index(self):
 
 
 @scenario
-def holds_update(self):
+def holds_update(ctx):
     hold = holds.create(
         account=self.buyer, amount=1233, description='Something sour')
     self.session.flush()
@@ -786,7 +936,7 @@ def holds_update(self):
 
 
 @scenario
-def holds_capture(self):
+def holds_capture(ctx):
     hold = holds.create(
         account=self.buyer, amount=1233, description='Something sour')
     self.session.flush()
@@ -806,7 +956,7 @@ def holds_capture(self):
 
 
 @scenario
-def holds_void(self):
+def holds_void(ctx):
     hold = holds.create(
         account=self.buyer, amount=1233, description='Something sour')
     self.session.flush()
@@ -827,7 +977,7 @@ def holds_void(self):
 
 
 @scenario
-def marketplaces_create(self):
+def marketplaces_create(ctx):
     user = users.create()
     user.create_api_key()
     merchants.create_business_merchant(user=user)
@@ -851,7 +1001,7 @@ def marketplaces_create(self):
 
 
 @scenario
-def marketplaces_show(self):
+def marketplaces_show(ctx):
     url = self.url_for('marketplaces.show', marketplace=self.mp)
     resp = self.client.get(url, user=self.mp_owner)
     self.assertEqual(resp.status_code, 200)
@@ -859,7 +1009,7 @@ def marketplaces_show(self):
 
 
 @scenario
-def marketplaces_update(self):
+def marketplaces_update(ctx):
     url = self.url_for('marketplaces.show', marketplace=self.mp)
     payload = {
         'support_email_address': 'faster-support@example.com',
@@ -877,7 +1027,7 @@ def marketplaces_update(self):
 
 
 @scenario
-def marketplaces_index(self):
+def marketplaces_index(ctx):
     url = self.url_for('marketplaces.index')
     resp = self.client.get(url, user=self.mp_owner)
     self.assertEqual(resp.status_code, 200)
@@ -885,7 +1035,7 @@ def marketplaces_index(self):
 
 
 @scenario
-def merchants_show(self):
+def merchants_show(ctx):
     url = self.url_for(
         'merchants.show', merchant=self.mp.owner_account.merchant)
     resp = self.client.get(url, user=self.mp_owner)
@@ -894,7 +1044,7 @@ def merchants_show(self):
 
 
 @scenario
-def merchants_update(self):
+def merchants_update(ctx):
     url = self.url_for(
         'merchants.show', merchant=self.account.merchant)
     payload = {
@@ -920,7 +1070,7 @@ def merchants_update(self):
 
 
 @scenario
-def merchants_index(self):
+def merchants_index(ctx):
     url = self.url_for('merchants.index')
     resp = self.client.get(url, user=self.mp_owner)
     self.assertEqual(resp.status_code, 200)
@@ -928,7 +1078,7 @@ def merchants_index(self):
 
 
 @scenario
-def tranasctions_index(self):
+def tranasctions_index(ctx):
     transactions.create_credit(amount=245, account=self.account)
     transactions.create_debit(amount=5544, account=self.buyer)
     holds.create(amount=123, account=self.buyer)
@@ -1054,7 +1204,7 @@ def event_callbacks_show(self, enqueue):
 
 
 @scenario
-def callbacks_index(self):
+def callbacks_index(ctx):
     callbacks.create(self.mp)
     self.session.commit()
     url = self.url_for('marketplace_callbacks.index', marketplace=self.mp)
@@ -1064,7 +1214,7 @@ def callbacks_index(self):
 
 
 @scenario
-def callbacks_show(self):
+def callbacks_show(ctx):
     callback = callbacks.create(self.mp)
     self.session.commit()
     url = self.url_for('marketplace_callbacks.show',
@@ -1076,7 +1226,7 @@ def callbacks_show(self):
 
 
 @scenario
-def callbacks_create(self):
+def callbacks_create(ctx):
     url = self.url_for('marketplace_callbacks.create',
                        marketplace=self.mp)
     resp = self.client.post(url, user=self.mp_owner,
@@ -1088,7 +1238,7 @@ def callbacks_create(self):
 
 
 @scenario
-def callbacks_delete(self):
+def callbacks_delete(ctx):
     callback = callbacks.create(self.mp)
     self.session.commit()
     url = self.url_for('marketplace_callbacks.delete',
@@ -1100,7 +1250,7 @@ def callbacks_delete(self):
 
 
 @scenario
-def bank_account_authentications_index(self):
+def bank_account_authentications_index(ctx):
     auth = bank_accounts.create_authentication(marketplace=self.mp)
     self.session.commit()
     url = self.url_for('bank_account_authentications.index',
@@ -1111,7 +1261,7 @@ def bank_account_authentications_index(self):
 
 
 @scenario
-def bank_account_authentications_show(self):
+def bank_account_authentications_show(ctx):
     auth = bank_accounts.create_authentication(marketplace=self.mp)
     self.session.commit()
     url = self.url_for('bank_account_authentications.show_current',
@@ -1122,7 +1272,7 @@ def bank_account_authentications_show(self):
 
 
 @scenario
-def bank_account_authentications_create(self):
+def bank_account_authentications_create(ctx):
     bank_account = bank_accounts.create(marketplace=self.mp)
     self.session.commit()
     url = self.url_for('bank_account_authentications.create',
@@ -1133,7 +1283,7 @@ def bank_account_authentications_create(self):
 
 
 @scenario
-def bank_account_authentications_update(self):
+def bank_account_authentications_update(ctx):
     self.mp.production = False
     auth = bank_accounts.create_authentication(marketplace=self.mp)
     payload = {'amount_1': 11, 'amount_2': 22}
@@ -1147,19 +1297,12 @@ def bank_account_authentications_update(self):
 
 SCENARIOS = dict(
     (v.scenario, v)
-    for k, v in globals().itermitems()
+    for k, v in globals().iteritems()
     if hasattr(v, '__call__') and hasattr(v, 'scenario')
 )
 
 
 # main
-
-class LogLevelAction(argparse.Action):
-
-    def __call__(self, parser, namespace, values, option_string=None):
-        level = getattr(logging, values.upper())
-        setattr(namespace, self.dest, level)
-
 
 def create_arg_parser():
     parser = argparse.ArgumentParser()
@@ -1181,26 +1324,84 @@ def create_arg_parser():
         default=None,
         help='PATH to scenario context cache file. No caching by default.',
     )
+    parser.add_argument(
+        '--section-chars',
+        metavar='CHARS',
+        default='~^',
+        help='String of CHARS to use for section headings.',
+    )
     return parser
+
+
+def generate(write, req, resp, section_chars):
+    write('Request\n')
+    write(section_chars[0] * len('Request')); write('\n\n')
+
+    if 'body' in req:
+        write('Body\n')
+        write(section_chars[1] * len('Body')); write('\n\n')
+
+        write('.. code:: javascript\n')
+        with write:
+            write('\n')
+            write(req['body'])
+        write('\n')
+
+    write('Response\n')
+    write(section_chars[0] * len('Response')); write('\n\n')
+
+    write('Headers\n')
+    write(section_chars[1] * len('Body')); write('\n\n')
+
+    write('.. code::\n')
+    with write:
+        write('\n')
+        for k, v in resp['headers']:
+            write(k); write(': '); write(v); write('\n')
+    write('\n')
+
+    write('Body\n')
+    write(section_chars[1] * len('Body')); write('\n\n')
+
+    write('.. code:: javascript\n')
+    with write:
+        write('\n')
+        write(resp['body'])
+    write('\n')
 
 
 def main():
     parser = create_arg_parser()
     args = parser.parse_args()
 
-    logger = logging.getLogger()
+    root = logging.getLogger()
     formatter = logging.Formatter('%(asctime)s : %(name)s : %(message)s')
     handler = logging.StreamHandler(sys.stderr)
     handler.setFormatter(formatter)
-    logger.addHandler(handler)
-    logger.setLevel(args.log_level)
+    root.addHandler(handler)
+    root.setLevel(args.log_level)
 
-    ctx = Context.load(open(args.cache, 'r'),) if args.cache else Context()
-    for name in args:
-        if name not in SCENARIOS:
-            raise ValueError('Invalid scenario "{}"'.format(name))
-        req, resp = SCENARIOS[name](ctx)
-        print ctx.format(req, resp)
+    if args.cache and os.path.isfile(args.cache):
+        logger.debug('loading context from cache "%s"', args.cache)
+        ctx = Context.load(open(args.cache, 'r'))
+    else:
+        ctx = Context()
+    try:
+        thresh_h, thresh_l = 10000000, 100000
+        if ctx.marketplace.in_escrow < thresh_l:
+            amount = thresh_h - ctx.marketplace.in_escrow
+            logger.debug('incrementing escrow balanced %s', amount)
+            ctx.card.debit(amount)
+        write = BlockWriter(sys.stdout)
+        for name in args.scenarios:
+            if name not in SCENARIOS:
+                raise ValueError('Invalid scenario "{}"'.format(name))
+            req, resp = SCENARIOS[name](ctx)
+            generate(write, req, resp, args.section_chars)
+    finally:
+        if args.cache:
+            logger.debug('saving context to cache "%s"', args.cache)
+            ctx.save(open(args.cache, 'w'))
 
 
 if __name__ == '__main__':

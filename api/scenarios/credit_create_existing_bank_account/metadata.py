@@ -12,6 +12,6 @@ request = {
   'id': bank_account['id'],
   'uri': bank_account['uri'],
   'payload': {
-      'amount': credit['amount'],      
+      'amount': credit['amount'],
   },
 }

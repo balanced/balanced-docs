@@ -223,7 +223,7 @@ class Context(object):
     def __init__(self, filter, overrides, writer):
         self.filter = filter
         self.overrides = overrides
-        self.writer = writer 
+        self.writer = writer
         self.path = []
 
     @property

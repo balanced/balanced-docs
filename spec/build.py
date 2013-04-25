@@ -1,10 +1,13 @@
 #!/usr/bin/env python
+"""
+Script used to expand custom rST directives.
+"""
 import argparse
 import logging
 from StringIO import StringIO
 import sys
 
-from balanced_docs import dcode, DirectiveParser
+from balanced_docs import dcode, DirectiveParser, LogLevelAction
 
 logger = logging.getLogger(__name__)
 
@@ -67,7 +70,6 @@ DEFAULT_RST = """\
 
 .. dcode-default:: scenario
     :script: scenario.py -c scenario.cache -d scenarios
-    :ignore:
     :section-chars: ^
     :section-depth: 2
 
@@ -87,13 +89,6 @@ DEFAULT_RST = """\
     :script: ./rst.py enum
 
 """
-
-
-class LogLevelAction(argparse.Action):
-
-    def __call__(self, parser, namespace, values, option_string=None):
-        level = getattr(logging, values.upper())
-        setattr(namespace, self.dest, level)
 
 
 def create_arg_parser():

@@ -48,3 +48,4 @@ cache.json
 dockers/html
 api/html
 overview/html
+*.cache

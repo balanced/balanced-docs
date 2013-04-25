@@ -1,11 +1,31 @@
 #!/usr/bin/env python
 """
+Backends:
+
+    - error
+    - enum
+    - endpoint
+    - view
+    - form
+
+for the `dcode` rST directive.
+
+For example:
+
+    .. dcode: error
+        ...
+
+Maps to:
+
+    def error_rst(args):
+        ...
+
 """
 import argparse
 import logging
 import sys
 
-from balanced_docs import BlockWriter, dockers, rst
+from balanced_docs import BlockWriter, dockers, rst, LogLevelAction
 
 
 logger = logging.getLogger(__name__)
@@ -72,13 +92,6 @@ def enum_rst(args):
 
 # main
 
-class LogLevelAction(argparse.Action):
-
-    def __call__(self, parser, namespace, values, option_string=None):
-        level = getattr(logging, values.upper())
-        setattr(namespace, self.dest, level)
-
-
 class ContentAction(argparse.Action):
 
     def __call__(self, parser, namespace, values, option_string=None):
@@ -99,7 +112,7 @@ def create_arg_parser():
     common.add_argument(
         '-d', '--data',
         metavar='PATH',
-        default='balanced.json',
+        default='../balanced.json',
         help='PATH to data file.',
     )
     common.add_argument(

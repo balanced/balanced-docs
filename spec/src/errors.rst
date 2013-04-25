@@ -4,7 +4,7 @@ Errors
 Fields
 ------
 
-.. pez:: balanced_service.controllers.views:HTTPException
+.. dcode:: view http_exception
 
 Status Codes
 ------------
