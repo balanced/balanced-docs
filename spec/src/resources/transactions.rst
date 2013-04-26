@@ -18,6 +18,6 @@ List Transactions
 
 .. dcode:: endpoint transactions.index
    :exclude-method: HEAD
-   
+
 .. dcode:: scenario transactions.index
-   :section-include: response.*
+   :section-include: response

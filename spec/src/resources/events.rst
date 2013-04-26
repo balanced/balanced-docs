@@ -32,7 +32,7 @@ Retrieve an Event
    :exclude-method: HEAD
 
 .. dcode:: scenario events.show
-   :section-include: response.*
+   :section-include: response
 
 
 List all Events
@@ -48,4 +48,4 @@ List all Events
     *optional* integer. Defaults to ``0``.
 
 .. dcode:: scenario events.index
-   :section-include: response.*
+   :section-include: response

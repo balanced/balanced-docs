@@ -30,13 +30,13 @@ Request
    :exclude: region state
 
 .. dcode:: scenario cards.tokenize
-   :section-include: request.*
+   :section-include: request
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario cards.tokenize
-   :section-include: response.*
+   :section-include: response
 
 Retrieve a Card
 ---------------
@@ -48,7 +48,7 @@ Response
 ~~~~~~~~
 
 .. dcode:: scenario cards.show
-   :section-include: response.*
+   :section-include: response
 
 List All Cards
 --------------
@@ -66,7 +66,7 @@ Request
     *optional* integer. Defaults to ``0``.
 
 .. dcode:: scenario cards.index
-   :section-include: response.*
+   :section-include: response
 
 List All Cards for an Account
 -----------------------------
@@ -84,7 +84,7 @@ Request
     *optional* integer. Defaults to ``0``.
 
 .. dcode:: scenario account_cards.index
-   :section-include: response.*
+   :section-include: response
 
 Update a Card
 -------------
@@ -98,13 +98,13 @@ Request
    :exclude: account_uri account
 
 .. dcode:: scenario cards.update
-   :section-include: request.*
+   :section-include: request
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario cards.update
-   :section-include: response.*
+   :section-include: response
 
 Associate a Card with an Account
 --------------------------------
@@ -118,10 +118,10 @@ Request
    :include: account_uri
 
 .. dcode:: scenario cards.associate
-   :section-include: request.*
+   :section-include: request
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario cards.associate
-   :section-include: response.*
+   :section-include: response

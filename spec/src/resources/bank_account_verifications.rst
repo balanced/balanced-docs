@@ -33,7 +33,7 @@ Response
 ~~~~~~~~
 
 .. dcode:: scenario bank_account_authentications.create
-   :section-include: response.*
+   :section-include: response
 
 
 Retrieve a Bank Account Verification for a Bank Account
@@ -42,7 +42,7 @@ Retrieve a Bank Account Verification for a Bank Account
 .. dcode:: endpoint bank_account_authentications.show
 
 .. dcode:: scenario bank_account_authentications.show
-   :section-include: response.*
+   :section-include: response
 
 
 List All Bank Account Verifications for a Bank Account
@@ -60,7 +60,7 @@ Request
     *optional* integer. Defaults to ``0``.
 
 .. dcode:: scenario bank_account_authentications.index
-   :section-include: response.*
+   :section-include: response
 
 
 Confirm a Bank Account Verification
@@ -77,4 +77,4 @@ Request
 .. dcode:: form bank_account_authentications.update
 
 .. dcode:: scenario bank_account_authentications.update
-   :section-include: response.*
+   :section-include: response

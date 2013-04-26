@@ -66,11 +66,10 @@ DEFAULT_RST = """\
 
 .. dcode-default::
     :cache:
-    :record: /tmp/dcode.record
 
 .. dcode-default:: scenario
     :script: ./scenario.py -c scenario.cache
-    :section-chars: ^~
+    :section-chars: ~^
 
 .. dcode-default:: view
     :script: ./rst.py view

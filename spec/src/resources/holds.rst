@@ -41,13 +41,13 @@ Request
    :exclude: card_uri account_uri
 
 .. dcode:: scenario holds.create
-   :section-include: request.*
+   :section-include: request
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario holds.create
-   :section-include: response.*
+   :section-include: response
 
 Retrieve a Hold
 ---------------
@@ -56,7 +56,7 @@ Retrieve a Hold
    :exclude-method: HEAD
    
 .. dcode:: scenario holds.show
-   :section-include: response.*
+   :section-include: response
 
 List all Holds
 --------------
@@ -65,7 +65,7 @@ List all Holds
    :exclude-method: HEAD
    
 .. dcode:: scenario holds.index
-   :section-include: response.*
+   :section-include: response
 
 Update a Hold
 -------------
@@ -79,13 +79,13 @@ Request
    :exclude: is_void appears_on_statement_as
 
 .. dcode:: scenario holds.update
-   :section-include: request.*
+   :section-include: request
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario holds.update
-   :section-include: response.*
+   :section-include: response
 
 Capture a Hold
 --------------
@@ -106,10 +106,10 @@ Request
    :include: is_void appears_on_statement_as
 
 .. dcode:: scenario holds.void
-   :section-include: request.*
+   :section-include: request
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario holds.void
-   :section-include: response.*
+   :section-include: response

@@ -41,13 +41,13 @@ Request
      `BankAccount <./bank_accounts.rst>`_.
 
 .. dcode:: scenario credits.create
-   :section-include: request.*
+   :section-include: request
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario credits.create
-   :section-include: response.*
+   :section-include: response
 
 
 Credit an Existing Bank Account
@@ -61,13 +61,13 @@ Request
 .. dcode:: form bank_account_credits.create
 
 .. dcode:: scenario bank_account_credits.create
-   :section-include: request.*
+   :section-include: request
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario bank_account_credits.create
-   :section-include: response.*
+   :section-include: response
 
 
 Credit a Merchant
@@ -83,14 +83,14 @@ Request
    :exclude: account_uri bank_account_uri
 
 .. dcode:: scenario account_credits.create
-   :section-include: request.*
+   :section-include: request
 
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario account_credits.create
-   :section-include: response.*
+   :section-include: response
 
 
 Retrieve a Credit
@@ -100,7 +100,7 @@ Retrieve a Credit
    :exclude-method: HEAD
 
 .. dcode:: scenario credits.show
-   :section-include: response.*
+   :section-include: response
 
 
 List All Credits
