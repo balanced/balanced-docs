@@ -11,7 +11,7 @@ Holds
 Fields
 ------
 
-.. pez:: balanced_service.controllers.views:Hold
+.. dcode:: view hold
    :exclude: invoice_uri fee
    
    - account
@@ -41,13 +41,13 @@ Request
    :exclude: card_uri account_uri
 
 .. dcode:: scenario holds.create
-   :include: request.*
+   :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario holds.create
-   :include: response.*
+   :section-include: response.*
 
 Retrieve a Hold
 ---------------
@@ -56,9 +56,7 @@ Retrieve a Hold
    :exclude-method: HEAD
    
 .. dcode:: scenario holds.show
-   :section-chars: ~^
-   :section-depth: 1
-   :include: response.*
+   :section-include: response.*
 
 List all Holds
 --------------
@@ -67,9 +65,7 @@ List all Holds
    :exclude-method: HEAD
    
 .. dcode:: scenario holds.index
-   :section-chars: ~^
-   :section-depth: 1
-   :include: response.*
+   :section-include: response.*
 
 Update a Hold
 -------------
@@ -79,17 +75,17 @@ Update a Hold
 Request
 ~~~~~~~
 
-.. pilo:: balanced_service.forms:HoldUpdateForm
+.. dcode:: form holds.update
    :exclude: is_void appears_on_statement_as
 
 .. dcode:: scenario holds.update
-   :include: request.*
+   :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario holds.update
-   :include: response.*
+   :section-include: response.*
 
 Capture a Hold
 --------------
@@ -97,8 +93,6 @@ Capture a Hold
 Use ``hold_uri`` when `creating a debit <./debits.rst#create-a-debit>`_.
 
 .. dcode:: scenario holds.capture
-   :section-chars: ~^
-   :section-depth: 1
 
 Void a Hold
 -----------
@@ -108,14 +102,14 @@ Void a Hold
 Request
 ~~~~~~~
 
-.. dcode:: form balanced_service.forms:HoldUpdateForm
+.. dcode:: form holds.update
    :include: is_void appears_on_statement_as
 
 .. dcode:: scenario holds.void
-   :include: request.*
+   :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario holds.void
-   :include: response.*
+   :section-include: response.*

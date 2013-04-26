@@ -33,14 +33,14 @@ Request
    :exclude: account_uri card_uri merchant_uri
 
 .. dcode:: scenario debits.create
-   :include: request.*
+   :section-include: request.*
 
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario debits.create
-   :include: response.*
+   :section-include: response.*
 
 
 Retrieve a Debit
@@ -50,9 +50,7 @@ Retrieve a Debit
    :exclude-method: HEAD
 
 .. dcode:: scenario debits.show
-   :section-chars: ~^
-   :section-depth: 1
-   :include: response.*
+   :section-include: response.*
 
 
 List All Debits
@@ -62,8 +60,6 @@ List All Debits
    :exclude-method: HEAD
 
 .. dcode:: scenario debits.index
-   :section-chars: ~^
-   :section-depth: 1
 
 
 Update a Debit
@@ -79,14 +75,14 @@ Request
 
 
 .. dcode:: scenario debits.update
-   :include: request.*
+   :section-include: request.*
 
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario debits.update
-   :include: response.*
+   :section-include: response.*
 
 
 Refund a Debit
@@ -103,11 +99,11 @@ Request
 
 
 .. dcode:: scenario debit_refunds.create
-   :include: request.*
+   :section-include: request.*
 
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario debit_refunds.create
-   :include: response.*
+   :section-include: response.*

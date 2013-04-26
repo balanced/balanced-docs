@@ -20,6 +20,4 @@ List Transactions
    :exclude-method: HEAD
    
 .. dcode:: scenario transactions.index
-   :section-chars: ~^
-   :section-depth: 1
-   :include: response.*
+   :section-include: response.*

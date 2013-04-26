@@ -30,13 +30,13 @@ Request
       See `Create a Card <./cards.rst#create-a-card>`_.
 
 .. dcode:: scenario accounts.create-buyer
-    :include: request.*
+    :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario accounts.create-buyer
-   :include: response.*
+   :section-include: response.*
 
 Create a Business Merchant
 --------------------------
@@ -54,13 +54,13 @@ Request
       See `BankAccount <./bank_accounts.rst>`_.
 
 .. dcode:: scenario accounts.create-business-merchant
-    :include: request.*
+    :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario accounts.create-business-merchant
-   :include: response.*
+   :section-include: response.*
 
 
 Create a Person Merchant
@@ -79,13 +79,13 @@ Request
       See `BankAccount <./bank_accounts.rst>`_.
 
 .. dcode:: scenario accounts.create-person-merchant
-    :include: request.*
+    :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario accounts.create-person-merchant
-   :include: response.*
+   :section-include: response.*
 
 
 Retrieve an Account
@@ -104,7 +104,7 @@ List all Accounts
 .. dcode:: endpoint accounts.index
 
 .. dcode:: scenario accounts.index
-    :include: response.*
+    :section-include: response.*
 
 
 Update an Account
@@ -125,13 +125,13 @@ Request
       See `Card <./cards.rst>`_.
 
 .. dcode:: scenario accounts.update
-    :include: request.*
+    :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario accounts.update
-    :include: response.*
+    :section-include: response.*
 
 Promote a Buyer Account to a Merchant
 -------------------------------------
@@ -151,10 +151,10 @@ Request
      See `Business Merchant <./accounts.rst#create-a-business-merchant>`_ or `Person Merchant <./accounts.rst#create-a-person-merchant>`_.
 
 .. dcode:: scenario accounts.promote-buyer
-   :include: request.*
+   :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario accounts.promote-buyer
-   :include: includes response.*
+   :section-include: includes response.*

@@ -31,17 +31,17 @@ Create a Bank Account
 Request
 ~~~~~~~
 
-.. dcode:: form bank_account.create-root
+.. dcode:: form root_bank_account.create
    :exclude: bank_code
 
 .. dcode:: scenario bank_accounts.create
-   :include: request.*
+   :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario bank_accounts.create
-   :include: response.*
+   :section-include: response.*
 
 Retrieve a Bank Account
 -----------------------
@@ -49,9 +49,7 @@ Retrieve a Bank Account
 .. dcode:: endpoint bank_accounts.show
 
 .. dcode:: scenario bank_accounts.show
-   :section-chars: ~^
-   :section-depth: 1
-   :include: response.*
+   :section-include: response.*
 
 List All Bank Accounts
 ----------------------
@@ -68,9 +66,7 @@ Request
     *optional* integer. Defaults to ``0``.
 
 .. dcode:: scenario bank_accounts.index
-   :section-chars: ~^
-   :section-depth: 1
-   :include: response.*
+   :section-include: response.*
 
 List All Bank Accounts for an Account
 -------------------------------------
@@ -87,9 +83,7 @@ Request
     *optional* integer. Defaults to ``0``.
 
 .. dcode:: scenario account_bank_accounts.index
-   :section-chars: ~^
-   :section-depth: 1
-   :include: response.*
+   :section-include: response.*
 
 Associate a Bank Account with an Account
 ----------------------------------------
@@ -103,13 +97,13 @@ Request
     :include: account_uri
 
 .. dcode:: scenario bank_accounts.associate
-   :include: request.*
+   :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario bank_accounts.associate
-   :include: response.*
+   :section-include: response.*
 
 Delete a Bank Account
 ---------------------
@@ -117,6 +111,4 @@ Delete a Bank Account
 .. dcode:: endpoint bank_accounts.delete
 
 .. dcode:: scenario bank_accounts.delete
-   :section-chars: ~^
-   :section-depth: 1
-   :include: response.*
+   :section-include: response.*

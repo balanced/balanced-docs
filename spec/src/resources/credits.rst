@@ -41,13 +41,13 @@ Request
      `BankAccount <./bank_accounts.rst>`_.
 
 .. dcode:: scenario credits.create
-   :include: request.*
+   :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario credits.create
-   :include: response.*
+   :section-include: response.*
 
 
 Credit an Existing Bank Account
@@ -58,16 +58,16 @@ Credit an Existing Bank Account
 Request
 ~~~~~~~
 
-.. pilo:: balanced_service.forms:BankAccountCreditCreateForm
+.. dcode:: form bank_account_credits.create
 
 .. dcode:: scenario bank_account_credits.create
-   :include: request.*
+   :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario bank_account_credits.create
-   :include: response.*
+   :section-include: response.*
 
 
 Credit a Merchant
@@ -79,18 +79,18 @@ Credit a Merchant
 Request
 ~~~~~~~
 
-.. pilo:: balanced_service.forms:AccountCreditCreateForm
+.. dcode:: form account_credits.create
    :exclude: account_uri bank_account_uri
 
 .. dcode:: scenario account_credits.create
-   :include: request.*
+   :section-include: request.*
 
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario account_credits.create
-   :include: response.*
+   :section-include: response.*
 
 
 Retrieve a Credit
@@ -100,9 +100,7 @@ Retrieve a Credit
    :exclude-method: HEAD
 
 .. dcode:: scenario credits.show
-   :section-chars: ~^
-   :section-depth: 1
-   :include: response.*
+   :section-include: response.*
 
 
 List All Credits
@@ -121,8 +119,6 @@ Request
     *optional* integer. Defaults to ``0``.
 
 .. dcode:: scenario credits.index
-   :section-chars: ~^
-   :section-depth: 1
 
 
 List All Credits for a Bank Account
@@ -141,8 +137,6 @@ Request
     *optional* integer. Defaults to ``0``.
    
 .. dcode:: scenario bank_account_credits.index
-   :section-chars: ~^
-   :section-depth: 1
 
 
 List All Credits for a Merchant
@@ -161,5 +155,4 @@ Request
     *optional* integer. Defaults to ``0``.
 
 .. dcode:: scenario account_credits.index
-   :section-chars: ~^
-   :section-depth: 1
+   :section-include: response

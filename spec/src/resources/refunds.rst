@@ -31,13 +31,13 @@ Request
    :exclude: account_uri
 
 .. dcode:: scenario refunds.create
-   :include: request.*
+   :section-include: request.*
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario refunds.create
-   :include: response.*
+   :section-include: response.*
 
 Retrieve a Refund
 ----------------
@@ -46,9 +46,7 @@ Retrieve a Refund
    :exclude-method: HEAD
 
 .. dcode:: scenario refunds.show
-   :section-chars: ~^
-   :section-depth: 1
-   :include: response.*
+   :section-include: response.*
 
 
 List All refunds
@@ -58,8 +56,6 @@ List All refunds
    :exclude-method: HEAD
 
 .. dcode:: scenario refunds.index
-   :section-chars: ~^
-   :section-depth: 1
 
 Update a Refund
 --------------
@@ -75,11 +71,11 @@ Request
 
 
 .. dcode:: scenario refunds.update
-   :include: request.*
+   :section-include: request.*
 
 
 Response
 ~~~~~~~~
 
 .. dcode:: scenario refunds.update
-   :include: response.*
+   :section-include: response.*
