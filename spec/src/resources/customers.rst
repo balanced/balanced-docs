@@ -10,7 +10,7 @@ Fields
 ------
 
 .. dcode:: view customer
-    :exclude: _type _uris
+    :exclude: _type _uris region
 
 
 Create a Customer
@@ -23,6 +23,7 @@ Request
 ~~~~~~~
 
 .. dcode:: form customers.create
+    :exclude: region
 
 .. dcode:: scenario customers.create
    :section-include: request
@@ -38,6 +39,9 @@ Retrieve a Customer
 -------------------
 
 .. dcode:: endpoint customers.show
+
+Response
+~~~~~~~~
 
 .. dcode:: scenario customers.show
    :section-include: response
@@ -65,6 +69,7 @@ Update a Customer
 -----------------
 
 .. dcode:: endpoint customers.update
+    :exclude: region
 
 Request
 ~~~~~~~
