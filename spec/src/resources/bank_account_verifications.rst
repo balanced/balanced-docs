@@ -24,11 +24,6 @@ verification. These deposits will appear on the bank accounts statement as
 
 .. dcode:: endpoint bank_account_authentications.create
 
-Request
-~~~~~~~
-
-.. dcode:: form bank_account_authentications.create
-
 Response
 ~~~~~~~~
 

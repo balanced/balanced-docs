@@ -49,3 +49,4 @@ dockers/html
 api/html
 overview/html
 *.cache
+spec/dst/
