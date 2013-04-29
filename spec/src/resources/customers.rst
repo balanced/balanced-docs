@@ -1,0 +1,75 @@
+Customers
+=========
+
+- `Create a Customer`_
+- `Retrieve a Customer`_
+- `List all Customers`_
+- `Update a Customer`_
+
+Fields
+------
+
+.. dcode:: view customer
+    :exclude: _type _uris
+
+
+Create a Customer
+-----------------
+
+.. dcode:: endpoint customers.create
+
+
+Request
+~~~~~~~
+
+.. dcode:: form customers.create
+
+.. dcode:: scenario customers.create
+   :section-include: request
+
+Response
+~~~~~~~~
+
+.. dcode:: scenario customers.create
+   :section-include: response
+
+
+Retrieve a Customer
+-------------------
+
+.. dcode:: endpoint customers.show
+
+.. dcode:: scenario customers.show
+   :section-include: response
+
+
+List all Customers
+------------------
+
+.. dcode:: endpoint customers.index
+
+Request
+~~~~~~~
+
+``limit``
+    *optional* integer. Defaults to ``10``.
+
+``offset``
+    *optional* integer. Defaults to ``0``.
+
+.. dcode:: scenario customers.index
+   :section-include: response
+
+
+Update a Customer
+-----------------
+
+.. dcode:: endpoint customers.update
+
+Request
+~~~~~~~
+
+.. dcode:: form customers.create
+
+.. dcode:: scenario customers.update
+   :section-include: response

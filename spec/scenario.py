@@ -149,6 +149,7 @@ class Context(object):
     @property
     @memoized
     def marketplace(self):
+        balanced.config.root_uri = 'http://localhost:5000'
         if not self.secret:
             logger.debug('creating api key')
             self.secret = balanced.APIKey().save().secret
@@ -839,6 +840,38 @@ def bank_account_authentications_update(ctx):
     ba = ctx.marketplace.create_bank_account(**BANK_ACCOUNT)
     bav = ba.verify()
     bav.confirm(1, 1)
+    return ctx.last_req, ctx.last_resp
+
+
+class Customer(balanced.Resource):
+    __metaclass__ = balanced.resources.resource_base(
+        collection='customers', resides_under_marketplace=False)
+
+balanced.Customer = Customer
+
+
+@scenario
+def customers_create(ctx):
+    customer = balanced.Customer()
+    customer.save()
+    return ctx.last_req, ctx.last_resp
+
+@scenario
+def customers_show(ctx):
+    customer = balanced.Customer().save()
+    customer = balanced.Customer.find(customer.uri)
+    return ctx.last_req, ctx.last_resp
+
+@scenario
+def customers_index(ctx):
+    balanced.Customer.query.all()
+    return ctx.last_req, ctx.last_resp
+
+@scenario
+def customers_update(ctx):
+    customer = balanced.Customer()
+    customer.save()
+    customer.save()
     return ctx.last_req, ctx.last_resp
 
 
