@@ -13,16 +13,16 @@ events endpoint.
 Fields
 ------
 
-.. dcode:: view event
+.. dcode:: view audit_event
    :exclude: callbacks callback_statuses
 
-   - event_type
+   - type
      All resources (accounts, holds, credits, etc) are evented. The format of
      the type field is ``resource.event_type`` where ``event_type`` is one of
      ``created``, ``updated``, ``deleted``, as well as some transaction
      specific event types ``succeeded``, ``failed``, and ``canceled``.
 
-     .. dcode:: event
+     .. dcode:: enum audit_event_type
 
 
 Retrieve an Event
