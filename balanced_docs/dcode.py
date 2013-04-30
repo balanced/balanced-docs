@@ -28,7 +28,6 @@ import hashlib
 import logging
 import os
 import pipes
-import re
 import shlex
 import subprocess
 import sys
@@ -36,8 +35,6 @@ import sys
 from docutils import nodes
 from docutils.parsers.rst import directives, Directive
 from docutils.statemachine import ViewList
-from timeit import itertools
-from sphinx.domains import std
 
 logger = logging.getLogger(__name__)
 
@@ -103,7 +100,7 @@ class DCodeDefaultDirective(Directive):
         'ignore': directives.flag,
         'record': directives.unchanged,
         'ignore': directives.unchanged,
-        'section-chars': '~^',
+        'section-chars': directives.unchanged,
         'section-include': directives.unchanged,
     }
 
@@ -210,18 +207,23 @@ class DCodeDirective(Directive):
 
     optional_arguments = 100
 
-    option_spec = {
+    option_spec = defaultdict(lambda: directives.unchanged)
+    option_spec.update({
         'cache': directives.flag,
         'script': directives.unchanged,
         'record': directives.unchanged,
         'section-include': directives.unchanged,
         'section-chars': directives.unchanged,
-    }
+    })
 
     has_content = True
 
     def run(self):
-        view = self.expand(self.arguments, self.options, self.content)
+        view = self.expand(
+            self.arguments,
+            self.options,
+            '\n'.join(self.content)
+        )
         node = nodes.section()
         node.document = self.state.document
         self.state.nested_parse(view, 0, node, match_titles=1)
@@ -301,40 +303,6 @@ class _SectionFilter(object):
                             logger.debug('filtering on for "%s", "%s"', heading, adorment)
                             self._chars = self.chars[self._depth:]
                             self.filtered = True
-
-
-class _Writer(object):
-
-    def __init__(self):
-        self._indent = []
-        self._fragment = False
-
-    def __enter__(self):
-        self.indent()
-        return self
-
-    def __exit__(self, type, value, traceback):
-        self.outdent()
-
-    def indent(self, l=4):
-        self._indent.append(' ' * l)
-
-    def outdent(self):
-        self._indent.pop()
-
-    @property
-    def _indentation(self):
-        if self._fragment:
-            i = ''
-        else:
-            i = ''.join(self._indent)
-        return i
-
-    def line(self, *args):
-        raise NotImplementedError()
-
-    def fragment(self, *args):
-        raise NotImplementedError()
 
 
 def _execute(script, args, kwargs, content, record=None):

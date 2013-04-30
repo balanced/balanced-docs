@@ -16,25 +16,12 @@ Creates a new bank account.
 
 .. container:: method-description
 
-  ``name`` 
-      *required* **string**. Name on the bank account. Length must be **>=** ``2``. 
-   
-  ``account_number`` 
-      *required* **string**. Bank account number. Length must be **>=** ``1``. 
-   
-  ``routing_number`` 
-      *required* **string**. Bank account code. Length must be **=** ``9``. 
-   
-  ``type`` 
-      *required* **string**. ``checking`` or ``savings``. 
-   
-  ``meta`` 
-      *optional* **object**. Single level mapping from string keys to string values. 
-   
+  .. dcode:: form bank_accounts.create
+
 
 .. container:: method-examples
 
-  .. dcode:: bank_account_create
+  .. dcode:: scenario bank_account_create
 
 
 .. cssclass:: method-section
@@ -53,7 +40,7 @@ information is returned when creating the bank account.
 
 .. container:: method-examples
 
-  .. dcode:: bank_account_show
+  .. dcode:: scenario bank_account_show
 
 
 .. cssclass:: method-section
@@ -73,7 +60,7 @@ Returns a list of bank accounts that you've created but haven't deleted.
 
 .. container:: method-examples
 
-  .. dcode:: bank_account_list
+  .. dcode:: scenario bank_account_list
 
 
 .. cssclass:: method-section
@@ -90,4 +77,4 @@ with a deleted bank account will not be affected.
 
 .. container:: method-examples
 
-  .. dcode:: bank_account_delete
+  .. dcode:: scenario bank_account_delete
