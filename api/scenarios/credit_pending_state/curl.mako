@@ -11,7 +11,7 @@
 % else:
    curl ${uri} <%text>\</%text>
       -u ${api_key}: <%text>\</%text>
-   %for k, v, slash in recursive_expand(request):
+   %for k, v, slash in main.recursive_expand(request):
       -d "${k}=${v}" ${slash}
    %endfor
 

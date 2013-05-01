@@ -4,7 +4,7 @@ card = json.loads(
     storage['card_create']['response']
 )
 
-request = 
+request = {
     'uri': marketplace.accounts_uri,
     'payload': {
         'card_uri': card['uri'],

@@ -10,7 +10,7 @@
   %>
    curl ${Endpoint.qualify_uri(ctx, request['holds_uri'])} ${slash}
       -u ${api_key}: ${slash}
-   % for k, v, slash in recursive_expand(request['payload']):
+   % for k, v, slash in main.recursive_expand(request['payload']):
       -d "${k}=${v}" ${slash}
    % endfor
 % endif

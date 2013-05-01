@@ -7,7 +7,7 @@
 % else:
     curl ${Endpoint.qualify_uri(ctx, request['accounts_uri'])} ${'\\'}
         -u ${api_key}: ${'\\'}
-      % for k, v, slash in recursive_expand(request['payload']):
+      % for k, v, slash in main.recursive_expand(request['payload']):
         -d "${k}=${v}" ${slash}
       % endfor
 % endif

@@ -19,6 +19,7 @@ import json
 import logging
 import os
 import pipes
+import re
 import shlex
 import subprocess
 import sys
@@ -207,6 +208,25 @@ class Endpoint(object):
             url += '?' + urllib.urlencode(qs)
         return url
 
+    def format(self, **kwargs):
+        args, params = {}, {}
+        matches = re.findall(r':(\w+)', self.uri)
+        if matches:
+            fmt = re.sub(r':(\w+)', r'{\1}', self.uri)
+            for k, v in kwargs.iteritems():
+                if k in matches:
+                    args[k] = v
+                else:
+                    params[k] = v
+        else:
+            fmt = self.uri
+            args = kwargs
+        uri = fmt.format(**args)
+        if params:
+            uri += '?' + urllib.urlencode(params)
+        url = self.qualify_uri(self.ctx, uri)
+        return url
+
     @property
     def url(self):
         return self.ctx.storage['api_location'] + self.uri
@@ -224,6 +244,17 @@ class Endpoint(object):
             return matches[0]
         elif select == 'shortest':
             return min(matches, key=lambda m: len(m['path']))
+        elif isinstance(select, (list, tuple)):
+            select = set(select)
+            for match in matches:
+                matches = set(re.findall(r':(\w+)', match['path']))
+                if matches == select:
+                    return match
+            else:
+                raise ValueError(
+                    'No matches for {0}'
+                    .format(', '.join('"{0}"'.format(s) for s in select))
+                )
         raise ValueError('Unsuported policy "{0}"'.format(select))
 
 
@@ -345,6 +376,7 @@ class Scenario(object):
             'api_location': api_location,
             'api_key': self.ctx.api_key,
         }
+        context.update(request=self.metadata)
 
         # definition
         logger.debug('rendering defintion for "%s"', template_path)
@@ -360,7 +392,6 @@ class Scenario(object):
 
         # request
         logger.debug('rendering request for "%s"', template_path)
-        context.update(request=self.metadata)
         if 'payload' in context['request']:
             context['payload'] = context['request']['payload']
         template = mako.template.Template(

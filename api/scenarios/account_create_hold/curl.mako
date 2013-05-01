@@ -1,18 +1,17 @@
 <%namespace file='/_main.mako' name='main'/>
 <%
-  method, path = main.route_for_endpoint('holds.create')
-  uri = context['api_location']
-  uri += path
+  ep = main.route_for_endpoint('holds.create', select=['marketplace_id', 'account_id'])
+  url = ep.format(
+      marketplace_id=ctx.storage['marketplace_id'],
+      account_id=request['account_id'],
+  )
 %>
 
 % if mode == 'definition':
-  ${method} ${uri}
+  ${ep.method} ${url}
 
 % else:
-  <%
-    uri = context['api_location'] + request['uri']
-  %>
-   curl ${uri} <%text>\</%text>
+   curl ${url} <%text>\</%text>
      -u ${api_key}: <%text>\</%text>
      -d amount=1000
 % endif

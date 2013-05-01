@@ -21,11 +21,9 @@
 </%def>
 
 ## http://stackoverflow.com/a/6701741/133514
-<%def name="route_for_endpoint(endpoint)">
+<%def name="route_for_endpoint(endpoint, select=None)">
 <%
-  import _utils
-  method, path = _utils.routify(endpoint)
-  return method, path
+  return context['Endpoint'](ctx, endpoint, select)
 %>
 </%def>
 
