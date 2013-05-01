@@ -19,40 +19,11 @@ create a debit, up to the full amount of the hold.
 
 .. container:: method-description
 
-  ``amount`` 
-      *required* **integer**. Value must be >= to the minimum debit amount allowed for *your* 
-      marketplace. Value must be <= to the maximum debit amount allowed for *your* 
-      marketplace. 
-   
-  ``account_uri`` 
-      *optional* **string**.  
-   
-  ``appears_on_statement_as`` 
-      *optional* **string**. Text that will appear on the buyer's statement. Characters that can be 
-      used are limited to: 
-   
-      - ASCII letters (``a-z`` and ``A-Z``) 
-      - Digits (``0-9``) 
-      - Special characters (``.<>(){}[]+&!$*;-%_?:#@~='" ^\`|``) 
-   
-      Any other characters will be rejected. Length must be **<=** ``22``. 
-   
-  ``description`` 
-      *optional* **string**. Sequence of characters. 
-   
-  ``meta`` 
-      *optional* **object**. Single level mapping from string keys to string values. 
-   
-  ``source_uri`` 
-      *optional* **string**.  
-   
-  ``card_uri`` 
-      *optional* **string**.  
-   
+  .. dcode:: form debits.create
 
 .. container:: method-examples
 
-  .. dcode:: hold_create
+  .. dcode:: scenario hold_create
 
 
 .. cssclass:: method-section
@@ -70,7 +41,7 @@ information will be returned.
 
 .. container:: method-examples
 
-   .. dcode:: hold_show
+   .. dcode:: scenario hold_show
 
 
 .. cssclass:: method-section
@@ -91,7 +62,7 @@ in sorted order, with the most recent holds appearing first.
 
 .. container:: method-examples
 
-   .. dcode:: hold_list
+   .. dcode:: scenario hold_list
 
 
 .. cssclass:: method-section
@@ -113,7 +84,7 @@ first.
 
 .. container:: method-examples
 
-   .. dcode:: hold_account_list
+   .. dcode:: scenario hold_account_list
 
 
 .. cssclass:: method-section
@@ -125,29 +96,11 @@ Updates information about a hold
 
 .. container:: method-description
 
-  ``description`` 
-      *optional* **string**. Sequence of characters. 
-   
-  ``meta`` 
-      *optional* **object**. Single level mapping from string keys to string values. 
-   
-  ``is_void`` 
-      *optional* **boolean**. Flag value, should be ``true`` or ``false``. 
-   
-  ``appears_on_statement_as`` 
-      *optional* **string**. Text that will appear on the buyer's statement. Characters that can be 
-      used are limited to: 
-   
-      - ASCII letters (``a-z`` and ``A-Z``) 
-      - Digits (``0-9``) 
-      - Special characters (``.<>(){}[]+&!$*;-%_?:#@~='" ^\`|``) 
-   
-      Any other characters will be rejected. Length must be **<=** ``22``. 
-   
+  .. dcode:: form debits.update
 
 .. container:: method-examples
 
-   .. dcode:: hold_update
+   .. dcode:: scenario hold_update
 
 
 .. cssclass:: method-section
@@ -163,7 +116,7 @@ Captures a hold. This creates a :ref:`debit <debits>`.
 
 .. container:: method-examples
 
-   .. dcode:: hold_capture
+   .. dcode:: scenario hold_capture
 
 
 .. cssclass:: method-section
@@ -176,20 +129,9 @@ be captured. This operation is irreversible.
 
 .. container:: method-description
 
-  ``is_void`` 
-      *optional* **boolean**. Flag value, should be ``true`` or ``false``. 
-   
-  ``appears_on_statement_as`` 
-      *optional* **string**. Text that will appear on the buyer's statement. Characters that can be 
-      used are limited to: 
-   
-      - ASCII letters (``a-z`` and ``A-Z``) 
-      - Digits (``0-9``) 
-      - Special characters (``.<>(){}[]+&!$*;-%_?:#@~='" ^\`|``) 
-   
-      Any other characters will be rejected. Length must be **<=** ``22``. 
-   
+  .. dcode:: form holds.update
+     :includes: is_void appears_on_statement_as
 
 .. container:: method-examples
 
-   .. dcode:: hold_void
+   .. dcode:: scenario hold_void

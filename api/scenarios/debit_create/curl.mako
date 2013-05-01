@@ -1,16 +1,16 @@
 <%namespace file='/_main.mako' name='main'/>
 <%
-  ep = main.make_endpoint('debits.create')
+  ep = main.make_endpoint('debits.create', select='shortest')
 %>
 % if request is UNDEFINED:
-  ${ep.method} ${ep.full_url}
+  ${ep.method} ${ep.url}
 % else:
   <%
     slash = '\\'
   %>
-   curl ${ep.qualified_url_for(request['debits_uri'])} ${slash}
-      -u ${api_key}: ${slash}
-   % for k, v, slash in recursive_expand(request['payload']):
+   curl ${Endpoint.qualify_uri(ctx, request['debits_uri'])} ${slash}
+      -u ${ctx.api_key}: ${slash}
+   % for k, v, slash in main.recursive_expand(request['payload']):
       -d "${k}=${v}" ${slash}
    % endfor
 % endif

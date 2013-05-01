@@ -1,6 +1,6 @@
 
 refund = json.loads(
-    storage['refund_create']['response']['content']
+    storage['refund_create']['response']
 )
 
 request = {

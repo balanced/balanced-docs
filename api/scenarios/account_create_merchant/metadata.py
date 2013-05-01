@@ -2,11 +2,11 @@ import random
 
 storage.pop('bank_account_create', None)
 bank_account = json.loads(
-    storage['bank_account_create']['response']['content']
+    storage['bank_account_create']['response']
 )
 
 account = json.loads(
-    storage['account_create_buyer']['response']['content']
+    storage['account_create_buyer']['response']
 )
 
 request = {

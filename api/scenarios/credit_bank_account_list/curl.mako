@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 <%
-  method, path = main.route_for_endpoint('bank_account_credits.index')
+  method, path = main.route_for_endpoint()
   uri = context['api_location']
   uri += path
 %>

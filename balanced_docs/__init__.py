@@ -2,6 +2,7 @@ import argparse
 import collections
 import functools
 import logging
+import os
 import sys
 
 
@@ -36,6 +37,30 @@ class LogLevelAction(argparse.Action):
     def __call__(self, parser, namespace, values, option_string=None):
         level = getattr(logging, values.upper())
         setattr(namespace, self.dest, level)
+
+
+class EnvironmentVarAction(argparse.Action):
+
+    def __init__(self, env_var, required=True, default=None, **kwargs):
+        # if we passed in a default and the variable we're looking for
+        # is in our environment, it takes precedence over the default
+        if default:
+            if env_var in os.environ:
+                default = os.environ[env_var]
+        else:
+            default = os.environ.get(env_var)
+
+        if required and default:
+            required = False
+
+        super(EnvironmentVarAction, self).__init__(
+            default=default,
+            required=required,
+            **kwargs
+        )
+
+    def __call__(self, parser, namespace, values, option_string=None):
+        setattr(namespace, self.dest, values)
 
 
 # http://wiki.python.org/moin/PythonDecoratorLibrary#Memoize

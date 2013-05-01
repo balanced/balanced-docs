@@ -24,7 +24,6 @@ import time
 import balanced
 
 from balanced_docs import LogLevelAction, memoized, BlockWriter
-from pprint import pprint
 
 
 logger = logging.getLogger(__name__)

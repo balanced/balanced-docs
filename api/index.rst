@@ -1,9 +1,25 @@
 .. dcode-default::
-    :section-chars: ~
-    :section-depth: 1
-    :script: scripts/dcode-scenario -d scenarios
-    :directive: code-block
-    :nospec: True
+    :cache:
+
+.. dcode-default:: view
+    :script: ./rst.py view
+
+.. dcode-default:: form
+    :script: ./rst.py form
+
+.. dcode-default:: endpoint
+    :script: ./rst.py endpoint
+
+.. dcode-default:: error
+    :script: ./rst.py error
+
+.. dcode-default:: scenario
+    :script: ./scenario.py -c scenario.cache
+    :section-chars: ~^
+
+.. dcode-default:: enum
+    :script: ./rst.py enum
+
 
 .. container:: langbar
 
