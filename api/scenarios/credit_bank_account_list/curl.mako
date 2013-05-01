@@ -5,7 +5,7 @@
   uri += path
 %>
 
-% if request is UNDEFINED:
+% if mode == 'definition':
    GET ${uri}
 
 % else:

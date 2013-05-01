@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 
-% if request is UNDEFINED:
+% if mode == 'definition':
 balanced.BankAccount.delete()
 
 % else:

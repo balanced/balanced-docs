@@ -1,3 +1,3 @@
 request = {
-    'uri': storage['marketplace']['refunds_uri']
+    'uri': marketplace.refunds_uri
 }

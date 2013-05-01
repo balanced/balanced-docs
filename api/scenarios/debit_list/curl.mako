@@ -2,7 +2,7 @@
 <%
   ep = main.make_endpoint('debits.index', select='shortest')
 %>
-% if request is UNDEFINED:
+% if mode == 'definition':
   ${ep.method} ${ep.url}
 % else:
   <%

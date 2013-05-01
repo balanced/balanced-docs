@@ -1,5 +1,5 @@
 <%namespace file='/_main.mako' name='main'/>
-% if request is UNDEFINED:
+% if mode == 'definition':
 Balanced::Marketplace.cards
 % else:
 ${main.ruby_boilerplate()}

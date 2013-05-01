@@ -1,7 +1,7 @@
 import random
 
 request = {
-    'uri': storage['marketplace']['bank_accounts_uri'],
+    'uri': marketplace.bank_accounts_uri,
     'payload': {
         'type': 'checking',
         'account_number': '9900000001',

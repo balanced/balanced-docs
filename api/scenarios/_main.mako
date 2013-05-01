@@ -99,7 +99,7 @@ Balanced.configure('${ctx.api_key}')
 
 
 <%def name="curl_show_template(endpoint_name)">
-% if request is UNDEFINED:
+% if mode == 'definition':
 <%
   ep = Endpoint(ctx, endpoint_name, select='shortest')
 %>
@@ -173,9 +173,9 @@ Balanced.configure('${ctx.api_key}')
 
 <%def name="curl_delete_template(endpoint_name, ep=None)">
 <%
-  ep = Endpoint(endpoint_name)
+  ep = Endpoint(ctx, endpoint_name)
 %>
-% if request is UNDEFINED:
+% if mode == 'definition':
   ${ep.method} ${ep.url}
 % else:
   <%

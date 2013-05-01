@@ -193,10 +193,11 @@ class Endpoint(object):
 
     def __init__(self, ctx, name, select=None):
         match = self._match(ctx, name, select)
+        logger.debug('matched "%s" (%s)', name, select)
         self.ctx = ctx
         self.name = match['name']
         self.methods = match['methods']
-        self.method = self.methods[0]
+        self.method = filter(lambda x: x != 'HEAD', match['methods'])[0]
         self.uri = match['path']
 
     @classmethod
@@ -295,7 +296,6 @@ class Scenario(object):
         return context['request']
 
     def __call__(self):
-        # blocks
         blocks = []
         curl = None
         self.ctx.storage[self.name] = {}
@@ -307,10 +307,7 @@ class Scenario(object):
                 if lang == 'curl':
                     curl = block
                 blocks.append(block)
-        response = None
-        if curl and 'response' in curl:
-            response = curl['response']
-
+        response = curl.get('response') if curl else None 
         return blocks, response
 
     def block(self, lang):
@@ -320,10 +317,20 @@ class Scenario(object):
         block = self._render(template_path)
         block['lang'] = lang
         if block['lang'] == 'curl':
-            block['response'] = self._exec_cmd(block['request'])
-            self.ctx.storage[self.name]['response'] = block['response']
+            if 'delete' in self.name:
+                logger.info('skipping execution for "%s" (%s)', self.name, block['lang'])
+            else:
+                block['response'] = json.dumps(
+                    json.loads(self._exec_cmd(block['request'])),
+                    indent=4,
+                    sort_keys=True,
+                )
+                self.ctx.storage[self.name]['response'] = block['response']
         elif block['lang'] in self.ctx.execute_langs:
-            self._exec_code(block['request'])
+            if 'delete' in self.name:
+                logger.info('skipping execution for "%s" (%s)', self.name, block['lang'])
+            else:
+                self._exec_code(block['request'])
         self.ctx.storage[self.name][lang] = block.copy()
         return block
 
@@ -408,32 +415,35 @@ def generate(write, name, blocks, response, section_chars):
 
     write('.. cssclass:: {0}\n\n'.format('code-block'))
     write('.. container:: {0}\n\n'.format(name))
+
+    write('defintion\n')
+    write('{0}\n'.format(section_chars[0] * len('defintion')))
+    write('\n')
     for block in blocks:
         pygment = pygments.get(block['lang'], block['lang'])
-
-        write('defintion\n')
-        write('{0}\n'.format(section_chars[0] * len('defintion')))
-        write('\n')
         write('.. code:: {0}\n\n'.format(pygment))
         with write:
             write(block['defintion'])
             write('\n')
 
-        write('request\n')
-        write('{0}\n'.format(section_chars[0] * len('request')))
-        write('\n')
+    write('request\n')
+    write('{0}\n'.format(section_chars[0] * len('request')))
+    write('\n')
+    for block in blocks:
+        pygment = pygments.get(block['lang'], block['lang'])
         write('.. code:: {0}\n\n'.format(pygment))
         with write:
             write(block['request'])
             write('\n')
 
-    write('response\n')
-    write('{0}\n'.format(section_chars[0] * len('response')))
-    write('\n')
-    write('.. code:: {0}\n\n'.format('javascript'))
-    with write:
-        write(block['response'])
+    if response:
+        write('response\n')
+        write('{0}\n'.format(section_chars[0] * len('response')))
         write('\n')
+        write('.. code:: {0}\n\n'.format('javascript'))
+        with write:
+            write(response)
+            write('\n')
 
 
 # main

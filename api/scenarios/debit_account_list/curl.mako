@@ -2,12 +2,12 @@
 <%
   ep = main.make_endpoint('debits.index')
 %>
-% if request is UNDEFINED:
-  ${ep.method} ${ep.full_url}
+% if mode == 'definition':
+  ${ep.method} ${ep.url}
 % else:
   <%
     slash = '\\'
   %>
-   curl ${ep.qualified_url_for(request['debits_uri'], limit=2)} ${slash}
+   curl ${Endpoint.qualify_uri(ctx, request['debits_uri'], limit=2)} ${slash}
       -u ${api_key}:
 % endif
