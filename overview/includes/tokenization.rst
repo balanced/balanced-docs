@@ -350,7 +350,7 @@ we've provided you with two sample forms, one to collect card information
 and one to collect bank account information.
 
 We're also going to be using `jQuery`_ throughout the examples for brevity, but
-but ``balanced.js`` has no such dependency itself.
+``balanced.js`` has no such dependency itself.
 
 Remember, you can always use the `full example page`_ that already puts all
 of this together or can ask us to write a sample form for you through one
