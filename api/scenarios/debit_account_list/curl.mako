@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 <%
-  ep = main.make_endpoint('debits.index')
+  ep = main.make_endpoint('debits.index', select='any')
 %>
 % if mode == 'definition':
   ${ep.method} ${ep.url}

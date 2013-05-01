@@ -239,7 +239,8 @@ class Endpoint(object):
         if len(matches) == 1:
             return matches[0]
         if not select:
-            raise ValueError('Multiple endpoints matching "{0}"'.format(name))
+            raise ValueError('Multiple endpoints matching "{0}" -- '
+                '"{1}"'.format(name, '\n'.join([str(m) for m in matches])))
         if select == 'any':
             return matches[0]
         elif select == 'shortest':
@@ -247,8 +248,8 @@ class Endpoint(object):
         elif isinstance(select, (list, tuple)):
             select = set(select)
             for match in matches:
-                matches = set(re.findall(r':(\w+)', match['path']))
-                if matches == select:
+                re_matches = set(re.findall(r':(\w+)', match['path']))
+                if re_matches == select:
                     return match
             else:
                 raise ValueError(
@@ -338,7 +339,7 @@ class Scenario(object):
                 if lang == 'curl':
                     curl = block
                 blocks.append(block)
-        response = curl.get('response') if curl else None 
+        response = curl.get('response') if curl else None
         return blocks, response
 
     def block(self, lang):

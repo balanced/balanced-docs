@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 <%
-  ep = main.make_endpoint('holds.create')
+  ep = main.make_endpoint('holds.create', select='any')
 %>
 % if mode == 'definition':
   ${ep.method} ${ep.url}
