@@ -21,5 +21,6 @@ api:
 
 clean:
 	-rm -rf `pwd`/html
+	-rm *.cache
 
 all: api
