@@ -54,7 +54,7 @@ To preview the generated overview, just open up the html path printed by the
 `Makefile` in your local browser which typically looks like this 
 
 ```bash
-Build finished. The HTML pages are in ${SOME_ABSOLUTE_PATH}/balanced-docs/api/html.
+Build finished. The HTML pages are in /path/to/balanced-docs/api/html.
 ```
 
 ### Reference
@@ -70,7 +70,7 @@ To preview the generated reference, just open up the html path printed by the
 `Makefile` in your local browser which typically looks like this 
 
 ```bash
-Build finished. The HTML pages are in ${SOME_ABSOLUTE_PATH}/balanced-docs/api/html.
+Build finished. The HTML pages are in /path/to/balanced-docs/api/html.
 ```
 
 ## Contributing
