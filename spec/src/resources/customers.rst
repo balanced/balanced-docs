@@ -69,12 +69,12 @@ Update a Customer
 -----------------
 
 .. dcode:: endpoint customers.update
-    :exclude: region
 
 Request
 ~~~~~~~
 
 .. dcode:: form customers.create
+    :exclude: region
 
 .. dcode:: scenario customers.update
    :section-include: response
