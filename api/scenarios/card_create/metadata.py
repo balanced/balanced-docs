@@ -1,5 +1,5 @@
 request = {
-    'uri': storage['marketplace']['cards_uri'],
+    'uri': ctx.marketplace.cards_uri,
     'payload': {
         'card_number': '5105105105105100',
         'expiration_month': '12',

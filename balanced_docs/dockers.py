@@ -15,10 +15,11 @@ class Spec(dict):
         return self['endpoints']
 
     def match_endpoint(self, name):
+        matches = []
         for endpoint in self.endpoints:
             if name == endpoint['name']:
-                return endpoint
-        return None
+                matches.append(endpoint)
+        return matches
 
     # views
 

@@ -1,5 +1,5 @@
 card = json.loads(
-    storage['card_create']['response']['content']
+    storage['card_create']['response']
 )
 
 request = {

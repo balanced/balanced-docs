@@ -1,5 +1,5 @@
 request = {
-    'accounts_uri': storage['marketplace']['accounts_uri'],
+    'accounts_uri': marketplace.accounts_uri,
     'payload': {
         'merchant': {
             'phone_number': '+14089999999',

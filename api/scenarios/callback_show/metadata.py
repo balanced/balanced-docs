@@ -1,5 +1,5 @@
 callback = json.loads(
-    storage['callback_create']['response']['content']
+    storage['callback_create']['response']
 )
 
 request = {
