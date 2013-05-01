@@ -14,7 +14,7 @@ I18NSPHINXOPTS = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
 
 .PHONY: clean all
 
-api:
+overview:
 	$(SPHINXBUILD) -b singlehtml -c `pwd` `pwd` `pwd`/html
 	@echo
 	@echo "Build finished. The HTML pages are in `pwd`/html."
@@ -22,4 +22,4 @@ api:
 clean:
 	-rm -rf `pwd`/html
 
-all: api
+all: overview

@@ -15,7 +15,7 @@ charged amount.
 .. container:: method-description
 
   .. dcode:: form refunds.create
-     :excludes: account_uri
+     :exclude: account_uri
 
 .. container:: method-examples
 

@@ -1,15 +1,13 @@
 <%namespace file='/_main.mako' name='main'/>
 <%
-  method, path = main.route_for_endpoint('credits.create')
-  uri = context['api_location']
-  uri += path
+  ep = main.route_for_endpoint('credits.create')
 %>
 
 % if mode == 'definition':
-   POST ${uri}
+   POST ${ep.url}
 
 % else:
-   curl ${uri} <%text>\</%text>
+   curl ${ep.url} <%text>\</%text>
       -u ${api_key}: <%text>\</%text>
    %for k, v, slash in main.recursive_expand(request):
       -d "${k}=${v}" ${slash}

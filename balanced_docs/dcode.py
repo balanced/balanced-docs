@@ -43,9 +43,9 @@ class DCodeDefaultDirective(Directive):
 
     class Registry(dict):
 
-        def __init__(self, parent, **kwargs):
+        def __init__(self, parent, defaults=None):
             self.parent = parent
-            super(type(self), self).__init__(**kwargs)
+            super(type(self), self).__init__(defaults or {})
 
         def __getitem__(self, key):
             try:
@@ -55,12 +55,13 @@ class DCodeDefaultDirective(Directive):
 
     default_registry = Registry(
         None,
-        script=None,
-        cache=False,
-        record=None,
-        ignore=False,
-        section_include=None,
-        section_chars='~^',
+        {'script': None,
+         'cache': False,
+         'record': None,
+         'ignore': False,
+         'section-include': None,
+         'section-chars': '~^',
+         }
     )
 
     registry = defaultdict(functools.partial(Registry, default_registry))
@@ -81,9 +82,15 @@ class DCodeDefaultDirective(Directive):
         if 'ignore' in options:
             cls.registry[key]['ignore'] = True
         if 'section-chars' in options:
-            cls.registry[key]['section_chars'] = options['section-chars']
+            cls.registry[key]['section-chars'] = options['section-chars']
         if 'section-include' in options:
-            cls.registry[key]['section_include'] = options['section-include'].split()
+            cls.registry[key]['section-include'] = options['section-include'].split()
+        kwargs = dict(
+            (k, v.split())
+            for k, v in options.iteritems()
+            if k not in cls.option_spec_fixed
+        )
+        cls.registry[key].update(kwargs)
         return []
 
     # Directive
@@ -94,7 +101,8 @@ class DCodeDefaultDirective(Directive):
 
     optional_arguments = 1
 
-    option_spec = {
+    option_spec = defaultdict(lambda: directives.unchanged)
+    option_spec.update({
         'script': directives.unchanged,
         'cache': directives.flag,
         'ignore': directives.flag,
@@ -102,7 +110,8 @@ class DCodeDefaultDirective(Directive):
         'ignore': directives.unchanged,
         'section-chars': directives.unchanged,
         'section-include': directives.unchanged,
-    }
+    })
+    option_spec_fixed = option_spec.keys()
 
     has_content = False
 
@@ -153,18 +162,23 @@ class DCodeDirective(Directive):
         if 'section-chars' in options:
             section_chars = options['section-chars']
         else:
-            section_chars = DCodeDefaultDirective.registry[key]['section_chars']
+            section_chars = DCodeDefaultDirective.registry[key]['section-chars']
         if 'section-include' in options:
             section_include = options['section-include'].split()
         else:
-            section_include = DCodeDefaultDirective.registry[key]['section_include']
+            section_include = DCodeDefaultDirective.registry[key]['section-include']
 
         # kwargs
         kwargs = dict(
+            (k, v)
+            for k, v in DCodeDefaultDirective.registry[key].iteritems()
+            if k not in cls.option_spec_fixed
+        )
+        kwargs.update(dict(
             (k, v.split())
             for k, v in options.iteritems()
-            if k not in cls.option_spec
-        )
+            if k not in cls.option_spec_fixed
+        ))
 
         # generate
         if not script:
@@ -215,6 +229,7 @@ class DCodeDirective(Directive):
         'section-include': directives.unchanged,
         'section-chars': directives.unchanged,
     })
+    option_spec_fixed = option_spec.keys()
 
     has_content = True
 

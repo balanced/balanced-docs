@@ -2,11 +2,12 @@
   hard to go back in teh doc
 
 .. dcode-default::
-    :script: scripts/dcode-scenario -d scenarios
-    :directive: code-block
-    :includes: request
-    :no-sections:
-    :nospec: True
+    :cache:
+
+.. dcode-default:: scenario
+    :script: ../scenario.py -d ../scenarios -c scenario.cache
+    :section-chars: ~^
+    :lang: python ruby php
 
 .. contents::
   :depth: 2
@@ -22,10 +23,17 @@
   * php
 
 .. include:: includes/overview.rst
+
 .. include:: includes/tokenization.rst
+
 .. include:: includes/payouts.rst
+
 .. include:: includes/processing.rst
+
 .. include:: includes/bank_account_debits.rst
+
 .. include:: includes/marketplaces.rst
+
 .. include:: includes/reference.rst
+
 .. include:: includes/bestpractices.rst

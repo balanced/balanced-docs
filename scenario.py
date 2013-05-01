@@ -48,7 +48,6 @@ class Context(object):
             storage_file,
             spec_file,
             langs,
-            execute_langs,
         ):
         self.stack = []
         self.api_location = api_location
@@ -62,7 +61,6 @@ class Context(object):
         )
         self.spec = dockers.load(open(spec_file, 'r'))
         self.langs = ['curl'] + langs
-        self.execute_langs = execute_langs
 
     def lookup_scenario(self, name):
         munged = name.replace('-', '_')
@@ -358,11 +356,6 @@ class Scenario(object):
                     sort_keys=True,
                 )
                 self.ctx.storage[self.name]['response'] = block['response']
-        elif block['lang'] in self.ctx.execute_langs:
-            if 'delete' in self.name:
-                logger.info('skipping execution for "%s" (%s)', self.name, block['lang'])
-            else:
-                self._exec_code(block['request'])
         self.ctx.storage[self.name][lang] = block.copy()
         return block
 
@@ -445,36 +438,44 @@ def generate(write, name, blocks, response, section_chars):
         'curl': 'bash',
     }
 
-    write('.. cssclass:: {0}\n\n'.format('code-block'))
-    write('.. container:: {0}\n\n'.format(name))
-
     write('defintion\n')
     write('{0}\n'.format(section_chars[0] * len('defintion')))
     write('\n')
-    for block in blocks:
-        pygment = pygments.get(block['lang'], block['lang'])
-        write('.. code:: {0}\n\n'.format(pygment))
-        with write:
-            write(block['defintion'])
-            write('\n')
+    write('.. cssclass:: {0}\n\n'.format('code-block'))
+    write('.. container:: {0}\n'.format('defintion'))
+    with write:
+        write('\n')
+        for block in blocks:
+            pygment = pygments.get(block['lang'], block['lang'])
+            write('.. code:: {0}\n'.format(pygment))
+            with write:
+                write('\n')
+                write(block['defintion'])
 
     write('request\n')
     write('{0}\n'.format(section_chars[0] * len('request')))
     write('\n')
-    for block in blocks:
-        pygment = pygments.get(block['lang'], block['lang'])
-        write('.. code:: {0}\n\n'.format(pygment))
-        with write:
-            write(block['request'])
+    write('.. cssclass:: {0}\n\n'.format('code-block'))
+    write('.. container:: {0}\n\n'.format('request'))
+    with write:
+        for block in blocks:
+            pygment = pygments.get(block['lang'], block['lang'])
+            write('.. code:: {0}\n'.format(pygment))
+            with write:
+                write('\n')
+                write(block['request'])
             write('\n')
 
     if response:
         write('response\n')
         write('{0}\n'.format(section_chars[0] * len('response')))
         write('\n')
-        write('.. code:: {0}\n\n'.format('javascript'))
+        write('.. cssclass:: {0}\n\n'.format('code-block'))
+        write('.. container:: {0}\n\n'.format('response'))
         with write:
-            write(response)
+            write('.. code:: {0}\n\n'.format('javascript'))
+            with write:
+                write(response)
             write('\n')
 
 
@@ -541,15 +542,6 @@ def create_arg_parser():
         choices=['php', 'python', 'ruby'],
         help='Enable LANGUAGE for the scenario',
     )
-    parser.add_argument(
-        '-x', '--exec-lang',
-        dest='execute_langs',
-        metavar='LANGUAGE',
-        action='append',
-        default=[],
-        choices=['php', 'python', 'ruby'],
-        help='Execute LANGUAGE for the scenario',
-    )
     return parser
 
 
@@ -566,11 +558,10 @@ def main():
 
     ctx = Context(
         api_location=args.api_location,
-        scenarios_dir=args.directory,
+        scenarios_dir=os.path.abspath(args.directory),
         storage_file=args.storage,
         spec_file=args.spec,
         langs=args.langs,
-        execute_langs=args.execute_langs,
     )
     Scenario.bootstrap(ctx)
     write = BlockWriter(sys.stdout)

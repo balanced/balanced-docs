@@ -171,11 +171,15 @@ class Overrides(dict):
 
 class IncludeExcludeFilter(object):
 
+    SEPARATOR = '.'
+
     def __init__(self, include, exclude):
         self.include = include
         self.exclude = exclude
 
     def __call__(self, v):
+        if isinstance(v, basestring):
+            v = v.split(self.SEPARATOR)
         if self.include:
             include = any(i(v) for i in self.include)
             if not self.exclude:
