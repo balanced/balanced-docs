@@ -1,5 +1,5 @@
 def generate(writer, name, data, exclude_methods):
-    endpoint = data.match_endpoint(name)
+    endpoint = data.match_endpoint(name)[0]
     if not endpoint:
         raise ValueError('Endpoint "{}" not found'.format(name))
     path = endpoint['path']
