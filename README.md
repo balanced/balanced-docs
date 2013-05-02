@@ -107,10 +107,10 @@ generate rST content. For example:
 .. dcode:: scenario credit_create_new_bank_account
 ```
 
-Here we are asking docde to run the `credit_create_new_bank_account`. The
+Here we are asking `dcode` to run the `credit_create_new_bank_account`. The
 output for that `scenario` will end up in place of the directive.
 
-You'll also see a corresponding `dcode-default directive`. For example:
+You'll also see a corresponding `dcode-default` directive. For example:
 
 ```
 .. dcode-default:: scenario
@@ -119,5 +119,10 @@ You'll also see a corresponding `dcode-default directive`. For example:
     :lang: python ruby php
 ```
 
-This just registers an external script for `scenario`.
+Which registers an external script for `scenario`. As a result the `dcode`
+directive above will result in this call:
+
+```bash
+../scenario.py -d ../scenarios -c scenario.cache credit_create_new_bank_account --lang python --lang ruby --lang php
+```
 
