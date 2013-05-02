@@ -1072,38 +1072,6 @@
  "errors": [
   {
    "additional": null, 
-   "category_code": "funding-source-not-debitable", 
-   "category_type": "logical", 
-   "description": "The given funding source cannot have a debit created against it.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "card-not-associated", 
-   "category_type": "logical", 
-   "description": "The card is not associated with the given account.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "funding-source-not-hold", 
-   "category_type": "logical", 
-   "description": "The given funding source cannot have a hold created against it.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "bank-account-authentication-not-pending", 
-   "category_type": "logical", 
-   "description": "Bank account authentication is not in state ``pending``.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
    "category_code": "hold-not-associated-account", 
    "category_type": "logical", 
    "description": "This hold is not associated with this account.", 
@@ -1112,35 +1080,11 @@
   }, 
   {
    "additional": null, 
-   "category_code": "card-not-validated", 
-   "category_type": "logical", 
-   "description": "The card could not be validated -- either the card number or security code\nmay be wrong.", 
+   "category_code": "authorization-failed", 
+   "category_type": "banking", 
+   "description": "The processor did not accept this hold.", 
    "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "invalid-amount", 
-   "category_type": "request", 
-   "description": "Refund amount cannot be greater than the amount of the original debit.", 
-   "status": null, 
-   "status_code": 400
-  }, 
-  {
-   "additional": null, 
-   "category_code": "funding-destination-already-associated", 
-   "category_type": "logical", 
-   "description": "The given funding destination is already associated with an account.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "multiple-debits", 
-   "category_type": "logical", 
-   "description": null, 
-   "status": null, 
-   "status_code": 409
+   "status_code": 402
   }, 
   {
    "additional": null, 
@@ -1152,59 +1096,11 @@
   }, 
   {
    "additional": null, 
-   "category_code": "funding-source-not-refundable", 
-   "category_type": "logical", 
-   "description": "The given funding source cannot be refunded.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "invalid-bank-account-number", 
-   "category_type": "request", 
-   "description": "This bank account number is not alpha numeric (ascii). It can not be used.", 
-   "status": null, 
-   "status_code": 400
-  }, 
-  {
-   "additional": null, 
-   "category_code": "capture-void-attempt", 
-   "category_type": "logical", 
-   "description": "This hold has already been captured, which cannot be reversed.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "duplicate-email-address", 
-   "category_type": "logical", 
-   "description": "An account with the given email address already exists.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
    "category_code": "funding-destination-declined", 
    "category_type": "banking", 
    "description": "The processor did not accept the transaction.", 
    "status": null, 
    "status_code": 402
-  }, 
-  {
-   "additional": null, 
-   "category_code": "no-funding-source", 
-   "category_type": "logical", 
-   "description": "The account has no valid funding sources.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "incomplete-account-info", 
-   "category_type": "request", 
-   "description": "No buyer or merchant info was provided. Either \"merchant/merchant_uri\" or\n\"card/card_uri\" fields must be present.", 
-   "status": null, 
-   "status_code": 400
   }, 
   {
    "additional": null, 
@@ -1224,41 +1120,49 @@
   }, 
   {
    "additional": null, 
-   "category_code": "cannot-associate-bank-account", 
+   "category_code": "card-declined", 
+   "category_type": "banking", 
+   "description": "This card was declined by the processor.", 
+   "status": null, 
+   "status_code": 402
+  }, 
+  {
+   "additional": null, 
+   "category_code": "capture-void-attempt", 
    "category_type": "logical", 
-   "description": "The bank account was tokenized on a different marketplace than the one\nused for this request.", 
+   "description": "This hold has already been captured, which cannot be reversed.", 
    "status": null, 
    "status_code": 409
   }, 
   {
    "additional": null, 
-   "category_code": "cannot-associate-card", 
+   "category_code": "cannot-capture-authorization", 
    "category_type": "logical", 
-   "description": "The card was tokenized on a different marketplace than the one used for\nthis request.", 
+   "description": "This hold has already been captured or voided, and cannot be captured.", 
    "status": null, 
    "status_code": 409
   }, 
   {
    "additional": null, 
-   "category_code": "hold-not-associated-marketplace", 
-   "category_type": "logical", 
-   "description": "This hold is not associated with this marketplace.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "refund-insufficient-funds", 
-   "category_type": "logical", 
-   "description": "Marketplace escrow balance is insufficient to issue this refund.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "identity-verification-error", 
+   "category_code": "unexpected-payload", 
    "category_type": "logical", 
    "description": null, 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "invalid-amount", 
+   "category_type": "request", 
+   "description": "Refund amount cannot be greater than the amount of the original debit.", 
+   "status": null, 
+   "status_code": 400
+  }, 
+  {
+   "additional": null, 
+   "category_code": "funding-source-not-hold", 
+   "category_type": "logical", 
+   "description": "The given funding source cannot have a hold created against it.", 
    "status": null, 
    "status_code": 409
   }, 
@@ -1272,49 +1176,25 @@
   }, 
   {
    "additional": null, 
-   "category_code": "insufficient-funds", 
+   "category_code": "funding-destination-not-associated", 
    "category_type": "logical", 
-   "description": "Marketplace balance is insufficient to issue this credit", 
+   "description": "The given funding destination is not associated with the account.", 
    "status": null, 
    "status_code": 409
   }, 
   {
    "additional": null, 
-   "category_code": "refund-invalid-debit-state", 
-   "category_type": "request", 
-   "description": "State of debit to refund must be ``succeeded``.", 
-   "status": null, 
-   "status_code": 400
-  }, 
-  {
-   "additional": null, 
-   "category_code": "funding-source-already-associated", 
+   "category_code": "card-not-validated", 
    "category_type": "logical", 
-   "description": "The given funding source is already associated with an account.", 
+   "description": "The card could not be validated -- either the card number or security code\nmay be wrong.", 
    "status": null, 
    "status_code": 409
   }, 
   {
    "additional": null, 
-   "category_code": "business-principal-kyc", 
+   "category_code": "card-already-funding-src", 
    "category_type": "logical", 
-   "description": null, 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "funding-source-not-authorizable", 
-   "category_type": "logical", 
-   "description": "The given funding source cannot have an authorization created against\nit. Authorizations are only valid for card-type funding sources.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "cannot-associate-merchant-with-account", 
-   "category_type": "logical", 
-   "description": "The merchant information was created on a different marketplace than the\none used for this request.", 
+   "description": "The card is already associated with an account -- it cannot be associated\nagain.", 
    "status": null, 
    "status_code": 409
   }, 
@@ -1328,6 +1208,54 @@
   }, 
   {
    "additional": null, 
+   "category_code": "hold-not-associated-marketplace", 
+   "category_type": "logical", 
+   "description": "This hold is not associated with this marketplace.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "marketplace-already-created", 
+   "category_type": "logical", 
+   "description": "Marketplace has already been created.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "duplicate-email-address", 
+   "category_type": "logical", 
+   "description": "An account with the given email address already exists.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "no-funding-source", 
+   "category_type": "logical", 
+   "description": "The account has no valid funding sources.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "incomplete-account-info", 
+   "category_type": "request", 
+   "description": "No buyer or merchant info was provided. Either \"merchant/merchant_uri\" or\n\"card/card_uri\" fields must be present.", 
+   "status": null, 
+   "status_code": 400
+  }, 
+  {
+   "additional": null, 
+   "category_code": "precog-logical-error", 
+   "category_type": "logical", 
+   "description": null, 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
    "category_code": "precog-bad-request", 
    "category_type": "request", 
    "description": null, 
@@ -1336,7 +1264,15 @@
   }, 
   {
    "additional": null, 
-   "category_code": "unexpected-payload", 
+   "category_code": "cannot-associate-bank-account", 
+   "category_type": "logical", 
+   "description": "The bank account was tokenized on a different marketplace than the one\nused for this request.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "debit-not-found", 
    "category_type": "logical", 
    "description": null, 
    "status": null, 
@@ -1344,7 +1280,119 @@
   }, 
   {
    "additional": null, 
-   "category_code": "precog-logical-error", 
+   "category_code": "funding-source-not-refundable", 
+   "category_type": "logical", 
+   "description": "The given funding source cannot be refunded.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "card-not-valid", 
+   "category_type": "logical", 
+   "description": "This card has already been marked as invalid/deactivated. It cannot be used\nagain.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "refund-insufficient-funds", 
+   "category_type": "logical", 
+   "description": "Marketplace escrow balance is insufficient to issue this refund.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "funding-source-not-debitable", 
+   "category_type": "logical", 
+   "description": "The given funding source cannot have a debit created against it.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "refund-invalid-debit-state", 
+   "category_type": "request", 
+   "description": "State of debit to refund must be ``succeeded``.", 
+   "status": null, 
+   "status_code": 400
+  }, 
+  {
+   "additional": null, 
+   "category_code": "no-funding-destination", 
+   "category_type": "logical", 
+   "description": "The account has no valid funding destinations.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "funding-source-already-associated", 
+   "category_type": "logical", 
+   "description": "The given funding source is already associated with an account.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "card-not-associated", 
+   "category_type": "logical", 
+   "description": "The card is not associated with the given account.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "authorization-expired", 
+   "category_type": "logical", 
+   "description": "This hold has already expired.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "cannot-void-authorization", 
+   "category_type": "logical", 
+   "description": "This hold has already been captured or voided, and cannot be voided.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "account-already-merchant", 
+   "category_type": "logical", 
+   "description": "The account is already a merchant.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "funding-destination-already-associated", 
+   "category_type": "logical", 
+   "description": "The given funding destination is already associated with an account.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "funding-destination-not-creditable", 
+   "category_type": "logical", 
+   "description": "The given funding destination cannot have a credit created against it.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "funding-source-not-associated", 
+   "category_type": "logical", 
+   "description": "The given funding source is not associated with an account.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "multiple-debits", 
    "category_type": "logical", 
    "description": null, 
    "status": null, 
@@ -1360,9 +1408,9 @@
   }, 
   {
    "additional": null, 
-   "category_code": "funding-destination-not-associated", 
+   "category_code": "bank-account-authentication-failed", 
    "category_type": "logical", 
-   "description": "The given funding destination is not associated with the account.", 
+   "description": "Bank account authentication amounts do not match.", 
    "status": null, 
    "status_code": 409
   }, 
@@ -1371,118 +1419,6 @@
    "category_code": "bank-account-already-associated", 
    "category_type": "logical", 
    "description": "The bank account is already associated with an account -- it cannot be\nassociated.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "authorization-failed", 
-   "category_type": "banking", 
-   "description": "The processor did not accept this hold.", 
-   "status": null, 
-   "status_code": 402
-  }, 
-  {
-   "additional": null, 
-   "category_code": "account-already-merchant", 
-   "category_type": "logical", 
-   "description": "The account is already a merchant.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "card-already-funding-src", 
-   "category_type": "logical", 
-   "description": "The card is already associated with an account -- it cannot be associated\nagain.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "authorization-expired", 
-   "category_type": "logical", 
-   "description": "This hold has already expired.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "marketplace-already-created", 
-   "category_type": "logical", 
-   "description": "Marketplace has already been created.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "cannot-void-authorization", 
-   "category_type": "logical", 
-   "description": "This hold has already been captured or voided, and cannot be voided.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "card-not-valid", 
-   "category_type": "logical", 
-   "description": "This card has already been marked as invalid/deactivated. It cannot be used\nagain.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "card-declined", 
-   "category_type": "banking", 
-   "description": "This card was declined by the processor.", 
-   "status": null, 
-   "status_code": 402
-  }, 
-  {
-   "additional": null, 
-   "category_code": "cannot-capture-authorization", 
-   "category_type": "logical", 
-   "description": "This hold has already been captured or voided, and cannot be captured.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "debit-already-refunded", 
-   "category_type": "logical", 
-   "description": "Debit has already been fully refunded.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "funding-source-not-associated", 
-   "category_type": "logical", 
-   "description": "The given funding source is not associated with an account.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "insufficient-funds", 
-   "category_type": "logical", 
-   "description": "Marketplace escrow balance is insufficient to issue this credit.", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "person-kyc", 
-   "category_type": "logical", 
-   "description": null, 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "debit-not-found", 
-   "category_type": "logical", 
-   "description": null, 
    "status": null, 
    "status_code": 409
   }, 
@@ -1504,27 +1440,91 @@
   }, 
   {
    "additional": null, 
-   "category_code": "bank-account-authentication-failed", 
+   "category_code": "funding-source-not-authorizable", 
    "category_type": "logical", 
-   "description": "Bank account authentication amounts do not match.", 
+   "description": "The given funding source cannot have an authorization created against\nit. Authorizations are only valid for card-type funding sources.", 
    "status": null, 
    "status_code": 409
   }, 
   {
    "additional": null, 
-   "category_code": "funding-destination-not-creditable", 
+   "category_code": "person-kyc", 
    "category_type": "logical", 
-   "description": "The given funding destination cannot have a credit created against it.", 
+   "description": null, 
    "status": null, 
    "status_code": 409
   }, 
   {
    "additional": null, 
-   "category_code": "no-funding-destination", 
+   "category_code": "insufficient-funds", 
    "category_type": "logical", 
-   "description": "The account has no valid funding destinations.", 
+   "description": "Marketplace escrow balance is insufficient to issue this credit.", 
    "status": null, 
    "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "debit-already-refunded", 
+   "category_type": "logical", 
+   "description": "Debit has already been fully refunded.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "bank-account-authentication-not-pending", 
+   "category_type": "logical", 
+   "description": "Bank account authentication is not in state ``pending``.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "cannot-associate-merchant-with-account", 
+   "category_type": "logical", 
+   "description": "The merchant information was created on a different marketplace than the\none used for this request.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "identity-verification-error", 
+   "category_type": "logical", 
+   "description": null, 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "insufficient-funds", 
+   "category_type": "logical", 
+   "description": "Marketplace balance is insufficient to issue this credit", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "business-principal-kyc", 
+   "category_type": "logical", 
+   "description": null, 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "cannot-associate-card", 
+   "category_type": "logical", 
+   "description": "The card was tokenized on a different marketplace than the one used for\nthis request.", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "invalid-bank-account-number", 
+   "category_type": "request", 
+   "description": "This bank account number is not alpha numeric (ascii). It can not be used.", 
+   "status": null, 
+   "status_code": 400
   }
  ], 
  "forms": [
