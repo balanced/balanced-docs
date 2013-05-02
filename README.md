@@ -1,5 +1,7 @@
 # Balanced Docs
 
+[![Build Status](https://secure.travis-ci.org/balanced/balanced-docs.png)](http://travis-ci.org/balanced/balanced-docs)
+
 This project builds the following Balanced documentation:
 
 - [Specification](https://github.com/balanced/balanced-api)
