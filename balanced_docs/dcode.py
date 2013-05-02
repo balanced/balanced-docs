@@ -1,9 +1,9 @@
 """
-Generates rST by via external scripts.
+Generates rST by running external scripts.
 
 Use the `dcode-default` directive to set default options:
 
-.. dcode-default: [key]
+.. dcode-default: [{key}]
     :cache: true
     :record: /tmp/dcode.record
     :script: some-script
@@ -13,7 +13,7 @@ Use the `dcode-default` directive to set default options:
 
 And the `dcode` directive to capture generated rST:
 
-.. dcode: [{key}] [{script-arg-1}] .. [{script-arg-n}]
+.. dcode: {key} [{script-arg-1}] .. [{script-arg-n}]
     :{script-option-1}: value(s)
     ...
     :{script-option-n}: value(s)
@@ -23,8 +23,10 @@ And the `dcode` directive to capture generated rST:
 Note that default options can be overridden by `dcode`.
 """
 from collections import defaultdict
+import errno
 import functools
 import hashlib
+import json
 import logging
 import os
 import pipes
@@ -56,7 +58,7 @@ class DCodeDefaultDirective(Directive):
     default_registry = Registry(
         None,
         {'script': None,
-         'cache': False,
+         'cache': None,
          'record': None,
          'ignore': False,
          'section-include': None,
@@ -74,7 +76,7 @@ class DCodeDefaultDirective(Directive):
         else:
             key = None
         if 'cache' in options:
-            cls.registry[key]['cache'] = True
+            cls.registry[key]['cache'] = options['cache']
         if 'script' in options:
             cls.registry[key]['script'] = options['script']
         if 'record' in options:
@@ -104,7 +106,7 @@ class DCodeDefaultDirective(Directive):
     option_spec = defaultdict(lambda: directives.unchanged)
     option_spec.update({
         'script': directives.unchanged,
-        'cache': directives.flag,
+        'cache': directives.unchanged,
         'ignore': directives.flag,
         'record': directives.unchanged,
         'ignore': directives.unchanged,
@@ -136,7 +138,7 @@ class DCodeDirective(Directive):
 
         # cache
         if 'cache' in options:
-            cache = True
+            cache = options['cache']
         else:
             cache = DCodeDefaultDirective.registry[key]['cache']
 
@@ -199,7 +201,7 @@ class DCodeDirective(Directive):
             if isinstance(content, list):
                 content = '\n'.join(content)
             _generate(
-                cache=cache,
+                cache_file=cache,
                 record=record,
                 write=write,
                 script=script,
@@ -348,26 +350,43 @@ def _execute(script, args, kwargs, content, record=None):
     return stdout
 
 
-_CACHE = {
-}
+class Cache(dict):
 
+    @classmethod
+    def key(cls, script, args, kwargs, content):
+        m = hashlib.md5()
+        m.update(script)
+        for arg in sorted(args):
+            m.update(arg)
+        for k, v in sorted(kwargs.items()):
+            m.update(k)
+            for vv in v:
+                m.update(vv)
+        for l in content:
+            m.update(l)
+        return m.hexdigest()
 
-def _cache_key(script, args, kwargs, content):
-    m = hashlib.md5()
-    m.update(script)
-    for arg in sorted(args):
-        m.update(arg)
-    for k, v in sorted(kwargs.items()):
-        m.update(k)
-        for vv in v:
-            m.update(vv)
-    for l in content:
-        m.update(l)
-    return m.hexdigest()
+    @classmethod
+    def load(self, file_path):
+        try:
+            with open(file_path, 'r') as fo:
+                cache = Cache(json.load(fo))
+                logger.debug('loaded cache from "%s"', file_path)
+        except IOError, ex:
+            if ex.errno != errno.ENOENT:
+                raise
+            logger.debug('no cache @ "%s"', file_path)
+            cache = Cache()
+        return cache
+
+    def save(self, file_path):
+        with open(file_path, 'w') as fo:
+            json.dump(self, fo, indent=4)
+        logger.debug('saved cache to "%s"', file_path)
 
 
 def _generate(
-        cache,
+        cache_file,
         record,
         script,
         args,
@@ -375,15 +394,18 @@ def _generate(
         content,
         write
     ):
-    if cache:
-        key = _cache_key(script, args, kwargs, content)
-        if key in _CACHE:
+    if cache_file:
+        cache = Cache.load(cache_file)
+        key = cache.key(script, args, kwargs, content)
+        if key in cache:
             logger.debug('cache hit "%s"', key)
-            result = _CACHE[key]
+            result = cache[key]
         else:
+            logger.debug('cache miss "%s"', key)
             result = _execute(script, args, kwargs, content, record)
             logger.debug('cache store "%s"', key)
-            _CACHE[key] = result
+            cache[key] = result
+            cache.save(cache_file)
     else:
         result = _execute(script, args, kwargs, content, record)
     for line in result.splitlines():

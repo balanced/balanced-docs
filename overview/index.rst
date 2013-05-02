@@ -1,8 +1,8 @@
 .. initial feedback:
-  hard to go back in teh doc
+  hard to go back in the doc
 
 .. dcode-default::
-    :cache:
+    :cache: dcode.cache
 
 .. dcode-default:: scenario
     :script: ../scenario.py -d ../scenarios -c scenario.cache

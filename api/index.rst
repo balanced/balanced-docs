@@ -1,5 +1,5 @@
 .. dcode-default::
-    :cache:
+    :cache: dcode.cache
 
 .. dcode-default:: view
     :script: ./rst.py view

@@ -351,7 +351,7 @@ class Scenario(object):
                 logger.info('skipping execution for "%s" (%s)', self.name, block['lang'])
             else:
                 block['response'] = json.dumps(
-                    json.loads(self._exec_cmd(block['request'])),
+                    json.loads(self._exec(block['request'])),
                     indent=4,
                     sort_keys=True,
                 )
@@ -403,7 +403,7 @@ class Scenario(object):
             'request': request,
         }
 
-    def _exec_cmd(self, cmd):
+    def _exec(self, cmd):
         cmd = filter(
             lambda x: x != '\n',
             shlex.split(cmd.encode('utf-8'))
@@ -428,39 +428,34 @@ class Scenario(object):
             )
         return stdout
 
-    def _exec_code(self, code):
-        # TODO: remote code exec
-        logger.info('dont work yet')
-
 
 def generate(write, name, blocks, response, section_chars):
     pygments = {
         'curl': 'bash',
     }
 
-    write('defintion\n')
-    write('{0}\n'.format(section_chars[0] * len('defintion')))
-    write('\n')
-    write('.. cssclass:: {0}\n\n'.format('code-block'))
-    write('.. container:: {0}\n'.format('defintion'))
-    with write:
-        write('\n')
-        for block in blocks:
+    for block in blocks:
+        write('definition\n')
+        write('{0}\n\n'.format(section_chars[0] * len('definition')))
+        write('.. cssclass:: {0}\n\n'.format('code-block'))
+        write('.. container:: {0}\n\n'.format('definition'))
+        with write:
             pygment = pygments.get(block['lang'], block['lang'])
-            write('.. code:: {0}\n'.format(pygment))
+            write('.. code-block:: {0}\n'.format(pygment))
             with write:
                 write('\n')
                 write(block['defintion'])
+            write('\n')
 
-    write('request\n')
-    write('{0}\n'.format(section_chars[0] * len('request')))
-    write('\n')
-    write('.. cssclass:: {0}\n\n'.format('code-block'))
-    write('.. container:: {0}\n\n'.format('request'))
-    with write:
-        for block in blocks:
+    for block in blocks:
+        write('request\n')
+        write('{0}\n'.format(section_chars[0] * len('request')))
+        write('\n')
+        write('.. cssclass:: {0}\n\n'.format('code-block'))
+        write('.. container:: {0}\n\n'.format('request'))
+        with write:
             pygment = pygments.get(block['lang'], block['lang'])
-            write('.. code:: {0}\n'.format(pygment))
+            write('.. code-block:: {0}\n'.format(pygment))
             with write:
                 write('\n')
                 write(block['request'])
@@ -473,8 +468,9 @@ def generate(write, name, blocks, response, section_chars):
         write('.. cssclass:: {0}\n\n'.format('code-block'))
         write('.. container:: {0}\n\n'.format('response'))
         with write:
-            write('.. code:: {0}\n\n'.format('javascript'))
+            write('.. code-block:: {0}\n'.format('javascript'))
             with write:
+                write('\n')
                 write(response)
             write('\n')
 
@@ -518,7 +514,7 @@ def create_arg_parser():
     parser.add_argument(
         '-s', '--storage',
         metavar='FILE',
-        default='./scenario.json',
+        default='./scenario.cache',
         help='Storage FILE location',
     )
     parser.add_argument(

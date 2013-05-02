@@ -21,6 +21,6 @@ overview:
 
 clean:
 	-rm -rf `pwd`/html
-	-rm *.cache
+	-rm -f *.cache
 
 all: overview
