@@ -108,44 +108,7 @@ generate rST content. For example:
 ```
 
 Here we are asking docde to run the `credit_create_new_bank_account`. The
-output for that `scenario` will end up in place of the directive:
-
-```
-definition
-~~~~~~~~~~
-
-.. cssclass:: code-block
-
-.. container:: definition
-
-   .. code-block:: bash
-      
-      POST https://api.balancedpayments.com/v1/credits
-   
-   
-request
-~~~~~~~
-
-.. cssclass:: code-block
-
-.. container:: request
-
-   .. code-block:: bash
-      
-      curl https://api.balancedpayments.com/v1/credits \
-            -u 8dfcb75eb2f511e2be56026ba7cd33d0: \
-      
-      
-            -d "amount=10000" \
-            -d "bank_account[routing_number]=121000358" \
-            -d "bank_account[type]=checking" \
-            -d "bank_account[name]=Johann Bernoulli" \
-            -d "bank_account[account_number]=9900000001"
-   
-   
-response
-~~~~~~~~
-```
+output for that `scenario` will end up in place of the directive.
 
 You'll also see a corresponding `dcode-default directive`. For example:
 
