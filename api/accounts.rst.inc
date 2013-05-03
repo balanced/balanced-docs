@@ -74,7 +74,7 @@ has been underwritten.
 .. container:: method-description
 
     .. dcode:: form merchant_accounts.create
-       :excludes: ssn_last_4 production person
+       :exclude: ssn_last_4 production person
 
 .. container:: method-examples
 
@@ -92,7 +92,7 @@ has been underwritten.
 .. container:: method-description
 
     .. dcode:: form merchants.create
-       :excludes: ssn_last_4 person.ssn_last_4 production
+       :exclude: ssn_last_4 person.ssn_last_4 production
 
 .. container:: method-examples
 

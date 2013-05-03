@@ -1,5 +1,3 @@
-# Makefile for Sphinx documentation
-
 # You can set these variables from the command line.
 SPHINXOPTS	=
 SPHINXBUILD	= sphinx-build
@@ -23,5 +21,6 @@ api:
 
 clean:
 	-rm -rf `pwd`/html
+	-rm -f *.cache
 
 all: api

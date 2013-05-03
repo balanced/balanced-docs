@@ -16,12 +16,12 @@ Creates a new bank account.
 
 .. container:: method-description
 
-  .. dcode:: form bank_accounts.create
+    .. dcode:: form bank_accounts.create
 
 
 .. container:: method-examples
 
-  .. dcode:: scenario bank_account_create
+    .. dcode:: scenario bank_account_create
 
 
 .. cssclass:: method-section
@@ -36,11 +36,11 @@ information is returned when creating the bank account.
 
 .. container:: method-description
 
-  .. no request
+    .. no request
 
 .. container:: method-examples
 
-  .. dcode:: scenario bank_account_show
+    .. dcode:: scenario bank_account_show
 
 
 .. cssclass:: method-section
@@ -60,7 +60,7 @@ Returns a list of bank accounts that you've created but haven't deleted.
 
 .. container:: method-examples
 
-  .. dcode:: scenario bank_account_list
+    .. dcode:: scenario bank_account_list
 
 
 .. cssclass:: method-section
@@ -73,8 +73,8 @@ with a deleted bank account will not be affected.
 
 .. container:: method-description
 
-  .. no request
+   .. no request
 
 .. container:: method-examples
 
-  .. dcode:: scenario bank_account_delete
+   .. dcode:: scenario bank_account_delete

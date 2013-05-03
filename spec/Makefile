@@ -14,3 +14,4 @@ all: $(DSTS)
 
 clean:
 	rm -rf $(BUILD_DIR)
+	rm -f *.cache

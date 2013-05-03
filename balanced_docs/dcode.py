@@ -1,9 +1,9 @@
 """
-Generates rST by via external scripts.
+Generates rST by running external scripts.
 
 Use the `dcode-default` directive to set default options:
 
-.. dcode-default: [key]
+.. dcode-default: [{key}]
     :cache: true
     :record: /tmp/dcode.record
     :script: some-script
@@ -13,7 +13,7 @@ Use the `dcode-default` directive to set default options:
 
 And the `dcode` directive to capture generated rST:
 
-.. dcode: [{key}] [{script-arg-1}] .. [{script-arg-n}]
+.. dcode: {key} [{script-arg-1}] .. [{script-arg-n}]
     :{script-option-1}: value(s)
     ...
     :{script-option-n}: value(s)
@@ -23,8 +23,10 @@ And the `dcode` directive to capture generated rST:
 Note that default options can be overridden by `dcode`.
 """
 from collections import defaultdict
+import errno
 import functools
 import hashlib
+import json
 import logging
 import os
 import pipes
@@ -43,9 +45,9 @@ class DCodeDefaultDirective(Directive):
 
     class Registry(dict):
 
-        def __init__(self, parent, **kwargs):
+        def __init__(self, parent, defaults=None):
             self.parent = parent
-            super(type(self), self).__init__(**kwargs)
+            super(type(self), self).__init__(defaults or {})
 
         def __getitem__(self, key):
             try:
@@ -55,12 +57,13 @@ class DCodeDefaultDirective(Directive):
 
     default_registry = Registry(
         None,
-        script=None,
-        cache=False,
-        record=None,
-        ignore=False,
-        section_include=None,
-        section_chars='~^',
+        {'script': None,
+         'cache': None,
+         'record': None,
+         'ignore': False,
+         'section-include': None,
+         'section-chars': '~^',
+         }
     )
 
     registry = defaultdict(functools.partial(Registry, default_registry))
@@ -73,7 +76,7 @@ class DCodeDefaultDirective(Directive):
         else:
             key = None
         if 'cache' in options:
-            cls.registry[key]['cache'] = True
+            cls.registry[key]['cache'] = options['cache']
         if 'script' in options:
             cls.registry[key]['script'] = options['script']
         if 'record' in options:
@@ -81,9 +84,15 @@ class DCodeDefaultDirective(Directive):
         if 'ignore' in options:
             cls.registry[key]['ignore'] = True
         if 'section-chars' in options:
-            cls.registry[key]['section_chars'] = options['section-chars']
+            cls.registry[key]['section-chars'] = options['section-chars']
         if 'section-include' in options:
-            cls.registry[key]['section_include'] = options['section-include'].split()
+            cls.registry[key]['section-include'] = options['section-include'].split()
+        kwargs = dict(
+            (k, v.split())
+            for k, v in options.iteritems()
+            if k not in cls.option_spec_fixed
+        )
+        cls.registry[key].update(kwargs)
         return []
 
     # Directive
@@ -94,15 +103,17 @@ class DCodeDefaultDirective(Directive):
 
     optional_arguments = 1
 
-    option_spec = {
+    option_spec = defaultdict(lambda: directives.unchanged)
+    option_spec.update({
         'script': directives.unchanged,
-        'cache': directives.flag,
+        'cache': directives.unchanged,
         'ignore': directives.flag,
         'record': directives.unchanged,
         'ignore': directives.unchanged,
         'section-chars': directives.unchanged,
         'section-include': directives.unchanged,
-    }
+    })
+    option_spec_fixed = option_spec.keys()
 
     has_content = False
 
@@ -127,7 +138,7 @@ class DCodeDirective(Directive):
 
         # cache
         if 'cache' in options:
-            cache = True
+            cache = options['cache']
         else:
             cache = DCodeDefaultDirective.registry[key]['cache']
 
@@ -153,18 +164,23 @@ class DCodeDirective(Directive):
         if 'section-chars' in options:
             section_chars = options['section-chars']
         else:
-            section_chars = DCodeDefaultDirective.registry[key]['section_chars']
+            section_chars = DCodeDefaultDirective.registry[key]['section-chars']
         if 'section-include' in options:
             section_include = options['section-include'].split()
         else:
-            section_include = DCodeDefaultDirective.registry[key]['section_include']
+            section_include = DCodeDefaultDirective.registry[key]['section-include']
 
         # kwargs
         kwargs = dict(
+            (k, v)
+            for k, v in DCodeDefaultDirective.registry[key].iteritems()
+            if k not in cls.option_spec_fixed
+        )
+        kwargs.update(dict(
             (k, v.split())
             for k, v in options.iteritems()
-            if k not in cls.option_spec
-        )
+            if k not in cls.option_spec_fixed
+        ))
 
         # generate
         if not script:
@@ -185,7 +201,7 @@ class DCodeDirective(Directive):
             if isinstance(content, list):
                 content = '\n'.join(content)
             _generate(
-                cache=cache,
+                cache_file=cache,
                 record=record,
                 write=write,
                 script=script,
@@ -215,6 +231,7 @@ class DCodeDirective(Directive):
         'section-include': directives.unchanged,
         'section-chars': directives.unchanged,
     })
+    option_spec_fixed = option_spec.keys()
 
     has_content = True
 
@@ -333,26 +350,43 @@ def _execute(script, args, kwargs, content, record=None):
     return stdout
 
 
-_CACHE = {
-}
+class Cache(dict):
 
+    @classmethod
+    def key(cls, script, args, kwargs, content):
+        m = hashlib.md5()
+        m.update(script)
+        for arg in sorted(args):
+            m.update(arg)
+        for k, v in sorted(kwargs.items()):
+            m.update(k)
+            for vv in v:
+                m.update(vv)
+        for l in content:
+            m.update(l)
+        return m.hexdigest()
 
-def _cache_key(script, args, kwargs, content):
-    m = hashlib.md5()
-    m.update(script)
-    for arg in sorted(args):
-        m.update(arg)
-    for k, v in sorted(kwargs.items()):
-        m.update(k)
-        for vv in v:
-            m.update(vv)
-    for l in content:
-        m.update(l)
-    return m.hexdigest()
+    @classmethod
+    def load(self, file_path):
+        try:
+            with open(file_path, 'r') as fo:
+                cache = Cache(json.load(fo))
+                logger.debug('loaded cache from "%s"', file_path)
+        except IOError, ex:
+            if ex.errno != errno.ENOENT:
+                raise
+            logger.debug('no cache @ "%s"', file_path)
+            cache = Cache()
+        return cache
+
+    def save(self, file_path):
+        with open(file_path, 'w') as fo:
+            json.dump(self, fo, indent=4)
+        logger.debug('saved cache to "%s"', file_path)
 
 
 def _generate(
-        cache,
+        cache_file,
         record,
         script,
         args,
@@ -360,15 +394,18 @@ def _generate(
         content,
         write
     ):
-    if cache:
-        key = _cache_key(script, args, kwargs, content)
-        if key in _CACHE:
+    if cache_file:
+        cache = Cache.load(cache_file)
+        key = cache.key(script, args, kwargs, content)
+        if key in cache:
             logger.debug('cache hit "%s"', key)
-            result = _CACHE[key]
+            result = cache[key]
         else:
+            logger.debug('cache miss "%s"', key)
             result = _execute(script, args, kwargs, content, record)
             logger.debug('cache store "%s"', key)
-            _CACHE[key] = result
+            cache[key] = result
+            cache.save(cache_file)
     else:
         result = _execute(script, args, kwargs, content, record)
     for line in result.splitlines():

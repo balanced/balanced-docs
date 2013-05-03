@@ -16,7 +16,7 @@ this way, so you can safely assume that the information has been deleted.
 .. container:: method-description
 
     .. dcode:: form credits.create
-       :excludes: bank_account.0.bank_code bank_account.1
+       :exclude: bank_account.0.bank_code bank_account.1
 
 .. container:: method-examples
 

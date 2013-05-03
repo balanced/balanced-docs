@@ -1,5 +1,5 @@
 .. dcode-default::
-    :cache:
+    :cache: dcode.cache
 
 .. dcode-default:: view
     :script: ./rst.py view
@@ -14,8 +14,9 @@
     :script: ./rst.py error
 
 .. dcode-default:: scenario
-    :script: ./scenario.py -c scenario.cache
+    :script: ../scenario.py -d ../scenarios -c scenario.cache
     :section-chars: ~^
+    :lang: python ruby php
 
 .. dcode-default:: enum
     :script: ./rst.py enum
@@ -48,16 +49,22 @@ The API conforms to the design principles of Representational State Transfer
 * Methods that change data in the Balanced API require an HTTP ``PUT`` request.
 * Methods that destroy data in the Balanced API require an HTTP ``DELETE`` request.
 
-
-.. include:: authentication.rst.inc
 .. include:: errors.rst.inc
+
 .. include:: bank_accounts.rst.inc
+
 .. include:: bank_account_verifications.rst.inc
+
 .. include:: cards.rst.inc
+
 .. include:: accounts.rst.inc
+
 .. include:: credits.rst.inc
+
 .. include:: debits.rst.inc
+
 .. include:: holds.rst.inc
+
 .. include:: refunds.rst.inc
+
 .. include:: events.rst.inc
-_.. include:: callbacks.rst.inc

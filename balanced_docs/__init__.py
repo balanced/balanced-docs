@@ -8,7 +8,7 @@ import sys
 
 class BlockWriter(object):
 
-    indent = ' ' * 4
+    indent = ' ' * 3
 
     def __init__(self, io):
         self.io = io

@@ -87,7 +87,13 @@ def enum_rst(args):
         logger.warning('discarding content:\n%s', content)
     name = args.enum[0]
     data = dockers.load(open(args.data, 'r'))
-    rst.enum.generate(BlockWriter(sys.stdout), name, data)
+    rst.enum.generate(
+        BlockWriter(sys.stdout),
+        name,
+        data,
+        includes=args.includes,
+        excludes=args.excludes,
+    )
 
 
 # main
@@ -191,6 +197,18 @@ def create_arg_parser():
     # enum
     command = sub_parsers.add_parser('enum', parents=parents)
     command.add_argument('enum', default=[], nargs=1, metavar='ENUM')
+    command.add_argument(
+        '-i', '--include',
+        dest='includes',
+        default=[],
+        action='append',
+    )
+    command.add_argument(
+        '-e', '--exclude',
+        dest='excludes',
+        default=[],
+        action='append',
+    )
     command.set_defaults(command=enum_rst)
 
     return parser
