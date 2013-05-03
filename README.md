@@ -5,8 +5,8 @@
 This project builds the following Balanced documentation:
 
 - [Specification](https://github.com/balanced/balanced-api)
-- [Reference](https://www.balancedpayments.com/docs/api)
-- [Overiew](https://www.balancedpayments.com/docs/overview)
+- [Reference](https://docs.balancedpayments.com/api)
+- [Overiew](https://docs.balancedpayments.com/overview)
 
 ## Contributing
 
@@ -59,8 +59,7 @@ Now that your environment is setup lets build the docuementation.
 To build the [specification](https://github.com/balanced/balanced-api) do:
 
 ```bash
-cd spec
-make clean all
+make spec-clean spec
 ```
 
 ### Overview
@@ -68,15 +67,7 @@ make clean all
 To build the [overview](https://balancedpayments.com/docs/overview) do:
 
 ```bash
-cd overview
-make clean all
-```
-
-To preview the generated overview, just open up the html path printed by the
-`Makefile` in your local browser which typically looks like this 
-
-```bash
-Build finished. The HTML pages are in /path/to/balanced-docs/overview/html.
+make overview-clean overview
 ```
 
 ### Reference
@@ -84,23 +75,39 @@ Build finished. The HTML pages are in /path/to/balanced-docs/overview/html.
 To build the [reference](https://balancedpayments.com/docs/api) do:
 
 ```bash
-cd api
-make clean all
+make api-clean api
 ```
 
-To preview the generated reference, just open up the html path printed by the
-`Makefile` in your local browser which typically looks like this 
+## Preview
+
+Lets take a look at what we've done using [mongoose](https://github.com/valenok/mongoose):
 
 ```bash
-Build finished. The HTML pages are in /path/to/balanced-docs/api/html.
+cd site
+./mongoose
+Mongoose web server v. 3.8 started on port(s) 8080 with web root [.]
 ```
 
-## rST
+### Specification
+
+[TODO](https://github.com/balanced/balanced-docs/issues/70)
+
+### Overview
+
+Open up `http://localhost:8080/overview.shtml`
+
+### Reference
+
+Open up `http://localhost:8080/api.shtml`
+
+## Hacking
+
+### rST
 
 All of the documentation is written in r(e)S(tructured)T(ext) which you can read
 about [here](http://docutils.sourceforge.net/docs/user/rst/quickstart.html).
 
-## dcode
+### dcode
 
 We've added a custom rST directive called `dcode` which uses external scripts to
 generate rST content. For example:

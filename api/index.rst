@@ -2,24 +2,24 @@
     :cache: dcode.cache
 
 .. dcode-default:: view
-    :script: ./rst.py view
+    :script: scripts/rst.py view
 
 .. dcode-default:: form
-    :script: ./rst.py form
+    :script: scripts/rst.py form
 
 .. dcode-default:: endpoint
-    :script: ./rst.py endpoint
+    :script: scripts/rst.py endpoint
 
 .. dcode-default:: error
-    :script: ./rst.py error
-
-.. dcode-default:: scenario
-    :script: ../scenario.py -d ../scenarios -c scenario.cache
-    :section-chars: ~^
-    :lang: python ruby php
+    :script: scripts/rst.py error
 
 .. dcode-default:: enum
-    :script: ./rst.py enum
+    :script: scripts/rst.py enum
+
+.. dcode-default:: scenario
+    :script: scripts/lang-scenario.py -d scenarios -c scenario.cache
+    :section-chars: ~^
+    :lang: python ruby php
 
 
 .. container:: langbar

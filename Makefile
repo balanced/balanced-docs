@@ -1,0 +1,70 @@
+# spec variables
+SPEC_SRC_DIR	=	spec/src
+SPEC_SRCS		=	$(wildcard $(SPEC_SRC_DIR)/*.rst) $(wildcard $(SPEC_SRC_DIR)/resources/*.rst)
+SPEC_BUILD_DIR	=	spec/dst
+SPEC_BUILD_CMD	=	./spec/build.py
+SPEC_DSTS		=	$(addprefix $(SPEC_BUILD_DIR)/, $(patsubst $(SPEC_SRC_DIR)/%, %, $(SPEC_SRCS)))
+
+# sphinx public variables (you can set these form the command line).
+SPHINXOPTS	=
+SPHINXBUILD	= sphinx-build
+PAPER 		= n
+BUILDDIR	= build
+
+# sphinx internal.
+PAPEROPT_a4 	= -D latex_paper_size=a4
+PAPEROPT_letter = -D latex_paper_size=letter
+ALLSPHINXOPTS 	= -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
+
+# the i18n builder cannot share the environment and doctrees with the others
+I18NSPHINXOPTS = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
+
+# common variable
+HTML_CONTAINER_CMD	= scripts/html-container.py
+SITE_DIR 			= site
+
+.PHONY: clean spec-clean api-clean all
+
+all: spec api overview 
+
+clean: api-clean spec-clean
+
+# spec
+
+$(SPEC_BUILD_DIR)/%.rst: $(SPEC_SRC_DIR)/%.rst
+	@mkdir -p $(@D)
+	$(SPEC_BUILD_CMD) $< > $@
+	
+spec: $(SPEC_DSTS) 
+
+spec-clean:
+	-rm -rf $(SPEC_BUILD_DIR)
+	-rm -f spec/*.cache
+
+# api
+
+api/html/index.html:
+	$(SPHINXBUILD) -b singlehtml -c api api api/html
+	
+$(SITE_DIR)/api-gen.html: api/html/index.html
+	$(HTML_CONTAINER_CMD) > $(SITE_DIR)/api-gen.html < api/html/index.html
+
+api: $(SITE_DIR)/api-gen.html
+
+api-clean: 
+	-rm -rf api/html
+	-rm -f api/*.cache
+
+# overview
+
+overview/html/index.html:
+	$(SPHINXBUILD) -b singlehtml -c overview overview overview/html
+	
+$(SITE_DIR)/overview-gen.html: overview/html/index.html
+	$(HTML_CONTAINER_CMD) > $(SITE_DIR)/overview-gen.html < overview/html/index.html
+
+overview: $(SITE_DIR)/overview-gen.html
+
+overview-clean: 
+	-rm -rf overview/html
+	-rm -f overview/*.cache

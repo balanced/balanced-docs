@@ -5,7 +5,7 @@
     :cache: dcode.cache
 
 .. dcode-default:: scenario
-    :script: ../scenario.py -d ../scenarios -c scenario.cache
+    :script: scripts/lang-scenario.py -d scenarios -c scenario.cache
     :section-chars: ~^
     :lang: python ruby php
 
