@@ -69,8 +69,6 @@ Request
 Update a Customer
 -----------------
 
-You can delete a customer so long as there has been no activity associated with it such as adding a card or creating a debit. 
-
 .. dcode:: endpoint customers.update
 
 Request
@@ -85,6 +83,8 @@ Request
 
 Delete a Customer
 -----------------
+
+You can delete a customer so long as there has been no activity associated with it such as adding a card or creating a debit. 
 
 .. dcode:: endpoint customers.delete
 
