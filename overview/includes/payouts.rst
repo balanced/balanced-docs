@@ -219,7 +219,7 @@ via the Balanced `dashboard`_.
 
 .. tip::
 
-   We advise that you transfer a large amount in you Balanced account or you
+   We advise that you transfer a large amount in your Balanced account or you
    may request that Balanced always keep a constant amount in your account for
    you. We're publically tracking this on `github issue #132`_ and appreciate your input
 
