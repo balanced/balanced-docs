@@ -65,7 +65,6 @@ def expand_directives(fo, disabled):
 DEFAULT_RST = """\
 
 .. dcode-default::
-    :cache: dcode.cache
 
 .. dcode-default:: scenario
     :script: ./scripts/http-scenario.py -c scenario.cache

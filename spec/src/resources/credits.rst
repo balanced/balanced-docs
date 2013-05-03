@@ -96,6 +96,9 @@ Response
 Retrieve a Credit
 -----------------
 
+Request
+~~~~~~~
+
 .. dcode:: endpoint credits.show
    :exclude-method: HEAD
 

@@ -52,14 +52,19 @@ workon balanced-docs
 
 ## Build
 
-Now that your environment is setup lets build the docuementation.
+Now that your environment is setup lets build the docuementation. To build
+them all at once do: 
+
+```bash
+make all
+```
 
 ### Specification
 
 To build the [specification](https://github.com/balanced/balanced-api) do:
 
 ```bash
-make spec-clean spec
+make spec
 ```
 
 ### Overview
@@ -67,7 +72,7 @@ make spec-clean spec
 To build the [overview](https://balancedpayments.com/docs/overview) do:
 
 ```bash
-make overview-clean overview
+make overview
 ```
 
 ### Reference
@@ -75,12 +80,12 @@ make overview-clean overview
 To build the [reference](https://balancedpayments.com/docs/api) do:
 
 ```bash
-make api-clean api
+make api
 ```
 
 ## Preview
 
-Lets take a look at what we've done using [mongoose](https://github.com/valenok/mongoose):
+Lets take a look at what we've built using [mongoose](https://github.com/valenok/mongoose):
 
 ```bash
 cd site
@@ -90,7 +95,7 @@ Mongoose web server v. 3.8 started on port(s) 8080 with web root [.]
 
 ### Specification
 
-[TODO](https://github.com/balanced/balanced-docs/issues/70)
+Open up `http://localhost:8080/spec`
 
 ### Overview
 

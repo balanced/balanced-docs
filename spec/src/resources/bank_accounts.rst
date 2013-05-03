@@ -46,6 +46,9 @@ Response
 Retrieve a Bank Account
 -----------------------
 
+Request
+~~~~~~~
+
 .. dcode:: endpoint bank_accounts.show
 
 .. dcode:: scenario bank_accounts.show
@@ -54,7 +57,7 @@ Retrieve a Bank Account
 List All Bank Accounts
 ----------------------
 
-.. endpoint:: bank_accounts.index
+.. dcode:: endpoint bank_accounts.index
 
 Request
 ~~~~~~~
@@ -107,6 +110,9 @@ Response
 
 Delete a Bank Account
 ---------------------
+
+Request
+~~~~~~~
 
 .. dcode:: endpoint bank_accounts.delete
 

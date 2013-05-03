@@ -1,9 +1,12 @@
 # spec variables
 SPEC_SRC_DIR	=	spec/src
 SPEC_SRCS		=	$(wildcard $(SPEC_SRC_DIR)/*.rst) $(wildcard $(SPEC_SRC_DIR)/resources/*.rst)
-SPEC_BUILD_DIR	=	spec/dst
-SPEC_BUILD_CMD	=	./spec/build.py
-SPEC_DSTS		=	$(addprefix $(SPEC_BUILD_DIR)/, $(patsubst $(SPEC_SRC_DIR)/%, %, $(SPEC_SRCS)))
+SPEC_RST_DIR	=	spec/dst
+SPEC_RST_CMD	=	./spec/build.py
+SPEC_RST_DSTS	=	$(addprefix $(SPEC_RST_DIR)/, $(patsubst $(SPEC_SRC_DIR)/%, %, $(SPEC_SRCS)))
+SPEC_HTML_DIR	=	site/spec
+SPEC_HTML_CMD	=	rst2html.py
+SPEC_HTML_DSTS	=	$(addprefix $(SPEC_HTML_DIR)/, $(patsubst %rst, %html, $(patsubst $(SPEC_RST_DIR)/%, %, $(SPEC_RST_DSTS))))
 
 # sphinx public variables (you can set these form the command line).
 SPHINXOPTS	=
@@ -23,7 +26,7 @@ I18NSPHINXOPTS = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
 HTML_CONTAINER_CMD	= scripts/html-container.py
 SITE_DIR 			= site
 
-.PHONY: clean spec-clean api-clean all
+.PHONY: clean spec-clean api-clean all test
 
 all: spec api overview 
 
@@ -31,11 +34,22 @@ clean: api-clean spec-clean
 
 # spec
 
-$(SPEC_BUILD_DIR)/%.rst: $(SPEC_SRC_DIR)/%.rst
+test:
+	@echo $(SPEC_HTML_DSTS)
+
+$(SPEC_RST_DIR)/%.rst: $(SPEC_SRC_DIR)/%.rst
 	@mkdir -p $(@D)
-	$(SPEC_BUILD_CMD) $< > $@
-	
-spec: $(SPEC_DSTS) 
+	$(SPEC_RST_CMD) $< > $@
+
+spec-rst: $(SPEC_RST_DSTS)
+
+$(SPEC_HTML_DIR)/%.html: $(SPEC_RST_DIR)/%.rst
+	@mkdir -p $(@D)
+	$(SPEC_HTML_CMD) $< > $@ 
+
+spec-html: $(SPEC_HTML_DSTS)
+
+spec: spec-rst spec-html
 
 spec-clean:
 	-rm -rf $(SPEC_BUILD_DIR)

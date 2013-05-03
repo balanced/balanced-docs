@@ -101,6 +101,9 @@ Retrieve an Account
 List all Accounts
 -----------------
 
+Request
+~~~~~~~
+
 .. dcode:: endpoint accounts.index
 
 .. dcode:: scenario accounts.index

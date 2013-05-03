@@ -48,8 +48,8 @@
     
     <nav id="doc-nav">
         <ul>
-            <li class=""><a href="/docs/overview">overview</a></li>
-            <li class="selected"><a href="/docs/api">API reference</a></li>
+            <li class=""><a href="/overview">overview</a></li>
+            <li class="selected"><a href="/api">API reference</a></li>
         </ul>
     </nav>
     
