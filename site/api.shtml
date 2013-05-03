@@ -40,26 +40,27 @@
     api docs 
  ">
     
+        
+<!--#include file="header.html" -->   
 
-<!--#include file="header.html">
-
+    
+    
+    
     <nav id="doc-nav">
         <ul>
-            <li class=""><a href="/overview">overview</a></li>
-            <li class="selected"><a href="/api">API reference</a></li>
+            <li class=""><a href="/docs/overview">overview</a></li>
+            <li class="selected"><a href="/docs/api">API reference</a></li>
         </ul>
     </nav>
     
     
  
- <!--#include file="api-gen.html">
+ <!--#include file="api-gen.html" -->
  
- 
- 
+
     <div class="nav-toggle"><a href="#"><span>Section:</span> API reference</a></div>
 
-
-<!--#include file="footer.html">
+<!--#include file="footer.html" -->
 
     <div id="body-content-queue"></div>
         
@@ -77,13 +78,20 @@
                 pageStartTime: _pageStartTime,
                 marketplaceUri: '',
                 debug: !1,
+                mixpanel: {
+                    token: '991598fc644dd5d0894e6cb070154330',
+                    distinctId: '13b4d8fbd93267-0796b5d8f2bc4a-76236755-15f900-13b4d8fbd9476',
+                    name_tag: 'andrew+bye2@poundpay.com',
+                    email_address: 'andrew+bye2@poundpay.com'
+                },
                 help: {
                     url: '/help/search'
                 }
             });
         });
     </script>
-    <script type="text/javascript" src="https://d3n06lmttbcmxe.cloudfront.net/js/build/docs/docs.min.0b5629e36b2bde176f8b90c630de5711.js"></script> 
+
+           <script type="text/javascript" src="https://d3n06lmttbcmxe.cloudfront.net/js/build/docs/docs.min.0b5629e36b2bde176f8b90c630de5711.js"></script> 
     <script type="text/javascript">
         $(function(){
             Balanced.Docs.init({
