@@ -302,7 +302,7 @@ Recap:
 
 - The bike owners are the merchants.
 - The renters are the buyers.
-- Your marketplace is called Rent By Bike
+- Your marketplace is called Rent My Bike
 
 .. [#] Our sample marketplace is actually called `Rent My Bike`_ :)
 
