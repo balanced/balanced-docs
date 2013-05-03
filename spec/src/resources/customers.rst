@@ -5,6 +5,7 @@ Customers
 - `Retrieve a Customer`_
 - `List all Customers`_
 - `Update a Customer`_
+- `Delete a Customer`_
 
 Fields
 ------
@@ -68,6 +69,8 @@ Request
 Update a Customer
 -----------------
 
+You can delete a customer so long as there has been no activity associated with it such as adding a card or creating a debit. 
+
 .. dcode:: endpoint customers.update
 
 Request
@@ -77,4 +80,16 @@ Request
     :exclude: region
 
 .. dcode:: scenario customers.update
+   :section-include: response
+
+
+Delete a Customer
+-----------------
+
+.. dcode:: endpoint customers.delete
+
+Request
+~~~~~~~
+
+.. dcode:: scenario customers.delete
    :section-include: response
