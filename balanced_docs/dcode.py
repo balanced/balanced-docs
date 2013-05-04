@@ -326,7 +326,7 @@ def _execute(script, args, kwargs, content, record=None):
     cmd = (
         shlex.split(script.encode('utf-8')) +
         args +
-        ['--{}={}'.format(k, v) for k, vs in kwargs.iteritems() for v in vs]
+        ['--{0}={1}'.format(k, v) for k, vs in kwargs.iteritems() for v in vs]
     )
     sh_cmd = ' '.join(pipes.quote(p) for p in cmd)
     logger.debug('executing "%s"', sh_cmd)
@@ -346,7 +346,7 @@ def _execute(script, args, kwargs, content, record=None):
         print >>sys.stderr, stderr
         print >>sys.stderr, 'stdout:'
         print >>sys.stderr, stdout
-        raise Exception('{} - failed with exit code {}'.format(sh_cmd, proc.returncode))
+        raise Exception('{0} - failed with exit code {1}'.format(sh_cmd, proc.returncode))
     return stdout
 
 

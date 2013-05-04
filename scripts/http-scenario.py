@@ -109,7 +109,7 @@ class Context(object):
                 req['body'] = json.dumps(json.loads(r.request.body), indent=4)
             resp = {
                 'headers': [
-                    ('Status', '{} {}'.format(r.status_code, r.raw.reason)),
+                    ('Status', '{0} {1}'.format(r.status_code, r.raw.reason)),
                 ],
                 'body': r.content,
             }
@@ -950,7 +950,7 @@ def main():
         for name in args.scenarios:
             munged = re.sub(r'[\-\.]', '_', name.lower())
             if munged not in SCENARIOS:
-                raise ValueError('Invalid scenario "{}" (munged "{}")'.format(name, munged))
+                raise ValueError('Invalid scenario "{0}" (munged "{1}")'.format(name, munged))
             req, resp = SCENARIOS[munged](ctx)
             generate(write, req, resp, args.sections)
     finally:
