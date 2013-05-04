@@ -34,6 +34,9 @@ Response
 Retrieve a Bank Account Verification for a Bank Account
 -------------------------------------------------------
 
+Request
+~~~~~~~
+
 .. dcode:: endpoint bank_account_authentications.show
 
 .. dcode:: scenario bank_account_authentications.show

@@ -65,26 +65,25 @@ def expand_directives(fo, disabled):
 DEFAULT_RST = """\
 
 .. dcode-default::
-    :cache: dcode.cache
 
 .. dcode-default:: scenario
-    :script: ./scenario.py -c scenario.cache
+    :script: ./scripts/http-scenario.py -c scenario.cache
     :section-chars: ~^
 
 .. dcode-default:: view
-    :script: ./rst.py view
+    :script: ./scripts/rst.py view
 
 .. dcode-default:: form
-    :script: ./rst.py form
+    :script: ./scripts/rst.py form
 
 .. dcode-default:: endpoint
-    :script: ./rst.py endpoint
+    :script: ./scripts/rst.py endpoint
 
 .. dcode-default:: error
-    :script: ./rst.py error
+    :script: ./scripts/rst.py error
 
 .. dcode-default:: enum
-    :script: ./rst.py enum
+    :script: ./scripts/rst.py enum
 
 """
 

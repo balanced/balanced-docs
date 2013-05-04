@@ -19,7 +19,7 @@ class BulletListParser(object):
     def _consume_start(self, line):
         m = re.match(r'(?P<indent>\s*?)\- ', line)
         if not m:
-            raise Exception('Unable to parse bullet list start "{}"'.format(
+            raise Exception('Unable to parse bullet list start "{0}"'.format(
                 line))
         self.indent = len(m.group('indent'))
         self.bullet.append(line[m.end():])
@@ -76,7 +76,7 @@ class DirectiveParser(object):
     def render(self):
         indent = ' ' * self.indent
         if not self.has_content and self.content:
-            raise ValueError('Directive {} does not support content'.format(self.name))
+            raise ValueError('Directive {0} does not support content'.format(self.name))
         if self.has_content:
             for l in self.generator(self.args, self.opts, self.content):
                 yield indent + l
@@ -91,11 +91,11 @@ class DirectiveParser(object):
     def _consume_header(self, line):
         m = re.match(self._header_re, line)
         if not m:
-            raise ValueError('Invalid {} directive header'.format(
+            raise ValueError('Invalid {0} directive header'.format(
                 self.name))
         name = m.group('name')
         if self.name != name:
-            raise ValueError('Wrong {} directive header'.format(self.name))
+            raise ValueError('Wrong {0} directive header'.format(self.name))
         if m.group('arg'):
             self.args += m.group('arg').strip().split()
         self.indent = self._indent(line)
@@ -133,7 +133,7 @@ class DirectiveParser(object):
             self.content.append(line[self.indent + 3:].rstrip())
 
     def _consume_done(self, line):
-        raise ValueError('Directive {} has been fully parsed'.format(self.name))
+        raise ValueError('Directive {0} has been fully parsed'.format(self.name))
 
     @staticmethod
     def _indent(line):

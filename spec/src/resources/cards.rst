@@ -94,7 +94,7 @@ Update a Card
 Request
 ~~~~~~~
 
-.. form:: card.update
+.. dcode:: form card.update
    :exclude: account_uri account
 
 .. dcode:: scenario cards.update

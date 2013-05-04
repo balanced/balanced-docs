@@ -15,11 +15,11 @@ Fields
 Deprecated
 ~~~~~~~~~~
 
-.. decode:: view refund
+.. dcode:: view refund
    :include: fee
 
 Refund an Account
-----------------
+-----------------
 
 .. dcode:: endpoint refunds.create
    :exclude-method: HEAD
@@ -40,17 +40,20 @@ Response
    :section-include: response
 
 Retrieve a Refund
-----------------
+-----------------
 
 .. dcode:: endpoint refunds.show
    :exclude-method: HEAD
+
+Response
+~~~~~~~~
 
 .. dcode:: scenario refunds.show
    :section-include: response
 
 
-List All refunds
----------------
+List All Refunds
+----------------
 
 .. dcode:: endpoint refunds.index
    :exclude-method: HEAD
@@ -58,7 +61,7 @@ List All refunds
 .. dcode:: scenario refunds.index
 
 Update a Refund
---------------
+---------------
 
 .. dcode:: endpoint refunds.update
    :exclude-method: HEAD
@@ -68,7 +71,6 @@ Request
 ~~~~~~~
 
 .. dcode:: form refunds.update
-
 
 .. dcode:: scenario refunds.update
    :section-include: request

@@ -49,6 +49,9 @@ Retrieve a Debit
 .. dcode:: endpoint debits.show
    :exclude-method: HEAD
 
+Request
+~~~~~~~
+
 .. dcode:: scenario debits.show
    :section-include: response
 

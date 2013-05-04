@@ -8,7 +8,7 @@ def generate(writer, name, data, includes=None, excludes=None):
     )
     enum = data.match_enum(name)
     if not enum:
-        raise ValueError('Enum "{}" not found'.format(name))
+        raise ValueError('Enum "{0}" not found'.format(name))
     for value, description in sorted(enum['values'].items()):
         if not filter(value):
             continue

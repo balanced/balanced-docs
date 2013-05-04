@@ -1,10 +1,9 @@
 def generate(writer, name, data, exclude_methods):
     endpoint = data.match_endpoint(name)[0]
     if not endpoint:
-        raise ValueError('Endpoint "{}" not found'.format(name))
+        raise ValueError('Endpoint "{0}" not found'.format(name))
     path = endpoint['path']
-    writer('.. code::')
-    writer('\n')
+    writer('.. code::\n\n')
     with writer:
         writer('\n')
         if exclude_methods:

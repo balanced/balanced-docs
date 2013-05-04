@@ -26,7 +26,7 @@ Fields
 Deprecated
 ~~~~~~~~~~
 
-.. view:: hold
+.. dcode:: view hold
    :include: fee
 
 Create a Hold
@@ -55,6 +55,9 @@ Retrieve a Hold
 .. dcode:: endpoint holds.show
    :exclude-method: HEAD
    
+Response
+~~~~~~~~
+   
 .. dcode:: scenario holds.show
    :section-include: response
 
@@ -63,6 +66,9 @@ List all Holds
 
 .. dcode:: endpoint holds.index
    :exclude-method: HEAD
+
+Response
+~~~~~~~~
    
 .. dcode:: scenario holds.index
    :section-include: response

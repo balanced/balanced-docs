@@ -18,7 +18,7 @@ def generate(writer, name, content, data, includes=None, excludes=None):
     )
     form = data.match_form(name)
     if not form:
-        raise ValueError('Form "{}" not found'.format(name))
+        raise ValueError('Form "{0}" not found'.format(name))
     for field in form['fields']:
         _generate(ctx, field)
 
@@ -48,7 +48,7 @@ def _generate_field(ctx, field):
             return
 
         # name
-        ctx.writer('``{}``'.format(field['name']))
+        ctx.writer('``{0}``'.format(field['name']))
         ctx.writer('\n')
 
         with ctx.writer:
@@ -57,7 +57,7 @@ def _generate_field(ctx, field):
             else:
                 # type
                 ctx.writer('*required*' if field['required'] else '*optional*')
-                ctx.writer(' **{}**'.format(field['type']))
+                ctx.writer(' **{0}**'.format(field['type']))
                 if field['nullable']:
                     ctx.writer(' or **null**')
                 ctx.writer('.')
@@ -86,7 +86,7 @@ def _generate_field(ctx, field):
                                 ctx.writer(default)
                         else:
                             ctx.writer(' ')
-                            ctx.writer('Defaults to ``{}``.'.format(default))
+                            ctx.writer('Defaults to ``{0}``.'.format(default))
         ctx.writer('\n')
 
 
@@ -101,7 +101,7 @@ def _generate_form_field(ctx, form_field):
             return
 
         # name
-        ctx.writer('``{}``'.format(form_field['name']))
+        ctx.writer('``{0}``'.format(form_field['name']))
         ctx.writer('\n')
 
         with ctx.writer:

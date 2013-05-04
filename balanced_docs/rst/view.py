@@ -12,15 +12,15 @@ def generate(writer, name, content, data, includes=None, excludes=None):
     )
     view = data.match_view(name)
     if not view:
-        raise ValueError('View "{}" not found'.format(name))
+        raise ValueError('View "{0}" not found'.format(name))
     for field in view['fields']:
         with ctx(field['name']):
             if not ctx.filtered:
                 continue
-            ctx.writer('``{}``'.format(field['name']))
+            ctx.writer('``{0}``'.format(field['name']))
             ctx.writer('\n')
             with ctx.writer:
-                ctx.writer('**{}**'.format(field['type']))
+                ctx.writer('**{0}**'.format(field['type']))
                 ctx.writer('.')
                 if ctx.overriden:
                     description = ctx.override
