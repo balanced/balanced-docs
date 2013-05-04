@@ -49,6 +49,7 @@ Request
 .. dcode:: form accounts.create
     :include: name email_address bank_account_uri bank_account merchant_uri merchant
     :exclude: merchant.region merchant.state merchant.person.region merchant.person.state merchant.dob merchant.ssn_last_4 merchant.person.ssn_last_4
+    :required: merchant.person
 
     - bank_account
       See `BankAccount <./bank_accounts.rst>`_.
