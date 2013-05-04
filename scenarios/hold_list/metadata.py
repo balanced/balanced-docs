@@ -1,3 +1,3 @@
 request = {
-    'uri': storage['marketplace']['holds_uri'],
+    'uri': marketplace.holds_uri,
 }

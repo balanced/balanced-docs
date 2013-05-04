@@ -1,3 +1,3 @@
 request = {
-    'uri': storage['marketplace']['debits_uri'],
+    'uri': ctx.marketplace.debits_uri,
 }

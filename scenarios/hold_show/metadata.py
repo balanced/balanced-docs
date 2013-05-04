@@ -1,5 +1,5 @@
 hold = json.loads(
-    storage['hold_create']['response']['content']
+    storage['hold_create']['response']
 )
 
 request = {

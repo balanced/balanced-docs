@@ -1,0 +1,114 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
+    <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
+    <script type="text/javascript">
+        var _pageStartTime = (new Date()).getTime();
+    </script>
+    
+    
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="/js/lib/html5shiv.js"></script>
+    <![endif]-->
+           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/bootstrap-2.0.a4fc501f03bda0733015fa4530ac6c69.css"> 
+           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/base.73b7fe5564635d8138deef815500177b.css"> 
+    <!--[if lte IE 9]>
+           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/ie9.9e3b95939b857bd20e152394ff185462.css"> 
+    <![endif]-->
+
+           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/pygments.e6fe52e05265bb808055e9e798153bda.css"> 
+           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/docs/new.e5766dd3b207ada3bb8de443d9fa7547.css"> 
+
+    
+<script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-30733850-1']);
+    _gaq.push(['_setDomainName', 'balancedpayments.com']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+    </script>
+
+</head>
+<body class="
+    overview docs 
+ ">
+    
+<!--#include file="header.html" -->
+    
+    <nav id="doc-nav">
+        <ul>
+            <li class="selected"><a href="/overview">overview</a></li>
+            <li class=""><a href="/api">API reference</a></li>
+        </ul>
+    </nav>
+    
+
+<!--#include file="overview-gen.html" -->
+
+
+<div class="nav-toggle"><a href="#"><span>Section:</span> API reference</a></div>
+
+
+<!--#include file="footer.html" -->
+    
+
+    <div id="body-content-queue"></div>
+        
+    
+    <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.min.js"></script>
+           <script type="text/javascript" src="https://d3n06lmttbcmxe.cloudfront.net/js/build/balanced.lib.min.59f58cb1ce38fe315e8f774c4398f042.js"></script> 
+           <script type="text/javascript" src="https://d3n06lmttbcmxe.cloudfront.net/js/build/balanced.min.5dbc8bbadddaf492a4588146bf3439f6.js"></script> 
+    <script type="text/javascript">
+        var csrf = 'rq3FlbXJpE395KHHkjspT9bXebRExAivXxSvIXcQydk';
+
+        //  kick everything off when jquery is ready
+        $(function () {
+            Balanced.init({
+                csrfToken: csrf,
+                pageStartTime: _pageStartTime,
+                marketplaceUri: '',
+                debug: !1,
+                mixpanel: {
+                    token: '991598fc644dd5d0894e6cb070154330',
+                    distinctId: '13b4d8fbd93267-0796b5d8f2bc4a-76236755-15f900-13b4d8fbd9476',
+                    name_tag: 'andrew+bye2@poundpay.com',
+                    email_address: 'andrew+bye2@poundpay.com'
+                },
+                help: {
+                    url: '/help/search'
+                }
+            });
+        });
+    </script>
+
+           <script type="text/javascript" src="https://d3n06lmttbcmxe.cloudfront.net/js/build/docs/docs.min.0b5629e36b2bde176f8b90c630de5711.js"></script> 
+    <script type="text/javascript">
+        $(function(){
+            Balanced.Docs.init({
+                isOverview: !0
+            });
+        });
+    </script>
+
+    </body>
+    
+    <section class="print-header">
+        801 High Street, Suite 200<br>
+        Palo Alto, CA 94301<br>
+        (877) 240-0274<br>
+        <br>
+        support@poundpay.com<br>
+        balancedpayments.com
+        <div id="print-logo">
+            <img src="/images/balanced-logo-print.png">
+        </div>
+    </section>
+
+</html>

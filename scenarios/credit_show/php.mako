@@ -1,5 +1,5 @@
 <%namespace file='/_main.mako' name='main'/>
-% if request is UNDEFINED:
+% if mode == 'definition':
 Balanced\Credit::get()
 
 % else:

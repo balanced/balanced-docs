@@ -29,7 +29,7 @@ Creates a new bank account verification.
 
 .. container:: method-examples
 
-  .. dcode:: bank_account_verification_create
+  .. dcode:: scenario bank_account_verification_create
 
 
 .. cssclass:: method-section
@@ -45,7 +45,7 @@ Gets the verification for a bank account.
 
 .. container:: method-examples
 
-  .. dcode:: bank_account_verification_show
+  .. dcode:: scenario bank_account_verification_show
 
 
 .. cssclass:: method-section
@@ -62,4 +62,4 @@ deposit amounts are always 1 and 1.
 
 .. container:: method-examples
 
-  .. dcode:: bank_account_verification_update
+  .. dcode:: scenario bank_account_verification_update

@@ -1,5 +1,5 @@
 <%namespace file='/_main.mako' name='main'/>
-% if request is UNDEFINED:
+% if mode == 'definition':
     Balanced::Callback.all
 % else:
     ${main.ruby_boilerplate()}

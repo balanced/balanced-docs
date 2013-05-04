@@ -1,5 +1,5 @@
 bank_account = json.loads(
-    storage['bank_account_create']['response']['content']
+    storage['bank_account_create']['response']
 )
 
 request = {

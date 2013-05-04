@@ -1,13 +1,13 @@
 import random
 
 buyer = json.loads(
-    storage['account_create_buyer']['response']['content']
+    storage['account_create_buyer']['response']
 )
 
 storage.pop('account_create_hold', None)
 
 account_hold = json.loads(
-    storage['account_create_hold']['response']['content']
+    storage['account_create_hold']['response']
 )
 
 request = {

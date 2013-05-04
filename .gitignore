@@ -48,3 +48,7 @@ cache.json
 dockers/html
 api/html
 overview/html
+*.cache
+spec/dst/
+site/spec
+site/*gen.html

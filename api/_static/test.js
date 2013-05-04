@@ -17,8 +17,8 @@ $(function(){
 	});
 });
 
-function switchCode(switchText){
-	$('.highlight').parents('.section').hide();
-	$('.highlight-javascript').parents('.section').show();
-	$('.highlight-' + switchText).parents('.section').show();
+function switchCode(language){
+	$('.highlight').closest('.code-block').parent().hide();
+    $('.highlight-javascript').closest('.code-block').parent().show();
+    $('.highlight-' + language).closest('.code-block').parent().show();
 }

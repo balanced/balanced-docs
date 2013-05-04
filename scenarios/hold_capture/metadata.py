@@ -1,11 +1,11 @@
 buyer = json.loads(
-    storage['account_create_buyer']['response']['content']
+    storage['account_create_buyer']['response']
 )
 
 storage.pop('hold_create', None)
 
 hold = json.loads(
-    storage['hold_create']['response']['content']
+    storage['hold_create']['response']
 )
 
 request = {

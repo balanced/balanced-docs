@@ -48,12 +48,12 @@ business.
 Person
 ''''''
 
-.. dcode:: account_underwrite_person
+.. dcode:: scenario account_underwrite_person
 
 Business
 ''''''''
 
-.. dcode:: account_underwrite_business
+.. dcode:: scenario account_underwrite_business
 
 
 On Success (201 CREATED)

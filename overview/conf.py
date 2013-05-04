@@ -11,7 +11,8 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os
+import os
+import sys
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -42,7 +43,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'Balanced'
-copyright = u'2012, Balanced'
+copyright = u'2013, Balanced'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -146,7 +147,7 @@ html_sidebars = {
 # A string with the fully-qualified name of a HTML Translator class, that is,
 # a subclass of Sphinx’ HTMLTranslator, that is used to translate document
 # trees to HTML. Default is None (use the builtin translator).
-html_translator_class = 'overview._themes.coffee.CoffeeThemeHTMLTranslator'
+html_translator_class = '_themes.coffee.CoffeeThemeHTMLTranslator'
 
 # If false, no index is generated.
 #html_use_index = True
@@ -237,7 +238,7 @@ htmlhelp_basename = 'Balanceddoc'
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
 
-import dcode
+from balanced_docs import dcode
 
 
 def setup(app):

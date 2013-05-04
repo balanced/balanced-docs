@@ -120,7 +120,7 @@ Issuing a credit
 
 You can issue a next-day credit/deposit/payout to this stored bank account.
 
-.. dcode:: bank_account_find_and_credit
+.. dcode:: scenario bank_account_find_and_credit
 
 Unstoring a bank account
 ''''''''''''''''''''''''
@@ -128,7 +128,7 @@ Unstoring a bank account
 Your customers might request their bank account information deleted from your
 servers and consequently, ours.
 
-.. dcode:: bank_account_find_and_delete
+.. dcode:: scenario bank_account_find_and_delete
 
 .. todo:: link to the bank account view on github
 
@@ -148,9 +148,7 @@ Credit's Status Field
 Credits have a ``status`` field representing the current status of the credit
 through the payout process.
 
-.. dcode:: credit-show
-   :includes: response.*
-   :excludes: request.*
+.. dcode:: scenario credit-show
 
 There are three possible values for the ``status`` field on a credit:
 
@@ -283,22 +281,22 @@ Examples
 simulating erroneous routing numbers
 ''''''''''''''''''''''''''''''''''''
 
-.. dcode:: bank-account-invalid-routing-number
+.. dcode:: scenario bank-account-invalid-routing-number
 
 simulating pending status
 '''''''''''''''''''''''''
 
-.. dcode:: credit_pending_state
+.. dcode:: scenario credit_pending_state
 
 simulating paid status
 ''''''''''''''''''''''
 
-.. dcode:: credit_paid_state
+.. dcode:: scenario credit_paid_state
 
 simulating failed status
 ''''''''''''''''''''''''
 
-.. dcode:: credit_failed_state
+.. dcode:: scenario credit_failed_state
 
 
 Request Logs
