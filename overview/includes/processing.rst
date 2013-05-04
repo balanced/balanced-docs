@@ -166,6 +166,10 @@ refund a debit as well.
 In order for a refund to go through successfully, you *must* have enough money
 in :ref:`implicit escrow <mp.escrow>` to cover your refund.
 
+Note that for credit cards it typically takes one business day for refunds to
+be reflected on a card statement, but it's possible for the issuing bank to
+take as many as five business days to process a refund.
+
 Here are some scenarios:
 
 Full Refund
