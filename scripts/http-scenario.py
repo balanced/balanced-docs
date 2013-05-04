@@ -851,18 +851,57 @@ balanced.Customer = Customer
 
 @scenario
 def customers_create(ctx):
-    customer = balanced.Customer()
+    customer = balanced.Customer(
+        email='user@example.org',
+        twitter='@balanced',
+        facebook='https://facebook.com/balanced',
+        ssn_last4='3209',
+        phone='(904) 555-1796',
+        ein='123456789',
+        name='John Lee Hooker',
+        business_name='Balanced',
+        address = {
+            'line1': '965 Mission St',
+            'city': 'San Francisco',
+            'state': 'CA',
+            'postal_code': '94103',
+            'country_code': 'USA',
+        }, meta={
+            'meta can store': 'any flat key/value data you like',
+            'more_additional_data': 54.80,
+            'github': 'https://github.com/balanced'
+        }
+    )
     customer.save()
     return ctx.last_req, ctx.last_resp
 
 @scenario
 def customers_show(ctx):
-    customer = balanced.Customer().save()
+    customer = balanced.Customer(
+        address = {
+            'line1': '965 Mission St',
+            'line2': '#425',
+            'city': 'San Francisco',
+            'state': 'CA',
+            'postal_code': '94103',
+            'country_code': 'USA',
+        }
+    ).save()
     customer = balanced.Customer.find(customer.uri)
     return ctx.last_req, ctx.last_resp
 
 @scenario
 def customers_index(ctx):
+    balanced.Customer(
+        address = {
+            'line1': '965 Mission St',
+            'line2': '#425',
+            'city': 'San Francisco',
+            'state': 'CA',
+            'postal_code': '94103',
+            'country_code': 'USA',
+        }
+    ).save()
     balanced.Customer.query.all()
     return ctx.last_req, ctx.last_resp
 
@@ -870,7 +909,16 @@ def customers_index(ctx):
 def customers_update(ctx):
     customer = balanced.Customer()
     customer.save()
+    customer.name = 'Richie McCaw'
+    customer.email_address = 'richie@allblacks.com'
     customer.save()
+    return ctx.last_req, ctx.last_resp
+
+@scenario
+def customers_delete(ctx):
+    customer = balanced.Customer()
+    customer.save()
+    customer.delete()
     return ctx.last_req, ctx.last_resp
 
 

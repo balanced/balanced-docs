@@ -84,7 +84,7 @@ Request
 Delete a Customer
 -----------------
 
-You can delete a customer so long as there has been no activity associated with it such as adding a card or creating a debit. 
+You can delete a customer so long as there has been no activity associated with it such as creating a hold, credit, or debit. 
 
 .. dcode:: endpoint customers.delete
 
