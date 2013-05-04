@@ -15,40 +15,12 @@ this way, so you can safely assume that the information has been deleted.
 
 .. container:: method-description
 
-  ``amount`` 
-      *required* **integer**. USD cents. You must have ``amount`` funds transferred to cover the 
-      credit. 
-   
-  ``bank_account`` 
-      .. cssclass:: nested1 
-   
-      *required* **object**.  
-          ``name`` 
-              *required* **string**. Name on the bank account. Length must be **>=** ``2``. 
-   
-          ``account_number`` 
-              *required* **string**. Bank account number. Length must be **>=** ``1``. 
-   
-          ``bank_code`` 
-              *required* **string**. Bank account code. Length must be **=** ``9``. 
-   
-          ``routing_number`` 
-              *required* **string**. Bank account code. Length must be **=** ``9``. 
-   
-          ``type`` 
-              *required* **string**. ``checking`` or ``savings``. 
-   
-          ``meta`` 
-              *optional* **object**. Single level mapping from string keys to string values. 
-   
-   
-  ``description`` 
-      *optional* **string** or **null**. Sequence of characters. 
-   
+    .. dcode:: form credits.create
+       :exclude: bank_account.0.bank_code bank_account.1
 
 .. container:: method-examples
 
-  .. dcode:: credit_create_new_bank_account
+  .. dcode:: scenario credit_create_new_bank_account
 
 .. cssclass:: method-section
 
@@ -63,17 +35,11 @@ credit shall be created.
 
 .. container:: method-description
 
-  ``amount`` 
-      *required* **integer**. USD cents. You must have ``amount`` funds transferred to cover the 
-      credit. 
-   
-  ``description`` 
-      *optional* **string** or **null**. Sequence of characters. 
-   
+    .. dcode:: form bank_account_credits.create
 
 .. container:: method-examples
 
-  .. dcode:: credit_create_existing_bank_account
+  .. dcode:: scenario credit_create_existing_bank_account
 
 
 .. cssclass:: method-section
@@ -91,7 +57,7 @@ information will be returned.
 
 .. container:: method-examples
 
-  .. dcode:: credit_show
+  .. dcode:: scenario credit_show
 
 
 .. cssclass:: method-section
@@ -112,7 +78,7 @@ in sorted order, with the most recent credits appearing first.
 
 .. container:: method-examples
 
-  .. dcode:: credit_list
+  .. dcode:: scenario credit_list
 
 
 .. cssclass:: method-section
@@ -135,7 +101,7 @@ with the most recent credits appearing first.
 
 .. container:: method-examples
 
-  .. dcode:: credit_bank_account_list
+  .. dcode:: scenario credit_bank_account_list
 
 
 .. cssclass:: method-section
@@ -145,35 +111,11 @@ creating a new credit for an account
 
 .. container:: method-description
 
-  ``amount`` 
-      *required* **integer**. USD cents. Must be **>=** your minimum credit amount but **<=** your maximum credit amount. 
-   
-  ``description`` 
-      *optional* **string** or **null**. Sequence of characters. 
-   
-  ``meta`` 
-      *optional* **object**. Single level mapping from string keys to string values. 
-   
-  ``appears_on_statement_as`` 
-      *optional* **string**. Text that will appear on the buyer's statement. Characters that can be 
-      used are limited to: 
-   
-      - ASCII letters (``a-z`` and ``A-Z``) 
-      - Digits (``0-9``) 
-      - Special characters (``.<>(){}[]+&!$*;-%_?:#@~='" ^\`|``) 
-   
-      Any other characters will be rejected. Length must be **<=** ``22``. 
-   
-  ``destination_uri`` 
-      *optional* **string**.  
-   
-  ``bank_account_uri`` 
-      *optional* **string**.  
-   
+  .. dcode:: form account_credits.create
 
 .. container:: method-examples
 
-  .. dcode:: credit_account_merchant_create
+  .. dcode:: scenario credit_account_merchant_create
 
 
 .. cssclass:: method-section
@@ -191,4 +133,4 @@ listing all credits for an account
 
 .. container:: method-examples
 
-  .. dcode:: credit_account_list
+  .. dcode:: scenario credit_account_list

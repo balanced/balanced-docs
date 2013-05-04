@@ -28,60 +28,12 @@ corresponding hold.
 
 .. container:: method-description
 
-  ``amount`` 
-      *optional* **integer**. If the resolving URI references a hold then this is hold amount. You can 
-      always capture less than the hold amount (e.g. a partial capture). 
-      Otherwise its the maximum per debit amount for your marketplace. Value must be >= the minimum per debit ``amount`` for *your* 
-      marketplace. Value must be <= the maximum per debit ``amount`` for *your* 
-      marketplace. 
-   
-  ``appears_on_statement_as`` 
-      *optional* **string**. Text that will appear on the buyer's statement. Characters that can be 
-      used are limited to: 
-   
-      - ASCII letters (``a-z`` and ``A-Z``) 
-      - Digits (``0-9``) 
-      - Special characters (``.<>(){}[]+&!$*;-%_?:#@~='" ^\`|``) 
-   
-      Any other characters will be rejected. Length must be **<=** ``22``. 
-   
-  ``meta`` 
-      *optional* **object**. Single level mapping from string keys to string values. 
-   
-  ``description`` 
-      *optional* **string**. Sequence of characters. 
-   
-  ``account_uri`` 
-      *optional* **string**.  
-   
-  ``on_behalf_of_uri`` 
-      *optional* **string**. The account of a merchant, usually a seller or service provider, that 
-      is associated with this card charge or bank account debit. 
-   
-  ``merchant_uri`` 
-      *optional* **string**. **Deprecated** The account of a merchant, usually a seller or service 
-      provider, that is associated with this card charge or bank account 
-      debit. Deprecated in favour of ``on_behalf_of_uri``. 
-   
-  ``hold_uri`` 
-      *optional* **string**. If no ``hold`` is provided one my be generated and captured if the 
-      funding source is a card. 
-   
-  ``source_uri`` 
-      *optional* **string**. URI of a specific bank account or card to be debited. 
-   
-  ``bank_account_uri`` 
-      *optional* **string**. **Deprecated** 
-      This field is deprecated in favour of ``source_uri``. 
-   
-  ``card_uri`` 
-      *optional* **string**. **Deprecated** 
-      This field is deprecated in favour of ``source_uri``. 
-   
+  .. dcode:: form debits.create
+
 
 .. container:: method-examples
 
-  .. dcode:: debit_create
+  .. dcode:: scenario debit_create
 
 
 .. cssclass:: method-section
@@ -97,7 +49,7 @@ Retrieves the details of a created debit.
 
 .. container:: method-examples
 
-  .. dcode:: debit_show
+  .. dcode:: scenario debit_show
 
 
 .. cssclass:: method-section
@@ -118,7 +70,7 @@ in sorted order, with the most recent debits appearing first.
 
 .. container:: method-examples
 
-  .. dcode:: debit_list
+  .. dcode:: scenario debit_list
 
 
 .. cssclass:: method-section
@@ -141,7 +93,7 @@ with the most recent debits appearing first.
 
 .. container:: method-examples
 
-  .. dcode:: debit_account_list
+  .. dcode:: scenario debit_account_list
 
 
 .. cssclass:: method-section
@@ -153,16 +105,16 @@ Updates information about a debit
 
 .. container:: method-description
 
-  ``meta`` 
-      *optional* **object**. Single level mapping from string keys to string values. 
-   
-  ``description`` 
-      *optional* **string**. Sequence of characters. 
-   
+  ``meta``
+      *optional* **object**. Single level mapping from string keys to string values.
+
+  ``description``
+      *optional* **string**. Sequence of characters.
+
 
 .. container:: method-examples
 
-  .. dcode:: debit_update
+  .. dcode:: scenario debit_update
 
 
 .. cssclass:: method-section
@@ -178,7 +130,7 @@ Issues a refund for a particular debit. This creates a :ref:`refund <refunds>`.
 
 .. container:: method-examples
 
-   .. dcode:: debit_refund
+   .. dcode:: scenario debit_refund
 
 
 .. _info on ACH debits: http://github.com/balanced/balanced-api/issues/2

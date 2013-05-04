@@ -122,7 +122,7 @@ resource.
 
 Let's create an account to associate the card token with:
 
-.. dcode:: account_create_buyer
+.. dcode:: scenario account_create_buyer
 
 As always, anytime you create a resource on Balanced, you should
  :ref:`store the uri <uri_vs_id>` in your database.
@@ -135,7 +135,7 @@ Associating a card to an existing account
 A very common operation is associating a new card with an existing account.
 Let's show how this is done:
 
-.. dcode:: account_add_card
+.. dcode:: scenario account_add_card
 
 This will add the card to the account specified by the account URI, **and make
 it the primary funding source for any future holds and debits**.
@@ -147,7 +147,7 @@ Once you've either :ref:`added a a card to an account <processing.buyer.acct_wit
 or :ref:`associated a card to an existing account <processing.buyer.add_tok_to_acct>`,
 you can now easily charge the card -- or to be exact, debiting an account:
 
-.. dcode:: account_create_debit
+.. dcode:: scenario account_create_debit
 
 .. note::
    :class: alert alert-info
@@ -222,9 +222,7 @@ If you issue a debit on an account, Balanced uses holds behinds the scenes
 but captures the funds immediately -- you will always see a hold returned on a
 debit. For example:
 
-.. dcode:: account-create-debit
-   :includes: response.*
-   :excludes: request.*
+.. dcode:: scenario account-create-debit
 
 .. warning::
    :class: alert
@@ -244,7 +242,7 @@ A hold is created in a way similar to creating a debit. Creating a hold will
 return a URI which can be used to perform a capture later, up to the full
 amount of the hold.
 
-.. dcode:: account-create-hold
+.. dcode:: scenario account-create-hold
 
 
 Capturing a hold
@@ -252,7 +250,7 @@ Capturing a hold
 
 Here's an example on how to capture a hold:
 
-.. dcode:: account-capture-hold
+.. dcode:: scenario account-capture-hold
 
 
 .. _processing-testing:

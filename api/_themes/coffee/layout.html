@@ -95,6 +95,52 @@
 </head>
 <body>
 
+<header>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+
+
+                <ul class="nav pull-left">
+                    <li>
+                        <a href="/" class="pull-left" id="balanced-logo">Balanced</a>
+                    </li>
+                </ul>
+
+                <ul class="nav pull-right">
+                    <li class="dashboard "><a href="/">Dashboard</a></li>
+                    <li class="docs dropdown  selected"><a href="#"
+                                                           class="dropdown-toggle"
+                                                           data-toggle="dropdown">Docs
+                        <b class="caret"></b></a>
+                        <ul class="dropdown-menu nav-list">
+                            <li><a href="/docs">Integration Center</a></li>
+                            <li><a href="/docs/api">REST API</a></li>
+                            <li class="nav-header">By Language</li>
+                            <li><a href="/docs/python">Python</a></li>
+                            <li><a href="/docs/ruby">Ruby</a></li>
+                            <li><a href="/docs/php">PHP</a></li>
+                            <li class="nav-header">General</li>
+                            <li><a href="/docs/dashboard">Merchant Dashboard</a></li>
+                            <li><a href="/docs/testing">Testing</a></li>
+                            <li><a href="/docs/js">balanced.js</a></li>
+                        </ul>
+                    </li>
+                    <li class="support ">
+                        <a href="/community">Help &amp; Support</a>
+                    </li>
+
+                    <li class="user dropdown">
+                        <a href="/login" id="log-in">Sign In</a>
+                    </li>
+
+                </ul>
+
+            </div>
+        </div>
+    </div>
+</header>
+
 <div id="container">
   <div class="main">
     {%- block content -%}

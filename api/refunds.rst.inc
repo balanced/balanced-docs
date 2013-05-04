@@ -14,23 +14,12 @@ charged amount.
 
 .. container:: method-description
 
-  ``amount`` 
-      *optional* **integer**. Value must be **>=** ``1``. Value must be <= the remaining un-refunded amount on the original 
-      ``debit``. 
-   
-  ``description`` 
-      *optional* **string**. Sequence of characters. 
-   
-  ``meta`` 
-      *optional* **object**. Single level mapping from string keys to string values. 
-   
-  ``debit_uri`` 
-      *optional* **string**.  
-   
+  .. dcode:: form refunds.create
+     :exclude: account_uri
 
 .. container:: method-examples
 
-  .. dcode:: refund_create
+  .. dcode:: scenario refund_create
 
 .. todo:: partial refund
 
@@ -49,7 +38,7 @@ information will be returned.
 
 .. container:: method-examples
 
-   .. dcode:: refund_show
+   .. dcode:: scenario refund_show
 
 
 .. cssclass:: method-section
@@ -70,7 +59,7 @@ in sorted order, with the most recent refunds appearing first.
 
 .. container:: method-examples
 
-   .. dcode:: refund_list
+   .. dcode:: scenario refund_list
 
 
 .. cssclass:: method-section
@@ -92,7 +81,7 @@ appearing first.
 
 .. container:: method-examples
 
-   .. dcode:: refund_account_list
+   .. dcode:: scenario refund_account_list
 
 
 .. cssclass:: method-section
@@ -104,13 +93,8 @@ Updates information about a refund
 
 .. container:: method-description
 
-   ``description`` 
-       *optional* **string**. Sequence of characters. 
-    
-   ``meta`` 
-       *optional* **object**. Single level mapping from string keys to string values. 
-    
+   .. dcode:: form refunds.update
 
 .. container:: method-examples
 
-   .. dcode:: refund_update
+   .. dcode:: scenario refund_update

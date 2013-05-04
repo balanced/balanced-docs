@@ -1,13 +1,13 @@
-storage.pop('account_create_buyer', None)
+ctx.storage.pop('account_create_buyer', None)
 
 account_var = json.loads(
-    storage['account_create_buyer']['response']['content']
+    storage['account_create_buyer']['response']
 )
 
-storage.pop('card_create', None)
+ctx.storage.pop('card_create', None)
 
 card = json.loads(
-    storage['card_create']['response']['content']
+    ctx.storage['card_create']['response']
 )
 
 request = {

@@ -2,12 +2,12 @@
 <%
   ep = main.make_endpoint('accounts.create')
 %>
-% if request is UNDEFINED:
-  ${ep.method} ${ep.full_url}
+% if mode == 'definition':
+  ${ep.method} ${ep.url}
 % else:
-    curl ${ep.qualified_url_for(request['accounts_uri'])} ${'\\'}
+    curl ${Endpoint.qualify_uri(ctx, request['accounts_uri'])} ${'\\'}
         -u ${api_key}: ${'\\'}
-      % for k, v, slash in recursive_expand(request['payload']):
+      % for k, v, slash in main.recursive_expand(request['payload']):
         -d "${k}=${v}" ${slash}
       % endfor
 % endif

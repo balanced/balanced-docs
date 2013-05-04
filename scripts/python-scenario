@@ -1,3 +1,0 @@
-#!/bin/bash
-
-./scripts/dcode-scenario -d scenarios --disable-lang=ruby --disable-lang=php --execute-lang=python $1
