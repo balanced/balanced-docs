@@ -13,7 +13,7 @@
     for k in keys:
         if isinstance(dikt[k], dict):
             for subk, v, slash in recursive_expand(dikt[k], delimiter):
-                lines.append(('{}[{}]'.format(k, subk), v, slash))
+                lines.append(('{0}[{1}]'.format(k, subk), v, slash))
         else:
             lines.append((k, dikt[k], '' if k is last else delimiter))
     return lines

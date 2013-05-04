@@ -52,7 +52,8 @@ spec-html: $(SPEC_HTML_DSTS)
 spec: spec-rst spec-html
 
 spec-clean:
-	-rm -rf $(SPEC_BUILD_DIR)
+	-rm -rf $(SPEC_RST_DIR)
+	-rm -rf $(SPEC_HTML_DIR)
 	-rm -f spec/*.cache
 
 # api
@@ -67,7 +68,8 @@ api: $(SITE_DIR)/api-gen.html
 
 api-clean: 
 	-rm -rf api/html
-	-rm -f api/*.cache
+	-rm -f $(SITE_DIR)/api-gen.html
+	-rm -f *.cache
 
 # overview
 
@@ -81,4 +83,5 @@ overview: $(SITE_DIR)/overview-gen.html
 
 overview-clean: 
 	-rm -rf overview/html
-	-rm -f overview/*.cache
+	-rm  -f $(SITE_DIR)/overview-gen.html
+	-rm -f *.cache
