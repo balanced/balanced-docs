@@ -185,7 +185,8 @@ fee per operation is listed below:
   ============================ ===============
     operation                    cost to you
   ============================ ===============
-  successful charge                 2.9% + 30¢
+  successful credit card charge     2.9% + 30¢
+  successful bank account charge      1% + 30¢
   chargeback                            $15.00
   refund                                    $0
   failure                                   $0
@@ -305,7 +306,7 @@ Recap:
 
 - The bike owners are the merchants.
 - The renters are the buyers.
-- Your marketplace is called Rent By Bike
+- Your marketplace is called Rent My Bike
 
 .. [#] Our sample marketplace is actually called `Rent My Bike`_ :)
 
