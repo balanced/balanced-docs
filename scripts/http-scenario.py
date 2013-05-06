@@ -106,7 +106,9 @@ class Context(object):
         def _record(self, r):
             req = {}
             if getattr(r.request, 'body', None):
-                req['body'] = json.dumps(json.loads(r.request.body), indent=4)
+                req['body'] = self._munge_request(
+                    json.loads(r.request.body)
+                )
             resp = {
                 'headers': [
                     ('Status', '{0} {1}'.format(r.status_code, r.raw.reason)),
@@ -114,6 +116,11 @@ class Context(object):
                 'body': r.content,
             }
             self.parent.last_req, self.parent.last_resp = req, resp
+
+        def _munge_request(self, payload):
+            if payload.get('id', None) is None:
+                payload.pop('id', None)
+            return json.dumps(payload, indent=4)
 
         def get(self, *args, **kwargs):
             resp = self.org.get(*args, **kwargs)
@@ -865,7 +872,7 @@ def customers_create(ctx):
             'city': 'San Francisco',
             'state': 'CA',
             'postal_code': '94103',
-            'country_code': 'USA',
+            'country_code': 'US',
         }, meta={
             'meta can store': 'any flat key/value data you like',
             'more_additional_data': 54.80,
