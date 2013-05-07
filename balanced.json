@@ -1393,7 +1393,7 @@
    "additional": null, 
    "category_code": "insufficient-funds", 
    "category_type": "logical", 
-   "description": "Marketplace escrow balance is insufficient to issue this credit.", 
+   "description": "Marketplace balance is insufficient to issue this credit", 
    "status": null, 
    "status_code": 409
   }, 
@@ -1409,7 +1409,7 @@
    "additional": null, 
    "category_code": "insufficient-funds", 
    "category_type": "logical", 
-   "description": "Marketplace balance is insufficient to issue this credit", 
+   "description": "Marketplace escrow balance is insufficient to issue this credit.", 
    "status": null, 
    "status_code": 409
   }, 
