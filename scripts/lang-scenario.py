@@ -315,15 +315,18 @@ class Scenario(object):
 
     @property
     def metadata(self):
-        context = {
-            'json': json,
-            'ctx': self.ctx,
-            'storage': self.ctx.storage,
-            'marketplace': self.ctx.marketplace,
-        }
-        metadata = os.path.join(self.path, 'metadata.py')
-        execfile(metadata, context, context)
-        return context['request']
+        if (self.name not in self.ctx.storage or 
+            'request' not in self.ctx.storage[self.name]):
+            context = {
+                'json': json,
+                'ctx': self.ctx,
+                'storage': self.ctx.storage,
+                'marketplace': self.ctx.marketplace,
+            }
+            metadata = os.path.join(self.path, 'metadata.py')
+            execfile(metadata, context, context)
+            self.ctx.storage[self.name]['request'] = context['request'] 
+        return self.ctx.storage[self.name]['request']
 
     def __call__(self):
         blocks = []
@@ -356,7 +359,6 @@ class Scenario(object):
                     sort_keys=True,
                 )
                 self.ctx.storage[self.name]['response'] = block['response']
-        self.ctx.storage[self.name][lang] = block.copy()
         return block
 
     def _render(self, template_path):
