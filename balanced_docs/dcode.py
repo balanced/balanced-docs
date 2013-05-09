@@ -307,6 +307,7 @@ class _SectionFilter(object):
                 logger.debug('filtering off for "%s", "%s"', heading, adorment)
                 self.filtered = False
                 self._depth = 0
+                self._on_section(heading, adorment)
         else:
             if self.chars[self._depth] != adorment[0]:
                 self._depth = 0
