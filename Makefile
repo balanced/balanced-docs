@@ -28,9 +28,9 @@ SITE_DIR 			= site
 
 .PHONY: clean spec-clean api-clean all test
 
-all: spec api overview 
+all: spec api overview
 
-clean: api-clean spec-clean
+clean: api-clean spec-clean overview-clean
 
 # spec
 
