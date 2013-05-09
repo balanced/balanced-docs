@@ -315,7 +315,7 @@ class Scenario(object):
 
     @property
     def metadata(self):
-        if (self.name not in self.ctx.storage or 
+        if (self.name not in self.ctx.storage or
             'request' not in self.ctx.storage[self.name]):
             context = {
                 'json': json,
@@ -325,7 +325,7 @@ class Scenario(object):
             }
             metadata = os.path.join(self.path, 'metadata.py')
             execfile(metadata, context, context)
-            self.ctx.storage[self.name]['request'] = context['request'] 
+            self.ctx.storage[self.name]['request'] = context['request']
         return self.ctx.storage[self.name]['request']
 
     def __call__(self):

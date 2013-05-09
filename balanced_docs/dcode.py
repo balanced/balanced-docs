@@ -258,7 +258,7 @@ class _SectionFilter(object):
         self.write = write
         self.filtered = False
         self.include = [
-            map(str.lower, i.split(self.INCLUDE_SEPARATOR))
+            map(lambda x: x.lower(), i.split(self.INCLUDE_SEPARATOR))
             for i in include
         ]
         self._depth = 0

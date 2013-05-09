@@ -263,7 +263,7 @@ class Context(object):
             self.pop()
 
     def _name(self, v):
-        return v 
+        return v
 
 
 import error
