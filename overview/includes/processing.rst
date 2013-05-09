@@ -143,9 +143,10 @@ it the primary funding source for any future holds and debits**.
 Charging a Card
 '''''''''''''''
 
-Once you've either :ref:`added a a card to an account <processing.buyer.acct_with_tok>`
-or :ref:`associated a card to an existing account <processing.buyer.add_tok_to_acct>`,
-you can now easily charge the card -- or to be exact, debiting an account:
+Once you've either :ref:`added a card to a new account
+<processing.buyer.acct_with_tok>` or :ref:`associated a card to an existing
+account <processing.buyer.add_tok_to_acct>`, you can now easily charge the card
+-- or to be exact, debit an account:
 
 .. dcode:: scenario account_create_debit
 

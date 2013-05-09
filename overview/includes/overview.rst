@@ -285,11 +285,11 @@ There are three common scenarios:
 
 .. adding them to the buyer
 
-1. adding your business' fee to the total amount charged during checkout
+1. with-holding some of the funds from the merchant and diverting those funds to yourself
 
 .. taking it from the merchant
 
-2. with-holding some of the funds from the merchant and diverting those funds to yourself
+2. adding your business' fee to the total amount charged during checkout
 
 .. both
 
@@ -314,7 +314,7 @@ Recap:
 Fee Scenario #1
 '''''''''''''''
 
-Your marketplace listing fee is 10%. So, say Alice lists her bike for 100.00$.
+Your marketplace listing fee is 10%. So, say Alice lists her bike for $100.00.
 Bob decides to rent this bike - costing him $100.00.
 
 - You charge Bob $100.00
