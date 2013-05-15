@@ -116,6 +116,10 @@ many :ref:`support channels <support>`.
      - `balanced-java`_
      - `balanced-java tests`_
      - Balanced
+   * - iOS
+     - `balanced-ios`_
+     - `balanced-ios tests`_
+     - `Ben Mills (Remear)`_
    * - perl
      - `Business-BalancedPayments`_
      - `Business-BalancedPayments tests`_
@@ -181,7 +185,8 @@ fee per operation is listed below:
   ============================ ===============
     operation                    cost to you
   ============================ ===============
-  successful charge                 2.9% + 30¢
+  successful credit card charge     2.9% + 30¢
+  successful bank account charge      1% + 30¢
   chargeback                            $15.00
   refund                                    $0
   failure                                   $0
@@ -280,11 +285,11 @@ There are three common scenarios:
 
 .. adding them to the buyer
 
-1. adding your business' fee to the total amount charged during checkout
+1. with-holding some of the funds from the merchant and diverting those funds to yourself
 
 .. taking it from the merchant
 
-2. with-holding some of the funds from the merchant and diverting those funds to yourself
+2. adding your business' fee to the total amount charged during checkout
 
 .. both
 
@@ -301,7 +306,7 @@ Recap:
 
 - The bike owners are the merchants.
 - The renters are the buyers.
-- Your marketplace is called Rent By Bike
+- Your marketplace is called Rent My Bike
 
 .. [#] Our sample marketplace is actually called `Rent My Bike`_ :)
 
@@ -309,7 +314,7 @@ Recap:
 Fee Scenario #1
 '''''''''''''''
 
-Your marketplace listing fee is 10%. So, say Alice lists her bike for 100.00$.
+Your marketplace listing fee is 10%. So, say Alice lists her bike for $100.00.
 Bob decides to rent this bike - costing him $100.00.
 
 - You charge Bob $100.00
@@ -397,6 +402,9 @@ Crediting Your Own Merchant Account
 .. _Business-BalancedPayments: https://github.com/Crowdtilt/Business-BalancedPayments
 .. _Business-BalancedPayments tests: https://github.com/Crowdtilt/Business-BalancedPayments/tree/master/t
 
+.. _balanced-ios: https://github.com/balanced/balanced-ios
+.. _balanced-ios tests: https://github.com/balanced/balanced-ios/tree/master/BalancedTests
+
 .. _kitchit: http://kitchit.com
 .. _copious: http://copious.com
 .. _zaarly: http://zaarly.com
@@ -406,6 +414,7 @@ Crediting Your Own Merchant Account
 .. _crowdtilt: http://crowdtilt.com
 .. _wanderable: http://wanderable.com
 .. _Gittip: http://gittip.com
+.. _Ben Mills (Remear): http://unfiniti.com
 .. _ACH: http://en.wikipedia.org/wiki/Automated_Clearing_House
 .. _open partnership: http://blog.gittip.com/post/28351995405/open-partnerships
 .. _mitigate the risks of running a marketplace: https://github.com/whit537/www.gittip.com/issues/67

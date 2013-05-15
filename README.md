@@ -23,7 +23,7 @@ Make sure to add yourself to `CONTRIBUTORS`. We will showcase the `CONTRIBUTORS`
 
 After your pull request, email support [@] balancedpayments.com with
 your address and the link to your pull request with your address and
-your t-shirt size so we can send you your very own 
+your t-shirt size so we can send you your very own
 [Balanced t-shirt!](https://twitter.com/damon_sf/status/266768984744017920/photo/1)
 
 ## Setup
@@ -52,8 +52,8 @@ workon balanced-docs
 
 ## Build
 
-Now that your environment is setup lets build the docuementation. To build
-them all at once do: 
+Now that your environment is setup lets build the documentation. To build
+them all at once do:
 
 ```bash
 make all

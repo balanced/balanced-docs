@@ -228,6 +228,7 @@ class Context(object):
         self.filter = filter
         self.overrides = overrides
         self.writer = writer
+        self.vs = []
         self.path = []
 
     @property
@@ -242,14 +243,16 @@ class Context(object):
     def override(self):
         return self.overrides.match(self.path)
 
-    def __call__(self, name):
-        self.push(name)
+    def __call__(self, v):
+        self.push(v)
         return self
 
-    def push(self, name):
-        self.path.append(name)
+    def push(self, v):
+        self.vs.append(v)
+        self.path.append(self._name(v))
 
     def pop(self):
+        self.vs.pop()
         self.path.pop()
 
     def __enter__(self):
@@ -258,6 +261,9 @@ class Context(object):
     def __exit__(self, exc_type, exc_value, traceback):
         if exc_type is None:
             self.pop()
+
+    def _name(self, v):
+        return v
 
 
 import error

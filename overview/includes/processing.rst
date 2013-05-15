@@ -143,9 +143,10 @@ it the primary funding source for any future holds and debits**.
 Charging a Card
 '''''''''''''''
 
-Once you've either :ref:`added a a card to an account <processing.buyer.acct_with_tok>`
-or :ref:`associated a card to an existing account <processing.buyer.add_tok_to_acct>`,
-you can now easily charge the card -- or to be exact, debiting an account:
+Once you've either :ref:`added a card to a new account
+<processing.buyer.acct_with_tok>` or :ref:`associated a card to an existing
+account <processing.buyer.add_tok_to_acct>`, you can now easily charge the card
+-- or to be exact, debit an account:
 
 .. dcode:: scenario account_create_debit
 
@@ -165,6 +166,10 @@ refund a debit as well.
 
 In order for a refund to go through successfully, you *must* have enough money
 in :ref:`implicit escrow <mp.escrow>` to cover your refund.
+
+Note that for credit cards it typically takes one business day for refunds to
+be reflected on a card statement, but it's possible for the issuing bank to
+take as many as five business days to process a refund.
 
 Here are some scenarios:
 
@@ -223,6 +228,7 @@ but captures the funds immediately -- you will always see a hold returned on a
 debit. For example:
 
 .. dcode:: scenario account-create-debit
+    :section-include: response
 
 .. warning::
    :class: alert

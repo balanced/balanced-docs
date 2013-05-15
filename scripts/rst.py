@@ -42,6 +42,7 @@ def form_rst(args):
         data=data,
         includes=args.includes,
         excludes=args.excludes,
+        required=args.required,
     )
 
 
@@ -162,6 +163,12 @@ def create_arg_parser():
     command.add_argument(
         '-e', '--exclude',
         dest='excludes',
+        default=[],
+        action='append',
+    )
+    command.add_argument(
+        '-r', '--required',
+        dest='required',
         default=[],
         action='append',
     )

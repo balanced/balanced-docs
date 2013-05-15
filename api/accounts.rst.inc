@@ -93,6 +93,7 @@ has been underwritten.
 
     .. dcode:: form merchants.create
        :exclude: ssn_last_4 person.ssn_last_4 production
+       :required: merchant.person
 
 .. container:: method-examples
 
