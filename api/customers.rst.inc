@@ -12,7 +12,7 @@ creating a customer
 
 .. container:: method-description
 
-  .. no request
+  .. dcode:: form customers.create
 
 .. container:: method-examples
 
@@ -31,7 +31,7 @@ You can add multiple cards to a customer.
 
 .. container:: method-description
 
-  .. no request
+  .. dcode:: form cards.create
 
 .. container:: method-examples
 
@@ -48,7 +48,7 @@ customer, or in this case, initiate a next-day ACH payment.
 
 .. container:: method-description
 
-  .. no request
+  .. dcode:: form bank_accounts.create
 
 .. container:: method-examples
 

@@ -278,7 +278,6 @@ class Scenario(object):
         if 'marketplace_id' not in ctx.storage:
             logger.debug('creating marketplace')
             marketplace = balanced.Marketplace().save()
-            marketplace.customers_uri = "/v1/customers"
             ctx.storage['marketplace_uri'] = marketplace.uri
             ctx.storage['marketplace_id'] = marketplace.id
 

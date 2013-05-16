@@ -12,7 +12,7 @@ creating an account
 
 .. container:: method-description
 
-  .. no request
+  .. dcode:: form accounts.create
 
 .. container:: method-examples
 
@@ -34,7 +34,7 @@ has a valid credit card, to acquire funds from.
 
 .. container:: method-description
 
-  .. no request
+  .. dcode:: form cards.create
 
 .. container:: method-examples
 
@@ -54,7 +54,7 @@ has a valid bank account to send money to.
 
 .. container:: method-description
 
-  .. no request
+  .. dcode:: form bank_accounts.create
 
 .. container:: method-examples
 
