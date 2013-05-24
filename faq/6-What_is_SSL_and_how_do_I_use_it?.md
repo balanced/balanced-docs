@@ -1,0 +1,1 @@
+SSL is a way to encrypt data when sending it over the internet. Balanced enforces the use of SSL for all communications so you can be assured of the privacy and security of all of your data and customer information.
