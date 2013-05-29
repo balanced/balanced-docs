@@ -9,7 +9,6 @@ tags:
 - faq
 
 ---
-
 ![Balanced Dashboard](https://balancedpayments.zendesk.com/attachments/token/kksd5yisfunrsgg/?name=test_mktplc.png "Balanced Dashboard")
 
 Balanced is different from most "payments" models out there.  Balanced helps your company build its revenue stream by providing micro-merchant accounts directly to your marketplace's sellers.

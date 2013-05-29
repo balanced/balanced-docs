@@ -10,5 +10,4 @@ tags:
 - developer
 
 ---
-
 We provide the ability to use a bank account as a funding source, so the account fits the buyer role.

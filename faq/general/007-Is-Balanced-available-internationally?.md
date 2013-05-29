@@ -7,7 +7,7 @@ tags:
 - balanced
 - payments
 - faq
--international
+- international
 
 ---
 
