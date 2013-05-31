@@ -2,7 +2,7 @@
 
 layout: faq
 author: Mahmoud Abdelkader
-title: is Balanced available internationally?
+title: Is Balanced available internationally?
 tags:
 - balanced
 - payments
