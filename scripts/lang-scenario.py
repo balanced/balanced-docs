@@ -350,7 +350,8 @@ class Scenario(object):
             return None
         template_path = os.path.join(self.path, lang + '.mako')
         if lang == 'node':
-            template_path = os.path.join(self.ctx.client_dir, lang, 'scenarios', self.name, lang+'.mako');
+            template_path = os.path.join(self.ctx.client_dir, lang,
+                                         'scenarios', self.name, lang+'.mako')
         block = self._render(template_path)
         block['lang'] = lang
         if block['lang'] == 'curl':
