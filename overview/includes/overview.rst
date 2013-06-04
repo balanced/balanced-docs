@@ -124,6 +124,9 @@ many :ref:`support channels <support>`.
      - `Business-BalancedPayments`_
      - `Business-BalancedPayments tests`_
      - `Crowdtilt.com`_
+   * - node
+     - `balanced-node`_
+     - `balanced-node tests`_
 
 
 .. _support:
