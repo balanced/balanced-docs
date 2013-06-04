@@ -68,3 +68,5 @@ The API conforms to the design principles of Representational State Transfer
 .. include:: refunds.rst.inc
 
 .. include:: events.rst.inc
+
+.. include:: customers.rst.inc
