@@ -69,7 +69,6 @@ DEFAULT_RST = """\
 .. dcode-default:: scenario
     :script: ./scripts/http-scenario.py -c scenario.cache
     :section-chars: ~^
-    :ignore:
 
 .. dcode-default:: view
     :script: ./scripts/rst.py view
