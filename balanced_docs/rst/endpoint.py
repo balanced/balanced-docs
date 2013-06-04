@@ -5,6 +5,7 @@ def generate(writer, name, data, exclude_methods):
     path = endpoint['path']
     writer('.. code::\n\n')
     with writer:
+        writer('\n')
         if exclude_methods:
             ms = [m for m in endpoint['methods'] if m not in exclude_methods]
         else:
