@@ -260,5 +260,7 @@ from balanced_docs import dcode
 
 
 def setup(app):
+    import pygments.lexers.web
     app.add_directive('dcode-default', dcode.DCodeDefaultDirective)
     app.add_directive('dcode', dcode.DCodeDirective)
+    app.add_lexer('node', pygments.lexers.web.JavascriptLexer())
