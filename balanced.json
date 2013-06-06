@@ -1595,6 +1595,14 @@
    "additional": null, 
    "category_code": "insufficient-funds", 
    "category_type": "logical", 
+   "description": "Account balance is insufficient to issue this debit", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "insufficient-funds", 
+   "category_type": "logical", 
    "description": "Marketplace escrow balance is insufficient to issue this credit.", 
    "status": null, 
    "status_code": 409
@@ -1604,14 +1612,6 @@
    "category_code": "insufficient-funds", 
    "category_type": "logical", 
    "description": "Marketplace balance is insufficient to issue this credit", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "insufficient-funds", 
-   "category_type": "logical", 
-   "description": "Account balance is insufficient to issue this debit", 
    "status": null, 
    "status_code": 409
   }, 
@@ -11612,4 +11612,3 @@
   }
  ]
 }
-
