@@ -219,7 +219,7 @@ via the Balanced `dashboard`_.
 
    We advise that you transfer a large amount in your Balanced account or you
    may request that Balanced always keep a constant amount in your account for
-   you. We're publically tracking this on `github issue #132`_ and appreciate your input
+   you. We're publically tracking this on `github issue #132`_ and appreciate your input.
 
 Transfers may take 2-5 days for the funds to become available; alternatively, you
 may fund your account **instantly** with :ref:`Balanced Processing! <processing>`

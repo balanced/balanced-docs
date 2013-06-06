@@ -19,7 +19,7 @@
 .. dcode-default:: scenario
     :script: scripts/lang-scenario.py -d scenarios -c scenario.cache
     :section-chars: ~^
-    :lang: python ruby php node
+    :lang: python ruby php
 
 
 .. container:: langbar
@@ -31,6 +31,7 @@
   * python
   * php
   * node
+
 
 .. contents::
    :depth: 3

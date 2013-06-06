@@ -4,7 +4,7 @@ Debits
 ======
 
 Currently, Balanced supports only card transactions (`info on ACH debits`_) for
-debits. To debit an account, i.e. charge a card, you must create a new debit
+debits. To debit a customer, i.e. charge a card, you must create a new debit
 resource.
 
 
@@ -15,10 +15,10 @@ resource.
 create a new debit
 ------------------
 
-.. todo:: debit an account with different cards
-.. todo:: debit an owner account
+.. todo:: debit a customer with different cards
+.. todo:: debit an owner customer
 
-Debits an account. Returns a ``uri`` that  can later be used to reference this
+Debits a customer. Returns a ``uri`` that  can later be used to reference this
 debit.
 
 Successful creation of a debit using a card will return an associated ``hold``
@@ -75,10 +75,10 @@ in sorted order, with the most recent debits appearing first.
 
 .. cssclass:: method-section
 
-list all debits for an account
+list all debits for a customer
 ------------------------------
 
-Returns a list of debits you've previously created against a specific account.
+Returns a list of debits you've previously created against a specific customer.
 The ``debits_uri`` is a convenient uri provided so that you can simply issue
 a ``GET`` to the ``debits_uri``. The debits are returned in sorted order,
 with the most recent debits appearing first.
@@ -93,7 +93,7 @@ with the most recent debits appearing first.
 
 .. container:: method-examples
 
-  .. dcode:: scenario debit_account_list
+  .. dcode:: scenario debit_customer_list
 
 
 .. cssclass:: method-section
