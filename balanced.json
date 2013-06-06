@@ -1595,7 +1595,7 @@
    "additional": null, 
    "category_code": "insufficient-funds", 
    "category_type": "logical", 
-   "description": "Account balance is insufficient to issue this debit", 
+   "description": "Marketplace escrow balance is insufficient to issue this credit.", 
    "status": null, 
    "status_code": 409
   }, 
@@ -1603,7 +1603,7 @@
    "additional": null, 
    "category_code": "insufficient-funds", 
    "category_type": "logical", 
-   "description": "Marketplace escrow balance is insufficient to issue this credit.", 
+   "description": "Account balance is insufficient to issue this debit", 
    "status": null, 
    "status_code": 409
   }, 
@@ -7638,6 +7638,24 @@
       "<=", 
       ">", 
       ">="
+     ], 
+     "sortable": true
+    }, 
+    {
+     "default_op": "=", 
+     "description": "String fields.", 
+     "name": "email", 
+     "ops": [
+      "=", 
+      "!=", 
+      "startswith", 
+      "endswith", 
+      "contains", 
+      "!contains", 
+      "in", 
+      "!in", 
+      "ilike", 
+      "!ilike"
      ], 
      "sortable": true
     }, 
