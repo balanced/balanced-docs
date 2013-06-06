@@ -8,6 +8,8 @@ tags:
 - payments
 - faq
 - split
+- password
+- login
 
 ---
 
