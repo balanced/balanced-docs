@@ -3,7 +3,7 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: How much does Balanced cost?
-catgory: fees
+category: fees
 tags:
 - balanced
 - payments
