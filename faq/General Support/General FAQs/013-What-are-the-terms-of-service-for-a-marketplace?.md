@@ -8,7 +8,6 @@ tags:
 - payments
 - faq
 - marketplace
-- help_legal
 
 ---
 

@@ -3,12 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: What are the cutoffs and holidays for Payouts?
+category: payouts
 tags:
 - balanced
 - payments
 - faq
 - cutoffs
-- help_payouts
 
 ---
 

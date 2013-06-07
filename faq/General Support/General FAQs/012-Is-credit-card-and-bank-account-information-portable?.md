@@ -3,11 +3,11 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: Is credit card and bank account information portable?
+category: data
 tags:
 - balanced
 - payments
 - faq
-- help_data
 
 ---
 

@@ -3,12 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: How are credit card chargebacks and disputes handled?
+category: chargebacks
 tags:
 - balanced
 - payments
 - faq
 - chargebacks
-- help_chargebacks
 
 ---
 

@@ -3,11 +3,11 @@
 layout: faq
 author: Marshall Jones
 title: When can I debit a bank account?
+category: processing
 tags:
 - balanced
 - payments
 - faq
-- help_processing
 
 ---
 

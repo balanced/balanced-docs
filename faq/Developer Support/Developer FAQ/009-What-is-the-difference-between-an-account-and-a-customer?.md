@@ -2,14 +2,15 @@
 
 layout: faq
 author: Justin
-title: How do I change my login password?
+title: What is the difference between an account and a customer?
 tags:
 - balanced
 - payments
 - faq
-- split
-- password
-- login
+- api
+- customer
+- account
+
 
 ---
 

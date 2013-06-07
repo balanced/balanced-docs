@@ -2,13 +2,13 @@
 
 layout: faq
 author: Mahmoud Abdelkader
-title: Does Balanced support local currencies? 
+title: Does Balanced support local currencies?
+category: processing
 tags:
 - balanced
 - payments
 - faq
 - fees
-- help_processing
 
 ---
 
