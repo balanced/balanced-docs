@@ -3,12 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: What is SSL and how do I use it?
+category: security
 tags:
 - balanced
 - payments
 - faq
 - ssl
-- help_security
 
 ---
 

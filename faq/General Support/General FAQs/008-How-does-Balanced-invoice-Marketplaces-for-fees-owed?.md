@@ -3,12 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: How does Balanced invoice Marketplaces for fees owed?
+category: fees
 tags:
 - balanced
 - payments
 - faq
 - fees
-- help_fees
 
 ---
 

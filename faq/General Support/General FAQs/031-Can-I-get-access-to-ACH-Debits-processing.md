@@ -3,12 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: Can I get access to ACH Debits processing?
+category: processing
 tags:
 - balanced
 - payments
 - faq
 - fees
-- help_processing
 
 ---
 

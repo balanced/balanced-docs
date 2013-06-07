@@ -3,11 +3,11 @@
 layout: faq
 author: Richard Serna
 title: Do marketplaces using Balanced need to provide 1099s to merchants?
+category: legal
 tags:
 - balanced
 - payments
 - faq
-- help_legal
 
 ---
 

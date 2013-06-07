@@ -3,11 +3,11 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: How does Balanced combat fraudulent activity?
+category: fraud
 tags:
 - balanced
 - payments
 - faq
-- help_fraud
 
 ---
 
