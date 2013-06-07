@@ -3,12 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: Does Balanced offer volume discounts?
+category: fees
 tags:
 - balanced
 - payments
 - faq
 - discounts
-- help_fees
 
 ---
 

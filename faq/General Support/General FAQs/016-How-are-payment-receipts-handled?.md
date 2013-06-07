@@ -3,12 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: How are payment receipts handled?
+category: enduser
 tags:
 - balanced
 - payments
 - faq
 - receipts
-- help_end_user
 
 ---
 

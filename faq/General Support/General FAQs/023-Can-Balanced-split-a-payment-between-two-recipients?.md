@@ -3,6 +3,7 @@
 layout: faq
 author: Ryan
 title: Can Balanced split a payment between two recipients?
+category: payouts
 tags:
 - balanced
 - payments

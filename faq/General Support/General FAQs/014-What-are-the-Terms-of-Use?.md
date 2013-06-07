@@ -3,11 +3,11 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: What are the Terms of Use?
+category: legal
 tags:
 - balanced
 - payments
 - faq
-- help_legal
 
 ---
 

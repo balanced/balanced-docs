@@ -3,12 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: How does a marketplace sign up or register?
+category: signup
 tags:
 - balanced
 - payments
 - faq
 - marketplace
-- help_signup
 
 ---
 

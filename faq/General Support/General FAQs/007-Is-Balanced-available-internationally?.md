@@ -3,13 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: Is Balanced available internationally?
+category: processing
 tags:
 - balanced
 - payments
 - faq
 - international
-- help_international
-- help_processing
 
 ---
 
