@@ -12,6 +12,7 @@ tags:
 
 ---
 
-At the moment, marketplaces and sellers (i.e. merchants) must satisfy the following 3 requirements to use Balanced: 1) U.S. bank account; 2) a company registered in the U.S. with an EIN number; 3) a company representative that is a permanent U.S. resident.
+Balanced Processing can accept international transactions from buyers residing in nearly any country and using any Visa, MasterCard, American Express or Discover card (debit and credit). However, at the moment Balanced's ACH transfer feature is limited to paying out merchants with U.S. bank accounts.
+We have received a lot of interest in expanding internationally and are actively working towards this capability over the next few months. Feel free to track our progress and show your support with a +1 on the respective [GitHub issue](https://github.com/balanced/balanced-api/issues/23
+).
 
-Balanced can process transactions from buyers residing in nearly any country and using any Visa, MasterCard, American Express or Discover card (debit and credit).

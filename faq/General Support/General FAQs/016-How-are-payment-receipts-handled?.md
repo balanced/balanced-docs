@@ -3,7 +3,7 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: How are payment receipts handled?
-category: enduser
+category: end_user
 tags:
 - balanced
 - payments
