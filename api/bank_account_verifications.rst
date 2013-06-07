@@ -3,6 +3,13 @@
 bank account verifications
 ==========================
 
+.. note::
+   :class: alert alert-info
+   
+   You'll only need to verify a bank account if you're planning to later debit that account,
+   which is a functionality only available through our ACH Debits private beta. 
+   Email support@balancedpayments.com to request access.
+
 Before you can debit a bank account you need to verify that you have access to
 it. Balanced allows you to do this by creating a Verification for a
 Bank Account which will result in two random amounts being credited into the
