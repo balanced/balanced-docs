@@ -1595,6 +1595,14 @@
    "additional": null, 
    "category_code": "insufficient-funds", 
    "category_type": "logical", 
+   "description": "Marketplace balance is insufficient to issue this credit", 
+   "status": null, 
+   "status_code": 409
+  }, 
+  {
+   "additional": null, 
+   "category_code": "insufficient-funds", 
+   "category_type": "logical", 
    "description": "Marketplace escrow balance is insufficient to issue this credit.", 
    "status": null, 
    "status_code": 409
@@ -1604,14 +1612,6 @@
    "category_code": "insufficient-funds", 
    "category_type": "logical", 
    "description": "Account balance is insufficient to issue this debit", 
-   "status": null, 
-   "status_code": 409
-  }, 
-  {
-   "additional": null, 
-   "category_code": "insufficient-funds", 
-   "category_type": "logical", 
-   "description": "Marketplace balance is insufficient to issue this credit", 
    "status": null, 
    "status_code": 409
   }, 
@@ -8653,6 +8653,12 @@
      "type": "string"
     }, 
     {
+     "description": null, 
+     "name": "customer_uri", 
+     "tags": [], 
+     "type": "string"
+    }, 
+    {
      "description": "URI for all debits associated with the account.", 
      "name": "debits_uri", 
      "tags": [], 
@@ -9321,6 +9327,12 @@
      "type": "string"
     }, 
     {
+     "description": "Present if the credit went to a customer instead of directly to a\nbank account.", 
+     "name": "customer", 
+     "tags": [], 
+     "type": "string"
+    }, 
+    {
      "description": null, 
      "name": "description", 
      "tags": [], 
@@ -9400,6 +9412,12 @@
     {
      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\ndebit was created.", 
      "name": "created_at", 
+     "tags": [], 
+     "type": "string"
+    }, 
+    {
+     "description": "The customer to which this debit is associated.", 
+     "name": "customer", 
      "tags": [], 
      "type": "string"
     }, 
@@ -9647,6 +9665,12 @@
      "type": "string"
     }, 
     {
+     "description": "The customer against which this hold was created.", 
+     "name": "customer", 
+     "tags": [], 
+     "type": "string"
+    }, 
+    {
      "description": "The captured debit associated with this hold.", 
      "name": "debit", 
      "tags": [], 
@@ -9868,6 +9892,12 @@
     {
      "description": "URI for all credits for this marketplace.", 
      "name": "credits_uri", 
+     "tags": [], 
+     "type": "string"
+    }, 
+    {
+     "description": null, 
+     "name": "customers_uri", 
      "tags": [], 
      "type": "string"
     }, 
@@ -10379,6 +10409,12 @@
      "type": "string"
     }, 
     {
+     "description": "Customer receiving the refund.", 
+     "name": "customer", 
+     "tags": [], 
+     "type": "string"
+    }, 
+    {
      "description": "The original debit associated with the refund.", 
      "name": "debit", 
      "tags": [], 
@@ -10764,6 +10800,12 @@
      "type": "string"
     }, 
     {
+     "description": "Present if the credit went to a customer instead of directly to a\nbank account.", 
+     "name": "customer", 
+     "tags": [], 
+     "type": "string"
+    }, 
+    {
      "description": null, 
      "name": "description", 
      "tags": [], 
@@ -11072,6 +11114,12 @@
      "type": "string"
     }, 
     {
+     "description": "The customer to which this debit is associated.", 
+     "name": "customer", 
+     "tags": [], 
+     "type": "string"
+    }, 
+    {
      "description": "Free-text description of the debit.", 
      "name": "description", 
      "tags": [], 
@@ -11151,6 +11199,12 @@
     {
      "description": null, 
      "name": "credits_uri", 
+     "tags": [], 
+     "type": "string"
+    }, 
+    {
+     "description": null, 
+     "name": "customer_uri", 
      "tags": [], 
      "type": "string"
     }, 
@@ -11252,6 +11306,12 @@
     {
      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nhold was created.", 
      "name": "created_at", 
+     "tags": [], 
+     "type": "string"
+    }, 
+    {
+     "description": "The customer against which this hold was created.", 
+     "name": "customer", 
      "tags": [], 
      "type": "string"
     }, 
@@ -11586,6 +11646,12 @@
     {
      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nrefund was issued.", 
      "name": "created_at", 
+     "tags": [], 
+     "type": "string"
+    }, 
+    {
+     "description": "Customer receiving the refund.", 
+     "name": "customer", 
      "tags": [], 
      "type": "string"
     }, 
