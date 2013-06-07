@@ -100,8 +100,9 @@ Use ``hold_uri`` when `creating a debit <./debits.rst#create-a-debit>`_.
 
 .. dcode:: scenario holds.capture
 
+
 Void a Hold
------------
+------------
 
 .. dcode:: endpoint holds.update
 
@@ -118,4 +119,4 @@ Response
 ~~~~~~~~
 
 .. dcode:: scenario holds.void
-   :section-include: response
+   :section-include: response 
