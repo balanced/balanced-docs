@@ -3,12 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: How do sales tax and income taxes work?
+category: legal
 tags:
 - balanced
 - payments
 - faq
 - taxes
-- help_processing
 
 ---
 

@@ -3,6 +3,7 @@
 layout: faq
 author: Shawnee
 title: What's the timeline for international payouts?
+category: payouts
 tags:
 - balanced
 - payments

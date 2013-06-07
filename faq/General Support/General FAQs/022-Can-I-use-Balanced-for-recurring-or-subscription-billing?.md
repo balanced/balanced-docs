@@ -3,11 +3,11 @@
 layout: faq
 author: Richard Serna
 title: Can I use Balanced for recurring or subscription billing?
+category: processing
 tags:
 - balanced
 - payments
 - faq
-- help_processing
 
 ---
 

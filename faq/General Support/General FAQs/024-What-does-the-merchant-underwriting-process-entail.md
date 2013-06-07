@@ -3,12 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: What does the merchant underwriting process entail?
+category: payouts
 tags:
 - balanced
 - payments
 - faq
 - images
-- help_payouts
 
 ---
 

@@ -3,11 +3,11 @@
 layout: faq
 author: Richard Serna
 title: Does Balanced support micro-transactions?
+category: processing
 tags:
 - balanced
 - payments
 - faq
-- help_processing
 
 ---
 

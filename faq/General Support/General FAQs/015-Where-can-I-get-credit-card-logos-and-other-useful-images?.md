@@ -3,12 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: Where can I get credit card logos and other useful images?
+category: marketing
 tags:
 - balanced
 - payments
 - faq
 - images
-- help_marketing
 
 ---
 

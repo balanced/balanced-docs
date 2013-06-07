@@ -2,13 +2,13 @@
 
 layout: faq
 author: Mahmoud Abdelkader
-title: Does Balanced support international ACH payouts? 
+title: Does Balanced support international ACH payouts?
+category: payouts
 tags:
 - balanced
 - payments
 - faq
 - fees
-- help_payouts
 
 ---
 

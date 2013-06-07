@@ -3,12 +3,12 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: How long does it take to validate a bank account?
+category: payouts
 tags:
 - balanced
 - payments
 - faq
 - fees
-- help_payouts
 
 ---
 

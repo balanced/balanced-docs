@@ -2,13 +2,13 @@
 
 layout: faq
 author: Mahmoud Abdelkader
-title: Can I use Balanced for Payouts only? 
+title: Can I use Balanced for Payouts only?
+category: payouts
 tags:
 - balanced
 - payments
 - faq
 - images
-- help_payouts
 
 ---
 

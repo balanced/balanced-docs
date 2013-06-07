@@ -2,13 +2,13 @@
 
 layout: faq
 author: Mahmoud Abdelkader
-title: How much does Balanced cost? 
+title: How much does Balanced cost?
+catgory: fees
 tags:
 - balanced
 - payments
 - faq
 - fees
-- help_fees
 
 ---
 

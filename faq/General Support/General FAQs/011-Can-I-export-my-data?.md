@@ -3,11 +3,11 @@
 layout: faq
 author: Mahmoud Abdelkader
 title: Can I export my data?
+category: data
 tags:
 - balanced
 - payments
 - faq
-- help_data
 
 ---
 
