@@ -256,7 +256,7 @@ Capturing a hold
 
 Here's an example on how to capture a hold:
 
-.. dcode:: scenario customer-capture-hold
+.. dcode:: scenario hold-create
 
 
 .. _processing-testing:

@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 <%
-  ep = main.make_endpoint('debits.create', select='shortest')
+  ep = main.make_endpoint('customer_debits.create', select='shortest')
 %>
 % if mode == 'definition':
   ${ep.method} ${ep.url}

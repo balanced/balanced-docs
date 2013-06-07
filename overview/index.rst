@@ -39,3 +39,5 @@
 .. include:: includes/reference.rst
 
 .. include:: includes/bestpractices.rst
+
+.. include:: includes/changelog.rst
