@@ -1,8 +1,8 @@
 ---
 
 layout: faq
-author: Justin
-title: What is the difference between an account and a customer?
+author: Parham Negahdar
+title: What is the difference between the accounts and a customers resources?
 tags:
 - balanced
 - payments
@@ -14,4 +14,7 @@ tags:
 
 ---
 
-You may either change your password by clicking **reset password** on the login page (https://www.balancedpayments.com/login) or if you are already logged in, simply navigate to the following link (https://www.balancedpayments.com/settings/password/reset).
+Customers represent businesses or people within your marketplace.  You can
+associate credit cards, debit cards, bank accounts and transactions,
+i.e. refunds, debits, credits. Accounts help facilitate managing multiple credit cards, debit cards, and bank accounts along with different financial transaction operations,
+i.e. refunds, debits, credits.
