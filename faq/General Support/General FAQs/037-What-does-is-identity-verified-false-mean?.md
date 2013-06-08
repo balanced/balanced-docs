@@ -14,12 +14,12 @@ tags:
 
 ---
 
-Underwriting merchants involves every merchant to go through Know Your
-Customer (KYC) regulations, which is required by the U.S. government for
-purposes of Anti-Money Laundering (AML). This process is generally simple,
-and for most merchants requires very little information.
+is_identity_verified is a verfication flag that we place on merchant accounts to indicate that the merchant has been underwritten. In order to underwrite a merchant we perform a check on the following provided parameters:
 
-To protect from money laundering we allow the merchants to be underwritten by
-providing use with a few pieces of information like their name, address,
-SSN last 4, phone number and more. This is process is outlined here:
-https://docs.balancedpayments.com/current/?language=bash#merchant-underwriting
++ Name
++ Date of birth
++ Address
++ Last four of their social security number (SSN)
++ Phone number
+
+Although the last four of their social security number is not required, it significantly improves the likelihood of a successful verification.

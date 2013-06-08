@@ -14,7 +14,4 @@ tags:
 
 ---
 
-Customers represent businesses or people within your marketplace.  You can
-associate credit cards, debit cards, bank accounts and transactions,
-i.e. refunds, debits, credits. Accounts help facilitate managing multiple credit cards, debit cards, and bank accounts along with different financial transaction operations,
-i.e. refunds, debits, credits.
+Accounts are deprecated, the customer resource is the recommended interface to use. The benefit of using the customer resource is accounts have roles where customers have lifted this contraint which simplifies the entire process. Additionally, customers do not have to be underwritten simplifying things further.
