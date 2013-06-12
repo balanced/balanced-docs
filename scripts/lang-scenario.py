@@ -348,7 +348,6 @@ class Scenario(object):
     def block(self, lang):
         if lang not in self.ctx.langs:
             return None
-<<<<<<< HEAD
 
         def ruby():
             """
@@ -360,20 +359,17 @@ class Scenario(object):
             return self._render_ruby(template_path)
 
         def other():
-            template_path = os.path.join(self.path, lang + '.mako')
+            if lang == 'node':
+                template_path = os.path.join(self.ctx.client_dir, lang,
+                                         'scenarios', self.name, lang+'.mako')
+            else:
+                template_path = os.path.join(self.path, lang + '.mako')
             return self._render(template_path)
 
         block = {
             'ruby': ruby,
         }.get(lang, other)()
 
-=======
-        template_path = os.path.join(self.path, lang + '.mako')
-        if lang == 'node':
-            template_path = os.path.join(self.ctx.client_dir, lang,
-                                         'scenarios', self.name, lang+'.mako')
-        block = self._render(template_path)
->>>>>>> upstream/master
         block['lang'] = lang
 
         if block['lang'] == 'curl':
