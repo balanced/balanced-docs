@@ -3,4 +3,4 @@
 Change Log
 ========
 
-Date: :ref: `Account <accounts>` has deprecated. Please use :ref:`Customer <customers>`
+The Account resource has deprecated. Please use Customer resource.
