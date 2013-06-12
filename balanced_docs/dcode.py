@@ -171,15 +171,16 @@ class DCodeDirective(Directive):
             section_include = DCodeDefaultDirective.registry[key]['section-include']
 
         # kwargs
+        excludes = cls.option_spec_fixed + DCodeDefaultDirective.option_spec_fixed
         kwargs = dict(
             (k, v)
             for k, v in DCodeDefaultDirective.registry[key].iteritems()
-            if k not in cls.option_spec_fixed
+            if k not in excludes
         )
         kwargs.update(dict(
             (k, v.split())
             for k, v in options.iteritems()
-            if k not in cls.option_spec_fixed
+            if k not in excludes
         ))
 
         # generate
@@ -324,10 +325,17 @@ class _SectionFilter(object):
 
 
 def _execute(script, args, kwargs, content, record=None):
+    args = args[:]
+    for k, v in kwargs.iteritems():
+        if isinstance(v, list):
+            args.extend('--{0}={1}'.format(k, str(vv)) for vv in v)
+        elif isinstance(v, bool):
+            args.append('--{0}'.format(k))
+        else:
+            args.append('--{0}={1}'.format(k, str(v)))
     cmd = (
         shlex.split(script.encode('utf-8')) +
-        args +
-        ['--{0}={1}'.format(k, v) for k, vs in kwargs.iteritems() for v in vs]
+        args
     )
     sh_cmd = ' '.join(pipes.quote(p) for p in cmd)
     logger.debug('executing "%s"', sh_cmd)

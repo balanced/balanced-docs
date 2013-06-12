@@ -10,3 +10,6 @@
 [submodule "clients/php"]
 	path = clients/php
 	url = git://github.com/balanced/balanced-php.git
+[submodule "clients/node"]
+	path = clients/node
+	url = https://github.com/balanced/balanced-node.git

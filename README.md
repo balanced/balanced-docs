@@ -38,6 +38,7 @@ And then you can setup your environment like this:
 ```bash
 git clone git@github.com:balanced/balanced-docs.git
 cd balanced-docs
+git submodule update --init --recursive
 mkvirtualenv balanced-docs
 python setup.py develop
 pip install -r requirements.txt

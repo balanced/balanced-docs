@@ -23,7 +23,7 @@ import time
 
 import balanced
 
-from balanced_docs import LogLevelAction, memoized, BlockWriter
+from balanced_docs import LogLevelAction, memoized, BlockWriter, EnvironmentVarAction
 
 
 logger = logging.getLogger(__name__)
@@ -82,12 +82,17 @@ BANK_ACCOUNT = {
 
 class Context(object):
 
+    #: This is set via environment variable on loading
+    #: and on instantiation
+    ROOT_URI = 'https://api.balancedpayments.com'
+
     @classmethod
     def load(cls, io):
         return cls(json.load(io))
 
     def save(self, io):
         cache = {
+            'root_uri': self.ROOT_URI,
             'secret': self.secret,
             'buyer_uri': self.buyer_uri,
             'merchant_uri': self.merchant_uri,
@@ -106,7 +111,9 @@ class Context(object):
         def _record(self, r):
             req = {}
             if getattr(r.request, 'body', None):
-                req['body'] = json.dumps(json.loads(r.request.body), indent=4)
+                req['body'] = self._munge_request(
+                    json.loads(r.request.body)
+                )
             resp = {
                 'headers': [
                     ('Status', '{0} {1}'.format(r.status_code, r.raw.reason)),
@@ -114,6 +121,11 @@ class Context(object):
                 'body': r.content,
             }
             self.parent.last_req, self.parent.last_resp = req, resp
+
+        def _munge_request(self, payload):
+            if payload.get('id', None) is None:
+                payload.pop('id', None)
+            return json.dumps(payload, indent=4)
 
         def get(self, *args, **kwargs):
             resp = self.org.get(*args, **kwargs)
@@ -140,6 +152,8 @@ class Context(object):
         self.secret = cache.get('secret')
         self.buyer_uri = cache.get('buyer_uri')
         self.merchant_uri = cache.get('merchant_uri')
+        self.root_uri = cache.get('root_uri', self.ROOT_URI)
+
         balanced.Resource.http_client.interface = self.Interface(
             parent=self,
             org=balanced.Resource.http_client.interface,
@@ -148,6 +162,7 @@ class Context(object):
     @property
     @memoized
     def marketplace(self):
+        balanced.config.root_uri = self.root_uri
         if not self.secret:
             logger.debug('creating api key')
             self.secret = balanced.APIKey().save().secret
@@ -841,6 +856,86 @@ def bank_account_authentications_update(ctx):
     return ctx.last_req, ctx.last_resp
 
 
+class Customer(balanced.Resource):
+    __metaclass__ = balanced.resources.resource_base(
+        collection='customers', resides_under_marketplace=False)
+
+balanced.Customer = Customer
+
+
+@scenario
+def customers_create(ctx):
+    customer = balanced.Customer(
+        email='user@example.org',
+        twitter='@balanced',
+        facebook='https://facebook.com/balanced',
+        ssn_last4='3209',
+        phone='(904) 555-1796',
+        ein='123456789',
+        name='John Lee Hooker',
+        business_name='Balanced',
+        address = {
+            'line1': '965 Mission St',
+            'city': 'San Francisco',
+            'state': 'CA',
+            'postal_code': '94103',
+            'country_code': 'US',
+        }, meta={
+            'meta can store': 'any flat key/value data you like',
+            'more_additional_data': 54.80,
+            'github': 'https://github.com/balanced'
+        }
+    )
+    customer.save()
+    return ctx.last_req, ctx.last_resp
+
+@scenario
+def customers_show(ctx):
+    customer = balanced.Customer(
+        address = {
+            'line1': '965 Mission St',
+            'line2': '#425',
+            'city': 'San Francisco',
+            'state': 'CA',
+            'postal_code': '94103',
+            'country_code': 'USA',
+        }
+    ).save()
+    customer = balanced.Customer.find(customer.uri)
+    return ctx.last_req, ctx.last_resp
+
+@scenario
+def customers_index(ctx):
+    balanced.Customer(
+        address = {
+            'line1': '965 Mission St',
+            'line2': '#425',
+            'city': 'San Francisco',
+            'state': 'CA',
+            'postal_code': '94103',
+            'country_code': 'USA',
+        }
+    ).save()
+    balanced.Customer.query.all()
+    return ctx.last_req, ctx.last_resp
+
+@scenario
+def customers_update(ctx):
+    customer = balanced.Customer()
+    customer.save()
+    customer.name = 'Richie McCaw'
+    customer.email_address = 'richie@allblacks.com'
+    customer.save()
+    return ctx.last_req, ctx.last_resp
+
+@scenario
+def customers_delete(ctx):
+    customer = balanced.Customer()
+    customer.save()
+    customer.delete()
+    return ctx.last_req, ctx.last_resp
+
+
 SCENARIOS = dict(
     (v.scenario, v)
     for k, v in globals().iteritems()
@@ -875,6 +970,14 @@ def create_arg_parser():
         metavar='CHARS',
         default='~^',
         help='String of CHARS to use for section headings.',
+    )
+    parser.add_argument(
+        '--api-location',
+        metavar='URL',
+        action=EnvironmentVarAction,
+        env_var='BALANCED_DOCS_API_LOC',
+        default='https://api.balancedpayments.com',
+        help='Uses URL as the api location.',
     )
     return parser
 
@@ -934,6 +1037,8 @@ def main():
     handler.setFormatter(formatter)
     root.addHandler(handler)
     root.setLevel(args.log_level)
+
+    Context.ROOT_URI = args.api_location
 
     if args.cache and os.path.isfile(args.cache):
         logger.debug('loading context from cache "%s"', args.cache)

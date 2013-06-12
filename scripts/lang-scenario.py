@@ -45,6 +45,7 @@ class Context(object):
     def __init__(self,
             api_location,
             scenarios_dir,
+            client_dir,
             storage_file,
             spec_file,
             langs,
@@ -52,6 +53,7 @@ class Context(object):
         self.stack = []
         self.api_location = api_location
         self.scenarios_dir = scenarios_dir
+        self.client_dir = client_dir
         self.template_lookup = mako.lookup.TemplateLookup(
             directories=[scenarios_dir]
         )
@@ -346,6 +348,7 @@ class Scenario(object):
     def block(self, lang):
         if lang not in self.ctx.langs:
             return None
+<<<<<<< HEAD
 
         def ruby():
             """
@@ -364,6 +367,13 @@ class Scenario(object):
             'ruby': ruby,
         }.get(lang, other)()
 
+=======
+        template_path = os.path.join(self.path, lang + '.mako')
+        if lang == 'node':
+            template_path = os.path.join(self.ctx.client_dir, lang,
+                                         'scenarios', self.name, lang+'.mako')
+        block = self._render(template_path)
+>>>>>>> upstream/master
         block['lang'] = lang
 
         if block['lang'] == 'curl':
@@ -556,6 +566,12 @@ def create_arg_parser():
         help='DIRECTORY containing named scenarios',
     )
     parser.add_argument(
+        '--client',
+        metavar='CLIENT',
+        default='./clients',
+        help='Directory containing the CLIENT submodules'
+    )
+    parser.add_argument(
         '-p', '--spec',
         metavar='FILE',
         default='balanced.json',
@@ -567,7 +583,7 @@ def create_arg_parser():
         dest='langs',
         action='append',
         default=[],
-        choices=['php', 'python', 'ruby'],
+        choices=['php', 'python', 'ruby', 'node'],
         help='Enable LANGUAGE for the scenario',
     )
     return parser
@@ -587,6 +603,7 @@ def main():
     ctx = Context(
         api_location=args.api_location,
         scenarios_dir=os.path.abspath(args.directory),
+        client_dir=os.path.abspath(args.client),
         storage_file=args.storage,
         spec_file=args.spec,
         langs=args.langs,
