@@ -348,12 +348,30 @@ class Scenario(object):
     def block(self, lang):
         if lang not in self.ctx.langs:
             return None
-        template_path = os.path.join(self.path, lang + '.mako')
-        if lang == 'node':
-            template_path = os.path.join(self.ctx.client_dir, lang,
+
+        def ruby():
+            """
+            Executes for the ruby language o
+            """
+            template_path = os.path.join(
+                os.getcwd(), 'clients', lang, 'scenarios', self.name
+            )
+            return self._render_ruby(template_path)
+
+        def other():
+            if lang == 'node':
+                template_path = os.path.join(self.ctx.client_dir, lang,
                                          'scenarios', self.name, lang+'.mako')
-        block = self._render(template_path)
+            else:
+                template_path = os.path.join(self.path, lang + '.mako')
+            return self._render(template_path)
+
+        block = {
+            'ruby': ruby,
+        }.get(lang, other)()
+
         block['lang'] = lang
+
         if block['lang'] == 'curl':
             if 'delete' in self.name:
                 logger.info('skipping execution for "%s" (%s)', self.name, block['lang'])
@@ -365,6 +383,19 @@ class Scenario(object):
                 )
                 self.ctx.storage[self.name]['response'] = block['response']
         return block
+
+    def _render_ruby(self, template_path):
+        definition_location = os.path.join(template_path, 'definition.rb')
+        definition = open(definition_location, 'r').read()
+        os.path.dirname(os.path.dirname(template_path))
+        request = subprocess.check_output(
+            ['rake', 'render_one', 'NAME=' + self.name],
+            cwd=os.path.dirname(os.path.dirname(template_path))
+        )
+        return {
+            'definition': definition,
+            'request': request
+        }
 
     def _render(self, template_path):
         if 'api.balancedpayments.com' in self.ctx.storage['api_location']:
@@ -380,7 +411,7 @@ class Scenario(object):
         context.update(request=self.metadata)
 
         # definition
-        logger.debug('rendering defintion for "%s"', template_path)
+        logger.debug('rendering definition for "%s"', template_path)
         template = mako.template.Template(
             filename=template_path,
             lookup=self.ctx.template_lookup
@@ -406,7 +437,7 @@ class Scenario(object):
             raise
 
         return {
-            'defintion': definition,
+            'definition': definition,
             'request': request,
         }
 
@@ -451,7 +482,7 @@ def generate(write, name, blocks, response, section_chars):
             write('.. code-block:: {0}\n'.format(pygment))
             with write:
                 write('\n')
-                write(block['defintion'])
+                write(block['definition'])
             write('\n')
 
     for block in blocks:
