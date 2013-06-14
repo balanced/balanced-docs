@@ -3,7 +3,7 @@
 
   Please excuse our layout as we overhaul our documentation.
 
-  * Click here for our `**OLD** documentation <https://docs2.balancedpayments.com/api?old>`_
+  * Click here for our `**OLD** documentation <https://docs.balancedpayments.com/api?old>`_
 
 Overview
 ========
