@@ -34,12 +34,12 @@ from Balanced than clients which use the ``uri`` directly.
 Old Documentation
 -----------------
 
-Our old documentation is located at `https://docs2.balancedpayments.com/api?old <https://docs2.balancedpayments.com/api?old>`_
+Our old documentation is located at `https://docs.balancedpayments.com/api?old <https://docs.balancedpayments.com/api?old>`_
 
 API Reference
 -------------
 
-Our API reference is located at `https://docs2.balancedpayments.com/api?<https://docs2.balancedpayments.com/api?`_
+Our API reference is located at `https://docs.balancedpayments.com/api?<https://docs.balancedpayments.com/api?`_
 
 
 .. Forms
