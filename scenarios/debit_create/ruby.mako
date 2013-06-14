@@ -1,11 +1,11 @@
 <%namespace file='/_main.mako' name='main'/>
 % if mode == 'definition':
-Balanced::Account.debit(...)
+Balanced::Customer.debit(...)
 
 % else:
 ${main.ruby_boilerplate()}
-buyer = Balanced::Account.find('${request['account_uri']}')
-buyer.debit(
+customer = Balanced::Customer.find('${request['customer_uri']}')
+customer.debit(
 % for k, v in payload.iteritems():
   :${k} => '${v}',
 % endfor

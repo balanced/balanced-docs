@@ -1,11 +1,11 @@
 <%namespace file='/_main.mako' name='main'/>
 % if mode == 'definition':
-Balanced\Buyer->hold()
+Balanced\Customer->hold()
 
 % else:
 ${main.php_boilerplate()}
-$buyer = Balanced\Account::get("${request['account_uri']}");
-$buyer->hold(
+$customer = Balanced\Customer::get("${request['customer_uri']}");
+$customer->hold(
     "${payload['amount']}",
     "${payload['description']}"
 );

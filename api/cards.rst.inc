@@ -98,7 +98,7 @@ Invalidating a card will mark the card as invalid, so it may not be charged.
 charging a card
 ----------------
 
-Charging a card requires that you :ref:`debit an account <debits>`
+Charging a card requires that you :ref:`debit a customer <debits>`
 
 .. container:: method-description
 

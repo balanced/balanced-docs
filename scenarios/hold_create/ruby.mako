@@ -1,11 +1,11 @@
 <%namespace file='/_main.mako' name='main'/>
 % if mode == 'definition':
-Balanced::Account.hold(...)
+Balanced::Customer.hold(...)
 
 % else:
 ${main.ruby_boilerplate()}
-buyer = Balanced::Account.find('${request['account_uri']}')
-buyer.hold(
+customer = Balanced::Customer.find('${request['customer_uri']}')
+customer.hold(
 % for k, v in payload.iteritems():
   :${k} => '${v}',
 % endfor

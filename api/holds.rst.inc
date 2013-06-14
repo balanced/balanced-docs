@@ -67,10 +67,10 @@ in sorted order, with the most recent holds appearing first.
 
 .. cssclass:: method-section
 
-list all holds for an account
+list all holds for a customer
 -----------------------------
 
-Returns a list of holds you've previously created against a specific account.
+Returns a list of holds you've previously created against a specific customer.
 The holds are returned in sorted order, with the most recent holds appearing
 first.
 
@@ -84,7 +84,7 @@ first.
 
 .. container:: method-examples
 
-   .. dcode:: scenario hold_account_list
+   .. dcode:: scenario hold_customer_list
 
 
 .. cssclass:: method-section

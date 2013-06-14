@@ -106,7 +106,7 @@ with the most recent credits appearing first.
 
 .. cssclass:: method-section
 
-creating a new credit for an account
+creating a new credit for a customer
 ------------------------------------
 
 .. container:: method-description
@@ -115,12 +115,12 @@ creating a new credit for an account
 
 .. container:: method-examples
 
-  .. dcode:: scenario credit_account_merchant_create
+  .. dcode:: scenario customer_credit
 
 
 .. cssclass:: method-section
 
-listing all credits for an account
+listing all credits for a customer
 ----------------------------------
 
 .. container:: method-description
@@ -133,4 +133,4 @@ listing all credits for an account
 
 .. container:: method-examples
 
-  .. dcode:: scenario credit_account_list
+  .. dcode:: scenario credit_customer_list

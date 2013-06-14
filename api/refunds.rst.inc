@@ -15,7 +15,7 @@ charged amount.
 .. container:: method-description
 
   .. dcode:: form refunds.create
-     :exclude: account_uri
+     :exclude: customer_uri
 
 .. container:: method-examples
 
@@ -64,10 +64,10 @@ in sorted order, with the most recent refunds appearing first.
 
 .. cssclass:: method-section
 
-list all refunds for an account
+list all refunds for a customer
 -------------------------------
 
-Returns a list of refunds you've previously created against a specific account.
+Returns a list of refunds you've previously created against a specific customer.
 The refunds are returned in sorted order, with the most recent refunds
 appearing first.
 
@@ -81,7 +81,7 @@ appearing first.
 
 .. container:: method-examples
 
-   .. dcode:: scenario refund_account_list
+   .. dcode:: scenario refund_customer_list
 
 
 .. cssclass:: method-section

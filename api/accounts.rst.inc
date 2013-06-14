@@ -1,5 +1,9 @@
-accounts
-========
+.. _accounts:
+accounts(deprecated)
+====================
+
+Accounts are deprecated. Please use :ref:`customer <customers>`.
+
 
 Accounts help facilitate managing multiple credit cards, debit cards,
 and bank accounts along with different financial transaction operations, i.e.
@@ -9,6 +13,8 @@ refunds, debits, credits.
 
 creating an account
 -------------------
+
+Accounts are deprecated. Please use :ref:`customer <customers>`.
 
 .. container:: method-description
 
@@ -23,6 +29,8 @@ creating an account
 
 adding a card to an account
 ---------------------------
+
+Accounts are deprecated. Please use :ref:`customer <customers>`.
 
 Adding a card to an account activates the ability to debit an account, more
 specifically, charging a card.
@@ -46,6 +54,8 @@ has a valid credit card, to acquire funds from.
 adding a bank account to an account
 -----------------------------------
 
+Accounts are deprecated. Please use :ref:`customer <customers>`.
+
 Adding a bank account to an account activates the ability to credit an
 account, or in this case, initiate a next-day ACH payment.
 
@@ -66,6 +76,8 @@ has a valid bank account to send money to.
 underwriting an individual
 --------------------------
 
+Accounts are deprecated. Please use :ref:`customer <customers>`.
+
 A person, or an individual, is a US based individual or a sole proprietor.
 
 Balanced associates a ``merchant`` role to signify whether or not an account
@@ -85,6 +97,8 @@ has been underwritten.
 
 underwriting a business
 -----------------------
+
+Accounts are deprecated. Please use :ref:`customer <customers>`.
 
 Balanced associates a ``merchant`` role to signify whether or not an account
 has been underwritten.

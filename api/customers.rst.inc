@@ -1,3 +1,5 @@
+.. _customers:
+
 customers
 =========
 
@@ -56,4 +58,6 @@ customer, or in this case, initiate a next-day ACH payment.
 
 
 .. cssclass:: method-section
+
+
 

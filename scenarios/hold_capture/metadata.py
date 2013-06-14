@@ -1,5 +1,5 @@
-buyer = json.loads(
-    storage['account_create_buyer']['response']
+customer = json.loads(
+    storage['customer_add_card']['response']
 )
 
 storage.pop('hold_create', None)
@@ -14,6 +14,6 @@ request = {
         'description': 'Some descriptive text for the debit in the dashboard',
         'hold_uri': hold['uri'],
     },
-    'debits_uri': buyer['debits_uri'],
+    'debits_uri': customer['debits_uri'],
     'hold_uri': hold['uri'],
 }

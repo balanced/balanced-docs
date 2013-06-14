@@ -15,7 +15,7 @@ Here's how we're going to accomplish this:
 
 * Securely collecting credit card information with ``balanced.js``
 * Securely submitting that information to Balanced
-* Creating an account and charging your buyer
+* Creating a customer and charging your customer
 
 
 Collecting credit card information
@@ -108,47 +108,47 @@ Operating with a Card Token
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 So you're done tokenizing card data? Congratulations! However, before you
-do any operations on a card, you must associate the card to an account. That
-means that if you just want to charge a card, you must create an account,
-associate the card with that account, and then issue a debit.
+do any operations on a card, you must associate the card to a customer. That
+means that if you just want to charge a card, you must create a customer,
+associate the card with that customer, and then issue a debit.
 
 .. _processing.buyer.acct_with_tok:
 
-Creating an account
+Creating a customer
 '''''''''''''''''''
 
 Ok, so you've got the card token, referred to as the ``uri`` of the returned Card
 resource.
 
-Let's create an account to associate the card token with:
+Let's create a customer to associate the card token with:
 
-.. dcode:: scenario account_create_buyer
+.. dcode:: scenario customer_create
 
 As always, anytime you create a resource on Balanced, you should
  :ref:`store the uri <uri_vs_id>` in your database.
 
 .. _processing.buyer.add_tok_to_acct:
 
-Associating a card to an existing account
+Associating a card to an existing customer
 '''''''''''''''''''''''''''''''''''''''''
 
-A very common operation is associating a new card with an existing account.
+A very common operation is associating a new card with an existing customer.
 Let's show how this is done:
 
-.. dcode:: scenario account_add_card
+.. dcode:: scenario customer_add_card
 
-This will add the card to the account specified by the account URI, **and make
+This will add the card to the customer specified by the customer URI, **and make
 it the primary funding source for any future holds and debits**.
 
 Charging a Card
 '''''''''''''''
 
-Once you've either :ref:`added a card to a new account
+Once you've either :ref:`added a card to a new customer
 <processing.buyer.acct_with_tok>` or :ref:`associated a card to an existing
-account <processing.buyer.add_tok_to_acct>`, you can now easily charge the card
--- or to be exact, debit an account:
+customer <processing.buyer.add_tok_to_acct>`, you can now easily charge the card
+-- or to be exact, debit an customer:
 
-.. dcode:: scenario account_create_debit
+.. dcode:: scenario customer_create_debit
 
 .. note::
    :class: alert alert-info
@@ -176,7 +176,7 @@ Here are some scenarios:
 Full Refund
 ~~~~~~~~~~~
 
-Let's say you've debited an account for $20.00
+Let's say you've debited a customer for $20.00
 
 * Your ``in_escrow`` balance says $20.00
 * You issue a refund for $20.00
@@ -188,7 +188,7 @@ Partial Refund
 
 You can also perform multiple partial refunds up to the original amount.
 
-Let's say you've debited an account for $20.00
+Let's say you've debited a customer for $20.00
 
 * Your ``in_escrow`` balance says $20.00
 * You issue a refund for $10.00
@@ -223,11 +223,11 @@ cardholder's credit card. **The customer is not billed.**
 Holds are common in the industries where the amount of the goods or services
 are "reserved" on the cardholder's credit card.
 
-If you issue a debit on an account, Balanced uses holds behinds the scenes
+If you issue a debit on a customer, Balanced uses holds behinds the scenes
 but captures the funds immediately -- you will always see a hold returned on a
 debit. For example:
 
-.. dcode:: scenario account-create-debit
+.. dcode:: scenario customer-create-debit
     :section-include: response
 
 .. warning::
@@ -248,7 +248,7 @@ A hold is created in a way similar to creating a debit. Creating a hold will
 return a URI which can be used to perform a capture later, up to the full
 amount of the hold.
 
-.. dcode:: scenario account-create-hold
+.. dcode:: scenario customer-create-hold
 
 
 Capturing a hold
@@ -256,7 +256,7 @@ Capturing a hold
 
 Here's an example on how to capture a hold:
 
-.. dcode:: scenario account-capture-hold
+.. dcode:: scenario hold-create
 
 
 .. _processing-testing:
