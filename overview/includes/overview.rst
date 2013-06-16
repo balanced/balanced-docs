@@ -111,10 +111,11 @@ many :ref:`support channels <support>`.
    * - php
      - `balanced-php`_
      - `balanced-php tests`_
+     - Balanced
    * - php (symfony2 bundle)
      - `https://github.com/jeremymarc/JmBalancedPaymentBundle`_
      - `https://github.com/jeremymarc/JmBalancedPaymentBundle/tree/master/Tests`_
-     - Jeremy Marc
+     - `Jeremy Marc <https://twitter.com/jeremymarc>`_
    * - java
      - `balanced-java`_
      - `balanced-java tests`_
