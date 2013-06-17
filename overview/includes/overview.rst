@@ -424,7 +424,7 @@ Crediting Your Own Merchant Account
 .. _Ben Mills (Remear): http://unfiniti.com
 .. _ACH: http://en.wikipedia.org/wiki/Automated_Clearing_House
 .. _open partnership: http://blog.gittip.com/post/28351995405/open-partnerships
-.. _mitigate the risks of running a marketplace: https://github.com/whit537/www.gittip.com/issues/67
+.. _mitigate the risks of running a marketplace: https://github.com/gittip/www.gittip.com/issues/67
 .. _payments infrastructure: https://github.com/whit537/www.gittip.com/pull/137
 .. _visual design: https://github.com/whit537/www.gittip.com/issues/66#issuecomment-7439689
 .. _fraud preventions systems: https://github.com/gvenkataraman/www.gittip.com/commit/ceb88e6f5e1eb7ae931cf2921866beccb49381b5
