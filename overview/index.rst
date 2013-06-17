@@ -8,7 +8,7 @@
     :script: scripts/lang-scenario.py -d scenarios -c scenario.cache
     :section-include: request
     :section-chars: ~^
-    :lang: python ruby php node
+    :lang: python ruby php node java
 
 .. contents::
   :depth: 2
@@ -23,6 +23,7 @@
   * python
   * php
   * node
+  * java
 
 .. include:: includes/overview.rst
 
