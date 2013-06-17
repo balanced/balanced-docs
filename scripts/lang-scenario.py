@@ -349,7 +349,7 @@ class Scenario(object):
         if lang not in self.ctx.langs:
             return None
         template_path = os.path.join(self.path, lang + '.mako')
-        if lang in ['php', 'ruby', 'node']:
+        if lang in ['php', 'ruby', 'node', 'python']:
             template_path = os.path.join(self.ctx.client_dir, lang,
                                          'scenarios', self.name, lang+'.mako')
         if lang == 'java':
