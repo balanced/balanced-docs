@@ -349,8 +349,11 @@ class Scenario(object):
         if lang not in self.ctx.langs:
             return None
         template_path = os.path.join(self.path, lang + '.mako')
-        if lang == 'node':
+        if lang in ['php', 'ruby', 'node']:
             template_path = os.path.join(self.ctx.client_dir, lang,
+                                         'scenarios', self.name, lang+'.mako')
+        if lang == 'java':
+            template_path = os.path.join(self.ctx.client_dir, lang, 'src',
                                          'scenarios', self.name, lang+'.mako')
         block = self._render(template_path)
         block['lang'] = lang
@@ -548,7 +551,7 @@ def create_arg_parser():
         dest='langs',
         action='append',
         default=[],
-        choices=['php', 'python', 'ruby', 'node'],
+        choices=['php', 'python', 'ruby', 'node', 'java'],
         help='Enable LANGUAGE for the scenario',
     )
     return parser
