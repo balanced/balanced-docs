@@ -93,7 +93,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'coffee'
+html_theme = 'basic'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -134,7 +134,6 @@ html_static_path = ['_static']
 
 # Custom sidebar templates, maps document names to template names.
 html_sidebars = {
-    '**': ['toc.html', 'searchbox.html'],
 }
 
 # Additional templates that should be rendered to pages, maps page names to
@@ -147,7 +146,7 @@ html_sidebars = {
 # A string with the fully-qualified name of a HTML Translator class, that is,
 # a subclass of Sphinx’ HTMLTranslator, that is used to translate document
 # trees to HTML. Default is None (use the builtin translator).
-html_translator_class = '_themes.coffee.CoffeeThemeHTMLTranslator'
+html_translator_class = 'htmlwriter.CoffeeThemeHTMLTranslator'
 
 # If false, no index is generated.
 #html_use_index = True
