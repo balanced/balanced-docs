@@ -30,7 +30,6 @@ corresponding hold.
 
   .. dcode:: form debits.create
 
-
 .. container:: method-examples
 
   .. dcode:: scenario debit_create
