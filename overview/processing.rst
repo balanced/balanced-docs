@@ -43,7 +43,7 @@ For convenience, we've rendered the html into a fully functioning form:
    :name: cc-form
 
    .. raw:: html
-      :file: cc-form.html
+      :file: forms/cc-form.html
 
 
 To collect the information from the form, we're going to enlist the help
