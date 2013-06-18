@@ -62,7 +62,7 @@ api/html/index.html:
 	$(SPHINXBUILD) -b singlehtml -c api api api/html
 	
 $(SITE_DIR)/api-gen.html: api/html/index.html
-	$(HTML_CONTAINER_CMD) > $(SITE_DIR)/api-gen.html < api/html/index.html
+	mv api/html/index.html ${SITE_DIR}/api-gen.html
 
 api: $(SITE_DIR)/api-gen.html
 
