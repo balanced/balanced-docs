@@ -146,7 +146,7 @@ html_sidebars = {
 # A string with the fully-qualified name of a HTML Translator class, that is,
 # a subclass of Sphinx’ HTMLTranslator, that is used to translate document
 # trees to HTML. Default is None (use the builtin translator).
-html_translator_class = 'htmlwriter.CoffeeThemeHTMLTranslator'
+html_translator_class = 'htmlwriter.BalancedHTMLTranslator'
 
 # If false, no index is generated.
 #html_use_index = True
