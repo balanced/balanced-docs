@@ -77,7 +77,7 @@ overview/html/index.html:
 	$(SPHINXBUILD) -b singlehtml -c overview overview overview/html
 	
 $(SITE_DIR)/overview-gen.html: overview/html/index.html
-	$(HTML_CONTAINER_CMD) > $(SITE_DIR)/overview-gen.html < overview/html/index.html
+	mv overview/html/index.html ${SITE_DIR}/overview-gen.html
 
 overview: $(SITE_DIR)/overview-gen.html
 

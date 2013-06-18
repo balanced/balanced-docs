@@ -55,7 +55,7 @@ discussed in the `Confirm the bank account verification`_ section.
 - `Create a verification using Ruby`_
 - `Create a verification using PHP`_
 - `Create a verification using REST API`_
-.. - `Create a verification using Java`_
+- `Create a verification using Java`_
 
 
 Confirm the bank account verification
@@ -71,7 +71,7 @@ automatically made available for debiting.
 - `Confirm a bank account verification using Ruby`_
 - `Confirm a bank account verification using PHP`_
 - `Confirm a bank account verification using REST API`_
-.. - `Confirm a bank account verification using Java`_
+- `Confirm a bank account verification using Java`_
 
 
 Debit the bank account
@@ -86,7 +86,7 @@ through the URI of your bank account as the `source_uri` attribute.
 - `Debit bank account using Ruby`_
 - `Debit bank account using PHP`_
 - `Debit bank account using REST API`_
-.. - `Debit bank account using Java`_
+- `Debit bank account using Java`_
 
 
 

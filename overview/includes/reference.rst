@@ -39,10 +39,4 @@ Our old documentation is located at `https://docs.balancedpayments.com/api?old <
 API Reference
 -------------
 
-Our API reference is located at `https://docs.balancedpayments.com/api?<https://docs.balancedpayments.com/api?`_
-
-
-.. Forms
-.. steal recurly's form https://js.recurly.com/examples/one_time_transaction.php
-.. modify it for processing as well
-
+Our API reference is located at `https://docs.balancedpayments.com/current/api <https://docs.balancedpayments.com/current/api>`_

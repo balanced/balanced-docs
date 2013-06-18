@@ -1,10 +1,3 @@
-.. note::
-  :class: lead alert alert-info
-
-  Please excuse our layout as we overhaul our documentation.
-
-  * Click here for our `**OLD** documentation <https://docs.balancedpayments.com/api?old>`_
-
 Overview
 ========
 
@@ -113,8 +106,8 @@ many :ref:`support channels <support>`.
      - `balanced-php tests`_
      - Balanced
    * - php (symfony2 bundle)
-     - `https://github.com/jeremymarc/JmBalancedPaymentBundle`_
-     - `https://github.com/jeremymarc/JmBalancedPaymentBundle/tree/master/Tests`_
+     - `JmBalancedPaymentBundle <https://github.com/jeremymarc/JmBalancedPaymentBundle>`_
+     - `JmBalancedPaymentBundle Tests <https://github.com/jeremymarc/JmBalancedPaymentBundle/tree/master/Tests>`_
      - `Jeremy Marc <https://twitter.com/jeremymarc>`_
    * - java
      - `balanced-java`_
@@ -131,6 +124,7 @@ many :ref:`support channels <support>`.
    * - node
      - `balanced-node`_
      - `balanced-node tests`_
+     - Balanced
 
 
 .. _support:
@@ -189,18 +183,18 @@ fee per operation is listed below:
 
 .. cssclass:: table table-hover
 
-  ============================ ===============
-    operation                    cost to you
-  ============================ ===============
-  successful credit card charge     2.9% + 30¢
-  successful bank account charge      1% + 30¢
-  chargeback                            $15.00
-  refund                                    $0
-  failure                                   $0
-  batch fee                                 $0
-  monthly fee                               $0
-  set-up fee                                $0
-  ============================ ===============
+  ================================ ===============
+    operation                        cost to you
+  ================================ ===============
+  successful credit card charge       2.9% + 30¢
+  successful bank account charge        1% + 30¢
+  chargeback                              $15.00
+  refund                                      $0
+  failure                                     $0
+  batch fee                                   $0
+  monthly fee                                 $0
+  set-up fee                                  $0
+  ================================ ===============
 
 
 .. _overview.fees.balanced:
@@ -215,7 +209,7 @@ marketplace. Please note that Balanced will never take fees from the operating
 capital (escrow account) of the marketplace.
 
 Example:
-''''''''
+~~~~~~~~
 
 - A buyer pays for a service on Monday from a third-party merchant. You charge
   the buyer $10, which increases your escrow balance by $10.
@@ -406,6 +400,10 @@ Crediting Your Own Merchant Account
 .. _balanced-java: https://github.com/balanced/balanced-java
 .. _balanced-java tests: https://github.com/balanced/balanced-java/tree/master/src/test
 
+.. _balanced-node: https://github.com/balanced/balanced-node
+.. _balanced-node tests: https://github.com/balanced/balanced-node/tree/master/test
+
+
 .. _Business-BalancedPayments: https://github.com/Crowdtilt/Business-BalancedPayments
 .. _Business-BalancedPayments tests: https://github.com/Crowdtilt/Business-BalancedPayments/tree/master/t
 
@@ -438,3 +436,5 @@ Crediting Your Own Merchant Account
 .. _Twitter: https://twitter.com/balanced
 .. _status.balancedpayments.com: https://status.balancedpayments.com/
 .. _community: https://www.balancedpayments.com/community
+
+.. _Rent My Bike: http://rentmybike.heroku.com
