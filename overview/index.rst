@@ -8,11 +8,7 @@
     :script: scripts/lang-scenario.py -d scenarios -c scenario.cache
     :section-include: request
     :section-chars: ~^
-<<<<<<< HEAD
-..     :lang: python ruby php node
-=======
     :lang: python ruby php node java
->>>>>>> 0f932982ea0ca45c3d7e4b0d42265c4a43a7500d
 
 .. contents::
   :depth: 2
