@@ -51,24 +51,24 @@ The API conforms to the design principles of Representational State Transfer
 * Methods that change data in the Balanced API require an HTTP ``PUT`` request.
 * Methods that destroy data in the Balanced API require an HTTP ``DELETE`` request.
 
-.. include:: errors.rst.inc
+.. include:: errors.rst
 
-.. include:: bank_accounts.rst.inc
+.. include:: bank_accounts.rst
 
-.. include:: bank_account_verifications.rst.inc
+.. include:: bank_account_verifications.rst
 
-.. include:: cards.rst.inc
+.. include:: cards.rst
 
-.. include:: accounts.rst.inc
+.. include:: accounts.rst
 
-.. include:: credits.rst.inc
+.. include:: credits.rst
 
-.. include:: debits.rst.inc
+.. include:: debits.rst
 
-.. include:: holds.rst.inc
+.. include:: holds.rst
 
-.. include:: refunds.rst.inc
+.. include:: refunds.rst
 
-.. include:: events.rst.inc
+.. include:: events.rst
 
-.. include:: customers.rst.inc
+.. include:: customers.rst
