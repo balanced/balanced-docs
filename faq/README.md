@@ -48,6 +48,6 @@ Current list of categories
 + marketing
 + end_user
 
-Category are lazy created, so feel free to create a new category for a FAQ item as needed.
+Category are lazy created, so feel free to create new categories for FAQ items as needed.
 
-**Last modified:** *06/19/2013 04:10pm by Justin Keller*
+**Last modified:** *06/19/2013 04:19pm by Justin Keller*
