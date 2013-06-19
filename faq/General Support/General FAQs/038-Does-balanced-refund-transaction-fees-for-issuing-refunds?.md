@@ -1,7 +1,7 @@
 ---
 
 layout: faq
-author: Parham Negahdar
+author: Richie
 title: Does Balanced refund transaction fees for issuing refunds?
 category: fees
 tags:
@@ -14,4 +14,4 @@ tags:
 
 ---
 
-https://botbot.me/freenode/balanced/msg/3725776/
+

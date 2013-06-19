@@ -1,8 +1,9 @@
 ---
 
 layout: faq
-author: Parham Negahdar
+author: Justin Keller
 title: What is the difference between the accounts and a customers resources?
+category: api
 tags:
 - balanced
 - payments
