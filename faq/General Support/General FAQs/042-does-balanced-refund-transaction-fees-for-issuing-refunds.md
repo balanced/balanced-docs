@@ -3,7 +3,7 @@
 layout: faq
 author: Parham Negahdar
 title: Does Balanced refund transaction fees for issuing refunds?
-category: security
+category: fees
 tags:
 - balanced
 - resources
