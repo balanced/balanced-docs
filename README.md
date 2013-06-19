@@ -49,6 +49,7 @@ If you've done that before just do:
 ```bash
 cd /path/to/balanced-docs
 workon balanced-docs
+git submodoule update --recursive
 ```
 
 ## Build

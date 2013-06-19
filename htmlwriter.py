@@ -2,7 +2,7 @@ from docutils import nodes
 from sphinx.writers.html import HTMLTranslator
 
 
-class CoffeeThemeHTMLTranslator(HTMLTranslator):
+class BalancedHTMLTranslator(HTMLTranslator):
 
     def visit_section(self, node):
         ids = node.get('ids')

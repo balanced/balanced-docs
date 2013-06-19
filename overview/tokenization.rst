@@ -361,7 +361,7 @@ of our :ref:`support channels <support>`.
 Simple Card Form
 ~~~~~~~~~~~~~~~~
 
-.. literalinclude:: includes/cc-form.html
+.. literalinclude:: forms/cc-form.html
    :language: html
 
 .. _tok.bank_account.form:
@@ -369,7 +369,7 @@ Simple Card Form
 Simple Bank Account Form
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. literalinclude:: includes/ba-form.html
+.. literalinclude:: forms/ba-form.html
    :language: html
 
 

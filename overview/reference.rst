@@ -34,15 +34,9 @@ from Balanced than clients which use the ``uri`` directly.
 Old Documentation
 -----------------
 
-Our old documentation is located at `https://docs2.balancedpayments.com/api?old <https://docs2.balancedpayments.com/api?old>`_
+Our old documentation is located at `https://docs.balancedpayments.com/api?old <https://docs.balancedpayments.com/api?old>`_
 
 API Reference
 -------------
 
-Our API reference is located at `https://docs2.balancedpayments.com/api?<https://docs2.balancedpayments.com/api?`_
-
-
-.. Forms
-.. steal recurly's form https://js.recurly.com/examples/one_time_transaction.php
-.. modify it for processing as well
-
+Our API reference is located at `https://docs.balancedpayments.com/current/api <https://docs.balancedpayments.com/current/api>`_

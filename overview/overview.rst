@@ -1,10 +1,3 @@
-.. note::
-  :class: lead alert alert-info
-
-  Please excuse our layout as we overhaul our documentation.
-
-  * Click here for our `**OLD** documentation <https://docs2.balancedpayments.com/api?old>`_
-
 Overview
 ========
 
@@ -112,6 +105,10 @@ many :ref:`support channels <support>`.
      - `balanced-php`_
      - `balanced-php tests`_
      - Balanced
+   * - php (symfony2 bundle)
+     - `JmBalancedPaymentBundle <https://github.com/jeremymarc/JmBalancedPaymentBundle>`_
+     - `JmBalancedPaymentBundle Tests <https://github.com/jeremymarc/JmBalancedPaymentBundle/tree/master/Tests>`_
+     - `Jeremy Marc <https://twitter.com/jeremymarc>`_
    * - java
      - `balanced-java`_
      - `balanced-java tests`_
@@ -127,6 +124,7 @@ many :ref:`support channels <support>`.
    * - node
      - `balanced-node`_
      - `balanced-node tests`_
+     - Balanced
 
 
 .. _support:
@@ -185,18 +183,18 @@ fee per operation is listed below:
 
 .. cssclass:: table table-hover
 
-  ============================ ===============
-    operation                    cost to you
-  ============================ ===============
-  successful credit card charge     2.9% + 30¢
-  successful bank account charge      1% + 30¢
-  chargeback                            $15.00
-  refund                                    $0
-  failure                                   $0
-  batch fee                                 $0
-  monthly fee                               $0
-  set-up fee                                $0
-  ============================ ===============
+  ================================ ===============
+    operation                        cost to you
+  ================================ ===============
+  successful credit card charge       2.9% + 30¢
+  successful bank account charge        1% + 30¢
+  chargeback                              $15.00
+  refund                                      $0
+  failure                                     $0
+  batch fee                                   $0
+  monthly fee                                 $0
+  set-up fee                                  $0
+  ================================ ===============
 
 
 .. _overview.fees.balanced:
@@ -211,7 +209,7 @@ marketplace. Please note that Balanced will never take fees from the operating
 capital (escrow account) of the marketplace.
 
 Example:
-''''''''
+~~~~~~~~
 
 - A buyer pays for a service on Monday from a third-party merchant. You charge
   the buyer $10, which increases your escrow balance by $10.
@@ -402,6 +400,10 @@ Crediting Your Own Merchant Account
 .. _balanced-java: https://github.com/balanced/balanced-java
 .. _balanced-java tests: https://github.com/balanced/balanced-java/tree/master/src/test
 
+.. _balanced-node: https://github.com/balanced/balanced-node
+.. _balanced-node tests: https://github.com/balanced/balanced-node/tree/master/test
+
+
 .. _Business-BalancedPayments: https://github.com/Crowdtilt/Business-BalancedPayments
 .. _Business-BalancedPayments tests: https://github.com/Crowdtilt/Business-BalancedPayments/tree/master/t
 
@@ -420,7 +422,7 @@ Crediting Your Own Merchant Account
 .. _Ben Mills (Remear): http://unfiniti.com
 .. _ACH: http://en.wikipedia.org/wiki/Automated_Clearing_House
 .. _open partnership: http://blog.gittip.com/post/28351995405/open-partnerships
-.. _mitigate the risks of running a marketplace: https://github.com/whit537/www.gittip.com/issues/67
+.. _mitigate the risks of running a marketplace: https://github.com/gittip/www.gittip.com/issues/67
 .. _payments infrastructure: https://github.com/whit537/www.gittip.com/pull/137
 .. _visual design: https://github.com/whit537/www.gittip.com/issues/66#issuecomment-7439689
 .. _fraud preventions systems: https://github.com/gvenkataraman/www.gittip.com/commit/ceb88e6f5e1eb7ae931cf2921866beccb49381b5
@@ -434,3 +436,5 @@ Crediting Your Own Merchant Account
 .. _Twitter: https://twitter.com/balanced
 .. _status.balancedpayments.com: https://status.balancedpayments.com/
 .. _community: https://www.balancedpayments.com/community
+
+.. _Rent My Bike: http://rentmybike.heroku.com

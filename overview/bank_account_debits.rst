@@ -55,7 +55,7 @@ discussed in the `Confirm the bank account verification`_ section.
 - `Create a verification using Ruby`_
 - `Create a verification using PHP`_
 - `Create a verification using REST API`_
-.. - `Create a verification using Java`_
+- `Create a verification using Java`_
 
 
 Confirm the bank account verification
@@ -71,7 +71,7 @@ automatically made available for debiting.
 - `Confirm a bank account verification using Ruby`_
 - `Confirm a bank account verification using PHP`_
 - `Confirm a bank account verification using REST API`_
-.. - `Confirm a bank account verification using Java`_
+- `Confirm a bank account verification using Java`_
 
 
 Debit the bank account
@@ -86,29 +86,29 @@ through the URI of your bank account as the `source_uri` attribute.
 - `Debit bank account using Ruby`_
 - `Debit bank account using PHP`_
 - `Debit bank account using REST API`_
-.. - `Debit bank account using Java`_
+- `Debit bank account using Java`_
 
 
 
-.. _collect bank account information tutorial: https://docs2.balancedpayments.com/overview?language=bash#id2
+.. _collect bank account information tutorial: https://docs.balancedpayments.com/overview?language=bash#id2
 
-.. _Create a verification using Python: https://docs2.balancedpayments.com/api?language=python#verifying-a-bank-account
-.. _Create a verification using Ruby: https://docs2.balancedpayments.com/api?language=ruby#verifying-a-bank-account
-.. _Create a verification using PHP: https://docs2.balancedpayments.com/api?language=php#verifying-a-bank-account
-.. _Create a verification using Java: https://docs2.balancedpayments.com/api?language=java#verifying-a-bank-account
-.. _Create a verification using REST API: https://docs2.balancedpayments.com/api?language=bash#verifying-a-bank-account
+.. _Create a verification using Python: https://docs.balancedpayments.com/api?language=python#verifying-a-bank-account
+.. _Create a verification using Ruby: https://docs.balancedpayments.com/api?language=ruby#verifying-a-bank-account
+.. _Create a verification using PHP: https://docs.balancedpayments.com/api?language=php#verifying-a-bank-account
+.. _Create a verification using Java: https://docs.balancedpayments.com/api?language=java#verifying-a-bank-account
+.. _Create a verification using REST API: https://docs.balancedpayments.com/api?language=bash#verifying-a-bank-account
 
-.. _Debit bank account using Python: https://docs2.balancedpayments.com/api?language=python#create-a-new-debit
-.. _Debit bank account using Ruby: https://docs2.balancedpayments.com/api?language=ruby#create-a-new-debit
-.. _Debit bank account using PHP: https://docs2.balancedpayments.com/api?language=php#create-a-new-debit
-.. _Debit bank account using Java: https://docs2.balancedpayments.com/api?language=java#create-a-new-debit
-.. _Debit bank account using REST API: https://docs2.balancedpayments.com/api?language=bash#create-a-new-debit
+.. _Debit bank account using Python: https://docs.balancedpayments.com/api?language=python#create-a-new-debit
+.. _Debit bank account using Ruby: https://docs.balancedpayments.com/api?language=ruby#create-a-new-debit
+.. _Debit bank account using PHP: https://docs.balancedpayments.com/api?language=php#create-a-new-debit
+.. _Debit bank account using Java: https://docs.balancedpayments.com/api?language=java#create-a-new-debit
+.. _Debit bank account using REST API: https://docs.balancedpayments.com/api?language=bash#create-a-new-debit
 
-.. _Confirm a bank account verification using Python: https://docs2.balancedpayments.com/api?language=python#confirm-a-bank-account-verification
-.. _Confirm a bank account verification using Ruby: https://docs2.balancedpayments.com/api?language=ruby#confirm-a-bank-account-verification
-.. _Confirm a bank account verification using PHP: https://docs2.balancedpayments.com/api?language=php#confirm-a-bank-account-verification
-.. _Confirm a bank account verification using Java: https://docs2.balancedpayments.com/api?language=java#confirm-a-bank-account-verification
-.. _Confirm a bank account verification using REST API: https://docs2.balancedpayments.com/api?language=bash#confirm-a-bank-account-verification
+.. _Confirm a bank account verification using Python: https://docs.balancedpayments.com/api?language=python#confirm-a-bank-account-verification
+.. _Confirm a bank account verification using Ruby: https://docs.balancedpayments.com/api?language=ruby#confirm-a-bank-account-verification
+.. _Confirm a bank account verification using PHP: https://docs.balancedpayments.com/api?language=php#confirm-a-bank-account-verification
+.. _Confirm a bank account verification using Java: https://docs.balancedpayments.com/api?language=java#confirm-a-bank-account-verification
+.. _Confirm a bank account verification using REST API: https://docs.balancedpayments.com/api?language=bash#confirm-a-bank-account-verification
 
 .. _Complete example using Python: https://github.com/balanced/balanced-python/blob/master/examples/bank_account_debits.py
 .. _Complete example using Ruby: https://github.com/balanced/balanced-ruby/blob/master/examples/bank_account_debits.rb
