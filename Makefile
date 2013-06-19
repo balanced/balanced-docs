@@ -23,7 +23,6 @@ ALLSPHINXOPTS 	= -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) over
 I18NSPHINXOPTS = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
 
 # common variable
-HTML_CONTAINER_CMD	= scripts/html-container.py
 SITE_DIR 			= site
 
 .PHONY: clean spec-clean api-clean all test
