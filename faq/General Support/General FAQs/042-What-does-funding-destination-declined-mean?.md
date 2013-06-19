@@ -3,6 +3,7 @@
 layout: faq
 author: Ryan
 title: What does funding destination declined mean?
+category: api
 tags:
 - balanced
 - payments

@@ -3,6 +3,7 @@
 layout: faq
 author: Ryan
 title: How are credit cards and bank account information stored?
+category: api
 tags:
 - balanced
 - payments

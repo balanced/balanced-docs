@@ -3,7 +3,7 @@
 layout: faq
 author: Parham Negahdar
 title: How can we go live and process live transactions?
-category: security
+category: signup
 tags:
 - balanced
 - resources
@@ -14,4 +14,4 @@ tags:
 
 ---
 
-https://botbot.me/freenode/balanced/msg/3721802/
+Simply [apply] (https://dashboard.balancedpayments.com/#/marketplaces/apply) for a production marketplace, and provide the required information.

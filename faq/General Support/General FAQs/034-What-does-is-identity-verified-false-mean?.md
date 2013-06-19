@@ -14,7 +14,7 @@ tags:
 
 ---
 
-is_identity_verified is a verfication flag that we place on merchant accounts to indicate that the merchant has been underwritten. In order to underwrite a merchant we perform a check on the following provided parameters:
+is_identity_verified is a verification flag that we place on merchant accounts to indicate that the merchant has been underwritten. In order to underwrite a merchant we perform a check on the following provided parameters:
 
 + Name
 + Date of birth
