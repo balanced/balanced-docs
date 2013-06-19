@@ -417,5 +417,6 @@ def _generate(
             cache.save(cache_file)
     else:
         result = _execute(script, args, kwargs, content, record)
+
     for line in result.splitlines():
         write(line)

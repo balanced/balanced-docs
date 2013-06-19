@@ -129,10 +129,10 @@ def _generate_form_field(ctx, form_field):
             return
 
         # name
-        ctx.writer('``{0}``\n\n'.format(form_field['name']))
+        ctx.writer('``{0}``\n'.format(form_field['name']))
 
         with ctx.writer:
-            ctx.writer('.. cssclass:: nested1\n\n')
+            ctx.writer(' .. cssclass:: nested1\n\n')
 
             # type
             if ctx.required:
