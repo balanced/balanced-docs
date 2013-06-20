@@ -3,6 +3,13 @@
 Debiting Bank Accounts
 ======================
 
+.. note::
+   :class: alert alert-info
+
+   You'll only need to verify a bank account if you're planning to later debit
+   that account, which is a functionality only available through our ACH
+   Debits private beta. Email support@balancedpayments.com to request access.
+
 Balanced allows you to debit bank accounts via ACH. In order to do this you
 must first verify the bank account to ensure that you are authorized to debit
 it.

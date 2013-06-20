@@ -3,6 +3,8 @@ credits
 
 To credit a bank account, you must create a new credit resource.
 
+**NOTE** If you're sending money to a bank account, known as issuing a credit,
+you do **NOT** need to verify the bank account
 
 .. cssclass:: method-section
 
