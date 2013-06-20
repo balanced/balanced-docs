@@ -2,7 +2,7 @@
 
 layout: faq
 author: Justin Keller
-title: What is the difference between the accounts and a customers resources?
+title: What is the difference between the accounts and customers resources?
 category: api
 tags:
 - balanced
