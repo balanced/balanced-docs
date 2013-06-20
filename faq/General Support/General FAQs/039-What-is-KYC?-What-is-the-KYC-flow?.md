@@ -3,6 +3,7 @@
 layout: faq
 author: Shawnee
 title: What is KYC? What is the KYC flow?
+category: legal
 tags:
 - balanced
 - payments
