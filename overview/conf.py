@@ -66,7 +66,7 @@ release = '1.0'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', '[!i][!n][!d]*.rst']
+exclude_patterns = ['_build']#, '[!i][!n][!d]*.rst']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -238,6 +238,7 @@ htmlhelp_basename = 'Balanceddoc'
 #texinfo_show_urls = 'footnote'
 
 from balanced_docs import dcode
+from html5 import patch_translator
 
 
 def setup(app):
@@ -245,3 +246,5 @@ def setup(app):
     app.add_directive('dcode-default', dcode.DCodeDefaultDirective)
     app.add_directive('dcode', dcode.DCodeDirective)
     app.add_lexer('node', pygments.lexers.web.JavascriptLexer())
+
+    patch_translator()

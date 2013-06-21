@@ -1,20 +1,25 @@
-<div id="container">
-  <div class="main">
-    {%- block content -%}
-      <div class="content clearfix">
-        {%- block document -%}
-          <div class="documentwrapper">
-            {%- block relbar1 -%}{% endblock -%}
-            <article class="document">
-              {% block body -%} {% endblock -%}
-            </article>
-            {%- block relbar2 -%}{% endblock -%}
+<div class="container content">
+  <div class="row">
+    <div class="span5">
+      <div class="sidebar-nav" data-spy="affix" data-offset-top="700">
+        <div class="row">
+
+          <!-- The navigation menu -->
+          <div class="span5">
+              {%- block sidebartoc %}
+              {%- include "localtoc.html" %}
+              {%- endblock %}
           </div>
-        {%- endblock -%}
 
+          <!-- The actual overview content -->
+          <div class="span20 offset1">
+              {% block body -%}
+
+              {% endblock -%}
+          </div>
+
+        </div>
       </div>
-    {%- endblock -%}
+    </div>
   </div>
-
 </div>
-<!--! end of #container -->
