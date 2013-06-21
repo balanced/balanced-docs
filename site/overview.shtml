@@ -7,21 +7,21 @@
     <script type="text/javascript">
         var _pageStartTime = (new Date()).getTime();
     </script>
-    
-    
+
+
     <!--[if lt IE 9]>
     <script type="text/javascript" src="/js/lib/html5shiv.js"></script>
     <![endif]-->
-           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/bootstrap-2.0.a4fc501f03bda0733015fa4530ac6c69.css"> 
-           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/base.73b7fe5564635d8138deef815500177b.css"> 
+           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/bootstrap-2.0.a4fc501f03bda0733015fa4530ac6c69.css">
+           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/base.73b7fe5564635d8138deef815500177b.css">
     <!--[if lte IE 9]>
-           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/ie9.9e3b95939b857bd20e152394ff185462.css"> 
+           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/ie9.9e3b95939b857bd20e152394ff185462.css">
     <![endif]-->
 
-           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/pygments.e6fe52e05265bb808055e9e798153bda.css"> 
-           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/docs/new.e5766dd3b207ada3bb8de443d9fa7547.css"> 
+           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/pygments.e6fe52e05265bb808055e9e798153bda.css">
+           <link rel="stylesheet" href="https://d3n06lmttbcmxe.cloudfront.net/css/docs/new.x5766dd3b207ada3bb8de443d9fa7547.css">
 
-    
+
 <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', 'UA-30733850-1']);
@@ -37,18 +37,18 @@
 
 </head>
 <body class="
-    overview docs 
+    overview docs
  ">
-    
+
 <!--#include file="header.html" -->
-    
+
     <nav id="doc-nav">
         <ul>
             <li class="selected"><a href="/overview">overview</a></li>
             <li class=""><a href="/api">API reference</a></li>
         </ul>
     </nav>
-    
+
 
 <!--#include file="overview-gen.html" -->
 
@@ -57,14 +57,14 @@
 
 
 <!--#include file="footer.html" -->
-    
+
 
     <div id="body-content-queue"></div>
-        
-    
+
+
     <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.min.js"></script>
-           <script type="text/javascript" src="https://d3n06lmttbcmxe.cloudfront.net/js/build/balanced.lib.min.59f58cb1ce38fe315e8f774c4398f042.js"></script> 
-           <script type="text/javascript" src="https://d3n06lmttbcmxe.cloudfront.net/js/build/balanced.min.5dbc8bbadddaf492a4588146bf3439f6.js"></script> 
+           <script type="text/javascript" src="https://d3n06lmttbcmxe.cloudfront.net/js/build/balanced.lib.min.59f58cb1ce38fe315e8f774c4398f042.js"></script>
+           <script type="text/javascript" src="https://d3n06lmttbcmxe.cloudfront.net/js/build/balanced.min.5dbc8bbadddaf492a4588146bf3439f6.js"></script>
     <script type="text/javascript">
         var csrf = 'rq3FlbXJpE395KHHkjspT9bXebRExAivXxSvIXcQydk';
 
@@ -88,7 +88,7 @@
         });
     </script>
 
-           <script type="text/javascript" src="https://d3n06lmttbcmxe.cloudfront.net/js/build/docs/docs.min.0b5629e36b2bde176f8b90c630de5711.js"></script> 
+           <script type="text/javascript" src="https://d3n06lmttbcmxe.cloudfront.net/js/build/docs/docs.min.0b5629e36b2bde176f8b90c630de5711.js"></script>
     <script type="text/javascript">
         $(function(){
             Balanced.Docs.init({
@@ -98,7 +98,7 @@
     </script>
 
     </body>
-    
+
     <section class="print-header">
         801 High Street, Suite 200<br>
         Palo Alto, CA 94301<br>
