@@ -1,25 +1,11 @@
-<div class="container content">
-  <div class="row">
-    <div class="span5">
-      <div class="sidebar-nav" data-spy="affix" data-offset-top="700">
-        <div class="row">
+{% if current_page_name == 'index' %}
 
-          <!-- The navigation menu -->
-          <div class="span5">
-              {%- block sidebartoc %}
-              {%- include "localtoc.html" %}
-              {%- endblock %}
-          </div>
+  {{ toctree() }}
 
-          <!-- The actual overview content -->
-          <div class="span20 offset1">
-              {% block body -%}
+{% else %}
 
-              {% endblock -%}
-          </div>
+  {% block body -%}
 
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+  {% endblock -%}
+
+{%endif %}

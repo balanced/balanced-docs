@@ -239,6 +239,7 @@ htmlhelp_basename = 'Balanceddoc'
 
 from balanced_docs import dcode
 from html5 import patch_translator
+from custom_toc import html_page_context
 
 
 def setup(app):
@@ -247,4 +248,5 @@ def setup(app):
     app.add_directive('dcode', dcode.DCodeDirective)
     app.add_lexer('node', pygments.lexers.web.JavascriptLexer())
 
+    app.connect('html-page-context', html_page_context)
     patch_translator()

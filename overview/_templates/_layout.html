@@ -1,0 +1,23 @@
+<div class="container content">
+  <div class="row">
+    <div class="span5">
+      <div class="sidebar-nav" data-spy="affix" data-offset-top="700">
+        <div class="row">
+
+          <!-- The navigation menu -->
+          <div class="span5">
+              {{ toc }}
+          </div>
+
+          <!-- The actual overview content -->
+          <div class="span20 offset1">
+              {% block body -%}
+
+              {% endblock -%}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
