@@ -15,11 +15,24 @@ class Spec(dict):
         return self['endpoints']
 
     def match_endpoint(self, name):
+
+        def _nested(path, nesting):
+            i = 0
+            for part in nesting:
+                i = path.find('/' + part, i)
+                if i == -1:
+                    return False
+            return True
+
+        nesting, _, name = name.rpartition('/')
+        nesting = nesting.split('/')
         matches = []
         for endpoint in self.endpoints:
             if name == endpoint['name']:
+                if nesting and not _nested(endpoint['path'], nesting):
+                    continue
                 matches.append(endpoint)
-        return matches
+        return sorted(matches, key=lambda x: len(x['path']))
 
     # views
 

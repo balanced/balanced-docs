@@ -53,7 +53,7 @@ Response
 Credit an Existing Bank Account
 -------------------------------
 
-.. dcode:: endpoint bank_account_credits.create
+.. dcode:: endpoint bank_accounts/credits.create
 
 Request
 ~~~~~~~
@@ -73,7 +73,7 @@ Response
 Credit a Merchant
 -----------------
 
-.. dcode:: endpoint account_credits.create
+.. dcode:: endpoint accounts/credits.create
 
 
 Request
@@ -127,7 +127,7 @@ Request
 List All Credits for a Bank Account
 -----------------------------------
 
-.. dcode:: endpoint bank_account_credits.index
+.. dcode:: endpoint bank_accounts/credits.index
    :exclude-method: HEAD
 
 Request
@@ -145,7 +145,7 @@ Request
 List All Credits for a Merchant
 -------------------------------
 
-.. dcode:: endpoint account_credits.index
+.. dcode:: endpoint accounts/credits.index
    :exclude-method: HEAD
    
 Request

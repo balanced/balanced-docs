@@ -22,7 +22,7 @@ the `amount_1` and `amount_2` parameters when subsequently updating this
 verification. These deposits will appear on the bank accounts statement as
 `Balanced verification`.
 
-.. dcode:: endpoint bank_account_authentications.create
+.. dcode:: endpoint bank_account_verifications.create
 
 Response
 ~~~~~~~~
@@ -37,7 +37,7 @@ Retrieve a Bank Account Verification for a Bank Account
 Request
 ~~~~~~~
 
-.. dcode:: endpoint bank_account_authentications.show
+.. dcode:: endpoint bank_account_verifications.show
 
 .. dcode:: scenario bank_account_authentications.show
    :section-include: response
@@ -46,7 +46,7 @@ Request
 List All Bank Account Verifications for a Bank Account
 ------------------------------------------------------
 
-.. dcode:: endpoint bank_account_authentications.index
+.. dcode:: endpoint bank_account_verifications.index
 
 Request
 ~~~~~~~
@@ -67,7 +67,7 @@ Confirm a Bank Account Verification
 When operating on a test bank account, the correct verification amounts are
 always 1 and 1.
 
-.. dcode:: endpoint bank_account_authentications.update
+.. dcode:: endpoint bank_account_verifications.update
 
 Request
 ~~~~~~~
