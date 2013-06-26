@@ -197,8 +197,7 @@ fee per operation is listed below:
   set-up fee                                  $0
   ================================ ===============
 
-* If you isssue a hold, and then capture, you are only charged the addition 2.9%, not the 30¢ again.
-
+*If you isssue a hold, and then capture, you are only charged the additional 2.9%, not the 30¢ again.*
 
 .. _overview.fees.balanced:
 
