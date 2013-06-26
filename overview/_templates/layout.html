@@ -1,11 +1,42 @@
-{% if current_page_name == 'index' %}
+{# {% extends "basic/layout.html" %} #}
 
-  {{ toctree() }}
+<div class="container content">
+    <div class="row">
 
-{% else %}
+        <!-- The side bar menu -->
+        <div class="span5">
+            <div class="sidebar-nav" data-spy="affix" data-offset-top="700">
+                <div class="row">
+                    <div class="span5">
 
-  {% block body -%}
+                        <!-- The navigation menu -->
+                        <div class="overview-api">
+                          <ul class="simple">
+                            <li class="active">
+                                <a>Overview</a>
+                            </li>
+                            <li>
+                                <a>API Reference</a>
+                            </li>
+                          </ul>
+                        </div>
 
-  {% endblock -%}
+                        <!-- The table of contents menu -->
+                        {%- block sidebar2 %}
+                        {{ toctree(maxdepth=2, collapse=False) }}
+                        {% endblock %}
 
-{%endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The actual overview content -->
+        <div class="span20 offset1">
+            {% block body -%}
+
+            {% endblock -%}
+        </div>
+
+    </div>
+</div>

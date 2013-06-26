@@ -31,7 +31,7 @@ following script on your page.
   <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
 
 .. note::
-  :class: alert alert-info
+  :class: alert alert-tab
 
   This may not work on very old browsers. For more information on how to
   support older browsers, `quirksmode`_ provides a tutorial on how to get
@@ -358,20 +358,24 @@ of our :ref:`support channels <support>`.
 
 .. _tok.card.form:
 
+.. cssclass:: mb-large
+
 Simple Card Form
 ~~~~~~~~~~~~~~~~
 
-.. literalinclude:: forms/cc-form.html
-   :language: html
+.. raw:: html
+   :file: forms/cc-form.html
+
 
 .. _tok.bank_account.form:
+
+.. cssclass:: mb-large
 
 Simple Bank Account Form
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. literalinclude:: forms/ba-form.html
-   :language: html
-
+.. raw:: html
+   :file: forms/ba-form.html
 
 
 .. _quirksmode: http://www.quirksmode.org/js/placejs.html
