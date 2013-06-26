@@ -197,7 +197,7 @@ fee per operation is listed below:
   set-up fee                                  $0
   ================================ ===============
 
-*If you issue a hold and then successfully charge, you only incur the additional 2.9% fee -- There is no extra 30¢ fee.*
+*If you issue a hold and then successfully charge, you only incur the additional 2.9% fee - There is no extra 30¢ fee.*
 
 .. _overview.fees.balanced:
 
