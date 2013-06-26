@@ -237,12 +237,12 @@ htmlhelp_basename = 'Balanceddoc'
 #texinfo_show_urls = 'footnote'
 import pygments.lexers.web
 from customizations import html_page_context, IconBoxWidget, Span
-from balanced_docs import dcode
 from html5 import patch_translator
 
 
 def setup(app):
-
+    print 'did I even get there?'
+    from balanced_docs import dcode
 
     app.add_directive('dcode-default', dcode.DCodeDefaultDirective)
     app.add_directive('dcode', dcode.DCodeDirective)

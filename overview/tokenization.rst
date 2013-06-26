@@ -378,6 +378,22 @@ Simple Bank Account Form
    :file: forms/ba-form.html
 
 
+Errors
+-------------------
+
+.. container:: mb-large
+
+  Standard HTTP status codes are used to communicate the success or
+  failure of a request. A code in the ``2xx`` range indicates success, ``4xx``
+  indicates an error that resulted from the provided information (e.g. a
+  required parameter was missing, a bank account failed tokenization, etc),
+  ``5xx`` indicates an error with Balanced's servers.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form customers.create
+
+
 .. _quirksmode: http://www.quirksmode.org/js/placejs.html
 .. _full example page: https://gist.github.com/2662770
 .. _LUHN check: http://en.wikipedia.org/wiki/Luhn_algorithm

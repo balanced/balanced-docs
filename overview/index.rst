@@ -7,6 +7,9 @@
     :section-chars: ~^
     :lang: python ruby php node java
 
+.. dcode-default:: form
+    :script: scripts/rst.py form
+
 .. toctree::
   :hidden:
   :maxdepth: 3
