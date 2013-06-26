@@ -32,7 +32,7 @@ class Spec(dict):
         def _munge(v):
             return re.sub(r'[\_\-\.]', '', v.lower())
 
-        name = _munge(name)
+        name = _munge(name) + 'view'
         for view in self.views:
             if name == _munge(view['name']):
                 return view
