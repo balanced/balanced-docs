@@ -188,7 +188,7 @@ fee per operation is listed below:
   ================================ ===============
   successful credit card charge       2.9% + 30¢
   successful bank account charge        1% + 30¢
-  issuing a hold                             30¢
+  issuing a hold                             30¢ [*]_
   chargeback                              $15.00
   refund                                      $0
   failure                                     $0
@@ -197,7 +197,7 @@ fee per operation is listed below:
   set-up fee                                  $0
   ================================ ===============
 
-*If you issue a hold and then successfully charge, you only incur the additional 2.9% fee - There is no extra 30¢ fee.*
+.. [*] If you issue a hold and then successfully charge, you only incur the 2.9% fee - There is no additional 30¢ fee.
 
 .. _overview.fees.balanced:
 
