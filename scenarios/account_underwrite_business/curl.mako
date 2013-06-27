@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 <%
-  ep = main.make_endpoint('accounts.create')
+  ep = main.make_endpoint('marketplaces/accounts.create')
 %>
 % if mode == 'definition':
   ${ep.method} ${ep.url}
