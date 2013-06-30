@@ -1,4 +1,17 @@
-.. _tokenization:
+.. dcode-default::
+    :cache: dcode.cache
+
+.. dcode-default:: scenario
+    :script: scripts/lang-scenario.py -d scenarios -c scenario.cache
+    :section-include: request
+    :section-chars: ~^
+    :lang: python ruby php node java
+
+.. dcode-default:: form
+    :script: scripts/rst.py form
+
+
+.. _getting_started:
 
 Getting Started
 ===============
@@ -16,9 +29,30 @@ we've built a `full example page`_ that's already put together for you. We're pu
 this here as we're going to reference it in the :ref:`payouts` and the :ref:`processing`
 tutorials.
 
-Here's another `jsFiddle demo`_ that demonstrates bank account tokenization and we've also got a `jsFiddle for tokenizing cards`_.
 
-.. _tok.including:
+.. container:: mb-large
+
+  .. container:: span7
+
+     .. span:: Demo
+        :class: header3
+
+     .. icon-box-widget::
+        :box-classes: box box-block box-blue
+        :icon-classes: icon icon-cloud
+
+        `jsFiddle [tokenize bank accounts]`_
+
+     .. icon-box-widget::
+        :box-classes: box box-block box-blue
+        :icon-classes: icon icon-cloud
+
+        `jsFiddle [tokenize credit cards]`_
+
+
+.. clear::
+
+.. _getting_started.including:
 
 Including
 ~~~~~~~~~
@@ -31,19 +65,19 @@ following script on your page.
   <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
 
 .. note::
-  :class: alert alert-tab
+  :class: alert
 
   This may not work on very old browsers. For more information on how to
   support older browsers, `quirksmode`_ provides a tutorial on how to get
   javascript ``<script>`` includes to play nicely.
 
 
-.. _tok.init:
+.. _getting_started.init:
 
 Initializing
 ~~~~~~~~~~~~
 
-In a separate script tag, after you've :ref:`included balanced.js <tok.including>`,
+In a separate script tag, after you've :ref:`included balanced.js <getting_started.including>`,
 set your marketplace uri. This essentially acts as your public key and it's
 OK to freely share this with anyone.
 
@@ -82,7 +116,7 @@ That will actually hit Balanced's servers and if successful, will tokenize
 a card for you. More on that later, but first, let's discuss how to handle
 the returned results from Balanced.
 
-.. _tok.callback:
+.. _getting_started.callback:
 
 The Callback
 ~~~~~~~~~~~~
@@ -92,9 +126,15 @@ but this function is actually the most important piece of the integration. It is
 your Balanced response handler. It takes one parameter that has three (3)
 properties which you can use to drive the interaction with Balanced:
 
--  ``data`` - An object representing a tokenized resource (card or bank account).
--  ``error`` - Details of the error, if any.
--  ``status`` - The HTTP response code of the tokenization operation.
+.. cssclass:: dl-horizontal
+
+``data``
+   An object representing a tokenized resource (card or bank account).
+``error``
+   Details of the error, if any.
+``status``
+   The HTTP response code of the tokenization operation.
+
 
 Here's a skeleton callback function that we can use to get started:
 
@@ -155,10 +195,10 @@ Here's an example:
 
    balanced.bankAccount.create(bankAccountData, callbackHandler);
 
-Notice that we used the same :ref:`callback handler <tok.callback>` as
+Notice that we used the same :ref:`callback handler <getting_started.callback>` as
 tokenizing a card.
 
-.. _tok.validators:
+.. _getting_started.validators:
 
 Client-side Validation Helpers
 ------------------------------
@@ -284,7 +324,7 @@ Will return:
 
     {expiration: '"1-2000" is not a valid credit card expiration date'}
 
-.. _tok.validators.banks:
+.. _getting_started.validators.banks:
 
 Validate a Bank Account's Routing Number
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -356,7 +396,7 @@ Remember, you can always use the `full example page`_ that already puts all
 of this together or can ask us to write a sample form for you through one
 of our :ref:`support channels <support>`.
 
-.. _tok.card.form:
+.. _getting_started.card.form:
 
 .. cssclass:: mb-large
 
@@ -367,7 +407,7 @@ Simple Card Form
    :file: forms/cc-form.html
 
 
-.. _tok.bank_account.form:
+.. _getting_started.bank_account.form:
 
 .. cssclass:: mb-large
 
@@ -399,5 +439,5 @@ Errors
 .. _LUHN check: http://en.wikipedia.org/wiki/Luhn_algorithm
 .. _MICR Routing Number Format: http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format
 .. _jQuery: http://www.jquery.com
-.. _jsFiddle demo: http://jsfiddle.net/mahmoudimus/DGDkt/11/
-.. _jsFiddle for tokenizing cards: http://jsfiddle.net/mjallday/BtXfr/
+.. _jsFiddle [tokenize bank accounts]: http://jsfiddle.net/mahmoudimus/DGDkt/11/
+.. _jsFiddle [tokenize credit cards]: http://jsfiddle.net/mjallday/BtXfr/

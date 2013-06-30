@@ -30,10 +30,10 @@ Collecting bank account information
    or you want help, please use any of the :ref:`support channels <support>` we
    have available.
 
-Follow the steps for :ref:`including <tok.including>` and
-:ref:`initializing<tok.init>` ``balanced.js``.
+Follow the steps for :ref:`including <getting_started.including>` and
+:ref:`initializing<getting_started.init>` ``balanced.js``.
 
-We're going to use the :ref:`bank account sample form <tok.bank_account.form>`
+We're going to use the :ref:`bank account sample form <getting_started.bank_account.form>`
 from the :ref:`tokenization` section as it will do very basic information
 collection for us.
 
@@ -98,7 +98,7 @@ Now, let's handle the response from Balanced using a simple callback:
    the form. Let us know if you need :ref:`any assistance <support>`, we're
    happy to help.
 
-   You can find out more about the :ref:`callback here <tok.callback>`.
+   You can find out more about the :ref:`callback here <getting_started.callback>`.
 
 Now, let's submit it!
 
@@ -433,7 +433,7 @@ Here are some tips:
    right routing number.
 
 #. Balanced has provided very useful routing number validators in our
-   :ref:`balanced.js <tok.validators.banks>` library.
+   :ref:`balanced.js <getting_started.validators.banks>` library.
    Be sure to use these helper functions to build a robust form.
 
 #. Set your customer's expectation that payments might be delayed by up to

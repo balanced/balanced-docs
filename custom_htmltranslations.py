@@ -9,12 +9,19 @@ class BalancedHTMLTranslator(HTMLTranslator):
         # ids = node.get('ids')
         # node['ids'] = []
         self.section_level += 1
+
+        if self.section_level == 2:
+            self.body.append('<hr>\n')
         self.body.append(self.starttag(node, 'section'))
+
         # node['ids'] = ids
 
     def depart_section(self, node):
+        self.body.append('</section>')
+        if self.section_level == 1:
+            self.body.append('<hr>\n')
+
         self.section_level -= 1
-        self.body.append('</section>\n')
 
 
     # def visit_title(self, node):
@@ -50,4 +57,3 @@ class BalancedHTMLTranslator(HTMLTranslator):
 
     def visit_container(self, node):
         self.body.append(self.starttag(node, 'div'))
-

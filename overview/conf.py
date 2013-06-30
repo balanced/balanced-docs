@@ -39,7 +39,7 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = 'overview'
 
 # General information about the project.
 project = u'Balanced'
@@ -236,19 +236,21 @@ htmlhelp_basename = 'Balanceddoc'
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
 import pygments.lexers.web
-from customizations import html_page_context, IconBoxWidget, Span
+from customizations import html_page_context, IconBoxWidget, Span, Clear
 from html5 import patch_translator
 
 
 def setup(app):
-    print 'did I even get there?'
     from balanced_docs import dcode
 
     app.add_directive('dcode-default', dcode.DCodeDefaultDirective)
     app.add_directive('dcode', dcode.DCodeDirective)
     app.add_directive(IconBoxWidget.name, IconBoxWidget)
     app.add_directive(Span.name, Span)
+    app.add_directive(Clear.name, Clear)
 
     app.add_lexer('node', pygments.lexers.web.JavascriptLexer())
+
     app.connect('html-page-context', html_page_context)
+
     patch_translator()

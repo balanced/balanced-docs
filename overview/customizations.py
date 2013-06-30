@@ -82,8 +82,10 @@ class Span(Directive):
     required_arguments = 1
     optional_arguments = 0
     final_argument_whitespace = True
-    option_spec = {'class': directives.class_option,
-                   'name': directives.unchanged}
+    option_spec = {
+        'class': directives.class_option,
+        'name': directives.unchanged,
+    }
 
     def run(self):
         set_classes(self.options)
@@ -92,6 +94,27 @@ class Span(Directive):
         _span_node = span(span_text, '', *textnodes, **self.options)
         self.add_name(_span_node)
         return [_span_node] + messages
+
+
+class Clear(Directive):
+
+    name = 'clear'
+
+    required_arguments = 0
+    optional_arguments = 0
+    option_spec = {'class': directives.class_option,
+                   'name': directives.unchanged}
+    has_content = False
+
+    def run(self):
+
+        classes = self.options.get('class', [])
+        classes.insert(0, 'clear')
+        self.options['class'] = classes
+        set_classes(self.options)
+
+        container = nodes.container(classes=classes)
+        return [container]
 
 
 class IconBoxWidget(Directive):
@@ -114,7 +137,7 @@ class IconBoxWidget(Directive):
     def run(self):
         self.assert_has_content()
 
-        content = ''.join(self.content)
+        content = ''.join(self.content).strip()
 
         icon_classes = self.options.get('icon-classes', '')
         icon_classes = icon_classes.split(' ')
@@ -127,20 +150,38 @@ class IconBoxWidget(Directive):
         node = nodes.container(classes=container_classes)
         node.children.append(icons)
 
-        typ, _, text = content.rpartition(':')
-        # if we have a reference link, then, let's translate it to a
-        # link.
-        if typ:
-            pending_node, _messages = StandardDomain.roles['ref'](
-                typ='std' + typ.strip(),
-                rawtext=content,
-                text=text.strip('`'),
-                lineno=self.lineno,
-                inliner=self.state,
-            )
-            node.children.append(compact_paragraph('', '', pending_node[0]))
-        else:
-            node.children.append(nodes.Text(text))
+        parsed, _messages = self.state.inline_text(
+            content, self.content_offset
+        )
+        parsed_ = parsed[0]
+        for p in parsed[1:]:
+            parsed_.children.append(p)
+        print str(parsed_)
+        cp = compact_paragraph('', '', parsed_)
+        node.children.append(cp)
+
+        #
+        # # if we have a reference link, then, let's translate it to a
+        # # link.
+        # if typ:
+        #     pending_node, _messages = StandardDomain.roles['ref'](
+        #         typ='std' + typ.strip(),
+        #         rawtext=content,
+        #         text=text.strip('`'),
+        #         lineno=self.lineno,
+        #         inliner=self.state,
+        #     )
+        #     node.children.append(compact_paragraph('', '', pending_node[0]))
+        # else:
+        #     parsed, _messages = self.state.inline_text(
+        #         content, self.content_offset
+        #     )
+        #     print parsed
+        #     cp = compact_paragraph('', '', parsed[0])
+        #     node.children.append(cp)
+            # n = self.state.nested_parse(text, self.content_offset, node)
+            # print n
+            # node.children.append(_node)
 
         return [node]
 

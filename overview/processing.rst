@@ -30,10 +30,10 @@ Collecting credit card information
    have available.
 
 
-Follow the steps for :ref:`including <tok.including>` and
-:ref:`initializing<tok.init>` ``balanced.js``.
+Follow the steps for :ref:`including <getting_started.including>` and
+:ref:`initializing<getting_started.init>` ``balanced.js``.
 
-We're going to use the :ref:`card sample form <tok.card.form>`
+We're going to use the :ref:`card sample form <getting_started.card.form>`
 from the :ref:`tokenization` section as it will do very basic information
 collection for us.
 
@@ -95,7 +95,7 @@ Now, let's handle the response from Balanced using a simple callback:
    the form. Let us know if you need :ref:`any assistance <support>`, we're
    happy to help.
 
-   You can find out more about the :ref:`callback here <tok.callback>`.
+   You can find out more about the :ref:`callback here <getting_started.callback>`.
 
 Now, let's submit it!
 
