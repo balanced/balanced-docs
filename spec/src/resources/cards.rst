@@ -125,3 +125,16 @@ Response
 
 .. dcode:: scenario cards.associate
    :section-include: response
+
+
+Delete a Card
+---------------------
+
+Request
+~~~~~~~
+
+.. dcode:: endpoint bank_accounts.delete
+
+.. dcode:: scenario bank_accounts.delete
+   :section-include: response
+
