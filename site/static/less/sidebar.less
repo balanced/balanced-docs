@@ -1,0 +1,109 @@
+.overview-api {
+  position: relative;
+  top: -53px;
+  margin-bottom: 0px;
+  background-color: @white;
+
+  ul {
+    margin: 0px;
+
+    li {
+      background-color: @white;
+      padding: 15px;
+      .fontStyle('NimbusSanNov-Bol', 18px);
+      border-bottom: 1px solid @gray2;
+
+      &:last-of-type {
+        border-bottom: 0px;
+      }
+
+      &.active {
+        background-color: @egyptianBlue20;
+
+        a {
+          color: @black;
+
+          &:before {
+            background: @iconsFile -150px -830px no-repeat;
+          }
+        }
+      }
+
+      a {
+        color: @gray2;
+
+        &:before {
+          content: ' ';
+          display: inline-block;
+          width: 35px;
+          height: 45px;
+          background: @iconsFile 0px -830px no-repeat;
+          position: relative;
+          top: -17px;
+          left: -10px;
+          float: left;
+        }
+      }
+    }
+  }
+}
+
+.sidebar-nav {
+  ul {
+    &.nav-list {
+      background-color: @egyptianBlue20;
+      padding: 15px;
+
+      li {
+        &.toctree-l1 {
+          text-shadow: none;
+          .fontStyle('NimbusSanNov-SemBol', 13px, @color: @gray4);
+          margin-top: 15px;
+          text-transform: uppercase;
+
+          &:first-of-type {
+            margin-top: 0px;
+          }
+
+          ul {
+            margin: 0px 0px 0px 5px;
+            list-style: none;
+
+            li {
+              &.toctree-l2 {
+                padding: 3px 0px 3px 10px;
+                text-transform: none;
+
+                &.active {
+                  margin-left: -30px;
+
+                  a {
+                    border-left: 5px solid @black;
+                    padding-left: 25px;
+                    color: @black;
+                    background-color: inherit;
+                    text-shadow: none;
+
+                    &:hover {
+                      color: @black;
+                      background-color: inherit;
+                      text-shadow: none;
+                    }
+                  }
+                }
+
+                a {
+                  text-shadow: none;
+
+                  &:hover {
+                    background-color: inherit;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

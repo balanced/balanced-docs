@@ -1,0 +1,84 @@
+body {
+  margin-top: 175px;
+}
+
+section {
+  padding-top: 175px;
+  margin-top: -175px;
+  margin-bottom: 60px;
+
+  header {
+    p {
+        margin-bottom: 15px;
+    }
+  }
+}
+
+hr {
+  border-bottom: 1px solid @gray2;
+  margin: 0px;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+div.integration {
+  border-bottom: 1px solid @gray2;
+  margin-top: 50px;
+  margin-bottom: 75px;
+
+  h3 {
+    margin: 0px;
+  }
+
+  div.copy-box {
+    position: relative;
+    left: 37%;
+    top: 14px;
+    display: inline;
+    background-color: @white;
+    padding: 10px 20px 10px 20px;
+    border: 3px solid @black;
+
+    .fontStyle('NimbusSanNovCon-Bol', 20px, @lettingSpacing: 0.1em);
+    text-transform: uppercase;
+
+    a {
+      color: @black;
+      .fontStyle('NimbusSanNovCon-Bol', 20px, @lettingSpacing: 0.1em);
+    }
+
+    &:hover {
+      background-color: @black;
+
+      a {
+        color: @white;
+      }
+    }
+  }
+}
+
+ul {
+  &.simple {
+    list-style-type: none;
+  }
+}
+
+code {
+  .fontStyle('Inconsolata', @size: inherit, @color: @black);
+  background-color: @white;
+  border: 1px solid @gray2;
+}
+
+a {
+  .fontStyle('NimbusSanNov-SemBol', inherit, @color: @linkColor);
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+b, strong {
+  .fontStyle('NimbusSanNov-Bol', inherit, @color: inherit);
+}
