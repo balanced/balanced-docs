@@ -1,3 +1,4 @@
+import urllib
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
 from docutils.parsers.rst.roles import set_classes
@@ -184,6 +185,37 @@ class IconBoxWidget(Directive):
             # node.children.append(_node)
 
         return [node]
+
+
+class Gist(Directive):
+
+    name = 'gist'
+
+    required_arguments = 1
+    optional_arguments = 1
+    option_spec = {
+        'filename': directives.unchanged
+    }
+
+    final_argument_whitespace = False
+    has_content = False
+
+    _SCRIPT_TAG = '<script src="{url}"></script>'
+
+    _GIST_URL = 'https://gist.github.com/{gist_path}.js'
+
+    def run(self):
+        gist_path = self.arguments[0].strip()
+        options = {}
+        if 'filename' in self.options:
+            options['filename'] = self.options['filename']
+
+        url = self._GIST_URL.format(gist_path=gist_path)
+        if options:
+            url += '?' + urllib.urlencode(options)
+
+        embed_snippet = self._SCRIPT_TAG.format(url=url)
+        return [nodes.raw('', embed_snippet, format='html')]
 
 
 def setup(Sphinx):

@@ -236,7 +236,7 @@ htmlhelp_basename = 'Balanceddoc'
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
 import pygments.lexers.web
-from customizations import html_page_context, IconBoxWidget, Span, Clear
+from customizations import html_page_context, IconBoxWidget, Span, Clear, Gist
 from html5 import patch_translator
 
 
@@ -248,6 +248,7 @@ def setup(app):
     app.add_directive(IconBoxWidget.name, IconBoxWidget)
     app.add_directive(Span.name, Span)
     app.add_directive(Clear.name, Clear)
+    app.add_directive(Gist.name, Gist)
 
     app.add_lexer('node', pygments.lexers.web.JavascriptLexer())
 
