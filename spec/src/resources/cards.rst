@@ -133,8 +133,8 @@ Delete a Card
 Request
 ~~~~~~~
 
-.. dcode:: endpoint bank_accounts.delete
+.. dcode:: endpoint cards.delete
 
-.. dcode:: scenario bank_accounts.delete
+.. dcode:: scenario cards.delete
    :section-include: response
 
