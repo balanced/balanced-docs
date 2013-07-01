@@ -208,7 +208,7 @@ class Gist(Directive):
         gist_path = self.arguments[0].strip()
         options = {}
         if 'filename' in self.options:
-            options['filename'] = self.options['filename']
+            options['file'] = self.options['filename']
 
         url = self._GIST_URL.format(gist_path=gist_path)
         if options:
