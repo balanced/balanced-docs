@@ -91,7 +91,7 @@ Lets take a look at what we've built using [mongoose](https://github.com/valenok
 
 ```bash
 cd site
-./mongoose
+./mongoose -ssi_pattern '**.shtml$|**.shtm$|**.html$'
 Mongoose web server v. 3.8 started on port(s) 8080 with web root [.]
 ```
 
