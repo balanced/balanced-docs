@@ -56,10 +56,11 @@
             if ($('#search-dropdown li').length > 0){
                 $('#search-dropdown').show();
             }
-
         });
         $('#search-dropdown').on('click', 'li', function () {
             var to = $(this).attr('data-scroll-to');
+            $(':header').removeClass('result-highlight');
+            $(to).find(':header').first().addClass('result-highlight');
             $.scrollTo(to, 800);
             $('#search-dropdown').hide()
         });
