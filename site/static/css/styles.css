@@ -6025,6 +6025,18 @@ table.table tbody tr td {
   background-color: #ffffff;
   padding: 12px 12px 12px 15px;
 }
+ul#search-dropdown li {
+  border-bottom: 2px;
+  margin: 3px 10px;
+}
+ul#search-dropdown li h4 {
+  font-weight: bold;
+  font-size: 16.25px;
+  color: black;
+}
+ul#search-dropdown li:hover {
+  background-color: #96C0C5;
+}
 .pull-right {
   float: right;
 }
