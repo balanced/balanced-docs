@@ -6045,6 +6045,9 @@ ul#search-dropdown li:hover {
   border: 2px #96C0C5 dotted;
   padding-left: 8px;
 }
+span.text-highlight.search-active {
+  background-color: #96C0C5;
+}
 .pull-right {
   float: right;
 }
