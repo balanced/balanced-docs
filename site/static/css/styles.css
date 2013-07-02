@@ -5772,11 +5772,10 @@ strong {
 }
 .alert-tab {
   position: relative;
-  bottom: 5px;
   text-transform: uppercase;
   background-color: #3f8067;
   color: #ffffff;
-  display: inline;
+  display: inline-block;
   margin-bottom: 0px;
   padding: 8px 20px;
 }
@@ -5802,14 +5801,16 @@ dl.dl-params dt strong,
 dl.dl-params dd strong {
   color: #000000;
 }
-dl.dl-params dt {
+dl.dl-params dt code {
   font-family: 'Inconsolata';
   font-size: inherit;
   color: #c88a12;
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
-  padding-right: 25px;
+  padding-right: 8px;
+  border: none;
+  background-color: #f2f1ec;
 }
 .dropdown ul.dropdown-menu {
   -webkit-box-shadow: None;

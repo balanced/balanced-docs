@@ -52,6 +52,8 @@ tutorials.
 
 .. clear::
 
+.. cssclass:: mb-large
+
 .. _getting_started.including:
 
 Including
