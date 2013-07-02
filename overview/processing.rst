@@ -22,7 +22,9 @@ Collecting credit card information
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
-   :class: alert alert-info
+   :header_class: alert alert-tab
+   :body_class: alert alert-gray
+
 
    We have a fully implemented `sample page`_ for you, that you can use to get
    started immediately. At any point during this tutorial you feel overwhelmed
@@ -87,7 +89,9 @@ Now, let's handle the response from Balanced using a simple callback:
     }
 
 .. note::
-   :class: alert alert-info
+   :header_class: alert alert-tab
+   :body_class: alert alert-gray
+
 
    ``$.post('your-marketplace.tld/cards', response.data);`` is used
    as an example above. However, what you should do is iterate through the
@@ -151,7 +155,8 @@ account <processing.buyer.add_tok_to_acct>`, you can now easily charge the card
 .. dcode:: scenario account_create_debit
 
 .. note::
-   :class: alert alert-info
+   :header_class: alert alert-tab
+   :body_class: alert alert-gray
 
    Balanced does NOT take its fees from your charges, instead it instruments
    all operations that have occurred on the API and later invoices you. Read

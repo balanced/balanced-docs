@@ -57,3 +57,9 @@ class BalancedHTMLTranslator(HTMLTranslator):
 
     def visit_container(self, node):
         self.body.append(self.starttag(node, 'div'))
+
+    def visit_admonition(self, node, name=''):
+        self.body.append(self.starttag(
+            node, 'div', CLASS=('admonition ' + name)))
+        if name and name != 'seealso':
+            node.insert(0, nodes.Text(name))

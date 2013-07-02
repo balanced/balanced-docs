@@ -65,7 +65,8 @@ following script on your page.
   <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
 
 .. note::
-  :class: alert
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
 
   This may not work on very old browsers. For more information on how to
   support older browsers, `quirksmode`_ provides a tutorial on how to get
@@ -356,7 +357,8 @@ General Bank Account Validation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
-   :class: alert alert-warning
+   :header_class: alert alert-tab
+   :body_class: alert alert-gray
 
    Account numbers can not be validated in real time. More on
    :ref:`bank accounts best practices <payouts.best_practices>`.

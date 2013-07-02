@@ -36,7 +36,7 @@ Overview
 
 .. container:: span6
 
-   .. container:: Tutorials
+   .. span:: Tutorials
       :class: header3
 
    .. icon-box-widget::
@@ -66,7 +66,7 @@ Overview
 
 .. container:: span6
 
-   .. container:: Form Building
+   .. span:: Form Building
       :class: header3
 
    .. icon-box-widget::
@@ -84,7 +84,7 @@ Overview
 
 .. container:: span6
 
-   .. container:: Testing
+   .. span:: Testing
       :class: header3
 
    .. icon-box-widget::
