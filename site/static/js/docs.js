@@ -40,11 +40,12 @@ $(document).ready(function () {
         var lang_head = $('#lang-dropdown-head');
         lang_head.html(text + " <b class='caret'></b>")
     }
-    var lang = getParameterByName('language', window.location.href);
-    lang = (lang.length > 0) ? lang[0] : 'bash';
-    update_lang_head($("[data-lang='" + lang +"']").text());
+    var default_lang = getParameterByName('language', window.location.href);
+    default_lang = (default_lang.length > 0) ? default_lang[0] : 'bash';
+    update_lang_head($("[data-lang='" + default_lang +"']").text());
+    $("[data-lang='"+ default_lang +"']").parent().hide()
     $("[class^='highlight-']").hide();
-    $(".highlight-" + lang).show();
+    $(".highlight-" + default_lang).show();
     $('.lang-change').click(function () {
         var lang = $(this).attr('data-lang');
         var langtext = $(this).text();
