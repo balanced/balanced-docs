@@ -1,20 +1,40 @@
-<div id="container">
-  <div class="main">
-    {%- block content -%}
-      <div class="content clearfix">
-        {%- block document -%}
-          <div class="documentwrapper">
-            {%- block relbar1 -%}{% endblock -%}
-            <article class="document">
-              {% block body -%} {% endblock -%}
-            </article>
-            {%- block relbar2 -%}{% endblock -%}
-          </div>
-        {%- endblock -%}
+<div class="container content">
+    <div class="row">
 
-      </div>
-    {%- endblock -%}
-  </div>
+        <!-- The side bar menu -->
+        <div class="span5">
+            <div class="sidebar-nav" data-spy="affix" data-offset-top="700">
+                <div class="row">
+                    <div class="span5">
 
+                        <!-- The navigation menu -->
+                        <div class="overview-api">
+                          <ul class="simple">
+                            <li class="active">
+                                <a>Overview</a>
+                            </li>
+                            <li>
+                                <a>API Reference</a>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <!-- The table of contents menu -->
+                        {%- block sidebar2 %}
+                        {{ toctree(maxdepth=2, collapse=False) }}
+                        {% endblock %}
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The actual overview content -->
+        <div class="span20 offset1">
+            {% block body -%}
+
+            {% endblock -%}
+        </div>
+
+    </div>
 </div>
-<!--! end of #container -->

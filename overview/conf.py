@@ -239,7 +239,6 @@ import pygments.lexers.web
 from customizations import (
     html_page_context, IconBoxWidget, Span, Clear, Gist, patch_admonition
 )
-from html5 import patch_translator
 
 
 def setup(app):
@@ -256,5 +255,4 @@ def setup(app):
 
     app.connect('html-page-context', html_page_context)
 
-    patch_translator()
     patch_admonition()
