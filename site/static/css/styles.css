@@ -5203,6 +5203,14 @@ a.badge:focus {
 .bg-gray {
   background-color: #d9d8d5;
 }
+.bg-white {
+  background-color: #ffffff;
+}
+.spaced-out {
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
 @font-face {
   font-family: 'NimbusSanNov-Med';
   src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_2_0.eot');
@@ -5538,7 +5546,8 @@ h2 {
   margin: 0px;
 }
 h3,
-div.header3 {
+div.header3,
+span.header3 {
   font-family: 'NimbusSanNov-Med';
   font-size: 16px;
   color: #000000;
