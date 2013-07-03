@@ -2,8 +2,9 @@ import json
 import re
 
 
-def load(file_path):
-    return Spec(json.load(file_path))
+def load(file_path, rev='rev0'):
+    data = json.load(file_path)
+    return Spec(data[rev])
 
 
 class Spec(dict):
