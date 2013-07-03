@@ -25,11 +25,20 @@ function getParameterByName(name, queryString) {
     }
     return resultsAsAList;
 }
+function updateNavigation(e) {
+    var $this = $(this);
+    var $active = $this.find('.active');
+    if ($active.length != 1) {
+        return;
+    }
+    var currentTopic = $active.first().find('a').first();
+    window.history.replaceState({}, null, currentTopic.attr('href'));
+}
 
 $(document).ready(function () {
     function update_lang_head(text){
         var lang_head = $('#lang-dropdown-head');
-        lang_head.html(text + "<b class='caret'></b>")
+        lang_head.html(text + " <b class='caret'></b>")
     }
     var lang = getParameterByName('language', window.location.href);
     lang = (lang.length > 0) ? lang[0] : 'bash';
@@ -47,6 +56,9 @@ $(document).ready(function () {
         $(".highlight-javascript").show();
         $(".highlight-" + lang).show();
         update_link(lang);
-        $('html').scrollspy('refresh');
+        $('[data-spy="scroll"]').each(function () {
+            var $spy = $(this).scrollspy('refresh')
+        });
     });
+    $("li [class^='toctree-']").bind('activate', updateNavigation);
 });

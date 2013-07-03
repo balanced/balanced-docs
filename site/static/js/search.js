@@ -17,8 +17,8 @@ $(document).ready(function () {
             body: body
         });
     });
-    $('#search').focus(function(){
-        if ($('#search-dropdown li').length > 0){
+    $('#search').focus(function () {
+        if ($('#search-dropdown li').length > 0) {
             $('#search-dropdown').show();
         }
     });
@@ -55,7 +55,7 @@ $(document).ready(function () {
 
             var result_body = "<li class='result_item' data-scroll-to='" +
                 link + "'><h4>" +
-                header  + "</h4><p>" +
+                header + "</h4><p>" +
                 body + "</p></li>";
             s_dropdown.append(result_body);
 
@@ -68,18 +68,19 @@ $(document).ready(function () {
         }
     });
 
-    function highlight_match(string_to_check, search_text){
-        function highlight(string){
+    function highlight_match(string_to_check, search_text) {
+        function highlight(string) {
             return "<span class='text-highlight search-active'>" + string + "</span>";
         }
+
         var min_len = 3
         var already_replaced = {};
         var to_match_split = search_text.split(' ');
-        for(var i=0; i<to_match_split.length; i++){
+        for (var i = 0; i < to_match_split.length; i++) {
             var word_to_replace = to_match_split[i];
-            if (word_to_replace.length > min_len && !(word_to_replace in already_replaced)){
-                var regex = new RegExp( '(' + word_to_replace + ')', 'gi' );
-                string_to_check = string_to_check.replace(regex, function(match){
+            if (word_to_replace.length > min_len && !(word_to_replace in already_replaced)) {
+                var regex = new RegExp('(' + word_to_replace + ')', 'gi');
+                string_to_check = string_to_check.replace(regex, function (match) {
                     return highlight(match)
                 });
                 already_replaced[word_to_replace] = true;
