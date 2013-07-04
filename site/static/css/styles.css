@@ -6063,6 +6063,7 @@ span.text-highlight.search-active {
   background-color: #96C0C5;
 }
 .code-white {
+  background-color: #FFF;
   padding: 15px;
 }
 .code-white div p {
