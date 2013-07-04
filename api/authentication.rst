@@ -1,6 +1,9 @@
 Authentication
 ==============
 
+Authenticating to Balanced
+--------------------------
+
 To authenticate with Balanced, you will need the API key ``secret`` provided
 from the `dashboard`_. You have to use `http basic access
 authentication`_. Your key has to be set as the username. A password

@@ -244,6 +244,30 @@ from customizations import (
 def setup(app):
     from balanced_docs import dcode
 
+    # dcode directive default registrations
+    dcode.DCodeDefaultDirective.registry[None]['cache'] = 'dcode.cache'
+    dcode.DCodeDefaultDirective.registry['scenario'].update({
+        'script': 'scripts/lang-scenario.py -d scenarios -c scenario.cache',
+        'section-chars': '~^',
+        'lang': ['python', 'ruby', 'php', 'node', 'java'],
+    })
+    dcode.DCodeDefaultDirective.registry['endpoint'].update({
+        'script': 'scripts/rst.py endpoint'
+    })
+    dcode.DCodeDefaultDirective.registry['enum'].update({
+        'script': 'scripts/rst.py enum'
+    })
+    dcode.DCodeDefaultDirective.registry['error'].update({
+        'script': 'scripts/rst.py error'
+    })
+    dcode.DCodeDefaultDirective.registry['form'].update({
+        'script': 'scripts/rst.py form'
+    })
+    dcode.DCodeDefaultDirective.registry['view'].update({
+        'script': 'scripts/rst.py view'
+    })
+
+
     app.add_directive('dcode-default', dcode.DCodeDefaultDirective)
     app.add_directive('dcode', dcode.DCodeDirective)
     app.add_directive(IconBoxWidget.name, IconBoxWidget)

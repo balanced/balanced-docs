@@ -1,4 +1,4 @@
-errors
+Errors
 ======
 
 Standard HTTP status codes are used to communicate the success or
@@ -7,10 +7,16 @@ indicates an error that resulted from the provided information (e.g. a
 required parameter was missing, a bank account failed tokenization, etc),
 ``5xx`` indicates an error with Balanced's servers.
 
+Representation
+--------------
+
 .. cssclass:: dl-horizontal dl-params
 
    .. dcode:: view http_exception
 
+
+Status Codes
+------------
 
 .. container:: bg-white
 
@@ -21,4 +27,3 @@ required parameter was missing, a bank account failed tokenization, etc),
   .. cssclass:: spaced-out
 
      **200** ok: resource(s) retrieved successfully.
-
