@@ -72,7 +72,11 @@ $(document).ready(function () {
                   visit_result($result);
             }
             $("#search").blur();
-            e.preventDefault()
+            e.preventDefault();
+        }
+        if (e.keyCode == 191){
+            $('#search').focus();
+            e.preventDefault();
         }
     });
 

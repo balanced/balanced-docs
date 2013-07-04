@@ -5513,6 +5513,7 @@ a.badge:focus {
   color: #000000;
   background-color: inherit;
   text-shadow: none;
+  display: block;
 }
 .sidebar-nav ul.nav-list li.toctree-l1 ul li.toctree-l2.active a:hover {
   color: #000000;
