@@ -1,8 +1,3 @@
-function update_link(language) {
-    var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', language);
-    uri = uri + '' + window.location.hash;
-    window.history.pushState({}, document.title, uri);
-}
 function updateQueryStringParameter(uri, key, value) {
     var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
     var separator = uri.indexOf("?") > -1 ? "&" : "?";
@@ -32,18 +27,21 @@ function updateNavigation(e) {
         return;
     }
     var currentTopic = $active.first().find('a').first();
-    window.history.replaceState({}, null, currentTopic.attr('href'));
+    window.location = currentTopic.attr('href');
+    //window.history.replaceState({}, null, currentTopic.attr('href'));
+    //console.log(currentTopic.attr('href'));
 }
-
 $(document).ready(function () {
+   $("li").bind('activate', updateNavigation);
     function update_lang_head(text){
         var lang_head = $('#lang-dropdown-head');
         lang_head.html(text + " <b class='caret'></b>")
     }
     var default_lang = getParameterByName('language', window.location.href);
     default_lang = (default_lang.length > 0) ? default_lang[0] : 'bash';
-    update_lang_head($("[data-lang='" + default_lang +"']").text());
-    $("[data-lang='"+ default_lang +"']").parent().hide()
+    default_lang_dd = $("[data-lang='" + default_lang +"']");
+    update_lang_head(default_lang_dd.text());
+    default_lang_dd.parent().hide();
     $("[class^='highlight-']").hide();
     $(".highlight-" + default_lang).show();
     $('.lang-change').click(function () {
@@ -56,10 +54,12 @@ $(document).ready(function () {
         $("[class^='highlight-']").hide();
         $(".highlight-javascript").show();
         $(".highlight-" + lang).show();
-        update_link(lang);
+        var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
+        uri = uri + '' + window.location.hash;
+        window.location = uri;
+        //window.history.replaceState(null, null, uri);
         $('[data-spy="scroll"]').each(function () {
-            var $spy = $(this).scrollspy('refresh')
+            var $spy = $(this).scrollspy('refresh');
         });
     });
-    $("li [class^='toctree-']").bind('activate', updateNavigation);
 });

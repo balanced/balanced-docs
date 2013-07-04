@@ -5,23 +5,25 @@ You'll eventually want to be able to credit bank accounts without having to
 ask your users for their information over and over again. To do this, you'll
 need to create a bank account object.
 
-**NOTE** To debit a bank account you must first :ref:`verify it <bank-account-verifications>`.
+.. note::
+   :header_class: alert alert-tab
+   :body_class: alert alert-gray
 
-.. cssclass:: method-section
+   To debit a bank account you must first :ref:`verify it <bank-account-verifications>`.
 
 creating a new bank account
 ---------------------------
 
 Creates a new bank account.
 
-.. container:: method-description
 
-    .. dcode:: form bank_accounts.create
+.. cssclass:: dl-horizontal dl-params
 
+  .. dcode:: form bank_accounts.create
 
-.. container:: method-examples
+.. container:: bg-white
 
-    .. dcode:: scenario bank_account_create
+  .. dcode:: scenario bank_account_create
 
 
 .. cssclass:: method-section

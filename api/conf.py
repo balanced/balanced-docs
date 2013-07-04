@@ -269,7 +269,6 @@ def setup(app):
     dcode.DCodeDefaultDirective.registry[None]['cache'] = 'dcode.cache'
     dcode.DCodeDefaultDirective.registry['scenario'].update({
         'script': 'scripts/lang-scenario.py -d scenarios -c scenario.cache',
-        'section-include': 'request',
         'section-chars': '~^',
         'lang': ['python', 'ruby', 'php', 'node', 'java'],
     })

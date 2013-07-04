@@ -1,6 +1,0 @@
-{
-    "secret": null, 
-    "buyer_uri": null, 
-    "merchant_uri": null, 
-    "root_uri": "https://api.balancedpayments.com"
-}

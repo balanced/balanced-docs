@@ -182,7 +182,6 @@ class DCodeDirective(Directive):
             for k, v in options.iteritems()
             if k not in excludes
         ))
-
         # generate
         if not script:
             raise ValueError('No scripts for key "{0}"'.format(key))

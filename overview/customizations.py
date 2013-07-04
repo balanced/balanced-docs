@@ -64,7 +64,7 @@ def html_page_context(app, pagename, templatename, context, doctree):
         bullet_list = bullet_lists[0]
         # the top level <ul> items are bullet_lists and they should have
         # the classes nav and nav-list
-        bullet_list.attributes['classes'] = ['nav', 'nav-list']
+        bullet_list.attributes['classes'] = ['nav', 'nav-list', 'context-navlist']
 
         traverse_and_sub_refuri_with_anchorname(toc)
         r = app.builder.render_partial(toc)['fragment']
