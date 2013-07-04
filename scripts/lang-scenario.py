@@ -444,45 +444,37 @@ def generate(write, name, blocks, response, section_chars):
         'curl': 'bash',
     }
 
-    for block in blocks:
-        write('definition\n')
-        write('{0}\n\n'.format(section_chars[0] * len('definition')))
-        write('.. cssclass:: {0}\n\n'.format('code-block'))
-        write('.. container:: {0}\n\n'.format('definition'))
-        with write:
+    write('.. container:: definition\n\n')
+    with write:
+        write('Definition\n\n')
+        for block in blocks:
             pygment = pygments.get(block['lang'], block['lang'])
             write('.. code-block:: {0}\n'.format(pygment))
+            write('\n')
             with write:
-                write('\n')
                 write(block['defintion'])
-            write('\n')
+            write('\n\n')
 
-    for block in blocks:
-        write('request\n')
-        write('{0}\n'.format(section_chars[0] * len('request')))
-        write('\n')
-        write('.. cssclass:: {0}\n\n'.format('code-block'))
-        write('.. container:: {0}\n\n'.format('request'))
-        with write:
+    write('.. container:: request\n\n')
+    with write:
+        write('Request\n\n')
+        for block in blocks:
             pygment = pygments.get(block['lang'], block['lang'])
             write('.. code-block:: {0}\n'.format(pygment))
-            with write:
-                write('\n')
-                write(block['request'])
             write('\n')
+            with write:
+                write(block['request'])
+            write('\n\n')
 
     if response:
-        write('response\n')
-        write('{0}\n'.format(section_chars[0] * len('response')))
-        write('\n')
-        write('.. cssclass:: {0}\n\n'.format('code-block'))
-        write('.. container:: {0}\n\n'.format('response'))
+        write('.. container:: response\n\n')
         with write:
+            write('Response\n\n')
             write('.. code-block:: {0}\n'.format('javascript'))
-            with write:
-                write('\n')
-                write(response)
             write('\n')
+            with write:
+                write(response)
+            write('\n\n')
 
 
 # main
