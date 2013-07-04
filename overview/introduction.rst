@@ -24,7 +24,7 @@ Overview
   Balanced believes in openness and transparency, so, despite being a
   payments company, we try to discuss as much of our product development
   decisions in public as possible. We’ve even `discussed pricing
-  decisions`_ publicly with our customers, :ref:`Collect credit card info <overview.github_issues>`.
+  decisions`_ publicly with our customers.
 
 
 .. container:: integration
@@ -36,8 +36,9 @@ Overview
 
 .. container:: span6
 
-   .. span:: Tutorials
-      :class: header3
+   .. container:: header3
+
+      Tutorials
 
    .. icon-box-widget::
       :box-classes: box box-block box-blue
@@ -66,8 +67,9 @@ Overview
 
 .. container:: span6
 
-   .. span:: Form Building
-      :class: header3
+   .. container:: header3
+
+      Form Building
 
    .. icon-box-widget::
       :box-classes: box box-block box-turquoise
@@ -84,8 +86,9 @@ Overview
 
 .. container:: span6
 
-   .. span:: Testing
-      :class: header3
+   .. container:: header3
+
+      Testing
 
    .. icon-box-widget::
       :box-classes: box box-block box-purple
@@ -103,8 +106,8 @@ Overview
 
 .. _overview.use_cases:
 
-Popular Use Cases
------------------
+Use Cases
+---------
 
 Marketplaces
 ~~~~~~~~~~~~
@@ -144,8 +147,8 @@ items they sell directly.
 
 .. _overview.github_issues:
 
-Github Issues
--------------
+Github Discussions
+------------------
 
 We actively and publicly discuss feature requests and product decisions
 with our community on `github`_. We’d love to hear from you.

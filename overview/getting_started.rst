@@ -1,23 +1,10 @@
-.. dcode-default::
-    :cache: dcode.cache
-
-.. dcode-default:: scenario
-    :script: scripts/lang-scenario.py -d scenarios -c scenario.cache
-    :section-include: request
-    :section-chars: ~^
-    :lang: python ruby php node java
-
-.. dcode-default:: form
-    :script: scripts/rst.py form
-
-
 .. _getting_started:
 
 Getting Started
 ===============
 
-Tokenizing Sensitive Information
---------------------------------
+Tokenizing Sensitive Info
+-------------------------
 
 Balanced provides a PCI-compliant javascript library, dubbed ``balanced.js``
 which, when included on your website, enables secure collection of payment and
