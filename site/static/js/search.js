@@ -4,35 +4,76 @@ index = lunr(function () {
     this.ref('ref');
 });
 $(document).ready(function () {
-    $("section").each(function () {
-        var header = $(this).find(':header').first();
-        var title = header.text();
-        var link = header.find('a.headerlink').first().attr('href');
-        var id = $(this).attr('id');
-        var ref = id + "__" + link;
-        var body = $(this).find('p').first().text();
-        index.add({
-            ref: ref,
-            title: title,
-            body: body
+    //ADD OTHER PAGES
+    $('body').append("<div id='search_extra' style='display: none'></div>");
+    function add_to_search(url) {
+        // GRAB THE STUFF
+        $.get(url, function (data) {
+            var results = $(data).find('section');
+            $.each(results, function (key, value) {
+                var $value = $(value).find(':header').first().find('a.headerlink');
+                if ($value.attr('href').substring(0, 1) == '#'){
+                    var current_href = $value.attr('href');
+                    $value.attr('href', url  + current_href);
+                }
+            });
+            $('#search_extra').append(results);
+            create_index();
+
         });
-    });
+        // REPLACE THE HREFS
+    }
+
+    //INDEX THE PAGE
+    function create_index() {
+        $("section").each(function (key, value) {
+
+            var header = $(value).find(':header').first();
+            var title = header.text();
+            var link = header.find('a.headerlink').first().attr('href');
+            var id = $(value).attr('id');
+            var ref = id + "{SPLIT_HERE}" + link;
+            var body = $(this).find('p').first().text();
+            index.add({
+                ref: ref,
+                title: title,
+                body: body
+            });
+        });
+    }
+    if (window.location.pathname =='/overview.html'){
+        add_to_search('api.html');
+    }
+    else if(window.location.pathname =='/api.html'){
+        add_to_search('overview.html');
+    }
+
+
+    //SHOW LIST OF RESULTS IF SEARCHING AND LIST NOT EMPTY
     $('#search').focus(function () {
         if ($('#search-dropdown li').length > 0) {
             $('#search-dropdown').show();
         }
     });
+    //CLICK SERACH RESULT
     $('#search-dropdown').on('click', 'li', function () {
         $('.search-active').removeClass('search-active');
         var to = $(this).attr('data-scroll-to');
         var search_text = $('#search').val();
-        var header = $(to).find(':header').first();
-        var body = $(to).find('p').first();
+        var header = $(this).find(':header').first();
+        var body = $(this).find('p').first();
         header.html(highlight_match(header.text(), search_text));
         body.html(highlight_match(body.text(), search_text));
-        $.scrollTo(to, 800);
+        if (to.substring(0, 1) == '#') {
+            $.scrollTo(to, 800);
+        }
+        else {
+            window.location = to;
+        }
         $('#search-dropdown').hide()
     });
+
+    //CLOSE SEARCH BOX BY CLICKING ANYWHERE ELSE
     $('html').click(function () {
         $('#search-dropdown').hide()
     });
@@ -40,19 +81,19 @@ $(document).ready(function () {
         event.stopPropagation();
     });
 
+    //PREFORM THE SERACH
     $('#search').keyup(function () {
         var search_text = $(this).val();
         var results = index.search(search_text);
         s_dropdown = $('#search-dropdown');
         s_dropdown.html('');
         $.each(results, function (key, value) {
-            var resp_array = value['ref'].split('__');
+            var resp_array = value['ref'].split('{SPLIT_HERE}');
             var ref = resp_array[0];
             var section = $('#' + ref);
             var link = resp_array[1];
             var header = highlight_match(section.find(':header').first().text(), search_text);
             var body = highlight_match(section.find('p').first().text(), search_text);
-
             var result_body = "<li class='result_item' data-scroll-to='" +
                 link + "'><h4>" +
                 header + "</h4><p>" +
@@ -68,6 +109,8 @@ $(document).ready(function () {
         }
     });
 
+
+    //HIGHLIGHT MATCHES
     function highlight_match(string_to_check, search_text) {
         function highlight(string) {
             return "<span class='text-highlight search-active'>" + string + "</span>";
