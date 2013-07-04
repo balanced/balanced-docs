@@ -6051,6 +6051,9 @@ ul#search-dropdown li p {
 ul#search-dropdown li:hover {
   background-color: #96C0C5;
 }
+ul#search-dropdown li.search-selected {
+  background-color: #96C0C5;
+}
 .result-highlight {
   border: 2px #96C0C5 dotted;
   padding-left: 8px;
@@ -6058,17 +6061,17 @@ ul#search-dropdown li:hover {
 span.text-highlight.search-active {
   background-color: #96C0C5;
 }
-.bg-white {
+.code-white {
   padding: 15px;
 }
-.bg-white div p {
+.code-white div p {
   text-transform: capitalize;
   font-family: NimbusSansNov-Reg;
   font-weight: normal;
   font-size: 18px;
   color: #000;
 }
-.bg-white pre {
+.code-white pre {
   border: none;
   padding: none;
   margin: none;

@@ -12,9 +12,9 @@ $(document).ready(function () {
             var results = $(data).find('section');
             $.each(results, function (key, value) {
                 var $value = $(value).find(':header').first().find('a.headerlink');
-                if ($value.attr('href').substring(0, 1) == '#'){
+                if ($value.attr('href').substring(0, 1) == '#') {
                     var current_href = $value.attr('href');
-                    $value.attr('href', url  + current_href);
+                    $value.attr('href', url + current_href);
                 }
             });
             $('#search_extra').append(results);
@@ -41,12 +41,40 @@ $(document).ready(function () {
             });
         });
     }
-    if (window.location.pathname =='/overview.html'){
+
+    if (window.location.pathname == '/overview.html') {
         add_to_search('api.html');
     }
-    else if(window.location.pathname =='/api.html'){
+    else if (window.location.pathname == '/api.html') {
         add_to_search('overview.html');
     }
+
+
+    //KEY BINDINGS
+    $(document).keydown(function (e) {
+        if (e.keyCode == 40) {
+            var $result = $('#search-dropdown li.search-selected').first();
+            if($result.next().length != 0){
+                $result.removeClass('search-selected');
+                $result.next().addClass('search-selected');
+            }
+        }
+        if (e.keyCode == 38) {
+            var $result = $('#search-dropdown li.search-selected').first();
+            if($result.prev().length != 0){
+                $result.removeClass('search-selected');
+                $result.prev().addClass('search-selected');
+            }
+        }
+        if (e.keyCode == 13) {
+            var $result = $('#search-dropdown li.search-selected').first();
+            if($result.length != 0){
+                  visit_result($result);
+            }
+            $("#search").blur();
+            e.preventDefault()
+        }
+    });
 
 
     //SHOW LIST OF RESULTS IF SEARCHING AND LIST NOT EMPTY
@@ -55,13 +83,13 @@ $(document).ready(function () {
             $('#search-dropdown').show();
         }
     });
-    //CLICK SERACH RESULT
-    $('#search-dropdown').on('click', 'li', function () {
+
+    function visit_result(item){
         $('.search-active').removeClass('search-active');
-        var to = $(this).attr('data-scroll-to');
+        var to = $(item).attr('data-scroll-to');
         var search_text = $('#search').val();
-        var header = $(this).find(':header').first();
-        var body = $(this).find('p').first();
+        var header = $(item).find(':header').first();
+        var body = $(item).find('p').first();
         header.html(highlight_match(header.text(), search_text));
         body.html(highlight_match(body.text(), search_text));
         if (to.substring(0, 1) == '#') {
@@ -71,6 +99,11 @@ $(document).ready(function () {
             window.location = to;
         }
         $('#search-dropdown').hide()
+    }
+
+    //CLICK SERACH RESULT
+    $('#search-dropdown').on('click', 'li', function () {
+        visit_result(this)
     });
 
     //CLOSE SEARCH BOX BY CLICKING ANYWHERE ELSE
@@ -82,7 +115,10 @@ $(document).ready(function () {
     });
 
     //PREFORM THE SERACH
-    $('#search').keyup(function () {
+    $('#search').keyup(function (e) {
+        if([37, 38, 39, 40, 13].indexOf(e.keyCode) != -1){
+            return;
+        }
         var search_text = $(this).val();
         var results = index.search(search_text);
         s_dropdown = $('#search-dropdown');
@@ -94,7 +130,12 @@ $(document).ready(function () {
             var link = resp_array[1];
             var header = highlight_match(section.find(':header').first().text(), search_text);
             var body = highlight_match(section.find('p').first().text(), search_text);
-            var result_body = "<li class='result_item' data-scroll-to='" +
+            var class_addon = ""
+            if (key == 0) {
+                class_addon = "search-selected"
+            }
+            var result_body = "<li class='result_item " + class_addon +
+                "' data-scroll-to='" +
                 link + "'><h4>" +
                 header + "</h4><p>" +
                 body + "</p></li>";
