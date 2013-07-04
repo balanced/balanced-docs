@@ -44,6 +44,7 @@ $(document).ready(function () {
     default_lang_dd.parent().hide();
     $("[class^='highlight-']").hide();
     $(".highlight-" + default_lang).show();
+    $('.highlight-javascript').show();
     $('.lang-change').click(function () {
         var lang = $(this).attr('data-lang');
         var langtext = $(this).text();

@@ -6058,6 +6058,22 @@ ul#search-dropdown li:hover {
 span.text-highlight.search-active {
   background-color: #96C0C5;
 }
+.bg-white {
+  padding: 15px;
+}
+.bg-white div p {
+  text-transform: capitalize;
+  font-family: NimbusSansNov-Reg;
+  font-weight: normal;
+  font-size: 18px;
+  color: #000;
+}
+.bg-white pre {
+  border: none;
+  padding: none;
+  margin: none;
+  background-color: #FFF;
+}
 .pull-right {
   float: right;
 }
