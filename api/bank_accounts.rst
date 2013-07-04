@@ -21,7 +21,7 @@ Creates a new bank account.
 
   .. dcode:: form bank_accounts.create
 
-.. container:: bg-white
+.. container:: code-white
 
   .. dcode:: scenario bank_account_create
 
