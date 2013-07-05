@@ -79,14 +79,6 @@
     "name": "bank_accounts.index"
    }, 
    {
-    "path": "/transactions", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "transactions.index"
-   }, 
-   {
     "path": "/marketplaces", 
     "methods": [
      "POST"
@@ -102,20 +94,20 @@
     "name": "marketplaces.index"
    }, 
    {
+    "path": "/transactions", 
+    "methods": [
+     "HEAD", 
+     "GET"
+    ], 
+    "name": "transactions.index"
+   }, 
+   {
     "path": "/chargebacks", 
     "methods": [
      "HEAD", 
      "GET"
     ], 
     "name": "chargebacks.index"
-   }, 
-   {
-    "path": "/settlements", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "settlements.index"
    }, 
    {
     "path": "/merchants", 
@@ -156,14 +148,6 @@
     "name": "customers.index"
    }, 
    {
-    "path": "/reversals", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "reversals.index"
-   }, 
-   {
     "path": "/api_keys", 
     "methods": [
      "POST"
@@ -177,21 +161,6 @@
      "GET"
     ], 
     "name": "api_keys.index"
-   }, 
-   {
-    "path": "/invoices", 
-    "methods": [
-     "POST"
-    ], 
-    "name": "invoices.create"
-   }, 
-   {
-    "path": "/invoices", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.index"
    }, 
    {
     "path": "/refunds", 
@@ -225,20 +194,20 @@
     "name": "search.index"
    }, 
    {
-    "path": "/health", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "health"
-   }, 
-   {
     "path": "/events", 
     "methods": [
      "HEAD", 
      "GET"
     ], 
     "name": "events.index"
+   }, 
+   {
+    "path": "/health", 
+    "methods": [
+     "HEAD", 
+     "GET"
+    ], 
+    "name": "health"
    }, 
    {
     "path": "/holds", 
@@ -249,20 +218,20 @@
     "name": "holds.index"
    }, 
    {
-    "path": "/logs", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "logs.index"
-   }, 
-   {
     "path": "/boom", 
     "methods": [
      "HEAD", 
      "GET"
     ], 
     "name": "boom"
+   }, 
+   {
+    "path": "/logs", 
+    "methods": [
+     "HEAD", 
+     "GET"
+    ], 
+    "name": "logs.index"
    }, 
    {
     "path": "/events/:event_id/callbacks/:callback_id/logs/:log_id", 
@@ -285,78 +254,6 @@
      "DELETE"
     ], 
     "name": "event_callback_logs.delete"
-   }, 
-   {
-    "path": "/marketplaces/:marketplace_id/invoices/:invoice_id/lost_debit_chargebacks", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.lost_debit_chargebacks"
-   }, 
-   {
-    "path": "/marketplaces/:marketplace_id/invoices/:invoice_id/bank_account_debits", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.bank_account_debits"
-   }, 
-   {
-    "path": "/marketplaces/:marketplace_id/invoices/:invoice_id/failed_credits", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.failed_credits"
-   }, 
-   {
-    "path": "/marketplaces/:marketplace_id/invoices/:invoice_id/card_debits", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.card_debits"
-   }, 
-   {
-    "path": "/marketplaces/:marketplace_id/invoices/:invoice_id/reversals", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.reversals"
-   }, 
-   {
-    "path": "/marketplaces/:marketplace_id/invoices/:invoice_id/credits", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.credits"
-   }, 
-   {
-    "path": "/marketplaces/:marketplace_id/invoices/:invoice_id/refunds", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.refunds"
-   }, 
-   {
-    "path": "/marketplaces/:marketplace_id/invoices/:invoice_id/debits", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.debits"
-   }, 
-   {
-    "path": "/marketplaces/:marketplace_id/invoices/:invoice_id/holds", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.holds"
    }, 
    {
     "path": "/events/:event_id/callbacks/:callback_id/logs", 
@@ -453,28 +350,6 @@
      "DELETE"
     ], 
     "name": "events.delete"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/settlements/:settlement_id", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "settlements.show"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/settlements/:settlement_id", 
-    "methods": [
-     "PUT"
-    ], 
-    "name": "settlements.update"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/settlements/:settlement_id", 
-    "methods": [
-     "DELETE"
-    ], 
-    "name": "settlements.delete"
    }, 
    {
     "path": "/refunds/:refund_id/events/:event_id", 
@@ -602,6 +477,14 @@
     "name": "bank_account_verifications.index"
    }, 
    {
+    "path": "/bank_accounts/:bank_account_id/transactions", 
+    "methods": [
+     "HEAD", 
+     "GET"
+    ], 
+    "name": "transactions.index"
+   }, 
+   {
     "path": "/bank_accounts/:bank_account_id/verification", 
     "methods": [
      "HEAD", 
@@ -615,14 +498,6 @@
      "PUT"
     ], 
     "name": "bank_account_verifications.update_current"
-   }, 
-   {
-    "path": "/bank_accounts/:bank_account_id/transactions", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "transactions.index"
    }, 
    {
     "path": "/bank_accounts/:bank_account_id/credits", 
@@ -640,19 +515,19 @@
     "name": "credits.index"
    }, 
    {
+    "path": "/bank_accounts/:bank_account_id/debits", 
+    "methods": [
+     "POST"
+    ], 
+    "name": "debits.create"
+   }, 
+   {
     "path": "/bank_accounts/:bank_account_id/search", 
     "methods": [
      "HEAD", 
      "GET"
     ], 
     "name": "search.index"
-   }, 
-   {
-    "path": "/bank_accounts/:bank_account_id/debits", 
-    "methods": [
-     "POST"
-    ], 
-    "name": "debits.create"
    }, 
    {
     "path": "/marketplaces/:marketplace_id/bank_accounts", 
@@ -701,29 +576,6 @@
     "name": "callbacks.index"
    }, 
    {
-    "path": "/marketplaces/:marketplace_id/reversals", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "reversals.index"
-   }, 
-   {
-    "path": "/marketplaces/:marketplace_id/invoices", 
-    "methods": [
-     "POST"
-    ], 
-    "name": "invoices.create"
-   }, 
-   {
-    "path": "/marketplaces/:marketplace_id/invoices", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.index"
-   }, 
-   {
     "path": "/marketplaces/:marketplace_id/refunds", 
     "methods": [
      "HEAD", 
@@ -747,20 +599,20 @@
     "name": "credits.index"
    }, 
    {
-    "path": "/marketplaces/:marketplace_id/search", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "search.index"
-   }, 
-   {
     "path": "/marketplaces/:marketplace_id/debits", 
     "methods": [
      "HEAD", 
      "GET"
     ], 
     "name": "debits.index"
+   }, 
+   {
+    "path": "/marketplaces/:marketplace_id/search", 
+    "methods": [
+     "HEAD", 
+     "GET"
+    ], 
+    "name": "search.index"
    }, 
    {
     "path": "/marketplaces/:marketplace_id/events", 
@@ -825,14 +677,6 @@
     "name": "transactions.index"
    }, 
    {
-    "path": "/customers/:customer_id/reversals", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "reversals.index"
-   }, 
-   {
     "path": "/merchants/:merchant_id/api_keys", 
     "methods": [
      "POST"
@@ -871,14 +715,6 @@
     "name": "credits.index"
    }, 
    {
-    "path": "/customers/:customer_id/search", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "search.index"
-   }, 
-   {
     "path": "/customers/:customer_id/debits", 
     "methods": [
      "POST"
@@ -892,6 +728,14 @@
      "GET"
     ], 
     "name": "debits.index"
+   }, 
+   {
+    "path": "/customers/:customer_id/search", 
+    "methods": [
+     "HEAD", 
+     "GET"
+    ], 
+    "name": "search.index"
    }, 
    {
     "path": "/reversals/:reversal_id/events", 
@@ -930,108 +774,6 @@
      "GET"
     ], 
     "name": "holds.index"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/lost_debit_chargebacks", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.lost_debit_chargebacks"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/bank_account_debits", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.bank_account_debits"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/failed_credits", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.failed_credits"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/card_debits", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.card_debits"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/settlements", 
-    "methods": [
-     "POST"
-    ], 
-    "name": "settlements.create"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/settlements", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "settlements.index"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/reversals", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.reversals"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/credits", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.credits"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/refunds", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.refunds"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/debits", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.debits"
-   }, 
-   {
-    "path": "/invoices/:invoice_id/holds", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.holds"
-   }, 
-   {
-    "path": "/credits/:credit_id/reversals", 
-    "methods": [
-     "POST"
-    ], 
-    "name": "reversals.create"
-   }, 
-   {
-    "path": "/credits/:credit_id/reversals", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "reversals.index"
    }, 
    {
     "path": "/refunds/:refund_id/events", 
@@ -1089,14 +831,6 @@
     "name": "transactions.index"
    }, 
    {
-    "path": "/cards/:card_id/search", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "search.index"
-   }, 
-   {
     "path": "/holds/:hold_id/debits", 
     "methods": [
      "POST"
@@ -1117,6 +851,14 @@
      "POST"
     ], 
     "name": "debits.create"
+   }, 
+   {
+    "path": "/cards/:card_id/search", 
+    "methods": [
+     "HEAD", 
+     "GET"
+    ], 
+    "name": "search.index"
    }, 
    {
     "path": "/holds/:hold_id/events", 
@@ -1238,28 +980,6 @@
     "name": "chargebacks.delete"
    }, 
    {
-    "path": "/settlements/:settlement_id", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "settlements.show"
-   }, 
-   {
-    "path": "/settlements/:settlement_id", 
-    "methods": [
-     "PUT"
-    ], 
-    "name": "settlements.update"
-   }, 
-   {
-    "path": "/settlements/:settlement_id", 
-    "methods": [
-     "DELETE"
-    ], 
-    "name": "settlements.delete"
-   }, 
-   {
     "path": "/merchants/:merchant_id", 
     "methods": [
      "HEAD", 
@@ -1326,28 +1046,6 @@
     "name": "customers.update"
    }, 
    {
-    "path": "/reversals/:reversal_id", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "reversals.show"
-   }, 
-   {
-    "path": "/reversals/:reversal_id", 
-    "methods": [
-     "PUT"
-    ], 
-    "name": "reversals.update"
-   }, 
-   {
-    "path": "/reversals/:reversal_id", 
-    "methods": [
-     "DELETE"
-    ], 
-    "name": "reversals.delete"
-   }, 
-   {
     "path": "/api_keys/:api_key_id", 
     "methods": [
      "DELETE"
@@ -1368,28 +1066,6 @@
      "PUT"
     ], 
     "name": "api_keys.update"
-   }, 
-   {
-    "path": "/invoices/:invoice_id", 
-    "methods": [
-     "DELETE"
-    ], 
-    "name": "invoices.delete"
-   }, 
-   {
-    "path": "/invoices/:invoice_id", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "invoices.show"
-   }, 
-   {
-    "path": "/invoices/:invoice_id", 
-    "methods": [
-     "PUT"
-    ], 
-    "name": "invoices.update"
    }, 
    {
     "path": "/refunds/:refund_id", 
@@ -1560,6 +1236,189 @@
     "fields": [
      {
       "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "account_number"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The name of the bank.", 
+      "name": "bank_name"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nbank account was tokenized.", 
+      "name": "created_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Uniquely identifies the bank account (``account_number`` and\n``routing_number``).", 
+      "name": "fingerprint"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "id"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Name of the account holder.", 
+      "name": "name"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Meets `MICR <http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format>`_\nrouting number format. Specified in FedACH database defined by the\n`US Federal Reserve <http://www.fedwiredirectory.frb.org/>`_.", 
+      "name": "routing_number"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "``checking`` or ``savings``.", 
+      "name": "type"
+     }
+    ], 
+    "name": "BankAccountTokenView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": "Amount of the credit.", 
+      "name": "amount"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The text that will appear on the merchant's bank statement.", 
+      "name": "appears_on_statement_as"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "created_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
+      "name": "customer_email_address"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
+      "name": "customer_name"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "description"
+     }, 
+     {
+      "tags": [], 
+      "type": "key-value", 
+      "description": "A single-level dictionary of string-type key/value pairs.", 
+      "name": "meta"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "One of ``pending``, ``paid``, ``failed``.", 
+      "name": "status"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "uri"
+     }
+    ], 
+    "name": "CreditView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "account_number"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The name of the bank.", 
+      "name": "bank_name"
+     }, 
+     {
+      "tags": [], 
+      "type": "boolean", 
+      "description": "Flag indicating whether this funding instrument can be debited (true)\nor not (false).", 
+      "name": "can_debit"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nbank account was tokenized.", 
+      "name": "created_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Uniquely identifies the bank account (``account_number`` and\n``routing_number``).", 
+      "name": "fingerprint"
+     }, 
+     {
+      "tags": [], 
+      "type": "key-value", 
+      "description": "A single-level dictionary of string-type key/value pairs.", 
+      "name": "meta"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Name of the account holder.", 
+      "name": "name"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Meets `MICR <http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format>`_\nrouting number format. Specified in FedACH database defined by the\n`US Federal Reserve <http://www.fedwiredirectory.frb.org/>`_.", 
+      "name": "routing_number"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "``checking`` or ``savings``.", 
+      "name": "type"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Most recent verification for this bank account.", 
+      "name": "verification_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "verifications_uri"
+     }
+    ], 
+    "name": "BankAccountView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
       "type": "integer", 
       "description": "The amount of the debit.", 
       "name": "amount"
@@ -1631,39 +1490,45 @@
     "fields": [
      {
       "tags": [], 
-      "type": "integer", 
-      "description": "Amount of the credit.", 
-      "name": "amount"
+      "type": "string", 
+      "description": "The brand of the card. One of: ``Visa``, ``MasterCard``,\n``American Express``, or ``Discover``.", 
+      "name": "brand"
      }, 
      {
       "tags": [], 
       "type": "string", 
-      "description": "The text that will appear on the merchant's bank statement.", 
-      "name": "appears_on_statement_as"
+      "description": "`ISO-3166-3`_ three character country code.", 
+      "name": "country_code"
      }, 
      {
       "tags": [], 
       "type": "string", 
-      "description": null, 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this card\nwas tokenized.", 
       "name": "created_at"
      }, 
      {
       "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "customer_email_address"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "customer_name"
+      "type": "string", 
+      "description": "Card's expiration month.", 
+      "name": "expiration_month"
      }, 
      {
       "tags": [], 
       "type": "string", 
-      "description": null, 
-      "name": "description"
+      "description": "Card's expiration year.", 
+      "name": "expiration_year"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "A hash derived from ``card_number``, ``expiration_month`` and\n``expiration_year``. Cards with the same ``card_number``,\n``expiration_month`` and ``expiration_year`` will have the same\n``hash``.", 
+      "name": "hash"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Last four digits of the card.", 
+      "name": "last_four"
      }, 
      {
       "tags": [], 
@@ -1674,17 +1539,35 @@
      {
       "tags": [], 
       "type": "string", 
-      "description": "One of ``pending``, ``paid``, ``failed``.", 
-      "name": "status"
+      "description": "The name on the card.", 
+      "name": "name"
      }, 
      {
       "tags": [], 
       "type": "string", 
-      "description": null, 
-      "name": "uri"
+      "description": "Postal code (zip code in the USA).", 
+      "name": "postal_code"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "One of \"passed\", \"failed\", \"unknown\"", 
+      "name": "postal_code_check"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "One of \"passed\", \"failed\", \"unknown\"", 
+      "name": "security_code_check"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Street address.", 
+      "name": "street_address"
      }
     ], 
-    "name": "CreditView"
+    "name": "CardView"
    }, 
    {
     "fields": [
@@ -1744,59 +1627,6 @@
      }
     ], 
     "name": "RefundView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": "The amount of the reversal.", 
-      "name": "amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Text that will appear on the statement describing this reversal.", 
-      "name": "appears_on_statement_as"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nreversal was issued.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Free-text description of the reversal.", 
-      "name": "description"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Events associated with the reversal.", 
-      "name": "events_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "Key-Value mapping.", 
-      "name": "meta"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "An identifier for this reversal.", 
-      "name": "transaction_number"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "ReversalView"
    }, 
    {
     "fields": [
@@ -2069,142 +1899,6 @@
     "fields": [
      {
       "tags": [], 
-      "type": "string", 
-      "description": "The brand of the card. One of: ``Visa``, ``MasterCard``,\n``American Express``, or ``Discover``.", 
-      "name": "brand"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO-3166-3`_ three character country code.", 
-      "name": "country_code"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this card\nwas tokenized.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Card's expiration month.", 
-      "name": "expiration_month"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Card's expiration year.", 
-      "name": "expiration_year"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "A hash derived from ``card_number``, ``expiration_month`` and\n``expiration_year``. Cards with the same ``card_number``,\n``expiration_month`` and ``expiration_year`` will have the same\n``hash``.", 
-      "name": "hash"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Last four digits of the card.", 
-      "name": "last_four"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "A single-level dictionary of string-type key/value pairs.", 
-      "name": "meta"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The name on the card.", 
-      "name": "name"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Postal code (zip code in the USA).", 
-      "name": "postal_code"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "One of \"passed\", \"failed\", \"unknown\"", 
-      "name": "postal_code_check"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "One of \"passed\", \"failed\", \"unknown\"", 
-      "name": "security_code_check"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Street address.", 
-      "name": "street_address"
-     }
-    ], 
-    "name": "CardView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "account_number"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The name of the bank.", 
-      "name": "bank_name"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nbank account was tokenized.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Uniquely identifies the bank account (``account_number`` and\n``routing_number``).", 
-      "name": "fingerprint"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Name of the account holder.", 
-      "name": "name"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Meets `MICR <http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format>`_\nrouting number format. Specified in FedACH database defined by the\n`US Federal Reserve <http://www.fedwiredirectory.frb.org/>`_.", 
-      "name": "routing_number"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "``checking`` or ``savings``.", 
-      "name": "type"
-     }
-    ], 
-    "name": "BankAccountTokenView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
       "type": "key-value", 
       "description": "A single-level dictionary of string-type key/value pairs representing\nthe address of the person or business.", 
       "name": "address"
@@ -2474,513 +2168,6 @@
      }
     ], 
     "name": "CustomerView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "account_number"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The name of the bank.", 
-      "name": "bank_name"
-     }, 
-     {
-      "tags": [], 
-      "type": "boolean", 
-      "description": "Flag indicating whether this funding instrument can be debited (true)\nor not (false).", 
-      "name": "can_debit"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nbank account was tokenized.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Uniquely identifies the bank account (``account_number`` and\n``routing_number``).", 
-      "name": "fingerprint"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "A single-level dictionary of string-type key/value pairs.", 
-      "name": "meta"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Name of the account holder.", 
-      "name": "name"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Meets `MICR <http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format>`_\nrouting number format. Specified in FedACH database defined by the\n`US Federal Reserve <http://www.fedwiredirectory.frb.org/>`_.", 
-      "name": "routing_number"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "``checking`` or ``savings``.", 
-      "name": "type"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Most recent verification for this bank account.", 
-      "name": "verification_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "verifications_uri"
-     }
-    ], 
-    "name": "BankAccountView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Any additional information that may describe how to resolve the issue.", 
-      "name": "additional"
-     }, 
-     {
-      "tags": [], 
-      "type": "constant", 
-      "description": "The code of the exception.", 
-      "value": "method-not-allowed", 
-      "name": "category_code"
-     }, 
-     {
-      "tags": [], 
-      "type": "constant", 
-      "description": "The type of the exception. Values: ``request``,\n``banking``, or ``logical``", 
-      "value": "request", 
-      "name": "category_type"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Description of the exception", 
-      "name": "description"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "Any extra information associated with this exception.", 
-      "name": "extras"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "An ID that can be used to identify and debug the exception.", 
-      "name": "request_id"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "status"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "HTTP response code of the exception.", 
-      "name": "status_code"
-     }
-    ], 
-    "name": "MethodNotAllowedView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "adjustments"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "adjustments_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "adjustments_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debit_variable_fee_cap"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debit_variable_fee_percentage"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "card_debits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "card_debits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "card_debits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "chargeback_fixed_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credit_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "debits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "debits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "debits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credit_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "hold_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "holds_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "holds_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "holds_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "lost_debit_chargebacks_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "lost_debit_chargebacks_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "lost_debit_chargebacks_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "marketplace_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "period"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refund_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refunds_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refunds_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refunds_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "sequence_number"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "settle_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "source"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "state"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "updated_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "variable_fee_percentage"
-     }
-    ], 
-    "name": "InvoiceView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "A key/value collection of aggregated callbacks and statuses where the\nkey is the status and the value is the number of callbacks for this\nevent in that state.", 
-      "name": "callback_statuses"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "callbacks"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Snapshot of the resource associated with this event at the time it\noccurred.", 
-      "name": "entity"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nevent occurred.", 
-      "name": "occurred_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "type"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "AuditEventView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "method"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The URL that will receive events", 
-      "name": "url"
-     }
-    ], 
-    "name": "CallbackView"
    }, 
    {
     "fields": [
@@ -3041,66 +2228,66 @@
     "fields": [
      {
       "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "attempt_limit"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "attempts"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "attempts_remaining"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "callback_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "event_uri"
-     }, 
-     {
-      "tags": [], 
       "type": "string", 
       "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "id"
+      "name": "counts"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "logs_uri"
+      "name": "first_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
+      "name": "items"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "status"
+      "name": "last_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": null, 
+      "name": "limit"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "next_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": null, 
+      "name": "offset"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "previous_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": null, 
+      "name": "total"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
       "name": "uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "url"
      }
     ], 
-    "name": "AuditEventCallbackView"
+    "name": "PaginateSearchView"
    }, 
    {
     "fields": [
@@ -3112,16 +2299,14 @@
      }, 
      {
       "tags": [], 
-      "type": "constant", 
+      "type": "string", 
       "description": "The code of the exception.", 
-      "value": "authentication-required", 
       "name": "category_code"
      }, 
      {
       "tags": [], 
-      "type": "constant", 
+      "type": "string", 
       "description": "The type of the exception. Values: ``request``,\n``banking``, or ``logical``", 
-      "value": "permission", 
       "name": "category_type"
      }, 
      {
@@ -3155,7 +2340,7 @@
       "name": "status_code"
      }
     ], 
-    "name": "UnauthorizedView"
+    "name": "HTTPExceptionView"
    }, 
    {
     "fields": [
@@ -3214,6 +2399,82 @@
     "fields": [
      {
       "tags": [], 
+      "type": "string", 
+      "description": "The amount of the debit_chargeback", 
+      "name": "amount"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\ndebit_chargeback was created.", 
+      "name": "created_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "description"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "id"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
+      "name": "state"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "uri"
+     }
+    ], 
+    "name": "DebitChargebackView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "city"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "postal_code"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "region"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "state"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "street_address"
+     }
+    ], 
+    "name": "AddressView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
       "type": "integer", 
       "description": null, 
       "name": "attempts"
@@ -3249,24 +2510,132 @@
     "fields": [
      {
       "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "amount"
+      "type": "string", 
+      "description": "Date of birth (YYYY-MM format).", 
+      "name": "dob"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "created_at"
+      "name": "first_name"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "description"
+      "name": "last_name"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "middle_name"
      }
     ], 
-    "name": "InvoiceAdjustmentView"
+    "name": "PersonView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Any additional information that may describe how to resolve the issue.", 
+      "name": "additional"
+     }, 
+     {
+      "tags": [], 
+      "type": "constant", 
+      "description": "The code of the exception.", 
+      "value": "not-found", 
+      "name": "category_code"
+     }, 
+     {
+      "tags": [], 
+      "type": "constant", 
+      "description": "The type of the exception. Values: ``request``,\n``banking``, or ``logical``", 
+      "value": "request", 
+      "name": "category_type"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Description of the exception", 
+      "name": "description"
+     }, 
+     {
+      "tags": [], 
+      "type": "key-value", 
+      "description": "Any extra information associated with this exception.", 
+      "name": "extras"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "An ID that can be used to identify and debug the exception.", 
+      "name": "request_id"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "status"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "HTTP response code of the exception.", 
+      "name": "status_code"
+     }
+    ], 
+    "name": "NotFoundView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "A key/value collection of aggregated callbacks and statuses where the\nkey is the status and the value is the number of callbacks for this\nevent in that state.", 
+      "name": "callback_statuses"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
+      "name": "callbacks"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Snapshot of the resource associated with this event at the time it\noccurred.", 
+      "name": "entity"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "id"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nevent occurred.", 
+      "name": "occurred_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "type"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "uri"
+     }
+    ], 
+    "name": "AuditEventView"
    }, 
    {
     "fields": [
@@ -3343,20 +2712,116 @@
     "fields": [
      {
       "tags": [], 
+      "type": "integer", 
+      "description": null, 
+      "name": "attempt_limit"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": null, 
+      "name": "attempts"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": null, 
+      "name": "attempts_remaining"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "callback_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "event_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
+      "name": "id"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "logs_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "status"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
+      "name": "url"
+     }
+    ], 
+    "name": "AuditEventCallbackView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "id"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "method"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The URL that will receive events", 
+      "name": "url"
+     }
+    ], 
+    "name": "CallbackView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
       "type": "string", 
       "description": "Any additional information that may describe how to resolve the issue.", 
       "name": "additional"
      }, 
      {
       "tags": [], 
-      "type": "string", 
+      "type": "constant", 
       "description": "The code of the exception.", 
+      "value": "method-not-allowed", 
       "name": "category_code"
      }, 
      {
       "tags": [], 
-      "type": "string", 
+      "type": "constant", 
       "description": "The type of the exception. Values: ``request``,\n``banking``, or ``logical``", 
+      "value": "request", 
       "name": "category_type"
      }, 
      {
@@ -3390,7 +2855,7 @@
       "name": "status_code"
      }
     ], 
-    "name": "HTTPExceptionView"
+    "name": "MethodNotAllowedView"
    }, 
    {
     "fields": [
@@ -3402,26 +2867,22 @@
      }, 
      {
       "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "bug_url"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
+      "type": "constant", 
       "description": "The code of the exception.", 
+      "value": "authentication-required", 
       "name": "category_code"
      }, 
      {
       "tags": [], 
-      "type": "string", 
+      "type": "constant", 
       "description": "The type of the exception. Values: ``request``,\n``banking``, or ``logical``", 
+      "value": "permission", 
       "name": "category_type"
      }, 
      {
       "tags": [], 
       "type": "string", 
-      "description": null, 
+      "description": "Description of the exception", 
       "name": "description"
      }, 
      {
@@ -3449,136 +2910,7 @@
       "name": "status_code"
      }
     ], 
-    "name": "InternalServerErrorView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The amount of the debit_chargeback", 
-      "name": "amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\ndebit_chargeback was created.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "description"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "state"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "DebitChargebackView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "first_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "items"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "last_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "limit"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "next_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "offset"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "previous_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "total"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "PaginateView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Date of birth (YYYY-MM format).", 
-      "name": "dob"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "first_name"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "last_name"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "middle_name"
-     }
-    ], 
-    "name": "PersonView"
+    "name": "UnauthorizedView"
    }, 
    {
     "fields": [
@@ -3650,12 +2982,6 @@
      {
       "tags": [], 
       "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "counts"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
       "description": null, 
       "name": "first_uri"
      }, 
@@ -3708,418 +3034,7 @@
       "name": "uri"
      }
     ], 
-    "name": "PaginateSearchView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "events_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "marketplace_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "source"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "state"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_.", 
-      "name": "updated_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "SettlementView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\napi key was created.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": "The merchant owning this API key.", 
-      "name": "merchant"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "A single-level dictionary of string-type key/value pairs.", 
-      "name": "meta"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The secret associated with this API key. Will only be shown if passed\nin the original request.", 
-      "name": "secret"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "APIKeyView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "city"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "postal_code"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "region"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "state"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "street_address"
-     }
-    ], 
-    "name": "AddressView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "adjustments"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "adjustments_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "adjustments_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debit_variable_fee_cap"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debit_variable_fee_percentage"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "card_debits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "card_debits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "card_debits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "chargeback_fixed_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credit_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "debits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "debits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "debits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credit_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "hold_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "holds_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "holds_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "holds_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "constant", 
-      "description": "Simply returns the same value for all objects.\n\n`value`\n    The value to return whenever this spec is called to transform an\n    object.", 
-      "value": "current", 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "lost_debit_chargebacks_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "lost_debit_chargebacks_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "lost_debit_chargebacks_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "marketplace_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "period"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refund_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refunds_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refunds_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refunds_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "source"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "variable_fee_percentage"
-     }
-    ], 
-    "name": "CurrentInvoiceView"
+    "name": "PaginateView"
    }, 
    {
     "fields": [
@@ -4131,22 +3046,26 @@
      }, 
      {
       "tags": [], 
-      "type": "constant", 
+      "type": "string", 
+      "description": null, 
+      "name": "bug_url"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
       "description": "The code of the exception.", 
-      "value": "not-found", 
       "name": "category_code"
      }, 
      {
       "tags": [], 
-      "type": "constant", 
+      "type": "string", 
       "description": "The type of the exception. Values: ``request``,\n``banking``, or ``logical``", 
-      "value": "request", 
       "name": "category_type"
      }, 
      {
       "tags": [], 
       "type": "string", 
-      "description": "Description of the exception", 
+      "description": null, 
       "name": "description"
      }, 
      {
@@ -4174,7 +3093,7 @@
       "name": "status_code"
      }
     ], 
-    "name": "NotFoundView"
+    "name": "InternalServerErrorView"
    }
   ], 
   "forms": [
@@ -4231,11 +3150,6 @@
     ], 
     "type": "form", 
     "name": "DebitCreateForm"
-   }, 
-   {
-    "fields": [], 
-    "type": "form", 
-    "name": "ClientHeadersForm"
    }, 
    {
     "fields": [
@@ -4887,12 +3801,6 @@
            "name": "phone_number"
           }, 
           {
-           "fields": [], 
-           "type": "form", 
-           "name": "ClientHeadersForm", 
-           "tags": []
-          }, 
-          {
            "fields": [
             {
              "description": "City.", 
@@ -5209,73 +4117,6 @@
     "fields": [
      {
       "description": null, 
-      "nullable": false, 
-      "required": true, 
-      "validate": null, 
-      "type": "string", 
-      "tags": [], 
-      "name": "marketplace_uri"
-     }, 
-     {
-      "description": "Flag value, should be ``true`` or ``false``.", 
-      "nullable": false, 
-      "required": true, 
-      "validate": null, 
-      "type": "boolean", 
-      "tags": [], 
-      "name": "flag"
-     }
-    ], 
-    "type": "form", 
-    "name": "WhitelistMarketplaceForm"
-   }, 
-   {
-    "fields": [
-     {
-      "description": null, 
-      "tags": [], 
-      "default": [], 
-      "field": {
-       "description": null, 
-       "nullable": false, 
-       "required": true, 
-       "validate": null, 
-       "type": "string", 
-       "tags": [], 
-       "name": "marketplace_uri"
-      }, 
-      "validate": null, 
-      "type": "list", 
-      "name": "marketplaces"
-     }, 
-     {
-      "description": null, 
-      "nullable": false, 
-      "default": null, 
-      "required": false, 
-      "validate": null, 
-      "type": "integer", 
-      "tags": [], 
-      "name": "limit"
-     }, 
-     {
-      "description": null, 
-      "nullable": false, 
-      "default": null, 
-      "required": false, 
-      "validate": null, 
-      "type": "string", 
-      "tags": [], 
-      "name": "since"
-     }
-    ], 
-    "type": "form", 
-    "name": "FailedTransactionsForm"
-   }, 
-   {
-    "fields": [
-     {
-      "description": null, 
       "tags": [], 
       "default": [], 
       "field": {
@@ -5328,21 +4169,6 @@
     ], 
     "type": "form", 
     "name": "CreditUpdateForm"
-   }, 
-   {
-    "fields": [
-     {
-      "description": null, 
-      "nullable": false, 
-      "required": true, 
-      "validate": null, 
-      "type": "string", 
-      "tags": [], 
-      "name": "marketplace_uri"
-     }
-    ], 
-    "type": "form", 
-    "name": "WhitelistedMarketplaceForm"
    }, 
    {
     "fields": [
@@ -5413,11 +4239,6 @@
     ], 
     "type": "form", 
     "name": "BankAccountCreateForm"
-   }, 
-   {
-    "fields": [], 
-    "type": "form", 
-    "name": "BankAccountAuthenticationCreateForm"
    }, 
    {
     "fields": [
@@ -5861,32 +4682,6 @@
    {
     "fields": [
      {
-      "description": null, 
-      "nullable": false, 
-      "default": null, 
-      "required": false, 
-      "validate": null, 
-      "type": "string", 
-      "tags": [], 
-      "name": "after"
-     }, 
-     {
-      "description": null, 
-      "nullable": false, 
-      "default": null, 
-      "required": false, 
-      "validate": null, 
-      "type": "string", 
-      "tags": [], 
-      "name": "before"
-     }
-    ], 
-    "type": "form", 
-    "name": "InvoiceCreateForm"
-   }, 
-   {
-    "fields": [
-     {
       "description": "Name of the customer or representative of the business.", 
       "nullable": true, 
       "required": false, 
@@ -6078,21 +4873,6 @@
     ], 
     "type": "form", 
     "name": "CustomerCreateForm"
-   }, 
-   {
-    "fields": [
-     {
-      "description": null, 
-      "nullable": false, 
-      "required": false, 
-      "validate": null, 
-      "type": "string", 
-      "tags": [], 
-      "name": "source_uri"
-     }
-    ], 
-    "type": "form", 
-    "name": "SettlementCreateForm"
    }, 
    {
     "fields": [
@@ -7002,31 +5782,6 @@
    {
     "fields": [
      {
-      "description": "Single level mapping from string keys to string values.", 
-      "nullable": false, 
-      "default": {}, 
-      "required": false, 
-      "validate": null, 
-      "type": "key-value", 
-      "tags": [], 
-      "name": "meta"
-     }, 
-     {
-      "description": null, 
-      "nullable": false, 
-      "required": false, 
-      "validate": null, 
-      "type": "string", 
-      "tags": [], 
-      "name": "secret"
-     }
-    ], 
-    "type": "form", 
-    "name": "APIKeyCreateForm"
-   }, 
-   {
-    "fields": [
-     {
       "description": "USD cents. You must have ``amount`` funds transferred to cover the\ncredit.", 
       "nullable": false, 
       "required": true, 
@@ -7191,12 +5946,6 @@
       "name": "phone_number"
      }, 
      {
-      "fields": [], 
-      "type": "form", 
-      "name": "ClientHeadersForm", 
-      "tags": []
-     }, 
-     {
       "fields": [
        {
         "description": "City.", 
@@ -7320,21 +6069,6 @@
     ], 
     "type": "form", 
     "name": "CreditCreateForm"
-   }, 
-   {
-    "fields": [
-     {
-      "description": "Single level mapping from string keys to string values.", 
-      "nullable": false, 
-      "required": false, 
-      "validate": null, 
-      "type": "key-value", 
-      "tags": [], 
-      "name": "meta"
-     }
-    ], 
-    "type": "form", 
-    "name": "APIKeyUpdateForm"
    }, 
    {
     "fields": [
@@ -7566,12 +6300,6 @@
            "type": "string", 
            "tags": [], 
            "name": "phone_number"
-          }, 
-          {
-           "fields": [], 
-           "type": "form", 
-           "name": "ClientHeadersForm", 
-           "tags": []
           }, 
           {
            "fields": [
@@ -8390,21 +7118,6 @@
     ], 
     "type": "form", 
     "name": "AddressForm"
-   }, 
-   {
-    "fields": [
-     {
-      "description": null, 
-      "nullable": false, 
-      "required": false, 
-      "validate": null, 
-      "type": "string", 
-      "tags": [], 
-      "name": "source_uri"
-     }
-    ], 
-    "type": "form", 
-    "name": "InvoiceUpdateForm"
    }
   ], 
   "errors": [
@@ -8602,14 +7315,6 @@
    }, 
    {
     "status": null, 
-    "category_code": "credit-already-reversed", 
-    "additional": null, 
-    "status_code": 409, 
-    "category_type": "logical", 
-    "description": "Credit has already been fully reversed."
-   }, 
-   {
-    "status": null, 
     "category_code": "debit-already-refunded", 
     "additional": null, 
     "status_code": 409, 
@@ -8639,14 +7344,6 @@
     "status_code": 409, 
     "category_type": "logical", 
     "description": "The given funding destination is already associated with an account."
-   }, 
-   {
-    "status": null, 
-    "category_code": "funding-destination-cannot-reverse", 
-    "additional": null, 
-    "status_code": 409, 
-    "category_type": "logical", 
-    "description": "The given funding destination cannot reverse."
    }, 
    {
     "status": null, 
@@ -8714,14 +7411,6 @@
    }, 
    {
     "status": null, 
-    "category_code": "funding-source-not-settle", 
-    "additional": null, 
-    "status_code": 409, 
-    "category_type": "logical", 
-    "description": "The given funding source cannot settle."
-   }, 
-   {
-    "status": null, 
     "category_code": "hold-not-associated-account", 
     "additional": null, 
     "status_code": 409, 
@@ -8750,14 +7439,6 @@
     "additional": null, 
     "status_code": 409, 
     "category_type": "logical", 
-    "description": "Marketplace balance is insufficient to issue this credit"
-   }, 
-   {
-    "status": null, 
-    "category_code": "insufficient-funds", 
-    "additional": null, 
-    "status_code": 409, 
-    "category_type": "logical", 
     "description": "Account balance is insufficient to issue this debit"
    }, 
    {
@@ -8766,63 +7447,15 @@
     "additional": null, 
     "status_code": 409, 
     "category_type": "logical", 
+    "description": "Marketplace balance is insufficient to issue this credit"
+   }, 
+   {
+    "status": null, 
+    "category_code": "insufficient-funds", 
+    "additional": null, 
+    "status_code": 409, 
+    "category_type": "logical", 
     "description": "Marketplace escrow balance is insufficient to issue this credit."
-   }, 
-   {
-    "status": null, 
-    "category_code": "invoice-already-canceled", 
-    "additional": null, 
-    "status_code": 409, 
-    "category_type": "logical", 
-    "description": null
-   }, 
-   {
-    "status": null, 
-    "category_code": "invoice-already-settled", 
-    "additional": null, 
-    "status_code": 409, 
-    "category_type": "logical", 
-    "description": null
-   }, 
-   {
-    "status": null, 
-    "category_code": "invoice-busy", 
-    "additional": null, 
-    "status_code": 409, 
-    "category_type": "logical", 
-    "description": null
-   }, 
-   {
-    "status": null, 
-    "category_code": "invoice-invalid-count", 
-    "additional": null, 
-    "status_code": 409, 
-    "category_type": "logical", 
-    "description": null
-   }, 
-   {
-    "status": null, 
-    "category_code": "invoice-invalid-total-fee", 
-    "additional": null, 
-    "status_code": 409, 
-    "category_type": "logical", 
-    "description": null
-   }, 
-   {
-    "status": null, 
-    "category_code": "invoice-no-funding-source", 
-    "additional": null, 
-    "status_code": 409, 
-    "category_type": "logical", 
-    "description": null
-   }, 
-   {
-    "status": null, 
-    "category_code": "invoice-unripe", 
-    "additional": null, 
-    "status_code": 409, 
-    "category_type": "logical", 
-    "description": null
    }, 
    {
     "status": null, 
@@ -8890,14 +7523,6 @@
    }, 
    {
     "status": null, 
-    "category_code": "reverse-void-attempt", 
-    "additional": null, 
-    "status_code": 409, 
-    "category_type": "logical", 
-    "description": "This hold has already been voided, which cannot be reversed."
-   }, 
-   {
-    "status": null, 
     "category_code": "unexpected-payload", 
     "additional": null, 
     "status_code": 409, 
@@ -8911,14 +7536,6 @@
     "status_code": 403, 
     "category_type": "request", 
     "description": "Bank account authentication is not allowed."
-   }, 
-   {
-    "status": null, 
-    "category_code": "cannot-reverse-credit", 
-    "additional": null, 
-    "status_code": 400, 
-    "category_type": "request", 
-    "description": "Credit to reversal must have ``succeeded``."
    }, 
    {
     "status": null, 
@@ -8946,35 +7563,11 @@
    }, 
    {
     "status": null, 
-    "category_code": "invalid-reversal-amount", 
-    "additional": null, 
-    "status_code": 400, 
-    "category_type": "request", 
-    "description": "Reverse amount cannot be greater than the amount of the original credit."
-   }, 
-   {
-    "status": null, 
     "category_code": "invalid-routing-number", 
     "additional": null, 
     "status_code": 400, 
     "category_type": "request", 
     "description": "The routing number provided for the bank account was invalid."
-   }, 
-   {
-    "status": null, 
-    "category_code": "invoice-illegal-funding-source", 
-    "additional": null, 
-    "status_code": 400, 
-    "category_type": "request", 
-    "description": null
-   }, 
-   {
-    "status": null, 
-    "category_code": "invoice-invalid-funding-source", 
-    "additional": null, 
-    "status_code": 400, 
-    "category_type": "request", 
-    "description": null
    }, 
    {
     "status": null, 
@@ -10310,6 +8903,14 @@
     "name": "bank_accounts.index"
    }, 
    {
+    "path": "/v1/transactions", 
+    "methods": [
+     "HEAD", 
+     "GET"
+    ], 
+    "name": "transactions.index"
+   }, 
+   {
     "path": "/v1/marketplaces", 
     "methods": [
      "POST"
@@ -10323,14 +8924,6 @@
      "GET"
     ], 
     "name": "marketplaces.index"
-   }, 
-   {
-    "path": "/v1/transactions", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "transactions.index"
    }, 
    {
     "path": "/v1/chargebacks", 
@@ -10750,6 +9343,14 @@
     "name": "bank_account_verifications.index"
    }, 
    {
+    "path": "/v1/marketplaces/:marketplace_id/bank_accounts/:bank_account_id/transactions", 
+    "methods": [
+     "HEAD", 
+     "GET"
+    ], 
+    "name": "transactions.index"
+   }, 
+   {
     "path": "/v1/marketplaces/:marketplace_id/bank_accounts/:bank_account_id/verification", 
     "methods": [
      "HEAD", 
@@ -10763,14 +9364,6 @@
      "PUT"
     ], 
     "name": "bank_account_verifications.update_current"
-   }, 
-   {
-    "path": "/v1/marketplaces/:marketplace_id/bank_accounts/:bank_account_id/transactions", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "transactions.index"
    }, 
    {
     "path": "/v1/marketplaces/:marketplace_id/customers/:customer_id/transactions", 
@@ -11528,6 +10121,14 @@
     "name": "bank_account_verifications.index"
    }, 
    {
+    "path": "/v1/bank_accounts/:bank_account_id/transactions", 
+    "methods": [
+     "HEAD", 
+     "GET"
+    ], 
+    "name": "transactions.index"
+   }, 
+   {
     "path": "/v1/bank_accounts/:bank_account_id/verification", 
     "methods": [
      "HEAD", 
@@ -11541,14 +10142,6 @@
      "PUT"
     ], 
     "name": "bank_account_verifications.update_current"
-   }, 
-   {
-    "path": "/v1/bank_accounts/:bank_account_id/transactions", 
-    "methods": [
-     "HEAD", 
-     "GET"
-    ], 
-    "name": "transactions.index"
    }, 
    {
     "path": "/v1/bank_accounts/:bank_account_id/credits", 
@@ -12192,6 +10785,83 @@
       "tags": [], 
       "type": "object", 
       "description": null, 
+      "name": "account_email_address"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
+      "name": "account_name"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": "The amount of the refund.", 
+      "name": "amount"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Text that will appear on the statement describing this refund.", 
+      "name": "appears_on_statement_as"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nrefund was issued.", 
+      "name": "created_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Customer receiving the refund.", 
+      "name": "customer"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": "The original debit associated with the refund.", 
+      "name": "debit"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Free-text description of the refund.", 
+      "name": "description"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "id"
+     }, 
+     {
+      "tags": [], 
+      "type": "key-value", 
+      "description": "A single-level dictionary of string-type key/value pairs.", 
+      "name": "meta"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "An identifier for this transaction.", 
+      "name": "transaction_number"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "uri"
+     }
+    ], 
+    "name": "RefundView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
       "name": "account"
      }, 
      {
@@ -12286,6 +10956,190 @@
      }
     ], 
     "name": "BankAccountView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
+      "name": "account_email_address"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
+      "name": "account_name"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": "Amount of the hold.", 
+      "name": "amount"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nhold was created.", 
+      "name": "created_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The customer against which this hold was created.", 
+      "name": "customer"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": "The captured debit associated with this hold.", 
+      "name": "debit"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "A description of the hold, used for display purposes.", 
+      "name": "description"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nhold was will expire and can **NO LONGER BE CAPTURED**.", 
+      "name": "expires_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "id"
+     }, 
+     {
+      "tags": [], 
+      "type": "boolean", 
+      "description": "A boolean flag indicating if the hold has been voided or not.", 
+      "name": "is_void"
+     }, 
+     {
+      "tags": [], 
+      "type": "key-value", 
+      "description": "A single-level dictionary of string-type key/value pairs.", 
+      "name": "meta"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": "The funding source for this hold.", 
+      "name": "source"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "An identifier for this transaction.", 
+      "name": "transaction_number"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "uri"
+     }
+    ], 
+    "name": "HoldView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
+      "name": "account_email_address"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
+      "name": "account_name"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": "Amount of the credit.", 
+      "name": "amount"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The text that will appear on the merchant's bank statement.", 
+      "name": "appears_on_statement_as"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
+      "name": "bank_account"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_.", 
+      "name": "created_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Present if the credit went to a customer instead of directly to a\nbank account.", 
+      "name": "customer"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "description"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": "The funding destination for this credit (i.e., a bank account).", 
+      "name": "destination"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "id"
+     }, 
+     {
+      "tags": [], 
+      "type": "key-value", 
+      "description": "A single-level dictionary of string-type key/value pairs.", 
+      "name": "meta"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "reversals_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Use ``status`` instead.", 
+      "name": "state"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "One of ``pending``, ``paid``, ``failed``.", 
+      "name": "status"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "uri"
+     }
+    ], 
+    "name": "CreditView"
    }, 
    {
     "fields": [
@@ -12393,50 +11247,20 @@
      {
       "tags": [], 
       "type": "string", 
-      "description": "URI for all bank accounts associated with the account.", 
-      "name": "bank_accounts_uri"
+      "description": "The amount of the debit_chargeback", 
+      "name": "amount"
      }, 
      {
       "tags": [], 
       "type": "string", 
-      "description": "URI for all cards associated with the account.", 
-      "name": "cards_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\naccount was created.", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\ndebit_chargeback was created.", 
       "name": "created_at"
      }, 
      {
       "tags": [], 
       "type": "string", 
-      "description": "URI for all credits associated with the account.", 
-      "name": "credits_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
       "description": null, 
-      "name": "customer_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all debits associated with the account.", 
-      "name": "debits_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The email address of the account.", 
-      "name": "email_address"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all holds associated with the account.", 
-      "name": "holds_uri"
+      "name": "description"
      }, 
      {
       "tags": [], 
@@ -12446,48 +11270,18 @@
      }, 
      {
       "tags": [], 
-      "type": "object", 
+      "type": "string", 
+      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
+      "name": "state"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
       "description": null, 
-      "name": "merchant_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "A single-level dictionary of string-type key/value pairs.", 
-      "name": "meta"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The name of the account.", 
-      "name": "name"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all refunds associated with the account.", 
-      "name": "refunds_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "list", 
-      "description": "A list of roles the account has. Can be zero, one, or both of\n``buyer``, ``merchant``", 
-      "name": "roles"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all transactions associated with the account.", 
-      "name": "transactions_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The URI of the account.", 
       "name": "uri"
      }
     ], 
-    "name": "AccountView"
+    "name": "DebitChargebackView"
    }, 
    {
     "fields": [
@@ -12594,289 +11388,6 @@
     "fields": [
      {
       "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "account_email_address"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "account_name"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": "The amount of the refund.", 
-      "name": "amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Text that will appear on the statement describing this refund.", 
-      "name": "appears_on_statement_as"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nrefund was issued.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Customer receiving the refund.", 
-      "name": "customer"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": "The original debit associated with the refund.", 
-      "name": "debit"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Free-text description of the refund.", 
-      "name": "description"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "A single-level dictionary of string-type key/value pairs.", 
-      "name": "meta"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "An identifier for this transaction.", 
-      "name": "transaction_number"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "RefundView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "events_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "marketplace_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "source"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "state"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_.", 
-      "name": "updated_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "SettlementView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "account_email_address"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "account_name"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": "Amount of the hold.", 
-      "name": "amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nhold was created.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The customer against which this hold was created.", 
-      "name": "customer"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": "The captured debit associated with this hold.", 
-      "name": "debit"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "A description of the hold, used for display purposes.", 
-      "name": "description"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nhold was will expire and can **NO LONGER BE CAPTURED**.", 
-      "name": "expires_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "boolean", 
-      "description": "A boolean flag indicating if the hold has been voided or not.", 
-      "name": "is_void"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "A single-level dictionary of string-type key/value pairs.", 
-      "name": "meta"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": "The funding source for this hold.", 
-      "name": "source"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "An identifier for this transaction.", 
-      "name": "transaction_number"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "HoldView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The amount of the debit_chargeback", 
-      "name": "amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\ndebit_chargeback was created.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "description"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "state"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "DebitChargebackView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "data"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "keys"
-     }
-    ], 
-    "name": "ResultSet"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
       "type": "string", 
       "description": null, 
       "name": "bank_accounts_uri"
@@ -12973,6 +11484,107 @@
      }
     ], 
     "name": "AccountFIView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all bank accounts associated with the account.", 
+      "name": "bank_accounts_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all cards associated with the account.", 
+      "name": "cards_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\naccount was created.", 
+      "name": "created_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all credits associated with the account.", 
+      "name": "credits_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "customer_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all debits associated with the account.", 
+      "name": "debits_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The email address of the account.", 
+      "name": "email_address"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all holds associated with the account.", 
+      "name": "holds_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "id"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
+      "name": "merchant_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "key-value", 
+      "description": "A single-level dictionary of string-type key/value pairs.", 
+      "name": "meta"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The name of the account.", 
+      "name": "name"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all refunds associated with the account.", 
+      "name": "refunds_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "list", 
+      "description": "A list of roles the account has. Can be zero, one, or both of\n``buyer``, ``merchant``", 
+      "name": "roles"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all transactions associated with the account.", 
+      "name": "transactions_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The URI of the account.", 
+      "name": "uri"
+     }
+    ], 
+    "name": "AccountView"
    }, 
    {
     "fields": [
@@ -13103,299 +11715,18 @@
     "fields": [
      {
       "tags": [], 
-      "type": "object", 
-      "description": "A single-level dictionary of string-type key/value pairs representing\nthe address of the person or business.", 
-      "name": "address"
+      "type": "string", 
+      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
+      "name": "data"
      }, 
      {
       "tags": [], 
       "type": "string", 
-      "description": "URI for all bank accounts associated with the customer.", 
-      "name": "bank_accounts_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Full business name if the customer is a business. If there is a\nbusiness name and EIN present, the customer will be treated as a\nbusiness instead of a person.", 
-      "name": "business_name"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all cards associated with the customer.", 
-      "name": "cards_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\ncustomer was created.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all credits associated with the customer.", 
-      "name": "credits_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all debits associated with the customer.", 
-      "name": "debits_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The default bank account that will be credited.", 
-      "name": "destination_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Date of birth of the customer or representative of the business.\nFormat is YYYY-MM e.g. \"1980-05\"", 
-      "name": "dob"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Employee Identification Number of the business if the customer is a\nbusiness. If there is a business name and EIN present, the customer\nwill be treated as a business instead of a person.", 
-      "name": "ein"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Email address of the person or business.", 
-      "name": "email"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Facebook ID or username of the customer or representative of the\nbusiness.", 
-      "name": "facebook"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all holds associated with the customer.", 
-      "name": "holds_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "boolean", 
-      "description": "Indicates if Balanced was able to match the identify information\nprovided for the customer.", 
-      "name": "is_identity_verified"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": "A single-level dictionary of string-type key/value pairs.", 
-      "name": "meta"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Name of the customer or representative of the business.", 
-      "name": "name"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Phone number of the person or business.", 
-      "name": "phone"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all refunds associated with the customer.", 
-      "name": "refunds_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The default credit card that will be debited.", 
-      "name": "source_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Last four digits of the Social Security Number of the customer or\nrepresentative of the business.", 
-      "name": "ssn_last4"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all transactions associated with the customer.", 
-      "name": "transactions_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Twitter ID or username of the customer or representative of the\nbusiness.", 
-      "name": "twitter"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The URI of this customer.", 
-      "name": "uri"
+      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
+      "name": "keys"
      }
     ], 
-    "name": "CustomerView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": "A single-level dictionary of string-type key/value pairs representing\nthe address of the person or business.", 
-      "name": "address"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all bank accounts associated with the customer.", 
-      "name": "bank_accounts_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Full business name if the customer is a business. If there is a\nbusiness name and EIN present, the customer will be treated as a\nbusiness instead of a person.", 
-      "name": "business_name"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all cards associated with the customer.", 
-      "name": "cards_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\ncustomer was created.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all credits associated with the customer.", 
-      "name": "credits_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all debits associated with the customer.", 
-      "name": "debits_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The default bank account that will be credited.", 
-      "name": "destination_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Date of birth of the customer or representative of the business.\nFormat is YYYY-MM e.g. \"1980-05\"", 
-      "name": "dob"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Employee Identification Number of the business if the customer is a\nbusiness. If there is a business name and EIN present, the customer\nwill be treated as a business instead of a person.", 
-      "name": "ein"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Email address of the person or business.", 
-      "name": "email"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Facebook ID or username of the customer or representative of the\nbusiness.", 
-      "name": "facebook"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all holds associated with the customer.", 
-      "name": "holds_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "boolean", 
-      "description": "Indicates if Balanced was able to match the identify information\nprovided for the customer.", 
-      "name": "is_identity_verified"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": "A single-level dictionary of string-type key/value pairs.", 
-      "name": "meta"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Name of the customer or representative of the business.", 
-      "name": "name"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Phone number of the person or business.", 
-      "name": "phone"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all refunds associated with the customer.", 
-      "name": "refunds_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The default credit card that will be debited.", 
-      "name": "source_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Last four digits of the Social Security Number of the customer or\nrepresentative of the business.", 
-      "name": "ssn_last4"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "URI for all transactions associated with the customer.", 
-      "name": "transactions_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Twitter ID or username of the customer or representative of the\nbusiness.", 
-      "name": "twitter"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The URI of this customer.", 
-      "name": "uri"
-     }
-    ], 
-    "name": "CustomerView"
+    "name": "ResultSet"
    }, 
    {
     "fields": [
@@ -13532,6 +11863,304 @@
     "fields": [
      {
       "tags": [], 
+      "type": "object", 
+      "description": "A single-level dictionary of string-type key/value pairs representing\nthe address of the person or business.", 
+      "name": "address"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all bank accounts associated with the customer.", 
+      "name": "bank_accounts_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Full business name if the customer is a business. If there is a\nbusiness name and EIN present, the customer will be treated as a\nbusiness instead of a person.", 
+      "name": "business_name"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all cards associated with the customer.", 
+      "name": "cards_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\ncustomer was created.", 
+      "name": "created_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all credits associated with the customer.", 
+      "name": "credits_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all debits associated with the customer.", 
+      "name": "debits_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The default bank account that will be credited.", 
+      "name": "destination_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Date of birth of the customer or representative of the business.\nFormat is YYYY-MM e.g. \"1980-05\"", 
+      "name": "dob"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Employee Identification Number of the business if the customer is a\nbusiness. If there is a business name and EIN present, the customer\nwill be treated as a business instead of a person.", 
+      "name": "ein"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Email address of the person or business.", 
+      "name": "email"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Facebook ID or username of the customer or representative of the\nbusiness.", 
+      "name": "facebook"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all holds associated with the customer.", 
+      "name": "holds_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "id"
+     }, 
+     {
+      "tags": [], 
+      "type": "boolean", 
+      "description": "Indicates if Balanced was able to match the identify information\nprovided for the customer.", 
+      "name": "is_identity_verified"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": "A single-level dictionary of string-type key/value pairs.", 
+      "name": "meta"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Name of the customer or representative of the business.", 
+      "name": "name"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Phone number of the person or business.", 
+      "name": "phone"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all refunds associated with the customer.", 
+      "name": "refunds_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The default credit card that will be debited.", 
+      "name": "source_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Last four digits of the Social Security Number of the customer or\nrepresentative of the business.", 
+      "name": "ssn_last4"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all transactions associated with the customer.", 
+      "name": "transactions_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Twitter ID or username of the customer or representative of the\nbusiness.", 
+      "name": "twitter"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The URI of this customer.", 
+      "name": "uri"
+     }
+    ], 
+    "name": "CustomerView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": "A single-level dictionary of string-type key/value pairs representing\nthe address of the person or business.", 
+      "name": "address"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all bank accounts associated with the customer.", 
+      "name": "bank_accounts_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Full business name if the customer is a business. If there is a\nbusiness name and EIN present, the customer will be treated as a\nbusiness instead of a person.", 
+      "name": "business_name"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all cards associated with the customer.", 
+      "name": "cards_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\ncustomer was created.", 
+      "name": "created_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all credits associated with the customer.", 
+      "name": "credits_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all debits associated with the customer.", 
+      "name": "debits_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The default bank account that will be credited.", 
+      "name": "destination_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Date of birth of the customer or representative of the business.\nFormat is YYYY-MM e.g. \"1980-05\"", 
+      "name": "dob"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Employee Identification Number of the business if the customer is a\nbusiness. If there is a business name and EIN present, the customer\nwill be treated as a business instead of a person.", 
+      "name": "ein"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Email address of the person or business.", 
+      "name": "email"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Facebook ID or username of the customer or representative of the\nbusiness.", 
+      "name": "facebook"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all holds associated with the customer.", 
+      "name": "holds_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "id"
+     }, 
+     {
+      "tags": [], 
+      "type": "boolean", 
+      "description": "Indicates if Balanced was able to match the identify information\nprovided for the customer.", 
+      "name": "is_identity_verified"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": "A single-level dictionary of string-type key/value pairs.", 
+      "name": "meta"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Name of the customer or representative of the business.", 
+      "name": "name"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Phone number of the person or business.", 
+      "name": "phone"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all refunds associated with the customer.", 
+      "name": "refunds_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The default credit card that will be debited.", 
+      "name": "source_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Last four digits of the Social Security Number of the customer or\nrepresentative of the business.", 
+      "name": "ssn_last4"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "URI for all transactions associated with the customer.", 
+      "name": "transactions_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Twitter ID or username of the customer or representative of the\nbusiness.", 
+      "name": "twitter"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The URI of this customer.", 
+      "name": "uri"
+     }
+    ], 
+    "name": "CustomerView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
       "type": "string", 
       "description": null, 
       "name": "account_number"
@@ -13580,184 +12209,6 @@
      }
     ], 
     "name": "BankAccountTokenView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "account_email_address"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "account_name"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": "The amount of the reversal.", 
-      "name": "amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Text that will appear on the statement describing this reversal.", 
-      "name": "appears_on_statement_as"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nreversal was issued.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": "Credit associated with the reversal.", 
-      "name": "credit"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Customer receiving the reversal.", 
-      "name": "customer"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Free-text description of the reversal.", 
-      "name": "description"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Events associated with the reversal.", 
-      "name": "events_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "Key-Value mapping.", 
-      "name": "meta"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "An identifier for this reversal.", 
-      "name": "transaction_number"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "ReversalView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "account_email_address"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "account_name"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": "Amount of the credit.", 
-      "name": "amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The text that will appear on the merchant's bank statement.", 
-      "name": "appears_on_statement_as"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "bank_account"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Present if the credit went to a customer instead of directly to a\nbank account.", 
-      "name": "customer"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "description"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": "The funding destination for this credit (i.e., a bank account).", 
-      "name": "destination"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "A single-level dictionary of string-type key/value pairs.", 
-      "name": "meta"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "reversals_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Use ``status`` instead.", 
-      "name": "state"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "One of ``pending``, ``paid``, ``failed``.", 
-      "name": "status"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "CreditView"
    }, 
    {
     "fields": [
@@ -13813,159 +12264,6 @@
      }
     ], 
     "name": "MethodNotAllowedView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "endpoint"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "guru_id"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "marketplace_guid"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "message"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "method"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "status_rollup"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "url"
-     }
-    ], 
-    "name": "LogSearch"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Any additional information that may describe how to resolve the issue.", 
-      "name": "additional"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "bug_url"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The code of the exception.", 
-      "name": "category_code"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The type of the exception. Values: ``request``,\n``banking``, or ``logical``", 
-      "name": "category_type"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "description"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "Any extra information associated with this exception.", 
-      "name": "extras"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "An ID that can be used to identify and debug the exception.", 
-      "name": "request_id"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "status"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "HTTP response code of the exception.", 
-      "name": "status_code"
-     }
-    ], 
-    "name": "InternalServerErrorView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\napi key was created.", 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": "The merchant owning this API key.", 
-      "name": "merchant"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "A single-level dictionary of string-type key/value pairs.", 
-      "name": "meta"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The secret associated with this API key. Will only be shown if passed\nin the original request.", 
-      "name": "secret"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "APIKeyView"
    }, 
    {
     "fields": [
@@ -14042,154 +12340,30 @@
     "fields": [
      {
       "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "attempt_limit"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "attempts"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "attempts_remaining"
+      "type": "string", 
+      "description": "Date of birth (YYYY-MM format).", 
+      "name": "dob"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "callback_uri"
+      "name": "first_name"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "event_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "id"
+      "name": "last_name"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "logs_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "status"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "url"
+      "name": "middle_name"
      }
     ], 
-    "name": "AuditEventCallbackView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "callback_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "event_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "occurred_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "request_body"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "request_mime_type"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "response_body"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "response_mime_type"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "response_status"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "status"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }
-    ], 
-    "name": "AuditEventCallbackLogView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "description"
-     }
-    ], 
-    "name": "InvoiceAdjustmentView"
+    "name": "PersonView"
    }, 
    {
     "fields": [
@@ -14249,50 +12423,93 @@
      {
       "tags": [], 
       "type": "string", 
+      "description": "Any additional information that may describe how to resolve the issue.", 
+      "name": "additional"
+     }, 
+     {
+      "tags": [], 
+      "type": "constant", 
+      "description": "The code of the exception.", 
+      "value": "not-authorized", 
+      "name": "category_code"
+     }, 
+     {
+      "tags": [], 
+      "type": "constant", 
+      "description": "The type of the exception. Values: ``request``,\n``banking``, or ``logical``", 
+      "value": "permission", 
+      "name": "category_type"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Description of the exception", 
+      "name": "description"
+     }, 
+     {
+      "tags": [], 
+      "type": "key-value", 
+      "description": "Any extra information associated with this exception.", 
+      "name": "extras"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "An ID that can be used to identify and debug the exception.", 
+      "name": "request_id"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
       "description": null, 
-      "name": "first_uri"
+      "name": "status"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "HTTP response code of the exception.", 
+      "name": "status_code"
+     }
+    ], 
+    "name": "ForbiddenView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "A key/value collection of aggregated callbacks and statuses where the\nkey is the status and the value is the number of callbacks for this\nevent in that state.", 
+      "name": "callback_statuses"
      }, 
      {
       "tags": [], 
       "type": "object", 
       "description": null, 
-      "name": "items"
+      "name": "callbacks"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Snapshot of the resource associated with this event at the time it\noccurred.", 
+      "name": "entity"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "last_uri"
+      "name": "id"
      }, 
      {
       "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "limit"
+      "type": "string", 
+      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nevent occurred.", 
+      "name": "occurred_at"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "next_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "offset"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "previous_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "total"
+      "name": "type"
      }, 
      {
       "tags": [], 
@@ -14301,7 +12518,7 @@
       "name": "uri"
      }
     ], 
-    "name": "PaginateView"
+    "name": "AuditEventView"
    }, 
    {
     "fields": [
@@ -14399,6 +12616,124 @@
       "tags": [], 
       "type": "string", 
       "description": null, 
+      "name": "first_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "object", 
+      "description": null, 
+      "name": "items"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "last_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": null, 
+      "name": "limit"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "next_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": null, 
+      "name": "offset"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "previous_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": null, 
+      "name": "total"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "uri"
+     }
+    ], 
+    "name": "PaginateView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Any additional information that may describe how to resolve the issue.", 
+      "name": "additional"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "bug_url"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The code of the exception.", 
+      "name": "category_code"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The type of the exception. Values: ``request``,\n``banking``, or ``logical``", 
+      "name": "category_type"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "description"
+     }, 
+     {
+      "tags": [], 
+      "type": "key-value", 
+      "description": "Any extra information associated with this exception.", 
+      "name": "extras"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "An ID that can be used to identify and debug the exception.", 
+      "name": "request_id"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "status"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "HTTP response code of the exception.", 
+      "name": "status_code"
+     }
+    ], 
+    "name": "InternalServerErrorView"
+   }, 
+   {
+    "fields": [
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
       "name": "city"
      }, 
      {
@@ -14433,345 +12768,38 @@
      {
       "tags": [], 
       "type": "string", 
-      "description": "Any additional information that may describe how to resolve the issue.", 
-      "name": "additional"
-     }, 
-     {
-      "tags": [], 
-      "type": "constant", 
-      "description": "The code of the exception.", 
-      "value": "authentication-required", 
-      "name": "category_code"
-     }, 
-     {
-      "tags": [], 
-      "type": "constant", 
-      "description": "The type of the exception. Values: ``request``,\n``banking``, or ``logical``", 
-      "value": "permission", 
-      "name": "category_type"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Description of the exception", 
-      "name": "description"
-     }, 
-     {
-      "tags": [], 
-      "type": "key-value", 
-      "description": "Any extra information associated with this exception.", 
-      "name": "extras"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "An ID that can be used to identify and debug the exception.", 
-      "name": "request_id"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "status"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "HTTP response code of the exception.", 
-      "name": "status_code"
-     }
-    ], 
-    "name": "UnauthorizedView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "adjustments"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "adjustments_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "adjustments_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debit_variable_fee_cap"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debit_variable_fee_percentage"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "card_debits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "card_debits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "card_debits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "chargeback_fixed_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "created_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credit_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credits_total_fee"
+      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
+      "name": "endpoint"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "debits_count"
+      "name": "guru_id"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "debits_total_amount"
+      "name": "marketplace_guid"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "debits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credit_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "hold_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "holds_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "holds_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "holds_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "lost_debit_chargebacks_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "lost_debit_chargebacks_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "lost_debit_chargebacks_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "marketplace_uri"
+      "name": "message"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "period"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refund_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refunds_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refunds_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refunds_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "sequence_number"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "settle_at"
+      "name": "method"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "source"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "state"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "updated_at"
+      "name": "status_rollup"
      }, 
      {
       "tags": [], 
@@ -14781,309 +12809,15 @@
      }, 
      {
       "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "variable_fee_percentage"
+      "type": "string", 
+      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
+      "name": "url"
      }
     ], 
-    "name": "InvoiceView"
+    "name": "LogSearch"
    }, 
    {
     "fields": [
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "adjustments"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "adjustments_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "adjustments_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debit_variable_fee_cap"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debit_variable_fee_percentage"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "bank_account_debits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "card_debits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "card_debits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "card_debits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "chargeback_fixed_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credit_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "credits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "debits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "debits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "debits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credit_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credits_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credits_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "failed_credits_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "hold_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "holds_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "holds_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "holds_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "constant", 
-      "description": "Simply returns the same value for all objects.\n\n`value`\n    The value to return whenever this spec is called to transform an\n    object.", 
-      "value": "current", 
-      "name": "id"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "lost_debit_chargebacks_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "lost_debit_chargebacks_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "lost_debit_chargebacks_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "marketplace_uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "period"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refund_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refunds_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refunds_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "refunds_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_count"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_total_amount"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "reversals_total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
-      "name": "source"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "total_fee"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": null, 
-      "name": "uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "integer", 
-      "description": null, 
-      "name": "variable_fee_percentage"
-     }
-    ], 
-    "name": "CurrentInvoiceView"
-   }, 
-   {
-    "fields": [
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "A key/value collection of aggregated callbacks and statuses where the\nkey is the status and the value is the number of callbacks for this\nevent in that state.", 
-      "name": "callback_statuses"
-     }, 
-     {
-      "tags": [], 
-      "type": "object", 
-      "description": null, 
-      "name": "callbacks"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "Snapshot of the resource associated with this event at the time it\noccurred.", 
-      "name": "entity"
-     }, 
      {
       "tags": [], 
       "type": "string", 
@@ -15093,23 +12827,23 @@
      {
       "tags": [], 
       "type": "string", 
-      "description": "`ISO 8601 <http://www.w3.org/QA/Tips/iso-date>`_ date of when this\nevent occurred.", 
-      "name": "occurred_at"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
       "description": null, 
-      "name": "type"
+      "name": "method"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
       "name": "uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "The URL that will receive events", 
+      "name": "url"
      }
     ], 
-    "name": "AuditEventView"
+    "name": "CallbackView"
    }, 
    {
     "fields": [
@@ -15182,28 +12916,64 @@
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "id"
+      "name": "callback_uri"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "method"
+      "name": "event_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "occurred_at"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "request_body"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "request_mime_type"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "response_body"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "response_mime_type"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "response_status"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "status"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
       "name": "uri"
-     }, 
-     {
-      "tags": [], 
-      "type": "string", 
-      "description": "The URL that will receive events", 
-      "name": "url"
      }
     ], 
-    "name": "CallbackView"
+    "name": "AuditEventCallbackLogView"
    }, 
    {
     "fields": [
@@ -15217,7 +12987,7 @@
       "tags": [], 
       "type": "constant", 
       "description": "The code of the exception.", 
-      "value": "not-authorized", 
+      "value": "authentication-required", 
       "name": "category_code"
      }, 
      {
@@ -15258,36 +13028,72 @@
       "name": "status_code"
      }
     ], 
-    "name": "ForbiddenView"
+    "name": "UnauthorizedView"
    }, 
    {
     "fields": [
      {
       "tags": [], 
-      "type": "string", 
-      "description": "Date of birth (YYYY-MM format).", 
-      "name": "dob"
+      "type": "integer", 
+      "description": null, 
+      "name": "attempt_limit"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": null, 
+      "name": "attempts"
+     }, 
+     {
+      "tags": [], 
+      "type": "integer", 
+      "description": null, 
+      "name": "attempts_remaining"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "first_name"
+      "name": "callback_uri"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "last_name"
+      "name": "event_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
+      "name": "id"
      }, 
      {
       "tags": [], 
       "type": "string", 
       "description": null, 
-      "name": "middle_name"
+      "name": "logs_uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "status"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": null, 
+      "name": "uri"
+     }, 
+     {
+      "tags": [], 
+      "type": "string", 
+      "description": "Resolves a particular field of an object (e.g. o.some.random.field). It\nwill also check if this object is part is part of a cycle as indicated by\ncontext's `cycle` attribute and what to do about it as indicated by\ncontext's `cycle_default` attribute. If SKIP then the spec returns NONE\nindicating the spec should be ignored otherwise a ValueError is raised.\n\n`name`\n    The name of the field to pull off the object and return. If name is\n    None (the default) it is taken from context's `name` attribute. For\n    details on how fields are parsed and how they resolve to the attribute\n    value(s) of an object see `resolve_field`.\n\n`default`\n    Determines how to handle the case where the field cannot be resolved\n    for an object which should be either SKIP or NONE. If SKIP then the\n    spec will return NONE when the field cannot be resolved otherwise it is\n    NONE and an AttributeError is raised.", 
+      "name": "url"
      }
     ], 
-    "name": "PersonView"
+    "name": "AuditEventCallbackView"
    }
   ], 
   "forms": [
@@ -20781,7 +18587,7 @@
     "additional": null, 
     "status_code": 409, 
     "category_type": "logical", 
-    "description": "Marketplace escrow balance is insufficient to issue this credit."
+    "description": "Account balance is insufficient to issue this debit"
    }, 
    {
     "status": null, 
@@ -20789,7 +18595,7 @@
     "additional": null, 
     "status_code": 409, 
     "category_type": "logical", 
-    "description": "Account balance is insufficient to issue this debit"
+    "description": "Marketplace escrow balance is insufficient to issue this credit."
    }, 
    {
     "status": null, 
