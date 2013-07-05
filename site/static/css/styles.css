@@ -6036,6 +6036,19 @@ table.table tbody tr td {
   background-color: #ffffff;
   padding: 12px 12px 12px 15px;
 }
+a.headerlink {
+  margin-left: 3px;
+  font-size: 24px;
+}
+pre {
+  border: none;
+  padding: none;
+  margin: none;
+  background-color: #FFF;
+}
+.box a {
+  color: white;
+}
 ul#search-dropdown li {
   border-bottom: 1px #808080 dotted;
   padding: 2px 0px 10px 0px;
@@ -6072,12 +6085,6 @@ span.text-highlight.search-active {
   font-weight: normal;
   font-size: 18px;
   color: #000;
-}
-.code-white pre {
-  border: none;
-  padding: none;
-  margin: none;
-  background-color: #FFF;
 }
 .pull-right {
   float: right;
