@@ -6065,9 +6065,6 @@ ul#search-dropdown li h4 {
 ul#search-dropdown li p {
   padding-left: 5px;
 }
-ul#search-dropdown li:hover {
-  background-color: white;
-}
 ul#search-dropdown li.search-selected {
   background-color: white;
 }

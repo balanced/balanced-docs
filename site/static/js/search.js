@@ -92,8 +92,8 @@ $(document).ready(function () {
         $('.search-active').removeClass('search-active');
         var to = $(item).attr('data-scroll-to');
         var search_text = $('#search').val();
-        var header = $(item).find(':header').first();
-        var body = $(item).find('p').first();
+        var header = $(to).find(':header').first();
+        var body = $(to).find('p').first();
         header.html(highlight_match(header.text(), search_text));
         body.html(highlight_match(body.text(), search_text));
         if (to.substring(0, 1) == '#') {
@@ -155,18 +155,26 @@ $(document).ready(function () {
     });
 
 
+    $('ul').on('mouseover', 'li.result_item',
+        function(e){
+            $(this).addClass('search-selected');
+            $(this).siblings().removeClass('search-selected');
+        }
+    );
+
+
     //HIGHLIGHT MATCHES
     function highlight_match(string_to_check, search_text) {
         function highlight(string) {
             return "<span class='text-highlight search-active'>" + string + "</span>";
         }
 
-        var min_len = 3
+        var min_len = 1;
         var already_replaced = {};
         var to_match_split = search_text.split(' ');
         for (var i = 0; i < to_match_split.length; i++) {
             var word_to_replace = to_match_split[i];
-            if (word_to_replace.length > min_len && !(word_to_replace in already_replaced)) {
+            if (word_to_replace.length >= min_len && !(word_to_replace in already_replaced)) {
                 var regex = new RegExp('(' + word_to_replace + ')', 'gi');
                 string_to_check = string_to_check.replace(regex, function (match) {
                     return highlight(match)
