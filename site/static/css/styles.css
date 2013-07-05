@@ -5795,7 +5795,7 @@ dl.dl-horizontal dt {
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
-  width: 100px;
+  width: auto;
   color: #000000;
 }
 dl.dl-horizontal dd {

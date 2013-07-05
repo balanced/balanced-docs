@@ -1,56 +1,29 @@
-
-
     <form class="form-horizontal" action="#" method="POST" id="bank-account-form">
         <div class="control-group">
-            <label class="control-label" for="credit-card-number">Credit card
-                number</label>
+            <label class="control-label" for="bank-account-number">Account Number</label>
 
             <div class="controls">
-                <input type="text" id="credit-card-number"
-                       placeholder="4111111111111111" maxlength="19">
+                <input type="text" id="bank-account-number"
+                       placeholder="Account Number" maxlength="19">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="bank-routing-number">Routing Number</label>
+
+            <div class="controls">
+                <input type="text" id="bank-routing-number"
+                       placeholder="Routing Number" maxlength="19">
             </div>
         </div>
         <div class="control-group">
             <label class="control-label"
-                   for="expiration-month">Expiration</label>
+                   for="bank-type">Type</label>
 
             <div class="controls">
-                <select id="expiration-month" class="span2">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                    <option value="11">11</option>
-                    <option value="12">12</option>
+                <select id="bank-type" class="4">
+                    <option value="checking">CHECKING</option>
+                    <option value="savings">SAVINGS</option>
                 </select>
-                <select id="expiration-year" class="span2">
-                    <option value="2013">2013</option>
-                    <option value="2014">2014</option>
-                    <option value="2015">2015</option>
-                    <option value="2016">2016</option>
-                    <option value="2017">2017</option>
-                    <option value="2018">2018</option>
-                    <option value="2019">2019</option>
-                    <option value="2020">2020</option>
-                    <option value="2021">2021</option>
-                    <option value="2022">2022</option>
-                    <option value="2023">2023</option>
-                </select>
-            </div>
-        </div>
-        <div class="control-group">
-            <label class="control-label" for="security-code">Security code
-                (CSC)</label>
-
-            <div class="controls">
-                <input type="text" id="security-code" placeholder="123"
-                       maxlength="4">
             </div>
         </div>
         <div class="control-group bg-gray">
@@ -59,40 +32,3 @@
             </div>
         </div>
     </form>
-
-<!--
-<form action="#" method="POST" id="bank-account-form">
-    <fieldset>
-        <legend>Bank Account Information</legend>
-        <label>Account Holder's Name
-            <input type="text"
-                   autocomplete="off"
-                   placeholder="Bank Account Holder's name"
-                   class="ba-name">
-        </label>
-        <label>Routing Number
-            <input type="text"
-                   autocomplete="off"
-                   placeholder="Routing Number"
-                   class="ba-rn">
-        </label>
-        <label>Account Number
-            <input type="text"
-                   autocomplete="off"
-                   placeholder="Account Number"
-                   class="ba-an">
-        </label>
-        <label>Account Type
-            <select>
-                <option value='' disabled selected style='display:none;'>
-                    Select Account Type
-                </option>
-                <option value="checking">CHECKING</option>
-                <option value="savings">SAVINGS</option>
-            </select>
-        </label>
-        <button type="submit" class="btn">
-            Tokenize
-        </button>
-    </fieldset>
-</form>-->
