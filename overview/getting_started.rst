@@ -11,18 +11,20 @@ which, when included on your website, enables secure collection of payment and
 sensitive information without touching your servers, keeping you completely
 outside of PCI and regulatory scope.
 
-This getting started is a reference to ``balanced.js`` and for your convenience
-we've built a `full example page`_ that's already put together for you. We're putting
-this here as we're going to reference it in the :ref:`payouts` and the :ref:`processing`
-tutorials.
+We're putting this here as we're going to reference it in the :ref:`payouts`
+and the :ref:`processing` tutorials.
 
+This section is dedicated as a reference to ``balanced.js`` and for your
+convenience we've built a `full example page`_ that's already put together
+for you as well as live demos using `jsFiddle`_.
 
 .. container:: mb-large
 
   .. container:: span7
 
-     .. span:: Demo
-        :class: header3
+     .. container:: header3
+
+        Demo
 
      .. icon-box-widget::
         :box-classes: box box-block box-blue
@@ -36,12 +38,15 @@ tutorials.
 
         `jsFiddle [tokenize credit cards]`_
 
+     .. icon-box-widget::
+        :box-classes: box box-block box-blue
+        :icon-classes: icon icon-page
+
+        `Full Example Page`_
 
 .. clear::
 
-.. cssclass:: mb-large
-
-.. _getting_started.including:
+.. _getting_started.including_balanced_js:
 
 Including
 ~~~~~~~~~
@@ -62,12 +67,13 @@ following script on your page.
   javascript ``<script>`` includes to play nicely.
 
 
-.. _getting_started.init:
+.. _getting_started.initializing_balanced_js:
 
 Initializing
 ~~~~~~~~~~~~
 
-In a separate script tag, after you've :ref:`included balanced.js <getting_started.including>`,
+In a separate script tag, after you've
+:ref:`included balanced.js <getting_started.including_balanced_js>`,
 set your marketplace uri. This essentially acts as your public key and it's
 OK to freely share this with anyone.
 
@@ -78,6 +84,186 @@ OK to freely share this with anyone.
    </script>
 
 OK, you're ready to rock and roll!
+
+Form Building
+-------------
+
+.. _getting_started.card.form:
+
+.. cssclass:: mb-large
+
+Simple Card Form
+~~~~~~~~~~~~~~~~
+
+.. raw:: html
+   :file: forms/cc-form.html
+
+
+.. _getting_started.bank_account.form:
+
+.. cssclass:: mb-large
+
+Simple Bank Account Form
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+   :file: forms/ba-form.html
+
+
+.. _getting_started.tokenizing_a_credit_card:
+
+Tokenizing a credit card
+------------------------
+
+.. note::
+   :header_class: alert alert-tab
+   :body_class: alert alert-gray
+
+   Throughout this tutorial, we're using `jQuery`_ for brevity, but
+   ``balanced.js`` has no such dependency itself.
+
+1. Collect all the information from your form:
+
+  .. code-block:: javascript
+
+     var $form = $('#credit-card-form');
+     var creditCardData = {
+          card_number: $form.find('.cc-number').val(),
+          expiration_month: $form.find('.cc-em').val(),
+          expiration_year: $form.find('.cc-ey').val(),
+          security_code: $form.find('cc-csc').val()
+      };
+
+2. After collecting information, invoke the ``balanced.card.create``
+   function. This step is essential for PCI compliance. This method
+   will return a token safe for persistence, identified by the ``uri`` of
+   the resource.
+
+  Here's an example, demonstrating this:
+
+  .. code-block:: javascript
+
+     balanced.card.create(creditCardData, function(response) {
+       console.log(response.status);
+       /*
+         response.data:
+           Contains the body of the card resource, which you can find
+           in the API reference.
+
+           This data is an object, i.e. hash, that can be identified by
+           its uri field. You may store this uri in your data store (e.g.
+           postgresql, mysql, mongodb, etc) since it's perfectly safe and
+           can only be retrieved by your secret key.
+
+           More on this in the API reference.
+        */
+       console.log(response.data);
+     });
+
+
+  .. note::
+     :header_class: alert alert-tab
+     :body_class: alert alert-gray
+
+     This method sends all the credit card information directly to Balanced.
+     This step is essential in ensuring that you're PCI compliant. Sensitive data
+     never touches your servers and as a result, the burden of PCI compliance
+     shifts to Balanced, which is `PCI-DSS Level 1 Compliant`_.
+
+  The second parameter just did a dummy ``alert()`` for demonstration purposes,
+  but this function is actually the most important piece of the integration. It is
+  your Balanced response handler. It takes one parameter that has three (3)
+  properties which you can use to drive the interaction with Balanced:
+
+  .. cssclass:: dl-horizontal
+
+  ``data``
+     An object representing a tokenized resource (card or bank account).
+  ``error``
+     Details of the error, if any.
+  ``status``
+     The HTTP response code of the tokenization operation.
+
+  Here's a skeleton callback function that we can use to get started:
+
+  .. code-block:: javascript
+
+      function callbackHandler(response) {
+         switch (response.status) {
+             case 201:
+                 // WOO HOO!
+                 // response.data.uri == uri of the card or bank account resource
+                 break;
+             case 400:
+                 // missing field - check response.error for details
+                 break;
+             case 402:
+                 // we couldn't authorize the buyer's credit card
+                 // check response.error for details
+                 break
+             case 404:
+                 // your marketplace URI is incorrect
+                 break;
+             case 500:
+                 // Balanced did something bad, please retry the request
+                 break;
+         }
+      }
+
+  So, let's show that example on creating a card again, but this time with a
+  proper callback handler:
+
+  .. code-block:: javascript
+
+     var $form = $('#credit-card-form');
+     var creditCardData = {
+          card_number: $form.find('.cc-number').val(),
+          expiration_month: $form.find('.cc-em').val(),
+          expiration_year: $form.find('.cc-ey').val(),
+          security_code: $form.find('cc-csc').val()
+      };
+
+     balanced.card.create(cardData, callbackHandler);
+
+
+.. container:: mb-large
+
+  .. container:: span7
+
+     .. container:: header3
+
+        You can try out a fully functioning card tokenization demonstration
+        here:
+
+     .. icon-box-widget::
+        :box-classes: box box-block box-blue
+        :icon-classes: icon icon-cloud
+
+        `jsFiddle [tokenize credit cards]`_
+
+.. clear::
+
+Charge a credit card
+--------------------
+
+
+Collect bank account info
+-------------------------
+
+Debit a bank account
+--------------------
+
+Credit a bank account
+---------------------
+
+
+
+Client-side Validation Helpers
+------------------------------
+
+.. cssclass:: mb-large
+
+
 
 Create a Card
 ~~~~~~~~~~~~~
@@ -387,26 +573,7 @@ Remember, you can always use the `full example page`_ that already puts all
 of this together or can ask us to write a sample form for you through one
 of our :ref:`support channels <support>`.
 
-.. _getting_started.card.form:
 
-.. cssclass:: mb-large
-
-Simple Card Form
-~~~~~~~~~~~~~~~~
-
-.. raw:: html
-   :file: forms/cc-form.html
-
-
-.. _getting_started.bank_account.form:
-
-.. cssclass:: mb-large
-
-Simple Bank Account Form
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. raw:: html
-   :file: forms/ba-form.html
 
 
 Errors
@@ -430,5 +597,7 @@ Errors
 .. _LUHN check: http://en.wikipedia.org/wiki/Luhn_algorithm
 .. _MICR Routing Number Format: http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format
 .. _jQuery: http://www.jquery.com
+.. _jsFiddle: http://jsfiddle.net/
 .. _jsFiddle [tokenize bank accounts]: http://jsfiddle.net/mahmoudimus/DGDkt/11/
 .. _jsFiddle [tokenize credit cards]: http://jsfiddle.net/mjallday/BtXfr/
+.. _PCI-DSS Level 1 Compliant: http://www.visa.com/splisting/searchGrsp.do?companyNameCriteria=Pound%20Payments
