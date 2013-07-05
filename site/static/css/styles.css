@@ -6054,7 +6054,8 @@ ul#search-dropdown {
 }
 ul#search-dropdown li {
   border-bottom: 1px #d9d8d5 solid;
-  padding: 2px 0px 10px 0px;
+  padding: 2px 0px 10px 11px;
+  width: auto;
 }
 ul#search-dropdown li h4 {
   padding-left: 5px;
