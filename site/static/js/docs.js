@@ -33,7 +33,7 @@ function updateNavigation(e) {
 }
 $(document).ready(function () {
     //HIDE OVERVIEW REQUEST BOXES:
-    $('#overview-content').find('.request').hide();
+    $('#overview-content').find('.request > p').hide();
 
    $("li").bind('activate', updateNavigation);
     function update_lang_head(text){

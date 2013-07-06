@@ -120,7 +120,7 @@ $(document).ready(function () {
         hide_search_results()
     }
 
-    //CLICK SERACH RESULT
+    //CLICK SEARCH RESULT
     $search_dropdown.on('click', 'li', function () {
         visit_result(this)
     });
@@ -133,7 +133,7 @@ $(document).ready(function () {
         event.stopPropagation();
     });
 
-    //PREFORM THE SERACH
+    //PREFORM THE SEARCH
     $search_input.keyup(function (e) {
         if ([37, 38, 39, 40, 13].indexOf(e.keyCode) != -1) {
             return;
