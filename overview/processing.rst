@@ -7,6 +7,8 @@ Balanced Processing provides a complete solution for accepting credit
 card payments in a simple, secure manner, relieving you from the hassles of PCI
 compliance.
 
+
+
 Tutorial
 --------
 
@@ -263,86 +265,6 @@ Here's an example on how to capture a hold:
 
 .. dcode:: scenario account-capture-hold
 
-
-.. _processing-testing:
-
-Testing
--------
-
-Test credit card numbers
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-These cards will be accepted in our system only for a **TEST** marketplace.
-
-.. cssclass:: table table-hover
-
-  ============== ======================= ================ ==============================
-   Card Brand          Number             Security Code     Result
-  ============== ======================= ================ ==============================
-  VISA             4111111111111111          123            SUCCESS
-  MasterCard       5105105105105100          123            SUCCESS
-  AMEX              341111111111111         1234            SUCCESS
-  VISA             4444444444444448 [#]_     123            SIMULATE PROCESSOR FAILURE
-  VISA             4222222222222220 [#]_     123            SIMULATE TOKENIZATION ERROR
-  ============== ======================= ================ ==============================
-
-.. [#] Simulate a card which can be tokenized but will not be accepted for creating
-       holds or debits. This type of failure is what you would expect if you try to
-       create a hold on a card with insufficient funds.
-.. [#] To simulate a card which cannot be tokenized but passes a LUHN check. You could
-       expect this failure when a user tried to enter in a credit card which used to
-       work but has been canceled.
-
-
-Best Practices
---------------
-
-Using Meta for Custom Annotation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-The ``meta`` field exists on all resources in the Balanced API. It may be used
-as a dictionary of arbitrary key/value pairs, where each key and value is a
-string of length 255 characters or less. This may be used to, e.g., annotate
-accounts in our system with the account name on your system, or annotate
-transactions with order numbers. The format is generally up to you, except in
-the case of...
-
-Using Meta for Fraud
-~~~~~~~~~~~~~~~~~~~~
-
-Balanced reserves some keys in the ``meta`` field. These are fields that may be
-passed in by you in order to help fight fraud.
-
-Shipping Address
-''''''''''''''''
-
-You may supply shipping fulfillment information by prefixing keys
-specifying address data with the ``shipping.`` prefix. The specific
-fields you may provide are:
-
--  shipping.address.street_address
--  shipping.address.city
--  shipping.address.region
--  shipping.address.country_code
--  shipping.carrier
--  shipping.tracking_number
-
-Let's say you want to pass on shipping address, along with shipping
-carrier (USPS, UPS, FedEx, etc.) and tracking number on a debit. This is
-what the ``meta`` field would look like when represented as a JSON
-dictionary:
-
-.. code-block:: javascript
-
-    meta = {
-        'shipping.address.street_address': '801 High St',
-        'shipping.address.city': 'Palo Alto',
-        'shipping.address.region': 'CA',
-        'shipping.address.postal_code': '94301',
-        'shipping.address.country_code': 'USA',
-        'shipping.carrier': 'FEDEX',
-        'shipping.tracking_number': '1234567890'
-    }
 
 
 .. _sample page: https://gist.github.com/2662770

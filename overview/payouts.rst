@@ -228,53 +228,7 @@ may fund your account **instantly** with :ref:`Balanced Processing! <processing>
 
 
 
-Testing
--------
 
-Balanced provides various utilities to aid you in testing your :ref:`payouts`
-integration.
-
-When integrating payouts, it's worth noting that incorrect bank routing numbers
-are a very commonly encountered error as Balanced does real-time checks against
-the `FedACH directory`_.
-
-To aid you while integrating, Balanced provides special routing and
-account numbers that can simulate various scenarios that can go wrong.
-
-Test Bank Account Numbers
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. list-table::
-   :widths: 15 20 40
-   :header-rows: 1
-
-   * - Routing Number
-     - Account Number
-     - Scenario
-   * - ``100000007``
-     - ``8887776665555``
-     - Invalid Routing Number
-   * - ``111111118``
-     - ``8887776665555``
-     - Invalid Routing Number
-   * - ``021000021``
-     - ``9900000000``
-     - Transitions credit state to ``pending``
-   * - ``321174851``
-     - ``9900000001``
-     - Transitions credit state to ``pending``
-   * - ``021000021``
-     - ``9900000002``
-     - Transitions credit state to ``paid``
-   * - ``321174851``
-     - ``9900000003``
-     - Transitions credit state to ``paid``
-   * - ``021000021``
-     - ``9900000004``
-     - Transitions credit state to ``failed``
-   * - ``321174851``
-     - ``9900000005``
-     - Transitions credit state to ``failed``
 
 
 Examples
@@ -299,15 +253,6 @@ simulating failed status
 ''''''''''''''''''''''''
 
 .. dcode:: scenario credit_failed_state
-
-
-Request Logs
-~~~~~~~~~~~~
-
-As you integrate and test :ref:`payouts`, you may find it useful to view
-all your sanitized API request logs. They are viewable via the logs section
-in the `dashboard`_
-
 
 
 .. _payouts.cutoff:
@@ -359,85 +304,6 @@ at **3:00 PM Pacific (PT)**.
        weekend or a `federal reserve holiday <bank holidays>`_.
 
 
-.. _payouts.best_practices:
-
-Best Practices
---------------
-
-Automated Clearing House transactions are asynchronous, requiring upfront effort
-in educating your consumers and setting the appropriate expectations to deliver
-a great product.
-
-There are a few simple best practices that can dramatically increase user
-convenience, allowing for a much more enjoyable experience and minimizing
-problematic encounters.
-
-
-Sending a payout for the first time
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-There’s a very small chance the first payout to a customer can fail. This is
-usually due to the customer accidentally providing an incorrect bank account
-number.
-
-Balanced validates bank routing numbers in real-time using the
-`FedACH directory`_, but since bank accounts are not standardized, incorrect
-bank account numbers are not caught until the payout fails and Balanced
-is notified (3) three to (5) five business days after submission!
-
-Our statistics show that most of the time, your users will provide the correct
-bank routing and account numbers with the help of a properly designed and robust
-form. Their payout will appear the next business day, as expected. Once a
-successful payout has been made, future credits to that bank account
-will continue to take one business day when issued before the
-:ref:`next-day cut-offs <payouts.cutoff>`.
-
-However, if a payout fails, we’ll notify you via email and the dashboard. We're
-working on implementing web hooks, you can follow our progress on
-`github issue #70`_. Go ahead and add your +1 in the comments section to
-receive updates on our progress.
-
-
-Help your users avoid mistakes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Due to the nature of the ACH network, failure notifications can be delayed
-for up to (4) four business days! This can be extremely inconvenient and
-frustrating to your users and your business, since some merchants rely on
-speedy ACH payments for operating capital.
-
-For example, an account number typo can, on average, cause payment delays by
-up to (3) three to (5) five business days!
-
-Our recommendation, for mitigating these user experience issues, is to properly
-invest time in building a robust and reliable form to acquire merchant
-bank account information properly.
-
-Here are some tips:
-
-#. Display a check image to illustrate which number is the routing number vs.
-   account number.
-
-   We've conveniently provided one - however, you may choose to design your
-   own:
-
-   .. figure:: https://s3.amazonaws.com/justice.web/docs/check_image.png
-
-#. US routing numbers are 9 digits and are usually located in the lower left
-   corner of most checks. Common aliases to **routing number**:
-
-   * RTN (Routing Transit Number)
-   * ABA
-   * `Bank code`_
-
-#. Routing numbers are used to set up direct deposit transfers. You can use this
-   as an aid to your customers who are inquiring whether or not they have the
-   right routing number.
-
-#. Balanced has provided very useful routing number validators in our
-   :ref:`balanced.js <getting_started.validators.banks>` library.
-   Be sure to use these helper functions to build a robust form.
-
 #. Set your customer's expectation that payments might be delayed by up to
    (3) three to (5) five business days if incorrect information is provided.
 
@@ -453,7 +319,6 @@ Here are some tips:
 .. _dashboard: https://www.balancedpayments.com/dashboard
 .. _issues: https://github.com/balanced/balanced-api/issues
 .. _bank holidays: <http://www.federalreserve.gov/aboutthefed/k8.htm>
-.. _Bank code: http://en.wikipedia.org/wiki/Bank_code
 .. _FedACH directory: https://www.fededirectory.frb.org
 .. _github issue #151: https://github.com/balanced/balanced-api/issues/151
 .. _github issue #70: https://github.com/balanced/balanced-api/issues/70

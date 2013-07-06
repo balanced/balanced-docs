@@ -1,3 +1,5 @@
+.. _fees:
+
 Pricing and fees
 ================
 
@@ -80,7 +82,6 @@ Example:
 
   * Balanced doesn't charge you for this credit, as credits to owner accounts
     are free.
-
 
 
 Funds Flow
@@ -225,13 +226,13 @@ bike - costing him $110.00.
 - Alice's money is in her bank account next business day
 - Your ``in_escrow`` balance now shows $0.00
 
-
+.. cmd
 Crediting Your Seller's Bank Account
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. todo:: talk about why this is different from payouts piece
 
-
+.. cmd
 Crediting Your Own Merchant Account
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

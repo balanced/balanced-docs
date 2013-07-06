@@ -61,7 +61,7 @@ Including and Initializing ``balanced.js``
      </script>
 
 
-.. _getting_started.tokenizing_a_credit_card:
+.. _getting_started.collecting_card_info:
 
 Collecting credit card information
 ----------------------------------
@@ -200,7 +200,7 @@ Collecting credit card information
 
 .. clear::
 
-.. begin-section:
+.. _getting_started.charging_cards:
 
 Charge a credit card
 --------------------
@@ -231,8 +231,9 @@ Let's charge the card:
 
    Balanced does NOT take its fees from your charges, instead it instruments
    all operations that have occurred on the API and later invoices you. Read
-   :ref:`more about fees <overview.fees.balanced>`.
+   :ref:`more about fees <fees.balanced>`.
 
+.. _getting_started.collecting_bank_info:
 
 Collect bank account info
 -------------------------
@@ -371,6 +372,8 @@ Collect bank account info
 
         balanced.bankAccount.create(bankAccountData, responseCallbackHandler);
 
+.. _getting_started.credit_bank_account:
+
 Credit a bank account
 ---------------------
 
@@ -400,23 +403,28 @@ Let's issue a credit to this bank account:
 
    For simplicity, Balanced does NOT take its fees from any of your
    operations, instead it meters your API usage and invoices you nightly.
-   Read :ref:`more about fees <overview.fees.balanced>`.
+   Read :ref:`more about fees <fees.balanced>`.
+
+.. _getting_started.balanced.js_cards:
 
 Balanced.js Card Reference
 --------------------------
-
 
 .. js:function:: balanced.card.create(cardDataObject, callback)
 
   Sends the data stored in the ``cardDataObject`` to Balanced's servers for
   tokenization.
 
-  :param cardDataObject.card_number: *required* The credit card number
-  :param cardDataObject.expiration_month: The credit card's expiration month
-  :param cardDataObject.expiration_year: The credit card's expiration year
-  :param cardDataObject.security_code: The credit card's security code
-  :param cardDataObject.: The credit card's security code
-  :returns: ``null``. Invokes the ``callback`` parameter with the
+  :param cardDataObject.card_number: *required*.  The credit card number
+  :param cardDataObject.expiration_month: *required*. The credit card's expiration month
+  :param cardDataObject.expiration_year: *required*. The credit card's expiration year
+  :param cardDataObject.security_code: *optional*. The credit card's security code
+  :param cardDataObject.name: *optional*. The credit card holder's name
+  :param cardDataObject.postal_code: *optional*. The credit card's billing postal code (zip code in the USA)
+  :returns: ``null``. Invokes the ``callback`` function with three parameters -
+            ``data``, ``errors`` and ``status``. If successful, the ``data``
+            parameter has a resource representation which can be identified by
+            its ``uri``
 
 .. js:function:: balanced.card.isCardNumberValid(cardNumber)
 
@@ -486,16 +494,16 @@ Balanced.js Card Reference
     balanced.card.isExpiryValid(1, 2010);         // false
 
 
-.. js:function:: balanced.card.validate(object)
+.. js:function:: balanced.card.validate(cardDataObject)
 
   Performs a suite of checks on the submitted credit card data and returns
   a dictionary of errors. Will return an empty dictionary if there are no
   errors.
 
-  :param object.card_number: the card number to validate
-  :param object.security_code: the security code to validate
-  :param object.expiration_month: the expiration month to validate
-  :param object.expiration_year: the expiration year to validate
+  :param cardDataObject.card_number: the card number to validate
+  :param cardDataObject.security_code: the security code to validate
+  :param cardDataObject.expiration_month: the expiration month to validate
+  :param cardDataObject.expiration_year: the expiration year to validate
   :returns: ``{}`` if all fields are valid, else a dictionary of errors otherwise.
 
   Example:
@@ -516,7 +524,7 @@ Balanced.js Card Reference
     {expiration: '"1-2000" is not a valid credit card expiration date'}
 
 
-.. _tok.validators.banks:
+.. _getting_started.balanced.js_bank_accounts:
 
 Balanced.js BankAccount Reference
 ----------------------------------
@@ -544,15 +552,15 @@ Balanced.js BankAccount Reference
     balanced.bankAccount.validateRoutingNumber('123457890') // fails
 
 
-.. js:function:: balanced.bankAccount.validate(object)
+.. js:function:: balanced.bankAccount.validate(bankAccountDataObject)
 
   Performs a suite of checks on the submitted bank account data and
   returns a dictionary of errors. Will return an empty dictionary if there
   are no errors.
 
-  :param object.bank_code: The bank routing number to validate
-  :param object.account_number: the account number to perform a sanity check on
-  :param object.name: the name on the bank account to perform a sanity check on
+  :param bankAccountDataObject.bank_code: The bank routing number to validate
+  :param bankAccountDataObject.account_number: the account number to perform a sanity check on
+  :param bankAccountDataObject.name: the name on the bank account to perform a sanity check on
   :returns: ``{}`` if all fields are valid, else a dictionary of errors otherwise.
 
   .. warning::

@@ -12,7 +12,4 @@
   introduction
   getting_started
   processing
-  payouts
-  marketplace
-  fees
   resources

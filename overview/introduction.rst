@@ -41,16 +41,16 @@ Overview
       Tutorials
 
    .. icon-box-widget::
-      :box-classes: box box-block box-blue
-      :icon-classes: icon icon-page
+     :box-classes: box box-block box-blue
+     :icon-classes: icon icon-page
 
-      :ref:`Collect credit card info <overview.github_issues>`
+     :ref:`Collect credit card info <getting_started.charging_cards>`
 
    .. icon-box-widget::
-      :box-classes: box box-block box-blue
-      :icon-classes: icon icon-page
+     :box-classes: box box-block box-blue
+     :icon-classes: icon icon-page
 
-       Debit a credit card
+     :ref:`Charge a credit card <getting_started.charging_cards>`
 
    .. icon-box-widget::
       :box-classes: box box-block box-blue
