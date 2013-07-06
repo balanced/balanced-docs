@@ -127,6 +127,8 @@ Collecting credit card information
        console.log(response.data);
      });
 
+.. _getting_started.callback:
+
    The second parameter just did a dummy ``alert()`` for demonstration purposes,
    but this function is actually the most important piece of the integration.
 
@@ -568,7 +570,7 @@ Balanced.js BankAccount Reference
      :body_class: alert alert-gray
 
      Account numbers can not be validated in real time. More on
-     :ref:`bank accounts best practices <payouts.best_practices>`.
+     :ref:`bank accounts best practices <resources.best_practices.payouts>`.
 
   Example:
 

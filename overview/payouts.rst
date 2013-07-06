@@ -28,14 +28,14 @@ Collecting bank account information
 
    We have a fully implemented `sample page`_ for you, that you can use to get
    started immediately. At any point during this tutorial you feel overwhelmed
-   or you want help, please use any of the :ref:`support channels <support>` we
-   have available.
+   or you want help, please use any of the
+   :ref:`support channels <overview.support>` we have available.
 
-Follow the steps for :ref:`including <getting_started.including>` and
-:ref:`initializing<getting_started.init>` ``balanced.js``.
+Follow the steps for :ref:`including <getting_started.including_balanced_js>` and
+:ref:`initializing<getting_started.initializing_balanced_js>` ``balanced.js``.
 
 We're going to use the :ref:`bank account sample form <getting_started.bank_account.form>`
-from the :ref:`tokenization` section as it will do very basic information
+from the :ref:`getting_started` section as it will do very basic information
 collection for us.
 
 .. todo:: get this form in a fully functioning state :)
@@ -97,7 +97,7 @@ Now, let's handle the response from Balanced using a simple callback:
    ``$.post('your-marketplace.tld/bank_accounts', response.data);`` is used
    as an example above. However, what you should do is iterate through the
    ``response.data`` object and add hidden form fields to submit alongside
-   the form. Let us know if you need :ref:`any assistance <support>`, we're
+   the form. Let us know if you need :ref:`any assistance <overview.support>`, we're
    happy to help.
 
    You can find out more about the :ref:`callback here <getting_started.callback>`.
@@ -198,7 +198,7 @@ Canceling a credit is currently under active development and discussion on
 nature of ACH.
 
 If you require immediately canceling of a credit, please contact us via any
-of our :ref:`support channels <support>` and we will attempt to cancel the
+of our :ref:`support channels <overview.support>` and we will attempt to cancel the
 credit.
 
 When referencing a specific credit, please provide the credit's ``uri`` so that

@@ -30,15 +30,15 @@ Collecting credit card information
 
    We have a fully implemented `sample page`_ for you, that you can use to get
    started immediately. At any point during this tutorial you feel overwhelmed
-   or you want help, please use any of the :ref:`support channels <support>` we
+   or you want help, please use any of the :ref:`support channels <overview.support>` we
    have available.
 
 
-Follow the steps for :ref:`including <getting_started.including>` and
-:ref:`initializing<getting_started.init>` ``balanced.js``.
+Follow the steps for :ref:`including <getting_started.including_balanced_js>` and
+:ref:`initializing<getting_started.initializing_balanced_js>` ``balanced.js``.
 
 We're going to use the :ref:`card sample form <getting_started.card.form>`
-from the :ref:`tokenization` section as it will do very basic information
+from the :ref:`getting_started` section as it will do very basic information
 collection for us.
 
 For convenience, we've rendered the html into a fully functioning form:
@@ -98,7 +98,7 @@ Now, let's handle the response from Balanced using a simple callback:
    ``$.post('your-marketplace.tld/cards', response.data);`` is used
    as an example above. However, what you should do is iterate through the
    ``response.data`` object and add hidden form fields to submit alongside
-   the form. Let us know if you need :ref:`any assistance <support>`, we're
+   the form. Let us know if you need :ref:`any assistance <overview.support>`, we're
    happy to help.
 
    You can find out more about the :ref:`callback here <getting_started.callback>`.
@@ -162,7 +162,7 @@ account <processing.buyer.add_tok_to_acct>`, you can now easily charge the card
 
    Balanced does NOT take its fees from your charges, instead it instruments
    all operations that have occurred on the API and later invoices you. Read
-   :ref:`more about fees <overview.fees.balanced>`.
+   :ref:`more about fees <fees.balanced>`.
 
 
 Refunds
@@ -245,7 +245,7 @@ debit. For example:
    cumbersome to manage.
 
    If your project requires holds and you need help, please reach out
-   to us using our :ref:`support channels <support>`.
+   to us using our :ref:`support channels <overview.support>`.
 
 
 Creating a hold

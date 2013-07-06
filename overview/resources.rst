@@ -213,12 +213,12 @@ from Balanced than clients which use the ``uri`` directly.
    shopping cart
    accounting
 
-.. _best_practices:
+.. _resources.best_practices:
 
 Best Practices
 --------------
 
-.. _best_practices.payouts:
+.. _resources.best_practices.payouts:
 
 Payouts Best Practices
 ~~~~~~~~~~~~~~~~~~~~~~~
