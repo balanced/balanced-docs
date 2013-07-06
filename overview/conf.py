@@ -248,7 +248,8 @@ def setup(app):
     dcode.DCodeDefaultDirective.registry[None]['cache'] = 'dcode.cache'
     dcode.DCodeDefaultDirective.registry['scenario'].update({
         'script': 'scripts/lang-scenario.py -d scenarios -c scenario.cache',
-        'section-chars': '~^',
+        'section-include': ['request'],
+        'section-filter-class': 'LangSectionFilter',
         'lang': ['python', 'ruby', 'php', 'node', 'java'],
     })
     dcode.DCodeDefaultDirective.registry['endpoint'].update({
