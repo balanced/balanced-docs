@@ -109,41 +109,36 @@ Overview
 Use Cases
 ---------
 
-Marketplaces
-~~~~~~~~~~~~
+- **Marketplaces**
 
-Balanced is most often used to power payments for online and mobile
-marketplaces -- any platform facilitating payments between buyers and
-sellers. For example, `kitchit`_, `copious`_, `zaarly`_, `visual.ly`_,
-and many others are connecting Balanced Processing and Balanced Payouts
-to charge a buyer’s credit card on behalf of a seller.
+  Balanced is most often used to power payments for online and mobile
+  marketplaces -- any platform facilitating payments between buyers and
+  sellers. For example, `kitchit`_, `copious`_, `zaarly`_, `visual.ly`_,
+  and many others are connecting Balanced Processing and Balanced Payouts
+  to charge a buyer’s credit card on behalf of a seller.
 
-Some customers have even implemented a shopping cart checkout flow where
-a single buyer can buy from many sellers with a single transaction. And
-holding the funds with Balanced between Payouts and Processing can allow
-the marketplace to implement an escrow-like functionality.
+  Some customers have even implemented a shopping cart checkout flow where
+  a single buyer can buy from many sellers with a single transaction. And
+  holding the funds with Balanced between Payouts and Processing can allow
+  the marketplace to implement an escrow-like functionality.
 
-Crowd-funding
-~~~~~~~~~~~~~
+- **Crowd-funding**
 
-Balanced is commonly used to power payments for crowd-funding and group
-purchasing platforms. For example, `crowdtilt`_, `wanderable`_,
-`gittip`_, and many others are connecting Balanced Processing and
-Balanced Payouts to charge many buyers’ credit cards on behalf of a
-single seller.
+  Balanced is commonly used to power payments for crowd-funding and group
+  purchasing platforms. For example, `crowdtilt`_, `wanderable`_,
+  `gittip`_, and many others are connecting Balanced Processing and
+  Balanced Payouts to charge many buyers’ credit cards on behalf of a
+  single seller.
 
-Vendor Payments
-~~~~~~~~~~~~~~~
+- **Vendor Payments**
 
-Balanced Payouts is used by many businesses that need to pay their
-sellers or vendors for supplies and services rendered.
+  Balanced Payouts is used by many businesses that need to pay their
+  sellers or vendors for supplies and services rendered.
 
-e-Commerce
-~~~~~~~~~~
+- **E-Commerce**
 
-Balanced Processing is used by a merchants to simply charge buyers for
-items they sell directly.
-
+  Balanced Processing is used by a merchants to simply charge buyers for
+  items they sell directly.
 
 .. _overview.github_issues:
 
