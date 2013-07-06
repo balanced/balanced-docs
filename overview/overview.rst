@@ -12,5 +12,6 @@
   introduction
   getting_started
   processing
+  payouts
   fees
   resources

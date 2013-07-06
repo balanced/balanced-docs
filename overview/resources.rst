@@ -164,6 +164,26 @@ account numbers that can simulate various scenarios that can go wrong.
      - ``9900000005``
      - Transitions credit state to ``failed``
 
+simulating erroneous routing numbers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. dcode:: scenario bank-account-invalid-routing-number
+
+simulating pending status
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. dcode:: scenario credit_pending_state
+
+simulating paid status
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. dcode:: scenario credit_paid_state
+
+simulating failed status
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. dcode:: scenario credit_failed_state
+
 
 Request Logs
 ------------
@@ -292,6 +312,13 @@ Here are some tips:
 #. Balanced has provided very useful routing number validators in our
    :ref:`balanced.js <getting_started.balanced.js_bank_accounts>` library.
    Be sure to use these helper functions to build a robust form.
+
+#. Set your customer's expectation that payments might be delayed by up to
+   (3) three to (5) five business days if incorrect information is provided.
+
+#. Highlight to your customers that *wire transfer numbers* are **NOT** the same
+   as the routing number, and they are **NOT** the same as the bank account
+   number. Be sure to clarify this when asking your users for their information.
 
 
 .. _Bank code: http://en.wikipedia.org/wiki/Bank_code
