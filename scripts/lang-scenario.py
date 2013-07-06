@@ -14,6 +14,7 @@ Maps to:
 
 """
 import argparse
+import contextlib
 import errno
 import json
 import logging
@@ -439,42 +440,55 @@ class Scenario(object):
         return stdout
 
 
+@contextlib.contextmanager
+def _mark_section(writer, section_name):
+    begin_annotation = '.. begin-section: {}\n\n'.format(section_name)
+    end_annotation = '.. end-section: {}\n\n'.format(section_name)
+
+    writer(begin_annotation)
+    yield
+    writer(end_annotation)
+
+
 def generate(write, name, blocks, response, section_chars):
     pygments = {
         'curl': 'bash',
     }
 
-    write('.. container:: definition\n\n')
-    with write:
-        write('Definition\n\n')
-        for block in blocks:
-            pygment = pygments.get(block['lang'], block['lang'])
-            write('.. code-block:: {0}\n'.format(pygment))
-            write('\n')
-            with write:
-                write(block['defintion'])
-            write('\n\n')
+    with _mark_section(write, 'definition'):
+        write('.. container:: definition\n\n')
+        with write:
+            write('Definition\n\n')
+            for block in blocks:
+                pygment = pygments.get(block['lang'], block['lang'])
+                write('.. code-block:: {0}\n'.format(pygment))
+                write('\n')
+                with write:
+                    write(block['defintion'])
+                write('\n\n')
 
-    write('.. container:: request\n\n')
-    with write:
-        write('Request\n\n')
-        for block in blocks:
-            pygment = pygments.get(block['lang'], block['lang'])
-            write('.. code-block:: {0}\n'.format(pygment))
-            write('\n')
-            with write:
-                write(block['request'])
-            write('\n\n')
+    with _mark_section(write, 'request'):
+        write('.. container:: request\n\n')
+        with write:
+            write('Request\n\n')
+            for block in blocks:
+                pygment = pygments.get(block['lang'], block['lang'])
+                write('.. code-block:: {0}\n'.format(pygment))
+                write('\n')
+                with write:
+                    write(block['request'])
+                write('\n\n')
 
     if response:
-        write('.. container:: response\n\n')
-        with write:
-            write('Response\n\n')
-            write('.. code-block:: {0}\n'.format('javascript'))
-            write('\n')
+        with _mark_section(write, 'response'):
+            write('.. container:: response\n\n')
             with write:
-                write(response)
-            write('\n\n')
+                write('Response\n\n')
+                write('.. code-block:: {0}\n'.format('javascript'))
+                write('\n')
+                with write:
+                    write(response)
+                write('\n\n')
 
 
 # main

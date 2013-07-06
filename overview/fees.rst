@@ -48,7 +48,7 @@ fee per operation is listed below:
   ================================ ===============
 
 
-.. _overview.fees.balanced:
+.. _fees.balanced:
 
 Invoicing fees
 --------------
