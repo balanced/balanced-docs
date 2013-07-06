@@ -3,6 +3,18 @@ index = lunr(function () {
     this.field('body');
     this.ref('ref');
 });
+var $search_dropdown = $('#search-dropdown');
+var $light_box = $('#light-box');
+function show_search_results() {
+    $search_dropdown.show();
+    $light_box.show();
+}
+
+function hide_search_results() {
+    $search_dropdown.hide();
+    $light_box.hide();
+}
+
 $(document).ready(function () {
     //ADD OTHER PAGES
     $('body').append("<div id='search_extra' style='display: none'></div>");
@@ -54,27 +66,27 @@ $(document).ready(function () {
     $(document).keydown(function (e) {
         if (e.keyCode == 40) {
             var $result = $('#search-dropdown li.search-selected').first();
-            if($result.next().length != 0){
+            if ($result.next().length != 0) {
                 $result.removeClass('search-selected');
                 $result.next().addClass('search-selected');
             }
         }
         if (e.keyCode == 38) {
             var $result = $('#search-dropdown li.search-selected').first();
-            if($result.prev().length != 0){
+            if ($result.prev().length != 0) {
                 $result.removeClass('search-selected');
                 $result.prev().addClass('search-selected');
             }
         }
         if (e.keyCode == 13) {
             var $result = $('#search-dropdown li.search-selected').first();
-            if($result.length != 0){
-                  visit_result($result);
+            if ($result.length != 0) {
+                visit_result($result);
             }
             $("#search").blur();
             e.preventDefault();
         }
-        if (e.keyCode == 191){
+        if (e.keyCode == 191) {
             $('#search').focus();
             e.preventDefault();
         }
@@ -84,11 +96,11 @@ $(document).ready(function () {
     //SHOW LIST OF RESULTS IF SEARCHING AND LIST NOT EMPTY
     $('#search').focus(function () {
         if ($('#search-dropdown li').length > 0) {
-            $('#search-dropdown').show();
+            show_search_results();
         }
     });
 
-    function visit_result(item){
+    function visit_result(item) {
         $('.search-active').removeClass('search-active');
         var to = $(item).attr('data-scroll-to');
         var search_text = $('#search').val();
@@ -102,17 +114,17 @@ $(document).ready(function () {
         else {
             window.location = to;
         }
-        $('#search-dropdown').hide()
+        hide_search_results()
     }
 
     //CLICK SERACH RESULT
-    $('#search-dropdown').on('click', 'li', function () {
+    $search_dropdown.on('click', 'li', function () {
         visit_result(this)
     });
 
     //CLOSE SEARCH BOX BY CLICKING ANYWHERE ELSE
     $('html').click(function () {
-        $('#search-dropdown').hide()
+        hide_search_results();
     });
     $('#search-section').click(function (event) {
         event.stopPropagation();
@@ -120,13 +132,12 @@ $(document).ready(function () {
 
     //PREFORM THE SERACH
     $('#search').keyup(function (e) {
-        if([37, 38, 39, 40, 13].indexOf(e.keyCode) != -1){
+        if ([37, 38, 39, 40, 13].indexOf(e.keyCode) != -1) {
             return;
         }
         var search_text = $(this).val();
         var results = index.search(search_text);
-        s_dropdown = $('#search-dropdown');
-        s_dropdown.html('');
+        $search_dropdown.html('');
         $.each(results, function (key, value) {
             var resp_array = value['ref'].split('{SPLIT_HERE}');
             var ref = resp_array[0];
@@ -143,32 +154,28 @@ $(document).ready(function () {
                 link + "'><h4>" +
                 header + "</h4><p>" +
                 body + "</p></li>";
-            s_dropdown.append(result_body);
+            $search_dropdown.append(result_body);
 
         });
         if (results.length > 0) {
-            s_dropdown.show();
+            show_search_results();
         }
         else {
-            s_dropdown.hide();
+            hide_search_results();
         }
     });
-
-
     $('ul').on('mouseover', 'li.result_item',
-        function(e){
+        function (e) {
             $(this).addClass('search-selected');
             $(this).siblings().removeClass('search-selected');
         }
     );
-
 
     //HIGHLIGHT MATCHES
     function highlight_match(string_to_check, search_text) {
         function highlight(string) {
             return "<span class='text-highlight search-active'>" + string + "</span>";
         }
-
         var min_len = 1;
         var already_replaced = {};
         var to_match_split = search_text.split(' ');

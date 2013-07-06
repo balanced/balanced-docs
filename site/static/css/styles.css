@@ -5266,6 +5266,9 @@ a.badge:focus {
   font-weight: 700;
   src: local('Inconsolata Bold'), local('Inconsolata-Bold'), url(http://themes.googleusercontent.com/static/fonts/inconsolata/v6/AIed271kqQlcIRSOnQH0yRbnBKKEOwRKgsHDreGcocg.woff) format('woff');
 }
+.navbar {
+  z-index: 10;
+}
 .navbar.navbar-inverse .navbar-inner {
   background-color: #000000;
 }
@@ -6059,7 +6062,7 @@ ul#search-dropdown li {
 }
 ul#search-dropdown li h4 {
   padding-left: 5px;
-  font-weight: bold;
+  font-weight: normal;
   font-size: 16.25px;
   color: black;
 }
@@ -6075,6 +6078,15 @@ ul#search-dropdown li.search-selected {
 }
 span.text-highlight.search-active {
   background-color: #d4e5e6;
+}
+#light-box {
+  min-height: 100%;
+  min-width: 100%;
+  background-color: rgba(256, 256, 256, 0.9);
+  z-index: 8;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 .code-white {
   background-color: #FFF;
