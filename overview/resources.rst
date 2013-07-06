@@ -90,7 +90,7 @@ many :ref:`support channels <overview.support>`.
 
 
 
-.. _resources.test_cards:
+.. _resources.test_credit_cards:
 
 Test credit card numbers
 ------------------------

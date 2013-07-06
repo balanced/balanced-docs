@@ -8,10 +8,12 @@ bank account, and 2.9% + 30¢ when you successfully charge a buyer’s
 credit card. We try to keep our pricing straightforward, so Balanced
 does not charge any fees besides those listed here.
 
-Payouts
--------
+.. _fees.payouts:
 
-It costs just simply 25¢ to issue a next day ACH credit. Our full
+Payout Pricing
+--------------
+
+It costs just simply 25¢ to issue a next-day ACH credit. Our full
 fee per operation is listed below:
 
 .. cssclass:: table table-hover
@@ -28,18 +30,21 @@ fee per operation is listed below:
   payouts to your bank account              $0
   ============================ ===============
 
-Processing
-----------
+.. _fees.processing:
 
-Balanced Processing costs just 2.9% and 30¢ per successful charge. Our full
-fee per operation is listed below:
+Processing Pricing
+------------------
+
+Charging credit cards costs just 2.9% and 30¢ per successful charge. Our full
+fees per operation is listed below:
 
 .. cssclass:: table table-hover
 
-  ================================ ===============
+  ================================ ===================
     operation                        cost to you
-  ================================ ===============
+  ================================ ===================
   successful credit card charge       2.9% + 30¢
+  issuing a hold                             30¢ [*]_
   successful bank account charge        1% + 30¢
   chargeback                              $15.00
   refund                                      $0
@@ -47,7 +52,10 @@ fee per operation is listed below:
   batch fee                                   $0
   monthly fee                                 $0
   set-up fee                                  $0
-  ================================ ===============
+  ================================ ===================
+
+.. [*] If you issue a hold and then successfully charge, you only incur
+       the 2.9% fee - there is no additional 30¢ fee.
 
 
 .. _fees.balanced:
@@ -56,13 +64,18 @@ Invoicing fees
 --------------
 
 Balanced will create invoices to collect fees daily. These invoices can be
-viewed under the ``invoices`` tab of the Balanced dashboard. These fees are
+viewed under the invoices tab of the Balanced dashboard. These fees are
 debited from the bank account attached to the owner account of the
-marketplace. Please note that Balanced will never take fees from the operating
-capital (escrow account) of the marketplace.
+marketplace.
 
-Example:
-~~~~~~~~
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+
+  **Balanced will never take fees from the operating capital (escrow account) of the marketplace.**
+
+Example
+~~~~~~~
 
 - A buyer pays for a service on Monday from a third-party merchant. You charge
   the buyer $10, which increases your escrow balance by $10.
@@ -163,6 +176,8 @@ Recap:
 
 .. [#] Our sample marketplace is actually called `Rent My Bike`_ :)
 
+.. _Rent My Bike: http://rentmybike.heroku.com
+
 
 Fee Scenario #1
 '''''''''''''''
@@ -227,13 +242,12 @@ bike - costing him $110.00.
 - Your ``in_escrow`` balance now shows $0.00
 
 .. cmd
-Crediting Your Seller's Bank Account
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. Crediting Your Seller's Bank Account
+
 
 .. todo:: talk about why this is different from payouts piece
 
 .. cmd
-Crediting Your Own Merchant Account
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. Crediting Your Own Merchant Account
 
 .. todo:: discuss fees etc

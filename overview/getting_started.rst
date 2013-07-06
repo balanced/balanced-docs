@@ -57,9 +57,19 @@ Including and Initializing ``balanced.js``
   .. code-block:: html
 
      <script type="text/javascript">
-         balanced.init('marketplaceUri');
+         balanced.init('${REPLACE_THIS_WITH_YOUR_MARKETPLACE_URI}');
      </script>
 
+  Example:
+
+  .. code-block:: html
+
+     <script type="text/javascript">
+         balanced.init('/v1/marketplaces/TEST-MP5JtbXVDZkSGruOJyNasPqy');
+     </script>
+
+  You can find your API key secret and marketplace URI from your
+  `dashboard <https://dashboard.balancedpayments.com/>`_.
 
 .. _getting_started.collecting_card_info:
 

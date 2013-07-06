@@ -1,169 +1,62 @@
 .. _processing:
 
-Balanced Processing
-===================
+Processing
+==========
 
-Balanced Processing provides a complete solution for accepting credit
-card payments in a simple, secure manner, relieving you from the hassles of PCI
-compliance.
-
-
-
-Tutorial
---------
-
-At a high level, we're going to implement the process for creating a charge.
-Here's how we're going to accomplish this:
-
-* Securely collecting credit card information with ``balanced.js``
-* Securely submitting that information to Balanced
-* Creating an account and charging your buyer
+Balanced provides a complete processing solution for accepting credit
+card payments in a simple, secure manner, relieving you from the hassles
+of PCI compliance.
 
 
-Collecting credit card information
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Debits
+------
 
-.. note::
-   :header_class: alert alert-tab
-   :body_class: alert alert-gray
+.. container:: span6
 
+   .. container:: header3
 
-   We have a fully implemented `sample page`_ for you, that you can use to get
-   started immediately. At any point during this tutorial you feel overwhelmed
-   or you want help, please use any of the :ref:`support channels <overview.support>` we
-   have available.
+      Tutorials
 
+   .. icon-box-widget::
+     :box-classes: box box-block box-blue
+     :icon-classes: icon icon-page
 
-Follow the steps for :ref:`including <getting_started.including_balanced_js>` and
-:ref:`initializing<getting_started.initializing_balanced_js>` ``balanced.js``.
+     :ref:`Collect credit card info <getting_started.collecting_card_info>`
 
-We're going to use the :ref:`card sample form <getting_started.card.form>`
-from the :ref:`getting_started` section as it will do very basic information
-collection for us.
+   .. icon-box-widget::
+     :box-classes: box box-block box-blue
+     :icon-classes: icon icon-page
 
-For convenience, we've rendered the html into a fully functioning form:
-
-.. container::
-   :name: cc-form
-
-   .. raw:: html
-      :file: forms/cc-form.html
+     :ref:`Charge a credit card <getting_started.charging_cards>`
 
 
-To collect the information from the form, we're going to enlist the help
-of some simple javascript:
+.. container:: span6
 
-.. code-block:: javascript
+   .. container:: header3
 
-   // TODO: Replace this with your marketplace URI
-   var marketplaceUri = '{YOUR-MARKETPLACE-URI}';
-   var $form = $('#credit-card-form');
+     Form Building
 
-   // collect the data from the form.
-   var creditCardData = {
-       card_number: $form.find('.cc-number').val(),
-       expiration_month: $form.find('.cc-em').val(),
-       expiration_year: $form.find('.cc-ey').val(),
-       security_code: $form.find('cc-csc').val()
-   };
+   .. icon-box-widget::
+     :box-classes: box box-block box-turquoise
+     :icon-classes: icon icon-page
 
-Now, let's handle the response from Balanced using a simple callback:
-
-.. code-block:: javascript
-
-   function responseCallbackHandler(response) {
-      switch (response.status) {
-        case 400:
-            // missing or invalid field - check response.error for details
-            console.log(response.error);
-            break;
-        case 404:
-            // your marketplace URI is incorrect
-            console.log(response.error);
-            break;
-        case 201:
-            // WOO HOO! MONEY!
-            // response.data.uri == URI of the card resource
-            // you should store this returned card URI to later charge it
-            console.log(response.data);
-            $.post('your-marketplace.tld/cards', response.data);
-        }
-    }
-
-.. note::
-   :header_class: alert alert-tab
-   :body_class: alert alert-gray
+     Sample credit card form
 
 
-   ``$.post('your-marketplace.tld/cards', response.data);`` is used
-   as an example above. However, what you should do is iterate through the
-   ``response.data`` object and add hidden form fields to submit alongside
-   the form. Let us know if you need :ref:`any assistance <overview.support>`, we're
-   happy to help.
+.. container:: span6
 
-   You can find out more about the :ref:`callback here <getting_started.callback>`.
+   .. container:: header3
 
-Now, let's submit it!
+     Testing
 
-.. code-block:: javascript
+   .. icon-box-widget::
+     :box-classes: box box-block box-purple
+     :icon-classes: icon icon-page
 
-   balanced.card.create(bankAccountData, responseCallbackHandler);
+     :ref:`Test credit card numbers <resources.test_credit_cards>`
 
 
-Operating with a Card Token
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-So you're done tokenizing card data? Congratulations! However, before you
-do any operations on a card, you must associate the card to an account. That
-means that if you just want to charge a card, you must create an account,
-associate the card with that account, and then issue a debit.
-
-.. _processing.buyer.acct_with_tok:
-
-Creating an account
-'''''''''''''''''''
-
-Ok, so you've got the card token, referred to as the ``uri`` of the returned Card
-resource.
-
-Let's create an account to associate the card token with:
-
-.. dcode:: scenario account_create_buyer
-
-As always, anytime you create a resource on Balanced, you should
- :ref:`store the uri <uri_vs_id>` in your database.
-
-.. _processing.buyer.add_tok_to_acct:
-
-Associating a card to an existing account
-'''''''''''''''''''''''''''''''''''''''''
-
-A very common operation is associating a new card with an existing account.
-Let's show how this is done:
-
-.. dcode:: scenario account_add_card
-
-This will add the card to the account specified by the account URI, **and make
-it the primary funding source for any future holds and debits**.
-
-Charging a Card
-'''''''''''''''
-
-Once you've either :ref:`added a card to a new account
-<processing.buyer.acct_with_tok>` or :ref:`associated a card to an existing
-account <processing.buyer.add_tok_to_acct>`, you can now easily charge the card
--- or to be exact, debit an account:
-
-.. dcode:: scenario account_create_debit
-
-.. note::
-   :header_class: alert alert-tab
-   :body_class: alert alert-gray
-
-   Balanced does NOT take its fees from your charges, instead it instruments
-   all operations that have occurred on the API and later invoices you. Read
-   :ref:`more about fees <fees.balanced>`.
-
+.. clear::
 
 Refunds
 -------
@@ -231,22 +124,19 @@ Holds are common in the industries where the amount of the goods or services
 are "reserved" on the cardholder's credit card.
 
 If you issue a debit on an account, Balanced uses holds behinds the scenes
-but captures the funds immediately -- you will always see a hold returned on a
-debit. For example:
-
-.. dcode:: scenario account-create-debit
-    :section-include: response
+but captures the funds immediately -- you will
+**always see an expanded hold resource returned on a debit representation**.
 
 .. warning::
-   :class: alert
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
 
-   For all intents and purposes, Balanced does not recommend holds and considers
-   their usage as a very advanced feature as they cause much confusion and are
-   cumbersome to manage.
+  For all intents and purposes, Balanced does not recommend holds and considers
+  their usage as a very advanced feature as they cause much confusion and are
+  cumbersome to manage.
 
-   If your project requires holds and you need help, please reach out
-   to us using our :ref:`support channels <overview.support>`.
-
+  If your project requires holds and you need help, please reach out
+  to us using our :ref:`support channels <overview.support>`.
 
 Creating a hold
 ~~~~~~~~~~~~~~~

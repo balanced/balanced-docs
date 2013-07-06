@@ -44,7 +44,7 @@ Overview
      :box-classes: box box-block box-blue
      :icon-classes: icon icon-page
 
-     :ref:`Collect credit card info <getting_started.charging_cards>`
+     :ref:`Collect credit card info <getting_started.collecting_card_info>`
 
    .. icon-box-widget::
      :box-classes: box box-block box-blue
@@ -53,54 +53,54 @@ Overview
      :ref:`Charge a credit card <getting_started.charging_cards>`
 
    .. icon-box-widget::
-      :box-classes: box box-block box-blue
-      :icon-classes: icon icon-page
+     :box-classes: box box-block box-blue
+     :icon-classes: icon icon-page
 
-       Collect bank account info
+     :ref:`Collect bank account info <getting_started.collecting_bank_info>`
 
    .. icon-box-widget::
-      :box-classes: box box-block box-blue
-      :icon-classes: icon icon-page
+     :box-classes: box box-block box-blue
+     :icon-classes: icon icon-page
 
-       Credit bank account
+     :ref:`Credit bank account <getting_started.credit_bank_account>`
 
 
 .. container:: span6
 
    .. container:: header3
 
-      Form Building
+     Form Building
 
    .. icon-box-widget::
-      :box-classes: box box-block box-turquoise
-      :icon-classes: icon icon-page
+     :box-classes: box box-block box-turquoise
+     :icon-classes: icon icon-page
 
-       Sample credit card form
+     Sample credit card form
 
    .. icon-box-widget::
-      :box-classes: box box-block box-turquoise
-      :icon-classes: icon icon-page
+     :box-classes: box box-block box-turquoise
+     :icon-classes: icon icon-page
 
-       Sample bank account form
+     Sample bank account form
 
 
 .. container:: span6
 
    .. container:: header3
 
-      Testing
+     Testing
 
    .. icon-box-widget::
-      :box-classes: box box-block box-purple
-      :icon-classes: icon icon-page
+     :box-classes: box box-block box-purple
+     :icon-classes: icon icon-page
 
-       Test credit card numbers
+     :ref:`Test credit card numbers <resources.test_credit_cards>`
 
    .. icon-box-widget::
-      :box-classes: box box-block box-purple
-      :icon-classes: icon icon-page
+     :box-classes: box box-block box-purple
+     :icon-classes: icon icon-page
 
-       Test bank account numbers
+     :ref:`Test bank account numbers <resources.test_bank_accounts>`
 
 .. clear::
 

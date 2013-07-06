@@ -12,4 +12,5 @@
   introduction
   getting_started
   processing
+  fees
   resources
