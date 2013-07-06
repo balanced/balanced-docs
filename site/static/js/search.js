@@ -5,13 +5,16 @@ index = lunr(function () {
 });
 var $search_dropdown = $('#search-dropdown');
 var $light_box = $('#light-box');
+var $search_input = $("#search");
 function show_search_results() {
     $search_dropdown.show();
+    $search_input.addClass('in-search');
     $light_box.show();
 }
 
 function hide_search_results() {
     $search_dropdown.hide();
+    $search_input.removeClass('in-search');
     $light_box.hide();
 }
 
@@ -94,7 +97,7 @@ $(document).ready(function () {
 
 
     //SHOW LIST OF RESULTS IF SEARCHING AND LIST NOT EMPTY
-    $('#search').focus(function () {
+    $search_input.focus(function () {
         if ($('#search-dropdown li').length > 0) {
             show_search_results();
         }
@@ -103,7 +106,7 @@ $(document).ready(function () {
     function visit_result(item) {
         $('.search-active').removeClass('search-active');
         var to = $(item).attr('data-scroll-to');
-        var search_text = $('#search').val();
+        var search_text = $search_input.val();
         var header = $(to).find(':header').first();
         var body = $(to).find('p').first();
         header.html(highlight_match(header.text(), search_text));
@@ -131,7 +134,7 @@ $(document).ready(function () {
     });
 
     //PREFORM THE SERACH
-    $('#search').keyup(function (e) {
+    $search_input.keyup(function (e) {
         if ([37, 38, 39, 40, 13].indexOf(e.keyCode) != -1) {
             return;
         }

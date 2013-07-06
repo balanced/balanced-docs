@@ -5380,7 +5380,7 @@ a.badge:focus {
   letter-spacing: normal;
   height: 60px;
   margin: 0px;
-  padding: 0px 2px 0px 2px;
+  padding: 0px;
   line-height: 23px;
   -webkit-border-radius: 0px;
   -moz-border-radius: 0px;
@@ -6054,6 +6054,8 @@ pre {
 }
 ul#search-dropdown {
   background-color: #f2f1ec;
+  max-height: 500px;
+  overflow-y: scroll;
 }
 ul#search-dropdown li {
   border-bottom: 1px #d9d8d5 solid;
@@ -6071,6 +6073,11 @@ ul#search-dropdown li p {
 }
 ul#search-dropdown li.search-selected {
   background-color: white;
+}
+#search.in-search {
+  background-color: #96c0c5;
+  border-left: 5px solid black;
+  border-right: 5px solid black;
 }
 .result-highlight {
   border: 1px #d9d8d5 solid;

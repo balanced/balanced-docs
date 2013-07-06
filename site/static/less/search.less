@@ -1,5 +1,7 @@
 ul#search-dropdown{
   background-color: @gray1;
+  max-height: 500px;
+  overflow-y: scroll;
   li{
     border-bottom: 1px @gray2 solid;
     padding: 2px 0px 10px 11px;
@@ -19,8 +21,10 @@ ul#search-dropdown{
   }
 
 }
-#search:focus{
- // background-color: @egyptianBlue60;
+#search.in-search{
+  background-color: @egyptianBlue60;
+  border-left: 5px solid black;
+  border-right: 5px solid black;
 }
 
 .result-highlight {
@@ -39,3 +43,5 @@ span.text-highlight.search-active{
   top: 0;
   left: 0;
 }
+
+
