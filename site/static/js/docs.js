@@ -32,6 +32,9 @@ function updateNavigation(e) {
     //console.log(currentTopic.attr('href'));
 }
 $(document).ready(function () {
+    //HIDE OVERVIEW REQUEST BOXES:
+    $('#overview-content').find('.request').hide();
+
    $("li").bind('activate', updateNavigation);
     function update_lang_head(text){
         var lang_head = $('#lang-dropdown-head');
