@@ -36,7 +36,6 @@ $(document).ready(function () {
             create_index();
 
         });
-        // REPLACE THE HREFS
     }
 
     //INDEX THE PAGE

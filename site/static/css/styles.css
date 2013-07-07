@@ -5484,6 +5484,8 @@ a.badge:focus {
 .sidebar-nav ul.nav-list {
   background-color: #d4e5e6;
   padding: 15px;
+  overflow-y: scroll;
+  margin-left: -1px;
 }
 .sidebar-nav ul.nav-list li.toctree-l1 {
   text-shadow: none;

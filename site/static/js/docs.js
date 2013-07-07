@@ -35,11 +35,15 @@ $(document).ready(function () {
     //HIDE OVERVIEW REQUEST BOXES:
     $('#overview-content').find('.request > p').hide();
 
+
+   //BIND URL UPDATE
    $("li").bind('activate', updateNavigation);
     function update_lang_head(text){
         var lang_head = $('#lang-dropdown-head');
         lang_head.html(text + " <b class='caret'></b>")
     }
+
+    //LOAD DEFAULT LANGUAGE
     var default_lang = getParameterByName('language', window.location.href);
     default_lang = (default_lang.length > 0) ? default_lang[0] : 'bash';
     default_lang_dd = $("[data-lang='" + default_lang +"']");
@@ -49,6 +53,9 @@ $(document).ready(function () {
     $(".highlight-" + default_lang).show();
     $('.highlight-javascript').show();
     $('.highlight-html').show();
+
+
+    //SWAP LANGUAGE METHODS
     $('.lang-change').click(function () {
         var lang = $(this).attr('data-lang');
         var langtext = $(this).text();
@@ -68,5 +75,18 @@ $(document).ready(function () {
         });
     });
 
+
+    //SIDEBAR TO STICK TO BOTTOM
+    function fix_sidebar(){
+        var window_height = $(window).height();
+        var top_of_sidebar = 314;
+        var height_of_sidebar = window_height - top_of_sidebar;
+        $('.nav.nav-list').css('height', height_of_sidebar);
+    }
+    $(window).resize(function (){
+        fix_sidebar();
+    });
+    //FIX ON LOAD
+    fix_sidebar();
 
 });
