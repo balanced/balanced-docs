@@ -28,12 +28,13 @@ function updateNavigation(e) {
     }
     var currentTopic = $active.first().find('a').first();
     window.location = currentTopic.attr('href');
+    $('.nav.nav-list').scrollTo('.active', 100, {offset : -100});
     //window.history.replaceState({}, null, currentTopic.attr('href'));
     //console.log(currentTopic.attr('href'));
 }
 $(document).ready(function () {
     //HIDE OVERVIEW REQUEST BOXES:
-    $('#overview-content').find('.request > p').hide();
+    $('#overview-content').find('.request > p:first-child').hide();
 
 
    //BIND URL UPDATE

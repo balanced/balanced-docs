@@ -5709,12 +5709,6 @@ div.integration div.copy-box a {
   font-style: normal;
   letter-spacing: 0.1em;
 }
-div.integration div.copy-box:hover {
-  background-color: #000000;
-}
-div.integration div.copy-box:hover a {
-  color: #ffffff;
-}
 ul.simple {
   list-style-type: none;
 }
@@ -6107,6 +6101,12 @@ span.text-highlight.search-active {
   font-weight: normal;
   font-size: 18px;
   color: #000;
+}
+.descclassname {
+  background-color: white;
+}
+.descname {
+  color: #872175;
 }
 .pull-right {
   float: right;
