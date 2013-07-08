@@ -34,8 +34,9 @@ function updateNavigation(e) {
 }
 $(document).ready(function () {
     //HIDE OVERVIEW REQUEST BOXES:
-    $('#overview-content').find('.request > p:first-child').hide();
-
+    var $overview_content = $('#overview-content');
+    $overview_content.find('.request > p:first-child').hide();
+    $overview_content.find('.response > p:first-child').hide();
 
    //BIND URL UPDATE
    $("li").bind('activate', updateNavigation);
