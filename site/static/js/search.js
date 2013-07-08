@@ -182,7 +182,7 @@ $(document).ready(function () {
         function highlight(string) {
             return "<span class='text-highlight search-active'>" + string + "</span>";
         }
-        var min_len = 1;
+        var min_len = 3;
         var already_replaced = {};
         var to_match_split = search_text.split(' ');
         for (var i = 0; i < to_match_split.length; i++) {
