@@ -20,7 +20,7 @@ this way, so you can safely assume that the information has been deleted.
     .. dcode:: form credits.create
        :exclude: bank_account.0.bank_code bank_account.1
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario credit_create_new_bank_account
 
@@ -39,7 +39,7 @@ credit shall be created.
 
     .. dcode:: form bank_account_credits.create
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario credit_create_existing_bank_account
 
@@ -57,7 +57,7 @@ information will be returned.
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario credit_show
 
@@ -78,7 +78,7 @@ in sorted order, with the most recent credits appearing first.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario credit_list
 
@@ -101,7 +101,7 @@ with the most recent credits appearing first.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario credit_bank_account_list
 
@@ -115,7 +115,7 @@ Creating a New Credit For an Account
 
   .. dcode:: form account_credits.create
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario credit_account_merchant_create
 
@@ -133,6 +133,6 @@ Listing All Credits For an Account
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario credit_account_list

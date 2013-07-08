@@ -20,7 +20,7 @@ Creates a new card
    .. dcode:: form cards.create
 
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario card_create
 
@@ -39,7 +39,7 @@ information is returned when creating the card.
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario card_show
 
@@ -59,7 +59,7 @@ Returns a list of cards that you've created.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario card_list
 
@@ -74,7 +74,7 @@ Update information in a card
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario card_update
 
@@ -89,7 +89,7 @@ Invalidating a card will mark the card as invalid, so it may not be charged.
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario card_invalidate
 
@@ -104,6 +104,6 @@ Charging a card requires that you :ref:`debit an account <debits>`
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. no request

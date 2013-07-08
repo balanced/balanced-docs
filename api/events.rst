@@ -43,7 +43,7 @@ information will be returned.
 
     .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
     .. dcode:: scenario event_show
 
@@ -61,6 +61,6 @@ list all events
   ``offset``
     *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario event_list

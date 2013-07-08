@@ -17,7 +17,7 @@ charged amount.
   .. dcode:: form refunds.create
      :exclude: account_uri
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario refund_create
 
@@ -36,7 +36,7 @@ information will be returned.
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario refund_show
 
@@ -57,7 +57,7 @@ in sorted order, with the most recent refunds appearing first.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario refund_list
 
@@ -79,7 +79,7 @@ appearing first.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario refund_account_list
 
@@ -95,6 +95,6 @@ Updates information about a refund
 
    .. dcode:: form refunds.update
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario refund_update

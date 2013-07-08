@@ -14,7 +14,7 @@ creating an account
 
   .. dcode:: form accounts.create
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario account_create
 
@@ -36,7 +36,7 @@ has a valid credit card, to acquire funds from.
 
   .. dcode:: form cards.create
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario account_add_card
 
@@ -56,7 +56,7 @@ has a valid bank account to send money to.
 
   .. dcode:: form bank_accounts.create
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario account_create_merchant
 
@@ -76,7 +76,7 @@ has been underwritten.
     .. dcode:: form merchant_accounts.create
        :exclude: ssn_last_4 production person
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario account_underwrite_person
 
@@ -95,6 +95,6 @@ has been underwritten.
        :exclude: ssn_last_4 person.ssn_last_4 production
        :required: merchant.person
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario account_underwrite_business

@@ -21,7 +21,7 @@ create a debit, up to the full amount of the hold.
 
   .. dcode:: form debits.create
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario hold_create
 
@@ -39,7 +39,7 @@ information will be returned.
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario hold_show
 
@@ -60,7 +60,7 @@ in sorted order, with the most recent holds appearing first.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario hold_list
 
@@ -82,7 +82,7 @@ first.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario hold_account_list
 
@@ -98,7 +98,7 @@ Updates information about a hold
 
   .. dcode:: form debits.update
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario hold_update
 
@@ -114,7 +114,7 @@ Captures a hold. This creates a :ref:`debit <debits>`.
 
    Use ``hold_uri`` when :ref:`creating a debit <debits.create>`.
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario hold_capture
 
@@ -132,6 +132,6 @@ be captured. This operation is irreversible.
   .. dcode:: form holds.update
      :include: is_void appears_on_statement_as
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario hold_void

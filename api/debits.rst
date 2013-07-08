@@ -30,7 +30,7 @@ corresponding hold.
 
   .. dcode:: form debits.create
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario debit_create
 
@@ -46,7 +46,7 @@ Retrieves the details of a created debit.
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario debit_show
 
@@ -67,7 +67,7 @@ in sorted order, with the most recent debits appearing first.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario debit_list
 
@@ -90,7 +90,7 @@ with the most recent debits appearing first.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario debit_account_list
 
@@ -111,7 +111,7 @@ Updates information about a debit
       *optional* **string**. Sequence of characters.
 
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario debit_update
 
@@ -127,7 +127,7 @@ Issues a refund for a particular debit. This creates a :ref:`refund <refunds>`.
 
    Use the ``refund_uri`` on a :ref:`debit object <debits>`.
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario debit_refund
 

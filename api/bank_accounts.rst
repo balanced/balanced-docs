@@ -40,7 +40,7 @@ information is returned when creating the bank account.
 
     .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
     .. dcode:: scenario bank_account_show
 
@@ -61,7 +61,7 @@ Returns a list of bank accounts that you've created but haven't deleted.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
     .. dcode:: scenario bank_account_list
 
@@ -78,6 +78,6 @@ with a deleted bank account will not be affected.
 
    .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario bank_account_delete
