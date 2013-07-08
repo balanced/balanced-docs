@@ -1,4 +1,4 @@
-credits
+Credits
 =======
 
 To credit a bank account, you must create a new credit resource.
@@ -8,14 +8,14 @@ you do **NOT** need to verify the bank account
 
 .. cssclass:: method-section
 
-credit a new bank account
+Credit a New Bank Account
 -------------------------
 
 To credit a new bank account, you simply pass the amount along with the bank
 account details. We do not store this bank account when you create a credit
 this way, so you can safely assume that the information has been deleted.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
     .. dcode:: form credits.create
        :exclude: bank_account.0.bank_code bank_account.1
@@ -26,7 +26,7 @@ this way, so you can safely assume that the information has been deleted.
 
 .. cssclass:: method-section
 
-credit an existing bank account
+Credit An Existing Bank Account
 -------------------------------
 
 To credit an existing bank account, you simply pass the amount to the
@@ -35,7 +35,7 @@ uri provided so that you can simply issue a ``POST`` with the amount and a
 credit shall be created.
 
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
     .. dcode:: form bank_account_credits.create
 
@@ -46,7 +46,7 @@ credit shall be created.
 
 .. cssclass:: method-section
 
-retrieve a credit
+Retrieve a Credit
 -----------------
 
 Retrieves the details of a credit that you've previously created. Use the
@@ -64,13 +64,13 @@ information will be returned.
 
 .. cssclass:: method-section
 
-list all credits
+List All Credits
 ----------------
 
 Returns a list of credits you've previously created. The credits are returned
 in sorted order, with the most recent credits appearing first.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -85,7 +85,7 @@ in sorted order, with the most recent credits appearing first.
 
 .. cssclass:: method-section
 
-list all credits for a bank account
+List All Credits For a Bank Account
 -----------------------------------
 
 Returns a list of credits you've previously created to a specific bank account.
@@ -93,7 +93,7 @@ The ``credits_uri`` is a convenient uri provided so that you can simply issue
 a ``GET`` to the ``credits_uri``. The credits are returned in sorted order,
 with the most recent credits appearing first.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -108,10 +108,10 @@ with the most recent credits appearing first.
 
 .. cssclass:: method-section
 
-creating a new credit for an account
+Creating a New Credit For an Account
 ------------------------------------
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   .. dcode:: form account_credits.create
 
@@ -122,10 +122,10 @@ creating a new credit for an account
 
 .. cssclass:: method-section
 
-listing all credits for an account
+Listing All Credits For an Account
 ----------------------------------
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.

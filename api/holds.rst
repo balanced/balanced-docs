@@ -1,6 +1,6 @@
 .. _holds:
 
-holds
+Holds
 =====
 
 Holds are a type of authorization that reserves (i.e. holds) a dollar amount
@@ -11,13 +11,13 @@ A successful hold can be captured, and as a result, creates a
 
 .. cssclass:: method-section
 
-create a new hold
+Create a New Hold
 -----------------
 
 Creates a hold against a card. Returns a ``uri`` that can later be used to
 create a debit, up to the full amount of the hold.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   .. dcode:: form debits.create
 
@@ -28,7 +28,7 @@ create a debit, up to the full amount of the hold.
 
 .. cssclass:: method-section
 
-retrieve a hold
+Retrieve a Hold
 ---------------
 
 Retrieves the details of a hold that you've previously created. Use the
@@ -46,13 +46,13 @@ information will be returned.
 
 .. cssclass:: method-section
 
-list all holds
+List all Holds
 --------------
 
 Returns a list of holds you've previously created. The holds are returned
 in sorted order, with the most recent holds appearing first.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -67,14 +67,14 @@ in sorted order, with the most recent holds appearing first.
 
 .. cssclass:: method-section
 
-list all holds for an account
+List All Holds For an Account
 -----------------------------
 
 Returns a list of holds you've previously created against a specific account.
 The holds are returned in sorted order, with the most recent holds appearing
 first.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -89,12 +89,12 @@ first.
 
 .. cssclass:: method-section
 
-update a hold
+Update a Hold
 -------------
 
 Updates information about a hold
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   .. dcode:: form debits.update
 
@@ -105,7 +105,7 @@ Updates information about a hold
 
 .. cssclass:: method-section
 
-capture a hold
+Capture a Hold
 --------------
 
 Captures a hold. This creates a :ref:`debit <debits>`.
@@ -121,13 +121,13 @@ Captures a hold. This creates a :ref:`debit <debits>`.
 
 .. cssclass:: method-section
 
-void a hold
+Void a Hold
 -----------
 
 Voids a hold. This cancels the hold. After voiding, the hold can no longer
 be captured. This operation is irreversible.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   .. dcode:: form holds.update
      :include: is_void appears_on_statement_as

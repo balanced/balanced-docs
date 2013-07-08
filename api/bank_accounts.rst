@@ -11,7 +11,7 @@ need to create a bank account object.
 
    To debit a bank account you must first :ref:`verify it <bank-account-verifications>`.
 
-creating a new bank account
+Creating a New Bank Account
 ---------------------------
 
 Creates a new bank account.
@@ -28,7 +28,7 @@ Creates a new bank account.
 
 .. cssclass:: method-section
 
-retrieve a bank account
+Retrieve a Bank Account
 -----------------------
 
 Retrieves the details of a bank account that has previously been created.
@@ -47,12 +47,13 @@ information is returned when creating the bank account.
 
 .. cssclass:: method-section
 
-list all bank accounts
+List All Bank Accounts
 ----------------------
 
 Returns a list of bank accounts that you've created but haven't deleted.
 
-.. container:: method-description
+
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -67,7 +68,7 @@ Returns a list of bank accounts that you've created but haven't deleted.
 
 .. cssclass:: method-section
 
-delete a bank account
+Delete a Bank Account
 ---------------------
 
 Permanently delete a bank account. It cannot be undone. All associated credits

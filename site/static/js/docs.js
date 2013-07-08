@@ -69,6 +69,8 @@ $(document).ready(function () {
         $(".highlight-" + lang).show();
         var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
         uri = uri + '' + window.location.hash;
+        console.log(window.location.hash);
+        console.log(uri);
         window.location = uri;
         //window.history.replaceState(null, null, uri);
         $('[data-spy="scroll"]').each(function () {

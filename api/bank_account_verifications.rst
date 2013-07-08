@@ -1,6 +1,6 @@
 .. _bank-account-verifications:
 
-bank account verifications
+Bank Account Verifications
 ==========================
 
 **NOTE** You'll only need to verify a bank account if you're planning to later

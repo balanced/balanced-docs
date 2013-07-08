@@ -1,4 +1,4 @@
-events
+Events
 ======
 
 .. _events:
@@ -53,7 +53,7 @@ information will be returned.
 list all events
 ---------------
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params:
 
   ``limit``
     *optional* integer. Defaults to ``10``.

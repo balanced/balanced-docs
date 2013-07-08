@@ -12,7 +12,7 @@ resource.
 
 .. _debits.create:
 
-create a new debit
+Create a New Debit
 ------------------
 
 .. todo:: debit an account with different cards
@@ -26,7 +26,7 @@ mapping as part of the response. This :ref:`hold <holds>` was created and
 captured behind the scenes automatically. For ACH debits there is no
 corresponding hold.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   .. dcode:: form debits.create
 
@@ -37,7 +37,7 @@ corresponding hold.
 
 .. cssclass:: method-section
 
-retrieve a debit
+Retrieve a Debit
 ----------------
 
 Retrieves the details of a created debit.
@@ -53,13 +53,13 @@ Retrieves the details of a created debit.
 
 .. cssclass:: method-section
 
-list all debits
+List All Debits
 ---------------
 
 Returns a list of debits you've previously created. The debits are returned
 in sorted order, with the most recent debits appearing first.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -74,7 +74,7 @@ in sorted order, with the most recent debits appearing first.
 
 .. cssclass:: method-section
 
-list all debits for an account
+List All Debits For an Account
 ------------------------------
 
 Returns a list of debits you've previously created against a specific account.
@@ -82,7 +82,7 @@ The ``debits_uri`` is a convenient uri provided so that you can simply issue
 a ``GET`` to the ``debits_uri``. The debits are returned in sorted order,
 with the most recent debits appearing first.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -97,12 +97,12 @@ with the most recent debits appearing first.
 
 .. cssclass:: method-section
 
-update a debit
+Update a Debit
 --------------
 
 Updates information about a debit
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``meta``
       *optional* **object**. Single level mapping from string keys to string values.
@@ -118,7 +118,7 @@ Updates information about a debit
 
 .. cssclass:: method-section
 
-refund a debit
+Refund a Debit
 --------------
 
 Issues a refund for a particular debit. This creates a :ref:`refund <refunds>`.

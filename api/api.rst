@@ -9,3 +9,10 @@
   authentication
   errors
   bank_accounts
+  bank_account_verifications
+  cards
+  customers
+  credits
+  debits
+  holds
+  refunds

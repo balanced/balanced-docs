@@ -11,11 +11,11 @@ To actually charge cards, you must :ref:`debit an account <debits>`.
 
 .. cssclass:: method-section
 
-tokenize a card
+Tokenize a Card
 ---------------
 Creates a new card
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
    .. dcode:: form cards.create
 
@@ -27,7 +27,7 @@ Creates a new card
 
 .. cssclass:: method-section
 
-retrieve a card
+Retrieve a Card
 ---------------
 
 Retrieves the details of a card that has previously been created.
@@ -46,12 +46,12 @@ information is returned when creating the card.
 .. cssclass:: method-section
 
 
-list all cards
+List All Cards
 --------------
 
 Returns a list of cards that you've created.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -65,7 +65,7 @@ Returns a list of cards that you've created.
 
 .. cssclass:: method-section
 
-update a card
+Update a Card
 -------------
 
 Update information in a card
@@ -80,7 +80,7 @@ Update information in a card
 
 .. cssclass:: method-section
 
-invalidating a card
+Invalidating a Card
 -------------------
 
 Invalidating a card will mark the card as invalid, so it may not be charged.
@@ -95,7 +95,7 @@ Invalidating a card will mark the card as invalid, so it may not be charged.
 
 .. cssclass:: method-section
 
-charging a card
+Charging a Card
 ----------------
 
 Charging a card requires that you :ref:`debit an account <debits>`

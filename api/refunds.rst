@@ -1,18 +1,18 @@
 .. _refunds:
 
-refunds
+Refunds
 =======
 
 .. cssclass:: method-section
 
-issue a refund
+Issue a Refund
 --------------
 
 Issues a refund from a debit. You can either refund the full amount of the
 debit or you can issue a partial refund, where the amount is less than the
 charged amount.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   .. dcode:: form refunds.create
      :exclude: account_uri
@@ -25,7 +25,7 @@ charged amount.
 
 .. cssclass:: method-section
 
-retrieve a refund
+Retrieve a Refund
 -----------------
 
 Retrieves the details of a refund that you've previously created. Use the
@@ -43,13 +43,13 @@ information will be returned.
 
 .. cssclass:: method-section
 
-list all refunds
+List All Refunds
 ----------------
 
 Returns a list of refunds you've previously created. The refunds are returned
 in sorted order, with the most recent refunds appearing first.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -64,7 +64,7 @@ in sorted order, with the most recent refunds appearing first.
 
 .. cssclass:: method-section
 
-list all refunds for an account
+List All Refunds For an Account
 -------------------------------
 
 Returns a list of refunds you've previously created against a specific account.
@@ -86,12 +86,12 @@ appearing first.
 
 .. cssclass:: method-section
 
-update a refund
+Update a Refund
 ---------------
 
 Updates information about a refund
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
    .. dcode:: form refunds.update
 
