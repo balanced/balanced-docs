@@ -442,8 +442,8 @@ class Scenario(object):
 
 @contextlib.contextmanager
 def _mark_section(writer, section_name):
-    begin_annotation = '.. begin-section: {}\n\n'.format(section_name)
-    end_annotation = '.. end-section: {}\n\n'.format(section_name)
+    begin_annotation = '.. begin-section: {0}\n\n'.format(section_name)
+    end_annotation = '.. end-section: {0}\n\n'.format(section_name)
 
     writer(begin_annotation)
     yield
