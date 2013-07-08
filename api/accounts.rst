@@ -1,16 +1,22 @@
-accounts
+Accounts
 ========
 
 Accounts help facilitate managing multiple credit cards, debit cards,
 and bank accounts along with different financial transaction operations, i.e.
 refunds, debits, credits.
 
-.. cssclass:: method-section
 
-creating an account
+Creating an Account
 -------------------
 
-.. container:: method-description
+
+.. note::
+   :header_class: alert alert-tab
+   :body_class: alert alert-error
+
+   Accounts have been deprecated. Please use :ref:`Customers <creating-a-customer>` instead.
+
+.. cssclass:: dl-horizontal dl-params:
 
   .. dcode:: form accounts.create
 
@@ -21,7 +27,7 @@ creating an account
 
 .. cssclass:: method-section
 
-adding a card to an account
+Adding a Card to an Account
 ---------------------------
 
 Adding a card to an account activates the ability to debit an account, more
@@ -32,7 +38,13 @@ You can add multiple cards to an account.
 Balanced associates a ``buyer`` role to signify whether or not an account
 has a valid credit card, to acquire funds from.
 
-.. container:: method-description
+.. note::
+   :header_class: alert alert-tab
+   :body_class: alert alert-error
+
+   Accounts have been deprecated. Please use :ref:`Customers <adding-a-card-to-a-customer>` instead.
+
+.. cssclass:: dl-horizontal dl-params:
 
   .. dcode:: form cards.create
 
@@ -43,7 +55,7 @@ has a valid credit card, to acquire funds from.
 
 .. cssclass:: method-section
 
-adding a bank account to an account
+Adding a Bank Account To an Account
 -----------------------------------
 
 Adding a bank account to an account activates the ability to credit an
@@ -52,7 +64,13 @@ account, or in this case, initiate a next-day ACH payment.
 Balanced **does not** associate a role to signify whether or not an account
 has a valid bank account to send money to.
 
-.. container:: method-description
+.. note::
+   :header_class: alert alert-tab
+   :body_class: alert alert-error
+
+   Accounts have been deprecated. Please use :ref:`Customers <adding-a-bank-account-to-a-customer>` instead.
+
+.. cssclass:: dl-horizontal dl-params:
 
   .. dcode:: form bank_accounts.create
 
@@ -63,7 +81,7 @@ has a valid bank account to send money to.
 
 .. cssclass:: method-section
 
-underwriting an individual
+Underwriting an Individual
 --------------------------
 
 A person, or an individual, is a US based individual or a sole proprietor.
@@ -71,7 +89,13 @@ A person, or an individual, is a US based individual or a sole proprietor.
 Balanced associates a ``merchant`` role to signify whether or not an account
 has been underwritten.
 
-.. container:: method-description
+.. note::
+   :header_class: alert alert-tab
+   :body_class: alert alert-error
+
+   Accounts have been deprecated. Please use :ref:`Customers <customers>` instead.
+
+.. cssclass:: dl-horizontal dl-params:
 
     .. dcode:: form merchant_accounts.create
        :exclude: ssn_last_4 production person
@@ -83,13 +107,19 @@ has been underwritten.
 
 .. cssclass:: method-section
 
-underwriting a business
+Underwriting a Business
 -----------------------
 
 Balanced associates a ``merchant`` role to signify whether or not an account
 has been underwritten.
 
-.. container:: method-description
+.. note::
+   :header_class: alert alert-tab
+   :body_class: alert alert-error
+
+   Accounts have been deprecated. Please use :ref:`Customers <customers>` instead.
+
+.. cssclass:: dl-horizontal dl-params:
 
     .. dcode:: form merchants.create
        :exclude: ssn_last_4 person.ssn_last_4 production

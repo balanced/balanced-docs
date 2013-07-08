@@ -71,7 +71,7 @@ Returns a list of refunds you've previously created against a specific account.
 The refunds are returned in sorted order, with the most recent refunds
 appearing first.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.

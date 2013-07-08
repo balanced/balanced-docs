@@ -20,3 +20,5 @@
   debits
   holds
   refunds
+  events
+  accounts

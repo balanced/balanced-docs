@@ -30,7 +30,7 @@ Funding Instrument Events
 
 .. cssclass:: method-section
 
-retrieve an event
+Retrieve an Event
 -----------------
 
 .. _events.show:
@@ -50,7 +50,7 @@ information will be returned.
 
 .. cssclass:: method-section
 
-list all events
+List all Events
 ---------------
 
 .. cssclass:: dl-horizontal dl-params:
@@ -61,6 +61,6 @@ list all events
   ``offset``
     *optional* integer. Defaults to ``0``.
 
-.. container:: code-white
+.. cssclass:: dl-horizontal dl-params:
 
   .. dcode:: scenario event_list

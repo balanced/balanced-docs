@@ -1,4 +1,4 @@
-bank accounts
+Bank Accounts
 =============
 
 You'll eventually want to be able to credit bank accounts without having to
