@@ -149,7 +149,10 @@ Join the Balanced `community`_ and follow us on `Twitter`_.
 Certified Developers
 --------------------
 
-We've partnered with `APIXchange`_ -- a marketplace for custom API development projects -- to help companies looking for assistance with thier Balanced API integration find a quality Balanced certified developer. 
+We've partnered with `APIXchange`_ -- a marketplace for custom API development projects -- to help companies looking for assistance with thier Balanced API integration find a quality Balanced certified developer. Create a project on APIXchange to get started:
+
+.. image:: https://apixchange.com/static/img/embed-button.png
+   :target: https://apixchange.com
 
 If you'd like to find a developer to help with your Balanced integration outside of APIXchange, please post your criteria on `this Github issue`_.
 
