@@ -1,6 +1,6 @@
 .. The entry point to the documentation, this is where all the table of
    content files are generated (and as a consequence displayed on the left
-   hand side of our navigation menu)
+   hand side of our navigation menu) x
 
 .. the table of content tree is hidden here because we want to control its
    layout by using the global toctree function provided by sphinx to the
