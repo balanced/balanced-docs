@@ -18,6 +18,10 @@ function hide_search_results() {
     $light_box.hide();
 }
 
+function endsWith(str, suffix) {
+    return str.indexOf(suffix, str.length - suffix.length) !== -1;
+}
+
 $(document).ready(function () {
     //ADD OTHER PAGES
     $('body').append("<div id='search_extra' style='display: none'></div>");
@@ -56,10 +60,10 @@ $(document).ready(function () {
         });
     }
 
-    if (window.location.pathname == '/overview.html') {
+    if (endsWith(window.location.pathname, 'overview.html')) {
         add_to_search('api.html');
     }
-    else if (window.location.pathname == '/api.html') {
+    else if (endsWith(window.location.pathname, 'api.html')) {
         add_to_search('overview.html');
     }
 
