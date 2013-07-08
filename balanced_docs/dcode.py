@@ -157,18 +157,19 @@ class _SectionFilter(object):
             len(set(a)) == 1
         )
 
-    def _on_section(self, heading, adorment):
+    def _on_section(self, heading, adornment):
         if self.filtered:
-            if adorment[0] in self._chars:
+            if adornment[0] in self._chars:
                 self._write(heading)
-                self._write(adorment)
+                self._write(adornment)
             else:
-                logger.debug('filtering off for "%s", "%s"', heading, adorment)
+                logger.debug('filtering off for "%s", "%s"',
+                             heading, adornment)
                 self.filtered = False
                 self._depth = 0
-                self._on_section(heading, adorment)
+                self._on_section(heading, adornment)
         else:
-            if self.section_adornments[self._depth] != adorment[0]:
+            if self.section_adornments[self._depth] != adornment[0]:
                 self._depth = 0
             else:
                 for i in self.include:
@@ -178,8 +179,8 @@ class _SectionFilter(object):
                         self._depth += 1
                         if len(i) == self._depth:
                             logger.debug('filtering on for "%s", "%s"',
-                                         heading, adorment)
-                            self._chars = self.chars[self._depth:]
+                                         heading, adornment)
+                            self._chars = self.section_adornments[self._depth:]
                             self.filtered = True
 
 
