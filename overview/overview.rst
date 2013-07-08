@@ -146,6 +146,13 @@ dashboard.
 
 Join the Balanced `community`_ and follow us on `Twitter`_.
 
+Certified Developers
+--------------------
+
+We've partnered with `APIXchange`_ -- a marketplace for custom API development projects -- to help companies looking for assistance with thier Balanced API integration find a quality Balanced certified developer. 
+
+If you'd like to find a developer to help with your Balanced integration outside of APIXchange, please post your criteria on `this Github issue`_.
+
 
 Pricing and fees
 ================
@@ -158,7 +165,7 @@ does not charge any fees besides those listed here.
 Payouts
 -------
 
-It costs just simply 25¢ to issue a next day ACH credit. Our full
+It costs just 25¢ to issue a next day ACH credit. Our full
 fee per operation is listed below:
 
 .. cssclass:: table table-hover
@@ -197,7 +204,7 @@ fee per operation is listed below:
   set-up fee                                  $0
   ================================ ===============
 
-.. [*] If you issue a hold and then successfully charge, you only incur the 2.9% fee - There is no additional 30¢ fee.
+.. [*] If you issue a hold, but don't capture it, you will not incur the 2.9% fee - only the 30¢ fee.
 
 .. _overview.fees.balanced:
 
@@ -436,6 +443,8 @@ Crediting Your Own Merchant Account
 .. _support@balancedpayments.com: mailto:support@balancedpayments.com
 .. _@balancedstatus: https://twitter.com/balancedstatus
 .. _Twitter: https://twitter.com/balanced
+.. _APIXchange: https://apixchange.com/
+.. _this Github issue: https://github.com/balanced/balanced-api/issues/315
 .. _status.balancedpayments.com: https://status.balancedpayments.com/
 .. _community: https://www.balancedpayments.com/community
 
