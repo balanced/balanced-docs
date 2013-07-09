@@ -6062,6 +6062,9 @@ table.table tbody tr td {
   background-color: #ffffff;
   padding: 12px 12px 12px 15px;
 }
+.table-header {
+  margin-top: 15px;
+}
 a.headerlink {
   margin-left: 3px;
   font-size: 24px;
