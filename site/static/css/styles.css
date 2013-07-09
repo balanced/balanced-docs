@@ -6326,8 +6326,9 @@ a.badge:focus {
   font-style: normal;
   letter-spacing: normal;
   border-right: 0px;
+  min-width: 130px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000349}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000350}}
 .navbar ul.nav.nav-api-version li span.api-version {
   font-family: 'NimbusSanNov-Reg';
   font-size: 18px;
@@ -6335,11 +6336,11 @@ a.badge:focus {
   font-style: normal;
   letter-spacing: normal;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000357}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000358}}
 .navbar ul.nav.nav-links li {
   text-transform: uppercase;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000360}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000361}}
 .navbar ul.nav.nav-links li a {
   font-family: 'NimbusSanNovCon-Med';
   font-size: 12px;
@@ -6351,21 +6352,21 @@ a.badge:focus {
   padding-right: 20px;
   border-bottom: 1px solid #000000;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000366}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000367}}
 .navbar ul.nav.nav-links li a:hover {
   background-color: #ffffff;
   color: #000000;
   border-bottom: 1px solid #d9d8d5;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000375}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000376}}
 .navbar ul.nav.nav-api-clients {
   width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000378}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000379}}
 .navbar ul.nav.nav-api-clients li {
   width: 100%;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000381}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000382}}
 .navbar ul.nav.nav-api-clients li a {
   font-family: 'NimbusSanNov-Reg';
   font-size: 18px;
@@ -6374,12 +6375,12 @@ a.badge:focus {
   font-style: normal;
   letter-spacing: normal;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000387}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000388}}
 .navbar ul.nav.nav-search {
   margin: 0px;
   border-left: 1px solid #d9d8d5;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000391}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\0000392}}
 .navbar ul.nav.nav-search:before {
   content: ' ';
   display: block;
@@ -6390,13 +6391,13 @@ a.badge:focus {
   top: 5px;
   left: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003102}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003103}}
 .navbar ul.nav.nav-search li {
   border-left: 0px;
   width: 100%;
   padding: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003107}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003108}}
 .navbar ul.nav.nav-search li input {
   font-family: 'NimbusSanNov-Bol';
   font-size: 18px;
@@ -6418,27 +6419,27 @@ a.badge:focus {
   /* nastiness, to change the placeholder style */
 
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003120}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003121}}
 .navbar ul.nav.nav-search li input::-webkit-input-placeholder {
   color: #d9d8d5;
   margin-top: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003121}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003122}}
 .navbar ul.nav.nav-search li input::-moz-placeholder {
   color: #d9d8d5;
   margin-top: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003122}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003123}}
 .navbar ul.nav.nav-search li input:-ms-input-placeholder {
   color: #d9d8d5;
   margin-top: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003123}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003124}}
 .navbar ul.nav.nav-search li input:-moz-placeholder {
   color: #d9d8d5;
   margin-top: 5px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003125}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003126}}
 .navbar ul.nav.nav-search li input:focus {
   outline: none;
   outline-width: 0;
@@ -6447,20 +6448,20 @@ a.badge:focus {
   box-shadow: none;
   border-color: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003133}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003134}}
 .navbar ul.nav.nav-search li form {
   margin: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003139}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003140}}
 .navbar ul.nav li {
   border-left: 1px solid #d9d8d5;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003142}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003143}}
 .navbar ul.nav li a {
   color: #ffffff;
   text-shadow: none;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003149}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\00003150}}
 .navbar .brand {
   padding: 0px;
   margin-left: -22px;
@@ -6955,7 +6956,7 @@ blockquote.last {
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/dropdown\.less}line{font-family:\000035}}
 .dropdown ul.dropdown-menu.version {
-  min-width: 129px;
+  min-width: 130px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/dropdown\.less}line{font-family:\000038}}
 .dropdown ul.dropdown-menu.lang {
