@@ -5196,6 +5196,9 @@ a.badge:focus {
 .mb-large {
   margin-bottom: 35px;
 }
+.mb-ten {
+  margin-bottom: 10px !important;
+}
 .clear,
 .clearfix {
   clear: both;
