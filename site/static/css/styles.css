@@ -6266,13 +6266,13 @@ a.badge:focus {
   font-family: 'Inconsolata';
   font-style: normal;
   font-weight: 400;
-  src: local('Inconsolata'), url(http://themes.googleusercontent.com/static/fonts/inconsolata/v6/BjAYBlHtW3CJxDcjzrnZCLrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+  src: local('Inconsolata'), url(https://themes.googleusercontent.com/static/fonts/inconsolata/v6/BjAYBlHtW3CJxDcjzrnZCLrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
 }
 @font-face {
   font-family: 'Inconsolata';
   font-style: normal;
   font-weight: 700;
-  src: local('Inconsolata Bold'), local('Inconsolata-Bold'), url(http://themes.googleusercontent.com/static/fonts/inconsolata/v6/AIed271kqQlcIRSOnQH0yRbnBKKEOwRKgsHDreGcocg.woff) format('woff');
+  src: local('Inconsolata Bold'), local('Inconsolata-Bold'), url(https://themes.googleusercontent.com/static/fonts/inconsolata/v6/AIed271kqQlcIRSOnQH0yRbnBKKEOwRKgsHDreGcocg.woff) format('woff');
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/navbar\.less}line{font-family:\000031}}
 .navbar {
@@ -6595,8 +6595,7 @@ h1 {
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
-  line-height: 75px;
-  margin: 0px;
+  margin: 0 0 30px 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/type\.less}line{font-family:\000037}}
 h2 {
@@ -6606,8 +6605,7 @@ h2 {
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
-  line-height: 60px;
-  margin: 0px;
+  margin: -12px 0 10px 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/type\.less}line{font-family:\0000313}}
 h3,
@@ -6754,7 +6752,7 @@ section header p {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/base\.less}line{font-family:\0000317}}
 hr {
   border-bottom: 1px solid #d9d8d5;
-  margin: 0px;
+  margin: 35px 0 14px 0;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/base\.less}line{font-family:\0000322}}
 p {
@@ -7205,6 +7203,10 @@ table.table tbody tr td {
   background-color: #ffffff;
   padding: 12px 12px 12px 15px;
 }
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/tables\.less}line{font-family:\0000327}}
+.table-header {
+  margin-top: 15px;
+}
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/content\.less}line{font-family:\000032}}
 a.headerlink {
   margin-left: 3px;
@@ -7232,6 +7234,21 @@ ol.arabic.simple > li {
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/content\.less}line{font-family:\0000328}}
 td.label {
   background-color: transparent;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/content\.less}line{font-family:\0000331}}
+.box > a,
+.box > a > em {
+  font-family: 'NimbusSanNov-SemBol';
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: normal;
+}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/content\.less}line{font-family:\0000334}}
+.compact > p,
+.alert > p {
+  margin-bottom: 0px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/search\.less}line{font-family:\000031}}
 ul#search-dropdown {
@@ -7289,6 +7306,7 @@ span.text-highlight.search-active {
 .code-white {
   background-color: #FFF;
   padding: 15px;
+  margin-bottom: 15px;
 }
 @media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/code\.less}line{font-family:\000035}}
 .code-white div p {
@@ -7305,11 +7323,11 @@ span.text-highlight.search-active {
 .code-white pre {
   padding-left: 0px;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/code\.less}line{font-family:\0000316}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/code\.less}line{font-family:\0000317}}
 .descclassname {
   color: #006973;
 }
-@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/code\.less}line{font-family:\0000319}}
+@media -sass-debug-info{filename{font-family:file\:\/\/\/home\/matthew\/balanced\/balanced-docs\/site\/static\/less\/code\.less}line{font-family:\0000320}}
 .descname {
   color: #872175;
 }

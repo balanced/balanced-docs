@@ -9,7 +9,7 @@ need to create a bank account object.
   :header_class: alert alert-tab
   :body_class: alert alert-gray
 
-   To debit a bank account you must first :ref:`verify it <bank-account-verifications>`.
+  To debit a bank account you must first :ref:`verify it <bank-account-verifications>`.
 
 Creating a New Bank Account
 ---------------------------

@@ -148,8 +148,10 @@ may fund your account **instantly** with :ref:`Balanced Processing! <processing>
 Submission & Delivery times
 ---------------------------
 
-The cutoff for submitting payouts is **3:00 PM Pacific (PT)** time. Payouts will *not* be
-delivered on weekends or `bank holidays`_:
+.. container:: table-header
+
+   The cutoff for submitting payouts is **3:00 PM Pacific (PT)** time. Payouts will *not* be
+   delivered on weekends or `bank holidays`_:
 
 .. cssclass:: table table-hover
 
@@ -170,10 +172,12 @@ delivered on weekends or `bank holidays`_:
 
 .. [*] Saturday
 
-Here's some common scenarios for payouts. Remember, the next-day cut off is
-at **3:00 PM Pacific (PT)**.
+.. container:: table-header
 
-.. list-table:: Common Payout Scenarios
+   Here's some common scenarios for payouts. Remember, the next-day cut off is
+   at **3:00 PM Pacific (PT)**.
+
+.. list-table::
    :widths: 20 35 20
    :header-rows: 1
    :class: table table-hover
