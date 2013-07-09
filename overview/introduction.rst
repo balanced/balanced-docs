@@ -176,6 +176,22 @@ dashboard.
 
 Join the Balanced `community`_ and follow us on `Twitter`_.
 
+Certified Developers
+--------------------
+
+We've partnered with `APIXchange`_ -- a marketplace for custom API development
+projects -- to help companies looking for assistance with their Balanced API
+integration find a quality Balanced certified developer.
+
+Create a project on `APIXchange`_ to get started:
+
+.. image:: https://apixchange.com/static/img/embed-button.png
+  :target: https://apixchange.com/landing/balanced
+
+If you'd like to find a developer to help with your Balanced integration
+outside of APIXchange, please post your criteria on `this Github issue`_.
+
+
 
 .. _kitchit: http://kitchit.com
 .. _copious: http://copious.com
@@ -205,3 +221,6 @@ Join the Balanced `community`_ and follow us on `Twitter`_.
 .. _community: https://www.balancedpayments.com/community
 
 .. _Rent My Bike: http://rentmybike.heroku.com
+
+.. _this Github issue: https://github.com/balanced/balanced-api/issues/315
+.. _APIXchange: https://apixchange.com/
