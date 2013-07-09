@@ -156,7 +156,7 @@ Submission & Delivery times
 .. cssclass:: table table-hover
 
   ==================================== =========== =========== =========== ============ ===========
-  holiday                              2012        2013        2014        2015         2016
+  Holiday                              2012        2013        2014        2015         2016
   ==================================== =========== =========== =========== ============ ===========
   New Year's Day                       January 2   January 1   January 1   January 1    January 1
   Birthday of Martin Luther King, Jr.  January 16  January 21  January 20  January 19   January 18
@@ -182,9 +182,9 @@ Submission & Delivery times
    :header-rows: 1
    :class: table table-hover
 
-   * - Type of Scenario
-     - Example Submission Date
-     - Available When? [*]_
+   * - Type of scenario
+     - Example submission date
+     - Available when? [*]_
    * - Most common
      - Tuesday @ 1:45PM PT
      - Wednesday @ 9:00AM PT

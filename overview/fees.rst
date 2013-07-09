@@ -19,7 +19,7 @@ fee per operation is listed below:
 .. cssclass:: table table-hover
 
   ============================ ===============
-    operation                    cost to you
+    Operation                    Cost to you
   ============================ ===============
   next-day ACH                             25¢
   failure                                $3.50
@@ -41,7 +41,7 @@ fees per operation is listed below:
 .. cssclass:: table table-hover
 
   ================================ ===================
-    operation                        cost to you
+    Operation                        Cost to you
   ================================ ===================
   successful credit card charge       2.9% + 30¢
   issuing a hold                             30¢ [*]_
@@ -136,10 +136,8 @@ Collecting Your Fees
 
 Now that you've understood how incoming money comes in to Balanced and the
 concept of implicit escrow, you might ask yourself, "where do I take my
-cut?"
-
-Since incoming funds are not touched by Balanced, you must issue a credit to
-your own bank account with the funds you want for yourself -- that means you
+cut?" Since incoming funds are not touched by Balanced, you must issue a credit
+to your own bank account with the funds you want for yourself -- that means you
 must do the math to calculate the difference.
 
 There are three common scenarios:

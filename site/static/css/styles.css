@@ -5453,7 +5453,7 @@ a.badge:focus {
 .overview-api ul li {
   cursor: pointer;
   background-color: #ffffff;
-  padding: 15px;
+  padding: 15px 15px 15px 8px;
   font-family: 'NimbusSanNov-Bol';
   font-size: 18px;
   color: #000000;
@@ -5461,21 +5461,24 @@ a.badge:focus {
   font-style: normal;
   letter-spacing: normal;
   border-bottom: 1px solid #d9d8d5;
+  color: #d9d8d5;
 }
 .overview-api ul li:last-of-type {
   border-bottom: 0px;
 }
+.overview-api ul li:hover {
+  color: black;
+}
 .overview-api ul li.active {
   background-color: #d4e5e6;
-}
-.overview-api ul li.active a {
-  color: #000000;
+  color: #000;
 }
 .overview-api ul li.active a:before {
   background: url('../img/icons.png') -150px -830px no-repeat;
 }
 .overview-api ul li a {
-  color: #d9d8d5;
+  color: inherit;
+  margin-left: -6px;
 }
 .overview-api ul li a:before {
   content: ' ';
@@ -5839,6 +5842,14 @@ dl.dl-params dt code {
 blockquote.last {
   margin-left: -120px;
 }
+.dropdown :hover {
+  background-color: #000000 !important;
+  color: #ffffff !important;
+}
+.dropdown :hover a b {
+  border-top-color: white;
+  border-bottom-color: white;
+}
 .dropdown ul.dropdown-menu {
   -webkit-box-shadow: None;
   -moz-box-shadow: None;
@@ -5893,6 +5904,10 @@ blockquote.last {
 .dropdown.open a.dropdown-toggle {
   background-color: #000000 !important;
   color: #ffffff !important;
+}
+.dropdown.open a.dropdown-toggle b {
+  border-top-color: white !important;
+  border-bottom-color: white !important;
 }
 form.form-horizontal {
   background-color: #ffffff;
@@ -6064,6 +6079,15 @@ table.table tbody tr td {
 }
 .table-header {
   margin-top: 15px;
+  margin-bottom: 15px;
+}
+table.footnote {
+  margin-top: -15px;
+  font-size: 12px;
+  line-height: 13px;
+}
+table.footnote + table.footnote {
+  margin-top: 6px;
 }
 a.headerlink {
   margin-left: 3px;
@@ -6099,6 +6123,9 @@ td.label {
 .compact > p,
 .alert > p {
   margin-bottom: 0px;
+}
+ul + table.footnote {
+  margin-top: 12px;
 }
 ul#search-dropdown {
   background-color: #f2f1ec;

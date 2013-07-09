@@ -1,4 +1,14 @@
 .dropdown {
+  & :hover{
+    background-color: @black !important;
+    color: @white !important;
+    a{
+      b{
+        border-top-color: white;
+        border-bottom-color: white;
+      }
+    }
+  }
   ul {
     &.dropdown-menu {
       .box-shadow(None);
@@ -62,6 +72,10 @@
       &.dropdown-toggle {
         background-color: @black !important;
         color: @white !important;
+      b {
+        border-top-color:  white !important;
+        border-bottom-color: white !important;
+      }
       }
     }
   }
