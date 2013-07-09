@@ -5264,13 +5264,13 @@ a.badge:focus {
   font-family: 'Inconsolata';
   font-style: normal;
   font-weight: 400;
-  src: local('Inconsolata'), url(http://themes.googleusercontent.com/static/fonts/inconsolata/v6/BjAYBlHtW3CJxDcjzrnZCLrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+  src: local('Inconsolata'), url(https://themes.googleusercontent.com/static/fonts/inconsolata/v6/BjAYBlHtW3CJxDcjzrnZCLrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
 }
 @font-face {
   font-family: 'Inconsolata';
   font-style: normal;
   font-weight: 700;
-  src: local('Inconsolata Bold'), local('Inconsolata-Bold'), url(http://themes.googleusercontent.com/static/fonts/inconsolata/v6/AIed271kqQlcIRSOnQH0yRbnBKKEOwRKgsHDreGcocg.woff) format('woff');
+  src: local('Inconsolata Bold'), local('Inconsolata-Bold'), url(https://themes.googleusercontent.com/static/fonts/inconsolata/v6/AIed271kqQlcIRSOnQH0yRbnBKKEOwRKgsHDreGcocg.woff) format('woff');
 }
 .navbar {
   z-index: 10;
@@ -5545,8 +5545,7 @@ h1 {
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
-  line-height: 75px;
-  margin: 0px;
+  margin: 0 0 30px 0;
 }
 h2 {
   font-family: 'NimbusSanNov-Bol';
@@ -5555,8 +5554,7 @@ h2 {
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
-  line-height: 60px;
-  margin: 0px;
+  margin: -12px 0 10px 0;
 }
 h3,
 div.header3,
@@ -5679,7 +5677,7 @@ section header p {
 }
 hr {
   border-bottom: 1px solid #d9d8d5;
-  margin: 0px;
+  margin: 35px 0 14px 0;
 }
 p {
   margin-bottom: 15px;
@@ -6064,6 +6062,9 @@ table.table tbody tr td {
   background-color: #ffffff;
   padding: 12px 12px 12px 15px;
 }
+.table-header {
+  margin-top: 15px;
+}
 a.headerlink {
   margin-left: 3px;
   font-size: 24px;
@@ -6085,6 +6086,19 @@ ol.arabic.simple > li {
 }
 td.label {
   background-color: transparent;
+}
+.box > a,
+.box > a > em {
+  font-family: 'NimbusSanNov-SemBol';
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: normal;
+}
+.compact > p,
+.alert > p {
+  margin-bottom: 0px;
 }
 ul#search-dropdown {
   background-color: #f2f1ec;
@@ -6132,6 +6146,7 @@ span.text-highlight.search-active {
 .code-white {
   background-color: #FFF;
   padding: 15px;
+  margin-bottom: 15px;
 }
 .code-white div p {
   text-transform: capitalize;
