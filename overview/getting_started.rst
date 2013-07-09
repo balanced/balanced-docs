@@ -146,6 +146,7 @@ Collecting credit card information
    has three (3) properties which you can use to drive the interaction
    with Balanced:
 
+
    .. cssclass:: dl-horizontal
 
      ``data``
