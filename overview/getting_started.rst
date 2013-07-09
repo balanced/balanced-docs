@@ -137,7 +137,7 @@ Collecting credit card information
        console.log(response.data);
      });
 
-.. _getting_started.callback:
+   .. _getting_started.callback:
 
    The second parameter just did a dummy ``alert()`` for demonstration purposes,
    but this function is actually the most important piece of the integration.
@@ -148,12 +148,12 @@ Collecting credit card information
 
    .. cssclass:: dl-horizontal
 
-   ``data``
-      An object representing a tokenized resource (card or bank account).
-   ``error``
-      Details of the error, if any.
-   ``status``
-      The HTTP response code of the tokenization operation.
+     ``data``
+        | An object representing a tokenized resource (card or bank account).
+     ``error``
+        | Details of the error, if any.
+     ``status``
+        | The HTTP response code of the tokenization operation.
 
    Here's a skeleton callback function that we can use to get started:
 
@@ -320,12 +320,12 @@ Collect bank account info
 
    .. cssclass:: dl-horizontal
 
-   ``data``
-      An object representing a tokenized resource (card or bank account).
-   ``error``
-      Details of the error, if any.
-   ``status``
-      The HTTP response code of the tokenization operation.
+     ``data``
+        | An object representing a tokenized resource (card or bank account).
+     ``error``
+        | Details of the error, if any.
+     ``status``
+        | The HTTP response code of the tokenization operation.
 
    Here's a skeleton callback function that we can use to get started:
 
