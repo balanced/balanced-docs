@@ -5795,6 +5795,16 @@ strong {
   margin-bottom: 0px;
   padding: 5px 12px;
 }
+.alert-tab-red {
+  position: relative;
+  text-transform: uppercase;
+  background-color: #3f8067;
+  color: #ffffff;
+  display: inline-block;
+  margin-bottom: 0px;
+  padding: 5px 12px;
+  background-color: #e66a5f;
+}
 dl.dl-horizontal dt {
   font-family: 'NimbusSanNov-SemBol';
   font-size: 13px;

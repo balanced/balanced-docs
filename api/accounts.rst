@@ -11,8 +11,8 @@ Creating an Account
 
 
 .. note::
-   :header_class: alert alert-tab
-   :body_class: alert alert-error
+   :header_class: alert alert-tab-red
+   :body_class: alert alert-gray
 
    Accounts have been deprecated. Please use :ref:`Customers <creating-a-customer>` instead.
 
@@ -39,8 +39,8 @@ Balanced associates a ``buyer`` role to signify whether or not an account
 has a valid credit card, to acquire funds from.
 
 .. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-error
+   :header_class: alert alert-tab-red
+   :body_class: alert alert-gray
 
    Accounts have been deprecated. Please use :ref:`Customers <adding-a-card-to-a-customer>` instead.
 
@@ -65,8 +65,8 @@ Balanced **does not** associate a role to signify whether or not an account
 has a valid bank account to send money to.
 
 .. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-error
+   :header_class: alert alert-tab-red
+   :body_class: alert alert-gray
 
    Accounts have been deprecated. Please use :ref:`Customers <adding-a-bank-account-to-a-customer>` instead.
 
@@ -90,8 +90,8 @@ Balanced associates a ``merchant`` role to signify whether or not an account
 has been underwritten.
 
 .. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-error
+   :header_class: alert alert-tab-red-red
+   :body_class: alert alert-gray
 
    Accounts have been deprecated. Please use :ref:`Customers <customers>` instead.
 
@@ -114,8 +114,8 @@ Balanced associates a ``merchant`` role to signify whether or not an account
 has been underwritten.
 
 .. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-error
+   :header_class: alert alert-tab-red
+   :body_class: alert alert-gray
 
    Accounts have been deprecated. Please use :ref:`Customers <customers>` instead.
 
