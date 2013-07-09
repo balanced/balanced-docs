@@ -137,15 +137,3 @@ merchant.
 This dramatically simplifies your book-keeping and allows Balanced to take
 care of most of the accounting work -- like end of year taxes, reserves, cash
 flow, and operating capital.
-
-
-.. Best Practices
-.. --------------
-..
-.. Using Meta for Custom Annotation
-.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-..
-.. Breakdown of Escrow Balance by Merchant
-.. ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-..
-

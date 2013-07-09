@@ -1,0 +1,35 @@
+dl {
+  &.dl-horizontal {
+    dt {
+      .fontStyle('NimbusSanNov-SemBol', 13px, @color: @black);
+      width: 185px;
+      color: @black;
+    }
+
+    dd {
+      margin-left: 195px;
+    }
+  }
+
+  &.dl-params {
+    dt, dd {
+      border-top: 1px solid @gray2;
+      padding: 5px 0px 20px 0px;
+      text-align: left;
+
+      strong {
+        color: @black;
+      }
+    }
+
+    dt code {
+      .fontStyle('Inconsolata', @size: inherit, @color: @paramCode);
+      padding-right: 8px;
+      border: none;
+      background-color: @bodyBackground;
+    }
+  }
+}
+blockquote.last{
+  margin-left: -120px;
+}

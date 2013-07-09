@@ -74,7 +74,7 @@ Request
 List All Bank Accounts for an Account
 -------------------------------------
 
-.. dcode:: endpoint accounts/bank_accounts.index
+.. dcode:: endpoint account_bank_accounts.index
 
 Request
 ~~~~~~~
@@ -91,7 +91,7 @@ Request
 Associate a Bank Account with an Account
 ----------------------------------------
 
-.. dcode:: endpoint marketplaces/bank_accounts.update
+.. dcode:: endpoint marketplace_bank_accounts.update
 
 Request
 ~~~~~~~

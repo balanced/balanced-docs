@@ -1,0 +1,106 @@
+form {
+  &.form-horizontal {
+    background-color: @white;
+    padding: 0px;
+
+    .control-group {
+      border-bottom: 1px solid @gray2;
+      padding: 15px 0px 15px 0px;
+      margin-bottom: 0px;
+
+      &:last-of-type {
+        border-bottom: 0px;
+      }
+    }
+  }
+
+  label {
+    font-family: nimbussannov-sembol;
+    margin-bottom: 0px;
+    height: 40px;
+    line-height: 40px;
+    padding-top: 0px !important;
+
+    &:after {
+      content: ':';
+    }
+  }
+
+  select,
+  textarea,
+  input[type="text"],
+  input[type="password"],
+  input[type="datetime"],
+  input[type="datetime-local"],
+  input[type="date"],
+  input[type="month"],
+  input[type="time"],
+  input[type="week"],
+  input[type="number"],
+  input[type="email"],
+  input[type="url"],
+  input[type="search"],
+  input[type="tel"],
+  input[type="color"] {
+    .box-shadow(none);
+    outline: none;
+    border: 1px solid @inputBorderColor;
+    border-radius: 0;
+    color: @black;
+    font-size: @inputFontSize;
+    width: @inputFullWidth / 2;;
+    padding: @inputPadding;
+    height: auto;
+    line-height: 22px;
+    transition: none;
+
+    &.full {
+      width: @inputFullWidth - @inputPadding * 2;
+    }
+
+    &:focus, &:active {
+      outline: none;
+      outline-width: 0;
+      border: 1px solid @inputBorderColor;
+      .box-shadow(none);
+      border-color: none;
+    }
+  }
+
+  select {
+    border: 0px;
+    -webkit-appearance: none;
+    -webkit-user-select: none;
+    background: url(../img/dropdown-arrow.png) no-repeat @gray2;
+    background-position: 90% 50%;
+    height: 40px;
+    margin-right: 5px;
+
+    &:focus {
+      border: 0px;
+    }
+  }
+}
+
+.btn, button {
+  font-family: nimbussannov-med;
+  font-size: 15px;
+  border: 3px solid @buttonColor;
+  background-color: @buttonBackgroundColor;
+  color: @buttonColor;
+  text-align: center;
+  padding: 5px 12px;
+  line-height: 1em;
+  vertical-align: middle;
+  box-sizing: initial;
+
+  &:visited {
+    color: @buttonColor;
+  }
+
+  &:hover {
+    background-color: @buttonColor;
+    color: @buttonBackgroundColor;
+    text-decoration: none;
+  }
+}

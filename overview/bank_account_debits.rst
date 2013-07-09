@@ -4,7 +4,8 @@ Debiting Bank Accounts
 ======================
 
 .. note::
-   :class: alert alert-info
+   :header_class: alert alert-tab
+   :body_class: alert alert-gray
 
    You'll only need to verify a bank account if you're planning to later debit
    that account, which is a functionality only available through our ACH
@@ -41,7 +42,8 @@ Here's how we're going to accomplish this:
 - `Debit the bank account`_
 
 .. note::
-   :class: alert alert-info
+   :header_class: alert alert-tab
+   :body_class: alert alert-gray
 
    To learn how to collect bank account information check out the
    `collect bank account information tutorial`_

@@ -40,7 +40,7 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = 'api'
 
 # General information about the project.
 project = u'Balanced'
@@ -67,7 +67,7 @@ release = '1.0'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', '[!i][!n][!d]*.rst']
+exclude_patterns = ['_build']#, '[!i][!n][!d]*.rst']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -146,7 +146,7 @@ html_static_path = ['_static']
 # A string with the fully-qualified name of a HTML Translator class, that is,
 # a subclass of Sphinx’ HTMLTranslator, that is used to translate document
 # trees to HTML. Default is None (use the builtin translator).
-html_translator_class = 'htmlwriter.BalancedHTMLTranslator'
+html_translator_class = 'custom_htmltranslations.BalancedHTMLTranslator'
 
 # If false, no index is generated.
 #html_use_index = True
@@ -256,11 +256,47 @@ texinfo_documents = [
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
 
-from balanced_docs import dcode
+import pygments.lexers.web
+from customizations import (
+    html_page_context, IconBoxWidget, Span, Clear, Gist, patch_admonition
+)
 
 
 def setup(app):
-    import pygments.lexers.web
+    from balanced_docs import dcode
+
+    # dcode directive default registrations
+    dcode.DCodeDefaultDirective.registry[None]['cache'] = 'dcode.cache'
+    dcode.DCodeDefaultDirective.registry['scenario'].update({
+        'script': 'scripts/lang-scenario.py -d scenarios -c scenario.cache',
+        'section-chars': '~^',
+        'lang': ['python', 'ruby', 'php', 'node', 'java'],
+    })
+    dcode.DCodeDefaultDirective.registry['endpoint'].update({
+        'script': 'scripts/rst.py endpoint'
+    })
+    dcode.DCodeDefaultDirective.registry['enum'].update({
+        'script': 'scripts/rst.py enum'
+    })
+    dcode.DCodeDefaultDirective.registry['error'].update({
+        'script': 'scripts/rst.py error'
+    })
+    dcode.DCodeDefaultDirective.registry['form'].update({
+        'script': 'scripts/rst.py form'
+    })
+    dcode.DCodeDefaultDirective.registry['view'].update({
+        'script': 'scripts/rst.py view'
+    })
+
     app.add_directive('dcode-default', dcode.DCodeDefaultDirective)
     app.add_directive('dcode', dcode.DCodeDirective)
+    app.add_directive(IconBoxWidget.name, IconBoxWidget)
+    app.add_directive(Span.name, Span)
+    app.add_directive(Clear.name, Clear)
+    app.add_directive(Gist.name, Gist)
+
     app.add_lexer('node', pygments.lexers.web.JavascriptLexer())
+
+    app.connect('html-page-context', html_page_context)
+
+    patch_admonition()

@@ -39,7 +39,7 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = 'overview'
 
 # General information about the project.
 project = u'Balanced'
@@ -66,7 +66,7 @@ release = '1.0'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', '[!i][!n][!d]*.rst']
+exclude_patterns = ['_build']#, '[!i][!n][!d]*.rst']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -93,7 +93,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'basic'
+html_theme = 'agogo'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -121,7 +121,7 @@ html_theme_path = ['_themes']
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
-# so a file named "default.css" will overwrite the builtin "default.css".
+# so a file named "default.css" woh ill overwrite the builtin "default.css".
 html_static_path = ['_static']
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
@@ -133,8 +133,7 @@ html_static_path = ['_static']
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-html_sidebars = {
-}
+html_sidebars = {}
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -146,7 +145,7 @@ html_sidebars = {
 # A string with the fully-qualified name of a HTML Translator class, that is,
 # a subclass of Sphinx’ HTMLTranslator, that is used to translate document
 # trees to HTML. Default is None (use the builtin translator).
-html_translator_class = 'htmlwriter.BalancedHTMLTranslator'
+html_translator_class = 'custom_htmltranslations.BalancedHTMLTranslator'
 
 # If false, no index is generated.
 #html_use_index = True
@@ -236,12 +235,49 @@ htmlhelp_basename = 'Balanceddoc'
 
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
-
-from balanced_docs import dcode
+import pygments.lexers.web
+from customizations import (
+    html_page_context, IconBoxWidget, Span, Clear, Gist, patch_admonition
+)
 
 
 def setup(app):
-    import pygments.lexers.web
+    from balanced_docs import dcode
+
+    # dcode directive default registrations
+    dcode.DCodeDefaultDirective.registry[None]['cache'] = 'dcode.cache'
+    dcode.DCodeDefaultDirective.registry['scenario'].update({
+        'script': 'scripts/lang-scenario.py -d scenarios -c scenario.cache',
+        'section-include': ['request'],
+        'section-filter-class': 'LangSectionFilter',
+        'lang': ['python', 'ruby', 'php', 'node', 'java'],
+    })
+    dcode.DCodeDefaultDirective.registry['endpoint'].update({
+        'script': 'scripts/rst.py endpoint'
+    })
+    dcode.DCodeDefaultDirective.registry['enum'].update({
+        'script': 'scripts/rst.py enum'
+    })
+    dcode.DCodeDefaultDirective.registry['error'].update({
+        'script': 'scripts/rst.py error'
+    })
+    dcode.DCodeDefaultDirective.registry['form'].update({
+        'script': 'scripts/rst.py form'
+    })
+    dcode.DCodeDefaultDirective.registry['view'].update({
+        'script': 'scripts/rst.py view'
+    })
+
+
     app.add_directive('dcode-default', dcode.DCodeDefaultDirective)
     app.add_directive('dcode', dcode.DCodeDirective)
+    app.add_directive(IconBoxWidget.name, IconBoxWidget)
+    app.add_directive(Span.name, Span)
+    app.add_directive(Clear.name, Clear)
+    app.add_directive(Gist.name, Gist)
+
     app.add_lexer('node', pygments.lexers.web.JavascriptLexer())
+
+    app.connect('html-page-context', html_page_context)
+
+    patch_admonition()
