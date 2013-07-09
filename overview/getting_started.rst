@@ -10,7 +10,7 @@ Balanced.js
 data never touches your servers and as a result, the burden of PCI compliance
 shifts to Balanced, which is `PCI-DSS Level 1 Compliant`_.
 
-.. container:: mb-large
+.. container::
 
   1. Use ``balanced.js`` to send sensitive information to Balanced
   2. Use the ``uri``, returned by Balanced, as the token representing
@@ -35,7 +35,7 @@ Including and Initializing ``balanced.js``
 
 .. _getting_started.including_balanced_js:
 
-.. container:: mb-large
+.. container::
 
   Including ``balanced.js``
 
@@ -45,7 +45,7 @@ Including and Initializing ``balanced.js``
 
 .. _getting_started.initializing_balanced_js:
 
-.. container:: mb-large
+.. container::
 
   Initializing ``balanced.js``
 
