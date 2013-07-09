@@ -175,7 +175,7 @@ Recap:
 
 
 Fee Scenario #1
-'''''''''''''''
+~~~~~~~~~~~~~~~
 
 Your marketplace listing fee is 10%. So, say Alice lists her bike for $100.00.
 Bob decides to rent this bike - costing him $100.00.
@@ -194,7 +194,7 @@ Bob decides to rent this bike - costing him $100.00.
 - Your ``in_escrow`` balance now shows $0.00
 
 Fee Scenario #2
-'''''''''''''''
+~~~~~~~~~~~~~~~
 
 Your marketplace renting fee is 10%. So, say Alice lists her bike for 100.00$.
 Bob decides to rent this bike - costing him $110.00.
@@ -213,7 +213,7 @@ Bob decides to rent this bike - costing him $110.00.
 - Your ``in_escrow`` balance now shows $0.00
 
 Fee Scenario #3
-'''''''''''''''
+~~~~~~~~~~~~~~~
 
 Your marketplace renting fee is 10%. You also charge a 10% listing fee.
 
