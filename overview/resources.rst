@@ -17,7 +17,7 @@ We find that this is the best way to use the client libraries. If you encounter
 and issue, please file a github issue and get in touch through one our
 many :ref:`support channels <overview.support>`.
 
-.. list-table:: API Libraries
+.. list-table::
    :widths: 10 20 20 15
    :header-rows: 1
    :class: table table-hover
