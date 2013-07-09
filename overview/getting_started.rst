@@ -10,7 +10,7 @@ Balanced.js
 data never touches your servers and as a result, the burden of PCI compliance
 shifts to Balanced, which is `PCI-DSS Level 1 Compliant`_.
 
-.. container:: mb-large
+.. container::
 
   1. Use ``balanced.js`` to send sensitive information to Balanced
   2. Use the ``uri``, returned by Balanced, as the token representing
@@ -35,7 +35,7 @@ Including and Initializing ``balanced.js``
 
 .. _getting_started.including_balanced_js:
 
-.. container:: mb-large
+.. container::
 
   Including ``balanced.js``
 
@@ -45,7 +45,7 @@ Including and Initializing ``balanced.js``
 
 .. _getting_started.initializing_balanced_js:
 
-.. container:: mb-large
+.. container::
 
   Initializing ``balanced.js``
 
@@ -137,7 +137,7 @@ Collecting credit card information
        console.log(response.data);
      });
 
-.. _getting_started.callback:
+   .. _getting_started.callback:
 
    The second parameter just did a dummy ``alert()`` for demonstration purposes,
    but this function is actually the most important piece of the integration.
@@ -146,14 +146,15 @@ Collecting credit card information
    has three (3) properties which you can use to drive the interaction
    with Balanced:
 
+
    .. cssclass:: dl-horizontal
 
-   ``data``
-      An object representing a tokenized resource (card or bank account).
-   ``error``
-      Details of the error, if any.
-   ``status``
-      The HTTP response code of the tokenization operation.
+     ``data``
+        | An object representing a tokenized resource (card or bank account).
+     ``error``
+        | Details of the error, if any.
+     ``status``
+        | The HTTP response code of the tokenization operation.
 
    Here's a skeleton callback function that we can use to get started:
 
@@ -320,12 +321,12 @@ Collect bank account info
 
    .. cssclass:: dl-horizontal
 
-   ``data``
-      An object representing a tokenized resource (card or bank account).
-   ``error``
-      Details of the error, if any.
-   ``status``
-      The HTTP response code of the tokenization operation.
+     ``data``
+        | An object representing a tokenized resource (card or bank account).
+     ``error``
+        | Details of the error, if any.
+     ``status``
+        | The HTTP response code of the tokenization operation.
 
    Here's a skeleton callback function that we can use to get started:
 

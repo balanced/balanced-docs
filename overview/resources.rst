@@ -253,7 +253,7 @@ problematic encounters.
 
 
 Sending a payout for the first time
-'''''''''''''''''''''''''''''''''''
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There’s a very small chance the first payout to a customer can fail. This is
 usually due to the customer accidentally providing an incorrect bank account
@@ -274,7 +274,7 @@ will continue to take one business day when issued before the
 However, if a payout fails, we’ll notify you via email, dashboard, and webhook.
 
 Help your users avoid mistakes
-''''''''''''''''''''''''''''''
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Due to the nature of the ACH network, failure notifications can be delayed
 for up to (4) four business days! This can be extremely inconvenient and
