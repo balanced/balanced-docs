@@ -10,7 +10,7 @@ API reference
 Using REST
 ----------
 
-.. compound::
+.. container:: compact
 
   Methods to retrieve data from the Balanced API require an HTTP ``GET`` request.
 
