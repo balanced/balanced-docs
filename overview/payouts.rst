@@ -198,7 +198,7 @@ at **3:00 PM Pacific (PT)**.
 .. _balanced.js: https://js.balancedpayments.com/v1/balanced.js
 .. _testing documentation: /docs/testing#simulating-card-failures
 .. _jQuery: http://www.jquery.com
-.. _dashboard: https://www.balancedpayments.com/dashboard
+.. _dashboard: https://dashboard.balancedpayments.com/
 .. _issues: https://github.com/balanced/balanced-api/issues
 .. _bank holidays: http://www.federalreserve.gov/aboutthefed/k8.htm
 .. _FedACH directory: https://www.fededirectory.frb.org

@@ -192,7 +192,7 @@ As you integrate and test :ref:`payouts`, you may find it useful to view
 all your sanitized API request logs. They are viewable via the logs section
 in the `dashboard`_
 
-.. _dashboard: https://www.balancedpayments.com/dashboard
+.. _dashboard: https://dashboard.balancedpayments.com/
 
 .. SUBHEADERS
    glossary / terms
