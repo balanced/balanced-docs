@@ -5794,11 +5794,11 @@ dl.dl-horizontal dt {
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
-  width: 100px;
+  width: 185px;
   color: #000000;
 }
 dl.dl-horizontal dd {
-  margin-left: 120px;
+  margin-left: 195px;
 }
 dl.dl-params dt,
 dl.dl-params dd {
@@ -5820,6 +5820,9 @@ dl.dl-params dt code {
   padding-right: 8px;
   border: none;
   background-color: #f2f1ec;
+}
+blockquote.last {
+  margin-left: -120px;
 }
 .dropdown ul.dropdown-menu {
   -webkit-box-shadow: None;

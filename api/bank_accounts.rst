@@ -6,8 +6,8 @@ ask your users for their information over and over again. To do this, you'll
 need to create a bank account object.
 
 .. note::
-   :header_class: alert alert-tab
-   :body_class: alert alert-gray
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
 
    To debit a bank account you must first :ref:`verify it <bank-account-verifications>`.
 
