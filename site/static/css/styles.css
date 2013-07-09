@@ -5789,7 +5789,7 @@ strong {
   color: #ffffff;
   display: inline-block;
   margin-bottom: 0px;
-  padding: 8px 20px;
+  padding: 5px 12px;
 }
 dl.dl-horizontal dt {
   font-family: 'NimbusSanNov-SemBol';
@@ -6059,6 +6059,9 @@ a > em:first-of-type {
 }
 ol.arabic.simple > li {
   line-height: 26px;
+}
+td.label {
+  background-color: transparent;
 }
 ul#search-dropdown {
   background-color: #f2f1ec;
