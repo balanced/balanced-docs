@@ -6027,6 +6027,12 @@ button:hover {
   color: #ffffff;
   text-decoration: none;
 }
+table.table {
+  border-color: transparent;
+}
+table.table thead {
+  border-color: transparent;
+}
 table.table thead tr th {
   font-family: 'FanwoodText-Italic';
   font-size: 16px;
@@ -6036,6 +6042,9 @@ table.table thead tr th {
   letter-spacing: normal;
   background-color: #d4e5e6;
   padding: 12px 12px 12px 15px;
+}
+table.table tbody {
+  border-color: transparent;
 }
 table.table tbody tr td {
   background-color: #ffffff;
