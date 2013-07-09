@@ -5451,6 +5451,7 @@ a.badge:focus {
   margin: 0px;
 }
 .overview-api ul li {
+  cursor: pointer;
   background-color: #ffffff;
   padding: 15px;
   font-family: 'NimbusSanNov-Bol';

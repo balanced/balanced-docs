@@ -93,4 +93,9 @@ $(document).ready(function () {
     //FIX ON LOAD
     fix_sidebar();
 
+    //SWITCH SELECTORS
+    $('#context-selector > li').click(function (){
+        window.location = $(this).find('a').attr('href');
+    });
+
 });
