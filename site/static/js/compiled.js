@@ -84,7 +84,7 @@ $(document).ready(function () {
         });
     }
 
-    if (endsWith(window.location.pathname, 'overview.html')) {
+    if (endsWith(window.location.pathname, 'overview.html') || endsWith(window.location.pathname, 'current/')) {
         add_to_search('api.html');
     }
     else if (endsWith(window.location.pathname, 'api.html')) {
