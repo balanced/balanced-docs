@@ -6084,7 +6084,16 @@ ol.arabic.simple > li {
 td.label {
   background-color: transparent;
 }
-.compound > p,
+.box > a,
+.box > a > em {
+  font-family: 'NimbusSanNov-SemBol';
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: normal;
+}
+.compact > p,
 .alert > p {
   margin-bottom: 0px;
 }
