@@ -1,3 +1,7 @@
+//////////////
+// docs.js //
+/////////////
+
 function updateQueryStringParameter(uri, key, value) {
     var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
     var separator = uri.indexOf("?") > -1 ? "&" : "?";
@@ -96,6 +100,26 @@ $(document).ready(function () {
     //SWITCH SELECTORS
     $('#context-selector > li').click(function (){
         window.location = $(this).find('a').attr('href');
+    });
+
+    // VERSION SELECTOR
+    var default_version = "rev0";
+    try {
+	default_version = locaiton.pathname.split('/')[1];
+    } catch(e) {}
+    version_element = $("[data-version='" + default_version + "']")
+    version_element.parent().hide();
+    $("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
+    $("#version-dropdown-head > .version-change").removeClass("version-change").attr('href', '#');
+    $("[class^=rev-]").hide();
+    $(".rev-"+default_version).show();
+    $("a.version-change").click(function() {
+	var $this = $(this);
+	var href = $this.attr('href');
+	var path = location.pathname.split('/');
+	path.shift(); path.shift();
+	location.href = href + '/' + path.join('/') + location.hash;
+	return false;
     });
 
 });

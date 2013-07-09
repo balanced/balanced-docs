@@ -44,7 +44,7 @@ spec-rst: $(SPEC_RST_DSTS)
 
 $(SPEC_HTML_DIR)/%.html: $(SPEC_RST_DIR)/%.rst
 	@mkdir -p $(@D)
-	$(SPEC_HTML_CMD) $< > $@ 
+	$(SPEC_HTML_CMD) $< > $@
 
 spec-html: $(SPEC_HTML_DSTS)
 
@@ -57,30 +57,43 @@ spec-clean:
 
 # api
 
-api/html/index.html:
+api/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
 	$(SPHINXBUILD) -b singlehtml -c api api api/html
-	
+
 $(SITE_DIR)/api-gen.html: api/html/index.html
 	mv api/html/api.html ${SITE_DIR}/api-gen.html
 
 api: $(SITE_DIR)/api-gen.html
 
-api-clean: 
+api-clean:
 	-rm -rf api/html
 	-rm -f $(SITE_DIR)/api-gen.html
 	-rm -f *.cache
 
 # overview
 
-overview/html/index.html:
+overview/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
 	$(SPHINXBUILD) -b singlehtml -c overview overview overview/html
-	
+
 $(SITE_DIR)/overview-gen.html: overview/html/index.html
 	mv overview/html/overview.html ${SITE_DIR}/overview-gen.html
 
 overview: $(SITE_DIR)/overview-gen.html
 
-overview-clean: 
+overview-clean:
 	-rm -rf overview/html
 	-rm  -f $(SITE_DIR)/overview-gen.html
 	-rm -f *.cache
+
+# static files
+
+$(SITE_DIR)/static/css/styles.css: $(wildcard $(SITE_DIR)/static/less/*.less)
+	lessc --line-numbers=mediaquery $(SITE_DIR)/static/less/bootstrap.less $@
+
+$(SITE_DIR)/static/js/compiled.js: $(wildcard $(SITE_DIR)/static/js/*.js)
+	cat 	$(SITE_DIR)/static/js/bootstrap.min.js 		\
+		$(SITE_DIR)/static/js/lunr.min.js 		\
+		$(SITE_DIR)/static/js/jquery.scrollTo-min.js 	\
+		$(SITE_DIR)/static/js/search.js 		\
+		$(SITE_DIR)/static/js/docs.js 			\
+			> $@

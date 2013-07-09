@@ -33,7 +33,7 @@
           padding: 10px;
           color: @linkColor !important;
           font-family: 'NimbusSanNov-SemBol' !important;
-          font-size: 15px !important;
+
 
           &:hover {
             background-image: none;
@@ -59,11 +59,14 @@
 
   &.open {
     a {
-      &.dropdown-toggle {
+      &.dropdown-toggle.lang  {
         background-color: @black !important;
         color: @white !important;
+      }
+      &.dropdown-toggle.version {
+	background-color: @white !important;
+        color: @black !important;
       }
     }
   }
 }
-

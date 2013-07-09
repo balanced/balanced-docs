@@ -8,10 +8,18 @@
         </div>
         <div class="span12">
           <ul class="nav nav-api-version">
-            <li>
-              <a>Balanced Documentation <span class="api-version">/ version 1.0</span></a>
+            <li class="dropdown">
+              <a class="dropdown-toggle version" data-toggle="dropdown" id="version-dropdown-head">Balanced Documentation <span class="api-version">/ version 1.0</span> <b class="caret"></b></a>
+	      <ul class="dropdown-menu">
+		<li>
+		  <a class="version-change" data-version="rev0" href="/rev0">Balanced Documentation <span class="api-version">/ version 1.0</span></a>
+		</li>
+		<li>
+		  <a class="version-change" data-version="rev1" href="/rev1">Balanced Documentation <span class="api-version">/ version 2.0</span></a>
+		</li>
+	      </ul>
             </li>
-          </ul>
+	  </ul>
         </div>
         <ul class="nav nav-links pull-right">
           <li>
@@ -32,7 +40,7 @@
         <div class="span5">
           <ul class="nav nav-api-clients">
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" id='lang-dropdown-head' data-toggle="dropdown">CURL <b class="caret"></b></a>
+              <a href="#" class="dropdown-toggle lang" id='lang-dropdown-head' data-toggle="dropdown">CURL <b class="caret"></b></a>
               <ul class="dropdown-menu">
                 <li><a class='lang-change' data-lang='ruby' href="#">Ruby</a></li>
                 <li><a class='lang-change' data-lang='python' href="#">Python</a></li>
