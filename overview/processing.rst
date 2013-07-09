@@ -105,9 +105,9 @@ Let's say you've debited an account for $20.00
 * You issue a refund for $30.00
 * The API will return a **400** status code, similar to:
 
-  .. code-block:: bash
+.. code-block:: bash
 
-     Bad Request: 400: Invalid field [amount] - "3000" must be <= 2000
+   Bad Request: 400: Invalid field [amount] - "3000" must be <= 2000
 
 
 Holds

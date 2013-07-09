@@ -77,24 +77,20 @@ marketplace.
 Example
 ~~~~~~~
 
-- A buyer pays for a service on Monday from a third-party merchant. You charge
-  the buyer $10, which increases your escrow balance by $10.
+A buyer pays for a service on Monday from a third-party merchant. You charge
+the buyer $10, which increases your escrow balance by $10. Balanced will invoice
+you, on Monday for 2.9% of $10 (or 29¢), plus 30¢, and debit your bank account
+for a total of 59¢.
 
-  * Balanced will invoice you, on Monday for 2.9% of $10 (or 29¢), plus 30¢,
-    and debit your bank account for a total of 59¢.
+On Wednesday, the third-party merchant completes performing a service for the
+buyer, and the buyer acknowledges this. You credit out payment to the
+merchant, likely keeping a portion to pay your fees. Perhaps you pay out $7
+to the merchant, leaving you with $3 in your escrow account. Balanced will
+invoice you, on Wednesday, 25¢ for this ACH credit.
 
-- On Wednesday, the third-party merchant completes performing a service for the
-  buyer, and the buyer acknowledges this. You credit out payment to the
-  merchant, likely keeping a portion to pay your fees. Perhaps you pay out $7
-  to the merchant, leaving you with $3 in your escrow account.
-
-  * Balanced will invoice you, on Wednesday, 25¢ for this ACH credit.
-
-- The $3 that is left from the buyer's $10 is your revenue from this order. You
-  decide to credit this to your own bank account on Friday.
-
-  * Balanced doesn't charge you for this credit, as credits to owner accounts
-    are free.
+The $3 that is left from the buyer's $10 is your revenue from this order. You
+decide to credit this to your own bank account on Friday. Balanced doesn't
+charge you for this credit, as credits to owner accounts are free.
 
 
 Funds Flow
