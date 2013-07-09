@@ -6054,6 +6054,9 @@ pre {
 .box a {
   color: white;
 }
+a > em:first-of-type {
+  font-style: normal;
+}
 ul#search-dropdown {
   background-color: #f2f1ec;
   max-height: 500px;
