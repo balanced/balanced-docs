@@ -333,7 +333,7 @@ $(document).ready(function () {
     try {
 	default_version = locaiton.pathname.split('/')[1];
     } catch(e) {}
-    version_element = $("[data-version='" + default_version + "']")
+    var version_element = $("[data-version='" + default_version + "']")
     version_element.parent().hide();
     $("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
     $("#version-dropdown-head > .version-change").removeClass("version-change").attr('href', '#');
