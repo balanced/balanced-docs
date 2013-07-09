@@ -21,7 +21,7 @@
 </%def>
 
 ## http://stackoverflow.com/a/6701741/133514
-<%def name="route_for_endpoint(endpoint, select='shortest')">
+<%def name="route_for_endpoint(endpoint, select=None)">
 <%
   return context['Endpoint'](ctx, endpoint, select)
 %>
@@ -171,7 +171,7 @@ Balanced.configure('${ctx.api_key}')
 
 <%def name="curl_delete_template(endpoint_name, ep=None)">
 <%
-  ep = Endpoint(ctx, endpoint_name, select='shortest')
+  ep = Endpoint(ctx, endpoint_name)
 %>
 % if mode == 'definition':
   ${ep.method} ${ep.url}

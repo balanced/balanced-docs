@@ -1,32 +1,34 @@
-bank accounts
+Bank Accounts
 =============
 
 You'll eventually want to be able to credit bank accounts without having to
 ask your users for their information over and over again. To do this, you'll
 need to create a bank account object.
 
-**NOTE** To debit a bank account you must first :ref:`verify it <bank-account-verifications>`.
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
 
-.. cssclass:: method-section
+   To debit a bank account you must first :ref:`verify it <bank-account-verifications>`.
 
-creating a new bank account
+Creating a New Bank Account
 ---------------------------
 
 Creates a new bank account.
 
-.. container:: method-description
 
-    .. dcode:: form bank_accounts.create
+.. cssclass:: dl-horizontal dl-params
 
+  .. dcode:: form bank_accounts.create
 
-.. container:: method-examples
+.. container:: code-white
 
-    .. dcode:: scenario bank_account_create
+  .. dcode:: scenario bank_account_create
 
 
 .. cssclass:: method-section
 
-retrieve a bank account
+Retrieve a Bank Account
 -----------------------
 
 Retrieves the details of a bank account that has previously been created.
@@ -38,19 +40,20 @@ information is returned when creating the bank account.
 
     .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
     .. dcode:: scenario bank_account_show
 
 
 .. cssclass:: method-section
 
-list all bank accounts
+List All Bank Accounts
 ----------------------
 
 Returns a list of bank accounts that you've created but haven't deleted.
 
-.. container:: method-description
+
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -58,14 +61,14 @@ Returns a list of bank accounts that you've created but haven't deleted.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
     .. dcode:: scenario bank_account_list
 
 
 .. cssclass:: method-section
 
-delete a bank account
+Delete a Bank Account
 ---------------------
 
 Permanently delete a bank account. It cannot be undone. All associated credits
@@ -75,6 +78,6 @@ with a deleted bank account will not be affected.
 
    .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario bank_account_delete

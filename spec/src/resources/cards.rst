@@ -20,7 +20,7 @@ Fields
 Tokenize a Card
 ---------------
 
-.. dcode:: endpoint marketplaces/cards.create
+.. dcode:: endpoint marketplace_cards.create
    :exclude-method: HEAD
 
 Request
@@ -41,7 +41,7 @@ Response
 Retrieve a Card
 ---------------
 
-.. dcode:: endpoint marketplaces/cards.show
+.. dcode:: endpoint marketplace_cards.show
    :exclude-method: HEAD
 
 Response
@@ -53,7 +53,7 @@ Response
 List All Cards
 --------------
 
-.. dcode:: endpoint marketplaces/cards.index
+.. dcode:: endpoint marketplace_cards.index
    :exclude-method: HEAD
 
 Request
@@ -71,7 +71,7 @@ Request
 List All Cards for an Account
 -----------------------------
 
-.. dcode:: endpoint accounts/cards.index
+.. dcode:: endpoint account_cards.index
    :exclude-method: HEAD
 
 Request
@@ -89,7 +89,7 @@ Request
 Update a Card
 -------------
 
-.. dcode:: endpoint marketplaces/cards.update
+.. dcode:: endpoint marketplace_cards.update
 
 Request
 ~~~~~~~
@@ -109,7 +109,7 @@ Response
 Associate a Card with an Account
 --------------------------------
 
-.. dcode:: endpoint marketplaces/cards.update
+.. dcode:: endpoint marketplace_cards.update
 
 Request
 ~~~~~~~

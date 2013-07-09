@@ -12,7 +12,7 @@ resource.
 
 .. _debits.create:
 
-create a new debit
+Create a New Debit
 ------------------
 
 .. todo:: debit an account with different cards
@@ -26,18 +26,18 @@ mapping as part of the response. This :ref:`hold <holds>` was created and
 captured behind the scenes automatically. For ACH debits there is no
 corresponding hold.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   .. dcode:: form debits.create
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario debit_create
 
 
 .. cssclass:: method-section
 
-retrieve a debit
+Retrieve a Debit
 ----------------
 
 Retrieves the details of a created debit.
@@ -46,20 +46,20 @@ Retrieves the details of a created debit.
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario debit_show
 
 
 .. cssclass:: method-section
 
-list all debits
+List All Debits
 ---------------
 
 Returns a list of debits you've previously created. The debits are returned
 in sorted order, with the most recent debits appearing first.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -67,14 +67,14 @@ in sorted order, with the most recent debits appearing first.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario debit_list
 
 
 .. cssclass:: method-section
 
-list all debits for an account
+List All Debits For an Account
 ------------------------------
 
 Returns a list of debits you've previously created against a specific account.
@@ -82,7 +82,7 @@ The ``debits_uri`` is a convenient uri provided so that you can simply issue
 a ``GET`` to the ``debits_uri``. The debits are returned in sorted order,
 with the most recent debits appearing first.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -90,19 +90,19 @@ with the most recent debits appearing first.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario debit_account_list
 
 
 .. cssclass:: method-section
 
-update a debit
+Update a Debit
 --------------
 
 Updates information about a debit
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``meta``
       *optional* **object**. Single level mapping from string keys to string values.
@@ -111,14 +111,14 @@ Updates information about a debit
       *optional* **string**. Sequence of characters.
 
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario debit_update
 
 
 .. cssclass:: method-section
 
-refund a debit
+Refund a Debit
 --------------
 
 Issues a refund for a particular debit. This creates a :ref:`refund <refunds>`.
@@ -127,7 +127,7 @@ Issues a refund for a particular debit. This creates a :ref:`refund <refunds>`.
 
    Use the ``refund_uri`` on a :ref:`debit object <debits>`.
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario debit_refund
 

@@ -1,4 +1,4 @@
-events
+Events
 ======
 
 .. _events:
@@ -30,7 +30,7 @@ Funding Instrument Events
 
 .. cssclass:: method-section
 
-retrieve an event
+Retrieve an Event
 -----------------
 
 .. _events.show:
@@ -43,17 +43,17 @@ information will be returned.
 
     .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
     .. dcode:: scenario event_show
 
 
 .. cssclass:: method-section
 
-list all events
+List all Events
 ---------------
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params:
 
   ``limit``
     *optional* integer. Defaults to ``10``.
@@ -61,6 +61,6 @@ list all events
   ``offset``
     *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. cssclass:: dl-horizontal dl-params:
 
   .. dcode:: scenario event_list

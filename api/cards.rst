@@ -11,23 +11,23 @@ To actually charge cards, you must :ref:`debit an account <debits>`.
 
 .. cssclass:: method-section
 
-tokenize a card
+Tokenize a Card
 ---------------
 Creates a new card
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
    .. dcode:: form cards.create
 
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario card_create
 
 
 .. cssclass:: method-section
 
-retrieve a card
+Retrieve a Card
 ---------------
 
 Retrieves the details of a card that has previously been created.
@@ -39,19 +39,19 @@ information is returned when creating the card.
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario card_show
 
 .. cssclass:: method-section
 
 
-list all cards
+List All Cards
 --------------
 
 Returns a list of cards that you've created.
 
-.. container:: method-description
+.. cssclass:: dl-horizontal dl-params
 
   ``limit``
       *optional* integer. Defaults to ``10``.
@@ -59,13 +59,13 @@ Returns a list of cards that you've created.
   ``offset``
       *optional* integer. Defaults to ``0``.
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario card_list
 
 .. cssclass:: method-section
 
-update a card
+Update a Card
 -------------
 
 Update information in a card
@@ -74,13 +74,13 @@ Update information in a card
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario card_update
 
 .. cssclass:: method-section
 
-invalidating a card
+Invalidating a Card
 -------------------
 
 Invalidating a card will mark the card as invalid, so it may not be charged.
@@ -89,13 +89,13 @@ Invalidating a card will mark the card as invalid, so it may not be charged.
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario card_invalidate
 
 .. cssclass:: method-section
 
-charging a card
+Charging a Card
 ----------------
 
 Charging a card requires that you :ref:`debit an account <debits>`
@@ -104,6 +104,6 @@ Charging a card requires that you :ref:`debit an account <debits>`
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. no request

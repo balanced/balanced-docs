@@ -1,0 +1,77 @@
+.box {
+  color: @white;
+  display: inline-block;
+  padding: 0px 20px 0px 0px;
+  .fontStyle('NimbusSanNov-Reg', inherit, @color: @white);
+
+  &.box-block {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .icon {
+    margin-right: 10px;
+    vertical-align: middle;
+    margin-top: 0px;
+  }
+
+  &.box-blue {
+    .icon {
+      &.icon-page {
+        .cssIcon(@iconsFile, 50px, 50px, -150px, 230px);
+      }
+
+      &.icon-cloud {
+        .cssIcon(@iconsFile, 50px, 50px, -200px, 230px);
+      }
+
+      background-color: @persianBlue100 !important;
+    }
+
+    background-color: @persianBlue60;
+
+    &:hover {
+      background-color: @persianBlue100;
+    }
+  }
+
+  &.box-turquoise {
+    .icon {
+      &.icon-page {
+        .cssIcon(@iconsFile, 50px, 50px, -150px, 230px);
+      }
+
+      &.icon-cloud {
+        .cssIcon(@iconsFile, 50px, 50px, -200px, 230px);
+      }
+
+      background-color: @turquoise100 !important;
+    }
+
+    background-color: @turquoise60;
+
+    &:hover {
+      background-color: @turquoise100;
+    }
+  }
+
+  &.box-purple {
+    .icon {
+      &.icon-page {
+        .cssIcon(@iconsFile, 50px, 50px, -150px, 230px);
+      }
+
+      &.icon-cloud {
+        .cssIcon(@iconsFile, 50px, 50px, -200px, 230px);
+      }
+
+      background-color: @byzantiumPurple100 !important;
+    }
+
+    background-color: @byzantiumPurple60;
+
+    &:hover {
+      background-color: @byzantiumPurple100;
+    }
+  }
+}

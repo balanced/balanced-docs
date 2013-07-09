@@ -2,9 +2,8 @@ import json
 import re
 
 
-def load(file_path, rev='rev0'):
-    data = json.load(file_path)
-    return Spec(data[rev])
+def load(file_path):
+    return Spec(json.load(file_path))
 
 
 class Spec(dict):
@@ -16,24 +15,11 @@ class Spec(dict):
         return self['endpoints']
 
     def match_endpoint(self, name):
-
-        def _nested(path, nesting):
-            i = 0
-            for part in nesting:
-                i = path.find('/' + part, i)
-                if i == -1:
-                    return False
-            return True
-
-        nesting, _, name = name.rpartition('/')
-        nesting = nesting.split('/')
         matches = []
         for endpoint in self.endpoints:
             if name == endpoint['name']:
-                if nesting and not _nested(endpoint['path'], nesting):
-                    continue
                 matches.append(endpoint)
-        return sorted(matches, key=lambda x: len(x['path']))
+        return matches
 
     # views
 
@@ -46,7 +32,7 @@ class Spec(dict):
         def _munge(v):
             return re.sub(r'[\_\-\.]', '', v.lower())
 
-        name = _munge(name) + 'view'
+        name = _munge(name)
         for view in self.views:
             if name == _munge(view['name']):
                 return view

@@ -91,7 +91,7 @@ Response
 Refund a Debit
 --------------
 
-.. dcode:: endpoint debits/refunds.create
+.. dcode:: endpoint debit_refunds.create
 
 
 Request

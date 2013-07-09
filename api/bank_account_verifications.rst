@@ -1,6 +1,6 @@
 .. _bank-account-verifications:
 
-bank account verifications
+Bank Account Verifications
 ==========================
 
 **NOTE** You'll only need to verify a bank account if you're planning to later
@@ -37,7 +37,7 @@ Creates a new bank account verification.
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario bank_account_verification_create
 
@@ -56,7 +56,7 @@ Gets the verification for a bank account.
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario bank_account_verification_show
 
@@ -76,6 +76,6 @@ deposit amounts are always 1 and 1.
 
   .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
   .. dcode:: scenario bank_account_verification_update

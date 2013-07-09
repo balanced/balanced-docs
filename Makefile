@@ -61,7 +61,7 @@ api/html/index.html:
 	$(SPHINXBUILD) -b singlehtml -c api api api/html
 	
 $(SITE_DIR)/api-gen.html: api/html/index.html
-	mv api/html/index.html ${SITE_DIR}/api-gen.html
+	mv api/html/api.html ${SITE_DIR}/api-gen.html
 
 api: $(SITE_DIR)/api-gen.html
 
@@ -76,7 +76,7 @@ overview/html/index.html:
 	$(SPHINXBUILD) -b singlehtml -c overview overview overview/html
 	
 $(SITE_DIR)/overview-gen.html: overview/html/index.html
-	mv overview/html/index.html ${SITE_DIR}/overview-gen.html
+	mv overview/html/overview.html ${SITE_DIR}/overview-gen.html
 
 overview: $(SITE_DIR)/overview-gen.html
 

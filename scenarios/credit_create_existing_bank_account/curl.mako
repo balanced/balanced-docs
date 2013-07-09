@@ -1,6 +1,6 @@
 <%namespace file='/_main.mako' name='main'/>
 <%
-  ep = main.route_for_endpoint('bank_accounts/credits.create')
+  ep = main.route_for_endpoint('bank_account_credits.create')
 %>
 
 % if mode == 'definition':
