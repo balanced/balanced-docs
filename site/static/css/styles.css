@@ -5210,9 +5210,12 @@ a.badge:focus {
   background-color: #ffffff;
 }
 .spaced-out {
-  padding-left: 10px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  margin-left: 15px;
+  line-height: 20px;
+  margin-bottom: 7px;
+}
+.spaced-out:first-of-type {
+  margin-top: 6px;
 }
 @font-face {
   font-family: 'NimbusSanNov-Med';
@@ -6121,10 +6124,16 @@ span.text-highlight.search-active {
 }
 .code-white div p {
   text-transform: capitalize;
-  font-family: NimbusSansNov-Reg;
+  font-family: 'FanwoodText-Regular';
+  font-size: 16px;
+  color: #000000;
   font-weight: normal;
-  font-size: 18px;
+  font-style: normal;
+  letter-spacing: normal;
   color: #000;
+}
+.code-white pre {
+  padding-left: 0px;
 }
 .descclassname {
   color: #006973;
