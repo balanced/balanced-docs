@@ -1,0 +1,130 @@
+.. begin-section: definition
+
+.. container:: definition
+
+   Definition
+
+   .. code-block:: bash
+
+      POST Somewhere over the rainbow
+
+
+   .. code-block:: python
+
+      balanced.yep
+
+
+   .. code-block:: ruby
+
+      Balanced::as you can see
+
+
+   .. code-block:: php
+
+      Balanced\this_really_works->and()
+
+
+   .. code-block:: node
+
+      balanced.this.cant.fail
+
+
+   .. code-block:: java
+
+      import what;
+
+
+
+.. end-section: definition
+
+.. begin-section: request
+
+.. container:: request
+
+   Request
+
+   .. code-block:: bash
+
+      curl http://look_at_this_url
+            -u 90ef623ce98b11e2a19a026ba7c1aba6:
+
+
+
+   .. code-block:: python
+
+      import balanced
+
+      balanced.configure("46c08048cd8811e2acae026ba7c1aba6")
+
+
+      bank_account = balanced.BankAccount.find('/v1/bank_accounts/BA2fU4b0MNuBHuI3NrvyOsTE')
+      credit = bank_account.credit(10000)
+
+
+   .. code-block:: ruby
+
+      require 'balanced'
+      Balanced.configure('8af725c6d54611e2bf5e026ba7f8ec28')
+
+      marketplace = Balanced::Marketplace.my_marketplace
+
+      bank_account = Balanced::BankAccount.find('/v1/bank_accounts/BA4jgL1IYTPL1da2wmwdWvPp')
+      bank_account.credit(10000)
+
+
+   .. code-block:: php
+
+      <?php
+
+      require(__DIR__ . '/vendor/autoload.php');
+
+      Httpful\Bootstrap::init();
+      RESTful\Bootstrap::init();
+      Balanced\Bootstrap::init();
+
+      Balanced\Settings::$api_key = "2fd37702d33511e2a00f026ba7d31e6f";
+
+      $bank_account = Balanced\BankAccount::get("/v1/bank_accounts/BA6aflmsJEE7FldgQGpsgW0u");
+      $credit = $bank_account->credit(10000);
+
+
+   .. code-block:: node
+
+      var balanced_library = require('balanced');
+
+      var balanced = new balanced_library({
+          marketplace_uri: "/v1/marketplaces/TEST-MP4pEG51Wj64pLOqfg6BFhJS",
+          secret: "90ef623ce98b11e2a19a026ba7c1aba6"
+      });
+
+      balanced.Credits.add("/v1/bank_accounts/BA4qaDpBNV0g7WbjaswEJtna", 10000, "",
+      		    function(err, result) {
+          /* . . . */
+      });
+
+
+   .. code-block:: java
+
+      Settings.configure("2776ea40d92e11e29fe1026ba7cac9da");
+
+      BankAccount ba = new BankAccount("/v1/bank_accounts/BA1iViFZ5fKWIixl3fpq07Je");
+      ba.credit(10000);
+
+
+
+.. end-section: request
+
+.. begin-section: response
+
+.. container:: response
+
+   Response
+
+   .. code-block:: javascript
+
+      {
+      }
+
+
+
+.. end-section: response

@@ -585,13 +585,14 @@ def main():
     Scenario.bootstrap(ctx)
     write = BlockWriter(sys.stdout)
     for scenario in args.scenarios:
+        if os.environ.get('BALANCED_REV', 'rev0') != 'rev0':
+            # TODO: make this work
+            with open('./empty-scenario', 'r') as some_file:
+                print some_file.read()
+            continue
         logger.debug('scenario "%s"', scenario)
         scenario = ctx.lookup_scenario(scenario)
-        if (os.environ.get('BALANCED_REV', 'rev0') != 'rev0'
-            and ('account_' in scenario.name or 'accounts' in scenario.name)):
-            blocks, response = [], ''
-        else:
-            blocks, response = scenario()
+        blocks, response = scenario()
         generate(write, scenario.name, blocks, response, args.sections)
     ctx.storage.save()
 

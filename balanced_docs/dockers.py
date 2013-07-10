@@ -20,7 +20,7 @@ class Spec(dict):
 
     def match_endpoint(self, name):
 
-        print "####", name
+        #print "####", name
 
         def _nested(path, nesting):
             i = 0
@@ -50,6 +50,10 @@ class Spec(dict):
         return self['views']
 
     def match_view(self, name):
+        if self._rev == 'rev0':
+            name = name.split('/')[0]
+        else:
+            name = name.split('/')[-1]
 
         def _munge(v):
             return re.sub(r'[\_\-\.]', '', v.lower())
@@ -67,13 +71,17 @@ class Spec(dict):
         return self['forms']
 
     def match_form(self, name):
+        if self._rev == 'rev0':
+            name = name.split('/')[0]
+        else:
+            name = name.split('/')[-1]
 
         def _munge(v):
             v = re.sub(r's\.', '.', v)
             return re.sub(r'[\_\-.]', '', v.lower())
 
         name = _munge(name) + 'form'
-        print "#####", name
+        #print "#####", name
         for form in self.forms:
             if name == _munge(form['name']):
                 return form

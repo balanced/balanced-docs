@@ -1,6 +1,6 @@
 {
-    "secret": "14a4972ae90811e2861e026ba7cac9da", 
-    "buyer_uri": "/v1/marketplaces/TEST-MPDdhVsX258cyv9ZvJu5dUc/accounts/ACELOI0XstBNUdB2QKAC88f", 
-    "merchant_uri": "/v1/marketplaces/TEST-MPDdhVsX258cyv9ZvJu5dUc/accounts/ACM3ODkvLtwnMukl5Ofxb5g", 
+    "secret": "b54ed12ee98d11e2b3cd026ba7f8ec28", 
+    "buyer_uri": "/v1/marketplaces/TEST-MP5wnhxV3fmVHMObRGFlHGP0/accounts/AC5y2851QdMkPg8h7SA9AKls", 
+    "merchant_uri": "/v1/marketplaces/TEST-MP5wnhxV3fmVHMObRGFlHGP0/accounts/AC5F9fat964veiTWUe89hnQG", 
     "root_uri": "https://api.balancedpayments.com"
 }
