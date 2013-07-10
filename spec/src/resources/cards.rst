@@ -83,10 +83,10 @@ Request
 ``offset``
     *optional* integer. Defaults to ``0``.
 
-.. TODO: fix and stuff
+.. TODO: fix and stuff account_cards.index
 
-.. FIX: .. dcode:: scenario account_cards.index
-.. FIX:   :section-include: response
+.. dcode:: scenario cards.index
+   :section-include: response
 
 Update a Card
 -------------

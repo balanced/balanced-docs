@@ -60,7 +60,7 @@ Request
 
 .. TODO: fix this form to work with both version bank_account_credits.create
 
-.. dcode:: form credits.create
+.. dcode:: form bank_account_credits.create/credits.create
 
 .. dcode:: scenario bank_account_credits.create
    :section-include: request
@@ -83,13 +83,13 @@ Request
 
 .. TODO: fix account_credits.create
 
-.. dcode:: form credits.create
+.. dcode:: form account_credits.create/credits.create
    :exclude: account_uri bank_account_uri
 
 .. TODO: fix this with customer scenarios and stuff
 
-.. FIX:  dcode:: scenario account_credits.create
-.. FIX:   :section-include: request
+.. dcode:: scenario account_credits.create
+   :section-include: request
 
 
 Response
@@ -165,7 +165,7 @@ Request
 ``offset``
     *optional* integer. Defaults to ``0``.
 
-.. TODO: fix this with customers scenarios and stuff
+.. TODO: fix this with customers scenarios and stuff account_credits.index/
 
-.. FIX:  dcode:: scenario account_credits.index
-.. FIX:      :section-include: response
+.. dcode:: scenario credits.index
+   :section-include: response
