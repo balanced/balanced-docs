@@ -58,7 +58,9 @@ Credit an Existing Bank Account
 Request
 ~~~~~~~
 
-.. dcode:: form bank_account_credits.create
+.. TODO: fix this form to work with both version bank_account_credits.create
+
+.. dcode:: form credits.create
 
 .. dcode:: scenario bank_account_credits.create
    :section-include: request
@@ -79,17 +81,19 @@ Credit a Merchant
 Request
 ~~~~~~~
 
-.. dcode:: form account_credits.create
+.. TODO: fix account_credits.create
+
+.. dcode:: form credits.create
    :exclude: account_uri bank_account_uri
 
-.. dcode:: scenario account_credits.create
+.. dcode:: scenario customer_credits.create
    :section-include: request
 
 
 Response
 ~~~~~~~~
 
-.. dcode:: scenario account_credits.create
+.. dcode:: scenario customer_credits.create
    :section-include: response
 
 
@@ -157,5 +161,5 @@ Request
 ``offset``
     *optional* integer. Defaults to ``0``.
 
-.. dcode:: scenario account_credits.index
+.. dcode:: scenario customer_credits.index
    :section-include: response

@@ -1,6 +1,13 @@
+REV?= rev1
+
 # spec variables
 SPEC_SRC_DIR	=	spec/src
-SPEC_SRCS		=	$(wildcard $(SPEC_SRC_DIR)/*.rst) $(wildcard $(SPEC_SRC_DIR)/resources/*.rst)
+SPEC_SRCS_RAW		=	$(wildcard $(SPEC_SRC_DIR)/*.rst) $(wildcard $(SPEC_SRC_DIR)/resources/*.rst)
+ifeq ($(REV), rev0)
+	SPEC_SRCS= $(SPEC_SRCS_RAW)
+else
+	SPEC_SRCS = $(filter-out %accounts.rst, $(SPEC_SRCS_RAW))
+endif
 SPEC_RST_DIR	=	spec/dst
 SPEC_RST_CMD	=	./spec/build.py
 SPEC_RST_DSTS	=	$(addprefix $(SPEC_RST_DIR)/, $(patsubst $(SPEC_SRC_DIR)/%, %, $(SPEC_SRCS)))
@@ -24,6 +31,7 @@ I18NSPHINXOPTS = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
 
 # common variable
 SITE_DIR 			= site
+
 
 .PHONY: clean spec-clean api-clean all test
 
@@ -97,3 +105,7 @@ $(SITE_DIR)/static/js/compiled.js: $(wildcard $(SITE_DIR)/static/js/*.js)
 		$(SITE_DIR)/static/js/search.js 		\
 		$(SITE_DIR)/static/js/docs.js 			\
 			> $@
+
+ddd:
+	echo $(REV)
+	echo $(SPEC_SRCS)

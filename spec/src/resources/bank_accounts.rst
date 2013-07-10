@@ -31,7 +31,9 @@ Create a Bank Account
 Request
 ~~~~~~~
 
-.. dcode:: form root_bank_account.create
+.. TODO: make this work with rev: root_bank_account.create
+
+.. dcode:: form bank_account_token.create
    :exclude: bank_code
 
 .. dcode:: scenario bank_accounts.create

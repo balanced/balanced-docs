@@ -3,9 +3,11 @@ import re
 
 
 def load(file_path, rev='rev0'):
+    rev = 'rev1'
     data = json.load(file_path)
-    return Spec(data[rev])
-
+    spec = Spec(data[rev])
+    spec._rev = rev
+    return spec
 
 class Spec(dict):
 
@@ -16,6 +18,8 @@ class Spec(dict):
         return self['endpoints']
 
     def match_endpoint(self, name):
+
+        print "####", name
 
         def _nested(path, nesting):
             i = 0
@@ -30,7 +34,8 @@ class Spec(dict):
         matches = []
         for endpoint in self.endpoints:
             if name == endpoint['name']:
-                if nesting and not _nested(endpoint['path'], nesting):
+                if (nesting and self._rev == 'rev0'
+                    and not _nested(endpoint['path'], nesting)):
                     continue
                 matches.append(endpoint)
         return sorted(matches, key=lambda x: len(x['path']))
