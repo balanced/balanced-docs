@@ -5847,14 +5847,6 @@ dl.dl-params dt code {
 blockquote.last {
   margin-left: -120px;
 }
-.dropdown :hover {
-  background-color: #000000 !important;
-  color: #ffffff !important;
-}
-.dropdown :hover a b {
-  border-top-color: white;
-  border-bottom-color: white;
-}
 .dropdown ul.dropdown-menu {
   -webkit-box-shadow: None;
   -moz-box-shadow: None;
@@ -5911,8 +5903,16 @@ blockquote.last {
   color: #ffffff !important;
 }
 .dropdown.open a.dropdown-toggle b {
-  border-top-color: white !important;
-  border-bottom-color: white !important;
+  border-top-color: #FFF !important;
+  border-bottom-color: #FFF !important;
+}
+#lang-dropdown-head:hover {
+  color: #FFF;
+  background-color: #000;
+}
+#lang-dropdown-head:hover b {
+  border-bottom-color: white;
+  border-top-color: white;
 }
 form.form-horizontal {
   background-color: #ffffff;

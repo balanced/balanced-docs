@@ -179,17 +179,17 @@ Your marketplace listing fee is 10%. So, say Alice lists her bike for $100.00.
 Bob decides to rent this bike - costing him $100.00.
 
 - You charge Bob $100.00
-- Your ``in_escrow`` balance now shows $100.00
+- Your  balance now shows $100.00
 - Alice delivers the bike to Bob
 - You issue a $90.00 credit to Alice, using :ref:`Balanced Payouts <payouts>`
 
   -  Your listing fee is 10%, so 90% of $100.00 is $90.00
 
-- Your ``in_escrow`` balance now shows $10.00
+- Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance now shows $10.00
 - You issue a credit to your own bank account, using :ref:`Balanced Payouts <payouts>`
 - Your money is in your bank account next business day
 - Alice's money is in her bank account next business day
-- Your ``in_escrow`` balance now shows $0.00
+- Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance now shows $0.00
 
 Fee Scenario #2
 ~~~~~~~~~~~~~~~
@@ -201,14 +201,14 @@ Bob decides to rent this bike - costing him $110.00.
 
   - Your renting fee is 10%, so $100.00 * 1.10 = $110.00 is how how much to charge Bob
 
-- Your ``in_escrow`` balance now shows $110.00
+- Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance now shows $110.00
 - Alice delivers the bike to Bob
 - You issue a $100.00 credit to Alice, using :ref:`Balanced Payouts <payouts>`
-- Your ``in_escrow`` balance now shows $10.00
+- Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance now shows $10.00
 - You issue a credit for $10.00 to your own bank account, using :ref:`Balanced Payouts <payouts>`
 - Your money is in your bank account next business day
 - Alice's money is in her bank account next business day
-- Your ``in_escrow`` balance now shows $0.00
+- Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance now shows $0.00
 
 Fee Scenario #3
 ~~~~~~~~~~~~~~~
@@ -222,17 +222,17 @@ bike - costing him $110.00.
 
   - Your renting fee is 10%, so $100.00 * 1.10 = $110.00 is how how much to charge Bob
 
-- Your ``in_escrow`` balance now shows $110.00
+- Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance now shows $110.00
 - Alice delivers the bike to Bob
 - You issue a $90.00 credit to Alice, using :ref:`Balanced Payouts <payouts>`
 
   -  Your listing fee is 10%, so 90% of $100.00 is $90.00
 
-- Your ``in_escrow`` balance now shows $20.00
+- Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance now shows $20.00
 - You issue a credit for $20.00 to your own bank account, using :ref:`Balanced Payouts <payouts>`
 - Your money is in your bank account next business day
 - Alice's money is in her bank account next business day
-- Your ``in_escrow`` balance now shows $0.00
+- Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance now shows $0.00
 
 .. cmd
 .. Crediting Your Seller's Bank Account

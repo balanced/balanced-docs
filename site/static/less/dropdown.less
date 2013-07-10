@@ -1,14 +1,4 @@
 .dropdown {
-  & :hover{
-    background-color: @black !important;
-    color: @white !important;
-    a{
-      b{
-        border-top-color: white;
-        border-bottom-color: white;
-      }
-    }
-  }
   ul {
     &.dropdown-menu {
       .box-shadow(None);
@@ -72,11 +62,21 @@
       &.dropdown-toggle {
         background-color: @black !important;
         color: @white !important;
-      b {
-        border-top-color:  white !important;
-        border-bottom-color: white !important;
+        b{
+          border-top-color: #FFF !important;
+          border-bottom-color: #FFF !important;
+        }
       }
-      }
+    }
+  }
+}
+#lang-dropdown-head{
+  &:hover{
+    color: #FFF;
+    background-color: #000;
+    b{
+      border-bottom-color: white;
+      border-top-color: white;
     }
   }
 }
