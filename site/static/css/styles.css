@@ -5821,12 +5821,17 @@ dl.dl-horizontal dd {
 dl.dl-params dt,
 dl.dl-params dd {
   border-top: 1px solid #d9d8d5;
-  padding: 5px 0px 20px 0px;
   text-align: left;
 }
 dl.dl-params dt strong,
 dl.dl-params dd strong {
   color: #000000;
+}
+dl.dl-params dd {
+  padding: 5px 0px 20px 0px;
+}
+dl.dl-params dt {
+  padding: 5px 0px 19px 0px;
 }
 dl.dl-params dt code {
   font-family: 'Inconsolata';
