@@ -105,9 +105,13 @@ $(document).ready(function () {
     // VERSION SELECTOR
     var default_version = "rev0";
     try {
-	default_version = locaiton.pathname.split('/')[1];
+	default_version = location.pathname.split('/')[1];
     } catch(e) {}
-    var version_element = $("[data-version='" + default_version + "']")
+    var version_element = $("[data-version='" + default_version + "']");
+    if(!version_element.length) {
+	default_version='rev0';
+	version_element = $("[data-version=rev0]");
+    }
     version_element.parent().hide();
     $("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
     $("#version-dropdown-head > .version-change").removeClass("version-change").attr('href', '#');
