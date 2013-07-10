@@ -3,9 +3,12 @@ Overview
 
 .. container:: overview-large
 
-  Balanced is a payments company dedicated to increasing the world's economic output by working with online marketplaces and crowdfunding platforms to create new forms of commerce. We’ve built a
-  white-labeled API and web-based dashboard to help them do this. And while, we really like working with
-  marketplaces and crowdfunding platforms, Balanced can be used for e-commerce models of all types.
+  Balanced is a payments company dedicated to increasing the world's 
+  economic output. To do this, we've decided to work with online 
+  marketplaces and crowdfunding platforms to help them create new forms of commerce.
+  We’ve built a white-labeled API and open sourced dashboard to help them 
+  do this. And while we really like working with marketplaces and 
+  crowdfunding platforms, Balanced can be used for e-commerce models of all types.
 
   We’ve been processing live transactions since October, 2010 and have a
   history of working closely with our customers to solve their problems,
