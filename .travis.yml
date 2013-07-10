@@ -1,6 +1,6 @@
 before_install:
   - git submodule update --init --recursive
-  - npm install lessc
+  - npm install less
 language: python
 python:
   - 2.6
