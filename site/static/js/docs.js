@@ -119,10 +119,8 @@ $(document).ready(function () {
     $(".rev-"+default_version).show();
     $("a.version-change").click(function() {
 	var $this = $(this);
-	var href = $this.attr('href');
-	var path = location.pathname.split('/');
-	path.shift(); path.shift();
-	location.href = href + '/' + path.join('/') + location.hash;
+	var href = $this.attr('data-version');
+	location.href = location.href.replace(/rev\d+/, href);
 	return false;
     });
 
