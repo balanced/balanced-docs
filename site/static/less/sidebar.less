@@ -10,20 +10,21 @@
     li {
       cursor: pointer;
       background-color: @white;
-      padding: 15px;
+      padding: 15px 15px 15px 8px;
       .fontStyle('NimbusSanNov-Bol', 18px);
       border-bottom: 1px solid @gray2;
+      color: @gray2;
 
       &:last-of-type {
         border-bottom: 0px;
       }
-
+      &:hover{
+        color: black;
+      }
       &.active {
         background-color: @egyptianBlue20;
-
+        color: #000;
         a {
-          color: @black;
-
           &:before {
             background: @iconsFile -150px -830px no-repeat;
           }
@@ -31,7 +32,8 @@
       }
 
       a {
-        color: @gray2;
+        color: inherit;
+        margin-left: -6px;
         &:before {
           content: ' ';
           display: inline-block;
@@ -43,6 +45,7 @@
           left: -10px;
           float: left;
         }
+
       }
     }
   }
