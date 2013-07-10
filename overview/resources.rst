@@ -92,7 +92,7 @@ many :ref:`support channels <overview.support>`.
 
 .. _resources.test_credit_cards:
 
-Test credit card numbers
+Test Credit Card Numbers
 ------------------------
 
 These cards will be accepted in our system only for a **TEST** marketplace.
@@ -118,7 +118,7 @@ These cards will be accepted in our system only for a **TEST** marketplace.
 
 .. _resources.test_bank_accounts:
 
-Test bank account numbers
+Test Bank Account Numbers
 -------------------------
 
 Balanced provides various utilities to aid you in testing your :ref:`payouts`

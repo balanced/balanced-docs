@@ -73,7 +73,7 @@ Including and Initializing ``balanced.js``
 
 .. _getting_started.collecting_card_info:
 
-Collecting credit card information
+Collecting Credit Card information
 ----------------------------------
 
 .. container:: mb-large
@@ -215,7 +215,7 @@ Collecting credit card information
 
 .. _getting_started.charging_cards:
 
-Charge a credit card
+Charge a Credit Card
 --------------------
 
 Ok, so you've got the card token, referred to as the ``uri`` of the returned Card
@@ -248,7 +248,7 @@ Let's charge the card:
 
 .. _getting_started.collecting_bank_info:
 
-Collect bank account info
+Collect Bank Account Info
 -------------------------
 
 .. container:: mb-large
@@ -387,7 +387,7 @@ Collect bank account info
 
 .. _getting_started.credit_bank_account:
 
-Credit a bank account
+Credit a Bank Account
 ---------------------
 
 Ok, so you've got a bank account token, referred to as the ``uri`` of the

@@ -5901,6 +5901,7 @@ blockquote.last {
 .dropdown.open a.dropdown-toggle {
   background-color: #000000 !important;
   color: #ffffff !important;
+  border-top: 1px #737373 solid;
 }
 .dropdown.open a.dropdown-toggle b {
   border-top-color: #FFF !important;
@@ -5909,6 +5910,7 @@ blockquote.last {
 #lang-dropdown-head:hover {
   color: #FFF;
   background-color: #000;
+  border-top: 1px #737373 solid;
 }
 #lang-dropdown-head:hover b {
   border-bottom-color: white;
