@@ -3,15 +3,9 @@ Overview
 
 .. container:: overview-large
 
-  Balanced is a payments company that enables entrepreneurs and developers
-  to create new and amazing e-commerce experiences. We’ve built a
-  white-labeled API and web-based dashboard to help them do this.
-  Specifically, we offer two products: Balanced Payouts and Balanced
-  Processing, which can be coupled. We really like working with
-  marketplaces and crowd-funding platforms, but Balanced can be used for
-  any type of e-commerce model. You should use Balanced to charge your
-  buyers’ credit cards and/or pay out to your sellers’ US-based bank
-  accounts via `ACH`_.
+  Balanced is a payments company dedicated to increasing the world's economic output by working with online marketplaces and crowdfunding platforms to create new forms of commerce. We’ve built a
+  white-labeled API and web-based dashboard to help them do this. And while, we really like working with
+  marketplaces and crowdfunding platforms, Balanced can be used for e-commerce models of all types.
 
   We’ve been processing live transactions since October, 2010 and have a
   history of working closely with our customers to solve their problems,
