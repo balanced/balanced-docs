@@ -936,6 +936,13 @@ def customers_delete(ctx):
     return ctx.last_req, ctx.last_resp
 
 
+@scenario
+def customers_credit(ctx):
+    customer = balanced.Customer()
+    customer.save()
+
+
+
 SCENARIOS = dict(
     (v.scenario, v)
     for k, v in globals().iteritems()
@@ -1054,6 +1061,9 @@ def main():
         write = BlockWriter(sys.stdout)
         for name in args.scenarios:
             munged = re.sub(r'[\-\.]', '_', name.lower())
+            if os.environ.get('BALANCED_REV', 'rev0') != 'rev0':
+                #munged = munged.replace('accounts', 'customers')
+                pass
             if munged not in SCENARIOS:
                 raise ValueError('Invalid scenario "{0}" (munged "{1}")'.format(name, munged))
             req, resp = SCENARIOS[munged](ctx)

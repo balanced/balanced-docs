@@ -1,9 +1,10 @@
 import json
 import re
+import os
 
-
-def load(file_path, rev='rev0'):
-    rev = 'rev1'
+def load(file_path, rev=None):
+    rev = rev or os.environ.get('BALANCED_REV', 'rev0')
+    #rev = 'rev1'
     data = json.load(file_path)
     spec = Spec(data[rev])
     spec._rev = rev
@@ -32,6 +33,8 @@ class Spec(dict):
         nesting, _, name = name.rpartition('/')
         nesting = nesting.split('/')
         matches = []
+        #if self._rev != 'rev0':
+        #    name = name.replace('accounts', 'customers')
         for endpoint in self.endpoints:
             if name == endpoint['name']:
                 if (nesting and self._rev == 'rev0'
@@ -70,6 +73,7 @@ class Spec(dict):
             return re.sub(r'[\_\-.]', '', v.lower())
 
         name = _munge(name) + 'form'
+        print "#####", name
         for form in self.forms:
             if name == _munge(form['name']):
                 return form

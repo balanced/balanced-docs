@@ -145,7 +145,9 @@ A hold is created in a way similar to creating a debit. Creating a hold will
 return a URI which can be used to perform a capture later, up to the full
 amount of the hold.
 
-.. dcode:: scenario account-create-hold
+.. TODO: fix and stuff
+
+.. FIX: .. dcode:: scenario account-create-hold
 
 
 Capturing a hold
@@ -153,7 +155,9 @@ Capturing a hold
 
 Here's an example on how to capture a hold:
 
-.. dcode:: scenario account-capture-hold
+.. TODO: fix and stuff
+
+.. FIX: .. dcode:: scenario account-capture-hold
 
 
 

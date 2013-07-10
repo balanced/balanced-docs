@@ -86,15 +86,19 @@ Request
 .. dcode:: form credits.create
    :exclude: account_uri bank_account_uri
 
-.. dcode:: scenario customer_credits.create
-   :section-include: request
+.. TODO: fix this with customer scenarios and stuff
+
+.. FIX:  dcode:: scenario account_credits.create
+.. FIX:   :section-include: request
 
 
 Response
 ~~~~~~~~
 
-.. dcode:: scenario customer_credits.create
-   :section-include: response
+.. TODO: fix this and stuff
+
+.. FIX: .. dcode:: scenario customer_credits.create
+.. FIX:   :section-include: response
 
 
 Retrieve a Credit
@@ -161,5 +165,7 @@ Request
 ``offset``
     *optional* integer. Defaults to ``0``.
 
-.. dcode:: scenario customer_credits.index
-   :section-include: response
+.. TODO: fix this with customers scenarios and stuff
+
+.. FIX:  dcode:: scenario account_credits.index
+.. FIX:      :section-include: response

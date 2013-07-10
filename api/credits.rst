@@ -37,7 +37,9 @@ credit shall be created.
 
 .. cssclass:: dl-horizontal dl-params
 
-    .. dcode:: form bank_account_credits.create
+    .. dcode:: form credits.create
+
+.. TODO: fix the name on this
 
 .. container:: code-white
 

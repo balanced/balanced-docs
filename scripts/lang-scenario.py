@@ -587,7 +587,11 @@ def main():
     for scenario in args.scenarios:
         logger.debug('scenario "%s"', scenario)
         scenario = ctx.lookup_scenario(scenario)
-        blocks, response = scenario()
+        if (os.environ.get('BALANCED_REV', 'rev0') != 'rev0'
+            and ('account_' in scenario.name or 'accounts' in scenario.name)):
+            blocks, response = [], ''
+        else:
+            blocks, response = scenario()
         generate(write, scenario.name, blocks, response, args.sections)
     ctx.storage.save()
 

@@ -46,13 +46,13 @@ test:
 
 $(SPEC_RST_DIR)/%.rst: $(SPEC_SRC_DIR)/%.rst
 	@mkdir -p $(@D)
-	$(SPEC_RST_CMD) $< > $@
+	BALANCED_REV=$(REV) $(SPEC_RST_CMD) $< > $@
 
 spec-rst: $(SPEC_RST_DSTS)
 
 $(SPEC_HTML_DIR)/%.html: $(SPEC_RST_DIR)/%.rst
 	@mkdir -p $(@D)
-	$(SPEC_HTML_CMD) $< > $@
+	BALANCED_REV=$(REV) $(SPEC_HTML_CMD) $< > $@
 
 spec-html: $(SPEC_HTML_DSTS)
 
@@ -66,7 +66,7 @@ spec-clean:
 # api
 
 api/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
-	$(SPHINXBUILD) -b singlehtml -c api api api/html
+	BALANCED_REV=$(REV) $(SPHINXBUILD) -b singlehtml -c api api api/html
 
 $(SITE_DIR)/api-gen.html: api/html/index.html
 	mv api/html/api.html ${SITE_DIR}/api-gen.html
@@ -81,7 +81,7 @@ api-clean:
 # overview
 
 overview/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
-	$(SPHINXBUILD) -b singlehtml -c overview overview overview/html
+	BALANCED_REV=$(REV) $(SPHINXBUILD) -b singlehtml -c overview overview overview/html
 
 $(SITE_DIR)/overview-gen.html: overview/html/index.html
 	mv overview/html/overview.html ${SITE_DIR}/overview-gen.html
@@ -107,5 +107,5 @@ $(SITE_DIR)/static/js/compiled.js: $(wildcard $(SITE_DIR)/static/js/*.js)
 			> $@
 
 ddd:
-	echo $(REV)
+	BALANCED_REV=$(REV) env
 	echo $(SPEC_SRCS)
