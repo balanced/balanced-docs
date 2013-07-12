@@ -31,9 +31,8 @@ function updateNavigation(e) {
         return;
     }
     var currentTopic = $active.first().find('a').first();
-    window.location = currentTopic.attr('href');
+    window.history.replaceState({}, null, currentTopic.attr('href'));
     $('.nav.nav-list').scrollTo('.active', 100, {offset : -100});
-    //window.history.replaceState({}, null, currentTopic.attr('href'));
     //console.log(currentTopic.attr('href'));
 }
 $(document).ready(function () {

@@ -10,7 +10,7 @@ This project builds the following Balanced documentation:
 
 ## Contributing
 
-All contributions, even simple grammar fixes, are greatly apprecaited.
+All contributions, even simple grammar fixes, are greatly appreciated.
 
 1. Check for open [issues](https://github.com/balanced/balanced-docs/issues) or
    [open](https://github.com/balanced/balanced-docs/issues/new) a fresh issue
@@ -54,7 +54,7 @@ git submodoule update --recursive
 
 ## Build
 
-Now that your environment is setup lets build the documentation. To build
+Now that your environment is setup, let's build the documentation. To build
 them all at once do:
 
 ```bash
@@ -87,7 +87,7 @@ make api
 
 ## Preview
 
-Lets take a look at what we've built using [mongoose](https://github.com/valenok/mongoose):
+Let's take a look at what we've built using [mongoose](https://github.com/valenok/mongoose):
 
 ```bash
 cd site
