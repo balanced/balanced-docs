@@ -856,6 +856,39 @@ def bank_account_authentications_update(ctx):
     return ctx.last_req, ctx.last_resp
 
 
+@scenario
+def reversals_create(ctx):
+    ctx.merchant.credit(amount=1234).reverse()
+    return ctx.last_req, ctx.last_resp
+
+@scenario
+def reversals_show(ctx):
+    ctx.merchant.credit(amount=1234).reverse()
+    return ctx.last_req, ctx.last_resp
+
+@scenario
+def reversals_update(ctx):
+    reversal = ctx.merchant.credit(amount=1234).reverse()
+    reversal.description = 'new description'
+    reversal.meta = {
+        'id': '090909090'
+    }
+    reversal.save()
+    return ctx.last_req, ctx.last_resp
+
+@scenario
+def reversals_index(ctx):
+    ctx.merchant.credit(amount=1234).reverse()
+    ctx.merchant.credit(amount=8880).reverse()
+    # TODO: add reversals uri to the marketplace, customer, account view
+    #import ipdb; ipdb.set_trace()
+    #ctx.marketplace.reversals_uri += '?limit=2'
+    #ctx.marketplace.reversals[0:2]
+    gg = {'body': 'fix this', 'headers': [('lolz', 'failure')]}
+    return gg, gg
+    return ctx.last_req, ctx.last_resp
+
+
 class Customer(balanced.Resource):
     __metaclass__ = balanced.resources.resource_base(
         collection='customers', resides_under_marketplace=False)

@@ -20,5 +20,6 @@
   debits
   holds
   refunds
+  reversals
   events
   accounts
