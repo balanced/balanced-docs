@@ -4,5 +4,5 @@ refund = json.loads(
 )
 
 request = {
-    'uri': refund['uri'],
+    'uri': refund.get('uri', 'TODO: fix reversals to work while pending'),
 }
