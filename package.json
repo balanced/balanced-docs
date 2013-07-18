@@ -1,0 +1,7 @@
+{
+	"name": "balanced-docs",
+	"private": true,
+	"dependencies": {
+		"less": "*"
+	}
+}

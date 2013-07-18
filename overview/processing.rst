@@ -78,9 +78,9 @@ Full Refund
 
 Let's say you've debited an account for $20.00
 
-* Your ``in_escrow`` balance says $20.00
+* Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance says $20.00
 * You issue a refund for $20.00
-* Your ``in_escrow`` balance says $0.00
+* Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance says $0.00
 
 
 Partial Refund
@@ -90,18 +90,18 @@ You can also perform multiple partial refunds up to the original amount.
 
 Let's say you've debited an account for $20.00
 
-* Your ``in_escrow`` balance says $20.00
+* Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance says $20.00
 * You issue a refund for $10.00
-* Your ``in_escrow`` balance says $10.00
+* Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance says $10.00
 * You issue another refund for $5.00
-* Your ``in_escrow`` balance says $5.00
+* Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance says $5.00
 
 Not Enough Funds to Refund
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's say you've debited an account for $20.00
 
-* Your ``in_escrow`` balance says $20.00
+* Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance says $20.00
 * You issue a refund for $30.00
 * The API will return a **400** status code, similar to:
 

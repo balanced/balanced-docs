@@ -90,7 +90,7 @@ Balanced associates a ``merchant`` role to signify whether or not an account
 has been underwritten.
 
 .. note::
-   :header_class: alert alert-tab-red-red
+   :header_class: alert alert-tab-red
    :body_class: alert alert-gray
 
    Accounts have been deprecated. Please use :ref:`Customers <customers>` instead.
