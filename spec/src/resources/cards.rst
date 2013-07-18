@@ -125,3 +125,21 @@ Response
 
 .. dcode:: scenario cards.associate
    :section-include: response
+
+Delete a Card
+---------------------
+
+Request
+~~~~~~~
+
+.. dcode:: endpoint cards.delete
+
+.. dcode:: scenario cards.delete
+   :section-include: response
+
+Response
+~~~~~~~~
+
+.. dcode:: scenario cards.delete
+   :section-include: response
+
