@@ -18,7 +18,7 @@ Deprecated
 ~~~~~~~~~~
 
 .. dcode:: view bank_account
-   :include: bank_code is_valid last_four 
+   :include: bank_code is_valid last_four
 
    - is_valid
      Use `Delete a Bank Account`_ instead.
@@ -74,7 +74,7 @@ Request
 List All Bank Accounts for an Account
 -------------------------------------
 
-.. dcode:: endpoint account_bank_accounts.index
+.. dcode:: endpoint accounts/bank_accounts.index
 
 Request
 ~~~~~~~
@@ -91,7 +91,7 @@ Request
 Associate a Bank Account with an Account
 ----------------------------------------
 
-.. dcode:: endpoint marketplace_bank_accounts.update
+.. dcode:: endpoint marketplaces/bank_accounts.update
 
 Request
 ~~~~~~~

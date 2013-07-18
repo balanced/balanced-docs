@@ -1,3 +1,7 @@
+///////////////
+// search.js //
+///////////////
+
 index = lunr(function () {
     this.field('title', {boost: 10});
     this.field('body');
@@ -200,4 +204,3 @@ $(document).ready(function () {
 
 
 });
-

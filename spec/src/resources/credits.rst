@@ -14,12 +14,12 @@ Fields
 
 .. dcode:: view credit
    :exclude: transaction_number available_at fee destination state invoice_uri
-   
+
    - account
-     `Accounts <./accounts.rst>`_. Present if the credit went to a merchant instead of directly to a bank account. 
+     `Accounts <./accounts.rst>`_. Present if the credit went to a merchant instead of directly to a bank account.
    - bank_account
      `Bank Account <./bank_accounts.rst>`_.
-    
+
 Deprecated
 ~~~~~~~~~~
 
@@ -53,7 +53,7 @@ Response
 Credit an Existing Bank Account
 -------------------------------
 
-.. dcode:: endpoint bank_account_credits.create
+.. dcode:: endpoint bank_account/credits.create
 
 Request
 ~~~~~~~
@@ -73,7 +73,7 @@ Response
 Credit a Merchant
 -----------------
 
-.. dcode:: endpoint account_credits.create
+.. dcode:: endpoint account/credits.create
 
 
 Request
@@ -111,13 +111,13 @@ List All Credits
 
 .. dcode:: endpoint credits.index
    :exclude-method: HEAD
-   
+
 Request
 ~~~~~~~
 
 ``limit``
-    *optional* integer. Defaults to ``10``. 
- 
+    *optional* integer. Defaults to ``10``.
+
 ``offset``
     *optional* integer. Defaults to ``0``.
 
@@ -127,33 +127,33 @@ Request
 List All Credits for a Bank Account
 -----------------------------------
 
-.. dcode:: endpoint bank_account_credits.index
+.. dcode:: endpoint bank_account/credits.index
    :exclude-method: HEAD
 
 Request
 ~~~~~~~
 
 ``limit``
-    *optional* integer. Defaults to ``10``. 
- 
+    *optional* integer. Defaults to ``10``.
+
 ``offset``
     *optional* integer. Defaults to ``0``.
-   
+
 .. dcode:: scenario bank_account_credits.index
 
 
 List All Credits for a Merchant
 -------------------------------
 
-.. dcode:: endpoint account_credits.index
+.. dcode:: endpoint account/credits.index
    :exclude-method: HEAD
-   
+
 Request
 ~~~~~~~
 
 ``limit``
-    *optional* integer. Defaults to ``10``. 
- 
+    *optional* integer. Defaults to ``10``.
+
 ``offset``
     *optional* integer. Defaults to ``0``.
 
