@@ -36,9 +36,9 @@ SITE_DIR 			= site
 .PHONY: clean spec-clean api-clean all test everything
 
 all:
-#REV=rev0 make everything
+	REV=rev0 make everything
 	make clean-limited
-	REV=rev1 make everythiny
+	REV=rev1 make everything
 
 everything: spec api overview
 
