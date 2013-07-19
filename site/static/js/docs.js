@@ -102,33 +102,13 @@ $(document).ready(function () {
     });
 
     // VERSION SELECTOR
-    /*var default_version = /rev(\w+)-/.exec(location.hash);
-    var version_element = $("[data-version='" + default_version + "']");
-    if(!version_element.length) {
-	default_version='rev0';
-	version_element = $("[data-version=rev0]");
-    }
-    version_element.parent().hide();
-    $("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
-    $("#version-dropdown-head > .version-change").removeClass("version-change").attr('href', '#');
-    $("[class^=rev-]").hide();
-    $(".rev-"+default_version).show();
-    $("a.version-change").click(function() {
-	var $this = $(this);
-	var href = $this.attr('data-version');
-	location.href = location.href.replace(/rev\d+/, href);
-	return false;
-    });
-*/
 
-    var current_version = 'rev0';
-    try {
-	current_version = /rev\w+/.exec(location.hash)[0];
-    } catch (e) { console.log(e); }
+    var current_version;
 
     function change_version(vers) {
 	if(vers == current_version) return;
-//	debugger;
+	current_version = vers;
+
 	var version_element = $("[data-version='" + vers + "']");
 	if(!version_element.length) {
 	    throw new Error('Version '+vers+' not found');
@@ -138,29 +118,24 @@ $(document).ready(function () {
 	$("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
 	$("#version-dropdown-head > .version-change").removeClass("version-change").attr('href', '#');
 
-	/*$('div[class^=api-version]').each(function () {
-	    var $this = $(this);
-
-	    if($this.attr('class').indexOf('api-version-'+vers) == -1)
-		$this.hide();
-	    else
-		$this.show();
-	});*/
-
 	$('div[class^=api-version]').hide();
 	$('div.api-version-'+vers).show();
-
-	fix_sidebar();
-	location.hash = location.hash.replace(/rev(\w+)/, vers);
 
 	$("[class^=rev-]").hide();
 	$(".rev-"+vers).show();
 
+	var new_hash = location.hash.replace(/rev(\w+)/, vers);
+
+	fix_sidebar();
 	$('[data-spy="scroll"]').each(function () {
            $(this).scrollspy('refresh');
         });
 
-	current_version = vers;
+	location.hash = new_hash;
+	//$.scrollTo(new_hash);
+
+	//history.pushState(null, '', new_hash);
+
     }
 
     $("div[class^=api-version]").each(function () {
@@ -193,11 +168,6 @@ $(document).ready(function () {
 	return false;
     });
 
-    var version_element = $("[data-version='" + current_version + "']");
-    if(!version_element.length) {
-	version_element = $("[data-version=rev0]");
-    }
-    version_element.parent().hide();
-
+    change_version(/rev\w+/.exec(location.hash)[0] || 'rev0');
 
 });
