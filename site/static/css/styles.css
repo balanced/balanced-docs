@@ -5288,7 +5288,7 @@ a.badge:focus {
 .navbar.navbar-clients-search {
   top: 61px;
   border-bottom: 1px solid #bfbeb9;
-  z-index: 1;
+  z-index: 9;
 }
 .navbar .navbar-inner {
   border: 0px;
@@ -5861,7 +5861,8 @@ blockquote.last {
 .dropdown ul.dropdown-menu.version {
   min-width: 130px;
 }
-.dropdown ul.dropdown-menu.lang {
+.dropdown ul.dropdown-menu.lang,
+.dropdown ul.dropdown-menu.search {
   min-width: 200px;
   border-left: 5px solid #000000;
   border-right: 5px solid #000000;
