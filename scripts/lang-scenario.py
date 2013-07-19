@@ -25,6 +25,7 @@ import shlex
 import subprocess
 import sys
 import urllib
+import requests
 
 import balanced
 import mako.lookup
@@ -267,22 +268,36 @@ class Scenario(object):
         # api conf
         if  ctx.storage.get('api_location') != ctx.api_location:
             ctx.storage.clear()
-            ctx.storage['api_location'] = ctx.api_location
-        balanced.config.root_uri = ctx.storage['api_location']
+
         if 'api_key' not in ctx.storage:
             ctx.storage.clear()
             ctx.storage['api_location'] = ctx.api_location
+            ctx.storage['accept_type'] = 'application/vnd.balancedpayments+json; version=1.1'
             logger.debug('creating api key')
             key = balanced.APIKey().save()
             ctx.storage['api_key'] = key.secret
+            # key = requests.post(ctx.storage['api_location'] + '/api_keys',
+            #                     headers={'Accept-Type': ctx.storage['accept_type']}
+            # )
+            # ctx.storage['secret'] = ctx.storage['api_key'] = key.json()['secret']
+
+        balanced.config.root_uri = ctx.storage['api_location']
         balanced.configure(ctx.storage['api_key'])
 
         # marketplace
         if 'marketplace_id' not in ctx.storage:
             logger.debug('creating marketplace')
+            # marketplace = requests.post(ctx.storage['api_location'] + '/marketplaces',
+            #                             headers={'Accept-Type': ctx.storage['accept_type']},
+            #                             auth=(ctx.storage['secret'], '')
+            # )
+            #ctx.storage['marketplace_uri'] = marketplace.json()['uri']
+            #ctx.storage['marketplace_id'] = marketplace.json()['id']
             marketplace = balanced.Marketplace().save()
             ctx.storage['marketplace_uri'] = marketplace.uri
             ctx.storage['marketplace_id'] = marketplace.id
+        #    ctx.storage['marketplace_uri'] = 'TODO'
+        #    ctx.storage['marketplace_id'] = 'TODO'
 
         # card
         if 'card_id' not in ctx.storage:
@@ -437,6 +452,7 @@ class Scenario(object):
                 '{0} - failed with exit code {1}'
                 .format(sh_cmd, proc.returncode)
             )
+        import ipdb; ipdb.set_trace()
         return stdout
 
 
@@ -575,7 +591,7 @@ def main():
     root.setLevel(args.log_level)
 
     ctx = Context(
-        api_location=args.api_location,
+        api_location=os.environ.get('BALANCED_API_LOC', args.api_location),
         scenarios_dir=os.path.abspath(args.directory),
         client_dir=os.path.abspath(args.client),
         storage_file=args.storage,
@@ -586,10 +602,12 @@ def main():
     write = BlockWriter(sys.stdout)
     for scenario in args.scenarios:
         if os.environ.get('BALANCED_REV', 'rev0') != 'rev0':
+            #import ipdb; ipdb.set_trace()
+            if 'account' in scenario or True:
             # TODO: make this work
-            with open('./empty-scenario', 'r') as some_file:
-                print some_file.read()
-            continue
+                with open('./empty-scenario', 'r') as some_file:
+                    print some_file.read()
+                continue
         logger.debug('scenario "%s"', scenario)
         scenario = ctx.lookup_scenario(scenario)
         blocks, response = scenario()

@@ -1,6 +1,9 @@
 {
-    "secret": "b54ed12ee98d11e2b3cd026ba7f8ec28", 
-    "buyer_uri": "/v1/marketplaces/TEST-MP5wnhxV3fmVHMObRGFlHGP0/accounts/AC5y2851QdMkPg8h7SA9AKls", 
-    "merchant_uri": "/v1/marketplaces/TEST-MP5wnhxV3fmVHMObRGFlHGP0/accounts/AC5F9fat964veiTWUe89hnQG", 
-    "root_uri": "https://api.balancedpayments.com"
+    "accept_type": "application/vnd.balancedpayments+json; version=1.1", 
+    "api_key": "3c003cd6f00e11e2869c026ba7f8ec28", 
+    "api_location": "https://api.balancedpayments.com", 
+    "card_id": "CC1QYUfzL4FZIS5dFt4Jb2mk", 
+    "card_uri": "/v1/marketplaces/TEST-MP1Pkxr3ZsL33S0U0k2PVduM/cards/CC1QYUfzL4FZIS5dFt4Jb2mk", 
+    "marketplace_id": "TEST-MP1Pkxr3ZsL33S0U0k2PVduM", 
+    "marketplace_uri": "/v1/marketplaces/TEST-MP1Pkxr3ZsL33S0U0k2PVduM"
 }

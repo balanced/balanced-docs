@@ -33,9 +33,13 @@ I18NSPHINXOPTS = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
 SITE_DIR 			= site
 
 
-.PHONY: clean spec-clean api-clean all test
+.PHONY: clean spec-clean api-clean all test everything
 
-all: spec api overview
+all:
+#BALANCED_REV=rev0 make everything
+	BALANCED_REV=rev1 make everything
+
+everything: spec api overview
 
 clean: api-clean spec-clean overview-clean
 
