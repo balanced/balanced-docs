@@ -1,10 +1,10 @@
 buyer = json.loads(
-    #storage['account_create_buyer']['response']
+    storage['account_create_buyer']['response']
     #storage['customer_create']['response']
-    storage['customer_add_card']['response']
+    #storage['customer_add_card']['response']
 )
 
-import ipdb; ipdb.set_trace()
+#import ipdb; ipdb.set_trace()
 
 request = {
     'payload': {

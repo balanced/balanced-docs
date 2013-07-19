@@ -51,4 +51,4 @@ overview/html
 dcode.cache
 spec/dst/
 site/spec
-site/*gen.html
+site/*gen*.html

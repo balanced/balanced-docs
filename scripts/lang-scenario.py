@@ -452,7 +452,6 @@ class Scenario(object):
                 '{0} - failed with exit code {1}'
                 .format(sh_cmd, proc.returncode)
             )
-        import ipdb; ipdb.set_trace()
         return stdout
 
 
@@ -602,7 +601,6 @@ def main():
     write = BlockWriter(sys.stdout)
     for scenario in args.scenarios:
         if os.environ.get('BALANCED_REV', 'rev0') != 'rev0':
-            #import ipdb; ipdb.set_trace()
             if 'account' in scenario or True:
             # TODO: make this work
                 with open('./empty-scenario', 'r') as some_file:

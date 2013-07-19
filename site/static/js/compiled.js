@@ -328,10 +328,7 @@ $(document).ready(function () {
     });
 
     // VERSION SELECTOR
-    var default_version = "rev0";
-    try {
-	default_version = location.pathname.split('/')[1];
-    } catch(e) {}
+    /*var default_version = /rev(\w+)-/.exec(location.hash);
     var version_element = $("[data-version='" + default_version + "']");
     if(!version_element.length) {
 	default_version='rev0';
@@ -348,5 +345,85 @@ $(document).ready(function () {
 	location.href = location.href.replace(/rev\d+/, href);
 	return false;
     });
+*/
+
+    var current_version = 'rev0';
+    try {
+	current_version = /rev\w+/.exec(location.hash)[0];
+    } catch (e) { console.log(e); }
+
+    function change_version(vers) {
+	if(vers == current_version) return;
+//	debugger;
+	var version_element = $("[data-version='" + vers + "']");
+	if(!version_element.length) {
+	    throw new Error('Version '+vers+' not found');
+	}
+	$('ul.version > li').show();
+	version_element.parent().hide();
+	$("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
+	$("#version-dropdown-head > .version-change").removeClass("version-change").attr('href', '#');
+
+	/*$('div[class^=api-version]').each(function () {
+	    var $this = $(this);
+
+	    if($this.attr('class').indexOf('api-version-'+vers) == -1)
+		$this.hide();
+	    else
+		$this.show();
+	});*/
+
+	$('div[class^=api-version]').hide();
+	$('div.api-version-'+vers).show();
+
+	fix_sidebar();
+	location.hash = location.hash.replace(/rev(\w+)/, vers);
+
+	$("[class^=rev-]").hide();
+	$(".rev-"+vers).show();
+
+	$('[data-spy="scroll"]').each(function () {
+           $(this).scrollspy('refresh');
+        });
+
+	current_version = vers;
+    }
+
+    $("div[class^=api-version]").each(function () {
+	var $container = $(this);
+	var vers = /rev\w+/.exec($container.attr('class'))[0];
+	$container.find('a').each(function () {
+	    var $a = $(this);
+	    var href = $a.attr('href');
+	    if(href[0] == '#') {
+		$a.attr('href', '#'+vers+'-'+href.substring(1));
+	    }
+	});
+	$container.find('section').each(function () {
+	    var $section = $(this);
+	    var id = $section.attr('id');
+	    id && $section.attr('id', vers+'-'+id);
+	});
+    });
+
+    $(window).on('hashchange', function (){
+	var vers = /(rev\w+)-/.exec(location.hash)[1];
+	change_version(vers);
+    });
+
+    $('a.version-change').click(function () {
+	var $this = $(this);
+	var ver = $this.attr('data-version');
+	change_version(ver);
+	$('ul.nav-api-version').find('.dropdown-toggle').dropdown('toggle')
+	return false;
+    });
+
+    var version_element = $("[data-version='" + current_version + "']");
+    if(!version_element.length) {
+	version_element = $("[data-version=rev0]");
+    }
+    version_element.parent().hide();
+
 
 });
