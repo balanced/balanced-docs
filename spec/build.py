@@ -1,91 +1,70 @@
 #!/usr/bin/env python
 """
-Script used to expand custom rST directives.
+Script used to generate resource schemas.
 """
 import argparse
+import json
 import logging
-from StringIO import StringIO
 import sys
 
-from balanced_docs import dcode, DirectiveParser, LogLevelAction
+from balanced_docs import LogLevelAction, dockers
 
 logger = logging.getLogger(__name__)
 
-DIRECTIVES = {
-    'dcode-default': dcode.DCodeDefaultDirective,
-    'dcode': dcode.DCodeDirective,
-}
 
-
-def expand_directives(fo, disabled):
-    directive = None
-    for line in fo:
-        if not directive:
-            name = DirectiveParser.probe(line)
-            if name and name in DIRECTIVES and name not in disabled:
-                logger.debug('found directive "%s"', name)
-                directive = DirectiveParser(
-                    name,
-                    DIRECTIVES[name].has_content,
-                    DIRECTIVES[name].expand,
-                )
-            else:
-                yield line
-                continue
-        directive(line)
-        if not directive.done:
+def specs(io, spec_dbs):
+    for i, line in enumerate(io):
+        # crack
+        line = line.strip()
+        if not line:
             continue
-        logger.debug('expanding directive "%s"', directive.name)
-        expansion = [l + '\n' for l in directive.render()]
-        for line in expand_directives(expansion, disabled):
-            yield line
-        if directive.trailer:
-            line = directive.trailer
-            name = DirectiveParser.probe(line)
-            if name and name in DIRECTIVES and name not in disabled:
-                logger.debug('found directive "%s"', name)
-                directive = DirectiveParser(
-                    name,
-                    DIRECTIVES[name].has_content,
-                    DIRECTIVES[name].expand,
+        parts = line.split(' ')
+        if len(parts) != 3:
+            raise ValueError(
+                '{0}:#{1} is malformed'.format(io.name, i)
+            )
+        version, type, name = parts
+        if version not in spec_dbs:
+            raise ValueError(
+                '{0}:#{1} has invalid version "{2}"'
+                .format(io.name, i, version)
+            )
+        spec_db = spec_dbs[version]
+        match_name = {
+            'view': spec_db.match_view,
+            'form': spec_db.match_form,
+        }
+        if type not in match_name:
+            raise ValueError(
+                '{0}:#{1} has invalid type "{2}"'
+                .format(io.name, i, type)
+            )
+        match = match_name[type](name)
+        if not match:
+            raise ValueError(
+                    '{0}:#{1} no match for "{2}"'
+                    .format(io.name, i, line)
                 )
-                directive(line)
-                continue
-            else:
-                yield line
-        directive = None
-    if directive:
-        directive('')
-        logger.debug('expanding directive "%s"', directive.name)
-        expansion = [l + '\n' for l in directive.render()]
-        for line in expand_directives(expansion, disabled):
-            yield line
+        yield match
 
 
-DEFAULT_RST = """\
-
-.. dcode-default::
-
-.. dcode-default:: scenario
-    :script: ./scripts/http-scenario.py -c scenario.cache
-    :section-chars: ~^
-
-.. dcode-default:: view
-    :script: ./scripts/rst.py view
-
-.. dcode-default:: form
-    :script: ./scripts/rst.py form
-
-.. dcode-default:: endpoint
-    :script: ./scripts/rst.py endpoint
-
-.. dcode-default:: error
-    :script: ./scripts/rst.py error
-
-.. dcode-default:: enum
-    :script: ./scripts/rst.py enum
-
-"""
+def json_schema(spec):
+    schema = {
+        'name': spec['name'],
+        'properties': {
+        }
+    }
+    spec_types = {
+        'key-value': 'object'
+    }
+    for field in spec['fields']:
+        property = {
+            'description': field['description'],
+            'required': True,
+        }
+        property['type'] = spec_types.get(field['type'], field['type'])
+        schema['properties'][field['name']] = property
+    return schema
 
 
 def create_arg_parser():
@@ -93,9 +72,9 @@ def create_arg_parser():
     parser.add_argument(
         'source',
         nargs='?',
-        metavar='PATH',
+        metavar='FILE',
         default=None,
-        help='PATH to rST file to expand, otherwise read from stdin.',
+        help='Spec FILE, otherwise read from stdin.',
     )
     parser.add_argument(
         '-l', '--log-level',
@@ -104,13 +83,10 @@ def create_arg_parser():
         action=LogLevelAction,
     )
     parser.add_argument(
-        '-d', '--disable',
-        dest='disabled',
-        metavar='DIRECTIVE',
-        help='Disable expansion of DIRECTIVE. None are disabled by default.',
-        choices=DIRECTIVES.keys(),
-        action='append',
-        default=[],
+        '-s', '--spec',
+        default='balanced.json',
+        metavar='FILE',
+        help='Spec data FILE.',
     )
     return parser
 
@@ -126,15 +102,18 @@ def main():
     logger.addHandler(handler)
     logger.setLevel(args.log_level)
 
-    for line in expand_directives(StringIO(DEFAULT_RST), args.disabled):
-        pass
-
+    with open(args.spec, 'r') as fo:
+        dbs = json.loads(fo.read())
+        spec_dbs = {
+            '1.0': dockers.Spec(dbs['rev0']),
+            '1.1': dockers.Spec(dbs['rev1']),
+        } 
     if args.source == '-':
         fo = sys.stdin
     else:
         fo = open(args.source, 'r')
-    for line in expand_directives(fo, args.disabled):
-        print line,
+    for spec in specs(fo, spec_dbs):
+        print json.dumps(json_schema(spec), indent=4)
 
 
 if __name__ == '__main__':
