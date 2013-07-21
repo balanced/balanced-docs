@@ -199,7 +199,7 @@ Bob decides to rent this bike - costing him $110.00.
 
 - You charge Bob $110.00
 
-  - Your renting fee is 10%, so $100.00 * 1.10 = $110.00 is how how much to charge Bob
+  - Your renting fee is 10%, so $100.00 * 1.10 = $110.00 is how much to charge Bob
 
 - Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance now shows $110.00
 - Alice delivers the bike to Bob
@@ -220,7 +220,7 @@ bike - costing him $110.00.
 
 - You charge Bob $110.00
 
-  - Your renting fee is 10%, so $100.00 * 1.10 = $110.00 is how how much to charge Bob
+  - Your renting fee is 10%, so $100.00 * 1.10 = $110.00 is how much to charge Bob
 
 - Your marketplace's `dashboard <https://dashboard.balancedpayments.com/#/marketplaces/>`_ escrow balance now shows $110.00
 - Alice delivers the bike to Bob
