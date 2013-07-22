@@ -5,6 +5,6 @@ credit = json.loads(
 #TODO fix derp
 
 request = {
-    'id': '', #credit['id'],
-    'uri': '', #credit['uri'],
+    'id': credit['id'],
+    'uri': credit['uri'],
 }

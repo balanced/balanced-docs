@@ -434,7 +434,8 @@ class Scenario(object):
                 logger.info('skipping execution for "%s" (%s)', self.name, block['lang'])
             else:
                 block['response'] = json.dumps(
-                    json.loads(self._exec(block['request'])),
+                    # delete returns nothing
+                    json.loads(self._exec(block['request']) or '{}'),
                     indent=4,
                     sort_keys=True,
                 )
@@ -487,7 +488,7 @@ class Scenario(object):
 
     def _exec(self, cmd):
         cmd = filter(
-            lambda x: x != '\n',
+            lambda x: x not in ['\n', ' '],
             shlex.split(cmd.encode('utf-8'))
         )
         sh_cmd = ' '.join(pipes.quote(p) for p in cmd)
