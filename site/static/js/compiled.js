@@ -302,7 +302,8 @@ $(document).ready(function () {
         console.log(window.location.hash);
         console.log(uri);
         window.location = uri;
-        //window.history.replaceState(null, null, uri);
+        //history.pushState(null, '', uri);
+	//window.history.replaceState(null, null, uri);
         $('[data-spy="scroll"]').each(function () {
             var $spy = $(this).scrollspy('refresh');
         });
@@ -390,10 +391,14 @@ $(document).ready(function () {
 	var $this = $(this);
 	var ver = $this.attr('data-version');
 	change_version(ver);
-	$('ul.nav-api-version').find('.dropdown-toggle').dropdown('toggle')
+	$('ul.nav-api-version').find('.dropdown-toggle').dropdown('toggle');
 	return false;
     });
 
-    change_version(/rev\w+/.exec(location.hash)[0] || 'rev0');
+    try {
+	change_version(/rev\w+/.exec(location.hash)[0] || 'rev0');
+    } catch(e) {
+	change_version('rev0');
+    }
 
 });

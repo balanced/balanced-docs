@@ -98,7 +98,7 @@ class Context(object):
     @property
     def marketplace(self):
         resp = requests.get(self.storage['api_location'] + self.storage['marketplace_uri'],
-                                         headers={'Accept-Type': self.storage['accept_type']},
+                                         headers={'Accept-Type': self.storage.get('accept_type', '*/*')},
                                          auth=(self.storage['secret'], ''))
         ret = basic_client(resp.json())
         #import ipdb; ipdb.set_trace()
@@ -107,7 +107,7 @@ class Context(object):
     @property
     def card(self):
         resp = requests.get(self.storage['api_location'] + self.storage['card_uri'],
-                                         headers={'Accept-Type': self.storage['accept_type']},
+                                         headers={'Accept-Type': self.storage.get('accept_type','*/*')},
                                          auth=(self.storage['secret'], ''))
         ret = basic_client(resp.json())
         return ret
@@ -288,7 +288,6 @@ class Scenario(object):
             ctx.storage.clear()
         if ctx.storage.get('api_rev') != os.environ.get('BALANCED_REV', 'rev0'):
             ctx.storage.clear()
-        # TODO: make this use all the new api
         if 'api_key' not in ctx.storage:
             ctx.storage.clear()
             ctx.storage['api_location'] = 'http://localhost:5000' # ctx.api_location
@@ -300,9 +299,10 @@ class Scenario(object):
             logger.debug('creating api key')
             #key = balanced.APIKey().save()
             #ctx.storage['api_key'] = key.secret
-            key = requests.post(ctx.storage['api_location'] + '/api_keys',
-                                headers={'Accept-Type': ctx.storage['accept_type']}
+            key = requests.post(ctx.storage['api_location'] + ('/v1/api_keys' if ctx.storage['api_rev'] == 'rev0' else '/api_keys'),
+                                headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')}
             )
+            #import ipdb; ipdb.set_trace()
             ctx.storage['secret'] = ctx.storage['api_key'] = key.json()['secret']
 
         balanced.config.root_uri = ctx.storage['api_location']
@@ -311,8 +311,8 @@ class Scenario(object):
         # marketplace
         if 'marketplace_id' not in ctx.storage:
             logger.debug('creating marketplace')
-            marketplace = requests.post(ctx.storage['api_location'] + '/marketplaces',
-                                        headers={'Accept-Type': ctx.storage['accept_type']},
+            marketplace = requests.post(ctx.storage['api_location'] + ('/v1/marketplaces' if ctx.storage['api_rev'] == 'rev0' else '/marketplaces'),
+                                        headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                         auth=(ctx.storage['secret'], '')
             )
             ctx.storage['marketplace_uri'] = marketplace.json()['uri']
@@ -329,9 +329,9 @@ class Scenario(object):
             logger.debug('creating card')
             card_data = {
                 'name': 'Benny Riemann',
-                'number': '4111111111111111',
-                'month': 4,
-                'year': 2014,
+                'card_number' if ctx.storage['api_rev'] == 'rev0' else 'number': '4111111111111111',
+                'expiration_month' if ctx.storage['api_rev'] == 'rev0' else 'month': 4,
+                'expiration_year' if ctx.storage['api_rev'] == 'rev0' else 'year': 2014,
                 'security_code': 323,
                 'address[street_address]': '167 West 74th Street',
                 'address[postal_code]': '10023',
@@ -343,24 +343,25 @@ class Scenario(object):
             # ctx.storage['card_id'] = card.id
 
 
-            customer = requests.post(ctx.storage['api_location'] + '/customers',
-                                     headers={'Accept-Type': ctx.storage['accept_type']},
+            customer = requests.post(ctx.storage['api_location'] + ('/v1/customers' if ctx.storage['api_rev'] == 'rev0' else '/customers'),
+                                     headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                      auth=(ctx.storage['secret'], ''))
 
             ctx.storage['customer'] = basic_client(customer.json())
 
             card = requests.post(ctx.storage['api_location'] + ctx.storage['customer'].cards_uri,
-                                 headers={'Accept-Type': ctx.storage['accept_type']},
+                                 headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                  auth=(ctx.storage['secret'], ''),
                                  data=card_data
             )
+
 
             ctx.storage['card_uri'] = card.json()['uri']
             ctx.storage['card_id'] = card.json()['id']
             ctx.storage['card'] = basic_client(card.json())
 
         marketplace_req = requests.get(ctx.storage['api_location'] + ctx.storage['marketplace_uri'],
-                                       headers={'Accept-Type': ctx.storage['accept_type']},
+                                       headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                        auth=(ctx.storage['secret'], ''))
 
         marketplace = basic_client(marketplace_req.json())
@@ -371,8 +372,8 @@ class Scenario(object):
         if marketplace.in_escrow < thresh_l:
             amount = thresh_h - marketplace.in_escrow
             logger.debug('incrementing escrow balanced %s', amount)
-            debit = requests.post(ctx.storage['api_location'] + ctx.storage['card'].debits_uri,
-                                  headers={'Accept-Type': ctx.storage['accept_type']},
+            debit = requests.post(ctx.storage['api_location'] + ctx.storage['customer'].debits_uri,
+                                  headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                   auth=(ctx.storage['secret'], ''),
                                   data={
                                       'amount': amount
@@ -656,7 +657,7 @@ def main():
     write = BlockWriter(sys.stdout)
     for scenario in args.scenarios:
         if os.environ.get('BALANCED_REV', 'rev0') != 'rev0':
-            if 'account' in scenario:
+            if 'account' in scenario.replace('bank_account', ''):
             # TODO: make this work
                 with open('./empty-scenario', 'r') as some_file:
                     print some_file.read()

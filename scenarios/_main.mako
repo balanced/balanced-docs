@@ -107,10 +107,10 @@ Balanced.configure('${ctx.api_key}')
     slash = '\\'
   %>
   curl ${Endpoint.qualify_uri(ctx, request['uri'])} ${slash}
-     -u ${ctx.api_key}:  ${slash}
   %if 'accept_type' in ctx.storage:
-     -H "Accept-Type: ${ctx.storage['accept_type']}"
+     -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
   %endif
+     -u ${ctx.api_key}:
 % endif
 </%def>
 
@@ -126,10 +126,10 @@ Balanced.configure('${ctx.api_key}')
     slash = '\\'
   %>
   curl ${Endpoint.qualify_uri(ctx, request[uri])} ${slash}
-     -u ${ctx.api_key}: ${slash}
   %if 'accept_type' in ctx.storage:
      -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
   %endif
+     -u ${ctx.api_key}: ${slash}
   %if 'payload' in request:
    %for k, v, slash in recursive_expand(request['payload']):
      -d "${k}=${v}" ${slash}
@@ -151,10 +151,10 @@ Balanced.configure('${ctx.api_key}')
     slash = '\\'
   %>
   curl ${Endpoint.qualify_uri(ctx, request[uri])} ${slash}
-     -u ${ctx.api_key}: ${slash}
   %if 'accept_type' in ctx.storage:
      -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
   %endif
+     -u ${ctx.api_key}: ${slash}
      -X PUT ${slash}
    %for k, v, slash in recursive_expand(request['payload']):
      -d "${k}=${v}" ${slash}
@@ -174,10 +174,10 @@ Balanced.configure('${ctx.api_key}')
     slash = '\\'
   %>
    curl ${Endpoint.qualify_uri(ctx, request['uri'], limit=limit)} ${slash}
-      -u ${ctx.api_key}:
   %if 'accept_type' in ctx.storage:
-      -H "Accept-Type: ${ctx.storage['accept_type']}"
+      -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
   %endif
+      -u ${ctx.api_key}:
 % endif
 </%def>
 
@@ -192,10 +192,10 @@ Balanced.configure('${ctx.api_key}')
     slash = '\\'
   %>
    curl ${Endpoint.qualify_uri(ctx, request['uri'])} ${slash}
-     -u ${ctx.api_key}: ${slash}
   %if 'accept_type' in ctx.storage:
      -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
   %endif
+     -u ${ctx.api_key}: ${slash}
      -X DELETE
 % endif
 </%def>

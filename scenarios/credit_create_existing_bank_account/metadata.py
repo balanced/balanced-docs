@@ -10,9 +10,8 @@ credit = json.loads(
 
 
 request = {
-  'id': bank_account['id'],
-  'uri': bank_account['uri'],
-  'payload': {
-      'amount': credit['amount'],
-  },
+    'uri': bank_account['credits_uri'],
+    'payload': {
+        'amount': credit['amount'],
+    },
 }

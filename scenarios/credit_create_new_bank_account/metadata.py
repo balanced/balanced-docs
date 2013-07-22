@@ -1,4 +1,5 @@
 request = {
+    'payload': {
       'bank_account': {
           'name': 'Johann Bernoulli',
           'account_number': '9900000001',
@@ -6,4 +7,6 @@ request = {
           'type': 'checking',
       },
       'amount': 10000,
+    },
+    'uri': ctx.marketplace.credits_uri,
 }

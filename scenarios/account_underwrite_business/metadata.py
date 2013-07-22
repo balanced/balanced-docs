@@ -1,5 +1,5 @@
 request = {
-    'accounts_uri': marketplace.accounts_uri,
+    'accounts_uri': ctx.marketplace.accounts_uri,
     'payload': {
         'merchant': {
             'type': 'business',
