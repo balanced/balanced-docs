@@ -49,39 +49,48 @@ $(document).ready(function () {
     }
 
     //LOAD DEFAULT LANGUAGE
+    var current_lang;
+
+    function load_language (lang) {
+	if(lang == current_lang) return;
+	current_lang = lang;
+	$("[data-lang]").parent().show();
+	var default_lang_dd = $("[data-lang='" + lang +"']");
+	update_lang_head(default_lang_dd.text());
+	default_lang_dd.parent().hide();
+	$("[class^='highlight-']").hide();
+	$(".highlight-" + lang).show();
+	$('.highlight-javascript').show();
+	$('.highlight-html').show();
+
+	var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
+        var hash = location.hash;
+	uri = uri + '' + hash;
+        console.log(hash);
+        console.log(uri);
+        //window.location = uri;
+	history.pushState(lang, '', uri);
+	$.scrollTo(hash);
+
+	$('[data-spy="scroll"]').each(function () {
+            var $spy = $(this).scrollspy('refresh');
+        });
+    }
+
     var default_lang = getParameterByName('language', window.location.href);
-    default_lang = (default_lang.length > 0) ? default_lang[0] : 'bash';
-    default_lang_dd = $("[data-lang='" + default_lang +"']");
-    update_lang_head(default_lang_dd.text());
-    default_lang_dd.parent().hide();
-    $("[class^='highlight-']").hide();
-    $(".highlight-" + default_lang).show();
-    $('.highlight-javascript').show();
-    $('.highlight-html').show();
+    load_language(default_lang.length && default_lang[0] || 'bash');
 
 
     //SWAP LANGUAGE METHODS
     $('.lang-change').click(function () {
         var lang = $(this).attr('data-lang');
-        var langtext = $(this).text();
-        update_lang_head(langtext);
-        var parent = $(this).parent();
-        parent.siblings().show();
-        parent.hide();
-        $("[class^='highlight-']").hide();
-        $(".highlight-javascript").show();
-        $(".highlight-" + lang).show();
-        var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
-        uri = uri + '' + window.location.hash;
-        console.log(window.location.hash);
-        console.log(uri);
-        window.location = uri;
-        //history.pushState(null, '', uri);
-	//window.history.replaceState(null, null, uri);
-        $('[data-spy="scroll"]').each(function () {
-            var $spy = $(this).scrollspy('refresh');
-        });
+        load_language(lang);
     });
+
+    window.onpopstate = function () {
+	var default_lang = getParameterByName('language', window.location.href);
+	load_language(default_lang.length && default_lang[0] || 'bash');
+    };
 
 
     //SIDEBAR TO STICK TO BOTTOM

@@ -275,15 +275,32 @@ $(document).ready(function () {
     }
 
     //LOAD DEFAULT LANGUAGE
+    var current_lang;
+    //var default_lang = getParameterByName('language', window.location.href);
+
+    function load_language (lang) {
+	debugger;
+	if(lang == current_lang) return;
+	current_lang = lang;
+	//default_lang = (default_lang.length > 0) ? default_lang[0] : 'bash';
+	$("[data-lang]").parent().show();
+	var default_lang_dd = $("[data-lang='" + lang +"']");
+	update_lang_head(default_lang_dd.text());
+	default_lang_dd.parent().hide();
+	$("[class^='highlight-']").hide();
+	$(".highlight-" + lang).show();
+	$('.highlight-javascript').show();
+	$('.highlight-html').show();
+
+	var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
+        uri = uri + '' + window.location.hash;
+        console.log(window.location.hash);
+        console.log(uri);
+        window.location = uri;
+    }
+
     var default_lang = getParameterByName('language', window.location.href);
-    default_lang = (default_lang.length > 0) ? default_lang[0] : 'bash';
-    default_lang_dd = $("[data-lang='" + default_lang +"']");
-    update_lang_head(default_lang_dd.text());
-    default_lang_dd.parent().hide();
-    $("[class^='highlight-']").hide();
-    $(".highlight-" + default_lang).show();
-    $('.highlight-javascript').show();
-    $('.highlight-html').show();
+    load_language(default_lang.length && default_lang[0] || 'bash');
 
 
     //SWAP LANGUAGE METHODS
