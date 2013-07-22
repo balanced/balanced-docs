@@ -52,3 +52,4 @@ dcode.cache
 spec/dst/
 site/spec
 site/*gen*.html
+scenario.cache
