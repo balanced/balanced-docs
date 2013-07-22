@@ -167,7 +167,7 @@ Balanced.configure('${ctx.api_key}')
 <%
   ep = Endpoint(ctx, endpoint_name, select='shortest')
 %>
-% if request == 'definition':
+% if mode == 'definition':
   ${ep.method} ${ep.url}
 %elif mode == 'request':
   <%
