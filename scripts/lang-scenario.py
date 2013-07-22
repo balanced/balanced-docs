@@ -41,6 +41,15 @@ from balanced_docs import (
 
 logger = logging.getLogger(__name__)
 
+class basic_client(dict):
+    def __init__(self, dictionary):
+        self.update(**dictionary)
+        for k, v in dictionary.items():
+            try:
+                setattr(self, k, v)
+            except Exception as e:
+                pass
+
 
 class Context(object):
 
@@ -88,11 +97,20 @@ class Context(object):
 
     @property
     def marketplace(self):
-        return balanced.Marketplace.find(self.storage['marketplace_uri'])
+        resp = requests.get(self.storage['api_location'] + self.storage['marketplace_uri'],
+                                         headers={'Accept-Type': self.storage['accept_type']},
+                                         auth=(self.storage['secret'], ''))
+        ret = basic_client(resp.json())
+        #import ipdb; ipdb.set_trace()
+        return ret
 
     @property
     def card(self):
-        return balanced.Card.find(self.storage['card_uri'])
+        resp = requests.get(self.storage['api_location'] + self.storage['card_uri'],
+                                         headers={'Accept-Type': self.storage['accept_type']},
+                                         auth=(self.storage['secret'], ''))
+        ret = basic_client(resp.json())
+        return ret
 
     def __getattr__(self, k):
         if k in self.storage:
@@ -266,20 +284,26 @@ class Scenario(object):
     @classmethod
     def bootstrap(cls, ctx):
         # api conf
-        if  ctx.storage.get('api_location') != ctx.api_location:
+        if ctx.storage.get('api_location') != ctx.api_location:
             ctx.storage.clear()
-
+        if ctx.storage.get('api_rev') != os.environ.get('BALANCED_REV', 'rev0'):
+            ctx.storage.clear()
+        # TODO: make this use all the new api
         if 'api_key' not in ctx.storage:
             ctx.storage.clear()
-            ctx.storage['api_location'] = ctx.api_location
-            ctx.storage['accept_type'] = 'application/vnd.balancedpayments+json; version=1.1'
+            ctx.storage['api_location'] = 'http://localhost:5000' # ctx.api_location
+            ctx.storage['api_rev'] = os.environ.get('BALANCED_REV', 'rev0')
+            if ctx.storage['api_rev'] != 'rev0':
+                ctx.storage['accept_type'] = {
+                    'rev1': 'application/vnd.balancedpayments+json; version=1.1',
+                }[ctx.storage['api_rev']]
             logger.debug('creating api key')
-            key = balanced.APIKey().save()
-            ctx.storage['api_key'] = key.secret
-            # key = requests.post(ctx.storage['api_location'] + '/api_keys',
-            #                     headers={'Accept-Type': ctx.storage['accept_type']}
-            # )
-            # ctx.storage['secret'] = ctx.storage['api_key'] = key.json()['secret']
+            #key = balanced.APIKey().save()
+            #ctx.storage['api_key'] = key.secret
+            key = requests.post(ctx.storage['api_location'] + '/api_keys',
+                                headers={'Accept-Type': ctx.storage['accept_type']}
+            )
+            ctx.storage['secret'] = ctx.storage['api_key'] = key.json()['secret']
 
         balanced.config.root_uri = ctx.storage['api_location']
         balanced.configure(ctx.storage['api_key'])
@@ -287,42 +311,73 @@ class Scenario(object):
         # marketplace
         if 'marketplace_id' not in ctx.storage:
             logger.debug('creating marketplace')
-            # marketplace = requests.post(ctx.storage['api_location'] + '/marketplaces',
-            #                             headers={'Accept-Type': ctx.storage['accept_type']},
-            #                             auth=(ctx.storage['secret'], '')
-            # )
-            #ctx.storage['marketplace_uri'] = marketplace.json()['uri']
-            #ctx.storage['marketplace_id'] = marketplace.json()['id']
-            marketplace = balanced.Marketplace().save()
-            ctx.storage['marketplace_uri'] = marketplace.uri
-            ctx.storage['marketplace_id'] = marketplace.id
+            marketplace = requests.post(ctx.storage['api_location'] + '/marketplaces',
+                                        headers={'Accept-Type': ctx.storage['accept_type']},
+                                        auth=(ctx.storage['secret'], '')
+            )
+            ctx.storage['marketplace_uri'] = marketplace.json()['uri']
+            ctx.storage['marketplace_id'] = marketplace.json()['id']
+            ctx.storage['marketplace'] = basic_client(marketplace.json())
+            # marketplace = balanced.Marketplace().save()
+            # ctx.storage['marketplace_uri'] = marketplace.uri
+            # ctx.storage['marketplace_id'] = marketplace.id
         #    ctx.storage['marketplace_uri'] = 'TODO'
         #    ctx.storage['marketplace_id'] = 'TODO'
 
         # card
         if 'card_id' not in ctx.storage:
             logger.debug('creating card')
-            card = ctx.marketplace.create_card(**{
+            card_data = {
                 'name': 'Benny Riemann',
-                'card_number': '4111111111111111',
-                'expiration_month': 4,
-                'expiration_year': 2014,
+                'number': '4111111111111111',
+                'month': 4,
+                'year': 2014,
                 'security_code': 323,
-                'street_address': '167 West 74th Street',
-                'postal_code': '10023',
-                'country_code': 'USA',
-                'phone_number': '+16509241212'
-            })
-            ctx.marketplace.create_buyer(None, card.uri)
-            ctx.storage['card_uri'] = card.uri
-            ctx.storage['card_id'] = card.id
+                'address[street_address]': '167 West 74th Street',
+                'address[postal_code]': '10023',
+                'address[country_code]': 'USA',
+            }
+            # card = ctx.marketplace.create_card()
+            # ctx.marketplace.create_buyer(None, card.uri)
+            # ctx.storage['card_uri'] = card.uri
+            # ctx.storage['card_id'] = card.id
+
+
+            customer = requests.post(ctx.storage['api_location'] + '/customers',
+                                     headers={'Accept-Type': ctx.storage['accept_type']},
+                                     auth=(ctx.storage['secret'], ''))
+
+            ctx.storage['customer'] = basic_client(customer.json())
+
+            card = requests.post(ctx.storage['api_location'] + ctx.storage['customer'].cards_uri,
+                                 headers={'Accept-Type': ctx.storage['accept_type']},
+                                 auth=(ctx.storage['secret'], ''),
+                                 data=card_data
+            )
+
+            ctx.storage['card_uri'] = card.json()['uri']
+            ctx.storage['card_id'] = card.json()['id']
+            ctx.storage['card'] = basic_client(card.json())
+
+        marketplace_req = requests.get(ctx.storage['api_location'] + ctx.storage['marketplace_uri'],
+                                       headers={'Accept-Type': ctx.storage['accept_type']},
+                                       auth=(ctx.storage['secret'], ''))
+
+        marketplace = basic_client(marketplace_req.json())
+
 
         # escrow
         thresh_h, thresh_l = 10000000, 100000
-        if ctx.marketplace.in_escrow < thresh_l:
-            amount = thresh_h - ctx.marketplace.in_escrow
+        if marketplace.in_escrow < thresh_l:
+            amount = thresh_h - marketplace.in_escrow
             logger.debug('incrementing escrow balanced %s', amount)
-            ctx.card.debit(amount)
+            debit = requests.post(ctx.storage['api_location'] + ctx.storage['card'].debits_uri,
+                                  headers={'Accept-Type': ctx.storage['accept_type']},
+                                  auth=(ctx.storage['secret'], ''),
+                                  data={
+                                      'amount': amount
+                                  })
+            ctx.storage['debit'] = basic_client(debit.json())
 
     def __init__(self, ctx, path):
         self.ctx = ctx
@@ -339,7 +394,7 @@ class Scenario(object):
                 'json': json,
                 'ctx': self.ctx,
                 'storage': self.ctx.storage,
-                'marketplace': self.ctx.marketplace,
+                'marketplace': None, #self.ctx.marketplace,
             }
             metadata = os.path.join(self.path, 'metadata.py')
             execfile(metadata, context, context)
@@ -601,7 +656,7 @@ def main():
     write = BlockWriter(sys.stdout)
     for scenario in args.scenarios:
         if os.environ.get('BALANCED_REV', 'rev0') != 'rev0':
-            if 'account' in scenario or True:
+            if 'account' in scenario:
             # TODO: make this work
                 with open('./empty-scenario', 'r') as some_file:
                     print some_file.read()

@@ -1,4 +1,4 @@
-storage.pop('debit_create')
+storage.pop('debit_create', None)
 
 debit = json.loads(
     storage['debit_create']['response']

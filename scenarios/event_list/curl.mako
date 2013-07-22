@@ -9,5 +9,8 @@
         slash = '\\'
     %>
     curl ${Endpoint.qualify_uri(ctx, request['uri'], limit=2)} ${slash}
-    -u ${api_key}:
+       -u ${api_key}: ${slash}
+    %if 'accept_type' in ctx.storage:
+       -H "Accept-Type: ${ctx.storage['accept_type']}"
+    %endif
 % endif

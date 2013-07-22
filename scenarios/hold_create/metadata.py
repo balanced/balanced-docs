@@ -1,5 +1,6 @@
 buyer = json.loads(
-    storage['account_create_buyer']['response']
+#    storage['account_create_buyer']['response']
+    storage['customer_add_card']['response']
 )
 
 request = {

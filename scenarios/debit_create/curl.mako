@@ -10,6 +10,9 @@
   %>
    curl ${Endpoint.qualify_uri(ctx, request['debits_uri'])} ${slash}
       -u ${ctx.api_key}: ${slash}
+  %if 'accept_type' in ctx.storage:
+      -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
+  %endif
    % for k, v, slash in main.recursive_expand(request['payload']):
       -d "${k}=${v}" ${slash}
    % endfor

@@ -1,23 +1,27 @@
-import balanced
+#import balanced
 
 
-balanced.configure(storage['api_key'])
+#balanced.configure(storage['api_key'])
 
 # HACK: sometimes we don't have an event so generate some event worthy items
 # until one turns up.
 index = 0
 while True:
-    if index > 5:
+    ctx.storage.pop('debit_create', None)
+    dd = ctx.storage['debit_create']
+    index += 1
+    if index > 50:
         raise Exception('No events being generated')
     try:
-        event = balanced.Event.query[0]
-        break
+        ctx.storage.pop('event_list', None)
+        ee = json.loads(ctx.storage['event_list']['response'])
+        if len(ee['items']) > 0:
+            event_uri = ee['items'][0]['uri']
+            break
     except IndexError:
-        fi = balanced.Card.query[0]
-        fi.debit(100)
-        index += 1
+        pass
 
 
 request = {
-    'uri': event.uri,
+    'uri': event_uri,
 }

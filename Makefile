@@ -1,4 +1,4 @@
-REV?= all
+REV?= rev1
 
 # spec variables
 SPEC_SRC_DIR	=	spec/src
