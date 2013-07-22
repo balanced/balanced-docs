@@ -26,6 +26,7 @@ import subprocess
 import sys
 import urllib
 import requests
+import re
 
 import balanced
 import mako.lookup
@@ -658,7 +659,8 @@ def main():
     write = BlockWriter(sys.stdout)
     for scenario in args.scenarios:
         if os.environ.get('BALANCED_REV', 'rev0') != 'rev0':
-            if 'account' in scenario.replace('bank_account', ''):
+            if re.match('^account_', scenario):
+            #if 'account' in scenario.replace('bank_account', '') and False:
             # TODO: make this work
                 with open('./empty-scenario', 'r') as some_file:
                     print some_file.read()
