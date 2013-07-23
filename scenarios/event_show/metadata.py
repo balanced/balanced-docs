@@ -1,10 +1,3 @@
-#import balanced
-
-
-#balanced.configure(storage['api_key'])
-
-# HACK: sometimes we don't have an event so generate some event worthy items
-# until one turns up.
 index = 0
 while True:
     ctx.storage.pop('debit_create', None)
