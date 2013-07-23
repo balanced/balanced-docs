@@ -105,7 +105,7 @@ After the user has been redirected to Balanced and if the merchant was
 successfully underwritten, Balanced will redirect the user to your specified
 ``redirect_uri`` with **two** parameters appended as query strings.
 
-Those are are ``email_address`` and ``merchant_uri``.
+Those are ``email_address`` and ``merchant_uri``.
 
 .. todo:: clarify this..
 

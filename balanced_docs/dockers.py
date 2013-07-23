@@ -4,13 +4,15 @@ import os
 
 def load(file_path, rev=None):
     rev = rev or os.environ.get('BALANCED_REV', 'rev0')
-    #rev = 'rev1'
     data = json.load(file_path)
-    spec = Spec(data[rev])
-    spec._rev = rev
+    spec = Spec(data[rev], rev=rev)
     return spec
 
 class Spec(dict):
+
+    def __init__(self, *args, **kwargs):
+        self._rev = kwargs.pop('rev', 'rev0')
+        super(Spec, self).__init__(*args, **kwargs)
 
     # endpoints
 

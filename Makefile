@@ -2,18 +2,10 @@ REV?= rev1
 
 # spec variables
 SPEC_SRC_DIR	=	spec/src
-SPEC_SRCS_RAW		=	$(wildcard $(SPEC_SRC_DIR)/*.rst) $(wildcard $(SPEC_SRC_DIR)/resources/*.rst)
-ifeq ($(REV), rev0)
-	SPEC_SRCS= $(SPEC_SRCS_RAW)
-else
-	SPEC_SRCS = $(filter-out %accounts.rst, $(SPEC_SRCS_RAW))
-endif
-SPEC_RST_DIR	=	spec/dst
-SPEC_RST_CMD	=	./spec/build.py
-SPEC_RST_DSTS	=	$(addprefix $(SPEC_RST_DIR)/, $(patsubst $(SPEC_SRC_DIR)/%, %, $(SPEC_SRCS)))
-SPEC_HTML_DIR	=	site/spec
-SPEC_HTML_CMD	=	rst2html.py
-SPEC_HTML_DSTS	=	$(addprefix $(SPEC_HTML_DIR)/, $(patsubst %rst, %html, $(patsubst $(SPEC_RST_DIR)/%, %, $(SPEC_RST_DSTS))))
+SPEC_SRCS		=	$(shell find $(SPEC_SRC_DIR)/ -type f -name '*.spec')
+SPEC_JS_DIR		=	spec/dst
+SPEC_JS_CMD		=	./spec/build.py
+SPEC_JS_DSTS 	= $(patsubst $(SPEC_SRC_DIR)/%.spec, $(SPEC_JS_DIR)/%.js, $(SPEC_SRCS))
 
 # sphinx public variables (you can set these form the command line).
 SPHINXOPTS	=
@@ -30,8 +22,7 @@ ALLSPHINXOPTS 	= -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) over
 I18NSPHINXOPTS = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
 
 # common variable
-SITE_DIR 			= site
-
+SITE_DIR = site
 
 .PHONY: clean spec-clean api-clean all test everything
 
@@ -42,11 +33,11 @@ all:
 
 everything: spec api overview
 
-clean: clean-limited
+clean: clean-limited spec-clean
 	-rm -f $(SITE_DIR)/api-gen-*.html
 	-rm  -f $(SITE_DIR)/overview-gen-*.html
 
-clean-limited: api-clean spec-clean overview-clean
+clean-limited: api-clean overview-clean
 
 rev0:
 	REV=rev0 make everything
@@ -56,27 +47,16 @@ rev1:
 
 # spec
 
-test:
-	@echo $(SPEC_HTML_DSTS)
-
-$(SPEC_RST_DIR)/%.rst: $(SPEC_SRC_DIR)/%.rst
+$(SPEC_JS_DIR)/%.js: $(SPEC_SRC_DIR)/%.spec
 	@mkdir -p $(@D)
-	BALANCED_REV=$(REV) $(SPEC_RST_CMD) $< > $@
+	$(SPEC_JS_CMD) $< > $@
 
-spec-rst: $(SPEC_RST_DSTS)
+spec-js: $(SPEC_JS_DSTS)
 
-$(SPEC_HTML_DIR)/%.html: $(SPEC_RST_DIR)/%.rst
-	@mkdir -p $(@D)
-	BALANCED_REV=$(REV) $(SPEC_HTML_CMD) $< > $@
-
-spec-html: $(SPEC_HTML_DSTS)
-
-spec: spec-rst spec-html
+spec: spec-js
 
 spec-clean:
-	-rm -rf $(SPEC_RST_DIR)
-	-rm -rf $(SPEC_HTML_DIR)
-	-rm -f spec/*.cache
+	-rm -rf $(SPEC_JS_DIR)
 
 # api
 
