@@ -68,6 +68,26 @@ Returns a list of bank accounts that you've created but haven't deleted.
 
 .. cssclass:: method-section
 
+Debit a Bank Account
+--------------------
+
+
+.. cssclass:: dl-horizontal dl-params
+
+  ``limit``
+      *optional* integer. Defaults to ``10``.
+
+  ``offset``
+      *optional* integer. Defaults to ``0``.
+
+.. container:: code-white
+
+    .. dcode:: scenario bank_account_find_and_debit 
+
+
+.. cssclass:: method-section
+
+
 Delete a Bank Account
 ---------------------
 
