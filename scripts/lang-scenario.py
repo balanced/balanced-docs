@@ -291,7 +291,7 @@ class Scenario(object):
             ctx.storage.clear()
         if 'api_key' not in ctx.storage:
             ctx.storage.clear()
-            ctx.storage['api_location'] = 'http://localhost:5000' # ctx.api_location
+            ctx.storage['api_location'] = ctx.api_location
             ctx.storage['api_rev'] = os.environ.get('BALANCED_REV', 'rev0')
             if ctx.storage['api_rev'] != 'rev0':
                 ctx.storage['accept_type'] = {
