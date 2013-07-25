@@ -5,7 +5,7 @@ card = json.loads(
 )
 
 request = {
-    'uri': marketplace.accounts_uri,
+    'uri': ctx.marketplace.accounts_uri,
     'payload': {
         'card_uri': card['uri'],
     },

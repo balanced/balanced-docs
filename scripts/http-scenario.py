@@ -105,6 +105,15 @@ class Context(object):
             self.parent = parent
             self.org = org
 
+            rev = {
+                'rev0': '*/*',
+                'rev1':  'application/vnd.balancedpayments+json; version=1.1',
+            }[os.environ.get('BALANCED_REV', 'rev0')]
+
+            self.headers = {
+                'accept': rev
+            }
+
         def __getattr__(self, *args, **kwargs):
             return self.org.__getattr__(self, *args, **kwargs)
 
@@ -936,6 +945,13 @@ def customers_delete(ctx):
     return ctx.last_req, ctx.last_resp
 
 
+@scenario
+def customers_credit(ctx):
+    customer = balanced.Customer()
+    customer.save()
+
+
+
 SCENARIOS = dict(
     (v.scenario, v)
     for k, v in globals().iteritems()
@@ -1054,8 +1070,11 @@ def main():
         write = BlockWriter(sys.stdout)
         for name in args.scenarios:
             munged = re.sub(r'[\-\.]', '_', name.lower())
-            if munged not in SCENARIOS:
-                raise ValueError('Invalid scenario "{0}" (munged "{1}")'.format(name, munged))
+            if os.environ.get('BALANCED_REV', 'rev0') != 'rev0':
+                #munged = munged.replace('accounts', 'customers')
+                pass
+                if munged not in SCENARIOS:
+                    raise ValueError('Invalid scenario "{0}" (munged "{1}")'.format(name, munged))
             req, resp = SCENARIOS[munged](ctx)
             generate(write, req, resp, args.sections)
     finally:

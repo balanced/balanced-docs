@@ -22,7 +22,7 @@ this way, so you can safely assume that the information has been deleted.
 
 .. container:: code-white
 
-  .. dcode:: scenario credit_create_new_bank_account
+   .. dcode:: scenario credit_create_new_bank_account
 
 .. cssclass:: method-section
 
@@ -37,12 +37,13 @@ credit shall be created.
 
 .. cssclass:: dl-horizontal dl-params
 
-    .. dcode:: form bank_account_credits.create
+    .. dcode:: form credits.create
+
+.. TODO: fix the name on this
 
 .. container:: code-white
 
-  .. dcode:: scenario credit_create_existing_bank_account
-
+   .. dcode:: scenario credit_create_existing_bank_account
 
 .. cssclass:: method-section
 
@@ -113,7 +114,9 @@ Creating a New Credit For an Account
 
 .. cssclass:: dl-horizontal dl-params
 
-  .. dcode:: form account_credits.create
+  .. dcode:: form account_credits.create/credits.create
+
+.. TODO: fix this account_credits.create
 
 .. container:: code-white
 

@@ -1,3 +1,4 @@
+
 request = {
-    'uri': marketplace.cards_uri,
+    'uri': ctx.marketplace.cards_uri,
 }

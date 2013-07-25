@@ -1,6 +1,6 @@
 
 request = {
-    'uri': '/v1/bank_accounts',
+    'uri': ctx.marketplace.bank_accounts_uri,
     'payload': {
         'name': 'Johann Bernoulli',
         'account_number': '9900000001',

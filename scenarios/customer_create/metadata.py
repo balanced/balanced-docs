@@ -1,3 +1,4 @@
+
 request = {
-    'uri': marketplace.customers_uri,
+    'uri': storage['marketplace']['customers_uri'], #marketplace.customers_uri,
 }

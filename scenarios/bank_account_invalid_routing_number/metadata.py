@@ -1,7 +1,7 @@
 import random
 
 request = {
-    'uri': marketplace.bank_accounts_uri,
+    'uri': ctx.marketplace.bank_accounts_uri,
     'payload': {
         'type': 'checking',
         'account_number': '9900000001',

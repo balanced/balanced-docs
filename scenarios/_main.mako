@@ -107,6 +107,9 @@ Balanced.configure('${ctx.api_key}')
     slash = '\\'
   %>
   curl ${Endpoint.qualify_uri(ctx, request['uri'])} ${slash}
+  %if 'accept_type' in ctx.storage:
+     -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
+  %endif
      -u ${ctx.api_key}:
 % endif
 </%def>
@@ -123,8 +126,12 @@ Balanced.configure('${ctx.api_key}')
     slash = '\\'
   %>
   curl ${Endpoint.qualify_uri(ctx, request[uri])} ${slash}
+  %if 'accept_type' in ctx.storage:
+     -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
+  %endif
      -u ${ctx.api_key}: ${slash}
   %if 'payload' in request:
+  \
    %for k, v, slash in recursive_expand(request['payload']):
      -d "${k}=${v}" ${slash}
    %endfor
@@ -145,11 +152,14 @@ Balanced.configure('${ctx.api_key}')
     slash = '\\'
   %>
   curl ${Endpoint.qualify_uri(ctx, request[uri])} ${slash}
+  %if 'accept_type' in ctx.storage:
+     -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
+  %endif
      -u ${ctx.api_key}: ${slash}
-     -X PUT ${slash}
-   %for k, v, slash in recursive_expand(request['payload']):
+     -X PUT ${slash} \
+  %for k, v, slash in recursive_expand(request['payload']):
      -d "${k}=${v}" ${slash}
-   %endfor
+  %endfor
 %endif
 </%def>
 
@@ -158,13 +168,16 @@ Balanced.configure('${ctx.api_key}')
 <%
   ep = Endpoint(ctx, endpoint_name, select='shortest')
 %>
-% if request == 'definition':
+% if mode == 'definition':
   ${ep.method} ${ep.url}
 %elif mode == 'request':
   <%
     slash = '\\'
   %>
    curl ${Endpoint.qualify_uri(ctx, request['uri'], limit=limit)} ${slash}
+  %if 'accept_type' in ctx.storage:
+      -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
+  %endif
       -u ${ctx.api_key}:
 % endif
 </%def>
@@ -180,6 +193,9 @@ Balanced.configure('${ctx.api_key}')
     slash = '\\'
   %>
    curl ${Endpoint.qualify_uri(ctx, request['uri'])} ${slash}
+  %if 'accept_type' in ctx.storage:
+     -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
+  %endif
      -u ${ctx.api_key}: ${slash}
      -X DELETE
 % endif

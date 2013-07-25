@@ -21,4 +21,3 @@
   holds
   refunds
   events
-  accounts

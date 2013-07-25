@@ -1,5 +1,11 @@
+# if ctx.storage['api_rev'] == 'rev0':
+#     buyer = json.loads(
+#         storage['account_create_buyer']['response']
+#     )
+# else:
+
 buyer = json.loads(
-    storage['account_create_buyer']['response']
+    storage['customer_add_card']['response']
 )
 
 request = {

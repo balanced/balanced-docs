@@ -1,13 +1,18 @@
 import json
 import re
+import os
 
-
-def load(file_path, rev='rev0'):
+def load(file_path, rev=None):
+    rev = rev or os.environ.get('BALANCED_REV', 'rev0')
     data = json.load(file_path)
-    return Spec(data[rev])
-
+    spec = Spec(data[rev], rev=rev)
+    return spec
 
 class Spec(dict):
+
+    def __init__(self, *args, **kwargs):
+        self._rev = kwargs.pop('rev', 'rev0')
+        super(Spec, self).__init__(*args, **kwargs)
 
     # endpoints
 
@@ -16,6 +21,8 @@ class Spec(dict):
         return self['endpoints']
 
     def match_endpoint(self, name):
+
+        #print "####", name
 
         def _nested(path, nesting):
             i = 0
@@ -28,9 +35,12 @@ class Spec(dict):
         nesting, _, name = name.rpartition('/')
         nesting = nesting.split('/')
         matches = []
+        #if self._rev != 'rev0':
+        #    name = name.replace('accounts', 'customers')
         for endpoint in self.endpoints:
             if name == endpoint['name']:
-                if nesting and not _nested(endpoint['path'], nesting):
+                if (nesting and self._rev == 'rev0'
+                    and not _nested(endpoint['path'], nesting)):
                     continue
                 matches.append(endpoint)
         return sorted(matches, key=lambda x: len(x['path']))
@@ -42,6 +52,10 @@ class Spec(dict):
         return self['views']
 
     def match_view(self, name):
+        if self._rev == 'rev0':
+            name = name.split('/')[0]
+        else:
+            name = name.split('/')[-1]
 
         def _munge(v):
             return re.sub(r'[\_\-\.]', '', v.lower())
@@ -59,12 +73,17 @@ class Spec(dict):
         return self['forms']
 
     def match_form(self, name):
+        if self._rev == 'rev0':
+            name = name.split('/')[0]
+        else:
+            name = name.split('/')[-1]
 
         def _munge(v):
             v = re.sub(r's\.', '.', v)
             return re.sub(r'[\_\-.]', '', v.lower())
 
         name = _munge(name) + 'form'
+        #print "#####", name
         for form in self.forms:
             if name == _munge(form['name']):
                 return form

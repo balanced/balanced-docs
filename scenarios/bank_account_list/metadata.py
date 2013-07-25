@@ -1,3 +1,5 @@
+gg = storage['bank_account_create']['request']
+
 request = {
-    'uri': '/v1/bank_accounts'
+    'uri': ctx.marketplace.bank_accounts_uri,
 }

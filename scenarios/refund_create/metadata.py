@@ -7,7 +7,6 @@ debit = json.loads(
 
 request = {
     'payload': {
-        'debit_uri': debit['uri'],
         'description': 'Refund for Order #1111',
         'meta': {
             'user.refund_reason': 'not happy with product',
@@ -15,6 +14,5 @@ request = {
             'fulfillment.item.condition': 'OK'
         },
     },
-    'uri': debit['account']['refunds_uri'],
-    'debit_uri': debit['uri'],
+    'uri': debit['refunds_uri'],
 }

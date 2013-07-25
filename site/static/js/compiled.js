@@ -275,38 +275,48 @@ $(document).ready(function () {
     }
 
     //LOAD DEFAULT LANGUAGE
+    var current_lang;
+
+    function load_language (lang) {
+	if(lang == current_lang) return;
+	current_lang = lang;
+	$("[data-lang]").parent().show();
+	var default_lang_dd = $("[data-lang='" + lang +"']");
+	update_lang_head(default_lang_dd.text());
+	default_lang_dd.parent().hide();
+	$("[class^='highlight-']").hide();
+	$(".highlight-" + lang).show();
+	$('.highlight-javascript').show();
+	$('.highlight-html').show();
+
+	var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
+        var hash = location.hash;
+	uri = uri + '' + hash;
+        console.log(hash);
+        console.log(uri);
+        //window.location = uri;
+	history.pushState(lang, '', uri);
+	$.scrollTo(hash);
+
+	$('[data-spy="scroll"]').each(function () {
+            var $spy = $(this).scrollspy('refresh');
+        });
+    }
+
     var default_lang = getParameterByName('language', window.location.href);
-    default_lang = (default_lang.length > 0) ? default_lang[0] : 'bash';
-    default_lang_dd = $("[data-lang='" + default_lang +"']");
-    update_lang_head(default_lang_dd.text());
-    default_lang_dd.parent().hide();
-    $("[class^='highlight-']").hide();
-    $(".highlight-" + default_lang).show();
-    $('.highlight-javascript').show();
-    $('.highlight-html').show();
+    load_language(default_lang.length && default_lang[0] || 'bash');
 
 
     //SWAP LANGUAGE METHODS
     $('.lang-change').click(function () {
         var lang = $(this).attr('data-lang');
-        var langtext = $(this).text();
-        update_lang_head(langtext);
-        var parent = $(this).parent();
-        parent.siblings().show();
-        parent.hide();
-        $("[class^='highlight-']").hide();
-        $(".highlight-javascript").show();
-        $(".highlight-" + lang).show();
-        var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
-        uri = uri + '' + window.location.hash;
-        console.log(window.location.hash);
-        console.log(uri);
-        window.location = uri;
-        //window.history.replaceState(null, null, uri);
-        $('[data-spy="scroll"]').each(function () {
-            var $spy = $(this).scrollspy('refresh');
-        });
+        load_language(lang);
     });
+
+    window.onpopstate = function () {
+	var default_lang = getParameterByName('language', window.location.href);
+	load_language(default_lang.length && default_lang[0] || 'bash');
+    };
 
 
     //SIDEBAR TO STICK TO BOTTOM
@@ -328,25 +338,76 @@ $(document).ready(function () {
     });
 
     // VERSION SELECTOR
-    var default_version = "rev0";
-    try {
-	default_version = location.pathname.split('/')[1];
-    } catch(e) {}
-    var version_element = $("[data-version='" + default_version + "']");
-    if(!version_element.length) {
-	default_version='rev0';
-	version_element = $("[data-version=rev0]");
+
+    var current_version;
+
+    function change_version(vers) {
+	if(vers == current_version) return;
+	current_version = vers;
+
+	var version_element = $("[data-version='" + vers + "']");
+	if(!version_element.length) {
+	    throw new Error('Version '+vers+' not found');
+	}
+	$('ul.version > li').show();
+	version_element.parent().hide();
+	$("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
+	$("#version-dropdown-head > .version-change").removeClass("version-change").attr('href', '#');
+
+	$('div[class^=api-version]').hide();
+	$('div.api-version-'+vers).show();
+
+	$("[class^=rev-]").hide();
+	$(".rev-"+vers).show();
+
+	var new_hash = location.hash.replace(/rev(\w+)/, vers);
+
+	fix_sidebar();
+	$('[data-spy="scroll"]').each(function () {
+           $(this).scrollspy('refresh');
+        });
+
+	location.hash = new_hash;
+	//$.scrollTo(new_hash);
+
+	//history.pushState(null, '', new_hash);
+
     }
-    version_element.parent().hide();
-    $("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
-    $("#version-dropdown-head > .version-change").removeClass("version-change").attr('href', '#');
-    $("[class^=rev-]").hide();
-    $(".rev-"+default_version).show();
-    $("a.version-change").click(function() {
+
+    $("div[class^=api-version]").each(function () {
+	var $container = $(this);
+	var vers = /rev\w+/.exec($container.attr('class'))[0];
+	$container.find('a').each(function () {
+	    var $a = $(this);
+	    var href = $a.attr('href');
+	    if(href[0] == '#') {
+		$a.attr('href', '#'+vers+'-'+href.substring(1));
+	    }
+	});
+	$container.find('section').each(function () {
+	    var $section = $(this);
+	    var id = $section.attr('id');
+	    id && $section.attr('id', vers+'-'+id);
+	});
+    });
+
+    $(window).on('hashchange', function (){
+	var vers = /(rev\w+)-/.exec(location.hash)[1];
+	change_version(vers);
+    });
+
+    $('a.version-change').click(function () {
 	var $this = $(this);
-	var href = $this.attr('data-version');
-	location.href = location.href.replace(/rev\d+/, href);
+	var ver = $this.attr('data-version');
+	change_version(ver);
+	$('ul.nav-api-version').find('.dropdown-toggle').dropdown('toggle');
 	return false;
     });
+
+    try {
+	change_version(/rev\w+/.exec(location.hash)[0] || 'rev0');
+    } catch(e) {
+	change_version('rev0');
+    }
 
 });
