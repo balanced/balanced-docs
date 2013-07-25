@@ -72,13 +72,13 @@ Overview
      :box-classes: box box-block box-turquoise
      :icon-classes: icon icon-page
 
-     Sample credit card form
+     :ref:`Sample credit card form <getting_started.collecting_card_info>`
 
    .. icon-box-widget::
      :box-classes: box box-block box-turquoise
      :icon-classes: icon icon-page
 
-     Sample bank account form
+     :ref:`Sample bank account form <getting_started.collecting_bank_info>`
 
 
 .. container:: span6
