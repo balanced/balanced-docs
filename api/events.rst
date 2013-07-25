@@ -7,6 +7,14 @@ You can configure events to be published via a ``POST`` to the endpoint of your
 choice via callbacks. Once configured, events are accessible via the
 :ref:`events <events>` endpoint.
 
+.. note::
+   :header_class: alert alert-tab-red
+   :body_class: alert alert-gray
+
+   Balanced may deliver more than one event with the same payload, but with a
+   different event id.
+   
+
 Event types
 -----------
 
