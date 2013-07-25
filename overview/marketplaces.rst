@@ -115,6 +115,31 @@ Those are ``email_address`` and ``merchant_uri``.
   You **MUST** submit these two parameters to successfully create the merchant
   account.
 
+Simulating verified with customers
+----------------------------------
+
+With the new customer resource, you can submit a name, date of birth and postal
+code and the is_validated flag will be set to true in a test marketplace.  If
+you set the name parameter to nothing, then the is_validated flag will be set to
+false.
+
+
+This will create a customer object with the is_identity_verified flag true
+
+.. code-block:: bash
+
+   curl -u 227d0356d9f311e29803026ba7d31e6f: https://api.balancedpayments.com/v1/customers \
+   -d "name=Henry Ford" \
+   -d "dob=1863-07" \
+   -d "address[postal_code]=48120"
+
+
+This will set the is_identity_verified flag on an existing customer from true to false
+
+.. code-block:: bash
+
+   curl -u 227d0356d9f311e29803026ba7d31e6f: https://api.balancedpayments.com/v1/customers/CU2kaisGxbyDuyWiNg3NjeAu \
+   -d "name="
 
 Associating debits with a merchant
 ----------------------------------
