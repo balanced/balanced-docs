@@ -80,9 +80,13 @@ Debit a Bank Account
   ``offset``
       *optional* integer. Defaults to ``0``.
 
+.. container:: method-description
+
+   .. no request
+
 .. container:: code-white
 
-    .. dcode:: scenario bank_account_find_and_debit 
+   .. dcode:: scenario bank_account_find_and_debit
 
 
 .. cssclass:: method-section
