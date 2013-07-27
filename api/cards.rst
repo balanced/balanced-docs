@@ -111,8 +111,8 @@ Charging a card requires that you :ref:`debit an account <debits>`
 Deleting a Card
 ---------------------
 
-Permanently delete a card. It cannot be undone. All associated credits
-with a deleted bank account will not be affected.
+Permanently delete a card. It cannot be undone. All associated debits
+with a deleted credit card will not be affected.
 
 .. container:: method-description
 
