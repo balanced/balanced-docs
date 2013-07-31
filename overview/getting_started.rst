@@ -244,7 +244,7 @@ Let's charge the card:
 
    Balanced does NOT take its fees from your charges, instead it instruments
    all operations that have occurred on the API and later invoices you. Read
-   :ref:`more about fees <fees.balanced>`.
+   :ref:`more about fees <invoicing.fees>`.
 
 .. _getting_started.collecting_bank_info:
 
@@ -416,7 +416,7 @@ Let's issue a credit to this bank account:
 
    For simplicity, Balanced does NOT take its fees from any of your
    operations, instead it meters your API usage and invoices you nightly.
-   Read :ref:`more about fees <fees.balanced>`.
+   Read :ref:`more about fees <invoicing.fees>`.
 
 .. _getting_started.balanced.js_cards:
 
