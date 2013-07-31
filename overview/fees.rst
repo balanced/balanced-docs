@@ -57,7 +57,7 @@ fees per operation is listed below:
 .. [*] If you issue a hold and then successfully complete the charge, you will incur a total fee of 2.9% + 30¢ for the entire transaction (i.e. the 30¢ fee will only be applied once).
 
 
-.. _fees.balanced:
+.. _invoicing.fees:
 
 Invoicing fees
 --------------
