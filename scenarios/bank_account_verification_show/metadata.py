@@ -8,6 +8,10 @@ bank_account = balanced.BankAccount(
         'name': 'Johann Bernoulli',
         }
 ).save()
+
+customer = balanced.Customer().save()
+customer.add_bank_account(bank_account)
+
 verification = bank_account.verify()
 
 request = {
