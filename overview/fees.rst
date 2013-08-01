@@ -43,8 +43,8 @@ fees per operation is listed below:
   ================================ ===================
     Operation                        Cost to you
   ================================ ===================
-  successful credit card charge       2.9% + 30¢
-  issuing a hold                             30¢ [*]_
+  successful credit card charge       2.9% + 30¢ [#]_
+  issuing a hold                             30¢ [#]_
   successful bank account charge        1% + 30¢
   chargeback                              $15.00
   refund                                      $0
@@ -54,7 +54,9 @@ fees per operation is listed below:
   set-up fee                                  $0
   ================================ ===================
 
-.. [*] If you issue a hold and then successfully complete the charge, you will incur a total fee of 2.9% + 30¢ for the entire transaction (i.e. the 30¢ fee will only be applied once).
+
+.. [#] Includes implicit hold.
+.. [#] If you issue a hold and then successfully complete the charge, you will incur a total fee of 2.9% + 30¢ for the entire transaction (i.e. the 30¢ fee will only be applied once).
 
 
 .. _invoicing.fees:
