@@ -1,5 +1,5 @@
 argparse
-balanced
+balanced==0.11.12
 decorator
 docutils==0.9.1
 html5lib==0.95
