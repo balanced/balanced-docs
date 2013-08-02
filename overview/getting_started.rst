@@ -418,6 +418,13 @@ Let's issue a credit to this bank account:
    operations, instead it meters your API usage and invoices you nightly.
    Read :ref:`more about fees <invoicing.fees>`.
 
+.. note::
+   :header_class: alert alert-tab
+   :body_class: alert alert-gray
+
+   Please note that for American Express cards it is mandatory to collect 
+   the zip-code or the transaction will fail. 
+
 .. _getting_started.balanced.js_cards:
 
 Balanced.js Card Reference
