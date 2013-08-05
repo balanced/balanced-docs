@@ -185,6 +185,37 @@ simulating failed status
 .. dcode:: scenario credit_failed_state
 
 
+Test identity verification
+-----------------------------------
+
+``Customer`` resources have an ``is_identity_verified`` attribute.
+
+Omit address data to trigger a ``false`` response. Supply address data
+to trigger a ``true`` response.
+
+The following will set ``is_identity_verified`` to ``true``
+
+.. code-block:: javascript
+
+  {
+      'name': 'Henry Ford',
+      'dob': '1863-07',
+      'address': {
+          'postal_code': '48120'
+      }
+  }
+
+
+The following will set ``is_identity_verified`` to ``false``
+
+.. code-block:: javascript
+
+  {
+      'name': 'Henry Ford',
+      'dob': '1863-07'
+  }
+
+
 Request Logs
 ------------
 
