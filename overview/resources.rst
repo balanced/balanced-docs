@@ -402,3 +402,17 @@ dictionary:
       'shipping.carrier': 'FEDEX',
       'shipping.tracking_number': '1234567890'
   }
+
+
+The Hash Attribute
+------------------
+
+Every ``Card`` and ``BankAccount`` resource has an attribute than can be used
+to check if the same card is being added again.
+
+For credit cards, this is the ``hash`` attribute. This is calculated using
+``card_number`` and the expiration.
+
+For bank accounts, this is the ``fingerprint`` attribute. This is calculated using
+``account_number``, ``routing_number``, ``name``, and ``type``.
+
