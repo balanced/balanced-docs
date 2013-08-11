@@ -1,3 +1,5 @@
+.. _customers:
+
 Customers
 =========
 
@@ -6,6 +8,9 @@ associate credit cards, debit cards, bank accounts and transactions,
 i.e. refunds, debits, credits.
 
 .. cssclass:: method-section
+
+
+.. _creating-a-customer:
 
 Creating a Customer
 -------------------
@@ -20,6 +25,9 @@ Creating a Customer
 
 
 .. cssclass:: method-section
+
+
+.. _adding-a-card-to-a-customer:
 
 Adding a Card to a Customer
 ---------------------------
@@ -40,6 +48,9 @@ You can add multiple cards to a customer.
 
 .. cssclass:: method-section
 
+
+.. _adding-a-bank-account-to-a-customer:
+
 Adding a Bank Account to a Customer
 -----------------------------------
 
@@ -57,3 +68,13 @@ customer, or in this case, initiate a next-day ACH payment.
 
 .. cssclass:: method-section
 
+
+Delete a Customer
+-----------------
+
+Permanently delete a customer. It cannot be undone. Only customers
+without transactions can be deleted.
+
+.. container:: code-white
+
+  .. dcode:: scenario customer_delete
