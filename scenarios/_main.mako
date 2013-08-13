@@ -123,7 +123,7 @@ Balanced.configure('${ctx.api_key}')
     slash = '\\'
   %>
   curl ${Endpoint.qualify_uri(ctx, request[uri])} ${slash}
-     -u ${ctx.api_key}: ${slash}
+     -u ${ctx.api_key}: ${slash} \
   %if 'payload' in request:
    %for k, v, slash in recursive_expand(request['payload']):
      -d "${k}=${v}" ${slash}
