@@ -415,8 +415,11 @@ class Scenario(object):
         }
 
     def _exec(self, cmd):
+        def is_quotable_character(s):
+            return s.strip() not in ['\n', '']
+
         cmd = filter(
-            lambda x: x != '\n',
+            is_quotable_character,
             shlex.split(cmd.encode('utf-8'))
         )
         sh_cmd = ' '.join(pipes.quote(p) for p in cmd)
