@@ -22,7 +22,7 @@ fee per operation is listed below:
     Operation                    Cost to you
   ============================ ===============
   next-day ACH                             25¢
-  failure                                $3.50
+  failure                                $1.00
   reversal                                  $0
   batch fee                                 $0
   monthly fee                               $0
@@ -44,8 +44,7 @@ fees per operation is listed below:
     Operation                        Cost to you
   ================================ ===================
   successful credit card charge       2.9% + 30¢ [#]_
-  issuing a hold                             30¢ [#]_
-  successful bank account charge        1% + 30¢
+  successful bank account charge        1% + 30¢ [#]_
   chargeback                              $15.00
   refund                                      $0
   failure                                     $0
@@ -56,7 +55,7 @@ fees per operation is listed below:
 
 
 .. [#] Includes implicit hold.
-.. [#] If you issue a hold and then successfully complete the charge, you will incur a total fee of 2.9% + 30¢ for the entire transaction (i.e. the 30¢ fee will only be applied once).
+.. [#] Fee is capped at $5
 
 
 .. _invoicing.fees:
