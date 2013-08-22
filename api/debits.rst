@@ -3,9 +3,8 @@
 Debits
 ======
 
-Currently, Balanced supports only card transactions (`info on ACH debits`_) for
-debits. To debit an account, i.e. charge a card, you must create a new debit
-resource.
+To debit an account, i.e. charge a card or bank account, you must create a
+new debit resource.
 
 
 .. cssclass:: method-section
