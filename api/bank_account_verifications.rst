@@ -3,12 +3,13 @@
 Bank Account Verifications
 ==========================
 
-**NOTE** You'll only need to verify a bank account if you're planning to later
-debit that account, which is a functionality only available through our ACH
-Debits private beta. Email support@balancedpayments.com to request access.
-
-**NOTE** If you're sending money to a bank account, known as issuing a credit,
-you do **NOT** need to verify the bank account
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+  
+  If you're sending money to a bank account, known as issuing a credit,
+  you do **NOT** need to verify the bank account. You'll only need to
+  verify a bank account if you're planning to later debit that account.
 
 Before you can debit a bank account you need to verify that you have access to
 it. Balanced allows you to do this by creating a Verification for a
@@ -28,8 +29,12 @@ trial deposits should show in the bank account within 2 business days.
 Verifying a Bank Account
 ------------------------
 
-**NOTE** If you're sending money to a bank account, known as issuing a credit,
-you do **NOT** need to verify the bank account
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+
+  If you're sending money to a bank account, known as issuing a credit,
+  you do **NOT** need to verify the bank account
 
 Creates a new bank account verification.
 
@@ -47,8 +52,12 @@ Creates a new bank account verification.
 Retrieve a Verification for a Bank Account
 ------------------------------------------
 
-**NOTE** If you're sending money to a bank account, known as issuing a credit,
-you do **NOT** need to verify the bank account
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+
+  If you're sending money to a bank account, known as issuing a credit,
+  you do **NOT** need to verify the bank account
 
 Gets the verification for a bank account.
 
@@ -66,8 +75,13 @@ Gets the verification for a bank account.
 Confirm a Bank Account Verification
 -----------------------------------
 
-**NOTE** If you're sending money to a bank account, known as issuing a credit,
-you do **NOT** need to verify the bank account
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+
+  If you're sending money to a bank account, known as issuing a credit,
+  you do **NOT** need to verify the bank account
+
 
 Confirms the trial deposit amounts. For the *test* environment the trial
 deposit amounts are always 1 and 1.
