@@ -209,7 +209,7 @@ Collecting credit card information
            security_code: $form.find('cc-csc').val()
        };
 
-      balanced.card.create(cardData, callbackHandler);
+      balanced.card.create(creditCardData, callbackHandler);
 
 .. clear::
 
