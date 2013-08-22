@@ -11,6 +11,7 @@
 
   introduction
   getting_started
+  best_practices
   processing
   payouts
   fees
