@@ -588,7 +588,7 @@ Balanced.js BankAccount Reference
      :body_class: alert alert-gray
 
      Account numbers can not be validated in real time. More on
-     :ref:`bank accounts best practices <resources.best_practices.payouts>`.
+     :ref:`reducing payout delays <best_practices.reducing-payout-delays>`.
 
   Example:
 
