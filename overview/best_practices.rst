@@ -46,15 +46,15 @@ Automated Clearing House transactions are asynchronous, requiring upfront effort
 in educating your consumers and setting the appropriate expectations to deliver
 a great product.
 
-Balanced validates bank _routing numbers_ in real-time using the
+Balanced validates bank routing numbers in real-time using the
 `FedACH directory`_, but since bank account numbers are not standardized, incorrect
-bank _account numbers_ are not caught until the payout fails.
+bank account numbers are not caught until the payout fails.
 Unfortunately, due to the nature of the ACH network, failure notifications can be delayed
-for up to (4) four business days. This means that an account number typo can, on average, cause payment delays by
-up to (3) three to (5) five business days. 
+for up to (4) four business days. This means that an account number typo can, on average,
+cause payment delays by up to (3) three to (5) five business days.
 
-Since you or your users may rely on these funds as operating capital, this delay can be extremely inconvenient and
-frustrating to you and your users.
+Since you or your users may rely on these funds as operating capital, this delay can be
+extremely inconvenient and frustrating to you and your users.
 
 Our recommendation, for mitigating these user experience issues, is to properly
 invest time in building a robust and reliable form to collect the merchant
@@ -81,9 +81,12 @@ Here are some tips:
    as an aid to your customers who are inquiring whether or not they have the
    right routing number.
 
-#. If you're double checking routing numbers for customers, most banks assign routing numbers according to the state or region of the state that the bank account was opened in.
+#. If you're double checking routing numbers for customers, most banks assign routing numbers
+   according to the state or region of the state that the bank account was opened in.
 
-#. Encourage customers to check their bank websites for the routing number used specifically for ACH or electronic deposits. Some large banks, particularly Bank Of America, may have different routing numbers for checks and direct deposits.
+#. Encourage customers to check their bank websites for the routing number used specifically
+   for ACH or electronic deposits. Some large banks, particularly Bank Of America, may have
+   different routing numbers for checks and direct deposits.
 
 #. Balanced has provided very useful routing number validators in our
    :ref:`balanced.js <getting_started.balanced.js_bank_accounts>` library.
@@ -99,12 +102,15 @@ Here are some tips:
 Our statistics show that most of the time, with the help of a properly designed and robust
 form, your users will provide the correct bank routing and account numbers. 
 
-With correct bank information their payout will usually appear the next business day, as expected. Once a
-successful payout has been made, future credits to that bank account
+With correct bank information their payout will usually appear the next business day, as
+expected. Once a successful payout has been made, future credits to that bank account
 will continue to take one business day when issued before the
 :ref:`next-day cut-offs <payouts.cutoff>`.
 
-If a payout does fail for any reason, we’ll notify you via email, dashboard, and webhook. If a customer complains about a payout failure and you do not see any notification with in the expected time window, please reach out to support@balanedpayments.com and we'll track down the payout as soon as possible.
+If a payout does fail for any reason, we’ll notify you via email, dashboard, and webhook.
+If a customer complains about a payout failure and you do not see any notification with in
+the expected time window, please reach out to support@balanedpayments.com and we'll track
+down the payout as soon as possible.
 
 .. _Bank code: http://en.wikipedia.org/wiki/Bank_code
 .. _FedACH directory: https://www.fededirectory.frb.org
@@ -168,12 +174,13 @@ Do not attempt to be clever and try to save a few bytes by storing the ``id``
 and constructing the ``uri`` later.
 
 This will almost always lead to disaster. A ``uri`` is opaque and Balanced
-reserves the right to use HTTP semantics later to change them. This means that while Balanced will not change the ``uri`` we may change components of the ``uri`` including the ``id``, so you
-should **NEVER** store the ``id``.
+reserves the right to use HTTP semantics later to change them. This means that while
+Balanced will not change the ``uri`` we may change components of the ``uri``
+including the ``id``, so you should **NEVER** store the ``id``.
 
-Our internal statistics show that client libraries that construct
-the ``uri`` receive roughly **2 orders of magnitude** more ``404`` status codes
-from Balanced than clients which use the ``uri`` directly.
+Our internal statistics show that client libraries that construct the ``uri``
+receive roughly **2 orders of magnitude** more ``404`` status codes from Balanced
+than clients which use the ``uri`` directly.
 
 .. note::
   :header_class: alert alert-tab
@@ -199,7 +206,9 @@ directly from developers.
 Be sure to have the following handy to facilitate quick resolutions to issues:
 
 - A description of the problem
-- The Dashboard link to the transaction(s) related to the issue (if one exists. if there is more than one please provide enough transactions and their corresponding links so that we have a sample set that we can begin investigating)
+- The Dashboard link to the transaction(s) related to the issue (if one exists. if there
+  is more than one please provide enough transactions and their corresponding links so
+  that we have a sample set that we can begin investigating)
 - Transaction OHM (this is the identifier for the corresponding log message. It's returned on errors)
 - Marketplace name
 - Timeframe of issue
