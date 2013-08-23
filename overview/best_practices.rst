@@ -131,7 +131,7 @@ fields you may provide are:
 -  shipping.address.street_address
 -  shipping.address.city
 -  shipping.address.region
--  shipping.address.country_code
+-  shipping.address.country_code (`ISO 3166-1 alpha-3`_)
 -  shipping.carrier
 -  shipping.tracking_number
 
@@ -206,3 +206,6 @@ Be sure to have the following handy to facilitate quick resolutions to issues:
 - Affected customer(s)
 - Amount and type of transaction
 - Last 4 digits and type of the affected card (if applicable)
+
+
+.. _ISO 3166-1 alpha-3: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
