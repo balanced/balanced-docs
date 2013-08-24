@@ -436,8 +436,8 @@ Balanced.js Card Reference
   tokenization.
 
   :param cardDataObject.card_number: *required*.  The credit card number
-  :param cardDataObject.expiration_month: *required*. The credit card's expiration month
-  :param cardDataObject.expiration_year: *required*. The credit card's expiration year
+  :param cardDataObject.expiration_month: *required*. The credit card's expiration month in the format of MM
+  :param cardDataObject.expiration_year: *required*. The credit card's expiration year in the format of YYYY
   :param cardDataObject.security_code: *optional*. The credit card's security code
   :param cardDataObject.name: *optional*. The credit card holder's name
   :param cardDataObject.postal_code: *optional*. The credit card's billing postal code (zip code in the USA)
