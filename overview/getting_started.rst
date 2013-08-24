@@ -223,17 +223,17 @@ resource.
 
 Let's charge the card:
 
-1. First, let's create an account to associate the card token with:
+1. First, let's create a customer to which we can associate a card:
 
-   .. dcode:: scenario account_create_buyer
+   .. dcode:: scenario customer_create
 
-2. Associate the token with an account:
+2. Associate the token with the customer:
 
-   .. dcode:: scenario account_add_card
+   .. dcode:: scenario customer_add_card
 
-3. Debit the account:
+3. Debit the customer:
 
-   .. dcode:: scenario account_create_debit
+   .. dcode:: scenario customer_create_debit
 
 .. clear::
   :class: mb-large
