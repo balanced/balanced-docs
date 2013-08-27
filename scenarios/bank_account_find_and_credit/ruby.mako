@@ -5,6 +5,6 @@ ${main.ruby_boilerplate()}
 marketplace = Balanced::Marketplace.my_marketplace
 
 bank_account = Balanced::BankAccount.find('${request['uri']}')
-bank_account.credit(${request['amount']})
+bank_account.credit(:amount => ${request['amount']})
 
 % endif
