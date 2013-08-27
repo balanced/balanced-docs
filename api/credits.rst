@@ -108,21 +108,21 @@ with the most recent credits appearing first.
 
 .. cssclass:: method-section
 
-Creating a New Credit For an Account
+Create a New Credit For a Customer
 ------------------------------------
 
 .. cssclass:: dl-horizontal dl-params
 
-  .. dcode:: form account_credits.create
+  .. dcode:: form credits.create
 
 .. container:: code-white
 
-  .. dcode:: scenario credit_account_merchant_create
+  .. dcode:: scenario customer_credit
 
 
 .. cssclass:: method-section
 
-Listing All Credits For an Account
+Listing All Credits For a Customer
 ----------------------------------
 
 .. cssclass:: dl-horizontal dl-params
@@ -135,4 +135,4 @@ Listing All Credits For an Account
 
 .. container:: code-white
 
-  .. dcode:: scenario credit_account_list
+  .. dcode:: scenario credit_customer_list

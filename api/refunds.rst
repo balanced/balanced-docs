@@ -81,7 +81,7 @@ appearing first.
 
 .. container:: code-white
 
-   .. dcode:: scenario refund_account_list
+   .. dcode:: scenario refund_customer_list
 
 
 .. cssclass:: method-section

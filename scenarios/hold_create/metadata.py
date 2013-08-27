@@ -1,12 +1,14 @@
-buyer = json.loads(
-    storage['account_create_buyer']['response']
+ctx.storage.pop('customer_add_card', None)
+
+customer = json.loads(
+    storage['customer_add_card']['response']
 )
 
 request = {
+    'uri': customer['holds_uri'],
     'payload': {
         'amount': 5000,
         'description': 'Some descriptive text for the debit in the dashboard',
     },
-    'holds_uri': buyer['holds_uri'],
-    'account_uri': buyer['uri'],
+    'customer_uri': customer['uri'],
 }
