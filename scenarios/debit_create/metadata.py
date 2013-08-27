@@ -1,5 +1,5 @@
-buyer = json.loads(
-    storage['account_create_buyer']['response']
+customer = json.loads(
+    storage['customer_add_card']['response']
 )
 
 request = {
@@ -8,6 +8,6 @@ request = {
         'appears_on_statement_as': 'Statement text',
         'description': 'Some descriptive text for the debit in the dashboard',
     },
-    'debits_uri': buyer['debits_uri'],
-    'account_uri': buyer['uri'],
+    'debits_uri': customer['debits_uri'],
+    'customer_uri': customer['uri'],
 }

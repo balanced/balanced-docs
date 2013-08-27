@@ -31,7 +31,7 @@ corresponding hold.
 
 .. container:: code-white
 
-  .. dcode:: scenario debit_create
+  .. dcode:: scenario customer_create_debit
 
 
 .. cssclass:: method-section
@@ -73,7 +73,7 @@ in sorted order, with the most recent debits appearing first.
 
 .. cssclass:: method-section
 
-List All Debits For an Account
+List All Debits For a Customer
 ------------------------------
 
 Returns a list of debits you've previously created against a specific account.
@@ -91,7 +91,7 @@ with the most recent debits appearing first.
 
 .. container:: code-white
 
-  .. dcode:: scenario debit_account_list
+  .. dcode:: scenario debit_customer_list
 
 
 .. cssclass:: method-section

@@ -15,6 +15,6 @@ request = {
             'fulfillment.item.condition': 'OK'
         },
     },
-    'uri': debit['account']['refunds_uri'],
+    'uri': debit['customer']['refunds_uri'],
     'debit_uri': debit['uri'],
 }
