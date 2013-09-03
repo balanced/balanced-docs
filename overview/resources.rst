@@ -260,7 +260,7 @@ verify that the postal_code supplied during card tokenization matches the
 billing zip code of the credit card.
 
 Supplying a ``postal_code`` during tokenization initiates the AVS check.
-The ``Card`` will have a ``postal_code_match`` attribute containing the
+The ``Card`` will have a ``postal_code_check`` attribute containing the
 AVS check result.
 
 
