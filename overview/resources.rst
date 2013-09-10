@@ -263,6 +263,8 @@ Supplying a ``postal_code`` during tokenization initiates the AVS check.
 The ``Card`` will have a ``postal_code_check`` attribute containing the
 AVS check result.
 
+``postal_code_check`` will be one of: ``passed``, ``failed``, ``unknown``
+
 
 .. _resources.card-security-code:
 
@@ -274,6 +276,8 @@ CSC, **C**\ ard **S**\ ecurity **C**\ ode, provides a means to verify that the
 for the credit card. The ``Card`` will have a ``security_code_check``
 attribute containing the CSC check result. It's strongly recommended you do
 not process transactions with cards that fail this check.
+
+``security_code_check`` will be one of: ``passed``, ``failed``, ``unknown``
 
 
 .. _FedACH directory: https://www.fededirectory.frb.org
