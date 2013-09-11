@@ -142,3 +142,7 @@ directive above will result in this call:
 ../scenario.py -d ../scenarios -c scenario.cache credit_create_new_bank_account --lang ruby
 ```
 
+### Run individual scenario
+
+```scripts/lang-scenario.py -d clients/curl hold_create
+```
