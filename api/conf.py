@@ -268,7 +268,7 @@ def setup(app):
     # dcode directive default registrations
     dcode.DCodeDefaultDirective.registry[None]['cache'] = 'dcode.cache'
     dcode.DCodeDefaultDirective.registry['scenario'].update({
-        'script': 'scripts/lang-scenario.py -d scenarios -c scenario.cache',
+        'script': 'scripts/lang-scenario.py -d clients/curl -c scenario.cache',
         'section-chars': '~^',
         'lang': ['python', 'ruby', 'php', 'node', 'java'],
     })

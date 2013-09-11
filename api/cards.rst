@@ -111,7 +111,7 @@ with a deleted credit card will not be affected.
 
    .. no request
 
-.. container:: method-examples
+.. container:: code-white
 
    .. dcode:: scenario card_delete
 

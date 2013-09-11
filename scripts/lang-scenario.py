@@ -246,6 +246,8 @@ class Endpoint(object):
             return matches[0]
         elif select == 'shortest':
             return min(matches, key=lambda m: len(m['path']))
+        elif select == 'longest':
+            return max(matches, key=lambda m: len(m['path']))
         elif isinstance(select, (list, tuple)):
             select = set(select)
             for match in matches:
