@@ -71,4 +71,6 @@ List all Events
 
 .. cssclass:: dl-horizontal dl-params:
 
+.. container:: code-white
+
   .. dcode:: scenario event_list

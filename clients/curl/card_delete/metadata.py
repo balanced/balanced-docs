@@ -1,8 +1,6 @@
-cards = json.loads(
-    storage['card_list']['response']
+card = json.loads(
+    storage['card_create']['response']
 )
-
-card = cards['items'][-1]
 
 request = {
     'uri': card['uri'],

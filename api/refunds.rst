@@ -64,7 +64,7 @@ in sorted order, with the most recent refunds appearing first.
 
 .. cssclass:: method-section
 
-List All Refunds For an Account
+List All Refunds For a Customer
 -------------------------------
 
 Returns a list of refunds you've previously created against a specific account.
