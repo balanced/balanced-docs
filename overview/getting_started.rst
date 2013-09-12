@@ -390,22 +390,23 @@ Collect bank account info
 Credit a bank account
 ---------------------
 
-Ok, so you've got a bank account token, referred to as the ``uri`` of the
-returned BankAccount resource.
+After collecting the bank account information via balanced.js, you'll have
+the bank account token, referred to as the ``uri`` of the returned BankAccount
+resource.
 
 Let's issue a credit to this bank account:
 
-1. First, let's create an account to associate the bank account token with:
+1. First, create a customer to which the bank account can be associated:
 
-   .. dcode:: scenario account_create
+   .. dcode:: scenario customer_create
 
-2. Associate the token with an account:
+2. Associate the token with the customer:
 
-   .. dcode:: scenario account_create_merchant
+   .. dcode:: scenario customer_add_bank_account
 
-3. Credit the account:
+3. Credit the customer:
 
-   .. dcode:: scenario credit_account_merchant_create
+   .. dcode:: scenario customer_credit
 
 .. clear::
   :class: mb-large

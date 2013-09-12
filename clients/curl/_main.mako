@@ -44,58 +44,6 @@
 %>
 </%def>
 
-<%def name="php_boilerplate()">
-## i'm putting this between an interpolation because pycharm's introspection
-## correctly detects that this is an unclosed tag and warns me..annoying.
-${"<?php"}
-
-require(__DIR__ . '/vendor/autoload.php');
-
-Httpful\Bootstrap::init();
-RESTful\Bootstrap::init();
-Balanced\Bootstrap::init();
-
-%if api_location:
-Balanced\Settings::configure("${api_location}", "${ctx.api_key}");
-%else:
-Balanced\Settings::$api_key = "${ctx.api_key}";
-%endif
-
-</%def>
-
-<%def name="python_boilerplate()">
-import balanced
-
-%if api_location:
-balanced.config.root_uri = "${api_location}"
-%endif
-balanced.configure("${ctx.api_key}")
-
-</%def>
-
-<%def name="ruby_boilerplate()">
-require 'rubygems'
-require 'balanced'
-%if api_location:
-<%
-  import urlparse
-  parsed_url = urlparse.urlparse(api_location)
-  _root_url = parsed_url.netloc
-  if ':' in _root_url:
-      _root_url, _, _ = parsed_url.netloc.partition(':')
-
-%>
-options = {
-  :scheme => 'http',
-  :host => '${_root_url}',
-  :port => 5000,
-}
-Balanced.configure('${ctx.api_key}', options)
-%else:
-Balanced.configure('${ctx.api_key}')
-%endif
-</%def>
-
 
 <%def name="curl_show_template(endpoint_name, sel='shortest')">
 <%
