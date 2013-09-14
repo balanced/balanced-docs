@@ -46,7 +46,7 @@ It's very important to take a proactive stance against fraud. Below are some
 tips to help guard against it. We recommend marketplaces take advantage of
 the following:
 
-- Utilize  customer verification. We highly recommended that you do not issue payouts to
+- Utilize customer verification. We highly recommended that you do not issue payouts to
   unverified customers. Refer to :ref:`resources.test-identity-verification`
 - Utilize AVS. Refer to :ref:`resources.address-verification-service`
 - Utilize CSC. Refer to :ref:`resources.card-security-code`

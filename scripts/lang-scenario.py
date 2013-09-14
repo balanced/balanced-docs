@@ -425,7 +425,7 @@ class Scenario(object):
             shlex.split(cmd.encode('utf-8'))
         )
         sh_cmd = ' '.join(pipes.quote(p) for p in cmd)
-        logger.debug('exeuting - %s', sh_cmd)
+        logger.debug('executing - %s', sh_cmd)
         proc = subprocess.Popen(
             cmd,
             stdout=subprocess.PIPE,
