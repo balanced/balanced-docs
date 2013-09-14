@@ -1,4 +1,4 @@
-<%def name="recursive_expand(dikt, delimiter='\\')">
+<%def name="recursive_expand(dikt, delimiter='\\')" filter="trim">
 <%
     if not dikt:
         raise StopIteration
@@ -72,13 +72,12 @@
     slash = '\\'
   %>
   curl ${Endpoint.qualify_uri(ctx, request[uri])} ${slash}
-     -u ${ctx.api_key}: ${slash}\
+     -u ${ctx.api_key}: ${slash}
   %if 'payload' in request:
    %for k, v, slash in recursive_expand(request['payload']):
      -d "${k}=${v}" ${slash}
    %endfor
   %else:
-
      -X POST
   %endif
 %endif
@@ -96,7 +95,7 @@
   %>
   curl ${Endpoint.qualify_uri(ctx, request[uri])} ${slash}
      -u ${ctx.api_key}: ${slash}
-     -X PUT ${slash}\
+     -X PUT ${slash}
    %for k, v, slash in recursive_expand(request['payload']):
      -d "${k}=${v}" ${slash}
    %endfor
