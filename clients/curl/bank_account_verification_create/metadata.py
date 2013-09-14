@@ -1,18 +1,10 @@
-import balanced
+bank_account = json.loads(
+    storage['customer_add_bank_account']['response']
+)
 
-
-balanced.configure(storage['api_key'])
-
-bank_account = balanced.BankAccount(
-    **{
-    'type': 'checking',
-    'account_number': '9900000001',
-    'routing_number': '321174851',
-    'name': 'Johann Bernoulli',
-    }
-).save()
+bank_account_request = storage['customer_add_bank_account']['request']
 
 request = {
-    'uri': bank_account.verifications_uri,
-    'bank_account_uri': bank_account.uri
+    'uri': bank_account_request['bank_account_verifications_uri'],
+    'bank_account_uri': bank_account_request['payload']['bank_account_uri']
 }
