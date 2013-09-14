@@ -109,7 +109,7 @@ Collecting credit card information
         card_number: $form.find('.cc-number').val(),
         expiration_month: $form.find('.cc-em').val(),
         expiration_year: $form.find('.cc-ey').val(),
-        security_code: $form.find('cc-csc').val()
+        security_code: $form.find('.cc-csc').val()
      };
 
 2. Invoke the :js:func:`balanced.card.create` function with the collected information.
@@ -206,7 +206,7 @@ Collecting credit card information
            card_number: $form.find('.cc-number').val(),
            expiration_month: $form.find('.cc-em').val(),
            expiration_year: $form.find('.cc-ey').val(),
-           security_code: $form.find('cc-csc').val()
+           security_code: $form.find('.cc-csc').val()
        };
 
       balanced.card.create(creditCardData, callbackHandler);
