@@ -115,6 +115,8 @@ Let's say you've debited an account for $20.00
    Bad Request: 400: Invalid field [amount] - "3000" must be <= 2000
 
 
+.. _processing.holds:
+
 Holds
 -----
 
@@ -166,3 +168,26 @@ Here's an example on how to capture a hold:
 .. _balanced.js: https://js.balancedpayments.com/v1/balanced.js
 .. _testing documentation: /docs/testing#simulating-card-failures
 .. _jQuery: http://www.jquery.com
+
+
+.. _processing.transaction-limits:
+
+Transaction Limits
+------------------
+
+Credit cards - $15,000 per transaction.
+
+Bank account debits - $15,000 per transaction.
+
+Bank account credits - $15,000 per transaction.
+
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+  
+  Please contact `support@balancedpayments.com <mailto:support@balancedpayments.com>`__
+  if you are planning to process larger amounts.
+  
+  These limits do not apply to the marketplace owner bank account.
+

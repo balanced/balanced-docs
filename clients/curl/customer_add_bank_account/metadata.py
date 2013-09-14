@@ -1,6 +1,6 @@
 ctx.storage.pop('customer_create', None)
 
-bank_account_var = json.loads(
+customer = json.loads(
     storage['customer_create']['response']
 )
 
@@ -11,7 +11,8 @@ bank_account = json.loads(
 )
 
 request = {
-    'uri': bank_account_var['uri'],
+    'uri': customer['uri'],
+    'bank_account_verifications_uri': bank_account['verifications_uri'],
     'payload': {
         'bank_account_uri': bank_account['uri'],
     }

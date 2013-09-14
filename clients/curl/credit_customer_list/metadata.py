@@ -3,7 +3,7 @@ customer = json.loads(
 )
 
 request = {
-    'account_uri': customer['uri'],
+    'customer_uri': customer['uri'],
     'uri': customer['credits_uri'],
     'payload': {
         'amount': 100,

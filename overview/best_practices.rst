@@ -3,6 +3,22 @@
 Best Practices
 ==============
 
+.. _use_balanced_js:
+
+Use balanced.js
+---------------
+
+Use balanced.js to tokenize cards and bank accounts. balanced.js keeps your systems PCI compliant
+by sending sensitive information over SSL directly to the Balanced servers.
+
+.. note::
+   :header_class: alert alert-tab
+   :body_class: alert alert-gray
+
+   This does not remove the need for you to use SSL on your servers as all financial transactions
+   should occur over SSL.
+
+
 .. _best_practices.payouts:
 
 Reducing Declined Transactions
@@ -30,7 +46,7 @@ It's very important to take a proactive stance against fraud. Below are some
 tips to help guard against it. We recommend marketplaces take advantage of
 the following:
 
-- Utilize  customer verification. We highly recommended that you do not issue payouts to
+- Utilize customer verification. We highly recommended that you do not issue payouts to
   unverified customers. Refer to :ref:`resources.test-identity-verification`
 - Utilize AVS. Refer to :ref:`resources.address-verification-service`
 - Utilize CSC. Refer to :ref:`resources.card-security-code`
