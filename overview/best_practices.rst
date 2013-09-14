@@ -3,6 +3,22 @@
 Best Practices
 ==============
 
+.. _use_balanced_js:
+
+Use balanced.js
+---------------
+
+Use balanced.js to tokenize cards and bank accounts. balanced.js keeps your systems PCI compliant
+by sending sensitive information over SSL directly to the Balanced servers.
+
+.. note::
+   :header_class: alert alert-tab
+   :body_class: alert alert-gray
+
+   This does not remove the need for you to use SSL on your servers as all financial transactions
+   should occur over SSL.
+
+
 .. _best_practices.payouts:
 
 Reducing Declined Transactions
