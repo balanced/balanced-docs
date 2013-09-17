@@ -1,0 +1,34 @@
+    <form class="form-horizontal" action="#" method="POST" id="bank-account-form">
+        <div class="control-group">
+            <label class="control-label" for="bank-account-number">Account Number</label>
+
+            <div class="controls">
+                <input type="text" id="bank-account-number"
+                       placeholder="Account Number" maxlength="19" name="bank-account-number">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="bank-routing-number">Routing Number</label>
+
+            <div class="controls">
+                <input type="text" id="bank-routing-number"
+                       placeholder="Routing Number" maxlength="19" name="bank-routing-number">
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label"
+                   for="bank-account-type">Type</label>
+
+            <div class="controls">
+                <select id="bank-account-type" name="bank-account-type">
+                    <option value="checking">CHECKING</option>
+                    <option value="savings">SAVINGS</option>
+                </select>
+            </div>
+        </div>
+        <div class="control-group bg-gray">
+            <div class="controls">
+                <button class="btn">Tokenize</button>
+            </div>
+        </div>
+    </form>
