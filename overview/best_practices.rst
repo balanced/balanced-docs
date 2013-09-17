@@ -36,8 +36,10 @@ Fraud and Card declinations can be reduced if the following information is suppl
    :header_class: alert alert-tab-red
    :body_class: alert alert-gray
 
-   American Express declines transactions with cards that do not include ``security_code`` and
-   ``postal_code``.
+   Balanced highly recommends collecting ``security_code`` and ``postal_code`` for
+   transactions on American Express cards. Collecting this information dramatically
+   increases acceptance rates for AMEX.
+
 
 Catching Fraud Early
 --------------------
