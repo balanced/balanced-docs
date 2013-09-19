@@ -19,6 +19,38 @@ by sending sensitive information over SSL directly to the Balanced servers.
    should occur over SSL.
 
 
+.. _best_practices.soft-descriptor:
+
+Soft Descriptors
+----------------
+
+Set a soft descriptor for your transactions. Soft descriptors appear on customer's card and bank
+statements for every transaction performed.
+
+Soft descriptors have the following limits:
+
+- Debits: Truncated to 18 characters.
+- Credits: Truncated to 14 characters.
+
+Balanced recommends the following format for soft descriptors from left to right, space permitting:
+
+[short marketplace descriptor] [order number] and/or [seller company name]
+
+For example, "BagelHub 187451 TastyBagels"
+
+This format provides two key pieces of information to customers. They identify the marketplace
+from which the bank transaction originated, and they identify the transaction itself. **Who**
+the charge came from rather than **what** the charge was for is more important in soft descriptors.
+
+This facilitates bank statement reconciliation and simplifies customer support by allowing customers,
+merchants, and marketplaces to search by the same information. It's also recommended marketplaces
+email receipts containing the order numbers and use it as the place to list for what the transaction
+was performed.
+
+Setting the soft descriptor is achieved by setting ``appears_on_statement_as`` when performing
+a debit or a credit.
+
+
 .. _best_practices.payouts:
 
 Reducing Declined Transactions
