@@ -42,10 +42,6 @@ function hide_search_results() {
     $light_box.hide();
 }
 
-function endsWith(str, suffix) {
-    return str.indexOf(suffix, str.length - suffix.length) !== -1;
-}
-
 $(document).ready(function () {
     //ADD OTHER PAGES
     $('body').append("<div id='search_extra' style='display: none'></div>");
@@ -84,10 +80,10 @@ $(document).ready(function () {
         });
     }
 
-    if (endsWith(window.location.pathname, 'overview.html') || endsWith(window.location.pathname, 'current/')) {
+    if($('#overview-content').length){
         add_to_search('api.html');
     }
-    else if (endsWith(window.location.pathname, 'api.html')) {
+    else if($('#api-content').length){
         add_to_search('overview.html');
     }
 
@@ -330,12 +326,13 @@ $(document).ready(function () {
     // VERSION SELECTOR
     var default_version = "rev0";
     try {
-	default_version = location.pathname.split('/')[1];
-    } catch(e) {}
+	    default_version = location.pathname.split('/')[1];
+    }
+    catch(e) {}
     var version_element = $("[data-version='" + default_version + "']");
     if(!version_element.length) {
-	default_version='rev0';
-	version_element = $("[data-version=rev0]");
+	    default_version='rev0';
+    	version_element = $("[data-version=rev0]");
     }
     version_element.parent().hide();
     $("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
@@ -343,10 +340,26 @@ $(document).ready(function () {
     $("[class^=rev-]").hide();
     $(".rev-"+default_version).show();
     $("a.version-change").click(function() {
-	var $this = $(this);
-	var href = $this.attr('data-version');
-	location.href = location.href.replace(/rev\d+/, href);
-	return false;
+    	var $this = $(this);
+    	var href = $this.attr('data-version');
+    	location.href = location.href.replace(/rev\d+/, href);
+    	return false;
     });
-
+    
+    $('a').click(function(){
+        var targetOffset = $($.attr(this, 'href')).offset().top;
+        var offset = 0;
+        if (window.pageYOffset > targetOffset) {
+            offset = $($.attr(this, 'href')).offset().top - 150;
+        }
+        else {
+            offset = $($.attr(this, 'href')).offset().top;
+        }
+        
+        $('html, body').animate({
+            scrollTop: offset
+        }, 500);
+        
+        return false;
+    });
 });
