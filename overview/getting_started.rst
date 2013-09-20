@@ -3,6 +3,60 @@
 Getting Started
 ===============
 
+.. _getting_started.obtain-test-marketplace:
+
+Obtain a Test Marketplace
+-------------------------
+
+Visit `<https://www.balancedpayments.com>`_ and click the try it out button. This
+creates a new test marketplace for immediate use.
+
+Use your API key to start interacting with the Balanced API.
+
+Click "Demo Dashboard" to view your new test marketplace with some sample data.
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+
+  Be sure to claim your account by clicking the user icon in the top right corner of
+  the dashboard and selecting "Claim account". Enter your email address and a
+  password to permanently claim that dashboard as your own.
+
+
+.. _getting_started.obtain-prod-marketplace:
+
+Obtain a Production Marketplace
+-------------------------------
+
+To obtain a production marketplace:
+
+- Sign into your dashboard account.
+- Visit `<https://dashboard.balancedpayments.com/#/marketplaces>`_
+- Where you see "Not transacting yet? Register for production access", click
+  the register button.
+- Choose if you are applying for a production marketplace as a person or a business.
+- Fill out the form.
+- Accept the `Terms & Conditions <https://www.balancedpayments.com/terms/>`_,
+  `Marketplace Agreement <https://www.balancedpayments.com/terms/marketplaceagreement>`_,
+  and `Privacy Policy <https://www.balancedpayments.com/privacy>`_.
+- Submit the form.
+- After 1-2 days, find the verification amounts on your bank statement.
+- Via the Dashboard go to your production marketplace settings page.
+- Click on your marketplace bank account.
+- Click the confirm verification button.
+- Enter the verification amounts and click the confirm button.
+
+ |
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+
+  Don't forget to update your application to use your production API key and
+  production marketplace URI before you begin transacting in your production marketplace.
+
+
 Balanced.js
 -----------
 
