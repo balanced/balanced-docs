@@ -3,6 +3,25 @@
 Best Practices
 ==============
 
+.. _best_practices.going-live-checklist:
+
+Going Live Checklist
+--------------------
+
+- Ensure servers use SSL
+- Use :ref:`balanced.js <use_balanced_js>`
+- Verify the use of `best practices <#best-practices>`__
+- Review the `Terms & Conditions <https://www.balancedpayments.com/terms/>`_,
+  `Marketplace Agreement <https://www.balancedpayments.com/terms/marketplaceagreement>`_,
+  and `Privacy Policy <https://www.balancedpayments.com/privacy>`_.
+- Include client terms snippet (#2) from `marketplace agreement <https://www.balancedpayments.com/terms/marketplaceagreement>`__ in client terms and conditions
+- Include the `credit card brand logos <http://www.quora.com/Balanced/I-am-in-the-process-of-adding-Balanced-to-my-site-and-want-to-use-the-Balanced-logo-Is-that-allowed>`__ on the checkout page
+- Include a `"Powered by Balanced" badge <https://github.com/balanced/balanced-dashboard/issues/24#issuecomment-17952768>`__ on the site footer or checkout page
+- `Register for a production marketplace <#getting-started-obtain-prod-marketplace>`_
+- Change API key to production API key
+- Change application marketplace URI to production marketplace URI
+
+
 .. _use_balanced_js:
 
 Use balanced.js
