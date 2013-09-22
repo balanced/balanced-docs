@@ -123,21 +123,4 @@ $(document).ready(function () {
     	location.href = location.href.replace(/rev\d+/, href);
     	return false;
     });
-    
-    $('a').click(function(){
-        var targetOffset = $($.attr(this, 'href')).offset().top;
-        var offset = 0;
-        if (window.pageYOffset > targetOffset) {
-            offset = $($.attr(this, 'href')).offset().top - 150;
-        }
-        else {
-            offset = $($.attr(this, 'href')).offset().top;
-        }
-        
-        $('html, body').animate({
-            scrollTop: offset
-        }, 500);
-        
-        return false;
-    });
 });
