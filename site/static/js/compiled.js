@@ -281,7 +281,15 @@ $(document).ready(function () {
     $('.highlight-javascript').show();
     $('.highlight-html').show();
 
-
+    $('a').each(function() {
+        if ($(this).attr('href') != null) {
+            if ($(this).attr('href').indexOf("api.html") != -1 ||
+                $(this).attr('href').indexOf("overview.html") != -1) {
+                    $(this).attr('href', $(this).attr('href') + "?language=" + default_lang);
+                }
+        }
+    });
+    
     //SWAP LANGUAGE METHODS
     $('.lang-change').click(function () {
         var lang = $(this).attr('data-lang');
@@ -344,22 +352,5 @@ $(document).ready(function () {
     	var href = $this.attr('data-version');
     	location.href = location.href.replace(/rev\d+/, href);
     	return false;
-    });
-    
-    $('a').click(function(){
-        var targetOffset = $($.attr(this, 'href')).offset().top;
-        var offset = 0;
-        if (window.pageYOffset > targetOffset) {
-            offset = $($.attr(this, 'href')).offset().top - 150;
-        }
-        else {
-            offset = $($.attr(this, 'href')).offset().top;
-        }
-        
-        $('html, body').animate({
-            scrollTop: offset
-        }, 500);
-        
-        return false;
     });
 });
