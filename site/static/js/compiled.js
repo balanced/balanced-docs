@@ -281,7 +281,15 @@ $(document).ready(function () {
     $('.highlight-javascript').show();
     $('.highlight-html').show();
 
-
+    $('a').each(function() {
+        if ($(this).attr('href') != null) {
+            if ($(this).attr('href').indexOf("api.html") != -1 ||
+                $(this).attr('href').indexOf("overview.html") != -1) {
+                    $(this).attr('href', $(this).attr('href') + "?language=" + default_lang);
+                }
+        }
+    });
+    
     //SWAP LANGUAGE METHODS
     $('.lang-change').click(function () {
         var lang = $(this).attr('data-lang');
