@@ -55,7 +55,7 @@ Balanced recommends the following format for soft descriptors from left to right
 
 [short marketplace descriptor] [order number] and/or [seller company name]
 
-For example, "BagelHub 187451 TastyBagels"
+For example, "BHub 187451 TastyB"
 
 This format provides two key pieces of information to customers. They identify the marketplace
 from which the bank transaction originated, and they identify the transaction itself. **Who**
