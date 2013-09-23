@@ -258,6 +258,19 @@ function updateNavigation(e) {
     //console.log(currentTopic.attr('href'));
 }
 $(document).ready(function () {
+    //SIDEBAR TO STICK TO BOTTOM
+    function fix_sidebar(){
+        var window_height = $(window).height();
+        var top_of_sidebar = 300;
+        var height_of_sidebar = window_height - top_of_sidebar;
+        $('.nav.nav-list').css('height', height_of_sidebar);
+    }
+    $(window).resize(function (){
+        fix_sidebar();
+    });
+    //FIX ON LOAD
+    fix_sidebar();
+    
     //HIDE OVERVIEW REQUEST BOXES:
     var $overview_content = $('#overview-content');
     $overview_content.find('.request > p:first-child').hide();
@@ -311,20 +324,6 @@ $(document).ready(function () {
             var $spy = $(this).scrollspy('refresh');
         });
     });
-
-
-    //SIDEBAR TO STICK TO BOTTOM
-    function fix_sidebar(){
-        var window_height = $(window).height();
-        var top_of_sidebar = 314;
-        var height_of_sidebar = window_height - top_of_sidebar;
-        $('.nav.nav-list').css('height', height_of_sidebar);
-    }
-    $(window).resize(function (){
-        fix_sidebar();
-    });
-    //FIX ON LOAD
-    fix_sidebar();
 
     //SWITCH SELECTORS
     $('#context-selector > li').click(function (){
