@@ -78,7 +78,12 @@ $(document).ready(function () {
         if ($(this).attr('href') != null) {
             if ($(this).attr('href').indexOf("api.html") != -1 ||
                 $(this).attr('href').indexOf("overview.html") != -1) {
-                    $(this).attr('href', $(this).attr('href') + "?language=" + default_lang);
+                    var href = $(this).attr('href');
+                    var insertPos = href.indexOf('.html') + 5;
+                    if (href.indexOf('?') != -1) {
+                        insertPos += 1;
+                    }
+                    $(this).attr('href', [href.slice(0, insertPos), "?language=" + default_lang, href.slice(insertPos)].join(''));
                 }
         }
     });
