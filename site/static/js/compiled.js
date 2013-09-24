@@ -265,12 +265,14 @@ $(document).ready(function () {
         var height_of_sidebar = window_height - top_of_sidebar;
         $('.nav.nav-list').css('height', height_of_sidebar);
     }
+
     $(window).resize(function (){
         fix_sidebar();
     });
+
     //FIX ON LOAD
     fix_sidebar();
-    
+
     //HIDE OVERVIEW REQUEST BOXES:
     var $overview_content = $('#overview-content');
     $overview_content.find('.request > p:first-child').hide();
@@ -298,7 +300,12 @@ $(document).ready(function () {
         if ($(this).attr('href') != null) {
             if ($(this).attr('href').indexOf("api.html") != -1 ||
                 $(this).attr('href').indexOf("overview.html") != -1) {
-                    $(this).attr('href', $(this).attr('href') + "?language=" + default_lang);
+                    var href = $(this).attr('href');
+                    var insertPos = href.indexOf('.html') + 5;
+                    if (href.indexOf('?') != -1) {
+                        insertPos += 1;
+                    }
+                    $(this).attr('href', [href.slice(0, insertPos), "?language=" + default_lang, href.slice(insertPos)].join(''));
                 }
         }
     });
