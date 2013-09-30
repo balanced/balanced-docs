@@ -76,9 +76,9 @@ There are three possible values for the ``status`` field on a credit:
   If the credit is created after 3pm PST, it will not be submitted for processing
   until **3pm PST** the next business day.
 
-``paid``
-  One business day after the batch submission, the status will change to
-  ``paid``. That is the *expected* status of the credit. If the account number and
+``succeded``
+  One business day after the batch submission, the status will change to ``succeeded``
+  ("Paid" in the dashboard). That is the *expected* status of the credit. If the account number and
   routing number were entered correctly, the money should in fact be available to
   the seller. However, there is no immediate confirmation regarding the
   transaction showing up in the seller's account successfully
