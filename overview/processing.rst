@@ -175,6 +175,10 @@ Here's an example on how to capture a hold:
 Transaction Limits
 ------------------
 
+The minimum transaction amount is $0.50.
+
+The maximum transaction amounts are as follows:
+
 Credit cards - $15,000 per transaction.
 
 Bank account debits - $15,000 per transaction.
