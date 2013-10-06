@@ -12,7 +12,7 @@ def generate(writer, name, data, includes=None, excludes=None):
     for value, description in sorted(enum['values'].items()):
         if not filter(value):
             continue
-        writer(value)
+        writer('``{0}``'.format(value))
         writer('\n')
         with writer:
             writer(description)

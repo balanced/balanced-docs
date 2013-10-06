@@ -26,14 +26,18 @@ specific event types ``succeeded``, ``failed``, and ``canceled``.
 Transactional Events
 ~~~~~~~~~~~~~~~~~~~~
 
-.. dcode:: enum audit_event_type
-   :include: credit.* debit.* hold.* refund.*
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: enum audit_event_type
+     :include: credit.* debit.* hold.* refund.* reversal.*
 
 Funding Instrument Events
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. cssclass:: dl-horizontal dl-params
+
 .. dcode:: enum audit_event_type
-   :include: card.* bank_account.*
+   :include: card.* bank_account.* bank_account_verification.*
 
 
 .. cssclass:: method-section

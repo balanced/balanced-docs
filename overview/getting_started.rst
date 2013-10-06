@@ -142,7 +142,7 @@ Collecting credit card information
         :box-classes: box box-block box-blue
         :icon-classes: icon icon-cloud
 
-        `jsFiddle [tokenize credit cards]`_
+        `JSFiddle - Tokenize credit cards`_
 
 .. clear::
   :class: mb-large
@@ -317,7 +317,7 @@ Collect bank account info
         :box-classes: box box-block box-blue
         :icon-classes: icon icon-cloud
 
-        `jsFiddle [tokenize bank accounts]`_
+        `JSFiddle - Tokenize bank accounts`_
 
 .. clear::
   :class: mb-large
@@ -336,8 +336,8 @@ Collect bank account info
       var $form = $('#bank-account-form');
       var bankAccountData = {
           name: $form.find('.ba-name').val(),
+          routing_number: $form.find('.ba-rn').val(),
           account_number: $form.find('.ba-an').val(),
-          bank_code: $form.find('.ba-rn').val(),
           type: $form.find('select').val()
       };
 
@@ -432,8 +432,8 @@ Collect bank account info
         var $form = $('#bank-account-form');
         var bankAccountData = {
             name: $form.find('.ba-name').val(),
+            routing_number: $form.find('.ba-rn').val(),
             account_number: $form.find('.ba-an').val(),
-            bank_code: $form.find('.ba-rn').val(),
             type: $form.find('select').val()
         };
 
@@ -633,7 +633,7 @@ Balanced.js BankAccount Reference
   returns a dictionary of errors. Will return an empty dictionary if there
   are no errors.
 
-  :param bankAccountDataObject.bank_code: The bank routing number to validate
+  :param bankAccountDataObject.routing_number: The bank routing number to validate
   :param bankAccountDataObject.account_number: the account number to perform a sanity check on
   :param bankAccountDataObject.name: the name on the bank account to perform a sanity check on
   :returns: ``{}`` if all fields are valid, else a dictionary of errors otherwise.
@@ -650,7 +650,7 @@ Balanced.js BankAccount Reference
   .. code-block:: javascript
 
     balanced.bankAccount.validate({
-       bank_code:'321174851',
+       routing_number:'321174851',
        account_number:'09877765432111111',
        name:'Tommy Q. CopyPasta'
     })
@@ -661,7 +661,7 @@ Balanced.js BankAccount Reference
 .. _LUHN check: http://en.wikipedia.org/wiki/Luhn_algorithm
 .. _MICR Routing Number Format: http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format
 .. _jQuery: http://www.jquery.com
-.. _jsFiddle: http://jsfiddle.net/
-.. _jsFiddle [tokenize bank accounts]: http://jsfiddle.net/mahmoudimus/DGDkt/11/
-.. _jsFiddle [tokenize credit cards]: http://jsfiddle.net/mjallday/BtXfr/
+.. _JSFiddle: http://jsfiddle.net/
+.. _JSFiddle - Tokenize bank accounts: http://jsfiddle.net/balanced/ZwhrA/
+.. _JSFiddle - Tokenize credit cards: http://jsfiddle.net/balanced/ZwhrA/
 .. _PCI-DSS Level 1 Compliant: http://www.visa.com/splisting/searchGrsp.do?companyNameCriteria=Pound%20Payments
