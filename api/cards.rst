@@ -7,7 +7,8 @@ You'll eventually want to be able to charge credit/debit cards without
 having to ask your users for their information over and over again. To do
 this, you'll need to create a card resource.
 
-To actually charge cards, you must :ref:`debit an account <debits>`.
+To charge a ``Card``, you must :ref:`create a debit <debits>`. Before a 
+``Card`` can be debited, it must first be `associated with a Customer <#adding-a-card-to-a-customer>`_
 
 .. cssclass:: method-section
 
