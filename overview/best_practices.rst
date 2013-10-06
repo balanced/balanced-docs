@@ -178,7 +178,7 @@ will continue to take one business day when issued before the
 
 If a payout does fail for any reason, we’ll notify you via email, dashboard, and webhook.
 If a customer complains about a payout failure and you do not see any notification with in
-the expected time window, please reach out to support@balanedpayments.com and we'll track
+the expected time window, please reach out to support@balancedpayments.com and we'll track
 down the payout as soon as possible.
 
 .. _Bank code: http://en.wikipedia.org/wiki/Bank_code
