@@ -40,7 +40,13 @@ Debits
      :box-classes: box box-block box-turquoise
      :icon-classes: icon icon-page
 
-     Sample credit card form
+     `Sample credit card form <http://jsfiddle.net/balanced/ZwhrA/>`_
+   
+   .. icon-box-widget::
+     :box-classes: box box-block box-turquoise
+     :icon-classes: icon icon-page
+
+     `Sample bank account form <http://jsfiddle.net/balanced/ZwhrA/>`_
 
 
 .. container:: span6
