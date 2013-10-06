@@ -5845,7 +5845,10 @@ dl.dl-params dt code {
   background-color: #f2f1ec;
 }
 blockquote.last {
-  margin-left: -120px;
+  margin-left: -180px;
+}
+blockquote.last dt {
+  margin-top: -5px;
 }
 .dropdown ul.dropdown-menu {
   -webkit-box-shadow: None;
@@ -6145,6 +6148,9 @@ ul + table.footnote {
 #context-content {
   padding-top: 40px;
 }
+#funding-instrument-events .dl-params dt {
+  width: 280px;
+}
 ul#search-dropdown {
   background-color: #f2f1ec;
   max-height: 500px;
@@ -6196,15 +6202,22 @@ span.text-highlight.search-active {
 .code-white div p {
   text-transform: capitalize;
   font-family: 'FanwoodText-Regular';
-  font-size: 16px;
   color: #000000;
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
-  color: #000;
+  background-color: #d9d8d5;
+  font-size: 16px;
+  margin: -15px -15px 18px -15px;
+  padding: 12px 15px 12px 15px;
+  color: #252525;
 }
 .code-white pre {
   padding-left: 0px;
+}
+.code-white .request p,
+.code-white .response p {
+  margin-top: 40px;
 }
 .descclassname {
   color: #006973;
