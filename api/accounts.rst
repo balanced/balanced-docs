@@ -1,5 +1,5 @@
-Accounts
-========
+Accounts (deprecated)
+=====================
 
 Accounts help facilitate managing multiple credit cards, debit cards,
 and bank accounts along with different financial transaction operations, i.e.
