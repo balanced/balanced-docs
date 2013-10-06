@@ -142,7 +142,7 @@ Collecting credit card information
         :box-classes: box box-block box-blue
         :icon-classes: icon icon-cloud
 
-        `jsFiddle [tokenize credit cards]`_
+        `JSFiddle - Tokenize credit cards`_
 
 .. clear::
   :class: mb-large
@@ -317,7 +317,7 @@ Collect bank account info
         :box-classes: box box-block box-blue
         :icon-classes: icon icon-cloud
 
-        `jsFiddle [tokenize bank accounts]`_
+        `JSFiddle - Tokenize bank accounts`_
 
 .. clear::
   :class: mb-large
@@ -661,7 +661,7 @@ Balanced.js BankAccount Reference
 .. _LUHN check: http://en.wikipedia.org/wiki/Luhn_algorithm
 .. _MICR Routing Number Format: http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format
 .. _jQuery: http://www.jquery.com
-.. _jsFiddle: http://jsfiddle.net/
-.. _jsFiddle [tokenize bank accounts]: http://jsfiddle.net/balanced/ZwhrA/
-.. _jsFiddle [tokenize credit cards]: http://jsfiddle.net/balanced/ZwhrA/
+.. _JSFiddle: http://jsfiddle.net/
+.. _JSFiddle - Tokenize bank accounts: http://jsfiddle.net/balanced/ZwhrA/
+.. _JSFiddle - Tokenize credit cards: http://jsfiddle.net/balanced/ZwhrA/
 .. _PCI-DSS Level 1 Compliant: http://www.visa.com/splisting/searchGrsp.do?companyNameCriteria=Pound%20Payments
