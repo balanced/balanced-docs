@@ -227,6 +227,37 @@ dictionary:
       'shipping.tracking_number': '1234567890'
   }
 
+.. _best_practices.implementation_patterns:
+
+Implementation Patterns
+-----------------------
+
+Recurring billing
+~~~~~~~~~~~~~~~~~
+
+While the Balanced API inherently supports the ability to perform recurring
+billing, the logic for recurring billing must be implemented into applications
+that consume the API. Applications can make use of cron or other scheduling
+utilities to process recurring billing or take advantage of the Python-based
+Balanced open-source application, `Billy <https://github.com/balanced/billy>`_.
+
+
+Charging in the future
+~~~~~~~~~~~~~~~~~~~~~~
+
+A typical first-thought solution to charging in the future is to use holds.
+Marketplaces centered around crowdfunding often want to use holds to ensure
+funds are available upon project completion. Since Holds only last for 7 days,
+a common misuse is to refresh the hold repeatedly until the campaign succeeds.
+This is not recommended since it makes for a poor user experience. Instead,
+tokenize the card and create a hold 7 days before a successful campaign ends.
+If the campaign is not expected to succeed, no holds should be placed. If you
+expect to capture buyer funds regardless of whether a campaign succeeds,
+you should simply debit the card.
+
+Holds are suited for environments where the exact cost of a transaction
+cannot be predicted; for example, tips and temporary deposits.
+
 
 .. _best_practices.uri_vs_id:
 
