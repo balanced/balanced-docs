@@ -250,7 +250,7 @@ def setup(app):
         'script': 'scripts/lang-scenario.py -d clients/curl -c scenario.cache',
         'section-include': ['request'],
         'section-filter-class': 'LangSectionFilter',
-        'lang': ['python', 'ruby', 'php', 'node', 'java'],
+        'lang': ['python', 'ruby', 'php', 'java'],
     })
     dcode.DCodeDefaultDirective.registry['endpoint'].update({
         'script': 'scripts/rst.py endpoint'
