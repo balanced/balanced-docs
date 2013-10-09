@@ -227,6 +227,37 @@ dictionary:
       'shipping.tracking_number': '1234567890'
   }
 
+.. _best_practices.implementation_patterns:
+
+Implementation Patterns
+-----------------------
+
+Recurring billing
+~~~~~~~~~~~~~~~~~
+
+While the Balanced API inherently supports the ability to perform recurring
+billing, the logic for recurring billing must be implemented into applications
+that consume the API. Applications can make use of cron or other scheduling
+utilities to process recurring billing or take advantage of the Python-based
+Balanced open-source application, `Billy <https://github.com/balanced/billy>`_.
+
+
+Charging in the future
+~~~~~~~~~~~~~~~~~~~~~~
+
+A typical first-thought solution to charging in the future is to use holds.
+Marketplaces centered around crowdfunding often want to use holds to ensure
+funds are available upon project completion. Since Holds only last for 7 days,
+a common misuse is to refresh the hold repeatedly until the campaign succeeds.
+This is not recommended since it makes for a poor user experience. Instead,
+tokenize the card and create a hold 7 days before a successful campaign ends.
+If the campaign is not expected to succeed, no holds should be placed. If you
+expect to capture buyer funds regardless of whether a campaign succeeds,
+you should simply debit the card.
+
+Holds are suited for environments where the exact cost of a transaction
+cannot be predicted; for example, tips and temporary deposits.
+
 
 .. _best_practices.uri_vs_id:
 
@@ -234,22 +265,22 @@ Store URIs
 ----------
 
 Do you store the ``uri`` or the ``id`` in your database? \ **Always, always
-store the uri**.
+store the URI**.
 
-The ``uri`` stands for **u**\ niversal **r**\ esource **i**\ dentifier and it's
+The URI stands for **U**\ niversal **R**\ esource **I**\ dentifier and it's
 exactly what it is. An identifier.
 
-Do not attempt to be clever and try to save a few bytes by storing the ``id``
-and constructing the ``uri`` later.
+Do not attempt to be clever and try to save a few bytes by storing the ID
+and constructing the URI later. This will almost always lead to disaster.
 
-This will almost always lead to disaster. A ``uri`` is opaque and Balanced
-reserves the right to use HTTP semantics later to change them. This means that while
-Balanced will not change the ``uri`` we may change components of the ``uri``
-including the ``id``, so you should **NEVER** store the ``id``.
+A URI is opaque and Balanced reserves the right to use HTTP semantics
+later to change them. This means that while Balanced will not change the
+URI, Balanced may change components of the URI; including the ID.
+You should **NEVER** store the ID.
 
-Our internal statistics show that client libraries that construct the ``uri``
+Balanced's internal statistics show that client libraries that construct the ``uri``
 receive roughly **2 orders of magnitude** more ``404`` status codes from Balanced
-than clients which use the ``uri`` directly.
+than clients which use the ``uri`` returned in responses from the Balanced API.
 
 .. note::
   :header_class: alert alert-tab
@@ -265,7 +296,7 @@ Getting Help
 
 When encountering a problem, one of the best tools available to you is
 the Logs area in the Dashboard. These logs give valuable insight into
-what request infomation was received and the resulting API response. It also
+what request information was received and the resulting API response. It also
 gives information about operation status codes and transaction failure
 messages along with the timing and affected parties and endpoints.
 
