@@ -199,7 +199,7 @@ passed in by you in order to help fight fraud and respond to chargebacks.
 Shipping Address
 ~~~~~~~~~~~~~~~~
 
-You may supply shipping fulfillment information by prefixing keys
+Marketplaces may supply shipping fulfillment information by prefixing keys
 specifying address data with the ``shipping.`` prefix. The specific
 fields you may provide are:
 
@@ -226,6 +226,21 @@ dictionary:
       'shipping.carrier': 'FEDEX',
       'shipping.tracking_number': '1234567890'
   }
+
+
+Listing
+~~~~~~~~~
+
+Balanced **strongly** recommends marketplaces supply listing information for each
+transaction using meta. This can be done by specifying the listing URL in the
+``listing`` meta key.
+
+.. code-block:: javascript
+
+  meta = {
+      'listing': 'https://rentmybike-rails.herokuapp.com/listings/3',
+  }
+
 
 .. _best_practices.implementation_patterns:
 
