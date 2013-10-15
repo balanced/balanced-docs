@@ -10,7 +10,7 @@ Test credit card numbers
 
 These cards will be accepted in our system only for a **TEST** marketplace.
 
-.. cssclass:: table table-hover
+.. cssclass:: table
 
   ============== =========================== ================ ==============================
    Card Brand          Number                  Security Code     Result
@@ -47,7 +47,7 @@ account numbers that can simulate various scenarios that can go wrong.
 .. list-table::
    :widths: 15 20 40
    :header-rows: 1
-   :class: table table-hover
+   :class: table
 
    * - Routing Number
      - Account Number
@@ -60,22 +60,22 @@ account numbers that can simulate various scenarios that can go wrong.
      - Invalid Routing Number
    * - ``021000021``
      - ``9900000000``
-     - Transitions credit state to ``pending``
+     - Transitions state to ``pending``
    * - ``321174851``
      - ``9900000001``
-     - Transitions credit state to ``pending``
+     - Transitions state to ``pending``
    * - ``021000021``
      - ``9900000002``
-     - Transitions credit state to ``paid``
+     - Transitions state to ``paid`` (credits) or ``succeeded`` (debits)
    * - ``321174851``
      - ``9900000003``
-     - Transitions credit state to ``paid``
+     - Transitions state to ``paid`` (credits) or ``succeeded`` (debits)
    * - ``021000021``
      - ``9900000004``
-     - Transitions credit state to ``failed``
+     - Transitions state to ``failed``
    * - ``321174851``
      - ``9900000005``
-     - Transitions credit state to ``failed``
+     - Transitions state to ``failed``
 
 Simulating erroneous routing numbers
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
