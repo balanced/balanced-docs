@@ -72,6 +72,11 @@ $(document).ready(function () {
     $("[class^='highlight-']").hide();
     $(".highlight-" + default_lang).show();
     $('.highlight-javascript').show();
+    $('.tab-pane .highlight-objective-c').show();
+    $('.tab-pane .highlight-java').show();
+    $('.tab-pane .highlight-ruby').show();
+    $('.tab-pane .highlight-php').show();
+    $('.tab-pane .highlight-python').show();
     $('.highlight-html').show();
 
     $('a').each(function() {
