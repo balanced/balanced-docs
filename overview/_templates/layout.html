@@ -8,26 +8,10 @@
                 <div class="row">
                     <div class="span5">
 
-                        <!-- The navigation menu -->
-                        <div class="overview-api">
-                          <ul class="simple" id='context-selector'>
-                            <li class="active">
-                                <a href='overview.html'>Overview</a>
-                            </li>
-                            <li>
-                                <a href='api.html'>API Reference</a>
-                            </li>
-                            <li>
-                                <a href="https://support.balancedpayments.com/hc/en-us">FAQs</a>
-                            </li>
-                          </ul>
-                        </div>
-
                         <!-- The table of contents menu -->
                         {%- block sidebar2 %}
-                        {{ toctree(maxdepth=3, collapse=False) }}
+                        {{ toctree(maxdepth=2, collapse=False) }}
                         {% endblock %}
-
 
                     </div>
                 </div>
