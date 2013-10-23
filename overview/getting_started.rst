@@ -3,665 +3,564 @@
 Getting Started
 ===============
 
-.. _getting_started.obtain-test-marketplace:
+Saving & Charging Cards
+-----------------------
 
-Obtain a Test Marketplace
--------------------------
+Saving and charging a card with Balanced is both simple and secure. First we tokenize the card with one of Balanced's client libraries. We must exchange the sensitive card info with a token that represents the card in Balanced's system. This keeps all sensitive data out of your system, relieving you of PCI compliance.
 
-Visit `<https://www.balancedpayments.com>`_ and click the try it out button. This
-creates a new test marketplace for immediate use.
+Then we simply create Balanced customer object and associate the card to the customer, and charge the card!
 
-Use your API key to start interacting with the Balanced API.
+These steps are enumerated here:
 
-Click "Demo Dashboard" to view your new test marketplace with some sample data.
+1. Tokenize the card (via balanced.js_, iOS_ SDK or Android_ SDK)
+2. Create the customer and associate the card token to the customer
+3. Charge the card
 
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-gray
+Step 1 is done client-side, steps 2 and 3 are done server-side. Code examples are included below.
 
-  Be sure to claim your account by clicking the user icon in the top right corner of
-  the dashboard and selecting "Claim account". Enter your email address and a
-  password to permanently claim that dashboard as your own.
+.. _balanced.js: https://github.com/balanced/balanced-js
+.. _iOS: https://github.com/balanced/balanced-ios
+.. _Android: https://github.com/balanced/balanced-android
 
+.. container:: step
+  
+  **1. Tokenize the card**
 
-.. _getting_started.obtain-prod-marketplace:
+  .. raw:: html
 
-Obtain a Production Marketplace
--------------------------------
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tokenize-js" data-toggle="tab">Javascript</a></li>
+      <li><a href="#tokenize-ios" data-toggle="tab">iOS</a></li>
+      <li><a href="#tokenize-android" data-toggle="tab">Android</a></li>
+    </ul>
 
-To obtain a production marketplace:
+  .. container:: tab-content
 
-- Sign into your dashboard account.
-- Visit `<https://dashboard.balancedpayments.com/#/marketplaces>`_
-- Where you see "Not transacting yet? Register for production access", click
-  the register button.
-- Choose if you are applying for a production marketplace as a person or a business.
-- Fill out the form.
-- Accept the `Terms & Conditions <https://www.balancedpayments.com/terms/>`_,
-  `Marketplace Agreement <https://www.balancedpayments.com/terms/marketplaceagreement>`_,
-  and `Privacy Policy <https://www.balancedpayments.com/privacy>`_.
-- Submit the form.
-- After 1-2 days, find the verification amounts on your bank statement.
-- Via the Dashboard go to your production marketplace settings page.
-- Click on your marketplace bank account.
-- Click the confirm verification button.
-- Enter the verification amounts and click the confirm button.
+    .. container:: tab-pane active
+      :name: tokenize-js
 
- |
+      .. code-block:: javascript
 
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-gray
-
-  Don't forget to update your application to use your production API key and
-  production marketplace URI before you begin transacting in your production marketplace.
-
-
-Balanced.js
------------
-
-``balanced.js`` is essential in ensuring that you're PCI compliant. Sensitive
-data never touches your servers and as a result, the burden of PCI compliance
-shifts to Balanced, which is `PCI-DSS Level 1 Compliant`_.
-
-.. container::
-
-  1. Use ``balanced.js`` to send sensitive information to Balanced
-  2. Use the ``uri``, returned by Balanced, as the token representing
-     the sensitive information
-  3. Associate that token to a customer
-  4. Debit that customer
-
-
-We're putting this here as we're going to reference it in the :ref:`payouts`
-and the :ref:`processing` tutorials.
-
-Including and Initializing ``balanced.js``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-gray
-
-  This may not work on very old browsers. For more information on how to
-  support older browsers, `quirksmode`_ provides a tutorial on how to get
-  javascript ``<script>`` includes to play nicely.
-
-.. _getting_started.including_balanced_js:
-
-.. container::
-
-  Including ``balanced.js``
-
-  .. code-block:: html
-
-    <script type="text/javascript" src="https://js.balancedpayments.com/v1/balanced.js"></script>
-
-.. _getting_started.initializing_balanced_js:
-
-.. container::
-
-  Initializing ``balanced.js``
-
-  In a separate script tag, after you've
-  :ref:`included balanced.js <getting_started.including_balanced_js>`,
-  set your marketplace uri. This essentially acts as your public key and it's
-  OK to freely share this with anyone.
-
-  .. code-block:: html
-
-     <script type="text/javascript">
-         balanced.init('${REPLACE_THIS_WITH_YOUR_MARKETPLACE_URI}');
-     </script>
-
-  Example:
-
-  .. code-block:: html
-
-     <script type="text/javascript">
-         balanced.init('/v1/marketplaces/TEST-MP5JtbXVDZkSGruOJyNasPqy');
-     </script>
-
-  You can find your API key secret and marketplace URI from your
-  `dashboard <https://dashboard.balancedpayments.com/>`_.
-
-.. _getting_started.collecting_card_info:
-
-Collecting credit card information
-----------------------------------
-
-.. container:: mb-large
-
-  .. container:: header3
-
-    Functional final result of tutorial:
-
-    .. container:: span7
-
-      .. icon-box-widget::
-        :box-classes: box box-block box-blue
-        :icon-classes: icon icon-cloud
-
-        `JSFiddle - Tokenize credit cards`_
-
-.. clear::
-  :class: mb-large
-
-.. note::
-   :header_class: alert alert-tab
-   :body_class: alert alert-gray
-
-   Throughout this tutorial, we're using `jQuery`_ for brevity, but
-   ``balanced.js`` has no such dependency itself.
-
-1. Collect all the information from your form:
-
-   .. code-block:: javascript
-
-    var $form = $('#credit-card-form');
-    var creditCardData = {
-        card_number: $form.find('.cc-number').val(),
-        expiration_month: $form.find('.cc-em').val(),
-        expiration_year: $form.find('.cc-ey').val(),
-        security_code: $form.find('.cc-csc').val()
-     };
-
-2. Invoke the :js:func:`balanced.card.create` function with the collected information.
-   Balanced will return a persistence-safe token, the ``uri``, representing
-   the resource.
-
-   Here's an example, demonstrating this:
-
-   .. code-block:: javascript
-
-     balanced.card.create(creditCardData, function(response) {
-       console.log(response.status);
-       /*
-         response.data:
-           Contains the body of the card resource, which you can find
-           in the API reference.
-
-           This data is an object, i.e. hash, that can be identified by
-           its uri field. You may store this uri in your data store (e.g.
-           postgresql, mysql, mongodb, etc) since it's perfectly safe and
-           can only be retrieved by your secret key.
-
-           More on this in the API reference.
-        */
-       console.log(response.data);
-     });
-
-   .. _getting_started.callback:
-
-   The second parameter just did a dummy ``alert()`` for demonstration purposes,
-   but this function is actually the most important piece of the integration.
-
-   It is your Balanced response handler. It takes one parameter that
-   has three (3) properties which you can use to drive the interaction
-   with Balanced:
-
-
-   .. cssclass:: dl-horizontal
-
-     ``data``
-        | An object representing a tokenized resource (card or bank account).
-     ``error``
-        | Details of the error, if any.
-     ``status``
-        | The HTTP response code of the tokenization operation.
-
-   Here's a skeleton callback function that we can use to get started:
-
-   .. code-block:: javascript
-
-       function callbackHandler(response) {
+        var callback = function(response) {
           switch (response.status) {
             case 201:
-                // WOO HOO! MONEY!
-                // response.data.uri == URI of the bank account resource you
-                // can store this card URI in your database
-                console.log(response.data);
-                var $form = $("#credit-card-form");
-                // the uri is an opaque token referencing the tokenized card
-                var cardTokenURI = response.data['uri'];
-                // append the token as a hidden field to submit to the server
-                $('<input>').attr({
-                   type: 'hidden',
-                   value: cardTokenURI,
-                   name: 'balancedCreditCardURI'
-                }).appendTo($form);
-                break;
+              // Persist the card on your server with the card uri
+              $.ajax({
+                url: '/cards',
+                data: {card: {uri: response.data['uri']}}
+              })
+              break;
             case 400:
-                // missing field - check response.error for details
-                console.log(response.error);
-                break;
+              // missing field - check response.error for details
+              console.log(response.error);
+              break;
             case 402:
-                // we couldn't authorize the buyer's credit card
-                // check response.error for details
-                console.log(response.error);
-                break
+              // we couldn't authorize the buyer's credit card
+              // check response.error for details
+              console.log(response.error);
+              break;
             case 404:
-                // your marketplace URI is incorrect
-                console.log(response.error);
-                break;
+              // your marketplace URI is incorrect
+              console.log(response.error);
+              break;
             case 500:
-                // Balanced did something bad, please retry the request
-                break;
-          }
-       }
+              // Balanced did something bad, please retry the request
+              break;
+           }
+        }
 
-   So, let's show that example on creating a card again, but this time with a
-   proper callback handler:
+        var $form = $('#credit-card-form');
+        var creditCardData = {
+          card_number: $form.find('.cc-number').val(),
+          expiration_month: $form.find('.cc-em').val(),
+          expiration_year: $form.find('.cc-ey').val(),
+          security_code: $form.find('.cc-csc').val()
+        };
 
-   .. code-block:: javascript
+        balanced.card.create(creditCardData, callback)
 
-      var $form = $('#credit-card-form');
-      var creditCardData = {
-           card_number: $form.find('.cc-number').val(),
-           expiration_month: $form.find('.cc-em').val(),
-           expiration_year: $form.find('.cc-ey').val(),
-           security_code: $form.find('.cc-csc').val()
-       };
+    .. container:: tab-pane
+      :name: tokenize-ios
 
-      balanced.card.create(creditCardData, callbackHandler);
+      .. code-block:: objective-c
 
-.. clear::
+        Balanced *balanced = [[Balanced alloc] initWithMarketplaceURI:@"/v1/marketplaces/TEST-MP6E3EVlPOsagSdcBNUXWBDQ"];
+        BPCard *card = [[BPCard alloc] initWithNumber:@"4242424242424242" expirationMonth:8 expirationYear:2025 securityCode:@"123"];
+        [balanced tokenizeCard:card onSuccess:^(NSDictionary *responseParams) {
+          // success
+        } onError:^(NSError *error) {
+          // failure
+        }];
 
-.. _getting_started.charging_cards:
+    .. container:: tab-pane
+      :name: tokenize-android
 
-Charge a credit card
+      .. code-block:: java
+
+        Balanced balanced = new Balanced(marketplaceURI, context);
+        Card card = new Card("4242424242424242", 9, 2014, "123");
+
+        String cardURI = "";
+
+        Card card = new Card("4242424242424242", 9, 2014, "123");
+        Balanced balanced = new Balanced(marketplaceURI, context);
+        try {
+            cardURI = balanced.tokenizeCard(card);
+        }
+        catch (CardNotValidatedException e) {
+            error = e;
+        }
+        catch (CardDeclinedException e) {
+            error = e;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
+.. container:: step
+
+  **2. Create the customer and associate the card**
+
+  .. raw:: html
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#create-customer-ruby" data-toggle="tab">Ruby</a></li>
+      <li><a href="#create-customer-python" data-toggle="tab">Python</a></li>
+      <li><a href="#create-customer-php" data-toggle="tab">PHP</a></li>
+    </ul>
+
+  .. container:: tab-content
+
+    .. container:: tab-pane active
+      :name: create-customer-ruby
+
+      .. code-block:: ruby
+
+        customer = Balanced::Customer.new
+        customer.save
+        customer.card_uri = params[:card_uri]
+        customer.save
+
+    .. container:: tab-pane
+      :name: create-customer-python
+
+      .. code-block:: python
+
+        customer = balanced.Customer.find('/v1/customers/CU12eUdTk8OgEj7VbJVFeP0q')
+        customer.add_card('/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/cards/CC15RAm6JJIEIae6bicvlWRw')
+
+    .. container:: tab-pane
+      :name: create-customer-php
+
+      .. code-block:: php
+
+        $customer = BalancedCustomer::get("/v1/customers/CU12eUdTk8OgEj7VbJVFeP0q");
+        $customer->addCard("/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/cards/CC15RAm6JJIEIae6bicvlWRw");
+
+.. container:: step
+
+  **3. Charge the Card**
+
+  .. raw:: html
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#charge-card-ruby" data-toggle="tab">Ruby</a></li>
+      <li><a href="#charge-card-python" data-toggle="tab">Python</a></li>
+      <li><a href="#charge-card-php" data-toggle="tab">PHP</a></li>
+    </ul>
+
+  .. container:: tab-content
+
+    .. container:: tab-pane active
+      :name: charge-card-ruby
+
+      .. code-block:: ruby
+
+        card_uri = current_user.default_card.uri # Retrieve the card URI from local storage
+        card = Balanced::Card.find(card_uri)
+        card.debit(amount: 10000) # charge the card for $10
+
+    .. container:: tab-pane
+      :name: charge-card-python
+
+      .. code-block:: python
+
+        card_uri = current_user.default_card.uri # Retrieve the card URI from local storage
+        card = balanced.Card.find(card_uri)
+        card.debit(amount: 10000) # charge the card for $10
+
+    .. container:: tab-pane
+      :name: charge-card-php
+
+      .. code-block:: php
+
+        $card = BalancedCard::get("/v1/customers/CU12eUdTk8OgEj7VbJVFeP0q/cards/CC15RAm6JJIEIae6bicvlWRw");
+        $card->debit(10000);
+
+Paying Bank Accounts
 --------------------
 
-Ok, so you've got the card token, referred to as the ``uri`` of the returned Card
-resource.
+The steps for saving customer bank accounts are transferring funds to them are very similar to saving and charging cards.
+First we tokenize the bank account details with a client library, then we associate the bank account resource to a Balanced customer,
+and then we credit funds to the bank account.
 
-Let's charge the card:
+These steps are enumerated here:
 
-1. First, let's create a customer to which we can associate a card:
+1. Tokenize the bank account (via balanced.js_, iOS_ SDK or Android_ SDK)
+2. Create the customer (if necessary) and associate the bank account to the customer
+3. Charge the card
 
-   .. dcode:: scenario customer_create
+.. container:: step
+  
+  **1. Tokenize the bank account**
 
-2. Associate the token with the customer:
+  .. raw:: html
 
-   .. dcode:: scenario customer_add_card
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#tokenize-bank-js" data-toggle="tab">Javascript</a></li>
+      <li><a href="#tokenize-bank-ios" data-toggle="tab">iOS</a></li>
+      <li><a href="#tokenize-bank-android" data-toggle="tab">Android</a></li>
+    </ul>
 
-3. Debit the customer:
+  .. container:: tab-content
 
-   .. dcode:: scenario customer_create_debit
+    .. container:: tab-pane active
+      :name: tokenize-bank-js
 
-.. clear::
-  :class: mb-large
+      .. code-block:: javascript
 
-.. note::
-   :header_class: alert alert-tab
-   :body_class: alert alert-gray
-
-   Balanced does NOT take its fees from your charges, instead it instruments
-   all operations that have occurred on the API and later invoices you. Read
-   :ref:`more about fees <invoicing.fees>`.
-
-.. _getting_started.collecting_bank_info:
-
-Collect bank account info
--------------------------
-
-.. container:: mb-large
-
-  .. container:: header3
-
-    Functional final result of tutorial:
-
-    .. container:: span8
-
-      .. icon-box-widget::
-        :box-classes: box box-block box-blue
-        :icon-classes: icon icon-cloud
-
-        `JSFiddle - Tokenize bank accounts`_
-
-.. clear::
-  :class: mb-large
-
-.. note::
-   :header_class: alert alert-tab
-   :body_class: alert alert-gray
-
-   Throughout this tutorial, we're using `jQuery`_ for brevity, but
-   ``balanced.js`` has no such dependency itself.
-
-1. Collect all the information from your form:
-
-   .. code-block:: javascript
-
-      var $form = $('#bank-account-form');
-      var bankAccountData = {
-          name: $form.find('.ba-name').val(),
-          routing_number: $form.find('.ba-rn').val(),
-          account_number: $form.find('.ba-an').val(),
-          type: $form.find('select').val()
-      };
-
-2. Invoke the :js:func:`balanced.bankAccount.create` function with the collected information.
-   Balanced will return a persistence-safe token, the ``uri``, representing
-   the resource.
-
-   Here's an example, demonstrating this:
-
-   .. code-block:: javascript
-
-     balanced.bankAccount.create(bankAccountData, function(response) {
-       console.log(response.status);
-       /*
-         response.data:
-           Contains the body of the bank account resource, which you can find
-           in the API reference.
-
-           This data is an object, i.e. hash, that can be identified by
-           its uri field. You may store this uri in your data store (e.g.
-           postgresql, mysql, mongodb, etc) since it's perfectly safe and
-           can only be retrieved by your secret key.
-
-           More on this in the API reference.
-        */
-       console.log(response.data);
-     });
-
-   The second parameter just did a dummy ``alert()`` for demonstration purposes,
-   but this function is actually the most important piece of the integration.
-
-   It is your Balanced response handler. It takes one parameter that
-   has three (3) properties which you can use to drive the interaction
-   with Balanced:
-
-   .. cssclass:: dl-horizontal
-
-     ``data``
-        | An object representing a tokenized resource (card or bank account).
-     ``error``
-        | Details of the error, if any.
-     ``status``
-        | The HTTP response code of the tokenization operation.
-
-   Here's a skeleton callback function that we can use to get started:
-
-   .. code-block:: javascript
-
-       function callbackHandler(response) {
+        var callback = function(response) {
           switch (response.status) {
             case 201:
-                // WOO HOO! MONEY!
-                // response.data.uri == URI of the bank account resource you
-                // should store this bank account URI to later credit it
-                console.log(response.data);
-                var $form = $("#bank-account-form");
-                // the uri is an opaque token referencing the tokenized bank account
-                var bank_account_uri = response.data['uri'];
-                // append the token as a hidden field to submit to the server
-                $('<input>').attr({
-                   type: 'hidden',
-                   value: bank_account_uri,
-                   name: 'balancedBankAccountURI'
-                }).appendTo($form);
-                $form.attr({action: requestBinURL});
-                $form.get(0).submit();
-                break;
+              // Persist the bank account on your server with the card uri
+              $.ajax({
+                url: '/bank_accounts',
+                data: {bank_account: {uri: response.data['uri']}}
+              })
+              break;
             case 400:
-                // missing field - check response.error for details
-                console.log(response.error);
-                break;
+              // missing field - check response.error for details
+              console.log(response.error);
+              break;
             case 402:
-                // we couldn't authorize the buyer's credit card
-                // check response.error for details
-                console.log(response.error);
-                break
+              // we couldn't authorize the buyer's credit card
+              // check response.error for details
+              console.log(response.error);
+              break;
             case 404:
-                // your marketplace URI is incorrect
-                console.log(response.error);
-                break;
+              // your marketplace URI is incorrect
+              console.log(response.error);
+              break;
             case 500:
-                // Balanced did something bad, please retry the request
-                break;
-          }
-       }
-
-   So, let's show that example on creating a card again, but this time with a
-   proper callback handler:
-
-   .. code-block:: javascript
+              // Balanced did something bad, please retry the request
+              break;
+           }
+        }
 
         var $form = $('#bank-account-form');
         var bankAccountData = {
-            name: $form.find('.ba-name').val(),
-            routing_number: $form.find('.ba-rn').val(),
-            account_number: $form.find('.ba-an').val(),
-            type: $form.find('select').val()
+          name: $form.find('.ba-name').val(),
+          routing_number: $form.find('.ba-routing-number').val(),
+          account_number: $form.find('.ba-account-number').val(),
+          type: $form.find('select').val() // e.g. 'Checking' or 'Savings' (optional)
         };
 
-        balanced.bankAccount.create(bankAccountData, responseCallbackHandler);
+        balanced.bankAccount.create(bankAccountData, callback)
 
-.. _getting_started.credit_bank_account:
+    .. container:: tab-pane
+      :name: tokenize-bank-ios
 
-Credit a bank account
----------------------
+      .. code-block:: objective-c
 
-After collecting the bank account information via balanced.js, you'll have
-the bank account token, referred to as the ``uri`` of the returned BankAccount
-resource.
+        BPBankAccount *ba = [[BPBankAccount alloc] initWithRoutingNumber:@"053101273" accountNumber:@"111111111111" accountType:BPBankAccountTypeChecking name:@"Johann Bernoulli"];
+        [balanced tokenizeBankAccount:ba onSuccess:^(NSDictionary *responseParams) {
+          // success
+        } onError:^(NSError *error) {
+          // failure
+        }];
 
-Let's issue a credit to this bank account:
+    .. container:: tab-pane
+      :name: tokenize-bank-android
 
-1. First, create a customer to which the bank account can be associated:
+      .. code-block:: java
 
-   .. dcode:: scenario customer_create
+        String bankAccountURI = "";
 
-2. Associate the token with the customer:
+        Balanced balanced = new Balanced(marketplaceURI, context);
+        BankAccount bankAccount = new BankAccount("053101273", "111111111111", AccountType.CHECKING, "Johann Bernoulli");
 
-   .. dcode:: scenario customer_add_bank_account
+        try {
+            bankAccountURI = balanced.tokenizeBankAccount(bankAccount);
+        }
+        catch (BankAccountRoutingNumberInvalidException e) {
+            error = e;
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
 
-3. Credit the customer:
+.. container:: step
+  
+  **2. Associate bank account to customer**
 
-   .. dcode:: scenario customer_credit
+  .. raw:: html
 
-.. clear::
-  :class: mb-large
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#associate-bank-ruby" data-toggle="tab">Ruby</a></li>
+      <li><a href="#associate-bank-python" data-toggle="tab">Python</a></li>
+      <li><a href="#associate-bank-php" data-toggle="tab">PHP</a></li>
+    </ul>
 
-.. note::
-   :header_class: alert alert-tab
-   :body_class: alert alert-gray
+  .. container:: tab-content
 
-   For simplicity, Balanced does NOT take its fees from any of your
-   operations, instead it meters your API usage and invoices you nightly.
-   Read :ref:`more about fees <invoicing.fees>`.
+    .. container:: tab-pane active
+      :name: associate-bank-ruby
 
-.. note::
-   :header_class: alert alert-tab
-   :body_class: alert alert-gray
+      .. code-block:: ruby
 
-   Please note that for American Express cards it is mandatory to collect 
-   the zip-code or the transaction will fail. 
+        customer = Balanced::Customer.find('/v1/customers/CU7o5OSA8KuFSSjweE54NITe')
+        customer.add_bank_account('/v1/bank_accounts/BA34SkYByn3BY564IK12tGEU')
 
-.. _getting_started.balanced.js_cards:
+    .. container:: tab-pane
+      :name: associate-bank-python
 
-Balanced.js Card Reference
---------------------------
+      .. code-block:: python
 
-.. js:function:: balanced.card.create(cardDataObject, callback)
+        customer = balanced.Customer.find('/v1/customers/CU7o5OSA8KuFSSjweE54NITe')
+        customer.add_bank_account('/v1/bank_accounts/BA7q1HxYvJr41fVUPk8vMrCm')
 
-  Sends the data stored in the ``cardDataObject`` to Balanced's servers for
-  tokenization.
+    .. container:: tab-pane
+      :name: associate-bank-php
 
-  :param cardDataObject.card_number: *required*.  The credit card number
-  :param cardDataObject.expiration_month: *required*. The credit card's expiration month in the format of MM
-  :param cardDataObject.expiration_year: *required*. The credit card's expiration year in the format of YYYY
-  :param cardDataObject.security_code: *optional*. The credit card's security code
-  :param cardDataObject.name: *optional*. The credit card holder's name
-  :param cardDataObject.postal_code: *optional*. The credit card's billing postal code (zip code in the USA)
-  :returns: ``null``. Invokes the ``callback`` function with three parameters -
-            ``data``, ``errors`` and ``status``. If successful, the ``data``
-            parameter has a resource representation which can be identified by
-            its ``uri``
+      .. code-block:: php
 
-.. js:function:: balanced.card.isCardNumberValid(cardNumber)
+        $customer = BalancedCustomer::get("/v1/customers/CU12eUdTk8OgEj7VbJVFeP0q");
+        $customer->addBankAccount("/v1/bank_accounts/BA7q1HxYvJr41fVUPk8vMrCm");
 
-  Validates a card number by checking if it's formatted correctly and
-  passes the standard `Luhn check`_. All whitespace and non-numeric data is
-  stripped for convenience.
+.. container:: step
+  
+  **3. Transfer funds to bank account**
 
-  :param cardNumber: the card number to Luhn validate.
-  :returns: ``true`` if the card number matches `Luhn check`_, ``false`` otherwise.
+  .. raw:: html
 
-  Example:
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#credit-bank-ruby" data-toggle="tab">Ruby</a></li>
+      <li><a href="#credit-bank-python" data-toggle="tab">Python</a></li>
+      <li><a href="#credit-bank-php" data-toggle="tab">PHP</a></li>
+    </ul>
 
-  .. code-block:: javascript
+  .. container:: tab-content
 
-    balanced.card.isCardNumberValid('4111111111111111');       // true
-    balanced.card.isCardNumberValid('4111 1111 1111 1111');    // true
-    balanced.card.isCardNumberValid('4111-1111-1111-1111');    // true
-    balanced.card.isCardNumberValid('42123');                  // false
+    .. container:: tab-pane active
+      :name: credit-bank-ruby
 
-.. js:function:: balanced.card.cardType(cardNumber)
+      .. code-block:: ruby
 
-  Returns the card brand, calculated from the card number. If the card brand can
-  NOT be determined, it will return ``null``.
+        bank_account = Balanced::BankAccount.find('/v1/bank_accounts/BA34SkYByn3BY564IK12tGEU')
+        bank_account.credit(amount: 1000) # Credit the bank account $10
 
-  :param cardNumber: the card number to determine the brand for.
-  :returns: ``Mastercard``, ``American Express``, ``VISA``, ``Discover Card``, or ``null``
+    .. container:: tab-pane
+      :name: credit-bank-python
 
-  Example:
+      .. code-block:: python
 
-  .. code-block:: javascript
+        bank_account = balanced.BankAccount.find('/v1/bank_accounts/BA34SkYByn3BY564IK12tGEU')
+        bank_account.credit(amount=1000)
 
-    balanced.card.cardType('5105105105105100');   // Mastercard
-    balanced.card.cardType('4111111111111111');   // VISA
-    balanced.card.cardType('341111111111111');    // American Express
-    balanced.card.cardType(0)                     // null
+    .. container:: tab-pane
+      :name: credit-bank-php
 
-.. js:function:: balanced.card.isSecurityCodeValid(cardNumber, securityCode)
+      .. code-block:: php
 
-  Checks whether or not the supplied number could be a valid card security code
-  for the supplied card number.
+        $bank_account = BalancedBankAccount::get("/v1/bank_accounts/BA34SkYByn3BY564IK12tGEU");
+        $bank_account->credit(1000);
 
-  :param cardNumber: the card number to determine the validate the security code for.
-  :param securityCode: the security number to validate
-  :returns: ``true`` if the csc is valid for the card number provided, ``false`` otherwise.
+Debiting Bank Accounts
+----------------------
 
-  Example:
+Balanced allows you to debit from a bank account as well as credit. To debit from a bank account you must create two trial deposits
+in the target bank. The owner of the account must then very the deposit amounts. Once this process is complete, you may debit from the bank account.
 
-  .. code-block:: javascript
+1. Create trial deposits
+2. Customer verifies trial deposits
+3. Debit bank account
 
-    balanced.card.isSecurityCodeValid('4111111111111111', 999)   // true
-    balanced.card.isSecurityCodeValid('4111111111111111', 9999)  // false
+.. container:: step
 
-.. js:function:: balanced.card.isExpiryValid(expirationMonth, expirationYear)
+  **1. Create trial deposits**
 
-  Returns true if ``expirationMonth`` and ``expirationYear`` correspond to
-  a date in the future.
+  .. raw:: html
 
-  :param expirationMonth: the expiration month to validate
-  :param expirationYear: the expiration year to validate
-  :returns: ``true`` if the expiration date is in the future, ``false`` otherwise.
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#debit-bank-verification-ruby" data-toggle="tab">Ruby</a></li>
+      <li><a href="#debit-bank-verification-python" data-toggle="tab">Python</a></li>
+      <li><a href="#debit-bank-verification-php" data-toggle="tab">PHP</a></li>
+    </ul>
 
-  Example:
+  .. container:: tab-content
 
-  .. code-block:: javascript
+    .. container:: tab-pane active
+      :name: debit-bank-verification-ruby
 
-    balanced.card.isExpiryValid('01', '2020');    // true
-    balanced.card.isExpiryValid(1, 2010);         // false
+      .. code-block:: ruby
 
+        bank_account = Balanced::BankAccount.find('/v1/bank_accounts/BA6czUjW6j4sMputedTuxXE6')
+        verification = bank_account.verify
 
-.. js:function:: balanced.card.validate(cardDataObject)
+    .. container:: tab-pane
+      :name: debit-bank-verification-python
 
-  Performs a suite of checks on the submitted credit card data and returns
-  a dictionary of errors. Will return an empty dictionary if there are no
-  errors.
+      .. code-block:: python
 
-  :param cardDataObject.card_number: the card number to validate
-  :param cardDataObject.security_code: the security code to validate
-  :param cardDataObject.expiration_month: the expiration month to validate
-  :param cardDataObject.expiration_year: the expiration year to validate
-  :returns: ``{}`` if all fields are valid, else a dictionary of errors otherwise.
+        bank_account = balanced.BankAccount.find('/v1/bank_accounts/BA6czUjW6j4sMputedTuxXE6')
+        verification = bank_account.verify()
 
-  Example:
+    .. container:: tab-pane
+      :name: debit-bank-verification-php
 
-  .. code-block:: javascript
+      .. code-block:: php
 
-    balanced.card.validate({
-       card_number:'4111111111111111',
-       expiration_month:1,
-       expiration_year:2000,
-       security_code:123
-    });
+        $bank_account = Balanced\BankAccount::get("/v1/bank_accounts/BA6czUjW6j4sMputedTuxXE6");
+        $verification = $bank_account->verify();
 
-  Will return:
+.. container:: step
 
-  .. code-block:: javascript
+  **2. Customer verifies trial deposits**
 
-    {expiration: '"1-2000" is not a valid credit card expiration date'}
+  .. raw:: html
 
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#confirm-bank-verification-ruby" data-toggle="tab">Ruby</a></li>
+      <li><a href="#confirm-bank-verification-python" data-toggle="tab">Python</a></li>
+      <li><a href="#confirm-bank-verification-php" data-toggle="tab">PHP</a></li>
+    </ul>
 
-.. _getting_started.balanced.js_bank_accounts:
+  .. container:: tab-content
 
-Balanced.js BankAccount Reference
-----------------------------------
+    .. container:: tab-pane active
+      :name: confirm-bank-verification-ruby
 
-.. js:function:: balanced.bankAccount.validateRoutingNumber(routingNumber)
+      .. code-block:: ruby
 
-  Validates a USA based bank routing number using the `MICR Routing Number Format`_.
+        verification = Balanced::Verification.find('/v1/bank_accounts/BA6nZLdijPKzQ8RhJNnN1OD6/verifications/BZ6s3ghAmwY5BhnJIrCKSkUo')
+        verification.amount_1 = 1
+        verification.amount_2 = 1
+        verification.save
 
-  :param routingNumber: a 9 digit routing number, it may have a leading zero!
-  :returns: ``true`` if the routing number check digit matches, ``false`` otherwise.
+    .. container:: tab-pane
+      :name: confirm-bank-verification-python
 
-  .. warning::
-     :header_class: alert alert-tab
-     :body_class: alert alert-gray
+      .. code-block:: python
 
-     The success of this method does not guarantee that the
-     routing number is valid, only that it falls within a valid range.
+        verification = balanced.BankAccountVerification.find('/v1/bank_accounts/BA6nZLdijPKzQ8RhJNnN1OD6/verifications/BZ6s3ghAmwY5BhnJIrCKSkUo')
+        verification.amount_1 = 1
+        verification.amount_2 = 1
+        verification.save
 
-  Example:
+    .. container:: tab-pane
+      :name: confirm-bank-verification-php
 
-  .. code-block:: javascript
+      .. code-block:: php
 
-    balanced.bankAccount.validateRoutingNumber('321174851') // passes
-    balanced.bankAccount.validateRoutingNumber('021000021') // passes
-    balanced.bankAccount.validateRoutingNumber('123457890') // fails
+        $verification = Balanced\BankAccountVerification::get("/v1/bank_accounts/BA6nZLdijPKzQ8RhJNnN1OD6/verifications/BZ6s3ghAmwY5BhnJIrCKSkUo");
+        $verification->amount_1 = 1;
+        $verification->amount_2 = 1;
+        $verification->save();
 
+.. container:: step
 
-.. js:function:: balanced.bankAccount.validate(bankAccountDataObject)
+  **3. Debit bank account**
 
-  Performs a suite of checks on the submitted bank account data and
-  returns a dictionary of errors. Will return an empty dictionary if there
-  are no errors.
+  .. raw:: html
 
-  :param bankAccountDataObject.routing_number: The bank routing number to validate
-  :param bankAccountDataObject.account_number: the account number to perform a sanity check on
-  :param bankAccountDataObject.name: the name on the bank account to perform a sanity check on
-  :returns: ``{}`` if all fields are valid, else a dictionary of errors otherwise.
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#debit-bank-account-ruby" data-toggle="tab">Ruby</a></li>
+      <li><a href="#debit-bank-account-python" data-toggle="tab">Python</a></li>
+      <li><a href="#debit-bank-account-php" data-toggle="tab">PHP</a></li>
+    </ul>
 
-  .. warning::
-     :header_class: alert alert-tab
-     :body_class: alert alert-gray
+  .. container:: tab-content
 
-     Account numbers can not be validated in real time. More on
-     :ref:`reducing payout delays <best_practices.reducing-payout-delays>`.
+    .. container:: tab-pane active
+      :name: debit-bank-account-ruby
 
-  Example:
+      .. code-block:: ruby
 
-  .. code-block:: javascript
+        customer = Balanced::Customer.find('/v1/customers/CU7wGDVh8FjYMPfkPl9SzWAu')
+        bank_account = Balanced::BankAccount.find('/v1/bank_accounts/BA6nZLdijPKzQ8RhJNnN1OD6/verifications/BZ6s3ghAmwY5BhnJIrCKSkUo')
+        customer.debit(amount: '5000', source_uri: bank_account.uri)
 
-    balanced.bankAccount.validate({
-       routing_number:'321174851',
-       account_number:'09877765432111111',
-       name:'Tommy Q. CopyPasta'
-    })
+    .. container:: tab-pane
+      :name: debit-bank-account-python
 
+      .. code-block:: python
 
-.. _quirksmode: http://www.quirksmode.org/js/placejs.html
-.. _full example page: https://gist.github.com/2662770
-.. _LUHN check: http://en.wikipedia.org/wiki/Luhn_algorithm
-.. _MICR Routing Number Format: http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format
-.. _jQuery: http://www.jquery.com
-.. _JSFiddle: http://jsfiddle.net/
-.. _JSFiddle - Tokenize bank accounts: http://jsfiddle.net/balanced/ZwhrA/
-.. _JSFiddle - Tokenize credit cards: http://jsfiddle.net/balanced/ZwhrA/
-.. _PCI-DSS Level 1 Compliant: http://www.visa.com/splisting/searchGrsp.do?companyNameCriteria=Pound%20Payments
+        customer = balanced.Customer.find('/v1/customers/CU7wGDVh8FjYMPfkPl9SzWAu')
+        bank_account = balanced.BankAccount.find('/v1/bank_accounts/BA6nZLdijPKzQ8RhJNnN1OD6/verifications/BZ6s3ghAmwY5BhnJIrCKSkUo')
+        customer.debit(amount='5000', source_uri=bank_account.uri)
+
+    .. container:: tab-pane
+      :name: debit-bank-account-php
+
+      .. code-block:: php
+
+        $customer = Balanced\Customer::get("/v1/customers/CU7wGDVh8FjYMPfkPl9SzWAu")
+        $bank_account = Balanced\BankAccount::get("/v1/bank_accounts/BA6nZLdijPKzQ8RhJNnN1OD6/verifications/BZ6s3ghAmwY5BhnJIrCKSkUo")
+        $customer.debit("5000", null, null, null, $bank_account)
+
+Marketplaces
+------------
+
+Balanced is an ideal solution for marketplace businesses. Payment needs to be accepted from the buyer, a fee is taken by the marketplace, and the
+remainder is transferred to the seller.
+
+This can easily be accomplished with Balanced simply by leaving a percentage of each debit collected in
+escrow, and transferring to the seller the remainder.
+
+.. container:: step
+
+  **1. Debit buyer**
+
+  **Note**: When you debit the buyer, it's important for compliance reasons to designate the seller for whom the payment is intended.
+
+  .. raw:: html
+
+    <ul class="nav nav-tabs">
+      <li class="active"><a href="#marketplace-debit-buyer-ruby" data-toggle="tab">Ruby</a></li>
+      <li><a href="#marketplace-debit-buyer-python" data-toggle="tab">Python</a></li>
+      <li><a href="#marketplace-debit-buyer-php" data-toggle="tab">PHP</a></li>
+    </ul>
+
+  .. container:: tab-content
+
+    .. container:: tab-pane active
+      :name: marketplace-debit-buyer-ruby
+
+      .. code-block:: ruby
+
+        card   = Balanced::Card.find('/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/cards/CC6NiW8huZV4AxYTDJsjOd7k')
+        seller = Balanced::Account.find('/v1/customers/CU12eUdTk8OgEj7VbJVFeP0q')
+        debit = Balanced::Debit.new(source_uri: card.uri, amount: '1000', on_behalf_of_uri: seller.uri)
+        debit.save
+
+    .. container:: tab-pane
+      :name: marketplace-debit-buyer-python
+
+      .. code-block:: python
+
+        card = balanced.Card.find('/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/cards/CC6NiW8huZV4AxYTDJsjOd7k')
+        debit = balanced.Debit.new(source_uri=card.uri, amount='1000')
+        debit.save
+
+    .. container:: tab-pane
+      :name: marketplace-debit-buyer-php
+
+      .. code-block:: php
+
+        $card = Balanced\Card::get("/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/cards/CC6NiW8huZV4AxYTDJsjOd7k");
+        $debit = new Balanced\Debit(array(
+          "source_uri" => $card.uri,
+          "amount" => "1000"
+        ))
+        $debit->save()
+
