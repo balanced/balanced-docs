@@ -7,12 +7,10 @@
    Jinja2 templates. You can check this out in _templates/layout.html
 .. toctree::
   :hidden:
-  :maxdepth: 3
+  :maxdepth: 2
 
-  introduction
   getting_started
-  best_practices
-  processing
-  payouts
-  fees
+  reference
+  faq
   resources
+  best_practices
