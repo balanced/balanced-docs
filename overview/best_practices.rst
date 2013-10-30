@@ -48,8 +48,9 @@ statements for every transaction performed.
 
 Soft descriptors have the following limits:
 
-- Debits: Truncated to 18 characters.
-- Credits: Truncated to 14 characters.
+- Debits (Cards): 18 characters.
+- Debits (ACH): 14 characters
+- Credits: 14 characters.
 
 Balanced recommends the following format for soft descriptors from left to right, space permitting:
 
