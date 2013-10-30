@@ -19,7 +19,7 @@ create a debit, up to the full amount of the hold.
 
 .. cssclass:: dl-horizontal dl-params
 
-  .. dcode:: form debits.create
+  .. dcode:: form holds.create
 
 .. container:: code-white
 
