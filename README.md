@@ -6,7 +6,7 @@ This project builds the following Balanced documentation:
 
 - [Specification](https://github.com/balanced/balanced-api)
 - [Reference](https://docs.balancedpayments.com/api)
-- [Overiew](https://docs.balancedpayments.com/overview)
+- [Overview](https://docs.balancedpayments.com/overview)
 
 ## Contributing
 
