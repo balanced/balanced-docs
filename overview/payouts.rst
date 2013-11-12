@@ -193,7 +193,7 @@ Submission & Delivery times
      - July 5th @ 9:00AM PT
    * - Late submission
      - Friday @ 3:30PM PT
-     - Tuesday @ 3:30PM PT
+     - Tuesday @ 9:00AM PT
 
 .. [*] Assumes that day is a working business day -- does not fall on a
        weekend or a `federal reserve holiday <bank holidays>`_.
