@@ -13,8 +13,7 @@ debits_uri = storage['hold_create']['request']['debits_uri']
 request = {
     'payload': {
         'appears_on_statement_as': 'ShowsUpOnStmt',
-        'description': 'Some descriptive text for the debit in the dashboard',
-        'hold_uri': hold['uri'],
+        'description': 'Some descriptive text for the debit in the dashboard'
     },
     'debits_uri': debits_uri,
     'hold_uri': hold['uri'],
