@@ -508,8 +508,8 @@ in the target bank. The owner of the account must then very the deposit amounts.
         $bank_account = Balanced\BankAccount::get("/v1/bank_accounts/BA6nZLdijPKzQ8RhJNnN1OD6/verifications/BZ6s3ghAmwY5BhnJIrCKSkUo")
         $customer.debit("5000", null, null, null, $bank_account)
 
-Marketplaces
-------------
+Collect Your Fee
+----------------
 
 Balanced is an ideal solution for marketplace businesses. Payment needs to be accepted from the buyer, a fee is taken by the marketplace, and the
 remainder is transferred to the seller.
