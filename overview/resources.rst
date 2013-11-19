@@ -83,26 +83,6 @@ many :ref:`support channels <overview.support>`.
 
 .. _Ben Mills (Remear): http://unfiniti.com
 
-
-.. _resources.request-logs:
-
-Request Logs
-------------
-
-As you integrate and test :ref:`payouts`, you may find it useful to view
-all your sanitized API request logs. They are viewable via the logs section
-in the `dashboard`_
-
-.. _dashboard: https://dashboard.balancedpayments.com/
-
-.. SUBHEADERS
-   glossary / terms
-   client library reference
-   api reference
-   balanced.js
-   testing
-
-
 The Hash Attribute
 ------------------
 
