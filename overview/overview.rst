@@ -11,6 +11,6 @@
 
   getting_started
   reference
-  faq
+  miscellaneous
   resources
   best_practices

@@ -1,5 +1,5 @@
-FAQ
-===
+Miscellaneous
+=============
 
 .. _fees:
 
@@ -14,7 +14,7 @@ does not charge any fees besides those listed here.
 .. _fees.payouts:
 
 Payout Pricing
-''''''''''''''
+``````````````
 
 It costs just simply 25¢ to issue a next-day ACH credit. Our full
 fee per operation is listed below:
@@ -36,7 +36,7 @@ fee per operation is listed below:
 .. _fees.processing:
 
 Processing Pricing
-''''''''''''''''''
+``````````````````
 
 Charging credit cards costs just 2.9% and 30¢ per successful charge. Our full
 fees per operation is listed below:
@@ -64,7 +64,7 @@ fees per operation is listed below:
 .. _invoicing.fees:
 
 Invoicing fees
-''''''''''''''
+``````````````
 
 Balanced will create invoices to collect fees daily. These invoices can be
 viewed under the invoices tab of the Balanced dashboard. These fees are
@@ -78,7 +78,7 @@ marketplace.
   **Balanced will never take fees from the operating capital (escrow account) of the marketplace.**
 
 Example
-'''''''
+```````
 
 A buyer pays for a service on Monday from a third-party merchant. You charge
 the buyer $10, which increases your escrow balance by $10. Balanced will invoice
@@ -173,22 +173,22 @@ account numbers that can simulate various scenarios that can go wrong.
      - Transitions credit state to ``failed``
 
 Simulating erroneous routing numbers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+````````````````````````````````````
 
 .. dcode:: scenario bank-account-invalid-routing-number
 
 Simulating a pending status
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+```````````````````````````
 
 .. dcode:: scenario credit_pending_state
 
 Simulating a paid status
-~~~~~~~~~~~~~~~~~~~~~~~~
+````````````````````````
 
 .. dcode:: scenario credit_paid_state
 
 Simulating a failed status
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+``````````````````````````
 
 .. dcode:: scenario credit_failed_state
 
@@ -307,20 +307,6 @@ Payout Submission & Delivery Times
 .. _github issue #151: https://github.com/balanced/balanced-api/issues/151
 .. _github issue #70: https://github.com/balanced/balanced-api/issues/70
 .. _github issue #132: https://github.com/balanced/balanced-api/issues/132
-
-Canceling Credits
------------------
-
-Canceling a credit is currently under active development and discussion on
-`github issue #151`_ - it's not very straightforward due to the asynchronous
-nature of ACH.
-
-If you require immediately canceling of a credit, please contact us via any
-of our :ref:`support channels <overview.support>` and we will attempt to cancel the
-credit.
-
-When referencing a specific credit, please provide the credit's ``uri`` so that
-we may quickly proceed with fulfilling your request.
 
 .. _Github: https://github.com/balanced/balanced-api/issues
 .. _IRC: http://webchat.freenode.net/?channels=balanced&uio=MTE9OTIaf
