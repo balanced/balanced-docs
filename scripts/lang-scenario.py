@@ -199,7 +199,7 @@ class Endpoint(object):
         self.ctx = ctx
         self.name = match['name']
         self.methods = match['methods']
-        self.method = filter(lambda x: x != 'HEAD', match['methods'])[0]
+        self.method = filter(lambda x: (x != 'HEAD' and x != 'OPTIONS'), match['methods'])[0]
         self.uri = match['path']
 
     @classmethod
