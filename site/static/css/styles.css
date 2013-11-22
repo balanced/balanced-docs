@@ -208,7 +208,7 @@ body {
   font-family: nimbussannov-med, arial, sans-serif;
   font-size: 13px;
   line-height: 18.2px;
-  color: #737373;
+  color: #58595b;
   background-color: #f2f1ec;
 }
 a {
@@ -1730,7 +1730,7 @@ select:focus:invalid:focus {
 }
 .help-block,
 .help-inline {
-  color: #999999;
+  color: #7e7f82;
 }
 .help-block {
   display: block;
