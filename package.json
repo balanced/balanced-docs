@@ -1,7 +1,9 @@
 {
-	"name": "balanced-docs",
-	"private": true,
-	"dependencies": {
-		"less": "*"
-	}
+  "name": "balanced-docs",
+  "version": "0.1.0",
+  "author": "balancedpayments",
+  "private": true,
+  "dependencies": {
+    "less": "*"
+  }
 }
