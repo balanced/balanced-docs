@@ -310,7 +310,7 @@ $(document).ready(function () {
         }
     });
     
-    //SWAP LANGUAGE METHODS
+    // SWAP LANGUAGE METHODS
     $('.lang-change').click(function () {
         var lang = $(this).attr('data-lang');
         var langtext = $(this).text();
@@ -332,31 +332,43 @@ $(document).ready(function () {
         });
     });
 
-    //SWITCH SELECTORS
+    // SWITCH SELECTORS
     $('#context-selector > li').click(function (){
         window.location = $(this).find('a').attr('href');
     });
 
     // VERSION SELECTOR
-    var default_version = "rev0";
-    try {
-	    default_version = location.pathname.split('/')[1];
-    }
-    catch(e) {}
+    default_version = getParameterByName('rev', window.location.href);
+    default_version = (default_version.length > 0) ? default_version : '0';
     var version_element = $("[data-version='" + default_version + "']");
-    if(!version_element.length) {
-	    default_version='rev0';
-    	version_element = $("[data-version=rev0]");
-    }
+
     version_element.parent().hide();
     $("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
     $("#version-dropdown-head > .version-change").removeClass("version-change").attr('href', '#');
-    $("[class^=rev-]").hide();
-    $(".rev-"+default_version).show();
+    $("[class^=api-version-rev]").hide();
+    $(".api-version-rev" + default_version).show();
+    $('[data-spy="scroll"]').each(function () {
+        var $spy = $(this).scrollspy('refresh');
+    });
     $("a.version-change").click(function() {
     	var $this = $(this);
     	var href = $this.attr('data-version');
-    	location.href = location.href.replace(/rev\d+/, href);
+        if (location.href.indexOf('rev=') != -1) {
+            location.href = location.href.replace(/rev=\d+/, "rev=" + href);
+        }
+        else {
+            location.href = location.href.split('#')[0] +
+                                (location.href.indexOf('?') != -1 ? '&' : '?') + "rev=" + href;
+        }
+    	
     	return false;
+    });
+    $("#version-selector").show();
+    
+    $('#context-selector li a').each(function() {
+        var href = $(this).attr('href');
+        var insertPos = href.indexOf('?') + 1;
+        $(this).attr('href', [href.slice(0, insertPos), "rev=" + default_version +
+            "&", href.slice(insertPos)].join(''));
     });
 });

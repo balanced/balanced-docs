@@ -13,9 +13,9 @@ card = json.loads(
 print card
 
 request = {
-    'uri': customer['uri'],
-    'card_uri': card['uri'],
+    'uri': customer['customers'][0]['href'],
+    'card_uri': card['cards'][0]['href'],
     'payload': {
-        'card_uri': card['uri'],
+        'card_uri': card['cards'][0]['href'],
     }
 }

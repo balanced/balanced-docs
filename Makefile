@@ -24,14 +24,14 @@ I18NSPHINXOPTS = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
 # common variable
 SITE_DIR = site
 
-.PHONY: clean spec-clean api-clean all test everything
+.PHONY: clean spec-clean api-clean all test all
 
-all:
-	REV=rev0 make everything
-	make clean-limited
-	REV=rev1 make everything
+#all:
+#	REV=rev0 make all
+#	make clean-limited
+#	REV=rev1 make all
 
-everything: spec api overview
+all: spec api overview
 
 clean: clean-limited spec-clean
 	-rm -f $(SITE_DIR)/api-gen-*.html
@@ -40,10 +40,10 @@ clean: clean-limited spec-clean
 clean-limited: api-clean overview-clean
 
 rev0:
-	REV=rev0 make overview
+	REV=rev0 make all
 
 rev1:
-	REV=rev1 make overview #everything
+	REV=rev1 make all
 
 # spec
 
@@ -64,7 +64,7 @@ api/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/com
 	BALANCED_REV=$(REV) $(SPHINXBUILD) -b singlehtml -c api/$(REV) api/$(REV) api/$(REV)/html
 
 $(SITE_DIR)/api-gen-$(REV).html: api/html/index.html
-	mv api/html/api.html ${SITE_DIR}/api-gen-$(REV).html
+	mv api/$(REV)/html/api.html ${SITE_DIR}/api-gen-$(REV).html
 
 api: $(SITE_DIR)/api-gen-$(REV).html
 

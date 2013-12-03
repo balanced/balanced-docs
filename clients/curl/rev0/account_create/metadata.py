@@ -1,3 +1,5 @@
+#print marketplace
+
 request = {
-    'uri': marketplace.accounts_uri,
+    'uri': ctx.marketplace.accounts_uri,
 }

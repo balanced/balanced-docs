@@ -3,60 +3,6 @@
 Getting Started
 ===============
 
-.. _getting_started.obtain-test-marketplace:
-
-Obtain a Test Marketplace
--------------------------
-
-Visit `<https://www.balancedpayments.com>`_ and click the try it out button. This
-creates a new test marketplace for immediate use.
-
-Use your API key to start interacting with the Balanced API.
-
-Click "Demo Dashboard" to view your new test marketplace with some sample data.
-
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-gray
-
-  Be sure to claim your account by clicking the user icon in the top right corner of
-  the dashboard and selecting "Claim account". Enter your email address and a
-  password to permanently claim that dashboard as your own.
-
-
-.. _getting_started.obtain-prod-marketplace:
-
-Obtain a Production Marketplace
--------------------------------
-
-To obtain a production marketplace:
-
-- Sign into your dashboard account.
-- Visit `<https://dashboard.balancedpayments.com/#/marketplaces>`_
-- Where you see "Not transacting yet? Register for production access", click
-  the register button.
-- Choose if you are applying for a production marketplace as a person or a business.
-- Fill out the form.
-- Accept the `Terms & Conditions <https://www.balancedpayments.com/terms/>`_,
-  `Marketplace Agreement <https://www.balancedpayments.com/terms/marketplaceagreement>`_,
-  and `Privacy Policy <https://www.balancedpayments.com/privacy>`_.
-- Submit the form.
-- After 1-2 days, find the verification amounts on your bank statement.
-- Via the Dashboard go to your production marketplace settings page.
-- Click on your marketplace bank account.
-- Click the confirm verification button.
-- Enter the verification amounts and click the confirm button.
-
- |
-
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-gray
-
-  Don't forget to update your application to use your production API key and
-  production marketplace URI before you begin transacting in your production marketplace.
-
-
 Balanced.js
 -----------
 
@@ -142,7 +88,7 @@ Collecting credit card information
         :box-classes: box box-block box-blue
         :icon-classes: icon icon-cloud
 
-        `JSFiddle - Tokenize credit cards`_
+        `jsFiddle [tokenize credit cards]`_
 
 .. clear::
   :class: mb-large
@@ -287,7 +233,7 @@ Let's charge the card:
 
 3. Debit the customer:
 
-   .. dcode:: scenario customer_create_debit
+..   .. dcode:: scenario customer_create_debit
 
 .. clear::
   :class: mb-large
@@ -317,7 +263,7 @@ Collect bank account info
         :box-classes: box box-block box-blue
         :icon-classes: icon icon-cloud
 
-        `JSFiddle - Tokenize bank accounts`_
+        `jsFiddle [tokenize bank accounts]`_
 
 .. clear::
   :class: mb-large
@@ -336,8 +282,8 @@ Collect bank account info
       var $form = $('#bank-account-form');
       var bankAccountData = {
           name: $form.find('.ba-name').val(),
-          routing_number: $form.find('.ba-rn').val(),
           account_number: $form.find('.ba-an').val(),
+          bank_code: $form.find('.ba-rn').val(),
           type: $form.find('select').val()
       };
 
@@ -432,8 +378,8 @@ Collect bank account info
         var $form = $('#bank-account-form');
         var bankAccountData = {
             name: $form.find('.ba-name').val(),
-            routing_number: $form.find('.ba-rn').val(),
             account_number: $form.find('.ba-an').val(),
+            bank_code: $form.find('.ba-rn').val(),
             type: $form.find('select').val()
         };
 
@@ -456,11 +402,11 @@ Let's issue a credit to this bank account:
 
 2. Associate the token with the customer:
 
-   .. dcode:: scenario customer_add_bank_account
+..   .. dcode:: scenario customer_add_bank_account
 
 3. Credit the customer:
 
-   .. dcode:: scenario customer_credit
+..   .. dcode:: scenario customer_credit
 
 .. clear::
   :class: mb-large
@@ -633,7 +579,7 @@ Balanced.js BankAccount Reference
   returns a dictionary of errors. Will return an empty dictionary if there
   are no errors.
 
-  :param bankAccountDataObject.routing_number: The bank routing number to validate
+  :param bankAccountDataObject.bank_code: The bank routing number to validate
   :param bankAccountDataObject.account_number: the account number to perform a sanity check on
   :param bankAccountDataObject.name: the name on the bank account to perform a sanity check on
   :returns: ``{}`` if all fields are valid, else a dictionary of errors otherwise.
@@ -650,7 +596,7 @@ Balanced.js BankAccount Reference
   .. code-block:: javascript
 
     balanced.bankAccount.validate({
-       routing_number:'321174851',
+       bank_code:'321174851',
        account_number:'09877765432111111',
        name:'Tommy Q. CopyPasta'
     })
@@ -661,7 +607,7 @@ Balanced.js BankAccount Reference
 .. _LUHN check: http://en.wikipedia.org/wiki/Luhn_algorithm
 .. _MICR Routing Number Format: http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format
 .. _jQuery: http://www.jquery.com
-.. _JSFiddle: http://jsfiddle.net/
-.. _JSFiddle - Tokenize bank accounts: http://jsfiddle.net/balanced/ZwhrA/
-.. _JSFiddle - Tokenize credit cards: http://jsfiddle.net/balanced/ZwhrA/
+.. _jsFiddle: http://jsfiddle.net/
+.. _jsFiddle [tokenize bank accounts]: http://jsfiddle.net/mahmoudimus/DGDkt/11/
+.. _jsFiddle [tokenize credit cards]: http://jsfiddle.net/mjallday/BtXfr/
 .. _PCI-DSS Level 1 Compliant: http://www.visa.com/splisting/searchGrsp.do?companyNameCriteria=Pound%20Payments

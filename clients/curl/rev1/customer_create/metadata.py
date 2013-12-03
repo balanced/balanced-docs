@@ -1,3 +1,3 @@
 request = {
-    'uri': ctx.marketplace.customers_uri,
+    'uri': ctx.customers_uri,
 }

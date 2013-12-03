@@ -304,7 +304,11 @@ class Scenario(object):
                                 headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')}
             )
             #import ipdb; ipdb.set_trace()
-            ctx.storage['secret'] = ctx.storage['api_key'] = key.json()['secret']
+            if os.environ.get('BALANCED_REV') == 'rev1':
+                secret = key.json()['api_keys'][0]['secret']
+            else:
+                secret = key.json()['secret']
+            ctx.storage['secret'] = ctx.storage['api_key'] = secret
 
         balanced.config.root_uri = ctx.storage['api_location']
         balanced.configure(ctx.storage['api_key'])
@@ -316,9 +320,17 @@ class Scenario(object):
                                         headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                         auth=(ctx.storage['secret'], '')
             )
-            ctx.storage['marketplace_uri'] = marketplace.json()['uri']
-            ctx.storage['marketplace_id'] = marketplace.json()['id']
-            ctx.storage['marketplace'] = basic_client(marketplace.json())
+            if os.environ.get('BALANCED_REV') == 'rev1':
+                mp = marketplace.json()['marketplaces'][0]
+                ctx.storage['marketplace_uri'] = mp['href']
+                ctx.storage['marketplace_id'] = mp['id']
+                ctx.storage['marketplace'] = basic_client(mp)
+                print marketplace.json()['links']
+                ctx.storage['customers_uri'] = marketplace.json()['links']['marketplaces.customers']
+            else:
+                ctx.storage['marketplace_uri'] = marketplace.json()['uri']
+                ctx.storage['marketplace_id'] = marketplace.json()['id']
+                ctx.storage['marketplace'] = basic_client(marketplace.json())
             # marketplace = balanced.Marketplace().save()
             # ctx.storage['marketplace_uri'] = marketplace.uri
             # ctx.storage['marketplace_id'] = marketplace.id
@@ -348,33 +360,51 @@ class Scenario(object):
                                      headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                      auth=(ctx.storage['secret'], ''))
 
-            ctx.storage['customer'] = basic_client(customer.json())
+            
+            
+            if os.environ.get('BALANCED_REV') == 'rev1':
+                ctx.storage['customer'] = basic_client(customer.json())['customers'][0]
+                links = customer.json()['links']
+                ctx.storage['cards_uri'] = links['customers.cards'].replace('{customers.id}', ctx.storage['customer']['id'])
+                cards_uri = ctx.storage['cards_uri']
+            else:
+                ctx.storage['customer'] = basic_client(customer.json())
+                cards_uri = ctx.storage['customer'].cards_uri
 
-            card = requests.post(ctx.storage['api_location'] + ctx.storage['customer'].cards_uri,
+            card = requests.post(ctx.storage['api_location'] + cards_uri,
                                  headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                  auth=(ctx.storage['secret'], ''),
                                  data=card_data
             )
-
-            print card.json()
-
-            ctx.storage['card_uri'] = card.json()['uri']
-            ctx.storage['card_id'] = card.json()['id']
-            ctx.storage['card'] = basic_client(card.json())
+            
+            if os.environ.get('BALANCED_REV') == 'rev1':
+                ctx.storage['card_uri'] = card.json()['cards'][0]['href']
+                ctx.storage['card_id'] = card.json()['cards'][0]['id']
+                ctx.storage['card'] = basic_client(card.json()['cards'][0])
+            else:
+                ctx.storage['card_uri'] = card.json()['uri']
+                ctx.storage['card_id'] = card.json()['id']
+                ctx.storage['card'] = basic_client(card.json())
+            
 
         marketplace_req = requests.get(ctx.storage['api_location'] + ctx.storage['marketplace_uri'],
                                        headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                        auth=(ctx.storage['secret'], ''))
 
-        marketplace = basic_client(marketplace_req.json())
-
-
+        if os.environ.get('BALANCED_REV') == 'rev1':
+            marketplace = basic_client(marketplace_req.json()['marketplaces'][0])
+        else:
+            marketplace = basic_client(marketplace_req.json())
         # escrow
         thresh_h, thresh_l = 10000000, 100000
         if marketplace.in_escrow < thresh_l:
             amount = thresh_h - marketplace.in_escrow
             logger.debug('incrementing escrow balanced %s', amount)
-            debit = requests.post(ctx.storage['api_location'] + ctx.storage['customer'].debits_uri,
+            if os.environ.get('BALANCED_REV') == 'rev1':
+                debits_uri = customer.json()['links']['customers.debits'].replace('{customers.id}', ctx.storage['customer']['id'])
+            else:
+                debits_uri = ctx.storage['customer'].debits_uri
+            debit = requests.post(ctx.storage['api_location'] + debits_uri,
                                   headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                   auth=(ctx.storage['secret'], ''),
                                   data={

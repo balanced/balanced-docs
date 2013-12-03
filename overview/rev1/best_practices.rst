@@ -3,25 +3,6 @@
 Best Practices
 ==============
 
-.. _best_practices.going-live-checklist:
-
-Going Live Checklist
---------------------
-
-- Ensure servers use SSL
-- Use :ref:`balanced.js <use_balanced_js>`
-- Verify the use of `best practices <#best-practices>`__
-- Review the `Terms & Conditions <https://www.balancedpayments.com/terms/>`_,
-  `Marketplace Agreement <https://www.balancedpayments.com/terms/marketplaceagreement>`_,
-  and `Privacy Policy <https://www.balancedpayments.com/privacy>`_.
-- Include client terms snippet (#2) from `marketplace agreement <https://www.balancedpayments.com/terms/marketplaceagreement>`__ in client terms and conditions
-- Include the `credit card brand logos <http://www.quora.com/Balanced/I-am-in-the-process-of-adding-Balanced-to-my-site-and-want-to-use-the-Balanced-logo-Is-that-allowed>`__ on the checkout page
-- Include a `"Secured by Balanced" badge <https://github.com/balanced/balanced-dashboard/issues/24#issuecomment-17952768>`__ on the site footer or checkout page
-- `Register for a production marketplace <#obtain-a-production-marketplace>`_
-- Change API key to production API key
-- Change application marketplace URI to production marketplace URI
-
-
 .. _use_balanced_js:
 
 Use balanced.js
@@ -36,39 +17,6 @@ by sending sensitive information over SSL directly to the Balanced servers.
 
    This does not remove the need for you to use SSL on your servers as all financial transactions
    should occur over SSL.
-
-
-.. _best_practices.soft-descriptor:
-
-Soft Descriptors
-----------------
-
-Set a soft descriptor for your transactions. Soft descriptors appear on customer's card and bank
-statements for every transaction performed.
-
-Soft descriptors have the following limits:
-
-- Debits (Cards): 18 characters.
-- Debits (ACH): 14 characters
-- Credits: 14 characters.
-
-Balanced recommends the following format for soft descriptors from left to right, space permitting:
-
-[short marketplace descriptor] [order number] and/or [seller company name]
-
-For example, "BHub 187451 TastyB"
-
-This format provides two key pieces of information to customers. They identify the marketplace
-from which the bank transaction originated, and they identify the transaction itself. **Who**
-the charge came from rather than **what** the charge was for is more important in soft descriptors.
-
-This facilitates bank statement reconciliation and simplifies customer support by allowing customers,
-merchants, and marketplaces to search by the same information. It's also recommended marketplaces
-email receipts containing the order numbers and use it as the place to list for what the transaction
-was performed.
-
-Setting the soft descriptor is achieved by setting ``appears_on_statement_as`` when performing
-a debit or a credit.
 
 
 .. _best_practices.payouts:
@@ -88,10 +36,8 @@ Fraud and Card declinations can be reduced if the following information is suppl
    :header_class: alert alert-tab-red
    :body_class: alert alert-gray
 
-   Balanced highly recommends collecting ``security_code`` and ``postal_code`` for
-   transactions on American Express cards. Collecting this information dramatically
-   increases acceptance rates for AMEX.
-
+   American Express declines transactions with cards that do not include ``security_code`` and
+   ``postal_code``.
 
 Catching Fraud Early
 --------------------
@@ -179,7 +125,7 @@ will continue to take one business day when issued before the
 
 If a payout does fail for any reason, we’ll notify you via email, dashboard, and webhook.
 If a customer complains about a payout failure and you do not see any notification with in
-the expected time window, please reach out to support@balancedpayments.com and we'll track
+the expected time window, please reach out to support@balanedpayments.com and we'll track
 down the payout as soon as possible.
 
 .. _Bank code: http://en.wikipedia.org/wiki/Bank_code
@@ -200,7 +146,7 @@ passed in by you in order to help fight fraud and respond to chargebacks.
 Shipping Address
 ~~~~~~~~~~~~~~~~
 
-Marketplaces may supply shipping fulfillment information by prefixing keys
+You may supply shipping fulfillment information by prefixing keys
 specifying address data with the ``shipping.`` prefix. The specific
 fields you may provide are:
 
@@ -229,74 +175,28 @@ dictionary:
   }
 
 
-Listing
-~~~~~~~~~
-
-Balanced **strongly** recommends marketplaces supply listing information for each
-transaction using meta. This can be done by specifying the listing URL in the
-``listing`` meta key.
-
-.. code-block:: javascript
-
-  meta = {
-      'listing': 'https://rentmybike-rails.herokuapp.com/listings/3',
-  }
-
-
-.. _best_practices.implementation_patterns:
-
-Implementation Patterns
------------------------
-
-Recurring billing
-~~~~~~~~~~~~~~~~~
-
-While the Balanced API inherently supports the ability to perform recurring
-billing, the logic for recurring billing must be implemented into applications
-that consume the API. Applications can make use of cron or other scheduling
-utilities to process recurring billing or take advantage of the Python-based
-Balanced open-source application, `Billy <https://github.com/balanced/billy>`_.
-
-
-Charging in the future
-~~~~~~~~~~~~~~~~~~~~~~
-
-A typical first-thought solution to charging in the future is to use holds.
-Marketplaces centered around crowdfunding often want to use holds to ensure
-funds are available upon project completion. Since Holds only last for 7 days,
-a common misuse is to refresh the hold repeatedly until the campaign succeeds.
-This is not recommended since it makes for a poor user experience. Instead,
-tokenize the card and create a hold 7 days before a successful campaign ends.
-If the campaign is not expected to succeed, no holds should be placed. If you
-expect to capture buyer funds regardless of whether a campaign succeeds,
-you should simply debit the card.
-
-Holds are suited for environments where the exact cost of a transaction
-cannot be predicted; for example, tips and temporary deposits.
-
-
 .. _best_practices.uri_vs_id:
 
 Store URIs
 ----------
 
 Do you store the ``uri`` or the ``id`` in your database? \ **Always, always
-store the URI**.
+store the uri**.
 
-The URI stands for **U**\ niversal **R**\ esource **I**\ dentifier and it's
+The ``uri`` stands for **u**\ niversal **r**\ esource **i**\ dentifier and it's
 exactly what it is. An identifier.
 
-Do not attempt to be clever and try to save a few bytes by storing the ID
-and constructing the URI later. This will almost always lead to disaster.
+Do not attempt to be clever and try to save a few bytes by storing the ``id``
+and constructing the ``uri`` later.
 
-A URI is opaque and Balanced reserves the right to use HTTP semantics
-later to change them. This means that while Balanced will not change the
-URI, Balanced may change components of the URI; including the ID.
-You should **NEVER** store the ID.
+This will almost always lead to disaster. A ``uri`` is opaque and Balanced
+reserves the right to use HTTP semantics later to change them. This means that while
+Balanced will not change the ``uri`` we may change components of the ``uri``
+including the ``id``, so you should **NEVER** store the ``id``.
 
-Balanced's internal statistics show that client libraries that construct the ``uri``
+Our internal statistics show that client libraries that construct the ``uri``
 receive roughly **2 orders of magnitude** more ``404`` status codes from Balanced
-than clients which use the ``uri`` returned in responses from the Balanced API.
+than clients which use the ``uri`` directly.
 
 .. note::
   :header_class: alert alert-tab
@@ -312,7 +212,7 @@ Getting Help
 
 When encountering a problem, one of the best tools available to you is
 the Logs area in the Dashboard. These logs give valuable insight into
-what request information was received and the resulting API response. It also
+what request infomation was received and the resulting API response. It also
 gives information about operation status codes and transaction failure
 messages along with the timing and affected parties and endpoints.
 

@@ -5496,6 +5496,7 @@ a.badge:focus {
   overflow-y: scroll;
   float: left;
   margin-top: -11px;
+  min-width: 180px;
 }
 .sidebar-nav ul.nav-list li.toctree-l1 {
   text-shadow: none;
