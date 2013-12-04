@@ -6,6 +6,8 @@
     }
 
     ul.nav {
+      margin: 0px;
+      
       li {
         &:first-of-type {
           border-left: 1px solid @navbarSpacer;
@@ -41,11 +43,11 @@
   }
 
   ul.nav {
+    .fontStyle-noColor('NimbusSanNov-Bol', 18px);
     &.nav-api-version {
       li {
-        .fontStyle-noColor('NimbusSanNov-Bol', 18px);
         border-right: 0px;
-	      min-width: 130px;
+	      min-width: 80px;
 
         span.api-version {
           .fontStyle-noColor('NimbusSanNov-Reg', 18px);
@@ -74,13 +76,11 @@
     }
 
     &.nav-api-clients {
-      width: 100%;
 
       li {
-        width: 100%;
 
         a {
-          .fontStyle('NimbusSanNov-Reg', 18px, @color: #000000);
+          .fontStyle('NimbusSanNov-Bol', 18px, @color: #ffffff);
         }
       }
     }

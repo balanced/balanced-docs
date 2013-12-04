@@ -29,7 +29,7 @@ def html_page_context(app, pagename, templatename, context, doctree):
         # so we **want** to make sure the anchor name is the refuri
         # for the node
         if node['anchorname']:
-            node['refuri'] = node['anchorname']
+            node['refuri'] = node['refuri']
         else:
             # if not node has an empty anchorname it means that it's the
             # header - so we don't need to have a link, let's just remove

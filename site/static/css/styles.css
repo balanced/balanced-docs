@@ -5278,6 +5278,9 @@ a.badge:focus {
 .navbar.navbar-inverse .navbar-inner {
   background-color: #000000;
 }
+.navbar.navbar-inverse ul.nav {
+  margin: 0px;
+}
 .navbar.navbar-inverse ul.nav li {
   border-right: 1px solid #4d4b49;
   border-left: 0px;
@@ -5309,14 +5312,16 @@ a.badge:focus {
   top: 20px;
   left: -22px;
 }
-.navbar ul.nav.nav-api-version li {
+.navbar ul.nav {
   font-family: 'NimbusSanNov-Bol';
   font-size: 18px;
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
+}
+.navbar ul.nav.nav-api-version li {
   border-right: 0px;
-  min-width: 130px;
+  min-width: 80px;
 }
 .navbar ul.nav.nav-api-version li span.api-version {
   font-family: 'NimbusSanNov-Reg';
@@ -5344,16 +5349,10 @@ a.badge:focus {
   color: #000000;
   border-bottom: 1px solid #d9d8d5;
 }
-.navbar ul.nav.nav-api-clients {
-  width: 100%;
-}
-.navbar ul.nav.nav-api-clients li {
-  width: 100%;
-}
 .navbar ul.nav.nav-api-clients li a {
-  font-family: 'NimbusSanNov-Reg';
+  font-family: 'NimbusSanNov-Bol';
   font-size: 18px;
-  color: #000000;
+  color: #ffffff;
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
@@ -5669,7 +5668,7 @@ div.overview-large {
   background-color: #571757;
 }
 body {
-  margin-top: 122px;
+  margin-top: 62px;
 }
 section {
   padding-top: 175px;
@@ -5909,8 +5908,8 @@ blockquote.last dt {
   margin-top: 6px !important;
 }
 .dropdown.open a.dropdown-toggle.lang {
-  background-color: #000000 !important;
-  color: #ffffff !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
 }
 .dropdown.open a.dropdown-toggle.lang b {
   border-top-color: #FFF !important;
@@ -6243,7 +6242,7 @@ span.text-highlight.search-active {
 }
 .affix {
   position: fixed;
-  top: 122px;
+  top: 62px;
 }
 .highlight .hll {
   background-color: #ffffcc;

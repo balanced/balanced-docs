@@ -25,14 +25,15 @@ I18NSPHINXOPTS = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
 # common variable
 SITE_DIR = site
 
-.PHONY: clean spec-clean api-clean all test all
+.PHONY: clean spec-clean api-clean build-revisions all test all
 
 #all:
 #	REV=rev0 make all
 #	make clean-limited
 #	REV=rev1 make all
+build-revisions: clean-site spec api overview
 
-all: spec api overview
+all: rev0 rev1
 
 clean: clean-limited spec-clean
 	-rm -rf $(SITE_DIR)/rev*
@@ -41,11 +42,13 @@ clean: clean-limited spec-clean
 
 clean-limited: api-clean overview-clean
 
+clean-site:
+	-rm -rf $(SITE_DIR)/$(REV_NUM)
+
 rev0:
-	REV=rev0 REV_NUM=1.0 make all
+	REV=rev0 REV_NUM=1.0 make build-revisions
 rev1:
-	REV_NUM=1.1
-	REV=rev1 REV_NUM=1.1 make all
+	REV=rev1 REV_NUM=1.1 make build-revisions
 
 # spec
 

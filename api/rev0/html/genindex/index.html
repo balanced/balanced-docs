@@ -31,8 +31,8 @@
         <div class="logo">
           <a class="brand" href="https://www.balancedpayments.com"></a>
         </div>
-        <div class="span12">
-          <ul class="nav nav-api-version">
+        <div class="span18">
+          <ul class="nav">
 	    <li>
 	      <a>Balanced Documentation</a>
 	    </li>
@@ -46,6 +46,20 @@
 	      </ul>
             </li>
 	  </ul>
+    
+    <ul class="nav nav-api-clients">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle lang" id='lang-dropdown-head' data-toggle="dropdown">CURL <b class="caret"></b></a>
+        <ul class="dropdown-menu lang">
+          <li><a class='lang-change' data-lang='ruby' href="#">Ruby</a></li>
+          <li><a class='lang-change' data-lang='python' href="#">Python</a></li>
+          <li><a class='lang-change' data-lang='php' href="#">PHP</a></li>
+          <li><a class='lang-change' data-lang='java' href="#">Java</a></li>
+          <li><a class='lang-change' data-lang='bash' href="#">CURL</a></li>
+        </ul>
+      </li>
+    </ul>
+    
         </div>
         <ul class="nav nav-links pull-right">
           <li>
@@ -53,39 +67,6 @@
           </li>
           <li>
             <a href="https://dashboard.balancedpayments.com">Sign In</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</header>
-<header class="navbar navbar-fixed-top navbar-clients-search">
-  <div class="navbar-inner">
-    <div class="container">
-      <div class="row">
-        <div class="span5">
-          <ul class="nav nav-api-clients">
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle lang" id='lang-dropdown-head' data-toggle="dropdown">CURL <b class="caret"></b></a>
-              <ul class="dropdown-menu lang">
-                <li><a class='lang-change' data-lang='ruby' href="#">Ruby</a></li>
-                <li><a class='lang-change' data-lang='python' href="#">Python</a></li>
-                <li><a class='lang-change' data-lang='php' href="#">PHP</a></li>
-                <li><a class='lang-change' data-lang='java' href="#">Java</a></li>
-                <li><a class='lang-change' data-lang='bash' href="#">CURL</a></li>
-              </ul>
-            </li>
-          </ul>
-        </div>
-        <ul class="nav nav-search span21" id="search-section">
-          <li>
-            <form>
-              <input type="text" id="search" maxlength="255" placeholder="Search" />
-            </form>
-            <div class="dropdown">
-                <ul id="search-dropdown" class="dropdown-menu span21 search">
-                </ul>
-            </div>
           </li>
         </ul>
       </div>
@@ -125,97 +106,97 @@
                         <!-- The table of contents menu -->
                         <ul class="nav nav-list context-navlist">
 <li class="toctree-l1">Accounts (deprecated)<ul>
-<li class="toctree-l2"><a class="reference internal" href="#creating-an-account">Creating an Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-a-card-to-an-account">Adding a Card to an Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-a-bank-account-to-an-account">Adding a Bank Account To an Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#underwriting-an-individual">Underwriting an Individual</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#underwriting-a-business">Underwriting a Business</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/accounts/#creating-an-account">Creating an Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/accounts/#adding-a-card-to-an-account">Adding a Card to an Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/accounts/#adding-a-bank-account-to-an-account">Adding a Bank Account To an Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/accounts/#underwriting-an-individual">Underwriting an Individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/accounts/#underwriting-a-business">Underwriting a Business</a></li>
 </ul>
 </li>
 <li class="toctree-l1">Authentication<ul>
-<li class="toctree-l2"><a class="reference internal" href="#authenticating-to-balanced">Authenticating to Balanced</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/authentication/#authenticating-to-balanced">Authenticating to Balanced</a></li>
 </ul>
 </li>
 <li class="toctree-l1">Bank Account Verifications<ul>
-<li class="toctree-l2"><a class="reference internal" href="#verifying-a-bank-account">Verifying a Bank Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#retrieve-a-verification-for-a-bank-account">Retrieve a Verification for a Bank Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#confirm-a-bank-account-verification">Confirm a Bank Account Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/bank_account_verifications/#verifying-a-bank-account">Verifying a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/bank_account_verifications/#retrieve-a-verification-for-a-bank-account">Retrieve a Verification for a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/bank_account_verifications/#confirm-a-bank-account-verification">Confirm a Bank Account Verification</a></li>
 </ul>
 </li>
 <li class="toctree-l1">Bank Accounts<ul>
-<li class="toctree-l2"><a class="reference internal" href="#creating-a-new-bank-account">Creating a New Bank Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#retrieve-a-bank-account">Retrieve a Bank Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-all-bank-accounts">List All Bank Accounts</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#delete-a-bank-account">Delete a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/bank_accounts/#creating-a-new-bank-account">Creating a New Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/bank_accounts/#retrieve-a-bank-account">Retrieve a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/bank_accounts/#list-all-bank-accounts">List All Bank Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/bank_accounts/#delete-a-bank-account">Delete a Bank Account</a></li>
 </ul>
 </li>
 <li class="toctree-l1">Cards<ul>
-<li class="toctree-l2"><a class="reference internal" href="#tokenize-a-card">Tokenize a Card</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#retrieve-a-card">Retrieve a Card</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-all-cards">List All Cards</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#update-a-card">Update a Card</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#invalidating-a-card">Invalidating a Card</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#charging-a-card">Charging a Card</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#deleting-a-card">Deleting a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/cards/#tokenize-a-card">Tokenize a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/cards/#retrieve-a-card">Retrieve a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/cards/#list-all-cards">List All Cards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/cards/#update-a-card">Update a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/cards/#invalidating-a-card">Invalidating a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/cards/#charging-a-card">Charging a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/cards/#deleting-a-card">Deleting a Card</a></li>
 </ul>
 </li>
 <li class="toctree-l1">Credits<ul>
-<li class="toctree-l2"><a class="reference internal" href="#credit-a-new-bank-account">Credit a New Bank Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#credit-an-existing-bank-account">Credit An Existing Bank Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#retrieve-a-credit">Retrieve a Credit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-all-credits">List All Credits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-all-credits-for-a-bank-account">List All Credits For a Bank Account</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-a-new-credit-for-a-customer">Create a New Credit For a Customer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#listing-all-credits-for-a-customer">Listing All Credits For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/credits/#credit-a-new-bank-account">Credit a New Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/credits/#credit-an-existing-bank-account">Credit An Existing Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/credits/#retrieve-a-credit">Retrieve a Credit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/credits/#list-all-credits">List All Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/credits/#list-all-credits-for-a-bank-account">List All Credits For a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/credits/#create-a-new-credit-for-a-customer">Create a New Credit For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/credits/#listing-all-credits-for-a-customer">Listing All Credits For a Customer</a></li>
 </ul>
 </li>
 <li class="toctree-l1">Customers<ul>
-<li class="toctree-l2"><a class="reference internal" href="#creating-a-customer">Creating a Customer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-a-card-to-a-customer">Adding a Card to a Customer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#adding-a-bank-account-to-a-customer">Adding a Bank Account to a Customer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#delete-a-customer">Delete a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/customers/#creating-a-customer">Creating a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/customers/#adding-a-card-to-a-customer">Adding a Card to a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/customers/#adding-a-bank-account-to-a-customer">Adding a Bank Account to a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/customers/#delete-a-customer">Delete a Customer</a></li>
 </ul>
 </li>
 <li class="toctree-l1">Debits<ul>
-<li class="toctree-l2"><a class="reference internal" href="#create-a-new-debit">Create a New Debit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#retrieve-a-debit">Retrieve a Debit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-all-debits">List All Debits</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-all-debits-for-a-customer">List All Debits For a Customer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#update-a-debit">Update a Debit</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#refund-a-debit">Refund a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/debits/#create-a-new-debit">Create a New Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/debits/#retrieve-a-debit">Retrieve a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/debits/#list-all-debits">List All Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/debits/#list-all-debits-for-a-customer">List All Debits For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/debits/#update-a-debit">Update a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/debits/#refund-a-debit">Refund a Debit</a></li>
 </ul>
 </li>
 <li class="toctree-l1">Errors<ul>
-<li class="toctree-l2"><a class="reference internal" href="#representation">Representation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#status-codes">Status Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/errors/#representation">Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/errors/#status-codes">Status Codes</a></li>
 </ul>
 </li>
 <li class="toctree-l1">Events<ul>
-<li class="toctree-l2"><a class="reference internal" href="#event-types">Event types</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#transactional-events">Transactional Events</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#funding-instrument-events">Funding Instrument Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/events/#event-types">Event types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../api/events/#transactional-events">Transactional Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../api/events/#funding-instrument-events">Funding Instrument Events</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#retrieve-an-event">Retrieve an Event</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-all-events">List all Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/events/#retrieve-an-event">Retrieve an Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/events/#list-all-events">List all Events</a></li>
 </ul>
 </li>
 <li class="toctree-l1">Holds<ul>
-<li class="toctree-l2"><a class="reference internal" href="#create-a-new-hold">Create a New Hold</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#retrieve-a-hold">Retrieve a Hold</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-all-holds">List all Holds</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-all-holds-for-a-customer">List All Holds For a Customer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#update-a-hold">Update a Hold</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#capture-a-hold">Capture a Hold</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#void-a-hold">Void a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/holds/#create-a-new-hold">Create a New Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/holds/#retrieve-a-hold">Retrieve a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/holds/#list-all-holds">List all Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/holds/#list-all-holds-for-a-customer">List All Holds For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/holds/#update-a-hold">Update a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/holds/#capture-a-hold">Capture a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/holds/#void-a-hold">Void a Hold</a></li>
 </ul>
 </li>
 <li class="toctree-l1">Refunds<ul>
-<li class="toctree-l2"><a class="reference internal" href="#issue-a-refund">Issue a Refund</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#retrieve-a-refund">Retrieve a Refund</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-all-refunds">List All Refunds</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#list-all-refunds-for-a-customer">List All Refunds For a Customer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#update-a-refund">Update a Refund</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/refunds/#issue-a-refund">Issue a Refund</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/refunds/#retrieve-a-refund">Retrieve a Refund</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/refunds/#list-all-refunds">List All Refunds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/refunds/#list-all-refunds-for-a-customer">List All Refunds For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api/refunds/#update-a-refund">Update a Refund</a></li>
 </ul>
 </li>
 </ul>
@@ -244,13 +225,10 @@
 
 </div>
 
-<!--#include file="footer.html" -->
+<footer>
+
+</footer>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<!--script type="text/javascript" src="static/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="static/js/lunr.min.js"></script>
-<script type="text/javascript" src="static/js/jquery.scrollTo-min.js"></script>
-<script type="text/javascript" src="static/js/search.js"></script>
-<script type="text/javascript" src="static/js/docs.js"></script-->
 <script type="text/javascript" src="../../../static/js/compiled.js"></script>
 </body>
 </html>
