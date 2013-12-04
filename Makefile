@@ -1,4 +1,5 @@
-REV?= 1.0
+REV? = rev0
+REV_NUM? = 1.0
 
 # spec variables
 SPEC_SRC_DIR	=	spec/src
@@ -41,10 +42,10 @@ clean: clean-limited spec-clean
 clean-limited: api-clean overview-clean
 
 rev0:
-	REV=rev0 make all
-
+	REV=rev0 REV_NUM=1.0 make all
 rev1:
-	REV=rev1 make all
+	REV_NUM=1.1
+	REV=rev1 REV_NUM=1.1 make all
 
 # spec
 
@@ -65,8 +66,8 @@ api/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/com
 	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c api/$(REV) api/$(REV) api/$(REV)/html
 
 $(SITE_DIR)/api-gen-$(REV).html: api/html/index.html
-	mkdir -p ${SITE_DIR}/$(REV)/api
-	mv api/$(REV)/html/api ${SITE_DIR}/$(REV)
+	mkdir -p ${SITE_DIR}/$(REV_NUM)/api
+	mv api/$(REV)/html/api ${SITE_DIR}/$(REV_NUM)
 	#mv api/$(REV)/html/api.html ${SITE_DIR}/api-gen-$(REV).html
 
 api: $(SITE_DIR)/api-gen-$(REV).html
@@ -82,8 +83,8 @@ overview/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/j
 	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c overview/$(REV) overview/$(REV) overview/$(REV)/html
 
 $(SITE_DIR)/overview-gen-$(REV).html: overview/html/index.html
-	mkdir -p ${SITE_DIR}/$(REV)
-	mv overview/$(REV)/html/overview ${SITE_DIR}/$(REV)
+	mkdir -p ${SITE_DIR}/$(REV_NUM)/overview
+	mv overview/$(REV)/html/overview ${SITE_DIR}/$(REV_NUM)
 	#mv overview/$(REV)/html/overview.html ${SITE_DIR}/overview-gen-$(REV).html
 
 overview: $(SITE_DIR)/overview-gen-$(REV).html
