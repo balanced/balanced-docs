@@ -30,7 +30,7 @@ sys.path.append(os.path.abspath('.'))
 extensions = ['sphinx.ext.todo']
 
 # Add any paths that contain templates here, relative to this directory.
-templates_path = ['../_templates']
+templates_path = ['_templates']
 
 # The suffix of source filenames.
 source_suffix = '.rst'
@@ -247,11 +247,11 @@ def setup(app):
     # dcode directive default registrations
     dcode.DCodeDefaultDirective.registry[None]['cache'] = 'dcode.cache'
     dcode.DCodeDefaultDirective.registry['scenario'].update({
-        'script': "scripts/lang-scenario.py -d clients/curl/{0} -c scenario.cache".format(os.environ.get('BALANCED_REV', 'rev0')),
+        'script': "scripts/lang-scenario.py -d clients/curl/{0} -c scenario.cache".format(os.environ.get('BALANCED_REV', 'rev1')),
         'section-include': ['request'],
         'section-filter-class': 'LangSectionFilter',
         # TODO: remove when clients have been updated with scenarios for rev1
-        'lang': ['python', 'ruby', 'php', 'java'] if os.environ.get('BALANCED_REV', 'rev0') == 'rev0' else [],
+        'lang': ['python', 'ruby', 'php', 'java'] if os.environ.get('BALANCED_REV', 'rev1') == 'rev1' else [],
     })
     dcode.DCodeDefaultDirective.registry['endpoint'].update({
         'script': 'scripts/rst.py endpoint'

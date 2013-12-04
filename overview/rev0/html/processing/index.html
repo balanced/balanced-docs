@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Balanced - Payments processing, escrow, and payouts in one simple
+        API</title>
+    <link rel="shortcut icon"
+          href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC"
+          type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../../../static/css/styles.css" rel="stylesheet">
+    <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+
+   <!-- <script src="static/js/html5shiv.js"></script> -->
+    <![endif]-->
+</head>
+
+<body data-spy="scroll" data-target=".sidebar-nav" data-offset="300" >
+
+<div id='light-box' style="display: none"></div>
+<header class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="row">
+        <div class="logo">
+          <a class="brand" href="https://www.balancedpayments.com"></a>
+        </div>
+        <div class="span12">
+          <ul class="nav nav-api-version">
+	    <li>
+	      <a>Balanced Documentation</a>
+	    </li>
+	  </ul>
+	  <ul id="version-selector" class="nav nav-api-version" style="display:none">
+            <li class="dropdown">
+              <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">version 1.0 <b class="caret"></b></a>
+	      <ul class="dropdown-menu version">
+		      <li><a class="version-change" data-version="0" href="/rev0/overview">version 1.0</a></li>
+		      <li><a class="version-change" data-version="1" href="/rev1/overview">version 1.1</a></li>
+	      </ul>
+            </li>
+	  </ul>
+        </div>
+        <ul class="nav nav-links pull-right">
+          <li>
+            <a href="https://www.balancedpayments.com/help">Help</a>
+          </li>
+          <li>
+            <a href="https://dashboard.balancedpayments.com">Sign In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<header class="navbar navbar-fixed-top navbar-clients-search">
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="row">
+        <div class="span5">
+          <ul class="nav nav-api-clients">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle lang" id='lang-dropdown-head' data-toggle="dropdown">CURL <b class="caret"></b></a>
+              <ul class="dropdown-menu lang">
+                <li><a class='lang-change' data-lang='ruby' href="#">Ruby</a></li>
+                <li><a class='lang-change' data-lang='python' href="#">Python</a></li>
+                <li><a class='lang-change' data-lang='php' href="#">PHP</a></li>
+                <li><a class='lang-change' data-lang='java' href="#">Java</a></li>
+                <li><a class='lang-change' data-lang='bash' href="#">CURL</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <ul class="nav nav-search span21" id="search-section">
+          <li>
+            <form>
+              <input type="text" id="search" maxlength="255" placeholder="Search" />
+            </form>
+            <div class="dropdown">
+                <ul id="search-dropdown" class="dropdown-menu span21 search">
+                </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="api-version-revZ">
+  
+  
+
+<div class="container content" id="overview-content">
+    <div class="row">
+
+        <!-- The side bar menu -->
+        <div class="span5 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+                <div class="row">
+                    <div class="span5">
+
+                        <!-- The navigation menu -->
+                        <div class="overview-api">
+                          <ul class="simple" id='context-selector'>
+                            <li class="active">
+                                <a href='overview.html'>Overview</a>
+                            </li>
+                            <li>
+                                <a href='api.html'>API Reference</a>
+                            </li>
+                            <li>
+                                <a href="https://support.balancedpayments.com/hc/en-us">FAQs</a>
+                            </li>
+                          </ul>
+                        </div>
+
+                        <!-- The table of contents menu -->
+                        <ul class="nav nav-list context-navlist">
+<li class="toctree-l1">Overview<ul>
+<li class="toctree-l2"><a class="reference internal" href="#client-libraries">Client Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-cases">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#github-discussions">Github Discussions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#support">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#certified-developers">Certified Developers</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Getting Started<ul>
+<li class="toctree-l2"><a class="reference internal" href="#balanced-js">Balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collecting-credit-card-information">Collecting credit card information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#charge-a-credit-card">Charge a credit card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collect-bank-account-info">Collect bank account info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#credit-a-bank-account">Credit a bank account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#balanced-js-card-reference">Balanced.js Card Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#balanced-js-bankaccount-reference">Balanced.js BankAccount Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Best Practices<ul>
+<li class="toctree-l2"><a class="reference internal" href="#use-balanced-js">Use balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reducing-declined-transactions">Reducing Declined Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#catching-fraud-early">Catching Fraud Early</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reducing-payout-delays">Reducing Payout Delays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-meta">Use Meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#store-uris">Store URIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current">Processing<ul>
+<li class="toctree-l2"><a class="reference internal" href="#debits">Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#refunds">Refunds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#holds">Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transaction-limits">Transaction Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Balanced Payouts<ul>
+<li class="toctree-l2"><a class="reference internal" href="#credits">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#credit-s-status-field">Credit's Status Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#payout-methods">Payout Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#canceling-credits">Canceling Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pre-funding-your-account">Pre-funding Your Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submission-delivery-times">Submission &amp; Delivery times</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Pricing and fees<ul>
+<li class="toctree-l2"><a class="reference internal" href="#payout-pricing">Payout Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#processing-pricing">Processing Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#invoicing-fees">Invoicing fees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funds-flow">Funds Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Resources<ul>
+<li class="toctree-l2"><a class="reference internal" href="#test-credit-card-numbers">Test credit card numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-bank-account-numbers">Test bank account numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-identity-verification">Test identity verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#request-logs">Request Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-hash-attribute">The Hash Attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#address-verification-service">Address Verification Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#card-security-code">Card Security Code</a></li>
+</ul>
+</li>
+</ul>
+
+                        
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The actual overview content -->
+        <div id="context-content" class="span20 offset1">
+            
+  <section id="processing">
+<span id="id1"></span><h1>Processing<a class="headerlink" href="#processing" title="Permalink to this headline">∵</a></h1>
+<p>Balanced provides a complete processing solution for accepting credit
+card payments in a simple, secure manner, relieving you from the hassles
+of PCI compliance.</p>
+<hr>
+<section id="debits">
+<h2>Debits<a class="headerlink" href="#debits" title="Permalink to this headline">∵</a></h2>
+<div class="span6">
+<div class="header3">
+Tutorials</div>
+<div class="box box-block box-blue">
+<span class="icon icon-page"></span>
+<a class="reference internal" href="../getting_started/#getting-started-collecting-card-info"><em>Collect credit card info</em></a></div>
+<div class="box box-block box-blue">
+<span class="icon icon-page"></span>
+<a class="reference internal" href="../getting_started/#getting-started-charging-cards"><em>Charge a credit card</em></a></div>
+</div>
+<div class="span6">
+<div class="header3">
+Form Building</div>
+<div class="box box-block box-turquoise">
+<span class="icon icon-page"></span>
+<a class="reference external" href="http://jsfiddle.net/balanced/ZwhrA/">Sample credit card form</a></div>
+<div class="box box-block box-turquoise">
+<span class="icon icon-page"></span>
+<a class="reference external" href="http://jsfiddle.net/balanced/ZwhrA/">Sample bank account form</a></div>
+</div>
+<div class="span6">
+<div class="header3">
+Testing</div>
+<div class="box box-block box-purple">
+<span class="icon icon-page"></span>
+<a class="reference internal" href="../resources/#resources-test-credit-cards"><em>Test credit card numbers</em></a></div>
+</div>
+<div class="clear">
+</div>
+</section><hr>
+<section id="refunds">
+<h2>Refunds<a class="headerlink" href="#refunds" title="Permalink to this headline">∵</a></h2>
+<p>You can refund a debit up to its original amount, so that means you can partially
+refund a debit as well.</p>
+<p>In order for a refund to go through successfully, you <em>must</em> have enough money
+in <a class="reference internal" href="../fees/#mp-escrow"><em>implicit escrow</em></a> to cover your refund.</p>
+<div class="alert alert-tab admonition note">
+note</div>
+<div class="alert alert-gray">
+For credit cards it typically takes one business day for refunds to
+be reflected on a card statement, but it's possible for the issuing bank to
+take as many as five business days to process a refund.</div>
+<p>Here are some scenarios:</p>
+<section id="full-refund">
+<h3>Full Refund<a class="headerlink" href="#full-refund" title="Permalink to this headline">∵</a></h3>
+<p>Let's say you've debited an account for $20.00</p>
+<ul class="simple">
+<li>Your marketplace's <a class="reference external" href="https://dashboard.balancedpayments.com/#/marketplaces/">dashboard</a> escrow balance says $20.00</li>
+<li>You issue a refund for $20.00</li>
+<li>Your marketplace's <a class="reference external" href="https://dashboard.balancedpayments.com/#/marketplaces/">dashboard</a> escrow balance says $0.00</li>
+</ul>
+</section><section id="partial-refund">
+<h3>Partial Refund<a class="headerlink" href="#partial-refund" title="Permalink to this headline">∵</a></h3>
+<p>You can also perform multiple partial refunds up to the original amount.</p>
+<p>Let's say you've debited an account for $20.00</p>
+<ul class="simple">
+<li>Your marketplace's <a class="reference external" href="https://dashboard.balancedpayments.com/#/marketplaces/">dashboard</a> escrow balance says $20.00</li>
+<li>You issue a refund for $10.00</li>
+<li>Your marketplace's <a class="reference external" href="https://dashboard.balancedpayments.com/#/marketplaces/">dashboard</a> escrow balance says $10.00</li>
+<li>You issue another refund for $5.00</li>
+<li>Your marketplace's <a class="reference external" href="https://dashboard.balancedpayments.com/#/marketplaces/">dashboard</a> escrow balance says $5.00</li>
+</ul>
+</section><section id="not-enough-funds-to-refund">
+<h3>Not Enough Funds to Refund<a class="headerlink" href="#not-enough-funds-to-refund" title="Permalink to this headline">∵</a></h3>
+<p>Let's say you've debited an account for $20.00</p>
+<ul class="simple">
+<li>Your marketplace's <a class="reference external" href="https://dashboard.balancedpayments.com/#/marketplaces/">dashboard</a> escrow balance says $20.00</li>
+<li>You issue a refund for $30.00</li>
+<li>The API will return a <strong>400</strong> status code, similar to:</li>
+</ul>
+<div class="highlight-bash"><div class="highlight"><pre>Bad Request: 400: Invalid field <span class="o">[</span>amount<span class="o">]</span> - <span class="s2">&quot;3000&quot;</span> must be &lt;<span class="o">=</span> 2000
+</pre></div>
+</div>
+</section></section><hr>
+<section id="holds">
+<span id="processing-holds"></span><h2>Holds<a class="headerlink" href="#holds" title="Permalink to this headline">∵</a></h2>
+<p>Balanced supports the concepts of <em class="xref std std-term">holds</em>. Holds are a type of
+authorization that reserves (i.e. holds) a dollar amount on the customer's
+credit card for the merchant to process later, usually within 7 days. If the
+transaction is not processed (known as post-authorization) by the end of the
+hold period, the amount is added back to the available credit on the
+cardholder's credit card. <strong>The customer is not billed.</strong></p>
+<p>Holds are common in the industries where the amount of the goods or services
+are &quot;reserved&quot; on the cardholder's credit card.</p>
+<p>If you issue a debit on an account, Balanced uses holds behinds the scenes
+but captures the funds immediately -- you will
+<strong>always see an expanded hold resource returned on a debit representation</strong>.</p>
+<div class="alert alert-tab admonition warning">
+warning</div>
+<div class="alert alert-gray">
+<p>For all intents and purposes, Balanced does not recommend holds and considers
+their usage as a very advanced feature as they cause much confusion and are
+cumbersome to manage.</p>
+<p>If your project requires holds and you need help, please reach out
+to us using our <a class="reference internal" href="../introduction/#overview-support"><em>support channels</em></a>.</p>
+</div>
+<section id="creating-a-hold">
+<h3>Creating a hold<a class="headerlink" href="#creating-a-hold" title="Permalink to this headline">∵</a></h3>
+<p>A hold is created in a way similar to creating a debit. Creating a hold will
+return a URI which can be used to perform a capture later, up to the full
+amount of the hold.</p>
+<div class="request">
+<p>Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/marketplaces/TEST-MP3fIltERZtqjivPZDPzs2zE/holds <span class="se">\</span>
+     -u ak-test-VDVH8kXXRHQ71VkOJqOwMEUQi8aVKqng: <span class="se">\</span>
+     -d <span class="s2">&quot;source_uri=/v1/marketplaces/TEST-MP3fIltERZtqjivPZDPzs2zE/cards/CC6c8F7BxhDhKN81iKq71CCO&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;amount=5000&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;description=Some descriptive text for the debit in the dashboard&quot;</span>
+</pre></div>
+</div>
+</div>
+</section><section id="capturing-a-hold">
+<h3>Capturing a hold<a class="headerlink" href="#capturing-a-hold" title="Permalink to this headline">∵</a></h3>
+<p>Here's an example on how to capture a hold:</p>
+<div class="request">
+<p>Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/customers/CU6aEMerEinsH5yjdNr8JGoU/debits <span class="se">\</span>
+     -u ak-test-VDVH8kXXRHQ71VkOJqOwMEUQi8aVKqng: <span class="se">\</span>
+     -d <span class="s2">&quot;appears_on_statement_as=ShowsUpOnStmt&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;description=Some descriptive text for the debit in the dashboard&quot;</span>
+</pre></div>
+</div>
+</div>
+</section></section><hr>
+<section id="transaction-limits">
+<span id="processing-transaction-limits"></span><h2>Transaction Limits<a class="headerlink" href="#transaction-limits" title="Permalink to this headline">∵</a></h2>
+<p>The minimum transaction amount is $0.50.</p>
+<p>The maximum transaction amounts are as follows:</p>
+<p>Credit cards - $15,000 per transaction.</p>
+<p>Bank account debits - $15,000 per transaction.</p>
+<p>Bank account credits - $15,000 per transaction.</p>
+<div class="alert alert-tab admonition note">
+note</div>
+<div class="alert alert-gray">
+<p>Please contact <a class="reference external" href="mailto:support&#37;&#52;&#48;balancedpayments&#46;com">support<span>&#64;</span>balancedpayments<span>&#46;</span>com</a>
+if you are planning to process larger amounts.</p>
+<p>These limits do not apply to the marketplace owner bank account.</p>
+</div>
+</section></section><hr>
+
+</div>
+
+    </div>
+</div>
+
+</div>
+
+<!--#include file="footer.html" -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<!--script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/lunr.min.js"></script>
+<script type="text/javascript" src="static/js/jquery.scrollTo-min.js"></script>
+<script type="text/javascript" src="static/js/search.js"></script>
+<script type="text/javascript" src="static/js/docs.js"></script-->
+<script type="text/javascript" src="../../../static/js/compiled.js"></script>
+</body>
+</html>

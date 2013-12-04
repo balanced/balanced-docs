@@ -1,4 +1,4 @@
-REV?= rev0
+REV?= 1.0
 
 # spec variables
 SPEC_SRC_DIR	=	spec/src
@@ -34,6 +34,7 @@ SITE_DIR = site
 all: spec api overview
 
 clean: clean-limited spec-clean
+	-rm -rf $(SITE_DIR)/rev*
 	-rm -f $(SITE_DIR)/api-gen-*.html
 	-rm  -f $(SITE_DIR)/overview-gen-*.html
 
@@ -61,29 +62,35 @@ spec-clean:
 # api
 
 api/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
-	BALANCED_REV=$(REV) $(SPHINXBUILD) -b singlehtml -c api/$(REV) api/$(REV) api/$(REV)/html
+	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c api/$(REV) api/$(REV) api/$(REV)/html
 
 $(SITE_DIR)/api-gen-$(REV).html: api/html/index.html
-	mv api/$(REV)/html/api.html ${SITE_DIR}/api-gen-$(REV).html
+	mkdir -p ${SITE_DIR}/$(REV)/api
+	mv api/$(REV)/html/api ${SITE_DIR}/$(REV)
+	#mv api/$(REV)/html/api.html ${SITE_DIR}/api-gen-$(REV).html
 
 api: $(SITE_DIR)/api-gen-$(REV).html
 
 api-clean:
 	-rm -rf api/html
+	-rm -rf api/rev*/html
 	-rm -f *.cache
 
 # overview
 
 overview/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
-	BALANCED_REV=$(REV) $(SPHINXBUILD) -b singlehtml -c overview/$(REV) overview/$(REV) overview/$(REV)/html
+	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c overview/$(REV) overview/$(REV) overview/$(REV)/html
 
 $(SITE_DIR)/overview-gen-$(REV).html: overview/html/index.html
-	mv overview/$(REV)/html/overview.html ${SITE_DIR}/overview-gen-$(REV).html
+	mkdir -p ${SITE_DIR}/$(REV)
+	mv overview/$(REV)/html/overview ${SITE_DIR}/$(REV)
+	#mv overview/$(REV)/html/overview.html ${SITE_DIR}/overview-gen-$(REV).html
 
 overview: $(SITE_DIR)/overview-gen-$(REV).html
 
 overview-clean:
 	-rm -rf overview/html
+	-rm -rf overview/rev*/html
 	-rm -f *.cache
 
 # static files

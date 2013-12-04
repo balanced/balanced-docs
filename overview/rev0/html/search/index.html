@@ -1,0 +1,272 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Balanced - Payments processing, escrow, and payouts in one simple
+        API</title>
+    <link rel="shortcut icon"
+          href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC"
+          type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="../../../static/css/styles.css" rel="stylesheet">
+    <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+
+   <!-- <script src="static/js/html5shiv.js"></script> -->
+    <![endif]-->
+</head>
+
+<body data-spy="scroll" data-target=".sidebar-nav" data-offset="300" >
+
+<div id='light-box' style="display: none"></div>
+<header class="navbar navbar-inverse navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="row">
+        <div class="logo">
+          <a class="brand" href="https://www.balancedpayments.com"></a>
+        </div>
+        <div class="span12">
+          <ul class="nav nav-api-version">
+	    <li>
+	      <a>Balanced Documentation</a>
+	    </li>
+	  </ul>
+	  <ul id="version-selector" class="nav nav-api-version" style="display:none">
+            <li class="dropdown">
+              <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">version 1.0 <b class="caret"></b></a>
+	      <ul class="dropdown-menu version">
+		      <li><a class="version-change" data-version="0" href="/rev0/overview">version 1.0</a></li>
+		      <li><a class="version-change" data-version="1" href="/rev1/overview">version 1.1</a></li>
+	      </ul>
+            </li>
+	  </ul>
+        </div>
+        <ul class="nav nav-links pull-right">
+          <li>
+            <a href="https://www.balancedpayments.com/help">Help</a>
+          </li>
+          <li>
+            <a href="https://dashboard.balancedpayments.com">Sign In</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<header class="navbar navbar-fixed-top navbar-clients-search">
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="row">
+        <div class="span5">
+          <ul class="nav nav-api-clients">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle lang" id='lang-dropdown-head' data-toggle="dropdown">CURL <b class="caret"></b></a>
+              <ul class="dropdown-menu lang">
+                <li><a class='lang-change' data-lang='ruby' href="#">Ruby</a></li>
+                <li><a class='lang-change' data-lang='python' href="#">Python</a></li>
+                <li><a class='lang-change' data-lang='php' href="#">PHP</a></li>
+                <li><a class='lang-change' data-lang='java' href="#">Java</a></li>
+                <li><a class='lang-change' data-lang='bash' href="#">CURL</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <ul class="nav nav-search span21" id="search-section">
+          <li>
+            <form>
+              <input type="text" id="search" maxlength="255" placeholder="Search" />
+            </form>
+            <div class="dropdown">
+                <ul id="search-dropdown" class="dropdown-menu span21 search">
+                </ul>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+
+<div class="api-version-revZ">
+  
+  
+<div class="container content" id='api-content'>
+    <div class="row">
+
+        <!-- The side bar menu -->
+        <div class="span5 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+                <div class="row">
+                    <div class="span5">
+
+                        <!-- The navigation menu -->
+                        <div class="overview-api">
+                            <ul class="simple" id='context-selector'>
+                                <li class="active">
+                                    <a href="/1.0/overview">
+                                        Overview
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="/1.0/api">API Reference</a>
+                                </li>
+                                <li>
+                                    <a href="https://support.balancedpayments.com/hc/en-us">FAQs</a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- The table of contents menu -->
+                        <ul class="nav nav-list context-navlist">
+<li class="toctree-l1">Best Practices<ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/best_practices/#use-balanced-js">Use balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/best_practices/#reducing-declined-transactions">Reducing Declined Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/best_practices/#catching-fraud-early">Catching Fraud Early</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/best_practices/#reducing-payout-delays">Reducing Payout Delays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/best_practices/#use-meta">Use Meta</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/best_practices/#shipping-address">Shipping Address</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/best_practices/#store-uris">Store URIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/best_practices/#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Pricing and fees<ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/fees/#payout-pricing">Payout Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/fees/#processing-pricing">Processing Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/fees/#invoicing-fees">Invoicing fees</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/fees/#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/fees/#funds-flow">Funds Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/fees/#escrow">Escrow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/fees/#collecting-your-fees">Collecting Your Fees</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/fees/#fee-scenario-1">Fee Scenario #1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/fees/#fee-scenario-2">Fee Scenario #2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/fees/#fee-scenario-3">Fee Scenario #3</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1">Getting Started<ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started/#balanced-js">Balanced.js</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/getting_started/#including-and-initializing-balanced-js">Including and Initializing <span class="docutils literal"><code>balanced.js</code></span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started/#collecting-credit-card-information">Collecting credit card information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started/#charge-a-credit-card">Charge a credit card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started/#collect-bank-account-info">Collect bank account info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started/#credit-a-bank-account">Credit a bank account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started/#balanced-js-card-reference">Balanced.js Card Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/getting_started/#balanced-js-bankaccount-reference">Balanced.js BankAccount Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Marketplaces<ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/marketplaces/#merchant-underwriting">Merchant Underwriting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/marketplaces/#collecting-merchant-information">Collecting Merchant Information</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/marketplaces/#sign-up-process-api">Sign-up process (API)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/marketplaces/#on-success-201-created">On Success (201 CREATED)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/marketplaces/#on-failure-300-multiple-choices">On Failure (300 MULTIPLE CHOICES)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/marketplaces/#simulating-verified-with-customers">Simulating verified with customers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/marketplaces/#associating-debits-with-a-merchant">Associating debits with a merchant</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Balanced Payouts<ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/payouts/#credits">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/payouts/#credit-s-status-field">Credit's Status Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/payouts/#payout-methods">Payout Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/payouts/#canceling-credits">Canceling Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/payouts/#pre-funding-your-account">Pre-funding Your Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/payouts/#submission-delivery-times">Submission &amp; Delivery times</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Processing<ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/processing/#debits">Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/processing/#refunds">Refunds</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/processing/#full-refund">Full Refund</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/processing/#partial-refund">Partial Refund</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/processing/#not-enough-funds-to-refund">Not Enough Funds to Refund</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/processing/#holds">Holds</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/processing/#creating-a-hold">Creating a hold</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/processing/#capturing-a-hold">Capturing a hold</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/processing/#transaction-limits">Transaction Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Resources<ul>
+<li class="toctree-l2"><a class="reference internal" href="../overview/resources/#test-credit-card-numbers">Test credit card numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/resources/#test-bank-account-numbers">Test bank account numbers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../overview/resources/#simulating-erroneous-routing-numbers">Simulating erroneous routing numbers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/resources/#simulating-a-pending-status">Simulating a pending status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/resources/#simulating-a-paid-status">Simulating a paid status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../overview/resources/#simulating-a-failed-status">Simulating a failed status</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/resources/#test-identity-verification">Test identity verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/resources/#request-logs">Request Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/resources/#the-hash-attribute">The Hash Attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/resources/#address-verification-service">Address Verification Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../overview/resources/#card-security-code">Card Security Code</a></li>
+</ul>
+</li>
+</ul>
+
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The actual overview content -->
+        <div id="context-content" class="span20 offset1">
+            
+  <h1 id="search-documentation">Search</h1>
+  <div id="fallback" class="admonition warning">
+  <script type="text/javascript">$('#fallback').hide();</script>
+  <p>
+    Please activate JavaScript to enable the search
+    functionality.
+  </p>
+  </div>
+  <p>
+    From here you can search these documents. Enter your search
+    words into the box below and click "search". Note that the search
+    function will automatically search for all of the words. Pages
+    containing fewer words won't appear in the result list.
+  </p>
+  <form action="" method="get">
+    <input type="text" name="q" value="" />
+    <input type="submit" value="search" />
+    <span id="search-progress" style="padding-left: 10px"></span>
+  </form>
+  
+  <div id="search-results">
+  
+  </div>
+</div>
+
+    </div>
+</div>
+
+</div>
+
+<!--#include file="footer.html" -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+<!--script type="text/javascript" src="static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="static/js/lunr.min.js"></script>
+<script type="text/javascript" src="static/js/jquery.scrollTo-min.js"></script>
+<script type="text/javascript" src="static/js/search.js"></script>
+<script type="text/javascript" src="static/js/docs.js"></script-->
+<script type="text/javascript" src="../../../static/js/compiled.js"></script>
+</body>
+</html>
