@@ -273,6 +273,22 @@ If you'd like to find a developer to help with your Balanced integration
 outside of APIXchange, please post your criteria on `this Github issue`_.
 
 
+Accounting
+----------
+
+`Subledger`_ is an API for in-application accounting.
+
+`Subledger`_ makes it easy to:
+
+* Produce financial reports for your finance team
+* Manage accounts payable to sellers vs cash in escrow
+* Maintain a financial audit trail for compliance reasons
+
+Interested? You should definitely check out this `post`_ about how Balanced + Subledger can work together to do your payments and accounting. *#LoveAPIs*
+
+.. image:: /static/img/subledger.png
+   :target: http://subledger.com
+
 
 .. _kitchit: http://kitchit.com
 .. _copious: http://copious.com
@@ -305,3 +321,5 @@ outside of APIXchange, please post your criteria on `this Github issue`_.
 
 .. _this Github issue: https://github.com/balanced/balanced-api/issues/315
 .. _APIXchange: https://apixchange.com/
+.. _Subledger: http://subledger.com
+.. _post: http://subledger.com/blog/rent-my-bikes-demo/
