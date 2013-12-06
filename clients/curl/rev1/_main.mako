@@ -112,7 +112,7 @@
 </%def>
 
 
-<%def name="curl_list_template(endpoint_name, limit=2, ep=None, sel='shortest')">
+<%def name="curl_list_template(endpoint_name, ep=None, sel='shortest')">
 <%
   ep = Endpoint(ctx, endpoint_name, select=sel)
 %>
@@ -122,7 +122,7 @@
   <%
     slash = '\\'
   %>
-   curl ${Endpoint.qualify_uri(ctx, request['uri'], limit=limit)} ${slash}
+   curl ${Endpoint.qualify_uri(ctx, request['uri'])} ${slash}
    %if 'accept_type' in ctx.storage:
       -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
    %endif

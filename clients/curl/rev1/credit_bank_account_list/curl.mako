@@ -9,7 +9,7 @@
 % else:
   <%
     r = context['request']
-    url = ep.format(bank_account_id=r['id'], limit=2)
+    url = ep.format(bank_account_id=r['id'])
   %>
    curl ${url} <%text>\</%text>
       -u ${api_key}:

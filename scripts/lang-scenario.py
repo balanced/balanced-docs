@@ -295,7 +295,7 @@ class Scenario(object):
             ctx.storage['api_rev'] = os.environ.get('BALANCED_REV', 'rev0')
             if ctx.storage['api_rev'] != 'rev0':
                 ctx.storage['accept_type'] = {
-                    'rev1': 'application/vnd.balancedpayments+json; version=1.1',
+                    'rev1': 'application/vnd.api+json;revision=1.1',
                 }[ctx.storage['api_rev']]
             logger.debug('creating api key')
             #key = balanced.APIKey().save()
@@ -325,7 +325,6 @@ class Scenario(object):
                 ctx.storage['marketplace_uri'] = mp['href']
                 ctx.storage['marketplace_id'] = mp['id']
                 ctx.storage['marketplace'] = basic_client(mp)
-                print marketplace.json()['links']
                 ctx.storage['customers_uri'] = marketplace.json()['links']['marketplaces.customers']
             else:
                 ctx.storage['marketplace_uri'] = marketplace.json()['uri']

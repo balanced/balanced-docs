@@ -9,7 +9,6 @@
 % else:
   <%
     url = main.interpolate_uri(ep.url, bank_account_id=request['id'])
-    url += '?limit=2'
   %>
    curl ${url} <%text>\</%text>
       -u ${api_key}: <%text>\</%text>

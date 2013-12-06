@@ -1,5 +1,5 @@
 <div id='light-box' style="display: none"></div>
-<header class="navbar navbar-inverse navbar-fixed-top">
+<header class="navbar navbar-inverse navbar-fixed-top" style="display:none">
   <div class="navbar-inner">
     <div class="container">
       <div class="row">
@@ -7,11 +7,17 @@
           <a class="brand" href="https://www.balancedpayments.com"></a>
         </div>
         <div class="span18">
-          <ul class="nav">
-	    <li>
-	      <a>Balanced Documentation</a>
-	    </li>
-	  </ul>
+
+    <ul class="nav nav-api-context">
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle context" id='lang-dropdown-head' data-toggle="dropdown">Overview <b class="caret"></b></a>
+        <ul class="dropdown-menu lang">
+          <li><a class='lang-change' data-lang='overview' href="#">Overview</a></li>
+          <li><a class='lang-change' data-lang='api' href="#">API</a></li>
+          <li><a class='lang-change' data-lang='faq' href="#">FAQs</a></li>
+        </ul>
+      </li>
+    </ul>
 	  <ul id="version-selector" class="nav nav-api-version">
             <li class="dropdown">
               <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">v1.1 <b class="caret"></b></a>

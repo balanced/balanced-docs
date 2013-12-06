@@ -1,6 +1,6 @@
 
 request = {
-    'uri': '/v1/bank_accounts',
+    'uri': '/bank_accounts',
     'payload': {
         'name': 'Johann Bernoulli',
         'account_number': '9900000001',

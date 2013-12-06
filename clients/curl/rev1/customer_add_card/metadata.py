@@ -10,8 +10,6 @@ card = json.loads(
     storage['card_create']['response']
 )
 
-print card
-
 request = {
     'uri': customer['customers'][0]['href'],
     'card_uri': card['cards'][0]['href'],

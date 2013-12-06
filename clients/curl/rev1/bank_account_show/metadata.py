@@ -3,5 +3,5 @@ bank_account = json.loads(
 )
 
 request = {
-    'uri': bank_account['uri'],
+    'uri': bank_account['bank_accounts'][0]['href'],
 }
