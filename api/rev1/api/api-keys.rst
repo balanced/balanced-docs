@@ -12,4 +12,4 @@ Create a new API key.
 
 .. container:: code-white
 
-..  .. dcode:: scenario api_key_create
+  .. dcode:: scenario api_key_create

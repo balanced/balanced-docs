@@ -18,42 +18,75 @@
     <![endif]-->
 </head>
 
-<body data-spy="scroll" data-target=".sidebar-nav" data-offset="300" >
-
-{% include "header.html" %}
+<body data-spy="scroll" data-target=".sidebar-nav" data-offset="300">
 
 <div class="api-version-revZ">
   
-  
-<div class="container content" id='api-content'>
+{# {% extends "basic/layout.html" %} #}
+<div class="container content" id="overview-content">
     <div class="row">
 
+      <div id="sidebar-top">
+        <div id="sidebar-top-content" style="margin: 10px 10px 0px 10px;">
+          <ul class="inline">
+            <li style="vertical-align: middle;">
+              <div id="logo" style="background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAMAAAC+oj0CAAAAV1BMVEVymix4oi/vQDXjPDJ4oi94oi/vQDXvQDXvQDXvQDV4oi91ni7vQDXqPjN4oi/foRLanRHopxNznC3mPTPopxPopxMAAABwmCzgPDHanRHopxN4oi/vQDXwPhJhAAAAF3RSTlPbICDbYBBQYEAQgLOAs1DH7hDHx6CAAHwvTFAAAABmSURBVHja1cjXDYAwDABR01sCpAEh2X9ObCFkJLMA93cPSpcPtb0a92QLqDLWsdYJA8iUY7aJulkzTzdr4p55Jp1gUM61uOzWjg1sn/2Iw7IEyeHEguCVeBUciaNgT+wFG49qnrsAe+cllBc1FLYAAAAASUVORK5CYII=) no-repeat center;width: 25px;height: 25px;float: left;">
+              </div>
+            </li>
+            <li id="context-title" style="font-size: 16px;">API Reference</li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+          <div id="sidebar-flyout">
+            <h5>Sections</h5>
+            <ul class="inline" style="font-size: 14px;">
+              <li><a href="/1.0/overview">Overview</a></li>
+              <li><a href="/1.0/api">API Reference</a></li>
+              <li><a href="#">Integration</a></li>
+            </ul>
+            
+            <h5>Languages</h5>
+            <ul class="inline" style="font-size: 14px;">
+              <li><a href="#">Python</a></li>
+              <li><a href="#">Ruby</a></li>
+              <li><a href="#">PHP</a></li>
+              <li><a href="#">Java</a></li>
+              <li><a href="#">Node</a></li>
+              <li><a href="#">C#</a></li>
+              <li><a href="#">Go</a></li>
+            </ul>
+            
+            <h5>Versions</h5>
+            <ul class="inline" style="font-size: 14px;">
+              <li><a href="/1.1/api">v1.1</a></li>
+              <li><a href="/1.0/api">v1.0</a></li>
+            </ul>
+            
+            <h5>Need Help?</h5>
+            <ul class="inline" style="font-size: 14px;">
+              <li><a href="https://support.balancedpayments.com">FAQ</a></li>
+              <li><a href="http://webchat.freenode.net/?channels=balanced&uio=MTE9OTIaf">IRC Tech Support</a></li>
+            </ul>
+            
+            <div id="sidebar-flyout-toggle-bar">
+              <ul class="inline">
+                <li>v: 1.0</li>
+                <li id="title-lang">lang: cURL</li>
+              </ul>
+              <b class="caret"></b>
+            </div>
+          </div>
+      
         <!-- The side bar menu -->
-        <div class="span5 context-sidebar">
+        <div class="span6 context-sidebar">
             <div class="sidebar-nav" data-spy="affix">
                 <div class="row">
-                    <div class="span5">
-
-                        <!-- The navigation menu -->
-                        <div class="overview-api">
-                            <ul class="simple" id='context-selector'>
-                                <li>
-                                    <a href="/1.0/overview">
-                                        Overview
-                                    </a>
-                                </li>
-                                <li class="active">
-                                    <a href="/1.0/api">API Reference</a>
-                                </li>
-                                <li>
-                                    <a href="https://support.balancedpayments.com/hc/en-us">FAQs</a>
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="span6">
 
                         <!-- The table of contents menu -->
                         {%- block sidebar2 %}
-                        {{ toctree(maxdepth=3, collapse=False) }}
+                        {{ toctree(maxdepth=2, collapse=False) }}
                         {% endblock %}
 
                     </div>
@@ -62,7 +95,7 @@
         </div>
 
         <!-- The actual overview content -->
-        <div id="context-content" class="span20 offset1">
+        <div id="context-content" class="span19 offset1">
             {% block body -%}
 
             {% endblock -%}

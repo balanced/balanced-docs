@@ -1,2 +1,2 @@
 <%namespace file='/_main.mako' name='main'/>
-<% main.curl_create_template('bank_accounts.create') %>
+<% main.curl_create_template('api_keys.create') %>

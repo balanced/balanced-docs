@@ -44,7 +44,7 @@ function hide_search_results() {
 
 $(document).ready(function () {
     //ADD OTHER PAGES
-    $('body').append("<div id='search_extra' style='display: none'></div>");
+    /*$('body').append("<div id='search_extra' style='display: none'></div>");
     function add_to_search(url) {
         // GRAB THE STUFF
         $.get(url, function (data) {
@@ -79,8 +79,7 @@ $(document).ready(function () {
             });
         });
     }
-    
-    /*
+
     if($('#overview-content').length){
         add_to_search('api.html');
     }
@@ -275,9 +274,9 @@ $(document).ready(function () {
     fix_sidebar();
 
     // HIDE OVERVIEW REQUEST BOXES:
-    var $overview_content = $('#overview-content');
-    $overview_content.find('.request > p:first-child').hide();
-    $overview_content.find('.response > p:first-child').hide();
+    //var $overview_content = $('#overview-content');
+    //$overview_content.find('.request > p:first-child').hide();
+    //$overview_content.find('.response > p:first-child').hide();
 
    // BIND URL UPDATE
    $("li").bind('activate', updateNavigation);
