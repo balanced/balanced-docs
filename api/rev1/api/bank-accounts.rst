@@ -82,3 +82,17 @@ with a deleted bank account will not be affected.
 .. container:: code-white
 
    .. dcode:: scenario bank_account_delete
+
+
+Debit a Bank Account
+---------------------
+
+Debit (charge) a bank account.
+
+.. cssclass:: dl-horizontal dl-params
+
+   .. dcode:: form debits.create
+
+.. container:: code-white
+
+   .. dcode:: scenario bank_account_debit

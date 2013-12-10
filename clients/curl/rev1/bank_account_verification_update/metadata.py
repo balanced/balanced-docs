@@ -1,36 +1,11 @@
-bank_account = json.loads(
-    storage['bank_account_create']['response']
-)['bank_accounts'][0]
+bav_response = json.loads(
+    storage['bank_account_verification_create']['response']
+)['bank_account_verifications'][0]
 
 request = {
-    'uri': bank_account['href'],
+    'uri': bav_response['href'],
     'payload': {
         'amount_1': 1,
         'amount_2': 1
     }
 }
-
-#import balanced
-#
-#bank_account = balanced.BankAccount(
-#    **{
-#        'type': 'checking',
-#        'account_number': '9900000001',
-#        'routing_number': '321174851',
-#        'name': 'Johann Bernoulli',
-#        }
-#).save()
-#
-#customer = balanced.Customer().save()
-#customer.add_bank_account(bank_account)
-#
-#verification = bank_account.verify()
-#
-#request = {
-#    'uri': verification.uri,
-#    'bank_account_uri': bank_account.uri,
-#    'payload': {
-#        'amount_1': 1,
-#        'amount_2': 1,
-#    }
-#}
