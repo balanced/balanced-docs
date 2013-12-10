@@ -1,5 +1,5 @@
 debit = json.loads(
-    storage['debit_create']['response']
+    storage['card_debit']['response']
 )
 
 request = {

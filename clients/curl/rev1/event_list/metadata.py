@@ -1,3 +1,5 @@
+print ctx.marketplace.links
+
 request = {
-    'uri': ctx.marketplace.events_uri
+    'uri': ctx.marketplace.links['marketplaces.events']
 }

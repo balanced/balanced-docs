@@ -377,6 +377,7 @@ class Scenario(object):
             )
             
             if os.environ.get('BALANCED_REV') == 'rev1':
+                # is this even used?
                 ctx.storage['card_uri'] = card.json()['cards'][0]['href']
                 ctx.storage['card_id'] = card.json()['cards'][0]['id']
                 ctx.storage['card'] = basic_client(card.json()['cards'][0])

@@ -1,3 +1,3 @@
 request = {
-    'uri': ctx.marketplace.callbacks_uri
+    'uri': '/callbacks'
 }

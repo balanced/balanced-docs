@@ -7,12 +7,10 @@ Customers represent businesses or people within your marketplace. You can
 associate credit cards, debit cards, bank accounts and transactions,
 i.e. refunds, debits, credits.
 
-.. cssclass:: method-section
 
+.. _create-a-customer:
 
-.. _creating-a-customer:
-
-Creating a Customer
+Create a Customer
 -------------------
 
 .. cssclass:: dl-horizontal dl-params
@@ -24,12 +22,34 @@ Creating a Customer
   .. dcode:: scenario customer_create
 
 
-.. cssclass:: method-section
+Get a Customer
+---------------
+
+.. container:: code-white
+
+  .. dcode:: scenario customer_show
 
 
-.. _adding-a-card-to-a-customer:
+List Customers
+---------------
 
-Adding a Card to a Customer
+.. container:: code-white
+
+  .. dcode:: scenario customer_list
+
+
+Delete a Customer
+-----------------
+
+Permanently delete a customer. It cannot be undone. Only customers
+without transactions can be deleted.
+
+.. container:: code-white
+
+  .. dcode:: scenario customer_delete
+
+
+Associate a Card
 ---------------------------
 
 Adding a card to a customer activates the ability to debit an account, more
@@ -46,12 +66,10 @@ You can add multiple cards to a customer.
   .. dcode:: scenario customer_add_card
 
 
-.. cssclass:: method-section
-
 
 .. _adding-a-bank-account-to-a-customer:
 
-Adding a Bank Account to a Customer
+Associate a Bank Account
 -----------------------------------
 
 Adding a bank account to a customer activates the ability to credit a
@@ -64,17 +82,3 @@ customer, or in this case, initiate a next-day ACH payment.
 .. container:: code-white
 
   .. dcode:: scenario customer_add_bank_account
-
-
-.. cssclass:: method-section
-
-
-Delete a Customer
------------------
-
-Permanently delete a customer. It cannot be undone. Only customers
-without transactions can be deleted.
-
-.. container:: code-white
-
-  .. dcode:: scenario customer_delete

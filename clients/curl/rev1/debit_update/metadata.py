@@ -1,6 +1,6 @@
 debit = json.loads(
-    storage['debit_create']['response']
-)
+    storage['card_debit']['response']
+)['debits'][0]
 
 request = {
     'payload': {
@@ -10,5 +10,5 @@ request = {
           'anykey': 'valuegoeshere',
         },
     },
-    'uri': debit['uri'],
+    'uri': debit['href'],
 }

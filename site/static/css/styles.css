@@ -5887,6 +5887,10 @@ strong {
   background-color: #d9d8d5;
   color: #000000;
 }
+.alert-red {
+  background-color: #f6c5b9;
+  color: #000000;
+}
 .alert-tab {
   position: relative;
   text-transform: uppercase;

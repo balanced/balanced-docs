@@ -11,11 +11,18 @@ need to create a bank account object.
 
   To debit a bank account you must first :ref:`verify it <bank-account-verifications>`.
 
-Creating a New Bank Account
----------------------------
+
+Tokenize a Bank Account (Direct)
+--------------------------------
 
 Creates a new bank account.
 
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+  
+  This method is not recommended for production environments. Please use balanced.js for
+  bank account tokenization.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -26,9 +33,7 @@ Creates a new bank account.
   .. dcode:: scenario bank_account_create
 
 
-.. cssclass:: method-section
-
-Retrieve a Bank Account
+Get a Bank Account
 -----------------------
 
 Retrieves the details of a bank account that has previously been created.
@@ -45,9 +50,7 @@ information is returned when creating the bank account.
     .. dcode:: scenario bank_account_show
 
 
-.. cssclass:: method-section
-
-List All Bank Accounts
+List Bank Accounts
 ----------------------
 
 Returns a list of bank accounts that you've created but haven't deleted.
@@ -65,8 +68,6 @@ Returns a list of bank accounts that you've created but haven't deleted.
 
     .. dcode:: scenario bank_account_list
 
-
-.. cssclass:: method-section
 
 Delete a Bank Account
 ---------------------

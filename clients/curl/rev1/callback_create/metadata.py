@@ -1,5 +1,5 @@
 request = {
-    'uri': ctx.marketplace.callbacks_uri,
+    'uri': '/callbacks',
     'payload': {
         'url': 'http://www.example.com/callback',
     },

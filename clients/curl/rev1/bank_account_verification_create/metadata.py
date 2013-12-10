@@ -1,10 +1,11 @@
 bank_account = json.loads(
-    storage['customer_add_bank_account']['response']
+    storage['bank_account_create']['response']
 )
 
-bank_account_request = storage['customer_add_bank_account']['request']
+uri = bank_account['links']['bank_accounts.bank_account_verifications'].replace('{bank_accounts.id}',
+                                                                            bank_account['bank_accounts'][0]['id'])
 
 request = {
-    'uri': bank_account_request['bank_account_verifications_uri'],
-    'bank_account_uri': bank_account_request['payload']['bank_account_uri']
+    'uri': uri,
+    'bank_account_uri': bank_account['bank_accounts'][0]['href']
 }

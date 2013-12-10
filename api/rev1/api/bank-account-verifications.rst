@@ -24,10 +24,12 @@ begin the process again. You can only create one verification at a time and the
 trial deposits should show in the bank account within 2 business days.
 
 
-.. cssclass:: method-section
+Create a Bank Account Verification
+-----------------------------------
 
-Verifying a Bank Account
-------------------------
+Create a new bank account verification. This initiates the process of sending
+micro deposits to the bank account which will be used to verify bank account
+ownership when supplied during `Confirm a Bank Account Verification`_.
 
 .. note::
   :header_class: alert alert-tab
@@ -36,7 +38,6 @@ Verifying a Bank Account
   If you're sending money to a bank account, known as issuing a credit,
   you do **NOT** need to verify the bank account
 
-Creates a new bank account verification.
 
 .. container:: method-description
 
@@ -47,9 +48,7 @@ Creates a new bank account verification.
   .. dcode:: scenario bank_account_verification_create
 
 
-.. cssclass:: method-section
-
-Retrieve a Verification for a Bank Account
+Get a Bank Account Verification
 ------------------------------------------
 
 .. note::
@@ -70,10 +69,16 @@ Gets the verification for a bank account.
   .. dcode:: scenario bank_account_verification_show
 
 
-.. cssclass:: method-section
+.. _bank-account-verification-confirm:
 
 Confirm a Bank Account Verification
 -----------------------------------
+
+Confirm the trial deposit amounts that were sent to the bank account.
+Upon seeing the verification amounts on their bank account statement,
+the customer should return to a web form and enter the amounts.
+The amounts entered are compared to the amounts sent to assert valid
+ownership of the bank account.
 
 .. note::
   :header_class: alert alert-tab
@@ -82,9 +87,13 @@ Confirm a Bank Account Verification
   If you're sending money to a bank account, known as issuing a credit,
   you do **NOT** need to verify the bank account
 
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
 
-Confirms the trial deposit amounts. For the *test* environment the trial
-deposit amounts are always 1 and 1.
+  For the *test* environment the trial
+  deposit amounts are always 1 and 1
+
 
 .. container:: method-description
 

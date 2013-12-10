@@ -1,10 +1,9 @@
-storage.pop('debit_create')
-
 debit = json.loads(
-    storage['debit_create']['response']
+    storage['card_debit']['response']
 )
 
+refund_uri = debit['links']['debits.refunds'].replace('{debits.id}', debit['debits'][0]['id'])
+
 request = {
-    'refunds_uri': debit['refunds_uri'],
-    'debit_uri': debit['uri'],
+    'uri': refund_uri
 }

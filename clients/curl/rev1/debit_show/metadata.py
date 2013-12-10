@@ -1,7 +1,7 @@
 debit = json.loads(
-    storage['debit_create']['response']
-)
+    storage['card_debit']['response']
+)['debits'][0]
 
 request = {
-    'uri': debit['uri'],
+    'uri': debit['href'],
 }

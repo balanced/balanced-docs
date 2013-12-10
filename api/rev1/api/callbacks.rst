@@ -27,7 +27,7 @@ Create a Callback
 .. cssclass:: method-section
 
 
-Retrieve a Callback
+Get a Callback
 -------------------
 
 .. _callbacks.retrieve:

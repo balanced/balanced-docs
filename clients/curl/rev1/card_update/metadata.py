@@ -1,9 +1,9 @@
 card = json.loads(
     storage['card_create']['response']
-)
+)['cards'][0]
 
 request = {
-    'uri': card['uri'],
+    'uri': card['href'],
     'payload': {
         'meta': {
             'my-own-customer-id': '12345',

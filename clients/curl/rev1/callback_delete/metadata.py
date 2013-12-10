@@ -2,8 +2,8 @@ callbacks = json.loads(
     storage['callback_list']['response']
 )
 
-callback = callbacks['items'][-1]
+callback = callbacks['callbacks'][-1]
 
 request = {
-    'uri': callback['uri'],
+    'uri': callback['href'],
 }
