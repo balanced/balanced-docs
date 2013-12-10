@@ -278,57 +278,57 @@ $(document).ready(function () {
     //$overview_content.find('.request > p:first-child').hide();
     //$overview_content.find('.response > p:first-child').hide();
 
-   // BIND URL UPDATE
-   $("li").bind('activate', updateNavigation);
-    function update_lang_head(text){
-        var lang_head = $('#lang-dropdown-head');
-        lang_head.html(text + " <b class='caret'></b>")
-    }
+   function updateLangTitle(text){
+       $('#title-lang').text("lang: " + text);
+   }
 
     //LOAD DEFAULT LANGUAGE
     var default_lang = getParameterByName('language', window.location.href);
     default_lang = (default_lang.length > 0) ? default_lang[0] : 'bash';
     default_lang_dd = $("[data-lang='" + default_lang +"']");
-    update_lang_head(default_lang_dd.text());
+    updateLangTitle(default_lang_dd.text());
     default_lang_dd.parent().hide();
     $("[class^='highlight-']").hide();
     $(".highlight-" + default_lang).show();
     $('.highlight-javascript').show();
     $('.highlight-html').show();
 
-    $('a').each(function() {
+    $('a:not(#lang-change a)').each(function() {
         if ($(this).attr('href') != null) {
-            if ($(this).attr('href').indexOf("api.html") != -1 ||
-                $(this).attr('href').indexOf("overview.html") != -1) {
-                    var href = $(this).attr('href');
-                    var insertPos = href.indexOf('.html') + 5;
-                    if (href.indexOf('?') != -1) {
-                        insertPos += 1;
-                    }
-                    $(this).attr('href', [href.slice(0, insertPos), "?language=" + default_lang, href.slice(insertPos)].join(''));
-                }
+            var href = $(this).attr('href');
+            console.log(href);
+            var insertPos = href.lastIndexOf('/') + 1;
+            
+            if (href.search(/api$/) != -1) {
+                insertPos = href.indexOf("/api") + 4;
+            }
+            else if (href.search(/overview$/) != -1) {
+                insertPos = href.indexOf("/overview") + 9;
+            }
+                    
+            $(this).attr('href', [href.slice(0, insertPos), "?language=" + default_lang, href.slice(insertPos)].join(''));
         }
     });
     
-    //SWAP LANGUAGE METHODS
-    $('.lang-change').click(function () {
-        var lang = $(this).attr('data-lang');
-        var langtext = $(this).text();
-        update_lang_head(langtext);
-        var parent = $(this).parent();
-        parent.siblings().show();
-        parent.hide();
-        $("[class^='highlight-']").hide();
-        $(".highlight-javascript").show();
-        $(".highlight-" + lang).show();
-        var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
-        uri = uri + '' + window.location.hash;
-        console.log(window.location.hash);
-        console.log(uri);
-        window.location = uri;
-        //window.history.replaceState(null, null, uri);
-        $('[data-spy="scroll"]').each(function () {
-            var $spy = $(this).scrollspy('refresh');
+    // Language changer
+    $('#lang-change a').each(function() {
+        $(this).click(function() {
+            var lang = $(this).attr('data-lang');
+            //var langtext = $(this).text();
+            //updateLangTitle(langtext);
+            var parent = $(this).parent();
+            parent.siblings().show();
+            parent.hide();
+            $("[class^='highlight-']").hide();
+            $(".highlight-javascript").show();
+            $(".highlight-" + lang).show();
+            var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
+            uri = uri + '' + window.location.hash;
+            window.location = uri;
+            //window.history.replaceState(null, null, uri);
+            //$('[data-spy="scroll"]').each(function () {
+            //    var $spy = $(this).scrollspy('refresh');
+            //});
         });
     });
 

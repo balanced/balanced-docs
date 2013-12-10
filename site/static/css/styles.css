@@ -5521,7 +5521,7 @@ a.badge:focus {
   margin: 10px 10px 0px 10px;
 }
 #sidebar-flyout {
-  top: -232px;
+  top: -212px;
   z-index: 99;
   position: fixed;
   left: 0;
