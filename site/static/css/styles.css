@@ -5530,6 +5530,9 @@ a.badge:focus {
   padding: 10px 10px 0px 15px;
   padding-bottom: 50px;
 }
+#sidebar-flyout ul {
+  font-size: 14px;
+}
 #sidebar-flyout h5 {
   color: #f2f1ec;
 }
