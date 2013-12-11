@@ -48,23 +48,23 @@ in sorted order, with the most recent debits appearing first.
   .. dcode:: scenario debit_list
 
 
-..List Debits for a Customer
-..--------------------------
-..
-..Returns a list of debits for the specified customer. The debits are returned
-..in sorted order, with the most recent debits appearing first.
-..
-.... cssclass:: dl-horizontal dl-params
-..
-..  ``limit``
-..      *optional* integer. Defaults to ``10``.
-..
-..  ``offset``
-..      *optional* integer. Defaults to ``0``.
-..
-.... container:: code-white
-..
-..  .. dcode:: scenario debit_list_customer
+.. List Debits for a Customer
+.. --------------------------
+.. 
+.. Returns a list of debits for the specified customer. The debits are returned
+.. in sorted order, with the most recent debits appearing first.
+.. 
+.. .. cssclass:: dl-horizontal dl-params
+.. 
+..   ``limit``
+..       *optional* integer. Defaults to ``10``.
+.. 
+..   ``offset``
+..       *optional* integer. Defaults to ``0``.
+.. 
+.. .. container:: code-white
+.. 
+..   .. dcode:: scenario debit_list_customer
 
 
 Update a Debit
