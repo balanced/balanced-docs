@@ -1,21 +1,13 @@
-#buyer = json.loads(
-#    storage['create_customer']['response']
-#)
-
-#storage.pop('hold_create', None)
-
-hold = json.loads(
+card_hold = json.loads(
     storage['hold_create']['response']
 )
 
-debits_uri = storage['hold_create']['request']['debits_uri']
+card_hold_debit_uri = card_hold['links']['card_holds.debits'].replace('{card_holds.id}', card_hold['card_holds'][0]['id'])
 
 request = {
+    'uri': card_hold_debit_uri,
     'payload': {
         'appears_on_statement_as': 'ShowsUpOnStmt',
-        'description': 'Some descriptive text for the debit in the dashboard',
-        'hold_uri': hold['uri'],
-    },
-    'debits_uri': debits_uri,
-    'hold_uri': hold['uri'],
+        'description': 'Some descriptive text for the debit in the dashboard'
+    }
 }

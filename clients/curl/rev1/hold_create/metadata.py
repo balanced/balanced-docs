@@ -1,18 +1,13 @@
-ctx.storage.pop('customer_add_card', None)
-
-customer = json.loads(
-    storage['customer_add_card']['response']
+card = json.loads(
+    storage['card_create']['response']
 )
 
-card_uri = storage['customer_add_card']['request']['card_uri']
+card_holds_uri = card['links']['cards.card_holds'].replace('{cards.id}', card['cards'][0]['id'])
 
 request = {
-    'uri': ctx.marketplace.holds_uri,
+    'uri': card_holds_uri,
     'payload': {
         'amount': 5000,
-        'description': 'Some descriptive text for the debit in the dashboard',
-        'source_uri': card_uri
-    },
-    'customer_uri': customer['uri'],
-    'debits_uri': customer['debits_uri']
+        'description': 'Some descriptive text for the debit in the dashboard'
+    }
 }

@@ -1,11 +1,14 @@
-storage.pop('hold_create', None)
-
-hold = json.loads(
+card_hold = json.loads(
     storage['hold_create']['response']
-)
+)['card_holds'][0]
+
+#print card_hold
+
+#card_hold_debit_uri = card_hold['links']['card_holds.debits'].replace('{card_holds.id}', card_hold['card_holds'][0]['id'])
+
 request = {
-    'uri': hold['uri'],
+    'uri': card_hold['href'],
     'payload': {
-        'is_void': 'true',
+        'is_void': 'true'
     }
 }
