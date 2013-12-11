@@ -4,6 +4,5 @@ credit = json.loads(
 bank_acct = credit['bank_account']
 
 request = {
-  'id': bank_acct['id'],
   'uri': bank_acct['uri'],
 }

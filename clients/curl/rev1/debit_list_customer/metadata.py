@@ -1,3 +1,5 @@
+#import ipdb; ipdb.set_trace()
+
 request = {
-    'uri': ctx.marketplace.links['marketplaces.debits']
+    'uri': ctx.marketplace.lin['marketplaces.debits']
 }

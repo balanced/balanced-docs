@@ -1,8 +1,7 @@
 credit = json.loads(
-    storage['credit_create_new_bank_account']['response']
-)
+    storage['bank_account_credit']['response']
+)['credits'][0]
 
 request = {
-    'id': credit['id'],
-    'uri': credit['uri'],
+    'uri': credit['href']
 }

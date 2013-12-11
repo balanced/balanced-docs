@@ -1,5 +1,5 @@
 request = {
-    'uri': ctx.marketplace.credits_uri,
+    'uri': ctx.marketplace.links['marketplaces.credits'],
     'payload': {
       'bank_account': {
           'name': 'Johann Bernoulli',
