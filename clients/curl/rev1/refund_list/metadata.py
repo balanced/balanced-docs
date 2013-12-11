@@ -1,3 +1,3 @@
 request = {
-    'uri': ctx.marketplace.refunds_uri
+    'uri': ctx.marketplace.links['marketplaces.refunds']
 }
