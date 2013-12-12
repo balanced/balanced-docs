@@ -15,6 +15,34 @@ Create a Debit
 A debit can be created by debiting a ``Card`` or ``BankAccount`` directly.
 
 
+Debit a Card
+------------------
+
+Debit (charge) a tokenized credit card.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form debits.create
+
+.. container:: code-white
+
+  .. dcode:: scenario card_debit
+
+
+Debit a Bank Account
+---------------------
+
+Debit (charge) a bank account.
+
+.. cssclass:: dl-horizontal dl-params
+
+   .. dcode:: form debits.create
+
+.. container:: code-white
+
+   .. dcode:: scenario bank_account_debit
+
+
 Get a Debit
 ----------------
 
@@ -27,6 +55,25 @@ Retrieves the details of a created debit.
 .. container:: code-white
 
   .. dcode:: scenario debit_show
+
+
+Update a Debit
+--------------
+
+Updates information about a debit
+
+.. cssclass:: dl-horizontal dl-params
+
+  ``meta``
+      *optional* **object**. Single level mapping from string keys to string values.
+
+  ``description``
+      *optional* **string**. Sequence of characters.
+
+
+.. container:: code-white
+
+  .. dcode:: scenario debit_update
 
 
 List All Debits
@@ -66,38 +113,3 @@ in sorted order, with the most recent debits appearing first.
 .. 
 ..   .. dcode:: scenario debit_list_customer
 
-
-Update a Debit
---------------
-
-Updates information about a debit
-
-.. cssclass:: dl-horizontal dl-params
-
-  ``meta``
-      *optional* **object**. Single level mapping from string keys to string values.
-
-  ``description``
-      *optional* **string**. Sequence of characters.
-
-
-.. container:: code-white
-
-  .. dcode:: scenario debit_update
-
-
-Refund a Debit
---------------
-
-Issues a refund for a particular debit. This creates a :ref:`refund <refunds>`.
-
-.. container:: method-description
-
-   Use the ``refund_uri`` on a :ref:`debit object <debits>`.
-
-.. container:: code-white
-
-   .. dcode:: scenario debit_refund
-
-
-.. _info on ACH debits: http://github.com/balanced/balanced-api/issues/2

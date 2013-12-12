@@ -3,5 +3,5 @@ customer = json.loads(
 )['customers'][0]
 
 request = {
-    'uri': customer['href'],
+    'uri': customer['href']
 }

@@ -41,8 +41,15 @@ List Customers
 Delete a Customer
 -----------------
 
-Permanently delete a customer. It cannot be undone. Only customers
-without transactions can be deleted.
+Permanently delete a customer.
+
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+  
+  Only customers without transactions can be deleted.
+  
+  Deleting a Customer is permanent and cannot be undone.
 
 .. container:: code-white
 

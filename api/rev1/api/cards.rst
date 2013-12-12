@@ -97,16 +97,3 @@ with a deleted credit card will not be affected.
    .. dcode:: scenario card_delete
 
 .. _debit-card:
-
-Debit a Card
-------------------
-
-Debit (charge) a tokenized credit card.
-
-.. cssclass:: dl-horizontal dl-params
-
-  .. dcode:: form debits.create
-
-.. container:: code-white
-
-  .. dcode:: scenario card_debit
