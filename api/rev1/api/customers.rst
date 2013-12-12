@@ -30,12 +30,16 @@ Get a Customer
   .. dcode:: scenario customer_show
 
 
-List Customers
+Update a Customer
 ---------------
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form customers.update
 
 .. container:: code-white
 
-  .. dcode:: scenario customer_list
+  .. dcode:: scenario customer_update
 
 
 Delete a Customer
@@ -54,6 +58,14 @@ Permanently delete a customer.
 .. container:: code-white
 
   .. dcode:: scenario customer_delete
+
+
+List all Customers
+------------------
+
+.. container:: code-white
+
+  .. dcode:: scenario customer_list
 
 
 Associate a Card

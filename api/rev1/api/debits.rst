@@ -34,6 +34,12 @@ Debit a Bank Account
 
 Debit (charge) a bank account.
 
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-gray
+  
+  A bank account must be verified with micro deposits before it can be debited. See :ref:`bank-account-verifications`.
+
 .. cssclass:: dl-horizontal dl-params
 
    .. dcode:: form debits.create
@@ -64,11 +70,7 @@ Updates information about a debit
 
 .. cssclass:: dl-horizontal dl-params
 
-  ``meta``
-      *optional* **object**. Single level mapping from string keys to string values.
-
-  ``description``
-      *optional* **string**. Sequence of characters.
+  .. dcode:: form debits.update
 
 
 .. container:: code-white

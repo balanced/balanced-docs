@@ -26,7 +26,7 @@ you do **NOT** need to verify the bank account
 
 
 Create a Credit
--------------------------------
+---------------
 
 Credit a bank account.
 
@@ -41,9 +41,9 @@ Credit a bank account.
 
 
 Get a Credit
------------------
+------------
 
-Get the details of a previously created credit.
+Retrieve a previously created credit.
 
 .. container:: method-description
 
@@ -54,10 +54,25 @@ Get the details of a previously created credit.
   .. dcode:: scenario credit_show
 
 
+Update a Credit
+---------------
+
+Update information on a credit
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form credits.update
+
+
+.. container:: code-white
+
+  .. dcode:: scenario credit_update
+
+
 List All Credits
 ----------------
 
-Returns a list of all credits previously created. The credits are returned
+Get a list of all credits previously created. The credits are returned
 in sorted order, with the most recent credits appearing first.
 
 .. cssclass:: dl-horizontal dl-params
