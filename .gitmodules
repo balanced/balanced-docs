@@ -1,9 +1,13 @@
 [submodule "clients/python"]
 	path = clients/python
 	url = git://github.com/balanced/balanced-python.git
-[submodule "clients/ruby"]
-	path = clients/ruby
-	url = git://github.com/balanced/balanced-ruby.git
+[submodule "clients/rev0/ruby"]
+	path = clients/rev0/ruby
+	url = https://github.com/balanced/balanced-ruby.git
+[submodule "clients/rev1/ruby"]
+	path = clients/rev1/ruby
+	url = https://github.com/balanced/balanced-ruby.git
+  branch = 1.1.0
 [submodule "clients/java"]
 	path = clients/java
 	url = git://github.com/balanced/balanced-java.git

@@ -247,7 +247,7 @@ def setup(app):
     # dcode directive default registrations
     dcode.DCodeDefaultDirective.registry[None]['cache'] = 'dcode.cache'
     dcode.DCodeDefaultDirective.registry['scenario'].update({
-        'script': "scripts/lang-scenario.py -d clients/curl/{0} -c scenario.cache".format(os.environ.get('BALANCED_REV', 'rev1')),
+        'script': "scripts/lang-scenario.py -d clients/{0}/curl -c scenario.cache".format(os.environ.get('BALANCED_REV', 'rev1')),
         'section-include': ['request'],
         'section-filter-class': 'LangSectionFilter',
         # TODO: remove when clients have been updated with scenarios for rev1

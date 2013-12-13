@@ -31,7 +31,7 @@ SITE_DIR = site
 #	REV=rev0 make all
 #	make clean-limited
 #	REV=rev1 make all
-build-revisions: clean-site spec api integration overview
+build-revisions: clean-site api integration overview #spec
 
 all: rev0 rev1
 

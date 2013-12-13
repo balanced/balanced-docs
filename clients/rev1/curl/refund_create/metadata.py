@@ -13,5 +13,6 @@ request = {
             'merchant.feedback': 'positive',
             'fulfillment.item.condition': 'OK'
         },
-    }
+    },
+    'debit_href': debit['debits'][0]['href']
 }
