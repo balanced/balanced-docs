@@ -3,5 +3,5 @@ api_key = json.loads(
 )['api_keys'][0]
 
 request = {
-    'uri': api_key['href'],
+    'uri': api_key['href']
 }
