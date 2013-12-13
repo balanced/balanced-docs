@@ -1,5 +1,5 @@
 hold = json.loads(
-    storage['hold_create']['response']
+    storage['card_hold_create']['response']
 )['card_holds'][0]
 
 request = {
