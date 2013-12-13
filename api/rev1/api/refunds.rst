@@ -36,6 +36,20 @@ Get a previously created refund.
    .. dcode:: scenario refund_show
 
 
+Update a Refund
+---------------
+
+Updates information about a refund
+
+.. cssclass:: dl-horizontal dl-params
+
+   .. dcode:: form refunds.update
+
+.. container:: code-white
+
+   .. dcode:: scenario refund_update
+
+
 List All Refunds
 ----------------
 
@@ -74,16 +88,3 @@ in sorted order, with the most recent refunds appearing first.
 .. 
 ..    .. dcode:: scenario refund_customer_list
 
-
-Update a Refund
----------------
-
-Updates information about a refund
-
-.. cssclass:: dl-horizontal dl-params
-
-   .. dcode:: form refunds.update
-
-.. container:: code-white
-
-   .. dcode:: scenario refund_update

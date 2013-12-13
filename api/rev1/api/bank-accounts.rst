@@ -50,6 +50,27 @@ information is returned when creating the bank account.
     .. dcode:: scenario bank_account_show
 
 
+Update a Bank Account
+---------------------
+
+Update information in a card.
+
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+  
+  Once a bank account has been associated to a customer, it cannot be
+  associated to another customer.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form bank_accounts.update
+
+.. container:: code-white
+
+  .. dcode:: scenario card_update
+
+
 List Bank Accounts
 ----------------------
 

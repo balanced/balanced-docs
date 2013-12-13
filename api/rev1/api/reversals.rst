@@ -32,6 +32,20 @@ Get a previously created reversal.
    .. dcode:: scenario reversal_show
 
 
+Update a Reversal
+-----------------
+
+Updates information on a reversal.
+
+.. cssclass:: dl-horizontal dl-params
+
+   .. dcode:: form reversals.update
+
+.. container:: code-white
+
+   .. dcode:: scenario reversal_update
+
+
 List All Reversals
 ------------------
 
@@ -70,16 +84,3 @@ in sorted order, with the most recent reversals appearing first.
 .. 
 ..    .. dcode:: scenario reversal_customer_list
 
-
-Update a Reversal
------------------
-
-Updates information on a reversal.
-
-.. cssclass:: dl-horizontal dl-params
-
-   .. dcode:: form reversals.update
-
-.. container:: code-white
-
-   .. dcode:: scenario reversal_update

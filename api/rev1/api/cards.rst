@@ -48,6 +48,44 @@ information is returned when creating the card.
   .. dcode:: scenario card_show
 
 
+Update a Card
+-------------
+
+Update information in a card.
+
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+  
+  Once a card has been associated to a customer, it cannot be
+  associated to another customer.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form cards.update
+
+.. container:: code-white
+
+  .. dcode:: scenario card_update
+
+
+Deleting a Card
+---------------------
+
+Permanently delete a card. It cannot be undone. All debits associated
+with a deleted credit card will not be affected.
+
+.. container:: method-description
+
+   .. no request
+
+.. container:: code-white
+
+   .. dcode:: scenario card_delete
+
+
+.. _debit-card:
+
 List All Cards
 --------------
 
@@ -65,35 +103,3 @@ Returns a list of cards that you've created.
 
   .. dcode:: scenario card_list
 
-
-Update a Card
--------------
-
-Update information in a card
-
-.. container:: method-description
-
-  .. no request
-
-.. container:: code-white
-
-  .. dcode:: scenario card_update
-
-.. cssclass:: method-section
-
-
-Deleting a Card
----------------------
-
-Permanently delete a card. It cannot be undone. All debits associated
-with a deleted credit card will not be affected.
-
-.. container:: method-description
-
-   .. no request
-
-.. container:: code-white
-
-   .. dcode:: scenario card_delete
-
-.. _debit-card:

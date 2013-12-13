@@ -63,7 +63,6 @@ Update information on a credit
 
   .. dcode:: form credits.update
 
-
 .. container:: code-white
 
   .. dcode:: scenario credit_update

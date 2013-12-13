@@ -10,6 +10,7 @@ Create a new API key.
 
   .. dcode:: scenario api_key_create
 
+
 Get a Key
 -------------
 
@@ -28,6 +29,7 @@ List all API keys for the marketplace.
 .. container:: code-white
 
   .. dcode:: scenario api_key_list
+
 
 Delete API Key
 --------------

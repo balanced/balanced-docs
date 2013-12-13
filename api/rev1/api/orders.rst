@@ -30,6 +30,10 @@ Update an Order
 
 Update a previously created order.
 
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form orders.update
+
 .. container:: code-white
 
   .. dcode:: scenario order_update

@@ -31,7 +31,7 @@ Get a Customer
 
 
 Update a Customer
----------------
+-----------------
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -76,6 +76,13 @@ specifically, charging a card.
 
 You can add multiple cards to a customer.
 
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+  
+  Once a card has been associated to a customer, it cannot be
+  associated to another customer.
+
 .. cssclass:: dl-horizontal dl-params
 
   .. dcode:: form cards.create
@@ -85,7 +92,6 @@ You can add multiple cards to a customer.
   .. dcode:: scenario customer_add_card
 
 
-
 .. _adding-a-bank-account-to-a-customer:
 
 Associate a Bank Account
@@ -93,6 +99,13 @@ Associate a Bank Account
 
 Adding a bank account to a customer activates the ability to credit a
 customer, or in this case, initiate a next-day ACH payment.
+
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+  
+  Once a bank account has been associated to a customer, it cannot be
+  associated to another customer.
 
 .. cssclass:: dl-horizontal dl-params
 

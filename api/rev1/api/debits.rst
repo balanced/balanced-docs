@@ -72,7 +72,6 @@ Updates information about a debit
 
   .. dcode:: form debits.update
 
-
 .. container:: code-white
 
   .. dcode:: scenario debit_update
