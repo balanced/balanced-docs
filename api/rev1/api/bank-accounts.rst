@@ -68,7 +68,7 @@ Update information in a card.
 
 .. container:: code-white
 
-  .. dcode:: scenario card_update
+  .. dcode:: scenario bank_account_update
 
 
 List Bank Accounts
