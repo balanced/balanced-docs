@@ -1,2 +1,0 @@
-<%namespace file='/_main.mako' name='main'/>
-<% main.curl_list_template('card_holds.index', sel=['customer_id']) %>

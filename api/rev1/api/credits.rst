@@ -87,38 +87,14 @@ in sorted order, with the most recent credits appearing first.
   .. dcode:: scenario credit_list
 
 
-.. List All Credits For a Bank Account
-.. -----------------------------------
-.. 
-.. Returns a list of credits you've previously created to a specific bank account.
-.. The ``credits_uri`` is a convenient uri provided so that you can simply issue
-.. a ``GET`` to the ``credits_uri``. The credits are returned in sorted order,
-.. with the most recent credits appearing first.
-.. 
-.. .. cssclass:: dl-horizontal dl-params
-.. 
-..   ``limit``
-..       *optional* integer. Defaults to ``10``.
-.. 
-..   ``offset``
-..       *optional* integer. Defaults to ``0``.
-.. 
-.. .. container:: code-white
-.. 
-..   .. dcode:: scenario credit_list_bank_account
+List All Credits For a Bank Account
+-----------------------------------
 
+Returns a list of credits you've previously created to a specific bank account.
+The ``credits_uri`` is a convenient uri provided so that you can simply issue
+a ``GET`` to the ``credits_uri``. The credits are returned in sorted order,
+with the most recent credits appearing first.
 
-.. Listing All Credits For a Customer
-.. ----------------------------------
-.. 
-.. .. cssclass:: dl-horizontal dl-params
-.. 
-..   ``limit``
-..       *optional* integer. Defaults to ``10``.
-.. 
-..   ``offset``
-..       *optional* integer. Defaults to ``0``.
-.. 
-.. .. container:: code-white
-.. 
-..   .. dcode:: scenario credit_customer_list
+.. container:: code-white
+
+  .. dcode:: scenario credit_list_bank_account

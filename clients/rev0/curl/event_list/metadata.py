@@ -1,3 +1,3 @@
 request = {
-    'uri': ctx.marketplace.events_uri
+    'uri': ctx.marketplace.links['marketplaces.events']
 }

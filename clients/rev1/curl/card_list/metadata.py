@@ -1,3 +1,3 @@
 request = {
-    'uri': ctx.cards_uri,
+    'uri': ctx.marketplace.links['marketplaces.cards'],
 }

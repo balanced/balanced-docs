@@ -1,8 +1,10 @@
-credit = json.loads(
-    storage['credit_create_existing_bank_account']['response']
+bank_accounts = json.loads(
+    storage['bank_account_list']['response']
 )
-bank_acct = credit['bank_account']
+
+bank_account_credits_href = bank_accounts['links']['bank_accounts.credits'].replace('{bank_accounts.id}', bank_accounts['bank_accounts'][0]['id'])
 
 request = {
-  'uri': bank_acct['uri'],
+  'uri': bank_account_credits_href,
+  'bank_account_href': bank_accounts['bank_accounts'][0]['href']
 }

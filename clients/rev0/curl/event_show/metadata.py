@@ -19,5 +19,5 @@ while True:
 
 
 request = {
-    'uri': event.uri,
+    'uri': event.uri
 }

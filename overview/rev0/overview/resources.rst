@@ -77,26 +77,6 @@ account numbers that can simulate various scenarios that can go wrong.
      - ``9900000005``
      - Transitions state to ``failed``
 
-Simulating erroneous routing numbers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. dcode:: scenario bank-account-invalid-routing-number
-
-Simulating a pending status
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. dcode:: scenario credit_pending_state
-
-Simulating a paid status
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. dcode:: scenario credit_paid_state
-
-Simulating a failed status
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. dcode:: scenario credit_failed_state
-
 
 .. _resources.test-identity-verification:
 

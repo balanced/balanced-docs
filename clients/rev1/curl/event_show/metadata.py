@@ -1,23 +1,9 @@
-import balanced
+import requests
 
-
-balanced.configure(storage['api_key'])
-
-# HACK: sometimes we don't have an event so generate some event worthy items
-# until one turns up.
-index = 0
-while True:
-    if index > 5:
-        raise Exception('No events being generated')
-    try:
-        event = balanced.Event.query[0]
-        break
-    except IndexError:
-        fi = balanced.Card.query[0]
-        fi.debit(100)
-        index += 1
-
+event = requests.get(ctx.storage['api_location'] + ctx.marketplace.links['marketplaces.events'],
+                                 headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
+                                 auth=(ctx.storage['secret'], '')).json()
 
 request = {
-    'uri': event.uri,
+    'uri': event['events'][0]['href'],
 }

@@ -9,5 +9,6 @@ request = {
     'payload': {
         'appears_on_statement_as': 'ShowsUpOnStmt',
         'description': 'Some descriptive text for the debit in the dashboard'
-    }
+    },
+    'card_hold_href': card_hold['card_holds'][0]['href']
 }

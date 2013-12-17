@@ -1,9 +1,9 @@
-hold = json.loads(
+card_hold = json.loads(
     storage['card_hold_create']['response']
 )['card_holds'][0]
 
 request = {
-    'uri': hold['href'],
+    'uri': card_hold['href'],
     'payload': {
         'description': 'update this description',
         'meta': {

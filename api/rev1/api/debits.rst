@@ -49,14 +49,10 @@ Debit (charge) a bank account.
    .. dcode:: scenario bank_account_debit
 
 
-Get a Debit
+Retrieve a Debit
 ----------------
 
 Retrieves the details of a created debit.
-
-.. container:: method-description
-
-  .. no request
 
 .. container:: code-white
 
@@ -83,34 +79,6 @@ List All Debits
 Returns a list of all debits created in the marketplace. The debits are returned
 in sorted order, with the most recent debits appearing first.
 
-.. cssclass:: dl-horizontal dl-params
-
-  ``limit``
-      *optional* integer. Defaults to ``10``.
-
-  ``offset``
-      *optional* integer. Defaults to ``0``.
-
 .. container:: code-white
 
   .. dcode:: scenario debit_list
-
-
-.. List Debits for a Customer
-.. --------------------------
-.. 
-.. Returns a list of debits for the specified customer. The debits are returned
-.. in sorted order, with the most recent debits appearing first.
-.. 
-.. .. cssclass:: dl-horizontal dl-params
-.. 
-..   ``limit``
-..       *optional* integer. Defaults to ``10``.
-.. 
-..   ``offset``
-..       *optional* integer. Defaults to ``0``.
-.. 
-.. .. container:: code-white
-.. 
-..   .. dcode:: scenario debit_list_customer
-

@@ -24,10 +24,7 @@ Create a Callback
     .. dcode:: scenario callback_create
 
 
-.. cssclass:: method-section
-
-
-Get a Callback
+Retrieve a Callback
 -------------------
 
 .. _callbacks.retrieve:
