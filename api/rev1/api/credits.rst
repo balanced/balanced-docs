@@ -40,8 +40,8 @@ Credit a bank account.
   .. dcode:: scenario bank_account_credit
 
 
-Get a Credit
-------------
+Retrieve a Credit
+-----------------
 
 Retrieve a previously created credit.
 

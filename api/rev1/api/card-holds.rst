@@ -9,7 +9,6 @@ on the customer's credit card, usually within 7 days.
 A successful hold can be captured, and as a result, creates a
 :ref:`debit <debits>`.
 
-.. cssclass:: method-section
 
 Create a New Hold
 -----------------
@@ -23,12 +22,10 @@ create a debit, up to the full amount of the hold.
 
 .. container:: code-white
 
-  .. dcode:: scenario hold_create
+  .. dcode:: scenario card_hold_create
 
 
-.. cssclass:: method-section
-
-Retrieve a Hold
+Get a Hold
 ---------------
 
 Retrieves the details of a hold that you've previously created. Use the
@@ -41,10 +38,22 @@ information will be returned.
 
 .. container:: code-white
 
-   .. dcode:: scenario hold_show
+   .. dcode:: scenario card_hold_show
 
 
-.. cssclass:: method-section
+Update a Hold
+-------------
+
+Updates information about a hold
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form holds.update
+
+.. container:: code-white
+
+   .. dcode:: scenario card_hold_update
+
 
 List all Holds
 --------------
@@ -62,64 +71,18 @@ in sorted order, with the most recent holds appearing first.
 
 .. container:: code-white
 
-   .. dcode:: scenario hold_list
+   .. dcode:: scenario card_hold_list
 
-
-.. cssclass:: method-section
-
-List All Holds For a Customer
------------------------------
-
-Returns a list of holds you've previously created against a specific account.
-The holds are returned in sorted order, with the most recent holds appearing
-first.
-
-.. cssclass:: dl-horizontal dl-params
-
-  ``limit``
-      *optional* integer. Defaults to ``10``.
-
-  ``offset``
-      *optional* integer. Defaults to ``0``.
-
-.. container:: code-white
-
-   .. dcode:: scenario hold_customer_list
-
-
-.. cssclass:: method-section
-
-Update a Hold
--------------
-
-Updates information about a hold
-
-.. cssclass:: dl-horizontal dl-params
-
-  .. dcode:: form debits.update
-
-.. container:: code-white
-
-   .. dcode:: scenario hold_update
-
-
-.. cssclass:: method-section
 
 Capture a Hold
 --------------
 
 Captures a hold. This creates a :ref:`debit <debits>`.
 
-.. container:: method-description
-
-   Use ``hold_uri`` when :ref:`creating a debit <debits.create>`.
-
 .. container:: code-white
 
-   .. dcode:: scenario hold_capture
+   .. dcode:: scenario card_hold_capture
 
-
-.. cssclass:: method-section
 
 Void a Hold
 -----------
@@ -130,8 +93,7 @@ be captured. This operation is irreversible.
 .. cssclass:: dl-horizontal dl-params
 
   .. dcode:: form holds.update
-     :include: is_void appears_on_statement_as
 
 .. container:: code-white
 
-   .. dcode:: scenario hold_void
+   .. dcode:: scenario card_hold_void

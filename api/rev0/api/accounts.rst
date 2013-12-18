@@ -18,7 +18,7 @@ Creating an Account
 
 .. cssclass:: dl-horizontal dl-params:
 
-  .. dcode:: form accounts.create
+  .. dcode:: form legacyaccount.create
 
 .. container:: code-white
 

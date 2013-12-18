@@ -1,7 +1,7 @@
-storage.pop('card_debit')
+storage.pop('debit_create')
 
 debit = json.loads(
-    storage['card_debit']['response']
+    storage['debit_create']['response']
 )
 
 request = {

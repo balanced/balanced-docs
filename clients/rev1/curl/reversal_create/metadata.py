@@ -13,5 +13,6 @@ request = {
             'merchant.feedback': 'positive',
             'fulfillment.item.condition': 'OK'
         },
-    }
+    },
+    'credit_href': credit['credits'][0]['href']
 }

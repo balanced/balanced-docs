@@ -49,12 +49,12 @@ List all previously created orders.
   .. dcode:: scenario order_list
 
 
-List Orders for a Customer
---------------------------
-
-List all previously created orders for a specific Customer.
-
-.. container:: code-white
-
-  .. dcode:: scenario order_list_customer
+.. List Orders for a Customer
+.. --------------------------
+.. 
+.. List all previously created orders for a specific Customer.
+.. 
+.. .. container:: code-white
+.. 
+..   .. dcode:: scenario order_list_customer
 
