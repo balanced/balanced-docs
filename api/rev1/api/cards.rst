@@ -31,7 +31,7 @@ Creates a new card.
   .. dcode:: scenario card_create
 
 
-Get a Card
+Retrieve a Card
 ---------------
 
 Retrieves the details of a card that has previously been created.

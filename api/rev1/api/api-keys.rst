@@ -1,8 +1,8 @@
 API Keys
 ============
 
-Create a Key
--------------
+Create an API Key
+-----------------
 
 Create a new API key.
 
@@ -11,8 +11,8 @@ Create a new API key.
   .. dcode:: scenario api_key_create
 
 
-Get a Key
--------------
+Get an API Key
+--------------
 
 Get an existing API key.
 
@@ -21,8 +21,8 @@ Get an existing API key.
   .. dcode:: scenario api_key_show
 
 
-List API Keys
--------------
+List all API Keys
+-----------------
 
 List all API keys for the marketplace.
 
@@ -31,8 +31,8 @@ List all API keys for the marketplace.
   .. dcode:: scenario api_key_list
 
 
-Delete API Key
---------------
+Delete an API Key
+-----------------
 
 Delete an API key.
 

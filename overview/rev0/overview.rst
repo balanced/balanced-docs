@@ -1,10 +1,3 @@
-.. The entry point to the documentation, this is where all the table of
-   content files are generated (and as a consequence displayed on the left
-   hand side of our navigation menu)
-
-.. the table of content tree is hidden here because we want to control its
-   layout by using the global toctree function provided by sphinx to the
-   Jinja2 templates. You can check this out in _templates/layout.html
 .. toctree::
   :hidden:
   :glob:
@@ -14,29 +7,6 @@
 
 Overview
 ========
-
-.. container:: overview-large
-
-  Balanced is a payments company dedicated to increasing the world's
-  economic output. To do this, we've decided to work with online
-  marketplaces and crowdfunding platforms to help them create new forms of commerce.
-  We’ve built a white-labeled API and open sourced dashboard to help them
-  do this. And while we really like working with marketplaces and
-  crowdfunding platforms, Balanced can be used for e-commerce models of all types.
-
-  We’ve been processing live transactions since October, 2010 and have a
-  history of working closely with our customers to solve their problems,
-  specifically those related to multi-party transactions. For example,
-  we’re in an `open partnership`_ with `Gittip`_ after volunteering code
-  and expertise to help them `mitigate the risks of running a
-  marketplace`_. To date, Balanced has contributed to Gittip’s `payments
-  infrastructure`_, `visual design`_, and `fraud preventions systems`_.
-
-  Balanced believes in openness and transparency, so, despite being a
-  payments company, we try to discuss as much of our product development
-  decisions in public as possible. We’ve even `discussed pricing
-  decisions`_ publicly with our customers.
-
 
 .. container:: integration
 

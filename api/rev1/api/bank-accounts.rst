@@ -33,7 +33,7 @@ Creates a new bank account.
   .. dcode:: scenario bank_account_create
 
 
-Get a Bank Account
+Retrieve a Bank Account
 -----------------------
 
 Retrieves the details of a bank account that has previously been created.

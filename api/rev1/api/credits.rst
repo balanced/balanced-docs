@@ -71,7 +71,7 @@ Update information on a credit
 List All Credits
 ----------------
 
-Get a list of all credits previously created. The credits are returned
+Retrieve a list of all credits previously created. The credits are returned
 in sorted order, with the most recent credits appearing first.
 
 .. cssclass:: dl-horizontal dl-params

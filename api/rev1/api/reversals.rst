@@ -18,10 +18,10 @@ Initiates a reversal for a credit for the full amount of the credit.
   .. dcode:: scenario reversal_create
 
 
-Get a Reversal
---------------
+Retrieve a Reversal
+-------------------
 
-Get a previously created reversal.
+Retrieve a previously created reversal.
 
 .. container:: method-description
 

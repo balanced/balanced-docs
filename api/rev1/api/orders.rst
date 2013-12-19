@@ -15,8 +15,8 @@ Create a new Order.
   .. dcode:: scenario order_create
 
 
-Get an Order
-----------------
+Retrieve an Order
+-----------------
 
 Retrieve a previously created order.
 

@@ -22,10 +22,10 @@ charged amount.
 .. todo:: partial refund
 
 
-Get a Refund
+Retrieve a Refund
 -----------------
 
-Get a previously created refund.
+Retrieve a previously created refund.
 
 .. container:: method-description
 

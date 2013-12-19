@@ -22,8 +22,8 @@ Create a Customer
   .. dcode:: scenario customer_create
 
 
-Get a Customer
----------------
+Retrieve a Customer
+-------------------
 
 .. container:: code-white
 

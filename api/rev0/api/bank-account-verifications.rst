@@ -55,7 +55,7 @@ Retrieve a Bank Account Verification
   If you're sending money to a bank account, known as issuing a credit,
   you do **NOT** need to verify the bank account
 
-Gets the verification for a bank account.
+Retrieves the verification for a bank account.
 
 .. container:: method-description
 
