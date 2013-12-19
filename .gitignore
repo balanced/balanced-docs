@@ -47,6 +47,7 @@ non_reference/html
 cache.json
 dockers/html
 api/rev*/html
+integration/rev*/html
 overview/rev*/html
 dcode.cache
 spec/dst/
