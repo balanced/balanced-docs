@@ -336,6 +336,16 @@ $(document).ready(function () {
         $('#sidebar-flyout').toggleClass('active');
         $('#sidebar-flyout-toggle-bar .caret').toggleClass('active');
     });
+
+
+    // Cascading navbar
+    $('.toctree-l1:not(.current)').each(function(){ $(this).find('ul').first().hide(); })
+    $('.toctree-l1').click(function() {
+        $('.toctree-l1').not(this).removeClass('current');
+        $(this).addClass('current');
+        $('.toctree-l1:not(.current)').each(function(){ $(this).find('ul').first().hide(); });
+        $('.toctree-l1.current').find('ul').first().show()
+    });
     
     //SWITCH SELECTORS
     //$('#context-selector > li').click(function (){
