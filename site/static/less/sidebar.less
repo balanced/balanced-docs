@@ -69,7 +69,7 @@
 
 #sidebar-top {
   height: 45px;
-  background-color: @black;
+  background-color: #282E38;
   width: 255px;
   position: fixed;
   left: 0px;
@@ -89,7 +89,7 @@
   z-index: 99;
   position: fixed;
   left: 0;
-  background-color: #333333;
+  background-color: #282E38;
   width: 230px;
   padding: 10px 10px 0px 15px;
   padding-bottom: 50px;
@@ -115,7 +115,7 @@
 }
 
 #sidebar-flyout-toggle-bar {
-  background-color: @black;
+  background-color: #282E38;
   margin: 0px -50px 0px -20px;
   display: inline-block;
   position: absolute;
@@ -153,11 +153,12 @@
 .sidebar-nav {
   ul {
     &.nav-list {
-      background-color: @gray7;
-      padding: 15px;
+      background-color: #454C59;
+      //padding: 15px;
       overflow-y: scroll;
       float: left;
-      width: 225px;
+      width: 255px;
+      padding: 10px 0px 15px 0px;
 
       li {
         a {
@@ -167,11 +168,22 @@
         &.toctree-l1 {
           text-shadow: none;
           .fontStyle('NimbusSanNov-SemBol', 13px, @color: @white);
-          margin-top: 15px;
+          //margin-top: 15px;
           text-transform: uppercase;
+          padding: 10px 15px;
 
           &:first-of-type {
             margin-top: 0px;
+          }
+
+          &.current:hover {
+            background-color: #454C59;
+            cursor: default;
+          }
+
+          &:hover {
+            background-color: #282E38;
+            cursor: pointer;
           }
 
           ul {

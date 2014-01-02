@@ -5507,7 +5507,7 @@ a.badge:focus {
 }
 #sidebar-top {
   height: 45px;
-  background-color: #000000;
+  background-color: #282E38;
   width: 255px;
   position: fixed;
   left: 0px;
@@ -5525,7 +5525,7 @@ a.badge:focus {
   z-index: 99;
   position: fixed;
   left: 0;
-  background-color: #333333;
+  background-color: #282E38;
   width: 230px;
   padding: 10px 10px 0px 15px;
   padding-bottom: 50px;
@@ -5556,7 +5556,7 @@ a.badge:focus {
   top: 45px;
 }
 #sidebar-flyout-toggle-bar {
-  background-color: #000000;
+  background-color: #282E38;
   margin: 0px -50px 0px -20px;
   display: inline-block;
   position: absolute;
@@ -5587,11 +5587,11 @@ a.badge:focus {
   border-left: 10px solid transparent;
 }
 .sidebar-nav ul.nav-list {
-  background-color: #333333;
-  padding: 15px;
+  background-color: #454C59;
   overflow-y: scroll;
   float: left;
-  width: 225px;
+  width: 255px;
+  padding: 10px 0px 15px 0px;
 }
 .sidebar-nav ul.nav-list li a {
   font-family: 'NimbusSanNov-Reg';
@@ -5609,11 +5609,19 @@ a.badge:focus {
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
-  margin-top: 15px;
   text-transform: uppercase;
+  padding: 10px 15px;
 }
 .sidebar-nav ul.nav-list li.toctree-l1:first-of-type {
   margin-top: 0px;
+}
+.sidebar-nav ul.nav-list li.toctree-l1.current:hover {
+  background-color: #454C59;
+  cursor: default;
+}
+.sidebar-nav ul.nav-list li.toctree-l1:hover {
+  background-color: #282E38;
+  cursor: pointer;
 }
 .sidebar-nav ul.nav-list li.toctree-l1 ul {
   margin: 0px 0px 0px 10px;
