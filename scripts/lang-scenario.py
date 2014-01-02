@@ -457,7 +457,7 @@ class Scenario(object):
             template_path = os.path.join(self.ctx.client_dir, os.environ.get('BALANCED_REV', 'rev0'), lang,
                                          'scenarios', self.name, lang+'.mako')
         if lang == 'java':
-            template_path = os.path.join(self.ctx.client_dir, lang, 'src',
+            template_path = os.path.join(self.ctx.client_dir, os.environ.get('BALANCED_REV', 'rev0'), lang, 'src',
                                          'scenarios', self.name, lang+'.mako')
         block = self._render(template_path)
         block['lang'] = lang
