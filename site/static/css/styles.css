@@ -208,7 +208,7 @@ body {
   font-family: nimbussannov-med, arial, sans-serif;
   font-size: 13px;
   line-height: 18.2px;
-  color: #8c8e91;
+  color: #58595b;
   background-color: #f2f1ec;
 }
 a {
@@ -1730,7 +1730,7 @@ select:focus:invalid:focus {
 }
 .help-block,
 .help-inline {
-  color: #b3b4b6;
+  color: #7e7f82;
 }
 .help-block {
   display: block;
@@ -5248,12 +5248,10 @@ a.badge:focus {
   src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/26A300_0_0.eot?#iefix') format('embedded-opentype'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/26A300_0_0.woff') format('woff'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/26A300_0_0.ttf') format('truetype');
 }
 @font-face {
-  font-family: 'FanwoodText-Italic';
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/FanwoodText-Italic.ttf') format('truetype');
-}
-@font-face {
-  font-family: 'FanwoodText-Regular';
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/FanwoodText-Regular.ttf') format('truetype');
+  font-family: 'Droid Serif Italic';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url(https://themes.googleusercontent.com/static/fonts/droidserif/v3/cj2hUnSRBhwmSPr9kS5894o3ZslTYfJv0R05CazkwN8.woff) format('woff');
 }
 @font-face {
   font-family: 'NimbusSanConD-Bol';
@@ -5610,7 +5608,7 @@ a.badge:focus {
   font-style: normal;
   letter-spacing: normal;
   text-transform: uppercase;
-  padding: 10px 15px;
+  padding: 11px 15px 10px 15px;
 }
 .sidebar-nav ul.nav-list li.toctree-l1:first-of-type {
   margin-top: 0px;
@@ -5628,7 +5626,6 @@ a.badge:focus {
   list-style: none;
 }
 .sidebar-nav ul.nav-list li.toctree-l1 ul li.toctree-l2 {
-  padding: 3px 0px 3px 5px;
   text-transform: none;
 }
 .sidebar-nav ul.nav-list li.toctree-l1 ul li.toctree-l2.active {
@@ -5640,7 +5637,6 @@ a.badge:focus {
   color: #ffffff;
   background-color: inherit;
   text-shadow: none;
-  display: block;
 }
 .sidebar-nav ul.nav-list li.toctree-l1 ul li.toctree-l2.active a:hover {
   color: #ffffff;
@@ -5650,9 +5646,15 @@ a.badge:focus {
 .sidebar-nav ul.nav-list li.toctree-l1 ul li.toctree-l2 a {
   text-shadow: none;
   color: #bfbeb9;
+  margin-left: -25px;
+  margin-right: -15px;
+  padding-left: 20px;
+  padding-top: 3px;
+  padding-bottom: 2px;
+  display: block;
 }
 .sidebar-nav ul.nav-list li.toctree-l1 ul li.toctree-l2 a:hover {
-  background-color: inherit;
+  background-color: #282E38;
 }
 .sidebar-nav ul.nav-list li.toctree-l1 ul li.toctree-l2 a:hover {
   color: #ffffff;
@@ -6201,11 +6203,11 @@ table.table thead {
   border-color: transparent;
 }
 table.table thead tr th {
-  font-family: 'FanwoodText-Italic';
-  font-size: 16px;
+  font-family: 'Droid Serif Italic';
+  font-size: 14px;
   color: #000000;
   font-weight: normal;
-  font-style: normal;
+  font-style: italic;
   letter-spacing: normal;
   background-color: #d4e5e6;
   padding: 12px 12px 12px 15px;
@@ -6334,13 +6336,13 @@ span.text-highlight.search-active {
 }
 .code-white div p {
   text-transform: capitalize;
-  font-family: 'FanwoodText-Regular';
+  font-family: 'nimbussannov-sembol';
+  font-size: 15px;
   color: #000000;
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
   background-color: #d9d8d5;
-  font-size: 16px;
   margin: -15px -15px 18px -15px;
   padding: 12px 15px 12px 15px;
   color: #252525;

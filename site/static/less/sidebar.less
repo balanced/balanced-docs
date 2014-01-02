@@ -170,7 +170,7 @@
           .fontStyle('NimbusSanNov-SemBol', 13px, @color: @white);
           //margin-top: 15px;
           text-transform: uppercase;
-          padding: 10px 15px;
+          padding: 11px 15px 10px 15px;
 
           &:first-of-type {
             margin-top: 0px;
@@ -192,7 +192,6 @@
 
             li {
               &.toctree-l2 {
-                padding: 3px 0px 3px 5px;
                 text-transform: none;
 
                 &.active {
@@ -204,7 +203,6 @@
                     color: @white;
                     background-color: inherit;
                     text-shadow: none;
-                    display:block;
                     
                     &:hover {
                       color: @white;
@@ -217,8 +215,15 @@
                 a {
                   text-shadow: none;
                   color: @gray3;
+                  margin-left: -25px;
+                  margin-right: -15px;
+                  padding-left: 20px;
+                  padding-top: 3px;
+                  padding-bottom: 2px;
+                  display: block;
+
                   &:hover {
-                    background-color: inherit;
+                    background-color: #282E38;
                   }
                 }
                 a:hover {
