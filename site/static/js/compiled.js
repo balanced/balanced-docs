@@ -255,7 +255,6 @@ function updateNavigation(e) {
     var currentTopic = $active.first().find('a').first();
     window.history.replaceState({}, null, currentTopic.attr('href'));
     $('.nav.nav-list').scrollTo('.active', 100, {offset : -100});
-    //console.log(currentTopic.attr('href'));
 }
 $(document).ready(function () {
     //SIDEBAR TO STICK TO BOTTOM
@@ -270,7 +269,6 @@ $(document).ready(function () {
         fix_sidebar();
     });
 
-    //FIX ON LOAD
     fix_sidebar();
 
     // HIDE OVERVIEW REQUEST BOXES:
@@ -289,14 +287,15 @@ $(document).ready(function () {
     updateLangTitle(default_lang_dd.text());
     default_lang_dd.parent().hide();
     $("[class^='highlight-']").hide();
+    $("[class^='section-']").hide();
     $(".highlight-" + default_lang).show();
+    $(".section-" + default_lang).show();
     $('.highlight-javascript').show();
     $('.highlight-html').show();
 
     $('a:not(#lang-change a)').each(function() {
         if ($(this).attr('href') != null) {
             var href = $(this).attr('href');
-            console.log(href);
             var insertPos = href.lastIndexOf('/') + 1;
             
             if (href.search(/api$/) != -1) {
@@ -304,6 +303,9 @@ $(document).ready(function () {
             }
             else if (href.search(/overview$/) != -1) {
                 insertPos = href.indexOf("/overview") + 9;
+            }
+            else if (href.search(/integration$/) != -1) {
+                insertPos = href.indexOf("/integration") + 12;
             }
                     
             $(this).attr('href', [href.slice(0, insertPos), "?language=" + default_lang, href.slice(insertPos)].join(''));
@@ -339,14 +341,16 @@ $(document).ready(function () {
 
 
     // Cascading navbar
-    $('.toctree-l1:not(.current)').each(function(){ $(this).find('ul').first().hide(); })
-    $('.toctree-l1').click(function() {
-        $('.toctree-l1').not(this).removeClass('current');
-        $(this).addClass('current');
-        $('.toctree-l1:not(.current)').each(function(){ $(this).find('ul').first().hide(); });
-        $('.toctree-l1.current').find('ul').first().show()
-    });
-    
+    if (window.location.href.search(/integration$/) == -1) {
+        $('.toctree-l1:not(.current)').each(function(){ $(this).find('ul').first().hide(); })
+        $('.toctree-l1').click(function() {
+            $('.toctree-l1').not(this).removeClass('current');
+            $(this).addClass('current');
+            $('.toctree-l1:not(.current)').each(function(){ $(this).find('ul').first().hide(); });
+            $('.toctree-l1.current').find('ul').first().show()
+        });
+    }
+
     //SWITCH SELECTORS
     //$('#context-selector > li').click(function (){
     //    window.location = $(this).find('a').attr('href');

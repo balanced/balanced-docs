@@ -71,6 +71,21 @@ Update information in a card.
   .. dcode:: scenario bank_account_update
 
 
+Delete a Bank Account
+---------------------
+
+Permanently delete a bank account. It cannot be undone. All associated credits
+with a deleted bank account will not be affected.
+
+.. container:: method-description
+
+   .. no request
+
+.. container:: code-white
+
+   .. dcode:: scenario bank_account_delete
+
+
 List Bank Accounts
 ----------------------
 
@@ -90,16 +105,21 @@ Returns a list of bank accounts that you've created but haven't deleted.
     .. dcode:: scenario bank_account_list
 
 
-Delete a Bank Account
+Charge a Bank Account
 ---------------------
 
-Permanently delete a bank account. It cannot be undone. All associated credits
-with a deleted bank account will not be affected.
+Charge a bank account.
 
-.. container:: method-description
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-gray
+  
+  A bank account must be verified with micro deposits before it can be debited. See :ref:`bank-account-verifications`.
 
-   .. no request
+.. cssclass:: dl-horizontal dl-params
+
+   .. dcode:: form debits.create
 
 .. container:: code-white
 
-   .. dcode:: scenario bank_account_delete
+   .. dcode:: scenario bank_account_debit

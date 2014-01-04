@@ -15,8 +15,8 @@ class BalancedHTMLTranslator(HTMLTranslator):
 
     def depart_section(self, node):
         self.body.append('</section>')
-        if self.section_level == 1:
-            self.body.append('<hr>\n')
+        #if self.section_level == 1:
+        #    self.body.append('<hr>\n')
 
         self.section_level -= 1
 

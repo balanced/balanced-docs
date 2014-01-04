@@ -208,7 +208,7 @@ body {
   font-family: nimbussannov-med, arial, sans-serif;
   font-size: 13px;
   line-height: 18.2px;
-  color: #58595b;
+  color: #404040;
   background-color: #f2f1ec;
 }
 a {
@@ -932,7 +932,7 @@ h4 small {
 ul,
 ol {
   padding: 0;
-  margin: 0 0 9.1px 25px;
+  margin: 0 0 9.1px 15px;
 }
 ul ul,
 ul ol,
@@ -1730,7 +1730,7 @@ select:focus:invalid:focus {
 }
 .help-block,
 .help-inline {
-  color: #7e7f82;
+  color: #666666;
 }
 .help-block {
   display: block;
@@ -5609,6 +5609,23 @@ a.badge:focus {
   letter-spacing: normal;
   text-transform: uppercase;
   padding: 11px 15px 10px 15px;
+  /*a {
+            text-shadow: none;
+            color: @gray2;
+            margin-left: 0px;
+            margin-right: -15px;
+            padding-left: 20px;
+            padding-top: 3px;
+            padding-bottom: 2px;
+            display: block;
+            //padding: 11px 15px 10px 15px;
+
+            &:hover {
+              background-color: #282E38;
+              color: #ffffff;
+            }
+          }*/
+
 }
 .sidebar-nav ul.nav-list li.toctree-l1:first-of-type {
   margin-top: 0px;
@@ -5645,7 +5662,7 @@ a.badge:focus {
 }
 .sidebar-nav ul.nav-list li.toctree-l1 ul li.toctree-l2 a {
   text-shadow: none;
-  color: #bfbeb9;
+  color: #d9d8d5;
   margin-left: -25px;
   margin-right: -15px;
   padding-left: 20px;
@@ -5657,6 +5674,41 @@ a.badge:focus {
   background-color: #282E38;
 }
 .sidebar-nav ul.nav-list li.toctree-l1 ul li.toctree-l2 a:hover {
+  color: #ffffff;
+}
+.sidebar-nav ul.nav-single-level .toctree-l1 {
+  text-shadow: none;
+  font-family: 'NimbusSanNov-Bol';
+  font-size: 13px;
+  color: #ffffff;
+  font-weight: normal;
+  font-style: normal;
+  letter-spacing: normal;
+  text-transform: uppercase;
+  padding: 0px !important;
+}
+.sidebar-nav ul.nav-single-level .toctree-l1.current a {
+  background-color: #282E38;
+  color: #ffffff;
+}
+.sidebar-nav ul.nav-single-level .toctree-l1.current a:hover {
+  background-color: #282E38;
+  color: #ffffff;
+}
+.sidebar-nav ul.nav-single-level .toctree-l1 a {
+  text-shadow: none;
+  color: #d9d8d5;
+  margin-left: 0px;
+  margin-right: -15px;
+  padding-left: 20px;
+  padding-top: 3px;
+  padding-bottom: 2px;
+  display: block;
+  padding: 11px 15px 10px 15px;
+  color: #ffffff;
+}
+.sidebar-nav ul.nav-single-level .toctree-l1 a:hover {
+  background-color: #282E38 !important;
   color: #ffffff;
 }
 h1 {
@@ -5699,7 +5751,6 @@ div.overview-large {
 }
 .box {
   display: inline-block;
-  padding: 0px 20px 0px 0px;
   font-family: 'NimbusSanNov-Reg';
   font-size: inherit;
   color: #ffffff;
@@ -5707,34 +5758,41 @@ div.overview-large {
   font-style: normal;
   letter-spacing: normal;
 }
+.box a {
+  padding: 20px 40px 20px 20px;
+}
 .box.box-block {
   display: block;
   margin-bottom: 5px;
 }
 .box .icon {
-  margin-right: 10px;
   vertical-align: middle;
   margin-top: 0px;
 }
-.box.box-blue {
-  background-color: #446598;
-}
-.box.box-blue .icon {
-  background-color: #00356b !important;
-}
-.box.box-blue .icon.icon-page {
+.box .icon.icon-page {
   background: url('../img/icons.png');
   width: 50px;
   height: 50px;
   background-position: -150px 230px;
   display: inline-block;
 }
-.box.box-blue .icon.icon-cloud {
+.box .icon.icon-cloud {
   background: url('../img/icons.png');
   width: 50px;
   height: 50px;
   background-position: -200px 230px;
   display: inline-block;
+}
+.box .icon.icon-arrow {
+  height: 50px;
+  width: 50px;
+  background: #0089a7 url(/static/img/more-icon.png) center no-repeat;
+}
+.box.box-blue {
+  background-color: #446598;
+}
+.box.box-blue .icon {
+  background-color: #00356b !important;
 }
 .box.box-blue:hover {
   background-color: #00356b;
@@ -5745,20 +5803,6 @@ div.overview-large {
 .box.box-turquoise .icon {
   background-color: #003f48 !important;
 }
-.box.box-turquoise .icon.icon-page {
-  background: url('../img/icons.png');
-  width: 50px;
-  height: 50px;
-  background-position: -150px 230px;
-  display: inline-block;
-}
-.box.box-turquoise .icon.icon-cloud {
-  background: url('../img/icons.png');
-  width: 50px;
-  height: 50px;
-  background-position: -200px 230px;
-  display: inline-block;
-}
 .box.box-turquoise:hover {
   background-color: #003f48;
 }
@@ -5768,22 +5812,29 @@ div.overview-large {
 .box.box-purple .icon {
   background-color: #571757 !important;
 }
-.box.box-purple .icon.icon-page {
-  background: url('../img/icons.png');
-  width: 50px;
-  height: 50px;
-  background-position: -150px 230px;
-  display: inline-block;
-}
-.box.box-purple .icon.icon-cloud {
-  background: url('../img/icons.png');
-  width: 50px;
-  height: 50px;
-  background-position: -200px 230px;
-  display: inline-block;
-}
 .box.box-purple:hover {
   background-color: #571757;
+}
+.box-right {
+  float: right;
+}
+.box-right a {
+  padding: 20px 27px 20px 20px;
+}
+.box-right:after {
+  clear: both;
+}
+p.more-link {
+  position: relative;
+  display: block;
+  text-align: center;
+}
+p.more-link a {
+  background-size: 70px 70px;
+  display: inline-block;
+  padding: 0 70px 0 0;
+  height: 70px;
+  background: #0089a7 url(/static/img/more-icon.png) right 50% no-repeat;
 }
 section {
   margin-bottom: 60px;
@@ -5862,6 +5913,11 @@ strong {
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
+}
+ul.list-noindent,
+ol.list-noindent {
+  margin-left: 0px !important;
+  padding-left: 0px !important;
 }
 /* !important is required to ensure override of GitHub styles */
 .gist {
@@ -6359,6 +6415,9 @@ span.text-highlight.search-active {
 }
 .descname {
   color: #872175;
+}
+div[class^="highlight-"] {
+  margin-bottom: 20px;
 }
 .pull-right {
   float: right;

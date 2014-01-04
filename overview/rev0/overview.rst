@@ -2,6 +2,7 @@
   :hidden:
   :glob:
 
+  self
   overview/*
 
 

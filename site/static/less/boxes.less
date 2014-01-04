@@ -1,8 +1,11 @@
 .box {
   color: @white;
   display: inline-block;
-  padding: 0px 20px 0px 0px;
   .fontStyle('NimbusSanNov-Reg', inherit, @color: @white);
+
+  a {
+    padding: 20px 40px 20px 20px;
+  }
 
   &.box-block {
     display: block;
@@ -10,21 +13,26 @@
   }
 
   .icon {
-    margin-right: 10px;
     vertical-align: middle;
     margin-top: 0px;
+    
+    &.icon-page {
+      .cssIcon(@iconsFile, 50px, 50px, -150px, 230px);
+    }
+
+    &.icon-cloud {
+      .cssIcon(@iconsFile, 50px, 50px, -200px, 230px);
+    }
+    
+    &.icon-arrow {
+      height: 50px;
+      width: 50px;
+      background: #0089a7 url(/static/img/more-icon.png) center no-repeat;
+    }
   }
 
   &.box-blue {
     .icon {
-      &.icon-page {
-        .cssIcon(@iconsFile, 50px, 50px, -150px, 230px);
-      }
-
-      &.icon-cloud {
-        .cssIcon(@iconsFile, 50px, 50px, -200px, 230px);
-      }
-
       background-color: @persianBlue100 !important;
     }
 
@@ -37,14 +45,6 @@
 
   &.box-turquoise {
     .icon {
-      &.icon-page {
-        .cssIcon(@iconsFile, 50px, 50px, -150px, 230px);
-      }
-
-      &.icon-cloud {
-        .cssIcon(@iconsFile, 50px, 50px, -200px, 230px);
-      }
-
       background-color: @turquoise100 !important;
     }
 
@@ -57,14 +57,6 @@
 
   &.box-purple {
     .icon {
-      &.icon-page {
-        .cssIcon(@iconsFile, 50px, 50px, -150px, 230px);
-      }
-
-      &.icon-cloud {
-        .cssIcon(@iconsFile, 50px, 50px, -200px, 230px);
-      }
-
       background-color: @byzantiumPurple100 !important;
     }
 
@@ -74,4 +66,29 @@
       background-color: @byzantiumPurple100;
     }
   }
+}
+
+.box-right {
+  float: right;
+  
+  a {
+    padding: 20px 27px 20px 20px;
+  }
+
+  &:after {
+    clear:both;
+  }
+}
+
+p.more-link {
+  position: relative;
+  display: block;
+  text-align: center;
+}
+p.more-link a {
+  background-size: 70px 70px;
+  display: inline-block;
+  padding: 0 70px 0 0;
+  height: 70px;
+  background: #0089a7 url(/static/img/more-icon.png) right 50% no-repeat;
 }

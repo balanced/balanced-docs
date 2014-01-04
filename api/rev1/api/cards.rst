@@ -103,3 +103,16 @@ Returns a list of cards that you've created.
 
   .. dcode:: scenario card_list
 
+
+Charge a Card
+------------------
+
+Charge a tokenized credit card.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form debits.create
+
+.. container:: code-white
+
+  .. dcode:: scenario card_debit

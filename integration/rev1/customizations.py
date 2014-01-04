@@ -25,22 +25,7 @@ def html_page_context(app, pagename, templatename, context, doctree):
 
 
     def on_reference(node):
-        # if the node already has an anchorname, it is a subnode
-        # so we **want** to make sure the anchor name is the refuri
-        # for the node
-        if node['anchorname']:
-            node['refuri'] = node['refuri']
-        else:
-            # if not node has an empty anchorname it means that it's the
-            # header - so we don't need to have a link, let's just remove
-            # it and substitute it with the child text node
-            node.parent.replace(
-                node,
-                # Obviously, node.children[0] here is brittle, but this does
-                # it for now. I should really use node.traverse(nodes.text...)
-                # and get that node and replace it, but I'm too lazy right now.
-                node.children[0]
-            )
+        super
 
     # etc; go through and add text inside the <reference>
 
@@ -64,7 +49,7 @@ def html_page_context(app, pagename, templatename, context, doctree):
         bullet_list = bullet_lists[0]
         # the top level <ul> items are bullet_lists and they should have
         # the classes nav and nav-list
-        bullet_list.attributes['classes'] = ['nav', 'nav-list', 'context-navlist']
+        bullet_list.attributes['classes'] = ['nav', 'nav-list', 'nav-single-level', 'context-navlist']
 
         traverse_and_sub_refuri_with_anchorname(toc)
         r = app.builder.render_partial(toc)['fragment']
@@ -161,6 +146,52 @@ class IconBoxWidget(Directive):
 
         cp = compact_paragraph('', '', parsed_)
         node.children.append(cp)
+
+        return [node]
+
+
+class ReadMoreWidget(Directive):
+
+    # Directive
+
+    name = 'read-more-widget'
+
+    required_arguments = 0
+
+    optional_arguments = 100
+
+    option_spec = {
+        'box-classes': directives.unchanged,
+        'icon-classes': directives.unchanged,
+    }
+
+    has_content = True
+
+    def run(self):
+        self.assert_has_content()
+
+        content = ''.join(self.content).strip()
+
+        icon_classes = self.options.get('icon-classes', '')
+        icon_classes = icon_classes.split(' ')
+
+        container_classes = self.options.get('box-classes', '')
+        container_classes = container_classes.split(' ')
+
+        icons = span(classes=icon_classes)
+
+        node = nodes.container(classes=container_classes)
+
+        parsed, _messages = self.state.inline_text(
+            content, self.content_offset
+        )
+        parsed_ = parsed[0]
+        for p in parsed[1:]:
+            parsed_.children.append(p)
+
+        cp = compact_paragraph('', '', parsed_)
+        node.children.append(cp)
+        node.children.append(icons)
 
         return [node]
 

@@ -258,7 +258,7 @@ texinfo_documents = [
 
 import pygments.lexers.web
 from customizations import (
-    html_page_context, IconBoxWidget, Span, Clear, Gist, patch_admonition
+    html_page_context, IconBoxWidget, ReadMoreWidget, Span, Clear, Gist, patch_admonition
 )
 
 
@@ -292,6 +292,7 @@ def setup(app):
     app.add_directive('dcode-default', dcode.DCodeDefaultDirective)
     app.add_directive('dcode', dcode.DCodeDirective)
     app.add_directive(IconBoxWidget.name, IconBoxWidget)
+    app.add_directive(ReadMoreWidget.name, ReadMoreWidget)
     app.add_directive(Span.name, Span)
     app.add_directive(Clear.name, Clear)
     app.add_directive(Gist.name, Gist)
