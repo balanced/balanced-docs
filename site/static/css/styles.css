@@ -5688,11 +5688,11 @@ a.badge:focus {
   padding: 0px !important;
 }
 .sidebar-nav ul.nav-single-level .toctree-l1.current a {
-  background-color: #282E38;
+  background-color: #646770;
   color: #ffffff;
 }
 .sidebar-nav ul.nav-single-level .toctree-l1.current a:hover {
-  background-color: #282E38;
+  background-color: #646770;
   color: #ffffff;
 }
 .sidebar-nav ul.nav-single-level .toctree-l1 a {
