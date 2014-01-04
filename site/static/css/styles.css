@@ -5692,7 +5692,7 @@ a.badge:focus {
   color: #ffffff;
 }
 .sidebar-nav ul.nav-single-level .toctree-l1.current a:hover {
-  background-color: #646770;
+  background-color: #646770 !important;
   color: #ffffff;
 }
 .sidebar-nav ul.nav-single-level .toctree-l1 a {
@@ -5708,7 +5708,7 @@ a.badge:focus {
   color: #ffffff;
 }
 .sidebar-nav ul.nav-single-level .toctree-l1 a:hover {
-  background-color: #282E38 !important;
+  background-color: #282E38;
   color: #ffffff;
 }
 h1 {
