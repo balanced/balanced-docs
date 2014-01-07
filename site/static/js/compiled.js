@@ -351,6 +351,16 @@ $(document).ready(function () {
         });
     }
 
+
+    // Highlight navbars
+    $('.box.box-block.box-blue.right').click( function() {
+        localStorage.current_section=$('.current.reference.internal').text()
+    })
+    $('.reference.internal:contains('+localStorage.current_section+')').parent().addClass('current')
+    $('.reference.internal:contains('+localStorage.current_section+')').addClass('current')
+    $('.toctree-l1').click( localStorage.current_section=null)
+
+
     //SWITCH SELECTORS
     //$('#context-selector > li').click(function (){
     //    window.location = $(this).find('a').attr('href');
