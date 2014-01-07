@@ -11,7 +11,7 @@ Setup
 This section explains how to obtain, set up, and prepare to integrate a client
 library into an application.
 
-.. container:: span4 box-right
+.. container:: box-right
 
  .. read-more-widget::
    :box-classes: box box-block box-blue right
@@ -25,7 +25,7 @@ Creating Customers
 
 This section discusses the Customer resource, its purpose, and how to use it.
 
-.. container:: span4 box-right
+.. container:: box-right
 
  .. read-more-widget::
    :box-classes: box box-block box-blue right
@@ -40,7 +40,7 @@ Charging Credit Cards
 This section demonstrates how to obtain credit card information and charge a
 credit card.
 
-.. container:: span4 box-right
+.. container:: box-right
 
  .. read-more-widget::
    :box-classes: box box-block box-blue right
