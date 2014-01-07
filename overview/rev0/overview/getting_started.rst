@@ -392,8 +392,6 @@ Balanced.js BankAccount Reference
     })
 
 
-.. _quirksmode: http://www.quirksmode.org/js/placejs.html
 .. _full example page: https://gist.github.com/2662770
 .. _LUHN check: http://en.wikipedia.org/wiki/Luhn_algorithm
 .. _MICR Routing Number Format: http://en.wikipedia.org/wiki/Routing_transit_number#MICR_Routing_number_format
-.. _jQuery: http://www.jquery.com
