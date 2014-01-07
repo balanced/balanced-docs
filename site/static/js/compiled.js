@@ -334,7 +334,7 @@ $(document).ready(function () {
         });
     });
 
-    $('#sidebar-flyout-toggle-bar').click(function() {
+    $('#sidebar-flyout-toggle-bar, #sidebar-top').click(function() {
         $('#sidebar-flyout').toggleClass('active');
         $('#sidebar-flyout-toggle-bar .caret').toggleClass('active');
     });
