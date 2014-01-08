@@ -270,7 +270,7 @@ def setup(app):
     dcode.DCodeDefaultDirective.registry['scenario'].update({
         'script': "scripts/lang-scenario.py -d clients/{0}/curl -c scenario.cache".format(os.environ.get('BALANCED_REV', 'rev1')),
         'section-chars': '~^',
-        'lang': ['ruby']
+        'lang': ['ruby', 'python']
     })
     dcode.DCodeDefaultDirective.registry['endpoint'].update({
         'script': 'scripts/rst.py endpoint'

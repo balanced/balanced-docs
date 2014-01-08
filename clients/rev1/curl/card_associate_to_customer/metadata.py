@@ -7,8 +7,8 @@ card = json.loads(
 )
 
 request = {
-    'uri': customer['customers'][0]['href'],
+    'uri': card['cards'][0]['href'],
     'payload': {
-        'card_href': card['cards'][0]['href'],
+        'customer': customer['customers'][0]['href'],
     }
 }

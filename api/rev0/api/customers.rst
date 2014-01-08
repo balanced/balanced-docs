@@ -43,7 +43,7 @@ You can add multiple cards to a customer.
 
 .. container:: code-white
 
-  .. dcode:: scenario customer_add_card
+  .. dcode:: scenario customer_add_bank_account
 
 
 .. cssclass:: method-section

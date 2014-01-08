@@ -84,8 +84,6 @@ with a deleted credit card will not be affected.
    .. dcode:: scenario card_delete
 
 
-.. _debit-card:
-
 List All Cards
 --------------
 

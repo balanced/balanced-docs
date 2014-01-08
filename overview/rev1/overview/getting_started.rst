@@ -229,7 +229,7 @@ Let's charge the card:
 
 2. Associate the token with the customer:
 
-   .. dcode:: scenario customer_add_card
+   .. dcode:: scenario card_associate_to_customer
 
 3. Debit the customer:
 

@@ -89,7 +89,7 @@ You can add multiple cards to a customer.
 
 .. container:: code-white
 
-  .. dcode:: scenario customer_add_card
+  .. dcode:: scenario card_associate_to_customer
 
 
 .. _adding-a-bank-account-to-a-customer:
@@ -113,4 +113,4 @@ customer, or in this case, initiate a next-day ACH payment.
 
 .. container:: code-white
 
-  .. dcode:: scenario customer_add_bank_account
+  .. dcode:: scenario bank_account_associate_to_customer
