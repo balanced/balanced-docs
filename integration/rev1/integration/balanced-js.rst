@@ -132,7 +132,7 @@ our form field values into a payload object and submit it to the Balanced API.
 
 .. _jsFiddle example: http://jsfiddle.net/amcf6/1/
 .. _jsFiddle [tokenize credit cards]: http://jsfiddle.net/amcf6/1/
-.. _PCI-DSS Level 1 Compliant: http://www.visa.com/splisting/searchGrsp.do?companyNameCriteria=Pound%20Payments
+.. _PCI-DSS Level 1 Compliant: http://www.visa.com/splisting/searchGrsp.do?companyNameCriteria=Balanced
 .. _quirksmode: http://www.quirksmode.org/js/placejs.html
 .. _jQuery: http://www.jquery.com
 .. _callback: https://en.wikipedia.org/wiki/Callback_(computer_programming)
