@@ -664,4 +664,4 @@ Balanced.js BankAccount Reference
 .. _JSFiddle: http://jsfiddle.net/
 .. _JSFiddle - Tokenize bank accounts: http://jsfiddle.net/balanced/ZwhrA/
 .. _JSFiddle - Tokenize credit cards: http://jsfiddle.net/balanced/ZwhrA/
-.. _PCI-DSS Level 1 Compliant: http://www.visa.com/splisting/searchGrsp.do?companyNameCriteria=Pound%20Payments
+.. _PCI-DSS Level 1 Compliant: http://www.visa.com/splisting/searchGrsp.do?companyNameCriteria=Balanced
