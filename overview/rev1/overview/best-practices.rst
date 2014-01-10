@@ -26,9 +26,11 @@ Reducing Declined Transactions
 
 Fraud and Card declinations can be reduced if the following information is supplied when tokenizing a card:
 
-- ``name`` (Name on card)
-- ``security_code`` (CVV)
-- ``postal_code`` (Postal code)
+.. cssclass:: list-noindent
+
+  - ``name`` (Name on card)
+  - ``cvv`` (CVV)
+  - ``postal_code`` (Postal code)
 
 |
 
@@ -39,6 +41,7 @@ Fraud and Card declinations can be reduced if the following information is suppl
    American Express declines transactions with cards that do not include ``security_code`` and
    ``postal_code``.
 
+
 Catching Fraud Early
 --------------------
 
@@ -46,12 +49,14 @@ It's very important to take a proactive stance against fraud. Below are some
 tips to help guard against it. We recommend marketplaces take advantage of
 the following:
 
-- Utilize customer verification. We highly recommended that you do not issue payouts to
-  unverified customers. Refer to :ref:`resources.test-identity-verification`
-- Utilize AVS. Refer to :ref:`resources.address-verification-service`
-- Utilize CSC. Refer to :ref:`resources.card-security-code`
-- Respond in a timely fashion to Balanced inquiries about chargebacks or suspicious transactions
-- Report fraud to support@balancedpayments.com.
+.. cssclass:: list-noindent
+
+  - * Utilize customer verification. We highly recommended that you do not issue payouts to unverified customers. Refer to :ref:`resources.test-identity-verification`
+  - * Utilize AVS. Refer to :ref:`resources.address-verification-service`
+  - * Utilize CSC. Refer to :ref:`resources.card-security-code`
+  - * Respond in a timely fashion to Balanced inquiries about chargebacks or suspicious transactions
+  - * Report fraud to support@balancedpayments.com.
+
 
 .. _best_practices.reducing-payout-delays:
 
@@ -143,94 +148,39 @@ transactions with order numbers. The format is generally up to you, but
 Balanced reserves some keys in the ``meta`` field. These are fields that may be
 passed in by you in order to help fight fraud and respond to chargebacks.
 
-Shipping Address
-~~~~~~~~~~~~~~~~
+.. container:: section
 
-You may supply shipping fulfillment information by prefixing keys
-specifying address data with the ``shipping.`` prefix. The specific
-fields you may provide are:
+  .. container:: header3
 
--  shipping.address.street_address
--  shipping.address.city
--  shipping.address.region
--  shipping.address.country_code (`ISO 3166-1 alpha-3`_)
--  shipping.carrier
--  shipping.tracking_number
+    Shipping Address
 
-Let's say you want to pass on shipping address, along with shipping
-carrier (USPS, UPS, FedEx, etc.) and tracking number on a debit. This is
-what the ``meta`` field would look like when represented as a JSON
-dictionary:
+  You may supply shipping fulfillment information by prefixing keys
+  specifying address data with the ``shipping.`` prefix. The specific
+  fields you may provide are:
 
-.. code-block:: javascript
+  -  shipping.address.street_address
+  -  shipping.address.city
+  -  shipping.address.region
+  -  shipping.address.country_code (`ISO 3166-1 alpha-3`_)
+  -  shipping.carrier
+  -  shipping.tracking_number
 
-  meta = {
-      'shipping.address.street_address': '801 High St',
-      'shipping.address.city': 'Palo Alto',
-      'shipping.address.region': 'CA',
-      'shipping.address.postal_code': '94301',
-      'shipping.address.country_code': 'USA',
-      'shipping.carrier': 'FEDEX',
-      'shipping.tracking_number': '1234567890'
-  }
+  Let's say you want to pass on shipping address, along with shipping
+  carrier (USPS, UPS, FedEx, etc.) and tracking number on a debit. This is
+  what the ``meta`` field would look like when represented as a JSON
+  dictionary:
 
+  .. code-block:: javascript
 
-.. _best_practices.uri_vs_id:
-
-Store URIs
-----------
-
-Do you store the ``uri`` or the ``id`` in your database? \ **Always, always
-store the uri**.
-
-The ``uri`` stands for **u**\ niversal **r**\ esource **i**\ dentifier and it's
-exactly what it is. An identifier.
-
-Do not attempt to be clever and try to save a few bytes by storing the ``id``
-and constructing the ``uri`` later.
-
-This will almost always lead to disaster. A ``uri`` is opaque and Balanced
-reserves the right to use HTTP semantics later to change them. This means that while
-Balanced will not change the ``uri`` we may change components of the ``uri``
-including the ``id``, so you should **NEVER** store the ``id``.
-
-Our internal statistics show that client libraries that construct the ``uri``
-receive roughly **2 orders of magnitude** more ``404`` status codes from Balanced
-than clients which use the ``uri`` directly.
-
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-gray
-
-  URIs will not be longer than 255 characters.
-
-
-.. _best_practices.getting-help:
-
-Getting Help
----------------
-
-When encountering a problem, one of the best tools available to you is
-the Logs area in the Dashboard. These logs give valuable insight into
-what request infomation was received and the resulting API response. It also
-gives information about operation status codes and transaction failure
-messages along with the timing and affected parties and endpoints.
-
-If additional help is required, hop into #balanced on IRC to get help
-directly from developers.
-
-Be sure to have the following handy to facilitate quick resolutions to issues:
-
-- A description of the problem
-- The Dashboard link to the transaction(s) related to the issue (if one exists. if there
-  is more than one please provide enough transactions and their corresponding links so
-  that we have a sample set that we can begin investigating)
-- Transaction OHM (this is the identifier for the corresponding log message. It's returned on errors)
-- Marketplace name
-- Timeframe of issue
-- Affected customer(s)
-- Amount and type of transaction
-- Last 4 digits and type of the affected card (if applicable)
+    meta = {
+        'shipping.address.street_address': '801 High St',
+        'shipping.address.city': 'Palo Alto',
+        'shipping.address.region': 'CA',
+        'shipping.address.postal_code': '94301',
+        'shipping.address.country_code': 'USA',
+        'shipping.carrier': 'FEDEX',
+        'shipping.tracking_number': '1234567890'
+    }
 
 
 .. _ISO 3166-1 alpha-3: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3

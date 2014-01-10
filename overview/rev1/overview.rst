@@ -1,239 +1,12 @@
-.. The entry point to the documentation, this is where all the table of
-   content files are generated (and as a consequence displayed on the left
-   hand side of our navigation menu)
-
-.. the table of content tree is hidden here because we want to control its
-   layout by using the global toctree function provided by sphinx to the
-   Jinja2 templates. You can check this out in _templates/layout.html
-.. toctree::
-  :hidden:
-  :glob:
-
-  overview/*
-  
-..  getting_started
-..  best_practices
-..  processing
-..  payouts
-..  fees
-..  resources
-  
-
-Start Integrating
+Overview
 =================
 
-.. container:: integration
-
-   .. container:: copy-box
-
-      Start Integrating
-
-
-.. container:: span6
-
-   .. container:: header3
-
-      Tutorials
-
-   .. icon-box-widget::
-     :box-classes: box box-block box-blue
-     :icon-classes: icon icon-page
-
-     :ref:`Collect credit card info <getting_started.collecting_card_info>`
-
-   .. icon-box-widget::
-     :box-classes: box box-block box-blue
-     :icon-classes: icon icon-page
-
-     :ref:`Charge a credit card <getting_started.charging_cards>`
-
-   .. icon-box-widget::
-     :box-classes: box box-block box-blue
-     :icon-classes: icon icon-page
-
-     :ref:`Collect bank account info <getting_started.collecting_bank_info>`
-
-   .. icon-box-widget::
-     :box-classes: box box-block box-blue
-     :icon-classes: icon icon-page
-
-     :ref:`Credit bank account <getting_started.credit_bank_account>`
-
-
-.. container:: span6
-
-   .. container:: header3
-
-     Form Building
-
-   .. icon-box-widget::
-     :box-classes: box box-block box-turquoise
-     :icon-classes: icon icon-page
-
-     `Sample credit card form <#collecting-credit-card-information>`_
-
-   .. icon-box-widget::
-     :box-classes: box box-block box-turquoise
-     :icon-classes: icon icon-page
-
-     `Sample bank account form <#collect-bank-account-info>`_
-
-
-.. container:: span6
-
-   .. container:: header3
-
-     Testing
-
-   .. icon-box-widget::
-     :box-classes: box box-block box-purple
-     :icon-classes: icon icon-page
-
-     `Test credit card numbers <#test-credit-card-numbers>`_
-
-   .. icon-box-widget::
-     :box-classes: box box-block box-purple
-     :icon-classes: icon icon-page
-
-     `Test bank account numbers <#test-bank-account-numbers>`_
-
-.. clear::
-
-.. _overview.use_cases:
-
-
-
-Client Libraries
-----------------
-
-Balanced attempts very hard to write idiomatic code for all it's API libraries
-and we pride ourselves in an extensive test suite for every client that
-demonstrates almost every single method / function executed for your
-convenience.
-
-We find that this is the best way to use the client libraries. If you encounter
-and issue, please file a github issue and get in touch through one our
-many :ref:`support channels <overview.support>`.
-
-.. list-table::
-   :widths: 15 17 18 15
-   :header-rows: 1
-   :class: table table-hover
-
-   * - Language / Platform
-     - Repository
-     - Tests
-     - Primary Contributor
-   * - python
-     - `balanced-python`_
-     - `balanced-python tests`_
-     - Balanced
-   * - ruby
-     - `balanced-ruby`_
-     - `balanced-ruby tests`_
-     - Balanced
-   * - php
-     - `balanced-php`_
-     - `balanced-php tests`_
-     - Balanced
-   * - php (symfony2 bundle)
-     - `JmBalancedPaymentBundle <https://github.com/jeremymarc/JmBalancedPaymentBundle>`_
-     - `JmBalancedPaymentBundle Tests <https://github.com/jeremymarc/JmBalancedPaymentBundle/tree/master/Tests>`_
-     - `Jeremy Marc <https://twitter.com/jeremymarc>`_
-   * - java
-     - `balanced-java`_
-     - `balanced-java tests`_
-     - Balanced
-   * - iOS
-     - `balanced-ios`_
-     - `balanced-ios tests`_
-     - `Ben Mills (Remear)`_
-   * - perl
-     - `Business-BalancedPayments`_
-     - `Business-BalancedPayments tests`_
-     - `Crowdtilt.com`_
-..   * - node
-     - `balanced-node`_
-     - `balanced-node tests`_
-     - Balanced
-
-
-.. _balanced-php: https://github.com/balanced/balanced-php
-.. _balanced-php tests: https://github.com/balanced/balanced-php/tree/master/tests
-
-.. _balanced-python: https://github.com/balanced/balanced-python
-.. _balanced-python tests: https://github.com/balanced/balanced-python/tree/master/tests
-
-.. _balanced-ruby: https://github.com/balanced/balanced-ruby
-.. _balanced-ruby tests: https://github.com/balanced/balanced-ruby/tree/master/spec
-
-.. _balanced-java: https://github.com/balanced/balanced-java
-.. _balanced-java tests: https://github.com/balanced/balanced-java/tree/master/src/test
-
-.. _balanced-node: https://github.com/balanced/balanced-node
-.. _balanced-node tests: https://github.com/balanced/balanced-node/tree/master/test
-
-
-.. _Business-BalancedPayments: https://github.com/Crowdtilt/Business-BalancedPayments
-.. _Business-BalancedPayments tests: https://github.com/Crowdtilt/Business-BalancedPayments/tree/master/t
-
-.. _balanced-ios: https://github.com/balanced/balanced-ios
-.. _balanced-ios tests: https://github.com/balanced/balanced-ios/tree/master/BalancedTests
-
-
-.. _Ben Mills (Remear): http://unfiniti.com
-
-
-Use Cases
----------
-
-.. container:: header3 mb-ten
-
-  Marketplaces
-
-Balanced is most often used to power payments for online and mobile
-marketplaces -- any platform facilitating payments between buyers and
-sellers. For example, `kitchit`_, `copious`_, `zaarly`_, `visual.ly`_,
-and many others are connecting Balanced Processing and Balanced Payouts
-to charge a buyer’s credit card on behalf of a seller.
-
-Some customers have even implemented a shopping cart checkout flow where
-a single buyer can buy from many sellers with a single transaction. And
-holding the funds with Balanced between Payouts and Processing can allow
-the marketplace to implement an escrow-like functionality.
-
-.. container:: header3 mb-ten
-
-  Crowd-Funding
-
-Balanced is commonly used to power payments for crowd-funding and group
-purchasing platforms. For example, `crowdtilt`_, `wanderable`_,
-`gittip`_, and many others are connecting Balanced Processing and
-Balanced Payouts to charge many buyers’ credit cards on behalf of a
-single seller.
-
-.. container:: header3 mb-ten
-
-  Vendor Payments
-
-Balanced Payouts is used by many businesses that need to pay their
-sellers or vendors for supplies and services rendered.
-
-.. container:: header3 mb-ten
-
-  E-Commerce
-
-Balanced Processing is used by a merchants to simply charge buyers for
-items they sell directly.
-
-.. _overview.github_issues:
-
-Github Discussions
+Feature Requests
 ------------------
 
-We actively and publicly discuss feature requests and product decisions
-with our community on `github`_. We’d love to hear from you.
-
+As Balanced embraces the `open company philosophy`_, we actively and publicly
+discuss feature requests and product decisions with our community on `github`_.
+Do you have a feature request or issue? We’d love to hear from you!
 
 .. _overview.support:
 
@@ -243,45 +16,167 @@ Support
 We respond to support requests and questions through several channels
 including:
 
--  `IRC`_ for real-time answers to technical support questions
--  `Stackoverflow`_ for technical questions
--  `Quora`_ for product and business questions
--  Email: `support@balancedpayments.com`_
-
 Follow `@balancedstatus`_ or check out `status.balancedpayments.com`_
 for real-time status updates on the API, balanced.js, and Balanced’s
 dashboard.
 
 Join the Balanced `community`_ and follow us on `Twitter`_.
 
+-  `IRC`_ for real-time answers to technical support questions
+-  `Stackoverflow`_ for technical questions
+-  `Quora`_ for product and business questions
+-  Email: `support@balancedpayments.com`_
 
-Certified Developers
---------------------
+When encountering a problem, one of the best tools available to you is
+the Logs area in the Dashboard. These logs give valuable insight into
+what request information was received and the resulting API response. It also
+gives information about operation status codes and transaction failure
+messages along with the timing and affected parties and endpoints.
 
-We've partnered with `APIXchange`_ -- a marketplace for custom API development
-projects -- to help companies looking for assistance with their Balanced API
-integration find a quality Balanced certified developer.
+If additional help is required, hop into #balanced on IRC to get help
+directly from developers.
 
-Create a project on `APIXchange`_ to get started:
+Be sure to have the following handy to facilitate quick resolutions to issues:
 
-.. image:: https://apixchange.com/static/img/embed-button.png
-  :target: https://apixchange.com/landing/balanced
+- * A description of the problem
+- * The Dashboard link to the transaction(s) related to the issue
+- * Transaction OHM (this is the identifier for the corresponding log message. It's returned on errors)
+- * Marketplace name
+- * Timeframe of issue
+- * Affected customer(s)
+- * Amount and type of transaction
+- * Last 4 digits and type of the affected card (if applicable)
 
-If you'd like to find a developer to help with your Balanced integration
-outside of APIXchange, please post your criteria on `this Github issue`_.
 
+.. _payouts.cutoff:
+
+Submission & Delivery times
+---------------------------
+
+.. container:: table-header
+
+   The cutoff for submitting payouts is **3:00 PM Pacific (PT)** time. Payouts will *not* be
+   delivered on weekends or `bank holidays`_:
+
+.. cssclass:: table table-hover
+
+  ==================================== =========== ============ ===========
+  Holiday                              2014        2015         2016
+  ==================================== =========== ============ ===========
+  New Year's Day                       January 1   January 1    January 1
+  Birthday of Martin Luther King, Jr.  January 20  January 19   January 18
+  Washington's Birthday                February 17 February 16  February 15
+  Memorial Day                         May 26      May 25       May 30
+  Independence Day                     July 4      July 4 [*]_  July 4
+  Labor Day                            September 1 September 7  September 5
+  Columbus Day                         October 13  October 12   October 10
+  Veterans Day                         November 11 November 11  November 11
+  Thanksgiving Day                     November 27 November 26  November 24
+  Christmas Day                        December 25 December 25  December 26
+  ==================================== =========== ============ ===========
+
+.. [*] Saturday
+
+.. container:: table-header
+
+   Here's some common scenarios for payouts. Remember, the next-day cut off is
+   at **3:00 PM Pacific (PT)**.
+
+.. list-table::
+   :widths: 20 35 20
+   :header-rows: 1
+   :class: table table-hover
+
+   * - Type of scenario
+     - Example submission date
+     - Available when? [*]_
+   * - Most common
+     - Tuesday @ 1:45PM PT
+     - Wednesday @ 9:00AM PT
+   * - `Bank holidays`_
+     - July 3rd @ 1:30PM PT
+     - July 5th @ 9:00AM PT
+   * - Late submission
+     - Friday @ 3:30PM PT
+     - Tuesday @ 9:00AM PT
+
+.. [*] Assumes that day is a working business day -- does not fall on a
+       weekend or a `federal reserve holiday <bank holidays>`_.
+
+
+
+Pricing
+-------------
+
+.. container:: section
+
+  .. container:: header3
+
+    Check out the `pricing page`_ for out current pricing structure!
+
+Balanced will create invoices to collect fees daily. These invoices can be
+viewed under the invoices tab of the Balanced dashboard. Fees are debited from
+the bank account most recently attached to the owner account of the marketplace.
+
+For example, a buyer pays for a service on Monday from a third-party merchant. You charge
+the buyer $10, which increases your escrow balance by $10. Balanced will invoice
+you, on Monday for 2.9% of $10 (or 29¢), plus 30¢, and debit your bank account
+for a total of 59¢.
+
+On Wednesday, the third-party merchant completes performing a service for the
+buyer, and the buyer acknowledges this. You credit out payment to the
+merchant, likely keeping a portion to pay your fees. Perhaps you pay out $7
+to the merchant, leaving you with $3 in your escrow account. Balanced will
+invoice you, on Wednesday, 25¢ for this ACH credit.
+
+The $3 that is left from the buyer's $10 is your revenue from this order. You
+decide to credit this to your own bank account on Friday. Balanced doesn't
+charge you for this credit, as credits to owner accounts are free.
+
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+
+  **Balanced will never take fees from the operating capital (escrow account) of the marketplace.**
+
+
+
+.. _processing.transaction-limits:
+
+Transaction Limits
+------------------
+
+The minimum transaction amount is $0.50.
+
+The maximum transaction amounts are as follows:
+
+Credit cards - $15,000 per transaction.
+
+Bank account debits - $15,000 per transaction.
+
+Bank account credits - $15,000 per transaction.
+
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+
+  Please contact `support@balancedpayments.com <mailto:support@balancedpayments.com>`__
+  if you are planning to process larger amounts.
+
+  These limits do not apply to the marketplace owner bank account.
+ 
 
 
 .. _kitchit: http://kitchit.com
 .. _copious: http://copious.com
 .. _zaarly: http://zaarly.com
 .. _visual.ly: http://visual.ly
-
 .. _Crowdtilt.com:
 .. _crowdtilt: http://crowdtilt.com
 .. _wanderable: http://wanderable.com
 .. _Gittip: http://gittip.com
-
 .. _ACH: http://en.wikipedia.org/wiki/Automated_Clearing_House
 .. _open partnership: http://blog.gittip.com/post/28351995405/open-partnerships
 .. _mitigate the risks of running a marketplace: https://github.com/gittip/www.gittip.com/issues/67
@@ -298,8 +193,8 @@ outside of APIXchange, please post your criteria on `this Github issue`_.
 .. _Twitter: https://twitter.com/balanced
 .. _status.balancedpayments.com: https://status.balancedpayments.com/
 .. _community: https://www.balancedpayments.com/community
-
 .. _Rent My Bike: http://rentmybike.heroku.com
-
-.. _this Github issue: https://github.com/balanced/balanced-api/issues/315
-.. _APIXchange: https://apixchange.com/
+.. _bank holidays: http://www.federalreserve.gov/aboutthefed/k8.htm
+.. _FedACH directory: https://www.fededirectory.frb.org
+.. _open company philosophy: https://www.balancedpayments.com/open
+.. _pricing page: https://www.balancedpayments.com/pricing

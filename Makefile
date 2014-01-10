@@ -31,7 +31,7 @@ SITE_DIR = site
 #	REV=rev0 make all
 #	make clean-limited
 #	REV=rev1 make all
-build-revisions: clean-site api integration overview #spec
+build-revisions: clean-site api overview #integration spec
 
 all: rev0 rev1
 
@@ -102,8 +102,10 @@ overview/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/j
 
 $(SITE_DIR)/overview-gen-$(REV).html: overview/html/index.html
 	mkdir -p ${SITE_DIR}/$(REV_NUM)/overview
+	mkdir -p ${SITE_DIR}/$(REV_NUM)/integration
 	mv overview/$(REV)/html/overview ${SITE_DIR}/$(REV_NUM)
-
+	mv overview/$(REV)/html/guides ${SITE_DIR}/$(REV_NUM)
+	
 overview: $(SITE_DIR)/overview-gen-$(REV).html
 
 overview-clean:

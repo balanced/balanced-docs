@@ -1,7 +1,7 @@
 .. _payouts:
 
-Balanced Payouts
-================
+Working with Credits
+=====================
 
 Balanced Payouts is a stand-alone service for sending money to your seller's
 bank account via the ACH network. You can use Balanced Payouts with your
@@ -143,60 +143,7 @@ Transfers may take 2-5 days for the funds to become available; alternatively, yo
 may fund your account **instantly** with :ref:`Balanced Processing! <processing>`
 
 
-.. _payouts.cutoff:
 
-Submission & Delivery times
----------------------------
-
-.. container:: table-header
-
-   The cutoff for submitting payouts is **3:00 PM Pacific (PT)** time. Payouts will *not* be
-   delivered on weekends or `bank holidays`_:
-
-.. cssclass:: table table-hover
-
-  ==================================== =========== =========== =========== ============ ===========
-  Holiday                              2012        2013        2014        2015         2016
-  ==================================== =========== =========== =========== ============ ===========
-  New Year's Day                       January 2   January 1   January 1   January 1    January 1
-  Birthday of Martin Luther King, Jr.  January 16  January 21  January 20  January 19   January 18
-  Washington's Birthday                February 20 February 18 February 17 February 16  February 15
-  Memorial Day                         May 28      May 27      May 26      May 25       May 30
-  Independence Day                     July 4      July 4      July 4      July 4 [*]_  July 4
-  Labor Day                            September 3 September 2 September 1 September 7  September 5
-  Columbus Day                         October 8   October 14  October 13  October 12   October 10
-  Veterans Day                         November 12 November 11 November 11 November 11  November 11
-  Thanksgiving Day                     November 22 November 28 November 27 November 26  November 24
-  Christmas Day                        December 25 December 25 December 25 December 25  December 26
-  ==================================== =========== =========== =========== ============ ===========
-
-.. [*] Saturday
-
-.. container:: table-header
-
-   Here's some common scenarios for payouts. Remember, the next-day cut off is
-   at **3:00 PM Pacific (PT)**.
-
-.. list-table::
-   :widths: 20 35 20
-   :header-rows: 1
-   :class: table table-hover
-
-   * - Type of scenario
-     - Example submission date
-     - Available when? [*]_
-   * - Most common
-     - Tuesday @ 1:45PM PT
-     - Wednesday @ 9:00AM PT
-   * - `Bank holidays`_
-     - July 3rd @ 1:30PM PT
-     - July 5th @ 9:00AM PT
-   * - Late submission
-     - Friday @ 3:30PM PT
-     - Tuesday @ 9:00AM PT
-
-.. [*] Assumes that day is a working business day -- does not fall on a
-       weekend or a `federal reserve holiday <bank holidays>`_.
 
 .. _sample page: https://gist.github.com/2662770
 .. _balanced.js: https://js.balancedpayments.com/v1/balanced.js
@@ -204,8 +151,6 @@ Submission & Delivery times
 .. _jQuery: http://www.jquery.com
 .. _dashboard: https://dashboard.balancedpayments.com/
 .. _issues: https://github.com/balanced/balanced-api/issues
-.. _bank holidays: http://www.federalreserve.gov/aboutthefed/k8.htm
-.. _FedACH directory: https://www.fededirectory.frb.org
 .. _github issue #151: https://github.com/balanced/balanced-api/issues/151
 .. _github issue #70: https://github.com/balanced/balanced-api/issues/70
 .. _github issue #132: https://github.com/balanced/balanced-api/issues/132

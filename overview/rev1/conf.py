@@ -39,7 +39,7 @@ source_suffix = '.rst'
 #source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'overview'
+master_doc = 'index'
 
 # General information about the project.
 project = u'Balanced'
@@ -237,7 +237,7 @@ htmlhelp_basename = 'Balanceddoc'
 #texinfo_show_urls = 'footnote'
 import pygments.lexers.web
 from customizations import (
-    html_page_context, IconBoxWidget, Span, Clear, Gist, patch_admonition
+    html_page_context, IconBoxWidget, ReadMoreWidget, Span, Clear, Gist, patch_admonition
 )
 
 
@@ -272,6 +272,7 @@ def setup(app):
     app.add_directive('dcode-default', dcode.DCodeDefaultDirective)
     app.add_directive('dcode', dcode.DCodeDirective)
     app.add_directive(IconBoxWidget.name, IconBoxWidget)
+    app.add_directive(ReadMoreWidget.name, ReadMoreWidget)
     app.add_directive(Span.name, Span)
     app.add_directive(Clear.name, Clear)
     app.add_directive(Gist.name, Gist)

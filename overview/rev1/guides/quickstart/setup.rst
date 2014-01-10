@@ -71,7 +71,7 @@ Ensure you have met these points before proceeding.
 
 
 
-.. container:: span4 box-right
+.. container:: box-right
 
  .. read-more-widget::
    :box-classes: box box-block box-blue right

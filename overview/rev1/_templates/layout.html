@@ -9,7 +9,7 @@
           type="image/x-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="../../../static/css/styles.css" rel="stylesheet">
+    <link href="/static/css/styles.css" rel="stylesheet">
     <!--<link href="static/css/pygments.css" rel="stylesheet">-->
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -43,7 +43,6 @@
             <ul class="inline">
               <li><a href="/1.1/overview">Overview</a></li>
               <li><a href="/1.1/api">API Reference</a></li>
-              <li><a href="/1.1/integration">Integration</a></li>
             </ul>
             
             <h5>Languages</h5>
@@ -81,12 +80,12 @@
             <div class="sidebar-nav" data-spy="affix">
                 <div class="row">
                     <div class="span6">
-
+                      <div class="nav nav-list context-navlist">
                         <!-- The table of contents menu -->
                         {%- block sidebar2 %}
-                        {{ toctree(maxdepth=2, collapse=False) }}
+                        {{ toctree(maxdepth=3, collapse=False) }}
                         {% endblock %}
-
+                      </div>
                     </div>
                 </div>
             </div>
@@ -106,6 +105,6 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-<script type="text/javascript" src="../../../static/js/compiled.js"></script>
+<script type="text/javascript" src="/static/js/compiled.js"></script>
 </body>
 </html>

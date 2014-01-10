@@ -9,6 +9,7 @@ Test credit card numbers
 ------------------------
 
 These cards will be accepted in our system only for a **TEST** marketplace.
+**Do not use these card numbers in Production marketplaces.**
 
 .. cssclass:: table
 
@@ -77,90 +78,55 @@ account numbers that can simulate various scenarios that can go wrong.
      - ``9900000005``
      - Transitions state to ``failed``
 
-Simulating erroneous routing numbers
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. .. dcode:: scenario bank-account-invalid-routing-number
-
-Simulating a pending status
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. .. dcode:: scenario credit_pending_state
-
-Simulating a paid status
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. .. dcode:: scenario credit_paid_state
-
-Simulating a failed status
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. .. dcode:: scenario credit_failed_state
-
 
 .. _resources.test-identity-verification:
 
-Test identity verification
---------------------------
+Testing Customer identity verification
+---------------------------------------
 
-``Customer`` resources have an ``is_identity_verified`` attribute.
+``Customer`` resources have a ``merchant_status`` attribute for determining
+the Customer's underwritten status.
 
 Omit address data to trigger a ``false`` response. Supply address data
 to trigger a ``true`` response.
 
-The following will set ``is_identity_verified`` to ``true``
+The following will set ``merchant_status`` to ``underwritten``
 
 .. code-block:: javascript
 
   {
-      'name': 'Henry Ford',
-      'dob': '1863-07',
-      'address': {
-          'postal_code': '48120'
+      "name": "Henry Ford",
+      "dob": "1863-07",
+      "address": {
+          "postal_code": "48120"
       }
   }
 
 
-The following will set ``is_identity_verified`` to ``false``
+The following will set ``merchant_status`` to ``need-more-information``
 
 .. code-block:: javascript
 
   {
-      'name': 'Henry Ford',
-      'dob': '1863-07'
+      "name": "Henry Ford",
+      "dob": "1863-07"
   }
 
-
-.. _resources.request-logs:
-
-Request Logs
-------------
-
-As you integrate and test :ref:`payouts`, you may find it useful to view
-all your sanitized API request logs. They are viewable via the logs section
-in the `dashboard`_
-
-.. _dashboard: https://dashboard.balancedpayments.com/
-
-.. SUBHEADERS
-   glossary / terms
-   client library reference
-   api reference
-   balanced.js
-   testing
+``merchant_status`` will be one of: ``need-more-information``, ``underwritten``,
+or ``rejected``.
 
 
-The Hash Attribute
-------------------
+Funding Instrument Fingerprint
+--------------------------------
 
-Every ``Card`` and ``BankAccount`` resource has an attribute than can be used
-to check if the same card is being added again.
+Every ``Card`` and ``BankAccount`` resource has a ``fingerprint`` attribute
+that can be used to check if a card has already been tokenized.
 
-For credit cards, this is the ``hash`` attribute. This is calculated using
-``card_number`` and the expiration.
+For credit cards, ``fingerprint`` is calculated using ``card_number`` and the
+card expiration date.
 
-For bank accounts, this is the ``fingerprint`` attribute. This is calculated using
-``account_number``, ``routing_number``, ``name``, and ``type``.
+For bank accounts, ``fingerprint`` is calculated using ``account_number``,
+``routing_number``, ``name``, and ``type``.
 
 
 .. _resources.address-verification-service:
@@ -169,15 +135,18 @@ Address Verification Service
 ----------------------------
 
 AVS, **A**\ ddress **V**\ erification **S**\ ervice, provides a means to
-verify that the postal_code supplied during card tokenization matches the
-billing zip code of the credit card.
+verify that the address supplied during card tokenization matches the
+address of the credit card.
+avs_street_match avs_postal_match
+Supplying a ``street_addrees`` or ``postal_code`` during tokenization initiates
+the AVS check. The ``Card`` will have a ``postal_code_check`` attribute
+containing the AVS check result.
 
-Supplying a ``postal_code`` during tokenization initiates the AVS check.
-The ``Card`` will have a ``postal_code_check`` attribute containing the
-AVS check result.
+``avs_street_match`` will be one of: ``yes``, ``no``, ``unsupported``
+``postal_code_check`` will be one of: ``yes``, ``no``, ``unsupported``
 
-``postal_code_check`` will be one of: ``passed``, ``failed``, ``unknown``
-
+Additionally, ``avs_result`` can be examined to ascertain more detailed
+information about the address verification attempt. 
 
 .. _resources.card-security-code:
 
@@ -185,12 +154,127 @@ Card Security Code
 ------------------
 
 CSC, **C**\ ard **S**\ ecurity **C**\ ode, provides a means to verify that the
-``security_code`` supplied during card tokenization matches the security_code
-for the credit card. The ``Card`` will have a ``security_code_check``
+``cvv`` supplied during card tokenization matches the CVV
+for the credit card. The ``Card`` will have a ``cvv_match``
 attribute containing the CSC check result. It's strongly recommended you do
 not process transactions with cards that fail this check.
 
-``security_code_check`` will be one of: ``passed``, ``failed``, ``unknown``
+``cvv_match`` will be one of: ``yes``, ``no``, ``unsupported``
 
+Additionally, ``cvv_result`` can be examined to ascertain more detailed
+information about the match attempt.
+
+
+1.1 Changelog
+---------------
+
+A short list of changes:
+
+.. cssclass:: list-noindent
+
+  - * Hypermedia API
+  - * Cards can be charged without being associated to a customer
+  - * Transactions are now created via the funding instrument, not via the customer. E.g. `card.debit(amount)`, `bank_account.credit(amount)` is now favoured over `customer.debit(card, amount)`
+  - * Failing to create a transaction will result in a transaction being created with a `FAILED` state. E.g. debiting a card with insufficient funds will result in a transaction with a `FAILED` state. These are filtered out of the API by default but can be specifically retrieved with a state filter e.g. `/credits?state=failed`
+  - * A new resource called "Orders" has been created to allow grouping transactions. An Order can consist of 0:n buyers, 0:n debits and 0:n credits to a single seller. Each debit associated with an Order will result in the Order's escrow balance accruing the value of the debit rather than the marketplace's escrow balance. You cannot pay out more than the total amount escrowed for an Order.
+  - * Accounts no longer exist, customers and orders are the primary grouping constructs for transactions, customers are the primary grouping construct for funding instruments.
+  - * Funding instruments can be tokenized without specifying the marketplace, performing an authenticated GET on the tokenized funding instrument will automatically associate it to your marketplace.
+
+
+The most obvious technical difference between revision 1.1 and 1.0 is that the
+Balanced API switched from plain JSON to a `JSON API envelope`_. You can learn
+more about JSON API by reading the `format spec`_. In a nutshell, JSON API
+standardizes the structure of request and response payloads. It allows us to
+handle some edge cases that our previous formats could not handle such as side
+loading un-nested content.
+
+Here's what a typical resource now looks like with revision 1.1:
+
+.. code-block:: bash
+
+  curl https://api.balancedpayments.com/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq \
+      -u ak-test-2DBryLFR3BBam1CipbWEGSO6gqVOBKghP:
+
+.. code-block:: javascript
+
+  {
+    "marketplaces": [
+      {
+        "in_escrow": 10091234,
+        "domain_url": "example.com",
+        "name": "Test Marketplace",
+        "links": {
+          "owner_customer": "CU1TEG4xJzSrSn7mVtzE7SKI"
+        },
+        "href": "/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq",
+        "created_at": "2013-11-14T19:09:10.924065Z",
+        "support_email_address": "support@example.com",
+        "updated_at": "2013-11-14T19:09:11.758110Z",
+        "support_phone_number": "+16505551234",
+        "production": false,
+        "meta": {},
+        "unsettled_fees": 0,
+        "id": "TEST-MP1TCNbswn3s3I2UxnZyM7Pq"
+      }
+    ],
+    "links": {
+      "marketplaces.debits": "/debits",
+      "marketplaces.reversals": "/reversals",
+      "marketplaces.customers": "/customers",
+      "marketplaces.credits": "/credits",
+      "marketplaces.cards": "/cards",
+      "marketplaces.card_holds": "/card_holds",
+      "marketplaces.refunds": "/refunds",
+      "marketplaces.owner_customer": "/customers/{marketplaces.owner_customer}",
+      "marketplaces.transactions": "/transactions",
+      "marketplaces.bank_accounts": "/bank_accounts",
+      "marketplaces.callbacks": "/callbacks",
+      "marketplaces.events": "/events"
+    }
+  }
+
+
+Here's what the same resource looked like in revision 1.0:
+
+.. code-block:: bash
+
+  curl https://api.balancedpayments.com/v1/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq \
+      -u ak-test-2DBryLFR3BBam1CipbWEGSO6gqVOBKghP:
+
+.. code-block:: javascript
+
+  {
+    "callbacks_uri": "/v1/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq/callbacks",
+    "support_email_address": "support@example.com",
+    "_type": "marketplace",
+    "events_uri": "/v1/events",
+    "accounts_uri": "/v1/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq/accounts",
+    ...
+    "debits_uri": "/v1/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq/debits",
+    "credits_uri": "/v1/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq/credits",
+    "bank_accounts_uri": "/v1/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq/bank_accounts"
+  }
+
+
+By no longer nesting resources in responses clients are simpler. Payload size is
+also reduced if nested resources are duplicated. Additionally, by standardizing
+on JSON API, an open specification, Balanced enables customers to utilize
+tooling that handles JSON API out of the box. For example, Balanced `now uses`_
+the `EmberJS JSON API support`_ rather than the old `customized data library`_.
+
+We've also fixed up many inconsistencies in revision 1.0 and enabled some handy
+behavior such as `creating transactions with a failed state`_, and  
+`charging cards without a customer`_. We've also added a new `Orders resource`_
+which allow you to keep track of order fulfillment and ensure against
+accidental over payouts.
 
 .. _FedACH directory: https://www.fededirectory.frb.org
+
+.. _now uses: https://github.com/balanced/balanced-dashboard/issues/671
+.. _EmberJS JSON API support: https://github.com/daliwali/ember-json-api
+.. _customized data library: https://github.com/balanced/balanced-dashboard/blob/master/app/models/core/serializers/rev0.js
+.. _format spec: http://jsonapi.org/format
+.. _JSON API envelope: http://jsonapi.org/
+.. _creating transactions with a failed state: https://gist.github.com/mjallday/7589639
+.. _charging cards without a customer: https://gist.github.com/mjallday/7589592
+.. _Orders resource: https://gist.github.com/mjallday/92940a2e9dcb07f5b038

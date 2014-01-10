@@ -293,7 +293,8 @@ $(document).ready(function () {
     $('.highlight-javascript').show();
     $('.highlight-html').show();
 
-    $('a:not(#lang-change a)').each(function() {
+    //$('a:not(#lang-change a)').each(function() {
+    $('.nav-list a:not(#lang-change a)').each(function() {
         if ($(this).attr('href') != null) {
             var href = $(this).attr('href');
             var insertPos = href.lastIndexOf('/') + 1;
@@ -341,7 +342,7 @@ $(document).ready(function () {
 
 
     // Cascading navbar
-    if (window.location.href.search(/integration$/) == -1) {
+    /*if (window.location.href.search(/integration$/) == -1) {
         $('.toctree-l1:not(.current)').each(function(){ $(this).find('ul').first().hide(); })
         $('.toctree-l1').click(function() {
             $('.toctree-l1').not(this).removeClass('current');
@@ -349,7 +350,7 @@ $(document).ready(function () {
             $('.toctree-l1:not(.current)').each(function(){ $(this).find('ul').first().hide(); });
             $('.toctree-l1.current').find('ul').first().show()
         });
-    }
+    }*/
 
     //SWITCH SELECTORS
     //$('#context-selector > li').click(function (){
