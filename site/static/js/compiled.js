@@ -260,7 +260,7 @@ $(document).ready(function () {
     //SIDEBAR TO STICK TO BOTTOM
     function fix_sidebar(){
         var window_height = $(window).height();
-        var top_of_sidebar = 102;
+        var top_of_sidebar = 75;
         var height_of_sidebar = window_height - top_of_sidebar;
         $('.nav.nav-list').css('height', height_of_sidebar);
     }
