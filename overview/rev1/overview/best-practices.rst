@@ -38,7 +38,7 @@ Fraud and Card declinations can be reduced if the following information is suppl
    :header_class: alert alert-tab-red
    :body_class: alert alert-gray
 
-   American Express declines transactions with cards that do not include ``security_code`` and
+   American Express declines transactions with cards that do not include ``cvv`` and
    ``postal_code``.
 
 
@@ -158,12 +158,14 @@ passed in by you in order to help fight fraud and respond to chargebacks.
   specifying address data with the ``shipping.`` prefix. The specific
   fields you may provide are:
 
-  -  shipping.address.street_address
-  -  shipping.address.city
-  -  shipping.address.region
-  -  shipping.address.country_code (`ISO 3166-1 alpha-3`_)
-  -  shipping.carrier
-  -  shipping.tracking_number
+  .. cssclass:: list-noindent
+
+    -  shipping.address.street_address
+    -  shipping.address.city
+    -  shipping.address.region
+    -  shipping.address.country_code (`ISO 3166-1 alpha-3`_)
+    -  shipping.carrier
+    -  shipping.tracking_number
 
   Let's say you want to pass on shipping address, along with shipping
   carrier (USPS, UPS, FedEx, etc.) and tracking number on a debit. This is
@@ -173,13 +175,13 @@ passed in by you in order to help fight fraud and respond to chargebacks.
   .. code-block:: javascript
 
     meta = {
-        'shipping.address.street_address': '801 High St',
-        'shipping.address.city': 'Palo Alto',
-        'shipping.address.region': 'CA',
-        'shipping.address.postal_code': '94301',
-        'shipping.address.country_code': 'USA',
-        'shipping.carrier': 'FEDEX',
-        'shipping.tracking_number': '1234567890'
+        "shipping.address.street_address": "801 High St",
+        "shipping.address.city": "Palo Alto",
+        "shipping.address.region": "CA",
+        "shipping.address.postal_code": "94301",
+        "shipping.address.country_code": "USA",
+        "shipping.carrier": "FEDEX",
+        "shipping.tracking_number": "1234567890"
     }
 
 
