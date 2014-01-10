@@ -209,7 +209,7 @@ body {
   font-size: 13px;
   line-height: 18.2px;
   color: #404040;
-  background-color: #f2f1ec;
+  background-color: #f3f3f3;
 }
 a {
   color: #0096af;
@@ -2072,7 +2072,7 @@ table {
   border-top: 2px solid #dddddd;
 }
 .table .table {
-  background-color: #f2f1ec;
+  background-color: #f3f3f3;
 }
 .table-condensed th,
 .table-condensed td {
@@ -3404,7 +3404,7 @@ button.close {
 .nav-tabs > .active > a:hover,
 .nav-tabs > .active > a:focus {
   color: #555555;
-  background-color: #f2f1ec;
+  background-color: #f3f3f3;
   border: 1px solid #ddd;
   border-bottom-color: transparent;
   cursor: default;
@@ -6050,7 +6050,7 @@ dl.dl-params dt code {
   letter-spacing: normal;
   padding-right: 8px;
   border: none;
-  background-color: #f2f1ec;
+  background-color: #f3f3f3;
 }
 blockquote.last {
   margin-left: -180px;
