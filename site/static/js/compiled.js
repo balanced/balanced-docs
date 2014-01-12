@@ -44,7 +44,7 @@ function hide_search_results() {
 
 $(document).ready(function () {
     //ADD OTHER PAGES
-    /*$('body').append("<div id='search_extra' style='display: none'></div>");
+    $('body').append("<div id='search_extra' style='display: none'></div>");
     function add_to_search(url) {
         // GRAB THE STUFF
         $.get(url, function (data) {
@@ -81,12 +81,12 @@ $(document).ready(function () {
     }
 
     if($('#overview-content').length){
-        add_to_search('api.html');
+        add_to_search('/1.1/api/index.html');
     }
     else if($('#api-content').length){
-        add_to_search('overview.html');
+        add_to_search('/1.1/overview/index.html');
     }
-    */
+
 
     //KEY BINDINGS
     $(document).keydown(function (e) {
@@ -217,8 +217,6 @@ $(document).ready(function () {
         }
         return string_to_check
     }
-
-
 });
 //////////////
 // docs.js //
@@ -254,13 +252,29 @@ function updateNavigation(e) {
     }
     var currentTopic = $active.first().find('a').first();
     window.history.replaceState({}, null, currentTopic.attr('href'));
-    $('.nav.nav-list').scrollTo('.active', 100, {offset : -100});
+    $('.nav.nav-list').scrollTo('.active', 100, {offset : -150});
+}
+function scrollToAnchor(href) {
+    var href = typeof(href) == "string" ? href : $(this).attr("href");
+    var fromTop = 50;
+    if (href != null && href.indexOf("#") == 0) {
+        var $target = $(href);
+        if ($target.length) {
+            $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+            if (history && "pushState" in history) {
+                history.pushState({}, document.title, window.location.pathname + href);
+                return false;
+            }
+        }
+    }
+}
+function updateLangTitle(text){
+    $('#lang-dropdown-head').html("lang: " + text + " <b class='caret'></b>");
 }
 $(document).ready(function () {
-    //SIDEBAR TO STICK TO BOTTOM
-    function fix_sidebar(){
+    function fix_sidebar() {
         var window_height = $(window).height();
-        var top_of_sidebar = 75;
+        var top_of_sidebar = 65;
         var height_of_sidebar = window_height - top_of_sidebar;
         $('.nav.nav-list').css('height', height_of_sidebar);
     }
@@ -269,114 +283,51 @@ $(document).ready(function () {
         fix_sidebar();
     });
 
-    fix_sidebar();
+    var $overview_content = $('#overview-content');
+    $overview_content.find('.request > p:first-child').hide();
+    $overview_content.find('.response > p:first-child').hide();
 
-    // HIDE OVERVIEW REQUEST BOXES:
-    //var $overview_content = $('#overview-content');
-    //$overview_content.find('.request > p:first-child').hide();
-    //$overview_content.find('.response > p:first-child').hide();
+    $("li").bind('activate', updateNavigation);
 
-   function updateLangTitle(text){
-       $('#title-lang').text("lang: " + text);
-   }
-
-    //LOAD DEFAULT LANGUAGE
-    var default_lang = getParameterByName('language', window.location.href);
-    default_lang = (default_lang.length > 0) ? default_lang[0] : 'bash';
-    default_lang_dd = $("[data-lang='" + default_lang +"']");
-    updateLangTitle(default_lang_dd.text());
-    default_lang_dd.parent().hide();
+    var defaultLang = getParameterByName('language', window.location.href);
+    defaultLang = (defaultLang.length > 0) ? defaultLang[0] : 'bash';
+    defaultLang_dd = $("[data-lang='" + defaultLang +"']");
+    updateLangTitle(defaultLang_dd.text());
+    defaultLang_dd.parent().hide();
     $("[class^='highlight-']").hide();
     $("[class^='section-']").hide();
-    $(".highlight-" + default_lang).show();
-    $(".section-" + default_lang).show();
+    $(".highlight-" + defaultLang).show();
+    $(".section-" + defaultLang).show();
     $('.highlight-javascript').show();
     $('.highlight-html').show();
 
-    //$('a:not(#lang-change a)').each(function() {
-    $('.nav-list a:not(#lang-change a)').each(function() {
-        if ($(this).attr('href') != null) {
-            var href = $(this).attr('href');
+    $('a').each(function() {
+        var href = $(this).attr('href');
+        if (href != null && href.indexOf('://') == -1) {
             var insertPos = href.lastIndexOf('/') + 1;
-            
-            if (href.search(/api$/) != -1) {
-                insertPos = href.indexOf("/api") + 4;
-            }
-            else if (href.search(/overview$/) != -1) {
-                insertPos = href.indexOf("/overview") + 9;
-            }
-            else if (href.search(/integration$/) != -1) {
-                insertPos = href.indexOf("/integration") + 12;
-            }
-                    
-            $(this).attr('href', [href.slice(0, insertPos), "?language=" + default_lang, href.slice(insertPos)].join(''));
+            $(this).attr('href', [href.slice(0, insertPos), "?language=" + defaultLang, href.slice(insertPos)].join(''));
         }
     });
-    
-    // Language changer
-    $('#lang-change a').each(function() {
-        $(this).click(function() {
-            var lang = $(this).attr('data-lang');
-            //var langtext = $(this).text();
-            //updateLangTitle(langtext);
-            var parent = $(this).parent();
-            parent.siblings().show();
-            parent.hide();
-            $("[class^='highlight-']").hide();
-            $(".highlight-javascript").show();
-            $(".highlight-" + lang).show();
-            var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
-            uri = uri + '' + window.location.hash;
-            window.location = uri;
-            //window.history.replaceState(null, null, uri);
-            //$('[data-spy="scroll"]').each(function () {
-            //    var $spy = $(this).scrollspy('refresh');
-            //});
+
+    $('.lang-change').click(function () {
+        var lang = $(this).attr('data-lang');
+        var langtext = $(this).text();
+        updateLangTitle(langtext);
+        var parent = $(this).parent();
+        parent.siblings().show();
+        parent.hide();
+        $("[class^='highlight-']").hide();
+        $(".highlight-javascript").show();
+        $(".highlight-" + lang).show();
+        var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
+        uri = uri + '' + window.location.hash;
+        window.location = uri;
+        $('[data-spy="scroll"]').each(function () {
+            var $spy = $(this).scrollspy('refresh');
         });
-    });
+    });   
 
-    $('#sidebar-flyout-toggle-bar').click(function() {
-        $('#sidebar-flyout').toggleClass('active');
-        $('#sidebar-flyout-toggle-bar .caret').toggleClass('active');
-    });
-
-
-    // Cascading navbar
-    /*if (window.location.href.search(/integration$/) == -1) {
-        $('.toctree-l1:not(.current)').each(function(){ $(this).find('ul').first().hide(); })
-        $('.toctree-l1').click(function() {
-            $('.toctree-l1').not(this).removeClass('current');
-            $(this).addClass('current');
-            $('.toctree-l1:not(.current)').each(function(){ $(this).find('ul').first().hide(); });
-            $('.toctree-l1.current').find('ul').first().show()
-        });
-    }*/
-
-    //SWITCH SELECTORS
-    //$('#context-selector > li').click(function (){
-    //    window.location = $(this).find('a').attr('href');
-    //});
-
-    // VERSION SELECTOR
-    //var default_version = "rev0";
-    //try {
-	//    default_version = location.pathname.split('/')[1];
-    //}
-    //catch(e) {}
-    //var version_element = $("[data-version='" + default_version + "']");
-    //if(!version_element.length) {
-	//    default_version='rev0';
-    //	version_element = $("[data-version=rev0]");
-    //}
-    //version_element.parent().hide();
-    //$("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
-    //$("#version-dropdown-head > .version-change").removeClass("version-change").attr('href', '#');
-    //$("[class^=rev-]").hide();
-    //$(".rev-"+default_version).show();
-    //$("a.version-change").click(function() {
-    //	var $this = $(this);
-    //	var href = $this.attr('data-version');
-    //	location.href = location.href.replace(/rev\d+/, href);
-    //	return false;
-    //});
+    scrollToAnchor(window.location.hash);
+    $("body").on("click", "a", scrollToAnchor);
+    fix_sidebar();
 });

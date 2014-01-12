@@ -5327,6 +5327,10 @@ a.badge:focus {
   font-style: normal;
   letter-spacing: normal;
 }
+.navbar ul.nav .open ul.dropdown-menu li {
+  border-left: none;
+  border-right: none;
+}
 .navbar ul.nav.nav-api-context {
   width: 254px;
 }
@@ -5629,7 +5633,7 @@ a.badge:focus {
   overflow-y: scroll;
   float: left;
   width: 255px;
-  padding: 10px 0px 15px 0px;
+  padding: 0px 0px 15px 0px;
 }
 .sidebar-nav .nav-list ul {
   margin-left: 0px;
@@ -5681,8 +5685,11 @@ a.badge:focus {
 .sidebar-nav .nav-list li.toctree-l1:first-of-type {
   margin-top: 0px;
 }
+.sidebar-nav .nav-list li.toctree-l1.current {
+  background-color: #646770;
+}
 .sidebar-nav .nav-list li.toctree-l1.current:hover {
-  background-color: #454C59;
+  background-color: #646770;
   cursor: default;
 }
 .sidebar-nav .nav-list li.toctree-l1 ul {
@@ -6158,25 +6165,28 @@ blockquote.last dt {
   border-right: 6px solid transparent;
   border-left: 6px solid transparent;
 }
-.dropdown.open a.dropdown-toggle.lang {
+.dropdown.open a.dropdown-toggle {
   background-color: #ffffff !important;
   color: #000000 !important;
+  cursor: pointer;
 }
-.dropdown.open a.dropdown-toggle.lang b {
-  border-top-color: #FFF !important;
-  border-bottom-color: #FFF !important;
+.dropdown.open a.dropdown-toggle b {
+  border-top-color: #000000 !important;
+  border-bottom-color: #000000 !important;
 }
-.dropdown.open a.dropdown-toggle.version {
-  background-color: #ffffff !important;
-  color: #000000 !important;
-}
+#context-dropdown-head:hover,
+#version-dropdown-head:hover,
 #lang-dropdown-head:hover {
-  color: #FFF;
-  background-color: #000;
+  height: 18px;
+  color: #000000;
+  background-color: #ffffff;
+  cursor: pointer;
 }
+#context-dropdown-head:hover b,
+#version-dropdown-head:hover b,
 #lang-dropdown-head:hover b {
-  border-bottom-color: white;
-  border-top-color: white;
+  border-bottom-color: #000000;
+  border-top-color: #000000;
 }
 form.form-horizontal {
   background-color: #ffffff;

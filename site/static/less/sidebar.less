@@ -160,7 +160,7 @@
       overflow-y: scroll;
       float: left;
       width: 255px;
-      padding: 10px 0px 15px 0px;
+      padding: 0px 0px 15px 0px;
       
       ul {
         margin-left: 0px;
@@ -201,9 +201,13 @@
           &:first-of-type {
             margin-top: 0px;
           }
-
+          
+          &.current {
+            background-color: #646770;
+          }
+          
           &.current:hover {
-            background-color: #454C59;
+            background-color: #646770;
             cursor: default;
           }
 
