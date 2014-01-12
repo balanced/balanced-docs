@@ -32,15 +32,6 @@ Fraud and Card declinations can be reduced if the following information is suppl
   - ``cvv`` (CVV)
   - ``postal_code`` (Postal code)
 
-|
-
-.. note::
-   :header_class: alert alert-tab-red
-   :body_class: alert alert-red
-
-   American Express declines transactions with cards that do not include ``cvv`` and
-   ``postal_code``.
-
 
 Catching Fraud Early
 --------------------

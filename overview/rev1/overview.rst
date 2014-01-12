@@ -22,10 +22,12 @@ dashboard.
 
 Join the Balanced `community`_ and follow us on `Twitter`_.
 
--  `IRC`_ for real-time answers to technical support questions
--  `Stackoverflow`_ for technical questions
--  `Quora`_ for product and business questions
--  Email: `support@balancedpayments.com`_
+.. cssclass:: list-noindent
+
+  -  `IRC`_ for real-time answers to technical support questions
+  -  `Stackoverflow`_ for technical questions
+  -  `Quora`_ for product and business questions
+  -  Email: `support@balancedpayments.com`_
 
 When encountering a problem, one of the best tools available to you is
 the Logs area in the Dashboard. These logs give valuable insight into

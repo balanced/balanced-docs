@@ -61,22 +61,22 @@ account numbers that can simulate various scenarios that can go wrong.
      - Invalid Routing Number
    * - ``021000021``
      - ``9900000000``
-     - Transitions state to ``pending``
+     - Transitions status to ``pending``
    * - ``321174851``
      - ``9900000001``
-     - Transitions state to ``pending``
+     - Transitions status to ``pending``
    * - ``021000021``
      - ``9900000002``
-     - Transitions state to ``paid`` (credits) or ``succeeded`` (debits)
+     - Transitions status to ``paid`` (credits) or ``succeeded`` (debits)
    * - ``321174851``
      - ``9900000003``
-     - Transitions state to ``paid`` (credits) or ``succeeded`` (debits)
+     - Transitions status to ``paid`` (credits) or ``succeeded`` (debits)
    * - ``021000021``
      - ``9900000004``
-     - Transitions state to ``failed``
+     - Transitions status to ``failed``
    * - ``321174851``
      - ``9900000005``
-     - Transitions state to ``failed``
+     - Transitions status to ``failed``
 
 
 .. _resources.test-identity-verification:
@@ -150,10 +150,10 @@ information about the address verification attempt.
 
 .. _resources.card-security-code:
 
-Card Security Code
-------------------
+Card Verification Value
+-----------------------
 
-CSC, **C**\ ard **S**\ ecurity **C**\ ode, provides a means to verify that the
+CVV, Card Verification Value, provides a means to verify that the
 ``cvv`` supplied during card tokenization matches the CVV
 for the credit card. The ``Card`` will have a ``cvv_match``
 attribute containing the CSC check result. It's strongly recommended you do
@@ -175,7 +175,7 @@ A short list of changes:
   - * Hypermedia API
   - * Cards can be charged without being associated to a customer
   - * Transactions are now created via the funding instrument, not via the customer. E.g. `card.debit(amount)`, `bank_account.credit(amount)` is now favoured over `customer.debit(card, amount)`
-  - * Failing to create a transaction will result in a transaction being created with a `FAILED` state. E.g. debiting a card with insufficient funds will result in a transaction with a `FAILED` state. These are filtered out of the API by default but can be specifically retrieved with a state filter e.g. `/credits?state=failed`
+  - * Failing to create a transaction will result in a transaction being created with a `FAILED` status. E.g. debiting a card with insufficient funds will result in a transaction with a `FAILED` status. These are filtered out of the API by default but can be specifically retrieved with a status filter e.g. `/credits?status=failed`
   - * A new resource called "Orders" has been created to allow grouping transactions. An Order can consist of 0:n buyers, 0:n debits and 0:n credits to a single seller. Each debit associated with an Order will result in the Order's escrow balance accruing the value of the debit rather than the marketplace's escrow balance. You cannot pay out more than the total amount escrowed for an Order.
   - * Accounts no longer exist, customers and orders are the primary grouping constructs for transactions, customers are the primary grouping construct for funding instruments.
   - * Funding instruments can be tokenized without specifying the marketplace, performing an authenticated GET on the tokenized funding instrument will automatically associate it to your marketplace.
@@ -263,7 +263,7 @@ tooling that handles JSON API out of the box. For example, Balanced `now uses`_
 the `EmberJS JSON API support`_ rather than the old `customized data library`_.
 
 We've also fixed up many inconsistencies in revision 1.0 and enabled some handy
-behavior such as `creating transactions with a failed state`_, and  
+behavior such as `creating transactions with a failed status`_, and  
 `charging cards without a customer`_. We've also added a new `Orders resource`_
 which allow you to keep track of order fulfillment and ensure against
 accidental over payouts.
@@ -275,6 +275,6 @@ accidental over payouts.
 .. _customized data library: https://github.com/balanced/balanced-dashboard/blob/master/app/models/core/serializers/rev0.js
 .. _format spec: http://jsonapi.org/format
 .. _JSON API envelope: http://jsonapi.org/
-.. _creating transactions with a failed state: https://gist.github.com/mjallday/7589639
+.. _creating transactions with a failed status: https://gist.github.com/mjallday/7589639
 .. _charging cards without a customer: https://gist.github.com/mjallday/7589592
 .. _Orders resource: https://gist.github.com/mjallday/92940a2e9dcb07f5b038
