@@ -15,3 +15,4 @@ Guides
   guides/holds
   guides/refunds
   guides/credits
+  guides/merchant-dashboard
