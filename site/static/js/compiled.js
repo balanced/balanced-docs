@@ -261,6 +261,20 @@ function updateNavigation(e) {
     window.history.replaceState({}, null, currentTopic.attr('href'));
     $('.nav.nav-list').scrollTo('.active', 100, {offset : -150});
 }
+function scrollToAnchor(href) {
+    var href = typeof(href) == "string" ? href : $(this).attr("href");
+    var fromTop = 50;
+    if (href != null && href.indexOf("#") == 0) {
+        var $target = $(href);
+        if ($target.length) {
+            $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+            if (history && "pushState" in history) {
+                history.pushState({}, document.title, window.location.pathname + href);
+                return false;
+            }
+        }
+    }
+}
 function updateLangTitle(text){
     $('#lang-dropdown-head').html("lang: " + text + " <b class='caret'></b>");
 }
@@ -305,7 +319,9 @@ $(document).ready(function () {
         $("[class^='highlight-']").hide();
         $(".highlight-javascript").show();
         $(".highlight-" + lang).show();
-    });
+    });   
 
+    scrollToAnchor(window.location.hash);
+    $("body").on("click", "a", scrollToAnchor);
     fix_sidebar();
 });
