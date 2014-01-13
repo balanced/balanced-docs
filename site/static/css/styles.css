@@ -5668,11 +5668,6 @@ a.badge:focus {
             }
           }*/
 
-  /*:hover {
-            background-color: #282E38;
-            cursor: pointer;
-          }*/
-
 }
 .sidebar-nav .nav-list li.toctree-l1 a {
   font-family: 'NimbusSanNov-Bol';
@@ -5686,10 +5681,10 @@ a.badge:focus {
   margin-top: 0px;
 }
 .sidebar-nav .nav-list li.toctree-l1.current {
-  background-color: #646770;
+  background-color: #535866;
 }
 .sidebar-nav .nav-list li.toctree-l1.current:hover {
-  background-color: #646770;
+  background-color: #535866;
   cursor: default;
 }
 .sidebar-nav .nav-list li.toctree-l1 ul {
@@ -5699,14 +5694,11 @@ a.badge:focus {
 .sidebar-nav .nav-list li.toctree-l1 ul li.toctree-l2 {
   text-transform: none;
 }
-.sidebar-nav .nav-list li.toctree-l1 ul li.toctree-l2.active {
-  margin-left: -30px;
-}
 .sidebar-nav .nav-list li.toctree-l1 ul li.toctree-l2.active a {
   border-left: 5px solid #ffffff;
-  padding-left: 25px;
+  padding-left: 15px;
   color: #F3F3F2;
-  background-color: inherit;
+  background-color: #6F727C;
   text-shadow: none;
 }
 .sidebar-nav .nav-list li.toctree-l1 ul li.toctree-l2.active a:hover {
