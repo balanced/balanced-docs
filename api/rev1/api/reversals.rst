@@ -65,6 +65,14 @@ in sorted order, with the most recent reversals appearing first.
    .. dcode:: scenario reversal_list
 
 
+Reversal Filters
+--------------------------------
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Reversals
+
+
 .. List All Reversals For a Customer
 .. ---------------------------------
 .. 

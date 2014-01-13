@@ -1,38 +1,48 @@
 Events
 ======
 
-.. _events:
-
-Events are published via an HTTP ``GET`` or ``POST`` request to the endpoint of your
-choice via a :ref:`callbacks <callbacks>`.
+An ``Event`` resource represents Balanced systemic events to which applications
+may subscribe via a :ref:`callback <callbacks.create>`. Events are published via
+an HTTP ``GET`` or ``POST`` request to the endpoint of your choice.
 
 .. note::
-   :header_class: alert alert-tab-red
+   :header_class: alert alert-tab
    :body_class: alert alert-gray
 
    Balanced may deliver more than one event with the same payload, but with a
    different event id.
 
 
-Event types
+.. container:: header3
+
+  Available Query Filters
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Events
+
+
+Event Types
 -----------
 
-All transactional resources (customers, holds, credits etc) are evented.
-The format of the type field is ``resource.event_type`` where ``event_type`` is
-one of ``created``, ``updated``, ``deleted``, as well as some transaction
-specific event types ``succeeded``, ``failed``, and ``canceled``.
+.. container:: header3
 
-Transactional Events
-~~~~~~~~~~~~~~~~~~~~
+  Transactional Events
+
+.. cssclass:: dl-horizontal dl-params filters
 
   .. dcode:: enum audit_event_type
-     :include: credit.* debit.* hold.* refund.* reversal.*
+    :include: credit.* debit.* hold.* refund.* reversal.*
 
-Funding Instrument Events
-~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. dcode:: enum audit_event_type
-   :include: card.* bank_account.* bank_account_verification.*
+.. container:: header3
+
+  Funding Instrument Events
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: enum audit_event_type
+    :include: card.* bank_account.* bank_account_verification.*
 
 
 Retrieve an Event

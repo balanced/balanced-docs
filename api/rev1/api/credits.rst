@@ -1,35 +1,30 @@
 Credits
 =======
 
-To credit a bank account, you must create a new credit resource.
+A ``Credit`` resource represents a transaction consisting
+of sending money to a bank account.
 
-**NOTE** If you're sending money to a bank account, known as issuing a credit,
-you do **NOT** need to verify the bank account
+|
 
-.. cssclass:: method-section
+.. container:: header3
 
-.. Credit a New Bank Account
-.. -------------------------
-.. 
-.. To credit a new bank account, you simply pass the amount along with the bank
-.. account details. We do not store this bank account when you create a credit
-.. this way, so you can safely assume that the information has been deleted.
-.. 
-.. .. cssclass:: dl-horizontal dl-params
-.. 
-..     .. dcode:: form credits.create
-..        :exclude: bank_account.0.bank_code bank_account.1
-.. 
-.. .. container:: code-white
-.. 
-..   .. dcode:: scenario credit_create_new_bank_account
+  Available Query Filters
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Credits
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+
+  Bank accounts that only receive credits do **not** need to be verified.
 
 
 Create a Credit
 ---------------
 
-Credit a bank account.
-
+Send money to a bank account.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -54,25 +49,12 @@ Retrieve a previously created credit.
   .. dcode:: scenario credit_show
 
 
-Update a Credit
----------------
-
-Update information on a credit
-
-.. cssclass:: dl-horizontal dl-params
-
-  .. dcode:: form credits.update
-
-.. container:: code-white
-
-  .. dcode:: scenario credit_update
-
-
 List All Credits
 ----------------
 
-Retrieve a list of all credits previously created. The credits are returned
-in sorted order, with the most recent credits appearing first.
+Retrieve a list of all previously created credits. The credits
+are returned in sorted order, with the most recent credits appearing
+first.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -87,14 +69,28 @@ in sorted order, with the most recent credits appearing first.
   .. dcode:: scenario credit_list
 
 
-List All Credits For a Bank Account
+List All Credits for a Bank Account
 -----------------------------------
 
-Returns a list of credits you've previously created to a specific bank account.
-The ``credits_uri`` is a convenient uri provided so that you can simply issue
-a ``GET`` to the ``credits_uri``. The credits are returned in sorted order,
-with the most recent credits appearing first.
+Returns a list of previously created credits to a specific bank account.
+The credits are returned in sorted order, with the most recent credits
+appearing first.
 
 .. container:: code-white
 
   .. dcode:: scenario credit_list_bank_account
+
+
+Update a Credit
+---------------
+
+Update information for an existing credit.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form credits.update
+
+.. container:: code-white
+
+  .. dcode:: scenario credit_update
+

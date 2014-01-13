@@ -3,14 +3,25 @@
 Cards
 =====
 
-A ``Card`` represents a credit card. Credit card information is securely vaulted
-during tokenization and is referenced by a ``href``. A credit card may be
-tokenized multiple times, each represented by a unique href, but each href
-may only be associated to a ``Customer`` once. Once associated, a ``Card`` may not
-be disassociated from the ``Customer``, it may only be unstored.
+A ``Card`` is a funding instrument resource that represents a credit card.
+Credit card information is securely vaulted is referenced by a ``href``.
+A ``Card`` may be created multiple times, each ``Card`` represented by
+a unique href. Each href may only be associated one time and to only
+one ``Customer``. Once associated, a ``Card`` may not be disassociated
+from the ``Customer``, it may only be unstored.
+
+|
+
+.. container:: header3
+
+  Available Query Filters
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Cards
 
 
-Tokenize a Card (Direct)
+Create a Card (Direct)
 ------------------------
 
 Creates a new card.
@@ -48,10 +59,28 @@ information is returned when creating the card.
   .. dcode:: scenario card_show
 
 
+List All Cards
+--------------
+
+Returns a list of cards that you've created.
+
+.. cssclass:: dl-horizontal dl-params
+
+  ``limit``
+      *optional* integer. Defaults to ``10``.
+
+  ``offset``
+      *optional* integer. Defaults to ``0``.
+
+.. container:: code-white
+
+  .. dcode:: scenario card_list
+
+
 Update a Card
 -------------
 
-Update information in a card.
+Update information on a previously created card.
 
 .. note::
   :header_class: alert alert-tab-red
@@ -82,24 +111,6 @@ with a deleted credit card will not be affected.
 .. container:: code-white
 
    .. dcode:: scenario card_delete
-
-
-List All Cards
---------------
-
-Returns a list of cards that you've created.
-
-.. cssclass:: dl-horizontal dl-params
-
-  ``limit``
-      *optional* integer. Defaults to ``10``.
-
-  ``offset``
-      *optional* integer. Defaults to ``0``.
-
-.. container:: code-white
-
-  .. dcode:: scenario card_list
 
 
 Card Filters

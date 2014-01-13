@@ -1,19 +1,37 @@
 Callbacks
 =========
 
-.. _callbacks:
+Callbacks are a means of registering to receive payloads of information
+to a specific URL of your choice. You may create multiple callbacks.
+Events will be sent to each callback URL. In the event that a 20x response
+is not received when the payload is sent to the callback URL, the callback
+will be retried up to 10 times with 10 minutes between each attempt.
 
-Callbacks are a means of registering to receive payloads of information to a specific URL of your choice.
-You may create multiple callbacks. Events will be sent to each callback URL. In the event that a 20x response
-is not received when the payload is sent to the callback URL, the callback will be retried at increasing 
-intervals and will eventually expire after several tries.
+|
 
+.. container:: header3
+
+  Available Query Filters
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Callbacks
+
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+
+  Callbacks can be added through the Dashboard via the Webhooks area on the marketplace Settings
+  page.
+
+
+.. _callbacks.create:
 
 Create a Callback
 -----------------
 
-.. _callbacks.create:
-
+Create a ``Callback`` to which events will be sent.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -24,39 +42,38 @@ Create a Callback
     .. dcode:: scenario callback_create
 
 
-Retrieve a Callback
--------------------
-
 .. _callbacks.retrieve:
 
+Retrieve a Callback
+-------------------
 
 .. container:: code-white
 
     .. dcode:: scenario callback_show
 
 
-.. cssclass:: method-section
-
+.. _callbacks.list:
 
 List all Callbacks
 ------------------
 
-.. _callbacks.list:
+.. cssclass:: dl-horizontal dl-params
 
+  ``limit``
+      *optional* integer. Defaults to ``10``.
+
+  ``offset``
+      *optional* integer. Defaults to ``0``.
 
 .. container:: code-white
 
     .. dcode:: scenario callback_list
 
 
-.. cssclass:: method-section
-
+.. _callbacks.delete:
 
 Delete a Callback
 -----------------
-
-.. _callbacks.delete:
-
 
 .. container:: code-white
 

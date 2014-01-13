@@ -3,18 +3,24 @@
 Card Holds
 ==========
 
-Holds are a type of authorization that reserves (i.e. holds) a dollar amount
-on the customer's credit card, usually within 7 days.
+A ``CardHold`` is a type of authorization that reserves a dollar amount
+on a credit card to be captured (debited) at a later date, usually within 7 days.
 
-A successful hold can be captured, and as a result, creates a
-:ref:`debit <debits>`.
+|
+
+.. container:: header3
+
+  Available Query Filters
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Holds
 
 
 Create a New Card Hold
 ----------------------
 
-Creates a hold against a card. Returns a ``uri`` that can later be used to
-create a debit, up to the full amount of the hold.
+Creates a hold on a card.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -25,12 +31,10 @@ create a debit, up to the full amount of the hold.
   .. dcode:: scenario card_hold_create
 
 
-Get a Card Hold
----------------
+Retrieve a Card Hold
+----------------------
 
-Retrieves the details of a hold that you've previously created. Use the
-``uri`` that was previously returned, and the corresponding hold
-information will be returned.
+Retrieves the details of a previously created ``CardHold``.
 
 .. container:: method-description
 
@@ -41,10 +45,30 @@ information will be returned.
    .. dcode:: scenario card_hold_show
 
 
+List all Card Holds
+-------------------
+
+Returns a list of all previously created ``CardHold`` resources.
+The holds are returned in sorted order, with the most recent
+holds appearing first.
+
+.. cssclass:: dl-horizontal dl-params
+
+  ``limit``
+      *optional* integer. Defaults to ``10``.
+
+  ``offset``
+      *optional* integer. Defaults to ``0``.
+
+.. container:: code-white
+
+   .. dcode:: scenario card_hold_list
+
+
 Update a Card Hold
 ------------------
 
-Updates information about a hold
+Updates information on a previously created ``CardHold``.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -55,21 +79,12 @@ Updates information about a hold
    .. dcode:: scenario card_hold_update
 
 
-List all Card Holds
--------------------
-
-Returns a list of holds you've previously created. The holds are returned
-in sorted order, with the most recent holds appearing first.
-
-.. container:: code-white
-
-   .. dcode:: scenario card_hold_list
-
-
 Capture a Card Hold
 -------------------
 
-Captures a hold. This creates a :ref:`debit <debits>`.
+Captures a previously created ``CardHold``. This creates a
+:ref:`debit <debits>`. Any amount up to the amount of the
+hold may be captured.
 
 .. container:: code-white
 
@@ -79,8 +94,7 @@ Captures a hold. This creates a :ref:`debit <debits>`.
 Void a Card Hold
 ----------------
 
-Voids a hold. This cancels the hold. After voiding, the hold can no longer
-be captured. This operation is irreversible.
+Cancels the hold. Once voided, the hold can no longer be captured.
 
 .. cssclass:: dl-horizontal dl-params
 

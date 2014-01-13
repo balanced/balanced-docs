@@ -1,6 +1,10 @@
 API Keys
 ============
 
+An ``APIKey`` resource represents the API key secret used to perform
+authenticated requests with the Balanced API.
+
+
 Create an API Key
 -----------------
 
@@ -11,8 +15,8 @@ Create a new API key.
   .. dcode:: scenario api_key_create
 
 
-Get an API Key
---------------
+Retrieve an API Key
+--------------------
 
 Get an existing API key.
 

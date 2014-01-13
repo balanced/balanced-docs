@@ -1,9 +1,23 @@
 Bank Accounts
 =============
 
-You'll eventually want to be able to credit bank accounts without having to
-ask your users for their information over and over again. To do this, you'll
-need to create a bank account object.
+A ``BankAccount`` is a funding instrument resource that represents a
+bank account. Bank account information is securely vaulted is
+referenced by a ``href``. A ``BankAccount`` may be created multiple
+times, each ``BankAccount`` represented by a unique href. Each
+``BankAccount`` may be associated one time only and to only one
+``Customer``. Once associated, a ``Card`` may not be disassociated
+from the ``Customer``, it may only be unstored.
+
+|
+
+.. container:: header3
+
+  Available Query Filters
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query BankAccounts
 
 .. note::
   :header_class: alert alert-tab
@@ -12,17 +26,17 @@ need to create a bank account object.
   To debit a bank account you must first :ref:`verify it <bank-account-verifications>`.
 
 
-Tokenize a Bank Account (Direct)
+Create a Bank Account (Direct)
 --------------------------------
 
-Creates a new bank account.
+Creates a new ``BankAccount`` resource that represents a bank account funding instrument.
 
 .. note::
   :header_class: alert alert-tab-red
   :body_class: alert alert-red
   
   This method is not recommended for production environments. Please use balanced.js for
-  bank account tokenization.
+  creating bank accounts.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -36,10 +50,7 @@ Creates a new bank account.
 Retrieve a Bank Account
 -----------------------
 
-Retrieves the details of a bank account that has previously been created.
-Supply the ``uri`` that was returned from your previous request, and
-the corresponding bank account information will be returned. The same
-information is returned when creating the bank account.
+Retrieves the details of a previously created bank account.
 
 .. container:: method-description
 
@@ -48,6 +59,25 @@ information is returned when creating the bank account.
 .. container:: code-white
 
     .. dcode:: scenario bank_account_show
+
+
+List Bank Accounts
+----------------------
+
+Returns a list of bank accounts that you've created but haven't deleted.
+
+
+.. cssclass:: dl-horizontal dl-params
+
+  ``limit``
+      *optional* integer. Defaults to ``10``.
+
+  ``offset``
+      *optional* integer. Defaults to ``0``.
+
+.. container:: code-white
+
+    .. dcode:: scenario bank_account_list
 
 
 Update a Bank Account
@@ -84,25 +114,6 @@ with a deleted bank account will not be affected.
 .. container:: code-white
 
    .. dcode:: scenario bank_account_delete
-
-
-List Bank Accounts
-----------------------
-
-Returns a list of bank accounts that you've created but haven't deleted.
-
-
-.. cssclass:: dl-horizontal dl-params
-
-  ``limit``
-      *optional* integer. Defaults to ``10``.
-
-  ``offset``
-      *optional* integer. Defaults to ``0``.
-
-.. container:: code-white
-
-    .. dcode:: scenario bank_account_list
 
 
 Charge a Bank Account

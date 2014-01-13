@@ -1,15 +1,14 @@
-.. _refunds:
-
 Refunds
 =======
+
+A ``Refund`` resource represents a refund of a ``Debit`` transaction.
 
 
 Create a Refund
 ----------------
 
-Issues a refund for a debit. You can refund the full amount of the
-debit or you can issue a partial refund, where the amount is less than the
-charged amount.
+Issues a refund for a debit. A refund can be for any amount is less or equal
+to the original debit amount.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -19,17 +18,11 @@ charged amount.
 
   .. dcode:: scenario refund_create
 
-.. todo:: partial refund
-
 
 Retrieve a Refund
 -----------------
 
 Retrieve a previously created refund.
-
-.. container:: method-description
-
-  .. no request
 
 .. container:: code-white
 
@@ -67,6 +60,14 @@ in sorted order, with the most recent refunds appearing first.
 .. container:: code-white
 
    .. dcode:: scenario refund_list
+
+
+Refund Filters
+--------------------------------
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Refunds
 
 
 .. List All Refunds For a Customer

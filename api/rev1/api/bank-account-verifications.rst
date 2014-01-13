@@ -3,25 +3,35 @@
 Bank Account Verifications
 ==========================
 
+The Bank Account Verification resource is used for verifying ownership of a bank account. When a
+``BankAccountVerification`` is created, two micro deposits of random amounts less than $1 are 
+deposited into the target bank account. Verification amounts normally show on the bank account
+owner's statement as "Balanced verification" within 2 business days.
+
+After obtaining the verification amounts from their bank statement, the owner of the bank account
+should return to a form to submit them to the Balanced API to confirm ownership of the bank account.
+See `Confirm a Bank Account Verification`_.
+
+Each ``BankAccountVerification`` allows 3 attempts to enter the correct verification amounts. After
+3 failed attempts, a new verification must be created and the process must begin anew. Only one
+``BankAccountVerification`` at a time may exist for a bank account.
+
 .. note::
   :header_class: alert alert-tab
   :body_class: alert alert-gray
 
-  If you're sending money to a bank account, known as issuing a credit,
-  you do **NOT** need to verify the bank account. You'll only need to
-  verify a bank account if you're planning to later debit that account.
+  Verification is **not required** for bank accounts to which only credits will be issued.
+  
+  Verification is **required** before a bank account can be debited.
 
-Before you can debit a bank account you need to verify that you have access to
-it. Balanced allows you to do this by creating a Verification for a
-Bank Account which will result in two random amounts being credited into the
-bank account. The amounts of these two deposits must be sent back as
-the `amount_1` and `amount_2` params when subsequently updating this
-verification. These deposits will appear on the bank accounts statement as
-`Balanced verification`. (see `Confirm a Bank Account Verification`_).
 
-If you fail to verify the bank account you must create a new verification and
-begin the process again. You can only create one verification at a time and the
-trial deposits should show in the bank account within 2 business days.
+.. container:: header3
+
+  Available Query Filters
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query BankAccounts
 
 
 Create a Bank Account Verification

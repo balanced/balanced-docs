@@ -3,15 +3,27 @@
 Customers
 =========
 
-Customers represent businesses or people within your marketplace. You can
-associate credit cards, debit cards, bank accounts and transactions,
-i.e. refunds, debits, credits.
+A ``Customer`` resource represents a business or person. ``Card``
+and ``BankAccount`` resources may be associated to a ``Customer``.
+
+|
+
+.. container:: header3
+
+  Available Query Filters
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Customers
 
 
 .. _create-a-customer:
 
 Create a Customer
 -------------------
+
+Create a new ``Customer``. When the ``business_name`` and ``ein`` parameters
+are supplied, the ``Customer`` will be treated as a business.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -25,13 +37,29 @@ Create a Customer
 Retrieve a Customer
 -------------------
 
+Retrieve the details of a previously created ``Customer``.
+
 .. container:: code-white
 
   .. dcode:: scenario customer_show
 
 
+List all Customers
+------------------
+
+Retrieve a list of all previously created customers. The customers
+are returned in sorted order, with the most recent customers
+appearing first.
+
+.. container:: code-white
+
+  .. dcode:: scenario customer_list
+
+
 Update a Customer
 -----------------
+
+Update the details of a previously created ``Customer``.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -60,21 +88,11 @@ Permanently delete a customer.
   .. dcode:: scenario customer_delete
 
 
-List all Customers
+Associate a Card
 ------------------
 
-.. container:: code-white
-
-  .. dcode:: scenario customer_list
-
-
-Associate a Card
----------------------------
-
-Adding a card to a customer activates the ability to debit an account, more
-specifically, charging a card.
-
-You can add multiple cards to a customer.
+Add a ``Card`` to a specific ``Customer``. Multiple cards may be associated to
+a customer.
 
 .. note::
   :header_class: alert alert-tab-red
@@ -95,10 +113,10 @@ You can add multiple cards to a customer.
 .. _adding-a-bank-account-to-a-customer:
 
 Associate a Bank Account
------------------------------------
+--------------------------
 
-Adding a bank account to a customer activates the ability to credit a
-customer, or in this case, initiate a next-day ACH payment.
+Add a ``BankAccount`` to a specific ``Customer``. Multiple bank accounts may be
+associated to a customer.
 
 .. note::
   :header_class: alert alert-tab-red

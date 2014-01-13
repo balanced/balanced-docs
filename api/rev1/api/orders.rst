@@ -1,6 +1,20 @@
 Orders
 ======
 
+An ``Order`` resource is a construct that logically groups related transaction
+operations.
+
+|
+
+.. container:: header3
+
+  Available Query Filters
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Orders
+
+
 Create an Order
 ----------------
 
@@ -18,7 +32,7 @@ Create a new Order.
 Retrieve an Order
 -----------------
 
-Retrieve a previously created order.
+Retrieve the details of a previously created order.
 
 .. container:: code-white
 
@@ -47,22 +61,3 @@ List all previously created orders.
 .. container:: code-white
 
   .. dcode:: scenario order_list
-
-
-Order Filters
---------------
-
-.. cssclass:: dl-horizontal dl-params filters
-
-  .. dcode:: query Orders
-
-
-.. List Orders for a Customer
-.. --------------------------
-.. 
-.. List all previously created orders for a specific Customer.
-.. 
-.. .. container:: code-white
-.. 
-..   .. dcode:: scenario order_list_customer
-

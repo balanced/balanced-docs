@@ -3,20 +3,26 @@
 Debits
 ======
 
-To debit an account, i.e. charge a card or bank account, you must create a
-new debit resource.
-
-
-.. _debit.create:
-
-Create a Debit
-------------------
+A ``Debit`` resource represents a transaction consisting of obtaining
+(charging) money from a funding instrument, i.e, a ``Card`` or ``BankAccount``.
 
 A debit can be created by debiting a ``Card`` or ``BankAccount`` directly.
 
+|
 
-Debit a Card
-------------------
+.. container:: header3
+
+  Available Query Filters
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Debits
+
+
+.. _debits.debit-card:
+
+Create a Card Debit
+----------------------
 
 Debit (charge) a tokenized credit card.
 
@@ -29,8 +35,10 @@ Debit (charge) a tokenized credit card.
   .. dcode:: scenario card_debit
 
 
-Debit a Bank Account
----------------------
+.. _debits.debit-bank-account:
+
+Create a Bank Account Debit
+----------------------------
 
 Debit (charge) a bank account.
 
