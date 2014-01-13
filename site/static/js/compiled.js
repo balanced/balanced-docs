@@ -18,6 +18,14 @@ var lunr=function(t){var e=new lunr.Index;return e.pipeline.add(lunr.stopWordFil
  * @version 1.4.3.1
  */
 ;(function($){var h=$.scrollTo=function(a,b,c){$(window).scrollTo(a,b,c)};h.defaults={axis:'xy',duration:parseFloat($.fn.jquery)>=1.3?0:1,limit:true};h.window=function(a){return $(window)._scrollable()};$.fn._scrollable=function(){return this.map(function(){var a=this,isWin=!a.nodeName||$.inArray(a.nodeName.toLowerCase(),['iframe','#document','html','body'])!=-1;if(!isWin)return a;var b=(a.contentWindow||a).document||a.ownerDocument||a;return/webkit/i.test(navigator.userAgent)||b.compatMode=='BackCompat'?b.body:b.documentElement})};$.fn.scrollTo=function(e,f,g){if(typeof f=='object'){g=f;f=0}if(typeof g=='function')g={onAfter:g};if(e=='max')e=9e9;g=$.extend({},h.defaults,g);f=f||g.duration;g.queue=g.queue&&g.axis.length>1;if(g.queue)f/=2;g.offset=both(g.offset);g.over=both(g.over);return this._scrollable().each(function(){if(e==null)return;var d=this,$elem=$(d),targ=e,toff,attr={},win=$elem.is('html,body');switch(typeof targ){case'number':case'string':if(/^([+-]=)?\d+(\.\d+)?(px|%)?$/.test(targ)){targ=both(targ);break}targ=$(targ,this);if(!targ.length)return;case'object':if(targ.is||targ.style)toff=(targ=$(targ)).offset()}$.each(g.axis.split(''),function(i,a){var b=a=='x'?'Left':'Top',pos=b.toLowerCase(),key='scroll'+b,old=d[key],max=h.max(d,a);if(toff){attr[key]=toff[pos]+(win?0:old-$elem.offset()[pos]);if(g.margin){attr[key]-=parseInt(targ.css('margin'+b))||0;attr[key]-=parseInt(targ.css('border'+b+'Width'))||0}attr[key]+=g.offset[pos]||0;if(g.over[pos])attr[key]+=targ[a=='x'?'width':'height']()*g.over[pos]}else{var c=targ[pos];attr[key]=c.slice&&c.slice(-1)=='%'?parseFloat(c)/100*max:c}if(g.limit&&/^\d+$/.test(attr[key]))attr[key]=attr[key]<=0?0:Math.min(attr[key],max);if(!i&&g.queue){if(old!=attr[key])animate(g.onAfterFirst);delete attr[key]}});animate(g.onAfter);function animate(a){$elem.animate(attr,f,g.easing,a&&function(){a.call(this,e,g)})}}).end()};h.max=function(a,b){var c=b=='x'?'Width':'Height',scroll='scroll'+c;if(!$(a).is('html,body'))return a[scroll]-$(a)[c.toLowerCase()]();var d='client'+c,html=a.ownerDocument.documentElement,body=a.ownerDocument.body;return Math.max(html[scroll],body[scroll])-Math.min(html[d],body[d])};function both(a){return typeof a=='object'?a:{top:a,left:a}}})(jQuery);
+/*!
+ * jQuery Cookie Plugin v1.4.0
+ * https://github.com/carhartl/jquery-cookie
+ *
+ * Copyright 2013 Klaus Hartl
+ * Released under the MIT license
+ */
+(function(e){if(typeof define==="function"&&define.amd){define(["jquery"],e)}else{e(jQuery)}})(function(e){function n(e){return u.raw?e:encodeURIComponent(e)}function r(e){return u.raw?e:decodeURIComponent(e)}function i(e){return n(u.json?JSON.stringify(e):String(e))}function s(e){if(e.indexOf('"')===0){e=e.slice(1,-1).replace(/\\"/g,'"').replace(/\\\\/g,"\\")}try{e=decodeURIComponent(e.replace(t," "));return u.json?JSON.parse(e):e}catch(n){}}function o(t,n){var r=u.raw?t:s(t);return e.isFunction(n)?n(r):r}var t=/\+/g;var u=e.cookie=function(t,s,a){if(s!==undefined&&!e.isFunction(s)){a=e.extend({},u.defaults,a);if(typeof a.expires==="number"){var f=a.expires,l=a.expires=new Date;l.setTime(+l+f*864e5)}return document.cookie=[n(t),"=",i(s),a.expires?"; expires="+a.expires.toUTCString():"",a.path?"; path="+a.path:"",a.domain?"; domain="+a.domain:"",a.secure?"; secure":""].join("")}var c=t?undefined:{};var h=document.cookie?document.cookie.split("; "):[];for(var p=0,d=h.length;p<d;p++){var v=h[p].split("=");var m=r(v.shift());var g=v.join("=");if(t&&t===m){c=o(g,s);break}if(!t&&(g=o(g))!==undefined){c[m]=g}}return c};u.defaults={};e.removeCookie=function(t,n){if(e.cookie(t)===undefined){return false}e.cookie(t,"",e.extend({},n,{expires:-1}));return!e.cookie(t)}})
 ///////////////
 // search.js //
 ///////////////
@@ -221,7 +229,6 @@ $(document).ready(function () {
 //////////////
 // docs.js //
 /////////////
-
 function updateQueryStringParameter(uri, key, value) {
     var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
     var separator = uri.indexOf("?") > -1 ? "&" : "?";
@@ -254,24 +261,11 @@ function updateNavigation(e) {
     window.history.replaceState({}, null, currentTopic.attr('href'));
     $('.nav.nav-list').scrollTo('.active', 100, {offset : -150});
 }
-function scrollToAnchor(href) {
-    var href = typeof(href) == "string" ? href : $(this).attr("href");
-    var fromTop = 50;
-    if (href != null && href.indexOf("#") == 0) {
-        var $target = $(href);
-        if ($target.length) {
-            $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
-            if (history && "pushState" in history) {
-                history.pushState({}, document.title, window.location.pathname + href);
-                return false;
-            }
-        }
-    }
-}
 function updateLangTitle(text){
     $('#lang-dropdown-head').html("lang: " + text + " <b class='caret'></b>");
 }
 $(document).ready(function () {
+    console.debug($.cookie("language"));
     function fix_sidebar() {
         var window_height = $(window).height();
         var top_of_sidebar = 65;
@@ -283,15 +277,14 @@ $(document).ready(function () {
         fix_sidebar();
     });
 
-    //var $overview_content = $('#overview-content');
-    //$overview_content.find('.request > p:first-child').hide();
-    //$overview_content.find('.response > p:first-child').hide();
-
     $("li").bind('activate', updateNavigation);
 
-    var defaultLang = getParameterByName('language', window.location.href);
-    defaultLang = (defaultLang.length > 0) ? defaultLang[0] : 'bash';
+    var defaultLang = $.cookie('language');
+    console.log(defaultLang);
+    defaultLang = (defaultLang != null) ? defaultLang : 'bash';
     defaultLang_dd = $("[data-lang='" + defaultLang +"']");
+    console.log(defaultLang_dd);
+    console.log(defaultLang_dd.text());
     updateLangTitle(defaultLang_dd.text());
     defaultLang_dd.parent().hide();
     $("[class^='highlight-']").hide();
@@ -301,16 +294,9 @@ $(document).ready(function () {
     $('.highlight-javascript').show();
     $('.highlight-html').show();
 
-    $('a').each(function() {
-        var href = $(this).attr('href');
-        if (href != null && href.indexOf('://') == -1) {
-            var insertPos = href.lastIndexOf('/') + 1;
-            $(this).attr('href', [href.slice(0, insertPos), "?language=" + defaultLang, href.slice(insertPos)].join(''));
-        }
-    });
-
     $('.lang-change').click(function () {
         var lang = $(this).attr('data-lang');
+        $.cookie('language', lang, { expires: 7, path: '/' });
         var langtext = $(this).text();
         updateLangTitle(langtext);
         var parent = $(this).parent();
@@ -319,15 +305,7 @@ $(document).ready(function () {
         $("[class^='highlight-']").hide();
         $(".highlight-javascript").show();
         $(".highlight-" + lang).show();
-        var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
-        uri = uri + '' + window.location.hash;
-        window.location = uri;
-        $('[data-spy="scroll"]').each(function () {
-            var $spy = $(this).scrollspy('refresh');
-        });
-    });   
+    });
 
-    scrollToAnchor(window.location.hash);
-    $("body").on("click", "a", scrollToAnchor);
     fix_sidebar();
 });
