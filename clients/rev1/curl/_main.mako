@@ -148,3 +148,20 @@
      -X DELETE
 %endif
 </%def>
+
+
+<%def name="curl_query_template(endpoint_name, uri='uri', ep=None, sel='shortest')">
+<%
+  ep = Endpoint(ctx, endpoint_name, select=sel)
+%>
+%if mode == 'definition':
+  ${ep.method} ${ep.url}
+%elif mode == 'request':
+  <%
+    slash = '\\'
+  %>
+   curl ${Endpoint.qualify_uri(ctx, request[uri])} ${slash}
+     -u ${ctx.api_key}: ${slash}
+     -X DELETE
+%endif
+</%def>

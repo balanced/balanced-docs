@@ -7,6 +7,7 @@ Backends:
     - endpoint
     - view
     - form
+    - query
 
 for the `dcode` rST directive.
 
@@ -92,6 +93,19 @@ def enum_rst(args):
         BlockWriter(sys.stdout),
         name,
         data,
+        includes=args.includes,
+        excludes=args.excludes,
+    )
+
+def query_rst(args):
+    content = args.content.read() if args.content else None
+    name = args.query[0]
+    data = dockers.load(open(args.data, 'r'))
+    rst.query.generate(
+        writer=BlockWriter(sys.stdout),
+        name=name,
+        content=content,
+        data=data,
         includes=args.includes,
         excludes=args.excludes,
     )
@@ -217,6 +231,23 @@ def create_arg_parser():
         action='append',
     )
     command.set_defaults(command=enum_rst)
+
+    # query
+    command = sub_parsers.add_parser('query', parents=parents)
+    command.add_argument('query', default=[], nargs=1, metavar='QUERY')
+    command.add_argument(
+        '-i', '--include',
+        dest='includes',
+        default=[],
+        action='append',
+    )
+    command.add_argument(
+        '-e', '--exclude',
+        dest='excludes',
+        default=[],
+        action='append',
+    )
+    command.set_defaults(command=query_rst)
 
     return parser
 

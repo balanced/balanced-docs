@@ -278,6 +278,9 @@ def setup(app):
     dcode.DCodeDefaultDirective.registry['enum'].update({
         'script': 'scripts/rst.py enum'
     })
+    dcode.DCodeDefaultDirective.registry['query'].update({
+        'script': 'scripts/rst.py query'
+    })
     dcode.DCodeDefaultDirective.registry['error'].update({
         'script': 'scripts/rst.py error'
     })

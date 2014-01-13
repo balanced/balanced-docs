@@ -49,6 +49,14 @@ List all previously created orders.
   .. dcode:: scenario order_list
 
 
+Order Filters
+--------------
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Orders
+
+
 .. List Orders for a Customer
 .. --------------------------
 .. 

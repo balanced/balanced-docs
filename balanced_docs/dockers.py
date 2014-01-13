@@ -107,3 +107,21 @@ class Spec(dict):
             if name == _munge(enum['name']):
                 return enum
         return None
+
+    # queries
+
+    @property
+    def queries(self):
+        return self['queries']
+
+    def match_query(self, name):
+
+        def _munge(v):
+            v = re.sub(r's\.', '.', v)
+            return re.sub(r'[\_\-.]', '', v.lower())
+
+        name = _munge(name) + 'index'
+        for query in self.queries:
+            if name == _munge(query['name']):
+                return query
+        return None
