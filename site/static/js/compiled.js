@@ -335,7 +335,7 @@ $(document).ready(function () {
         });
     });
 
-    $('#sidebar-flyout-toggle-bar').click(function() {
+    $('#sidebar-flyout-toggle-bar, #sidebar-top').click(function() {
         $('#sidebar-flyout').toggleClass('active');
         $('#sidebar-flyout-toggle-bar .caret').toggleClass('active');
     });
@@ -351,6 +351,16 @@ $(document).ready(function () {
             $('.toctree-l1.current').find('ul').first().show()
         });
     }*/
+
+
+    // Highlight navbars
+    $('.box.box-block.box-blue.right').click( function() {
+        localStorage.current_section=$('.current.reference.internal').text()
+    })
+    $('.reference.internal:contains('+localStorage.current_section+')').parent().addClass('current')
+    $('.reference.internal:contains('+localStorage.current_section+')').addClass('current')
+    $('.toctree-l1').click( localStorage.current_section=null)
+
 
     //SWITCH SELECTORS
     //$('#context-selector > li').click(function (){
