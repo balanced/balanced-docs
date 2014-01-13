@@ -283,9 +283,9 @@ $(document).ready(function () {
         fix_sidebar();
     });
 
-    var $overview_content = $('#overview-content');
-    $overview_content.find('.request > p:first-child').hide();
-    $overview_content.find('.response > p:first-child').hide();
+    //var $overview_content = $('#overview-content');
+    //$overview_content.find('.request > p:first-child').hide();
+    //$overview_content.find('.response > p:first-child').hide();
 
     $("li").bind('activate', updateNavigation);
 
