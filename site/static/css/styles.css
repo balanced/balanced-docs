@@ -5731,6 +5731,10 @@ a.badge:focus {
 .sidebar-nav .nav-list li.toctree-l1 ul li.toctree-l3 a {
   color: #d9d8d5;
 }
+.sidebar-nav .nav-list li.toctree-l1 ul li.toctree-l3 a:hover {
+  margin-left: -35px;
+  padding-left: 30px;
+}
 .sidebar-nav .nav-list.nav-single-level .toctree-l1 {
   text-shadow: none;
   font-family: 'NimbusSanNov-Bol';
