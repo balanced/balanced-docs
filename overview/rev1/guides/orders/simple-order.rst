@@ -112,10 +112,10 @@ We can now retrieve all of the order's debits with:
 
 .. code-block:: ruby
 
-  @order.debits
+  @order.debits # instance of Balanced::Pager. Lazily iterate as an array.
 
 Likewise, we can retrieve all of the order's credits with:
 
 .. code-block:: ruby
 
-  @order.credits
+  @order.credits # instance of Balanced::Pager. Lazily iterate as an array.
