@@ -279,7 +279,11 @@ function updateLangTitle(text){
     $('#lang-dropdown-head').html("lang: " + text + " <b class='caret'></b>");
 }
 $(document).ready(function () {
-    console.debug($.cookie("language"));
+    var langParam = getParameterByName('language', window.location.href)[0];
+    if (langParam != null) {
+        $.cookie('language', langParam, { expires: 7, path: '/' });
+    }
+
     function fix_sidebar() {
         var window_height = $(window).height();
         var top_of_sidebar = 65;
@@ -293,12 +297,9 @@ $(document).ready(function () {
 
     $("li").bind('activate', updateNavigation);
 
-    var defaultLang = $.cookie('language');
-    console.log(defaultLang);
+    var defaultLang = defaultLang = $.cookie('language');
     defaultLang = (defaultLang != null) ? defaultLang : 'bash';
     defaultLang_dd = $("[data-lang='" + defaultLang +"']");
-    console.log(defaultLang_dd);
-    console.log(defaultLang_dd.text());
     updateLangTitle(defaultLang_dd.text());
     defaultLang_dd.parent().hide();
     $("[class^='highlight-']").hide();
