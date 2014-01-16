@@ -67,6 +67,10 @@ ender it in, a form. The example below is extracted this `jsFiddle example`_.
 
   <form role="form" class="form-horizontal">
     <div>
+      <label>Name on Card</label>
+      <input type="text" id="cc-name" autocomplete="off" placeholder="John Doe" />
+    </div>
+    <div>
       <label>Card Number</label>
       <input type="text" id="cc-number" autocomplete="off" placeholder="4111111111111111" maxlength="16" />
     </div>
@@ -117,6 +121,7 @@ our form field values into a payload object and submit it to the Balanced API.
     e.preventDefault();
 
     var payload = {
+      name: $('#cc-name').val(),
       number: $('#cc-number').val(),
       expiration_month: $('#cc-ex-month').val(),
       expiration_year: $('#cc-ex-year').val(),
@@ -317,8 +322,8 @@ Balanced.js BankAccount Reference
 
 
 
-.. _jsFiddle example: http://jsfiddle.net/amcf6/1/
-.. _jsFiddle [tokenize credit cards]: http://jsfiddle.net/amcf6/1/
+.. _jsFiddle example: http://jsfiddle.net/balanced/an5Cz/
+.. _jsFiddle [tokenize credit cards]: http://jsfiddle.net/balanced/an5Cz/
 .. _PCI-DSS Level 1 Compliant: http://www.visa.com/splisting/searchGrsp.do?companyNameCriteria=Balanced
 .. _quirksmode: http://www.quirksmode.org/js/placejs.html
 .. _jQuery: http://www.jquery.com
