@@ -7,7 +7,7 @@ bank_account_href = storage['bank_account_associate_to_customer']['request']['ur
 request = {
   'uri': bank_account_href + '/credits',
   'payload': {
-      'amount': 2000,
+      'amount': 5000,
   },
   'bank_account_href': bank_account_href
 }

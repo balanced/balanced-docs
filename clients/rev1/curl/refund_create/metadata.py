@@ -7,6 +7,7 @@ debit = json.loads(
 request = {
     'uri': debit['links']['debits.refunds'].replace('{debits.id}', debit['debits'][0]['id']),
     'payload': {
+        'amount': 3000,
         'description': 'Refund for Order #1111',
         'meta': {
             'user.refund_reason': 'not happy with product',
