@@ -51,6 +51,14 @@ Retrieve a list of all previously created customers. The customers
 are returned in sorted order, with the most recent customers
 appearing first.
 
+.. cssclass:: dl-horizontal dl-params
+
+  ``limit``
+      *optional* integer. Defaults to ``10``.
+
+  ``offset``
+      *optional* integer. Defaults to ``0``.
+
 .. container:: code-white
 
   .. dcode:: scenario customer_list

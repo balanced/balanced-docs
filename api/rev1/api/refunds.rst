@@ -1,7 +1,9 @@
 Refunds
 =======
 
-A ``Refund`` resource represents a refund of a ``Debit`` transaction.
+A ``Refund`` resource represents a refund of a ``Debit`` transaction. The
+amount of the refund may be any value up to the amount of the original
+``Debit``.
 
 |
 
@@ -17,8 +19,8 @@ A ``Refund`` resource represents a refund of a ``Debit`` transaction.
 Create a Refund
 ----------------
 
-Issues a refund for a debit. A refund can be for any amount is less or equal
-to the original debit amount.
+Issues a refund for a ``Debit``. A ``Refund`` can be for any amount less than or
+equal to the original ``Debit`` amount.
 
 .. cssclass:: dl-horizontal dl-params
 

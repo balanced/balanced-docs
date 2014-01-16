@@ -61,6 +61,14 @@ Retrieves the details of an event that was previously created.
 List all Events
 ---------------
 
+.. cssclass:: dl-horizontal dl-params
+
+  ``limit``
+      *optional* integer. Defaults to ``10``.
+
+  ``offset``
+      *optional* integer. Defaults to ``0``.
+
 .. container:: code-white
 
   .. dcode:: scenario event_list

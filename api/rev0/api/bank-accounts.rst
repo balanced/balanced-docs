@@ -52,7 +52,6 @@ List All Bank Accounts
 
 Returns a list of bank accounts that you've created but haven't deleted.
 
-
 .. cssclass:: dl-horizontal dl-params
 
   ``limit``

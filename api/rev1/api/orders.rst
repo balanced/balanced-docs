@@ -44,6 +44,14 @@ List All Orders
 
 List all previously created orders.
 
+.. cssclass:: dl-horizontal dl-params
+
+  ``limit``
+      *optional* integer. Defaults to ``10``.
+
+  ``offset``
+      *optional* integer. Defaults to ``0``.
+
 .. container:: code-white
 
   .. dcode:: scenario order_list

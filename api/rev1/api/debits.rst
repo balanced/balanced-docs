@@ -73,6 +73,14 @@ List All Debits
 Returns a list of all debits created in the marketplace. The debits are returned
 in sorted order, with the most recent debits appearing first.
 
+.. cssclass:: dl-horizontal dl-params
+
+  ``limit``
+      *optional* integer. Defaults to ``10``.
+
+  ``offset``
+      *optional* integer. Defaults to ``0``.
+
 .. container:: code-white
 
   .. dcode:: scenario debit_list

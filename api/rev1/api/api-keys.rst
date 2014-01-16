@@ -30,6 +30,14 @@ List all API Keys
 
 List all API keys for the marketplace.
 
+.. cssclass:: dl-horizontal dl-params
+
+  ``limit``
+      *optional* integer. Defaults to ``10``.
+
+  ``offset``
+      *optional* integer. Defaults to ``0``.
+
 .. container:: code-white
 
   .. dcode:: scenario api_key_list

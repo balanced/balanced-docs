@@ -3,7 +3,9 @@
 Reversals
 ==========
 
-A ``Refund`` resource represents a refund of a ``Debit`` transaction.
+A ``Reversal`` resource represents a reversal of a ``Credit`` transaction. The
+amount of the reversal may be any value up to the amount of the original
+``Credit``.
 
 |
 
@@ -19,7 +21,8 @@ A ``Refund`` resource represents a refund of a ``Debit`` transaction.
 Create a Reversal
 -----------------
 
-Initiates a reversal for a credit for the full amount of the credit. 
+Initiates a reversal for a ``Credit``. A reversal can be for any amount less
+than or equal to the original ``Credit`` amount.
 
 .. cssclass:: dl-horizontal dl-params
 
