@@ -113,14 +113,6 @@ with a deleted credit card will not be affected.
    .. dcode:: scenario card_delete
 
 
-Card Filters
---------------
-
-.. cssclass:: dl-horizontal dl-params filters
-
-  .. dcode:: query Cards
-
-
 Charge a Card
 ------------------
 

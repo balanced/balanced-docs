@@ -1,12 +1,6 @@
-.. _payouts:
-
 Working with Credits
 =====================
 
-Balanced Payouts is a stand-alone service for sending money to your seller's
-bank account via the ACH network. You can use Balanced Payouts with your
-existing processing solution without needing to switch or you may want to
-integrate :ref:`Balanced Processing <processing>`.
 
 Credits
 -------

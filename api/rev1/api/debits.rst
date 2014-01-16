@@ -67,6 +67,17 @@ Retrieves the details of a created debit.
   .. dcode:: scenario debit_show
 
 
+List All Debits
+---------------
+
+Returns a list of all debits created in the marketplace. The debits are returned
+in sorted order, with the most recent debits appearing first.
+
+.. container:: code-white
+
+  .. dcode:: scenario debit_list
+
+
 Update a Debit
 --------------
 
@@ -79,14 +90,3 @@ Updates information about a debit
 .. container:: code-white
 
   .. dcode:: scenario debit_update
-
-
-List All Debits
----------------
-
-Returns a list of all debits created in the marketplace. The debits are returned
-in sorted order, with the most recent debits appearing first.
-
-.. container:: code-white
-
-  .. dcode:: scenario debit_list

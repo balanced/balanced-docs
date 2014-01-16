@@ -39,6 +39,16 @@ Retrieve the details of a previously created order.
   .. dcode:: scenario order_show
 
 
+List All Orders
+----------------
+
+List all previously created orders.
+
+.. container:: code-white
+
+  .. dcode:: scenario order_list
+
+
 Update an Order
 ----------------
 
@@ -51,13 +61,3 @@ Update a previously created order.
 .. container:: code-white
 
   .. dcode:: scenario order_update
-
-
-List All Orders
-----------------
-
-List all previously created orders.
-
-.. container:: code-white
-
-  .. dcode:: scenario order_list

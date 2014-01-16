@@ -3,6 +3,18 @@
 Reversals
 ==========
 
+A ``Refund`` resource represents a refund of a ``Debit`` transaction.
+
+|
+
+.. container:: header3
+
+  Available Query Filters
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Reversals
+
 
 Create a Reversal
 -----------------
@@ -32,20 +44,6 @@ Retrieve a previously created reversal.
    .. dcode:: scenario reversal_show
 
 
-Update a Reversal
------------------
-
-Updates information on a reversal.
-
-.. cssclass:: dl-horizontal dl-params
-
-   .. dcode:: form reversals.update
-
-.. container:: code-white
-
-   .. dcode:: scenario reversal_update
-
-
 List All Reversals
 ------------------
 
@@ -65,30 +63,15 @@ in sorted order, with the most recent reversals appearing first.
    .. dcode:: scenario reversal_list
 
 
-Reversal Filters
---------------------------------
+Update a Reversal
+-----------------
 
-.. cssclass:: dl-horizontal dl-params filters
+Updates information on a reversal.
 
-  .. dcode:: query Reversals
+.. cssclass:: dl-horizontal dl-params
 
+   .. dcode:: form reversals.update
 
-.. List All Reversals For a Customer
-.. ---------------------------------
-.. 
-.. Returns a list of reversals you've previously created against a specific account.
-.. The reversals are returned in sorted order, with the most recent reversals
-.. appearing first.
-.. 
-.. .. cssclass:: dl-horizontal dl-params
-.. 
-..   ``limit``
-..       *optional* integer. Defaults to ``10``.
-.. 
-..   ``offset``
-..       *optional* integer. Defaults to ``0``.
-.. 
-.. .. container:: code-white
-.. 
-..    .. dcode:: scenario reversal_customer_list
+.. container:: code-white
 
+   .. dcode:: scenario reversal_update

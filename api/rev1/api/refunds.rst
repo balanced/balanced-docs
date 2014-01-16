@@ -3,6 +3,16 @@ Refunds
 
 A ``Refund`` resource represents a refund of a ``Debit`` transaction.
 
+|
+
+.. container:: header3
+
+  Available Query Filters
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: query Refunds
+
 
 Create a Refund
 ----------------
@@ -29,20 +39,6 @@ Retrieve a previously created refund.
    .. dcode:: scenario refund_show
 
 
-Update a Refund
----------------
-
-Updates information about a refund
-
-.. cssclass:: dl-horizontal dl-params
-
-   .. dcode:: form refunds.update
-
-.. container:: code-white
-
-   .. dcode:: scenario refund_update
-
-
 List All Refunds
 ----------------
 
@@ -62,30 +58,15 @@ in sorted order, with the most recent refunds appearing first.
    .. dcode:: scenario refund_list
 
 
-Refund Filters
---------------------------------
+Update a Refund
+---------------
 
-.. cssclass:: dl-horizontal dl-params filters
+Updates information about a refund
 
-  .. dcode:: query Refunds
+.. cssclass:: dl-horizontal dl-params
 
+   .. dcode:: form refunds.update
 
-.. List All Refunds For a Customer
-.. -------------------------------
-.. 
-.. Returns a list of refunds you've previously created against a specific account.
-.. The refunds are returned in sorted order, with the most recent refunds
-.. appearing first.
-.. 
-.. .. cssclass:: dl-horizontal dl-params
-.. 
-..   ``limit``
-..       *optional* integer. Defaults to ``10``.
-.. 
-..   ``offset``
-..       *optional* integer. Defaults to ``0``.
-.. 
-.. .. container:: code-white
-.. 
-..    .. dcode:: scenario refund_customer_list
+.. container:: code-white
 
+   .. dcode:: scenario refund_update

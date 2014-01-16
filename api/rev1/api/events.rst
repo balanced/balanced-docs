@@ -22,8 +22,9 @@ an HTTP ``GET`` or ``POST`` request to the endpoint of your choice.
   .. dcode:: query Events
 
 
-Event Types
------------
+.. container:: header2
+
+  Event Types
 
 .. container:: header3
 
