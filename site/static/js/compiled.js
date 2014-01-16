@@ -308,7 +308,8 @@ $(document).ready(function () {
     $('.highlight-javascript').show();
     $('.highlight-html').show();
 
-    $('.lang-change').click(function () {
+    $('.lang-change').click(function (e) {
+        e.preventDefault();
         var lang = $(this).attr('data-lang');
         $.cookie('language', lang, { expires: 7, path: '/' });
         var langtext = $(this).text();
