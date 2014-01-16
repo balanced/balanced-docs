@@ -1,3 +1,5 @@
+ctx.storage.pop('card_create', None)
+
 customer = json.loads(
     storage['customer_create']['response']
 )
