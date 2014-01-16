@@ -488,7 +488,7 @@ class Scenario(object):
         context.update(request=self.metadata)
 
         # definition
-        logger.debug('rendering defintion for "%s"', template_path)
+        logger.debug('rendering definition for "%s"', template_path)
         template = mako.template.Template(
             filename=template_path,
             lookup=self.ctx.template_lookup
@@ -513,9 +513,22 @@ class Scenario(object):
             print mako.exceptions.text_error_template().render()
             raise
 
+        # response
+        logger.debug('rendering response for "%s"', template_path)
+        template = mako.template.Template(
+            filename=template_path,
+            lookup=self.ctx.template_lookup
+        )
+        try:
+            response = template.render(mode='response', **context).strip()
+        except Exception:
+            print mako.exceptions.text_error_template().render()
+            raise
+
         return {
-            'defintion': definition,
+            'definition': definition,
             'request': request,
+            'response': response
         }
 
     def _exec(self, cmd):
@@ -571,7 +584,7 @@ def generate(write, name, blocks, response, section_chars):
                 write('.. code-block:: {0}\n'.format(pygment))
                 write('\n')
                 with write:
-                    write(block['defintion'])
+                    write(block['definition'])
                 write('\n\n')
 
     with _mark_section(write, 'request'):
@@ -591,11 +604,13 @@ def generate(write, name, blocks, response, section_chars):
             write('.. container:: response\n\n')
             with write:
                 write('Response\n\n')
-                write('.. code-block:: {0}\n'.format('javascript'))
-                write('\n')
-                with write:
-                    write(response)
-                write('\n\n')
+                for block in blocks:
+                    pygment = pygments.get(block['lang'], block['lang'])
+                    write('.. code-block:: {0}\n'.format(pygment))
+                    write('\n')
+                    with write:
+                        write(block['response'])
+                    write('\n\n')
 
 
 # main
