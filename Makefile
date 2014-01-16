@@ -36,7 +36,8 @@ build-revisions: clean-site api overview #integration spec
 all: rev0 rev1
 
 clean: clean-limited spec-clean
-	-rm -rf $(SITE_DIR)/rev*
+	-rm -rf $(SITE_DIR)/1.0
+	-rm -rf $(SITE_DIR)/1.1
 	-rm -f $(SITE_DIR)/api-gen-*.html
 	-rm  -f $(SITE_DIR)/overview-gen-*.html
 
