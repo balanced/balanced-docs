@@ -31,10 +31,10 @@ Creates a hold on a card.
   .. dcode:: scenario card_hold_create
 
 
-Retrieve a Card Hold
+Fetch a Card Hold
 ----------------------
 
-Retrieves the details of a previously created ``CardHold``.
+Fetches the details of a previously created ``CardHold``.
 
 .. container:: method-description
 

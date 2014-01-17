@@ -47,10 +47,10 @@ Creates a new ``BankAccount`` resource that represents a bank account funding in
   .. dcode:: scenario bank_account_create
 
 
-Retrieve a Bank Account
+Fetch a Bank Account
 -----------------------
 
-Retrieves the details of a previously created bank account.
+Fetches the details of a previously created bank account.
 
 .. container:: method-description
 

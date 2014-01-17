@@ -46,12 +46,12 @@ an HTTP ``GET`` or ``POST`` request to the endpoint of your choice.
     :include: card.* bank_account.* bank_account_verification.*
 
 
-Retrieve an Event
+Fetch an Event
 -----------------
 
 .. _events.show:
 
-Retrieves the details of an event that was previously created.
+Fetches the details of an event that was previously created.
 
 .. container:: code-white
 

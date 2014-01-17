@@ -33,10 +33,10 @@ than or equal to the original ``Credit`` amount.
   .. dcode:: scenario reversal_create
 
 
-Retrieve a Reversal
+Fetch a Reversal
 -------------------
 
-Retrieve a previously created reversal.
+Fetch a previously created reversal.
 
 .. container:: method-description
 

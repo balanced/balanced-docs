@@ -31,10 +31,10 @@ equal to the original ``Debit`` amount.
   .. dcode:: scenario refund_create
 
 
-Retrieve a Refund
+Fetch a Refund
 -----------------
 
-Retrieve a previously created refund.
+Fetch a previously created refund.
 
 .. container:: code-white
 

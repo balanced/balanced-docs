@@ -42,9 +42,9 @@ Create a ``Callback`` to which events will be sent.
     .. dcode:: scenario callback_create
 
 
-.. _callbacks.retrieve:
+.. _callbacks.fetch:
 
-Retrieve a Callback
+Fetch a Callback
 -------------------
 
 .. container:: code-white

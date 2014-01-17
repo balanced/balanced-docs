@@ -57,10 +57,10 @@ Debit (charge) a bank account.
    .. dcode:: scenario bank_account_debit
 
 
-Retrieve a Debit
+Fetch a Debit
 ----------------
 
-Retrieves the details of a created debit.
+Fetches the details of a created debit.
 
 .. container:: code-white
 

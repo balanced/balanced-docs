@@ -30,8 +30,8 @@ Creates a new card.
   :header_class: alert alert-tab-red
   :body_class: alert alert-red
   
-  This method is not recommended for production environments. Please use balanced.js for
-  card tokenization.
+  This method is not recommended for production environments. Please use balanced.js to
+  create cards.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -42,10 +42,10 @@ Creates a new card.
   .. dcode:: scenario card_create
 
 
-Retrieve a Card
+Fetch a Card
 ---------------
 
-Retrieves the details of a card that has previously been created.
+Fetches the details of a card that has previously been created.
 Supply the ``uri`` that was returned from your previous request, and
 the corresponding card information will be returned. The same
 information is returned when creating the card.

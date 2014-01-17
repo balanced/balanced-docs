@@ -29,10 +29,10 @@ Create a new Order.
   .. dcode:: scenario order_create
 
 
-Retrieve an Order
+Fetch an Order
 -----------------
 
-Retrieve the details of a previously created order.
+Fetch the details of a previously created order.
 
 .. container:: code-white
 

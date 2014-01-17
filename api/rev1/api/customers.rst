@@ -34,10 +34,10 @@ are supplied, the ``Customer`` will be treated as a business.
   .. dcode:: scenario customer_create
 
 
-Retrieve a Customer
+Fetch a Customer
 -------------------
 
-Retrieve the details of a previously created ``Customer``.
+Fetch the details of a previously created ``Customer``.
 
 .. container:: code-white
 
@@ -47,7 +47,7 @@ Retrieve the details of a previously created ``Customer``.
 List all Customers
 ------------------
 
-Retrieve a list of all previously created customers. The customers
+Fetch a list of all previously created customers. The customers
 are returned in sorted order, with the most recent customers
 appearing first.
 

@@ -15,7 +15,7 @@ Create a new API key.
   .. dcode:: scenario api_key_create
 
 
-Retrieve an API Key
+Fetch an API Key
 --------------------
 
 Get an existing API key.

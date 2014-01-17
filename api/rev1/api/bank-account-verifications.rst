@@ -58,7 +58,7 @@ ownership when supplied during `Confirm a Bank Account Verification`_.
   .. dcode:: scenario bank_account_verification_create
 
 
-Retrieve a Bank Account Verification
+Fetch a Bank Account Verification
 ------------------------------------------
 
 .. note::
@@ -68,7 +68,7 @@ Retrieve a Bank Account Verification
   If you're sending money to a bank account, known as issuing a credit,
   you do **NOT** need to verify the bank account
 
-Retrieves the verification for a bank account.
+Fetches the verification for a bank account.
 
 .. container:: method-description
 

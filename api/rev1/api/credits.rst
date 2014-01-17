@@ -35,10 +35,10 @@ Send money to a bank account.
   .. dcode:: scenario bank_account_credit
 
 
-Retrieve a Credit
+Fetch a Credit
 -----------------
 
-Retrieve a previously created credit.
+Fetch a previously created credit.
 
 .. container:: method-description
 
@@ -52,7 +52,7 @@ Retrieve a previously created credit.
 List All Credits
 ----------------
 
-Retrieve a list of all previously created credits. The credits
+Fetch a list of all previously created credits. The credits
 are returned in sorted order, with the most recent credits appearing
 first.
 
