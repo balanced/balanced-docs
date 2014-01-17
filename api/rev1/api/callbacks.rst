@@ -5,7 +5,8 @@ Callbacks are a means of registering to receive payloads of information
 to a specific URL of your choice. You may create multiple callbacks.
 Events will be sent to each callback URL. In the event that a 20x response
 is not received when the payload is sent to the callback URL, the callback
-will be retried up to 10 times with 10 minutes between each attempt.
+will be retried up to 10 times with an initial retry delay of 10 minutes which
+will increase exponentially with each failure for the next 7 days.
 
 |
 
