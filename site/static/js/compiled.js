@@ -319,8 +319,11 @@ $(document).ready(function () {
         parent.siblings().show();
         parent.hide();
         $("[class^='highlight-']").hide();
-        $(".highlight-javascript").show();
+        $("[class^='section-']").hide();
         $(".highlight-" + lang).show();
+        $(".section-" + lang).show();
+        $('.highlight-javascript').show();
+        $('.highlight-html').show();
     });   
 
     scrollToAnchor(window.location.hash);
