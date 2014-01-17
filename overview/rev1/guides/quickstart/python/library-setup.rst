@@ -2,7 +2,7 @@ Add this line to your application's requirements:
 
 .. code-block:: python
 
-  balanced>=0.11.12
+  balanced>=0.11.15
 
 And then execute:
 

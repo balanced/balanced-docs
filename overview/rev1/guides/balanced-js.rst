@@ -8,7 +8,7 @@ which is `PCI-DSS Level 1 Compliant`_.
 
 .. note::
    :header_class: alert alert-tab
-   :body_class: alert alert-gray
+   :body_class: alert alert-green
 
    Throughout this guide we'll be referencing this `jsFiddle example`_.
    For the sake of brevity, we'll also use `jQuery`_, but note that balanced.js
@@ -21,8 +21,8 @@ Including balanced.js
 -----------------------
 
 .. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :header_class: alert alert-tab-yellow
+  :body_class: alert alert-yellow
 
   This may not work on very old browsers. For more information on how to
   support older browsers, `quirksmode`_ provides a tutorial on how to get
@@ -42,7 +42,7 @@ balanced.js needs to be initialized with the address of the Balanced API server
 to which it should connect, as well as the revision of the API to use, in this
 case, https://api.balancedpayments.com, and revision 1.1.
 
-.. code-block:: javascript
+.. code-block:: html
 
   <script type="text/javascript">
     $(document).ready(function () {
