@@ -5676,6 +5676,17 @@ a.badge:focus {
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
+  margin-left: -20px;
+  margin-right: -15px;
+  padding-left: 20px;
+  padding-top: 3px;
+  padding-bottom: 2px;
+  display: block;
+}
+.sidebar-nav .nav-list li.toctree-l1 a:hover {
+  color: #ffffff;
+  background-color: #282E38;
+  text-shadow: none;
 }
 .sidebar-nav .nav-list li.toctree-l1:first-of-type {
   margin-top: 0px;
@@ -5703,7 +5714,7 @@ a.badge:focus {
 }
 .sidebar-nav .nav-list li.toctree-l1 ul li.toctree-l2.active a:hover {
   color: #ffffff;
-  background-color: inherit;
+  background-color: #6F727C;
   text-shadow: none;
 }
 .sidebar-nav .nav-list li.toctree-l1 ul li.toctree-l2 a {
@@ -5782,7 +5793,7 @@ h1 {
 h2,
 div.header2,
 span.header2 {
-  font-family: 'NimbusSanNov-Bol';
+  font-family: 'NimbusSanNov-SemBol';
   font-size: 18px;
   color: #000000;
   font-weight: normal;
@@ -5911,7 +5922,7 @@ p.more-link a {
 }
 section,
 .section {
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 section header p,
 .section header p {
@@ -6025,14 +6036,22 @@ ol.list-noindent {
   border-radius: 0px;
   text-shadow: none;
   padding: 20px 15px 20px 15px;
-  margin-bottom: 40px;
+  margin-bottom: 50px;
 }
 .alert-gray {
   background-color: #d9d8d5;
   color: #000000;
 }
 .alert-red {
-  background-color: #f6c5b9;
+  background-color: #F7D6CE;
+  color: #000000;
+}
+.alert-green {
+  background-color: #D4E2D6;
+  color: #000000;
+}
+.alert-yellow {
+  background-color: #F5E7D1;
   color: #000000;
 }
 .alert-tab {
@@ -6053,6 +6072,16 @@ ol.list-noindent {
   margin-bottom: 0px;
   padding: 5px 12px;
   background-color: #e66a5f;
+}
+.alert-tab-yellow {
+  position: relative;
+  text-transform: uppercase;
+  background-color: #3f8067;
+  color: #ffffff;
+  display: inline-block;
+  margin-bottom: 0px;
+  padding: 5px 12px;
+  background-color: #D5A359;
 }
 dl.dl-horizontal {
   margin-top: 40px;
@@ -6097,6 +6126,9 @@ dl.dl-params dt code {
 }
 dl.dl-params p {
   margin-bottom: 0px;
+}
+dl.dl-params.filters dt {
+  width: 280px;
 }
 blockquote.last {
   margin-left: -180px;
@@ -6414,9 +6446,13 @@ ul + table.footnote {
 #context-content {
   padding-top: 80px;
 }
-#context-content h2 {
-  margin: 20px 0 20px 0;
-  border-bottom: 1px solid #B4B4B4;
+#context-content section section {
+  border-top: 1px solid #bcbbb6;
+}
+#context-content section section h2 {
+  margin: 0px 0 30px 0;
+  border-top: 2px solid #404040;
+  display: table;
 }
 #funding-instrument-events .dl-params dt {
   width: 280px;
