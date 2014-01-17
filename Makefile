@@ -105,7 +105,7 @@ $(SITE_DIR)/overview-gen-$(REV).html: overview/html/index.html
 	mkdir -p ${SITE_DIR}/$(REV_NUM)/overview
 	mkdir -p ${SITE_DIR}/$(REV_NUM)/integration
 	mv overview/$(REV)/html/overview ${SITE_DIR}/$(REV_NUM)
-	mv overview/$(REV)/html/guides ${SITE_DIR}/$(REV_NUM)
+	-mv overview/$(REV)/html/guides ${SITE_DIR}/$(REV_NUM)
 	
 overview: $(SITE_DIR)/overview-gen-$(REV).html
 
