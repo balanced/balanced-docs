@@ -12,7 +12,7 @@ Creating an Account
 
 .. note::
    :header_class: alert alert-tab-red
-   :body_class: alert alert-gray
+   :body_class: alert alert-red
 
    Accounts have been deprecated. Please use :ref:`Customers <creating-a-customer>` instead.
 
@@ -40,7 +40,7 @@ has a valid credit card, to acquire funds from.
 
 .. note::
    :header_class: alert alert-tab-red
-   :body_class: alert alert-gray
+   :body_class: alert alert-red
 
    Accounts have been deprecated. Please use :ref:`Customers <adding-a-card-to-a-customer>` instead.
 
@@ -66,7 +66,7 @@ has a valid bank account to send money to.
 
 .. note::
    :header_class: alert alert-tab-red
-   :body_class: alert alert-gray
+   :body_class: alert alert-red
 
    Accounts have been deprecated. Please use :ref:`Customers <adding-a-bank-account-to-a-customer>` instead.
 
@@ -91,7 +91,7 @@ has been underwritten.
 
 .. note::
    :header_class: alert alert-tab-red
-   :body_class: alert alert-gray
+   :body_class: alert alert-red
 
    Accounts have been deprecated. Please use :ref:`Customers <customers>` instead.
 
@@ -115,7 +115,7 @@ has been underwritten.
 
 .. note::
    :header_class: alert alert-tab-red
-   :body_class: alert alert-gray
+   :body_class: alert alert-red
 
    Accounts have been deprecated. Please use :ref:`Customers <customers>` instead.
 
