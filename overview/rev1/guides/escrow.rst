@@ -5,7 +5,7 @@ Every marketplace has a single escrow. This escrow account is essentially like a
 pool of funds. Debits bring funds into the marketplace escrow. Credits take
 funds out of the marketplace escrow.
 
-Marketplaces have complete control over how funds are dispersed from escrow.
+Marketplaces have complete control over how funds are disbursed from escrow.
 Funds in escrow may be distributed to recipients as desired. There is inherently
 no time limit for the duration funds may sit in escrow. Best practice is to
 refrain from releasing funds until after merchant fulfillment has occurred,
