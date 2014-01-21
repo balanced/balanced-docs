@@ -46,7 +46,7 @@ days depending on the bank where the account resides.
 
 .. container:: section-python
 
-..  .. include:: python/library-setup.rst
+  .. include:: python/library-setup.rst
 
 .. container:: section-java
 
@@ -63,7 +63,7 @@ Next, refund the original debit.
 
 .. container:: section-python
 
-..  .. include:: python/library-setup.rst
+  .. include:: python/library-setup.rst
 
 .. container:: section-java
 
@@ -81,7 +81,7 @@ amount of the refund.
 
 .. container:: section-python
 
-..  .. include:: python/library-setup.rst
+  .. include:: python/library-setup.rst
 
 .. container:: section-java
 
