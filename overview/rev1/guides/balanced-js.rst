@@ -128,26 +128,33 @@ our form field values into a payload object and submit it to the Balanced API.
       security_code: $('#ex-csc').val()
     };
 
-    // Tokenize credit card
+    // Create credit card
     balanced.card.create(payload, handleResponse);
   });
 
 
+Handling Input Validation
+--------------------------
+
+When calling ``balanced.card.create``, the supplied payload will be validated
+before it is sent to Balanced. For more extensive information on validating
+input values, read the sections below.
+
+
+Checkpoint
+-----------
+
+You should understand how to do following:
+
+- ✓ Include balanced.js in your application
+- ✓ Initialize balanced.js with a server address and revision number
+- ✓ Build an input form(s) for collecting credit card and/or bank account information
+- ✓ Create a response callback handler
+- ✓ Register a click event for the form submit button that assembles the form values into a payload attempts to create a card. 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-Balanced.js Card Reference
+Method Reference - Cards
 --------------------------
 
 .. js:function:: balanced.card.create(cardDataObject, callback)
@@ -155,10 +162,10 @@ Balanced.js Card Reference
   Sends the data stored in the ``cardDataObject`` to Balanced's servers for
   tokenization.
 
-  :param cardDataObject.card_number: *required*.  The credit card number
+  :param cardDataObject.number: *required*. The credit card number
   :param cardDataObject.expiration_month: *required*. The credit card's expiration month in the format of MM
   :param cardDataObject.expiration_year: *required*. The credit card's expiration year in the format of YYYY
-  :param cardDataObject.security_code: *optional*. The credit card's security code
+  :param cardDataObject.cvv: *optional*. The credit card's security code
   :param cardDataObject.name: *optional*. The credit card holder's name
   :param cardDataObject.postal_code: *optional*. The credit card's billing postal code (zip code in the USA)
   :returns: ``null``. Invokes the ``callback`` function with three parameters -
@@ -201,21 +208,21 @@ Balanced.js Card Reference
     balanced.card.cardType('341111111111111');    // American Express
     balanced.card.cardType(0)                     // null
 
-.. js:function:: balanced.card.isSecurityCodeValid(cardNumber, securityCode)
+.. js:function:: balanced.card.isSecurityCodeValid(cardNumber, cvv)
 
   Checks whether or not the supplied number could be a valid card security code
   for the supplied card number.
 
   :param cardNumber: the card number to determine the validate the security code for.
-  :param securityCode: the security number to validate
+  :param cvv: the security number to validate
   :returns: ``true`` if the csc is valid for the card number provided, ``false`` otherwise.
 
   Example:
 
   .. code-block:: javascript
 
-    balanced.card.isSecurityCodeValid('4111111111111111', 999)   // true
-    balanced.card.isSecurityCodeValid('4111111111111111', 9999)  // false
+    balanced.card.isSecurityCodeValid('4111111111111111', '999')   // true
+    balanced.card.isSecurityCodeValid('4111111111111111', '9999')  // false
 
 .. js:function:: balanced.card.isExpiryValid(expirationMonth, expirationYear)
 
@@ -231,7 +238,7 @@ Balanced.js Card Reference
   .. code-block:: javascript
 
     balanced.card.isExpiryValid('01', '2020');    // true
-    balanced.card.isExpiryValid(1, 2010);         // false
+    balanced.card.isExpiryValid('01', '2010');     // false
 
 
 .. js:function:: balanced.card.validate(cardDataObject)
@@ -240,33 +247,75 @@ Balanced.js Card Reference
   a dictionary of errors. Will return an empty dictionary if there are no
   errors.
 
-  :param cardDataObject.card_number: the card number to validate
-  :param cardDataObject.security_code: the security code to validate
+  :param cardDataObject.number: the card number to validate
+  :param cardDataObject.cvv: the security code to validate
   :param cardDataObject.expiration_month: the expiration month to validate
   :param cardDataObject.expiration_year: the expiration year to validate
   :returns: ``{}`` if all fields are valid, else a dictionary of errors otherwise.
 
-  Example:
+  Valid input example:
+  
+  .. code-block:: javascript
+
+    balanced.card.validate({
+       number:'4111111111111111',
+       expiration_month:'1',
+       expiration_year:'2020',
+       cvv:123
+    });
+
+  Will return:
+
+  .. code-block:: javascript
+  
+    {
+        "cards": [
+            {
+                "href": "/cards/CCEfgqHgYfUYoa5CepaiBo6",
+                "id": "CCEfgqHgYfUYoa5CepaiBo6",
+                "links": {}
+            }
+        ],
+        "links": {},
+        "status_code": 201
+    }
+  
+  
+  Invalid input example:
 
   .. code-block:: javascript
 
     balanced.card.validate({
-       card_number:'4111111111111111',
-       expiration_month:1,
-       expiration_year:2000,
-       security_code:123
+       number:'4111111111111111',
+       expiration_month:'1',
+       expiration_year:'2000',
+       cvv:123,
+       name:'John Doe'
     });
 
   Will return:
 
   .. code-block:: javascript
 
-    {expiration: '"1-2000" is not a valid credit card expiration date'}
+    {
+        "errors": [
+            {
+                "description": "Invalid field [expiration_month,expiration_year] - \"1-2000\" is not a valid credit card expiration date",
+                "extras": {
+                    "expiration_month": "Invalid field [expiration_month,expiration_year] - \"1-2000\" is not a valid credit card expiration date",
+                    "expiration_year": "Invalid field [expiration_month,expiration_year] - \"1-2000\" is not a valid credit card expiration date"
+                },
+                "status": "Bad Request",
+                "category_code": "request",
+                "additional": null,
+                "status_code": 400,
+                "category_type": "request"
+            }
+        ]
+    }
 
 
-.. _getting_started.balanced.js_bank_accounts:
-
-Balanced.js BankAccount Reference
+Method Reference - Bank Accounts
 ----------------------------------
 
 .. js:function:: balanced.bankAccount.validateRoutingNumber(routingNumber)
@@ -277,8 +326,8 @@ Balanced.js BankAccount Reference
   :returns: ``true`` if the routing number check digit matches, ``false`` otherwise.
 
   .. warning::
-     :header_class: alert alert-tab
-     :body_class: alert alert-gray
+     :header_class: alert alert-tab-yellow
+     :body_class: alert alert-yellow
 
      The success of this method does not guarantee that the
      routing number is valid, only that it falls within a valid range.
@@ -298,28 +347,74 @@ Balanced.js BankAccount Reference
   returns a dictionary of errors. Will return an empty dictionary if there
   are no errors.
 
-  :param bankAccountDataObject.bank_code: The bank routing number to validate
-  :param bankAccountDataObject.account_number: the account number to perform a sanity check on
-  :param bankAccountDataObject.name: the name on the bank account to perform a sanity check on
+  :param bankAccountDataObject.routing_number: *required*. The bank routing number to validate
+  :param bankAccountDataObject.account_number: *required*. The account number to perform a sanity check on
+  :param bankAccountDataObject.name: *optional*. The name on the bank account to perform a sanity check on
+  :param bankAccountDataObject.type: *optional*. The name on the bank account to perform a sanity check on
   :returns: ``{}`` if all fields are valid, else a dictionary of errors otherwise.
 
   .. warning::
-     :header_class: alert alert-tab
-     :body_class: alert alert-gray
+     :header_class: alert alert-tab-yellow
+     :body_class: alert alert-yellow
 
      Account numbers can not be validated in real time. More on
      :ref:`reducing payout delays <best_practices.reducing-payout-delays>`.
 
-  Example:
+  Valid input example:
 
   .. code-block:: javascript
 
     balanced.bankAccount.validate({
        bank_code:'321174851',
-       account_number:'09877765432111111',
-       name:'Tommy Q. CopyPasta'
+       account_number:'9900000000',
+       name:'John Doe'
     })
 
+  Will return:
+  
+  .. code-block:: javascript
+  
+    {
+        "bank_accounts": [
+            {
+                "href": "/bank_accounts/BA3J3ukgOKmvVCCPl6ElwWea",
+                "id": "BA3J3ukgOKmvVCCPl6ElwWea",
+                "links": {}
+            }
+        ],
+        "links": {},
+        "status_code": 201
+    }
+  
+  Invalid input example:
+
+  .. code-block:: javascript
+
+    balanced.bankAccount.validate({
+       bank_code:'32117485',
+       account_number:'9900000000',
+       name:'John Doe'
+    })
+
+  Will return:
+  
+  .. code-block:: javascript
+  
+    {
+        "errors": [
+            {
+                "description": "Invalid field [routing_number] - \"32117485\" is not a valid routing number",
+                "extras": {
+                    "routing_number": "Invalid field [routing_number] - \"32117485\" is not a valid routing number"
+                },
+                "status": "Bad Request",
+                "category_code": "request",
+                "additional": null,
+                "status_code": 400,
+                "category_type": "request"
+            }
+        ]
+    }
 
 
 .. _jsFiddle example: http://jsfiddle.net/balanced/an5Cz/
