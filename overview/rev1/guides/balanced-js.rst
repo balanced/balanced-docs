@@ -60,12 +60,13 @@ Collecting credit card information
 ----------------------------------
 
 Before we can collect credit card information, we need a place where users can
-ender it in, a form. The example below is extracted this `jsFiddle example`_.
+enter it in, a form. The example below is extracted from this
+`jsFiddle example`_.
 
 
 .. code-block:: html
 
-  <form role="form" class="form-horizontal">
+  <form role="form">
     <div>
       <label>Name on Card</label>
       <input type="text" id="cc-name" autocomplete="off" placeholder="John Doe" />
@@ -89,6 +90,9 @@ ender it in, a form. The example below is extracted this `jsFiddle example`_.
 
 Now let's define our `callback`_, the block of code we want to execute after
 having received a response for our tokenization request to the Balanced API.
+If desired, this can be the same method as the one handling bank account 
+creation request responses. Just add some checking to see what kind of response
+was returned, e.g check for a ``cards`` or ``bank_accounts`` key.
 
 .. code-block:: javascript
 
@@ -131,6 +135,84 @@ our form field values into a payload object and submit it to the Balanced API.
     // Create credit card
     balanced.card.create(payload, handleResponse);
   });
+
+
+.. _balanced-js.collecting-bank-account-info:
+
+Collecting bank account information
+----------------------------------
+
+Before we can collect credit card information, we need a place where users can
+enter it in, a form. The example below is extracted from this
+`jsFiddle example`_.
+
+
+.. code-block:: html
+
+  <form role="form">
+    <div>
+      <label>Account Holder's Name</label>
+      <input type="text" id="ba-name" autocomplete="off" placeholder="John Doe" />
+    </div>
+    <div>
+      <label>Routing Number</label>
+      <input type="text" id="ba-routing" autocomplete="off" placeholder="322271627" />
+    </div>
+    <div>
+      <label>Account Number</label>
+      <input type="text" id="ba-number" autocomplete="off" placeholder="9900000000" />
+    </div>
+    <a id="ba-submit">Tokenize</a>
+  </form>
+
+
+Now let's define our `callback`_, the block of code we want to execute after
+having received a response for our bank account creation request to the
+Balanced API. If desired, this can be the same method as the one handling card 
+creation request responses. Just add some checking to see what kind of response
+was returned, e.g check for a ``cards`` or ``bank_accounts`` key.
+
+.. code-block:: javascript
+
+  function handleResponse(response) {
+    if (response.status === 201 && response.href) {
+      // Successful tokenization
+      // Call your backend
+      jQuery.post("/path/to/your/backend", {
+        uri: response.href
+      }, function(r) {
+        // Check your backend response
+        if (r.status === 201) {
+          // Your successful logic here from backend ruby
+        } else {
+          // Your failure logic here from backend ruby
+        }
+      });
+    } else {
+      // Failed to tokenize, your error logic here
+    }
+  }
+
+
+Now register a click event for the submit button. This is where we will place
+our form field values into a payload object and submit it to the Balanced API.
+
+.. code-block:: javascript
+
+  $('#ba-submit').click(function (e) {
+    e.preventDefault();
+
+    var payload = {
+      name: $('#ba-name').val(),
+      routing_number: $('#ba-routing').val(),
+      account_number: $('#ba-number').val()
+    };
+
+    // Create credit card
+    balanced.bankAccount.create(payload, handleResponse);
+  });
+
+
 
 
 Handling Input Validation
