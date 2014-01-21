@@ -1,3 +1,5 @@
+:orphan:
+
 Configure Balanced with your API key so requests are authenticated as your
 marketplace:
 

@@ -48,6 +48,6 @@ cards and issuing payouts.
       :box-classes: box box-block box-blue right
       :icon-classes: icon icon-arrow
 
-      :doc:`Read Part 2: Charging Credit Cards <quickstart/charging-cards>`
+      :doc:`Read Part 2: Charging Credit Cards <quickstart/charging-funding-instruments>`
 
     .. clear::

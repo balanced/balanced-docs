@@ -7,6 +7,12 @@ This section explains how to obtain, set up, and prepare to integrate a client
 library into an application. All official Balanced client libraries are
 open source and stored on Github.
 
+API References:
+
+.. cssclass:: list-noindent
+
+  - `Authentication </1.1/api/authentication/#authenticating-to-balanced>`_
+
 Prerequisites
 ---------------
 
@@ -70,11 +76,12 @@ Up to this point you should have:
 Ensure you have met these points before proceeding.
 
 
-
 .. container:: box-right
 
  .. read-more-widget::
    :box-classes: box box-block box-blue right
    :icon-classes: icon icon-arrow
 
-   :doc:`Read Part 2 <create-customer>`
+   :doc:`Charging Cards <charging-funding-instruments>`
+
+|

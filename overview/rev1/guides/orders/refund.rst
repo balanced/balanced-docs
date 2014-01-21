@@ -58,7 +58,7 @@ Next, refund the original debit.
 
 .. container:: section-ruby
 
-  .. literalinclude:: ruby/refund-rebit.rb
+  .. literalinclude:: ruby/refund-debit.rb
      :language: ruby
 
 .. container:: section-python
