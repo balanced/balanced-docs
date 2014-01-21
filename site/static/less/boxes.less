@@ -24,6 +24,13 @@
       .cssIcon(@iconsFile, 50px, 50px, -200px, 230px);
     }
     
+    &.icon-arrow-left {
+      height: 50px;
+      width: 50px;
+      background: #0089a7 url(/static/img/more-icon-left.png) center no-repeat;
+      background-size: 60px 60px !important;
+    }
+    
     &.icon-arrow {
       height: 50px;
       width: 50px;
@@ -69,11 +76,16 @@
   }
 }
 
+.box-left {
+  float: left;
+  display: inline-block;
+}
+
 .box-right {
   float: right;
   
   a {
-    padding: 18px 40px 14px 20px;
+    padding: 16px 40px 16px 20px;
     display: inline-block;
   }
   
