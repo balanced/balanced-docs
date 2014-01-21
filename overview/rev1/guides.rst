@@ -8,11 +8,11 @@ Guides
 
   guides/quickstart
   guides/escrow
-  guides/orders
   guides/balanced-js
-  guides/splitting-payments
   guides/debits
+  guides/credits
   guides/holds
   guides/refunds
-  guides/credits
+  guides/orders
+  guides/collecting-fees
   guides/merchant-dashboard
