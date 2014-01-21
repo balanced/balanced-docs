@@ -6140,6 +6140,18 @@ dl.dl-params p {
 dl.dl-params.filters dt {
   width: 280px;
 }
+dl.function dd {
+  margin-left: 0px;
+}
+dl.function table ul {
+  margin-left: 0px;
+}
+dl.function table td {
+  padding-left: 10px;
+}
+dl.function table th {
+  text-align: right;
+}
 blockquote.last {
   margin-left: -180px;
 }
