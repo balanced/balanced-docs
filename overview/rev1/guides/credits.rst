@@ -94,18 +94,16 @@ Feel free to chime in on an existing issue or create a new one if you'd like
 to see another payment method supported.
 
 
-Pre-funding Your Account
+Pre-funding Escrow
 ------------------------
 
-Any payout issued requires maintaining sufficient money in your Balanced account.
+Any payout issued requires maintaining sufficient money in your Balanced escrow.
 
 If you do not have a sufficient balance, Balanced will return a ``409`` http
 status code, stating that you do not have sufficient funds to cover your
-desired ACH operation.
-
-As a result, you will have to add funds to your marketplace escrow from a 
-credit card or bank account attached to your marketplace. This may be done via
-the API or via the Balanced `dashboard`_. To do this via the API:
+desired ACH operation. You will have to add funds to your marketplace escrow
+from a credit card or bank account attached to your marketplace. This may be
+done via the API or via the Balanced `dashboard`_. To do this via the API:
 
 
 .. tip::
