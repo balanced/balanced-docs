@@ -24,4 +24,4 @@ is not required for simplicity.
 
 .. _https:
 .. _http basic access authentication: http://en.wikipedia.org/wiki/HTTP_Secure
-.. _dashboard: https://www.balancedpayments.com/dashboard
+.. _dashboard: https://dashboard.balancedpayments.com/
