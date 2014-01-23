@@ -86,8 +86,7 @@ ownership of the bank account.
   :header_class: alert alert-tab
   :body_class: alert alert-gray
 
-  For the *test* environment the trial
-  deposit amounts are always 1 and 1
+  For *test marketplaces*, the trial deposit amounts are always 1 and 1.
 
 
 .. container:: method-description
