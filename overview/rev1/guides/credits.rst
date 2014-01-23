@@ -1,59 +1,71 @@
 Working with Credits
 =====================
 
+A credit (payout) is a transaction where funds are sent to a bank account with
+ACH direct deposit. Funds are deposited the next business day for U.S.
+bank accounts and the same business day for Wells Fargo accounts.
 
-Credits
--------
+Credits have a ``status`` attribute representing the current status of the credit
+throughout the payout process. There are three possible ``status`` values:
+``pending``, ``succeeded``, ``failed``
 
-.. container:: span6
+|
 
-   .. container:: header3
+Payout methods
+--------------
 
-      Tutorials
+Currently Balanced only supports payouts to bank accounts via ACH but we will
+add more. All of this is publicly tracked via Github issues. For example:
 
-   .. icon-box-widget::
-     :box-classes: box box-block box-blue
-     :icon-classes: icon icon-page
+.. cssclass:: list-noindent
 
-     :ref:`Collect bank account info <getting_started.collecting_bank_info>`
+* `Payouts via Check <https://github.com/balanced/balanced-api/issues/69>`_
+* `Pushing to Cards <https://github.com/balanced/balanced-api/issues/32>`_
 
-   .. icon-box-widget::
-     :box-classes: box box-block box-blue
-     :icon-classes: icon icon-page
-
-     :ref:`Credit bank account <getting_started.credit_bank_account>`
-
-
-.. container:: span6
-
-   .. container:: header3
-
-     Form Building
-
-   .. icon-box-widget::
-     :box-classes: box box-block box-turquoise
-     :icon-classes: icon icon-page
-
-     Sample bank account form
+Feel free to chime in on an existing issue or create a new one if you'd like
+to see another payment method supported.
 
 
-.. container:: span6
+Initiating a credit
+--------------------
 
-   .. container:: header3
+|
 
-     Testing
+API References:
 
-   .. icon-box-widget::
-     :box-classes: box box-block box-purple
-     :icon-classes: icon icon-page
+.. cssclass:: list-noindent
 
-     :ref:`Test bank account numbers <resources.test_bank_accounts>`
+- `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
+- `Create a Credit </1.1/api/credits/#create-a-credit>`_
 
-.. clear::
+|
+
+Initiating a credit (payout) is simple. Assuming we have an existing ``BankAccount`` we can
+do the following:
+
+.. code-block:: ruby
+
+  # bank_account_href is the stored href for the bank account
+  bank_account = Balanced::BankAccount.fetch(bank_account_href)
+  credit = bank_account.credit(
+    :amount => 100000,
+    :description => 'Payout for order #1111'
+  )
+
+.. code-block:: python
+
+  # bank_account_href is the stored href for the bank account
+  bank_account = balanced.BankAccount.fetch(bank_account_href)
+  credit = bank_account.credit(
+    amount=100000,
+    description='Payout for order #1111'
+  )
+  
+Credits may also be initiated via the `Dashboard`_.
 
 
-Credit's Status Field
----------------------
+Payout status flow
+-------------------
 
 Credits have a ``status`` attribute representing the current status of the credit
 throughout the payout process. There are three possible ``status`` values:
@@ -80,43 +92,62 @@ throughout the payout process. There are three possible ``status`` values:
     after three business days with a rejection. As soon as Balanced receives the
     rejection, the status is updated to ``failed``.
 
+|
 
-Payout Methods
---------------
-
-Currently Balanced only supports payouts to bank accounts via ACH but we will
-add more. All of this is publicly tracked via Github issues. For example:
-
-* `Payouts via Check <https://github.com/balanced/balanced-api/issues/69>`_
-* `Pushing to Cards <https://github.com/balanced/balanced-api/issues/32>`_
-
-Feel free to chime in on an existing issue or create a new one if you'd like
-to see another payment method supported.
+.. image:: https://www.balancedpayments.com/images/payouts/payouts_status-2x-0ed0a72a.png
 
 
-Pre-funding Escrow
-------------------------
+Reversing a credit
+-------------------
 
-Any payout issued requires maintaining sufficient money in your Balanced escrow.
+|
 
-If you do not have a sufficient balance, Balanced will return a ``409`` http
-status code, stating that you do not have sufficient funds to cover your
-desired ACH operation. You will have to add funds to your marketplace escrow
-from a credit card or bank account attached to your marketplace. This may be
-done via the API or via the Balanced `dashboard`_. To do this via the API:
+API References:
 
+.. cssclass:: list-noindent
 
-.. tip::
-  :header_class: alert alert-tab
-  :body_class: alert alert-gray
+- `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
 
-  We advise that you transfer a large amount in your Balanced account or you
-  may request that Balanced always keep a constant amount in your account for
-  you. We're publicly tracking this on `github issue #132`_ and appreciate your input
+|
 
-Transfers may take 2-5 days for the funds to become available; alternatively, you
-may fund your account **instantly** with :ref:`Balanced Processing! <processing>`
+In the event that we need to cancel a payout, e.g. a user is not
+satisfied with the product, we can create a ``Reversal``.
 
+.. code-block:: ruby
+
+  # credit_href is the stored href for the credit
+  credit = Balanced::Credit.fetch(credit_href)
+  reversal = credit.reverse(
+    :amount => 100000,
+    :description => 'Reversal for Order #1111',
+    :meta => {
+      'merchant.feedback' => 'positive',
+      'fulfillment.item.condition' => 'OK',
+      'user.refund_reason' => 'not happy with product'
+    }
+  )
+
+.. code-block:: python
+
+  # credit_href is the stored href for the credit
+  credit = balanced.Credit.fetch('/credits/CR4lqO3NwBWdLYGvMAUeKt7g')
+  reversal = credit.reverse(
+      amount=100000,
+      description="Reversal for order #1111",
+      meta={
+          "merchant.feedback": "positive",
+          "user.refund_reason": "not happy with product",
+          "fulfillment.item.condition": "OK",
+      }
+  )
+
+The status flow of a reversal is as follows:
+
+.. image:: https://www.balancedpayments.com/images/payouts/payouts_reversal_status-2x-dc135471.png
+
+|
+
+Credits may also be reversed from the `Dashboard`_.
 
 
 
@@ -124,8 +155,7 @@ may fund your account **instantly** with :ref:`Balanced Processing! <processing>
 .. _balanced.js: https://js.balancedpayments.com/v1/balanced.js
 .. _testing documentation: /docs/testing#simulating-card-failures
 .. _jQuery: http://www.jquery.com
-.. _dashboard: https://dashboard.balancedpayments.com/
 .. _issues: https://github.com/balanced/balanced-api/issues
 .. _github issue #151: https://github.com/balanced/balanced-api/issues/151
 .. _github issue #70: https://github.com/balanced/balanced-api/issues/70
-.. _github issue #132: https://github.com/balanced/balanced-api/issues/132
+.. _Dashboard: https://dashboard.balancedpayments.com/

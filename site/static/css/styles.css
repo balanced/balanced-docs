@@ -241,8 +241,8 @@ a:focus {
 }
 .row {
   margin-left: -15px;
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .row:before,
 .row:after {
@@ -251,6 +251,11 @@ a:focus {
   line-height: 0;
 }
 .row:after {
+  clear: both;
+}
+.row:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 [class*="span"] {
@@ -422,8 +427,8 @@ a:focus {
 }
 .row-fluid {
   width: 100%;
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .row-fluid:before,
 .row-fluid:after {
@@ -432,6 +437,11 @@ a:focus {
   line-height: 0;
 }
 .row-fluid:after {
+  clear: both;
+}
+.row-fluid:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 .row-fluid [class*="span"] {
@@ -774,8 +784,8 @@ a:focus {
 .container {
   margin-right: auto;
   margin-left: auto;
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .container:before,
 .container:after {
@@ -786,11 +796,16 @@ a:focus {
 .container:after {
   clear: both;
 }
+.container:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
 .container-fluid {
   padding-right: 15px;
   padding-left: 15px;
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .container-fluid:before,
 .container-fluid:after {
@@ -799,6 +814,11 @@ a:focus {
   line-height: 0;
 }
 .container-fluid:after {
+  clear: both;
+}
+.container-fluid:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 p {
@@ -977,8 +997,8 @@ dd {
   margin-left: 9.1px;
 }
 .dl-horizontal {
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .dl-horizontal:before,
 .dl-horizontal:after {
@@ -987,6 +1007,11 @@ dd {
   line-height: 0;
 }
 .dl-horizontal:after {
+  clear: both;
+}
+.dl-horizontal:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 .dl-horizontal dt {
@@ -1525,8 +1550,8 @@ textarea.span1,
   width: 16px;
 }
 .controls-row {
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .controls-row:before,
 .controls-row:after {
@@ -1535,6 +1560,11 @@ textarea.span1,
   line-height: 0;
 }
 .controls-row:after {
+  clear: both;
+}
+.controls-row:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 .controls-row [class*="span"],
@@ -1716,8 +1746,8 @@ select:focus:invalid:focus {
   margin-bottom: 18.2px;
   background-color: #f5f5f5;
   border-top: 1px solid #e5e5e5;
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .form-actions:before,
 .form-actions:after {
@@ -1726,6 +1756,11 @@ select:focus:invalid:focus {
   line-height: 0;
 }
 .form-actions:after {
+  clear: both;
+}
+.form-actions:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 .help-block,
@@ -1995,8 +2030,8 @@ legend + .control-group {
 }
 .form-horizontal .control-group {
   margin-bottom: 18.2px;
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .form-horizontal .control-group:before,
 .form-horizontal .control-group:after {
@@ -2005,6 +2040,11 @@ legend + .control-group {
   line-height: 0;
 }
 .form-horizontal .control-group:after {
+  clear: both;
+}
+.form-horizontal .control-group:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 .form-horizontal .control-label {
@@ -3355,8 +3395,8 @@ button.close {
 }
 .nav-tabs,
 .nav-pills {
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .nav-tabs:before,
 .nav-pills:before,
@@ -3368,6 +3408,12 @@ button.close {
 }
 .nav-tabs:after,
 .nav-pills:after {
+  clear: both;
+}
+.nav-tabs:after,
+.nav-pills:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 .nav-tabs > li,
@@ -3524,8 +3570,8 @@ button.close {
   border-color: #999999;
 }
 .tabbable {
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .tabbable:before,
 .tabbable:after {
@@ -3534,6 +3580,11 @@ button.close {
   line-height: 0;
 }
 .tabbable:after {
+  clear: both;
+}
+.tabbable:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 .tab-content {
@@ -3660,8 +3711,8 @@ button.close {
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
   -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.065);
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .navbar-inner:before,
 .navbar-inner:after {
@@ -3670,6 +3721,11 @@ button.close {
   line-height: 0;
 }
 .navbar-inner:after {
+  clear: both;
+}
+.navbar-inner:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 .navbar .container {
@@ -3724,8 +3780,8 @@ button.close {
 }
 .navbar-form {
   margin-bottom: 0;
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .navbar-form:before,
 .navbar-form:after {
@@ -3734,6 +3790,11 @@ button.close {
   line-height: 0;
 }
 .navbar-form:after {
+  clear: both;
+}
+.navbar-form:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 .navbar-form input,
@@ -4302,8 +4363,8 @@ button.close {
   margin: 18.2px 0;
   list-style: none;
   text-align: center;
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .pager:before,
 .pager:after {
@@ -4312,6 +4373,11 @@ button.close {
   line-height: 0;
 }
 .pager:after {
+  clear: both;
+}
+.pager:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 .pager li {
@@ -4431,8 +4497,8 @@ button.close {
   -webkit-box-shadow: inset 0 1px 0 #ffffff;
   -moz-box-shadow: inset 0 1px 0 #ffffff;
   box-shadow: inset 0 1px 0 #ffffff;
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .modal-footer:before,
 .modal-footer:after {
@@ -4441,6 +4507,11 @@ button.close {
   line-height: 0;
 }
 .modal-footer:after {
+  clear: both;
+}
+.modal-footer:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 .modal-footer .btn + .btn {
@@ -4657,8 +4728,8 @@ button.close {
 .thumbnails {
   margin-left: -15px;
   list-style: none;
-  *zoom: 1;
   clear: both;
+  *zoom: 1;
 }
 .thumbnails:before,
 .thumbnails:after {
@@ -4667,6 +4738,11 @@ button.close {
   line-height: 0;
 }
 .thumbnails:after {
+  clear: both;
+}
+.thumbnails:after {
+  content: " ";
+  display: table;
   clear: both;
 }
 .row-fluid .thumbnails {
@@ -6015,6 +6091,14 @@ ol.list-noindent {
   margin-left: 0px !important;
   padding-left: 0px !important;
 }
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after {
+  content: " ";
+  display: table;
+  clear: both;
+}
 /* !important is required to ensure override of GitHub styles */
 .gist {
   margin-bottom: 40px !important;
@@ -6480,7 +6564,24 @@ ul + table.footnote {
 #context-content section section h2 {
   margin: 0px 0 30px 0;
   border-top: 2px solid #404040;
+  display: inline;
+  padding-top: 10px;
+  clear: both;
+  *zoom: 1;
+}
+#context-content section section h2:before,
+#context-content section section h2:after {
   display: table;
+  content: "";
+  line-height: 0;
+}
+#context-content section section h2:after {
+  clear: both;
+}
+#context-content section section h2:after {
+  content: " ";
+  display: table;
+  clear: both;
 }
 #context-content section section section {
   border-top: none;

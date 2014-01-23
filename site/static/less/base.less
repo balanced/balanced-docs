@@ -73,3 +73,15 @@ ul.list-noindent, ol.list-noindent {
   margin-left: 0px !important;
   padding-left: 0px !important;
 }
+
+// mixins
+
+.clearfix {
+  &:after {
+    content: " ";
+    display: table;
+    clear: both;
+  }
+
+  *zoom: 1; // When supporting IE 7
+}

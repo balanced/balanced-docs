@@ -21,3 +21,53 @@ customer dissatisfaction.
   :body_class: alert alert-green
   
   Balanced does not collect interest of any kind on funds in escrow.
+
+
+Pre-funding Escrow
+------------------------
+
+Any payout issued requires maintaining sufficient money in your Balanced escrow.
+
+If you do not have a sufficient balance, Balanced will return a ``409`` http
+status code, stating that you do not have sufficient funds to cover your
+desired ACH operation. You will have to add funds to your marketplace escrow
+from a credit card or bank account attached to your marketplace. This may be
+done via the API or via the Balanced `dashboard`_. To do this via the API:
+
+.. code-block:: ruby
+
+  Balanced::Marketplace.mine.owner_customer.debit(
+    :amount => 2000000,
+    :description => 'Pre-fund Balanced escrow'
+  )
+
+.. code-block:: python
+
+  balanced.Marketplace.mine.owner_customer.debit(
+    amount=2000000,
+    description='Pre-fund Balanced escrow'
+  )
+
+
+.. tip::
+  :header_class: alert alert-tab
+  :body_class: alert alert-green
+
+  We advise that you transfer a large amount in your Balanced account or you
+  may request that Balanced always keep a constant amount in your account for
+  you. We're publicly tracking this on `github issue #132`_ and appreciate your input
+
+Transfers may take 2-5 days for the funds to become available; alternatively, you
+may fund your account **instantly** by debiting a credit card associated to your
+marketplace.
+
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-green
+  
+  Transactions involving credit cards and bank accounts associated to your
+  marketplace are free of charge.
+
+.. _dashboard: https://dashboard.balancedpayments.com/
+.. _github issue #132: https://github.com/balanced/balanced-api/issues/132
