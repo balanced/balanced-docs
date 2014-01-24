@@ -45,7 +45,7 @@ do the following:
 
 .. code-block:: ruby
 
-  # bank_account_href is the stored href for the bank account
+  # bank_account_href is the stored href for the BankAccount
   bank_account = Balanced::BankAccount.fetch(bank_account_href)
   credit = bank_account.credit(
     :amount => 100000,
@@ -54,7 +54,7 @@ do the following:
 
 .. code-block:: python
 
-  # bank_account_href is the stored href for the bank account
+  # bank_account_href is the stored href for the BankAccount
   bank_account = balanced.BankAccount.fetch(bank_account_href)
   credit = bank_account.credit(
     amount=100000,
@@ -86,7 +86,7 @@ Example usage:
 
 .. code-block:: ruby
 
-  # bank_account_href is the stored href for the bank account
+  # bank_account_href is the stored href for the BankAccount
   bank_account = Balanced::BankAccount.fetch(bank_account_href)
   credit = bank_account.credit(
     :amount => 100000,
@@ -96,7 +96,7 @@ Example usage:
 
 .. code-block:: python
 
-  # bank_account_href is the stored href for the bank account
+  # bank_account_href is the stored href for the BankAccount
   bank_account = balanced.BankAccount.fetch(bank_account_href)
   credit = bank_account.credit(
     amount=100000,
@@ -150,12 +150,12 @@ API References:
 
 |
 
-In the event that we need to cancel a payout, e.g. a user is not
-satisfied with the product, we can create a ``Reversal``.
+In the event that you need to cancel a payout, e.g. a user is not
+satisfied with the product, you can create a ``Reversal``.
 
 .. code-block:: ruby
 
-  # credit_href is the stored href for the credit
+  # credit_href is the stored href for the Credit
   credit = Balanced::Credit.fetch(credit_href)
   reversal = credit.reverse(
     :amount => 100000,
@@ -169,7 +169,7 @@ satisfied with the product, we can create a ``Reversal``.
 
 .. code-block:: python
 
-  # credit_href is the stored href for the credit
+  # credit_href is the stored href for the Credit
   credit = balanced.Credit.fetch('/credits/CR4lqO3NwBWdLYGvMAUeKt7g')
   reversal = credit.reverse(
       amount=100000,

@@ -12,7 +12,6 @@ Guides
   guides/debits
   guides/credits
   guides/holds
-  guides/refunds
   guides/orders
   guides/collecting-fees
 ..  guides/merchant-dashboard

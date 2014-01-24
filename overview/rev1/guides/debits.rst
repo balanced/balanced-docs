@@ -17,12 +17,6 @@ Processing methods
 
 Currently Balanced supports credit card debits and bank accounts via ACH.
 
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-green
-
-  Bank accounts you wish to debit must first `be verified`_.
-
 
 Creating a debit
 --------------------
@@ -40,7 +34,7 @@ Debit a credit card example:
 
 .. code-block:: ruby
 
-  # bank_account_href is the stored href for the bank account
+  # bank_account_href is the stored href for the BankAccount
   bank_account = Balanced::BankAccount.fetch(bank_account_href)
   credit = bank_account.credit(
     :amount => 100000,
@@ -49,7 +43,7 @@ Debit a credit card example:
 
 .. code-block:: python
 
-  # bank_account_href is the stored href for the bank account
+  # bank_account_href is the stored href for the BankAccount
   bank_account = balanced.BankAccount.fetch(bank_account_href)
   credit = bank_account.credit(
     amount=100000,
@@ -61,7 +55,7 @@ Debit a bank account example:
 
 .. code-block:: ruby
 
-  # bank_account_href is the stored href for the bank account
+  # bank_account_href is the stored href for the BankAccount
   bank_account = Balanced::BankAccount.fetch(bank_account_href)
   credit = bank_account.credit(
     :amount => 100000,
@@ -70,12 +64,19 @@ Debit a bank account example:
 
 .. code-block:: python
 
-  # bank_account_href is the stored href for the bank account
+  # bank_account_href is the stored href for the BankAccount
   bank_account = balanced.BankAccount.fetch(bank_account_href)
-  credit = bank_account.credit(
-    amount=100000,
-    description='Payout for order #1111'
+  bank_account.debit(
+    appears_on_statement_as='Statement text',
+    amount=5000,
+    description='Some descriptive text for the debit in the dashboard'
   )
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-green
+
+  Bank accounts you wish to debit must first `be verified`_.
 
 
 ACH Debit status flow
@@ -94,13 +95,12 @@ throughout the payout process. There are three possible ``status`` values:
     If the debit is created after 3pm PST, it will not be submitted for processing
     until **3pm PST** the next business day.
   ``succeeded``
-    After 3-4 days, the 
+    After 3-4 days, the status will change to ``succeeded`` and the funds will be
+    available in escrow.
   ``failed``
-    The seller's bank has up to three business days from when the money *should*
-    be available to indicate a rejection along with the rejection reason.
-    Unfortunately, not all banks comply with ACH network policies and may respond
-    after three business days with a rejection. As soon as Balanced receives the
-    rejection, the status is updated to ``failed``.
+    After 3-4 days, the status will change to ``failed`` if the transaction was
+    not successful due to a problem such as an incorrect bank account number
+    or insufficient funds.
 
 |
 
@@ -110,5 +110,61 @@ throughout the payout process. There are three possible ``status`` values:
 .. _be verified: /1.1/api/bank-account-verifications
 
 
-Reversing a credit
+Refunding a debit
 -------------------
+
+|
+
+API References:
+
+.. cssclass:: list-noindent
+
+- `Create a Refund </1.1/api/refunds/#create-a-refund>`_
+
+|
+
+In the event that you need to cancel a payout, e.g. a user is not satisfied with
+the product, you can create a ``Refund``.
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-gray
+
+  For credit cards it typically takes one business day for refunds to
+  be reflected on a card statement, but it's possible for the issuing bank to
+  take as many as five business days to process a refund. ACH debit refunds
+  generally take 3-5 days to process.
+
+.. code-block:: ruby
+
+  # debit_href is the stored href for the Debit
+  debit = Balanced::Debit.fetch(debit_href)
+  debit.refund(
+    :amount => 3000,
+    :description => 'Refund for Order #1111',
+    :meta => {
+      'merchant.feedback' => 'positive',
+      'fulfillment.item.condition' => 'OK',
+      'user.refund_reason' => 'not happy with product'
+    }
+  )
+
+.. code-block:: python
+
+  # debit_href is the stored href for the Debit
+  debit = balanced.Debit.fetch(debit_href)
+  refund = debit.refund(
+      amount=3000,
+      description="Refund for Order #1111",
+      meta={
+          "merchant.feedback": "positive",
+          "user.refund_reason": "not happy with product",
+          "fulfillment.item.condition": "OK",
+      }
+  )
+
+Debit may also be refunded from the `Dashboard`_.
+
+
+
+.. _Dashboard: https://dashboard.balancedpayments.com/
