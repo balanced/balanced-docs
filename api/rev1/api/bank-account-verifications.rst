@@ -92,15 +92,13 @@ ownership of the bank account.
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   If you're sending money to a bank account, known as issuing a credit,
   you do **NOT** need to verify the bank account
-
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-gray
-
+  
+  |
+  
   For *test marketplaces*, the trial deposit amounts are always 1 and 1.
 
 
