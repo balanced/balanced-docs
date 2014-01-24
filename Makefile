@@ -1,3 +1,6 @@
+REV? = rev0
+REV_NUM? = 1.0
+
 # spec variables
 SPEC_SRC_DIR	=	spec/src
 SPEC_SRCS		=	$(shell find $(SPEC_SRC_DIR)/ -type f -name '*.spec')
@@ -22,11 +25,31 @@ I18NSPHINXOPTS = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
 # common variable
 SITE_DIR = site
 
-.PHONY: clean spec-clean api-clean all
+.PHONY: clean spec-clean api-clean build-revisions all test all
 
-all: spec api overview
+#all:
+#	REV=rev0 make all
+#	make clean-limited
+#	REV=rev1 make all
+build-revisions: clean-site api overview #integration spec
 
-clean: api-clean spec-clean overview-clean
+all: rev0 rev1
+
+clean: clean-limited spec-clean
+	-rm -rf $(SITE_DIR)/1.0
+	-rm -rf $(SITE_DIR)/1.1
+	-rm -f $(SITE_DIR)/api-gen-*.html
+	-rm  -f $(SITE_DIR)/overview-gen-*.html
+
+clean-limited: api-clean overview-clean integration-clean
+
+clean-site:
+	-rm -rf $(SITE_DIR)/$(REV_NUM)
+
+rev0:
+	REV=rev0 REV_NUM=1.0 make build-revisions
+rev1:
+	REV=rev1 REV_NUM=1.1 make build-revisions
 
 # spec
 
@@ -41,41 +64,61 @@ spec: spec-js
 spec-clean:
 	-rm -rf $(SPEC_JS_DIR)
 
+# integration
+
+integration/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
+	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c integration/$(REV) integration/$(REV) integration/$(REV)/html
+
+$(SITE_DIR)/integration-gen-$(REV).html: integration/html/index.html
+	mkdir -p ${SITE_DIR}/$(REV_NUM)/integration
+	mv integration/$(REV)/html/integration ${SITE_DIR}/$(REV_NUM)
+
+integration: $(SITE_DIR)/integration-gen-$(REV).html
+
+integration-clean:
+	-rm -rf integration/html
+	-rm -rf integration/rev*/html
+	-rm -f *.cache
+
 # api
 
 api/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
-	$(SPHINXBUILD) -b singlehtml -c api api api/html
+	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c api/$(REV) api/$(REV) api/$(REV)/html
 
-$(SITE_DIR)/api-gen.html: api/html/index.html
-	mv api/html/api.html ${SITE_DIR}/api-gen.html
+$(SITE_DIR)/api-gen-$(REV).html: api/html/index.html
+	mkdir -p ${SITE_DIR}/$(REV_NUM)/api
+	mv api/$(REV)/html/api ${SITE_DIR}/$(REV_NUM)
 
-api: $(SITE_DIR)/api-gen.html
+api: $(SITE_DIR)/api-gen-$(REV).html
 
 api-clean:
 	-rm -rf api/html
-	-rm -f $(SITE_DIR)/api-gen.html
+	-rm -rf api/rev*/html
 	-rm -f *.cache
 
 # overview
 
 overview/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
-	$(SPHINXBUILD) -b singlehtml -c overview overview overview/html
+	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c overview/$(REV) overview/$(REV) overview/$(REV)/html
 
-$(SITE_DIR)/overview-gen.html: overview/html/index.html
-	mv overview/html/overview.html ${SITE_DIR}/overview-gen.html
-
-overview: $(SITE_DIR)/overview-gen.html
+$(SITE_DIR)/overview-gen-$(REV).html: overview/html/index.html
+	mkdir -p ${SITE_DIR}/$(REV_NUM)/overview
+	mkdir -p ${SITE_DIR}/$(REV_NUM)/integration
+	mv overview/$(REV)/html/overview ${SITE_DIR}/$(REV_NUM)
+	-mv overview/$(REV)/html/guides ${SITE_DIR}/$(REV_NUM)
+	
+overview: $(SITE_DIR)/overview-gen-$(REV).html
 
 overview-clean:
 	-rm -rf overview/html
-	-rm  -f $(SITE_DIR)/overview-gen.html
+	-rm -rf overview/rev*/html
 	-rm -f *.cache
 
 # static files
 
 # --line-numbers=mediaquery <-- use this to debug the compiled less
 $(SITE_DIR)/static/css/styles.css: $(wildcard $(SITE_DIR)/static/less/*.less)
-	./node_modules/.bin/lessc  $(SITE_DIR)/static/less/bootstrap.less $@
+	./node_modules/.bin/lessc $(SITE_DIR)/static/less/bootstrap.less $@
 
 $(SITE_DIR)/static/js/compiled.js: $(wildcard $(SITE_DIR)/static/js/*.js)
 	cat 	$(SITE_DIR)/static/js/bootstrap.min.js 		\
@@ -84,3 +127,7 @@ $(SITE_DIR)/static/js/compiled.js: $(wildcard $(SITE_DIR)/static/js/*.js)
 		$(SITE_DIR)/static/js/search.js 		\
 		$(SITE_DIR)/static/js/docs.js 			\
 			> $@
+
+ddd:
+	BALANCED_REV=$(REV) env
+	echo $(SPEC_SRCS)

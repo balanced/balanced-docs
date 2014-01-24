@@ -1,3 +1,20 @@
+.arrow-flyout {
+	width: 0px;
+	height: 100px;
+	background-color: #f0f0f0;
+	position: relative;
+}
+.arrow-flyout:after {
+	content: '';
+    position: absolute;
+    top: 0px;
+	left: 0px;
+	width: 0;
+	height: 0;
+	border: 50px solid transparent;
+	border-left: 12px solid #f0f0f0;
+}
+
 .overview-api {
   position: relative;
   margin-bottom: 0px;
@@ -50,63 +67,253 @@
   }
 }
 
-.sidebar-nav {
+#sidebar-top {
+  height: 45px;
+  background-color: #282E38;
+  width: 255px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  color: #ffffff;
+  padding: 0px;
+  font-size: 14px;
+  z-index: 100;
+  
+  #sidebar-top-content {
+    margin: 10px 10px 0px 10px;
+  }
+}
+
+#sidebar-flyout {
+  top: -212px;
+  z-index: 99;
+  position: fixed;
+  left: 0;
+  background-color: #282E38;
+  width: 230px;
+  padding: 10px 10px 0px 15px;
+  padding-bottom: 50px;
+  
   ul {
-    &.nav-list {
-      background-color: @egyptianBlue20;
-      padding: 15px;
+    font-size: 14px;
+  }
+  
+  h5 {
+    color: @gray1;
+  }
+  
+  a {
+    .fontStyle('NimbusSanNov-Reg', 13px, @color: @gray2);
+  }
+  a:hover {
+    .fontStyle('NimbusSanNov-Reg', 13px, @color: @gray3);
+  }
+  
+  &.active {
+    top: 45px;
+  }
+}
+
+#sidebar-flyout-toggle-bar {
+  background-color: #282E38;
+  margin: 0px -50px 0px -20px;
+  display: inline-block;
+  position: absolute;
+  bottom: 0px;
+  width: 260px;
+  cursor:pointer;
+  
+  ul {
+    font-size: 14px;
+    padding: 10px 10px 0px 15px;
+    width: 195px;
+    float: left;
+    
+    li {
+      color: @gray3;
+    }
+  }
+  
+  .caret {
+    border-top: 10px solid #555555;
+    border-right: 10px solid transparent;
+    border-left: 10px solid transparent;
+    margin-right: 14px;
+    margin-top: 15px;
+
+    &.active {
+      border-top: none;
+      border-bottom: 10px solid #555555;
+      border-right: 10px solid transparent;
+      border-left: 10px solid transparent;
+    }
+  }
+}
+
+.sidebar-nav {
+  -webkit-transform: translateZ(0);
+  //ul {
+    .nav-list {
+      -webkit-transform: translateZ(0);
+      background-color: #454C59;
+      //padding: 15px;
       overflow-y: scroll;
       float: left;
-      margin-top: -11px;
+      width: 255px;
+      padding: 0px 0px 15px 0px;
+      
+      ul {
+        margin-left: 0px;
+      }
 
       li {
+        list-style: none;
+                
         &.toctree-l1 {
           text-shadow: none;
-          .fontStyle('NimbusSanNov-SemBol', 13px, @color: @gray4);
-          margin-top: 15px;
-          text-transform: uppercase;
+          .fontStyle('NimbusSanNov-Bol', 13px, @color: @white);
 
+          a {
+            .fontStyle('NimbusSanNov-Bol', 13px, @color: @white);
+            margin-left: -20px;
+            margin-right: -15px;
+            padding-left: 20px;
+            padding-top: 3px;
+            padding-bottom: 2px;
+            display: block;
+            
+            &:hover {
+              color: @white;
+              background-color: #282E38;
+              text-shadow: none;
+            }
+          }
+          
+          //margin-top: 15px;
+          text-transform: uppercase;
+          padding: 11px 15px 10px 15px;
+
+          /*a {
+            text-shadow: none;
+            color: @gray2;
+            margin-left: 0px;
+            margin-right: -15px;
+            padding-left: 20px;
+            padding-top: 3px;
+            padding-bottom: 2px;
+            display: block;
+            //padding: 11px 15px 10px 15px;
+
+            &:hover {
+              background-color: #282E38;
+              color: #ffffff;
+            }
+          }*/
+          
           &:first-of-type {
             margin-top: 0px;
           }
+          
+          &.current {
+            background-color: #535866;
+          }
+          
+          &.current:hover {
+            background-color: #535866;
+            cursor: default;
+          }
 
           ul {
-            margin: 0px 0px 0px 5px;
+            margin: 0px 0px 0px 10px;
             list-style: none;
 
             li {
               &.toctree-l2 {
-                padding: 3px 0px 3px 10px;
                 text-transform: none;
 
                 &.active {
-                  margin-left: -30px;
-
                   a {
-                    border-left: 5px solid @black;
-                    padding-left: 25px;
-                    color: @black;
-                    background-color: inherit;
+                    border-left: 5px solid @white;
+                    padding-left: 15px;
+                    color: #F3F3F2;
+                    background-color: #6F727C;
                     text-shadow: none;
-                    display:block;
-
+                    
                     &:hover {
-                      color: @black;
-                      background-color: inherit;
+                      color: @white;
+                      background-color: #6F727C;
                       text-shadow: none;
                     }
                   }
                 }
 
                 a {
+                  .fontStyle('NimbusSanNov-Reg', 13px, @color: @gray3);
                   text-shadow: none;
+                  color: #F3F3F2;
+                  margin-left: -25px;
+                  margin-right: -15px;
+                  padding-left: 20px;
+                  padding-top: 3px;
+                  padding-bottom: 2px;
+                  display: block;
 
                   &:hover {
-                    background-color: inherit;
+                    background-color: #282E38;
+                  }
+                }
+                a:hover {
+                  color: #ffffff;
+                }
+              }
+              &.toctree-l3 {
+                a {
+                  color: @gray2;
+
+                  &:hover {
+                    margin-left: -35px;
+                    padding-left: 30px;
                   }
                 }
               }
             }
+          }
+        }
+      }
+      //}
+    
+    &.nav-single-level {
+      .toctree-l1 {
+        text-shadow: none;
+        .fontStyle('NimbusSanNov-Bol', 13px, @color: @white);
+        text-transform: uppercase;
+        padding: 0px !important;
+        
+        &.current {
+          a {
+            background-color: #646770;
+            color: #ffffff;
+            &:hover {
+              background-color: #646770 !important;
+              color: #ffffff;
+            }
+          }
+        }
+        a {
+          text-shadow: none;
+          color: @gray2;
+          margin-left: 0px;
+          margin-right: -15px;
+          padding-left: 20px;
+          padding-top: 3px;
+          padding-bottom: 2px;
+          display: block;
+          padding: 11px 15px 10px 15px;
+          color: #ffffff;
+
+          &:hover {
+            background-color: #282E38;
+            color: #ffffff;
           }
         }
       }

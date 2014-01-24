@@ -1,5 +1,7 @@
 dl {
   &.dl-horizontal {
+    margin-top: 40px;
+
     dt {
       .fontStyle('NimbusSanNov-SemBol', 13px, @color: @black);
       width: 185px;
@@ -24,7 +26,7 @@ dl {
       padding: 5px 0px 20px 0px;
 
     }
-    dt{
+    dt {
       padding: 5px 0px 19px 0px;
 
     }
@@ -35,8 +37,49 @@ dl {
       border: none;
       background-color: @bodyBackground;
     }
+    
+    p {
+      margin-bottom: 0px;
+    }
+    
+    &.filters {
+      dt {
+        width: 280px;
+      }
+    }
+  }
+  
+  &.function {
+    dd {
+      margin-left: 0px;
+    }
+    
+    table {
+      ul {
+        margin-left: 0px;
+      }
+      td {
+        padding-left: 10px;
+      }
+      th {
+        text-align: right;
+      }
+    }
   }
 }
+
+.dd-noindent {
+  dd {
+    margin-left: 0px;
+  }
+}
+
+.dd-marginbottom {
+  dd {
+    margin-bottom: 10px;
+  }
+}
+
 blockquote.last{
   margin-left: -180px;
   

@@ -9,16 +9,14 @@ class BalancedHTMLTranslator(HTMLTranslator):
         # node['ids'] = []
         self.section_level += 1
 
-        if self.section_level == 2:
-            self.body.append('<hr>\n')
         self.body.append(self.starttag(node, 'section'))
 
         # node['ids'] = ids
 
     def depart_section(self, node):
         self.body.append('</section>')
-        if self.section_level == 1:
-            self.body.append('<hr>\n')
+        #if self.section_level == 1:
+        #    self.body.append('<hr>\n')
 
         self.section_level -= 1
 

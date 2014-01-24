@@ -46,10 +46,13 @@ reference/html
 non_reference/html
 cache.json
 dockers/html
-api/html
-overview/html
+api/rev*/html
+integration/rev*/html
+overview/rev*/html
 dcode.cache
 spec/dst/
 site/spec
-site/*gen.html
+site/*gen*.html
+site/1.0
+site/1.1
 scenario.cache

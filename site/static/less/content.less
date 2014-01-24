@@ -39,8 +39,42 @@ ul+table.footnote{
   margin-top: 12px;
 }
 
+.container {
+  margin: 0px;
+}
+
+.navbar-fixed-top .container {
+  width: 100%;
+}
+
 #context-content {
-  padding-top: 40px;
+  padding-top: 80px;
+
+  section {
+    section {
+      border-top: 1px solid #bcbbb6;
+    
+      h2 {
+        margin: 0px 0 30px 0;
+        border-top: 2px solid #404040;
+        display: inline;
+        padding-top: 10px;
+        .clearfix;
+        
+        &:after {
+          margin-bottom: 20px;
+        }
+      }
+      
+      section {
+        border-top: none;
+        h3 {
+          border-bottom: 1px solid #D6D6D6;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
 }
 
 #funding-instrument-events .dl-params dt {
