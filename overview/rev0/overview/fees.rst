@@ -70,7 +70,7 @@ marketplace.
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   **Balanced will never take fees from the operating capital (escrow account) of the marketplace.**
 

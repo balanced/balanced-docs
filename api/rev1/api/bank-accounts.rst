@@ -21,7 +21,7 @@ from the ``Customer``, it may only be unstored.
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   To debit a bank account you must first :ref:`verify it <bank-account-verifications>`.
 
@@ -123,7 +123,7 @@ Charge a bank account.
 
 .. note::
   :header_class: alert alert-tab-red
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
   
   A bank account must be verified with micro deposits before it can be debited. See :ref:`bank-account-verifications`.
 

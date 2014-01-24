@@ -18,7 +18,7 @@ Each ``BankAccountVerification`` allows 3 attempts to enter the correct verifica
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   Verification is **not required** for bank accounts to which only credits will be issued.
   
@@ -43,7 +43,7 @@ ownership when supplied during `Confirm a Bank Account Verification`_.
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   If you're sending money to a bank account, known as issuing a credit,
   you do **NOT** need to verify the bank account
@@ -63,7 +63,7 @@ Fetch a Bank Account Verification
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   If you're sending money to a bank account, known as issuing a credit,
   you do **NOT** need to verify the bank account

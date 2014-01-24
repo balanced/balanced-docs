@@ -128,7 +128,7 @@ the product, you can create a ``Refund``.
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   For credit cards it typically takes one business day for refunds to
   be reflected on a card statement, but it's possible for the issuing bank to

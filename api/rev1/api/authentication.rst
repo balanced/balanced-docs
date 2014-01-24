@@ -11,7 +11,7 @@ is not required for simplicity.
 
 .. note::
    :header_class: alert alert-tab
-   :body_class: alert alert-gray
+   :body_class: alert alert-green
 
    Please keep your private keys secure and do **NOT** share them with anyone.
 

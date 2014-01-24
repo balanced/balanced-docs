@@ -38,7 +38,7 @@ The response will look similar to:
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   You must pass your API key secret using basic authentication.
 

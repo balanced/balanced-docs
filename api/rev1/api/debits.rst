@@ -64,7 +64,7 @@ Debit (charge) a bank account.
 
 .. note::
   :header_class: alert alert-tab-red
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
   
   A bank account must be verified with micro deposits before it can be debited. See :ref:`bank-account-verifications`.
 

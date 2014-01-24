@@ -21,7 +21,7 @@ will increase exponentially with each failure for the next 7 days.
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   Callbacks can be added through the Dashboard via the Webhooks area on the marketplace Settings
   page.

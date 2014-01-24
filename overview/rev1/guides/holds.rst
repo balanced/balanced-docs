@@ -17,7 +17,7 @@ but captures the funds immediately -- you will
 
 .. warning::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   For all intents and purposes, Balanced does not recommend holds and considers
   their usage to be a very advanced feature as they cause much confusion and are

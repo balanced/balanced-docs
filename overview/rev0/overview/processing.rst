@@ -75,7 +75,7 @@ in :ref:`implicit escrow <mp.escrow>` to cover your refund.
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   For credit cards it typically takes one business day for refunds to
   be reflected on a card statement, but it's possible for the issuing bank to
@@ -142,7 +142,7 @@ but captures the funds immediately -- you will
 
 .. warning::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   For all intents and purposes, Balanced does not recommend holds and considers
   their usage as a very advanced feature as they cause much confusion and are
@@ -194,7 +194,7 @@ Bank account credits - $15,000 per transaction.
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   Please contact `support@balancedpayments.com <mailto:support@balancedpayments.com>`__
   if you are planning to process larger amounts.

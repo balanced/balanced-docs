@@ -138,7 +138,7 @@ charge you for this credit, as credits to owner accounts are free.
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   **Balanced will never take fees from the operating capital (escrow account) of the marketplace.**
 
@@ -162,7 +162,7 @@ Bank account credits - $15,000 per transaction.
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   Please contact `support@balancedpayments.com <mailto:support@balancedpayments.com>`__
   if you are planning to process larger amounts.

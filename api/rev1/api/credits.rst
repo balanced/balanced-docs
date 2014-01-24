@@ -41,7 +41,7 @@ throughout the payout process. There are three possible ``status`` values:
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   Bank accounts that only receive credits do **not** need to be verified.
 

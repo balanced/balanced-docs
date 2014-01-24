@@ -9,7 +9,7 @@ choice via callbacks. Once configured, events are accessible via the
 
 .. note::
    :header_class: alert alert-tab-red
-   :body_class: alert alert-gray
+   :body_class: alert alert-green
 
    Balanced may deliver more than one event with the same payload, but with a
    different event id.

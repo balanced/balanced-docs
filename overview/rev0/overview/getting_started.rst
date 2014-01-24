@@ -30,7 +30,7 @@ Let's charge the card:
 
 .. note::
    :header_class: alert alert-tab
-   :body_class: alert alert-gray
+   :body_class: alert alert-green
 
    Balanced does NOT take its fees from your charges, instead it instruments
    all operations that have occurred on the API and later invoices you. Read
@@ -60,7 +60,7 @@ Collect bank account info
 
 .. note::
    :header_class: alert alert-tab
-   :body_class: alert alert-gray
+   :body_class: alert alert-green
 
    Throughout this tutorial, we're using `jQuery`_ for brevity, but
    ``balanced.js`` has no such dependency itself.
@@ -203,7 +203,7 @@ Let's issue a credit to this bank account:
 
 .. note::
    :header_class: alert alert-tab
-   :body_class: alert alert-gray
+   :body_class: alert alert-green
 
    For simplicity, Balanced does NOT take its fees from any of your
    operations, instead it meters your API usage and invoices you nightly.
@@ -211,7 +211,7 @@ Let's issue a credit to this bank account:
 
 .. note::
    :header_class: alert alert-tab
-   :body_class: alert alert-gray
+   :body_class: alert alert-green
 
    Please note that for American Express cards it is mandatory to collect
    the zip-code or the transaction will fail.
@@ -349,7 +349,7 @@ Balanced.js BankAccount Reference
 
   .. warning::
      :header_class: alert alert-tab
-     :body_class: alert alert-gray
+     :body_class: alert alert-green
 
      The success of this method does not guarantee that the
      routing number is valid, only that it falls within a valid range.
@@ -376,7 +376,7 @@ Balanced.js BankAccount Reference
 
   .. warning::
      :header_class: alert alert-tab
-     :body_class: alert alert-gray
+     :body_class: alert alert-green
 
      Account numbers can not be validated in real time. More on
      :ref:`reducing payout delays <best_practices.reducing-payout-delays>`.

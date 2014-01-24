@@ -7,7 +7,7 @@ an HTTP ``GET`` or ``POST`` request to the endpoint of your choice.
 
 .. note::
    :header_class: alert alert-tab
-   :body_class: alert alert-gray
+   :body_class: alert alert-green
 
    Balanced may deliver more than one event with the same payload, but with a
    different event id.

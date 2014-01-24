@@ -13,7 +13,7 @@ by sending sensitive information over SSL directly to the Balanced servers.
 
 .. note::
    :header_class: alert alert-tab
-   :body_class: alert alert-gray
+   :body_class: alert alert-green
 
    This does not remove the need for you to use SSL on your servers as all financial transactions
    should occur over SSL.
@@ -34,7 +34,7 @@ Fraud and Card declinations can be reduced if the following information is suppl
 
 .. note::
    :header_class: alert alert-tab-red
-   :body_class: alert alert-gray
+   :body_class: alert alert-green
 
    American Express declines transactions with cards that do not include ``security_code`` and
    ``postal_code``.
@@ -200,7 +200,7 @@ than clients which use the ``uri`` directly.
 
 .. note::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   URIs will not be longer than 255 characters.
 

@@ -133,7 +133,7 @@ via the Balanced `dashboard`_.
 
 .. tip::
   :header_class: alert alert-tab
-  :body_class: alert alert-gray
+  :body_class: alert alert-green
 
   We advise that you transfer a large amount in your Balanced account or you
   may request that Balanced always keep a constant amount in your account for
