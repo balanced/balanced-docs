@@ -16,11 +16,13 @@ These cards will be accepted in our system only for a **TEST** marketplace.
   ============== =========================== ================ ==============================
    Card Brand          Number                  Security Code     Result
   ============== =========================== ================ ==============================
-  ``VISA``        ``4111111111111111``            ``123``       SUCCESS
-  ``MasterCard``  ``5105105105105100``            ``123``       SUCCESS
-  ``AMEX``         ``341111111111111``           ``1234``       SUCCESS
-  ``VISA``        ``4444444444444448`` [#]_       ``123``       SIMULATE PROCESSOR FAILURE
-  ``VISA``        ``4222222222222220`` [#]_       ``123``       SIMULATE TOKENIZATION ERROR
+  ``VISA``        ``4111111111111111``            ``123``       Success
+  ``MasterCard``  ``5105105105105100``            ``123``       Success
+  ``AMEX``         ``341111111111111``           ``1234``       Success
+  ``VISA``        ``4444444444444448`` [#]_       ``123``       Processor Failure
+  ``VISA``        ``4222222222222220`` [#]_       ``123``       Tokenization Error
+  ``MasterCard``  ``5112000200000002``            ``200``       CVV Match Fail
+  ``VISA``        ``4457000300000007``            ``901``       CVV Unsupported
   ============== =========================== ================ ==============================
 
 .. [#] Simulate a card which can be tokenized but will not be accepted for creating
@@ -29,6 +31,7 @@ These cards will be accepted in our system only for a **TEST** marketplace.
 .. [#] To simulate a card which cannot be tokenized but passes a LUHN check. You could
        expect this failure when a user tried to enter in a credit card which used to
        work but has been canceled.
+
 
 .. _resources.test_bank_accounts:
 
@@ -134,10 +137,9 @@ For bank accounts, ``fingerprint`` is calculated using ``account_number``,
 Address Verification Service
 ----------------------------
 
-AVS, **A**\ ddress **V**\ erification **S**\ ervice, provides a means to
-verify that the address supplied during card tokenization matches the
-address of the credit card.
-avs_street_match avs_postal_match
+AVS, Address Verification Service, provides a means to verify that the address
+supplied during card tokenization matches the address of the credit card.
+
 Supplying a ``street_addrees`` or ``postal_code`` during tokenization initiates
 the AVS check. The ``Card`` will have a ``postal_code_check`` attribute
 containing the AVS check result.
@@ -147,6 +149,37 @@ containing the AVS check result.
 
 Additionally, ``avs_result`` can be examined to ascertain more detailed
 information about the address verification attempt. 
+
+
+Simulating Postal Code Check Responses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Postal code test values:
+
+.. cssclass:: table
+
+  ============== ====================================
+   Postal Code    Result                    
+  ============== ====================================
+  ``94301``        AVS Postal code matches      
+  ``90210``        AVS Postal code does not match
+  ``90211``        AVS Postal code is unsupported
+  ============== ====================================
+
+
+Simulating AVS Street Match Responses
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. cssclass:: table
+
+  =================== ================== ===========================
+  Address line1        Postal Code        Result             
+  =================== ================== ===========================
+  ``965 Mission St``   ``94103``          AVS street matches
+  ``21 Jump St``       ``90210``          AVS street does not match
+  =================== ================== ===========================
+
+
 
 .. _resources.card-verification-value:
 
