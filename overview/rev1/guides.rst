@@ -14,4 +14,5 @@ Guides
   guides/holds
   guides/orders
   guides/collecting-fees
+  guides/taxes
 ..  guides/merchant-dashboard
