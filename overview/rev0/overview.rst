@@ -88,7 +88,7 @@ Overview
 
 .. _overview.use_cases:
 
-
+|
 
 Client Libraries
 ----------------
@@ -271,7 +271,7 @@ Accounting
 
 Interested? You should definitely check out this `post`_ about how Balanced + Subledger can work together to do your payments and accounting. *#LoveAPIs*
 
-.. image:: /static/img/subledger.png
+.. image:: //static/img/subledger.png
    :target: http://subledger.com
 
 
