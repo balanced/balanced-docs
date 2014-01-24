@@ -8,6 +8,26 @@ A ``Debit`` resource represents a transaction consisting of obtaining
 
 A debit can be created by debiting a ``Card`` or ``BankAccount`` directly.
 
+Debits have a ``status`` attribute representing the current status of the debit
+throughout the payout process. There are three possible ``status`` values:
+
+.. cssclass:: dd-noindent dd-marginbottom
+
+  ``pending``
+    As soon as the debit is created through the API, the status shows
+    as ``pending``. This indicates that Balanced received the information for the
+    debit and will begin processing. The ACH network itself processes transactions
+    in a batch format. Batch submissions are processed at 3pm PST on business days.
+    If the debit is created after 3pm PST, it will not be submitted for processing
+    until **3pm PST** the next business day.
+  ``succeeded``
+    After 3-4 days, the status will change to ``succeeded`` and the funds will be
+    available in escrow.
+  ``failed``
+    After 3-4 days, the status will change to ``failed`` if the transaction was
+    not successful due to a problem such as an incorrect bank account number
+    or insufficient funds.
+
 |
 
 .. container:: header3
