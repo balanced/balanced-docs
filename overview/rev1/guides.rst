@@ -15,4 +15,4 @@ Guides
   guides/refunds
   guides/orders
   guides/collecting-fees
-  guides/merchant-dashboard
+..  guides/merchant-dashboard
