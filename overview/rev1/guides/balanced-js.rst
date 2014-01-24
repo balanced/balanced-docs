@@ -290,7 +290,7 @@ Method Reference - Cards
     balanced.card.cardType('341111111111111');    // American Express
     balanced.card.cardType(0)                     // null
 
-.. js:function:: balanced.card.isSecurityCodeValid(cardNumber, cvv)
+.. js:function:: balanced.card.isCVVValid(cardNumber, cvv)
 
   Checks whether or not the supplied number could be a valid card security code
   for the supplied card number.
@@ -303,8 +303,8 @@ Method Reference - Cards
 
   .. code-block:: javascript
 
-    balanced.card.isSecurityCodeValid('4111111111111111', '999')   // true
-    balanced.card.isSecurityCodeValid('4111111111111111', '9999')  // false
+    balanced.card.isCVVValid('4111111111111111', '999')   // true
+    balanced.card.isCVVValid('4111111111111111', '9999')  // false
 
 .. js:function:: balanced.card.isExpiryValid(expirationMonth, expirationYear)
 
@@ -400,7 +400,7 @@ Method Reference - Cards
 Method Reference - Bank Accounts
 ----------------------------------
 
-.. js:function:: balanced.bankAccount.validateRoutingNumber(routingNumber)
+.. js:function:: balanced.bankAccount.isRoutingNumberValid(routingNumber)
 
   Validates a USA based bank routing number using the `MICR Routing Number Format`_.
 
@@ -418,9 +418,9 @@ Method Reference - Bank Accounts
 
   .. code-block:: javascript
 
-    balanced.bankAccount.validateRoutingNumber('321174851') // passes
-    balanced.bankAccount.validateRoutingNumber('021000021') // passes
-    balanced.bankAccount.validateRoutingNumber('123457890') // fails
+    balanced.bankAccount.isRoutingNumberValid('321174851') // passes
+    balanced.bankAccount.isRoutingNumberValid('021000021') // passes
+    balanced.bankAccount.isRoutingNumberValid('123457890') // fails
 
 
 .. js:function:: balanced.bankAccount.validate(bankAccountDataObject)
