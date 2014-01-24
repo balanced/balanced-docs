@@ -6583,6 +6583,9 @@ ul + table.footnote {
   display: table;
   clear: both;
 }
+#context-content section section h2:after {
+  margin-bottom: 20px;
+}
 #context-content section section section {
   border-top: none;
 }

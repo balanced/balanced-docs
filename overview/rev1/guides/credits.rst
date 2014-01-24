@@ -64,6 +64,46 @@ do the following:
 Credits may also be initiated via the `Dashboard`_.
 
 
+Bank statement descriptor
+--------------------------
+
+Balanced allows marketplaces to specify the text that appears on statements for
+a transaction. This is referred to as the soft descriptor and is set by
+specifying the ``appears_on_statement_as`` field when creating a credit.
+
+Characters that can be used are limited to the following (any other characters
+will be rejected):
+
+.. cssclass:: list-noindent
+
+- \- ASCII letters (a-z and A-Z)
+- \- Digits (0-9)
+- \- Special characters (``.<>(){}[]+&!$;-%_?:#@~='"^\`|``)
+
+The descriptor is limited to 14 characters. ACH credits do not have a prefix.
+
+Example usage:
+
+.. code-block:: ruby
+
+  # bank_account_href is the stored href for the bank account
+  bank_account = Balanced::BankAccount.fetch(bank_account_href)
+  credit = bank_account.credit(
+    :amount => 100000,
+    :description => 'Payout for order #1111',
+    :appears_on_statement_as => 'GoodCo #1111'
+  )
+
+.. code-block:: python
+
+  # bank_account_href is the stored href for the bank account
+  bank_account = balanced.BankAccount.fetch(bank_account_href)
+  credit = bank_account.credit(
+    amount=100000,
+    description='Payout for order #1111',
+    appears_on_statement_as='GoodCo #1111'
+  )
+
 Payout status flow
 -------------------
 

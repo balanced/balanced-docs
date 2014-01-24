@@ -148,7 +148,7 @@ containing the AVS check result.
 Additionally, ``avs_result`` can be examined to ascertain more detailed
 information about the address verification attempt. 
 
-.. _resources.card-security-code:
+.. _resources.card-verification-value:
 
 Card Verification Value
 -----------------------

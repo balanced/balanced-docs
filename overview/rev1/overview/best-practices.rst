@@ -31,7 +31,7 @@ Fraud and Card declinations can be reduced if the following information is suppl
   - ``name`` (Name on card)
   - ``cvv`` (CVV)
   - ``postal_code`` (Postal code)
-
+  - ``country_code`` (Country code, `ISO 3166-1 alpha-3`_)
 
 Catching Fraud Early
 --------------------
@@ -44,7 +44,7 @@ the following:
 
   - * Utilize customer verification. We highly recommended that you do not issue payouts to unverified customers. Refer to :ref:`resources.test-identity-verification`
   - * Utilize AVS. Refer to :ref:`resources.address-verification-service`
-  - * Utilize CSC. Refer to :ref:`resources.card-security-code`
+  - * Utilize CVV. Refer to :ref:`resources.card-verification-value`
   - * Respond in a timely fashion to Balanced inquiries about chargebacks or suspicious transactions
   - * Report fraud to support@balancedpayments.com.
 
