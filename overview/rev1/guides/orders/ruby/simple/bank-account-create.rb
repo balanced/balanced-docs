@@ -1,5 +1,5 @@
 bank_account = Balanced::BankAccount.create(
-  :name => 'William Henry Cavendish III',
+  :name => 'Henry Ford',
   :routing_number => '321174851',
   :account_number => '0987654321',
   :type => 'checking'

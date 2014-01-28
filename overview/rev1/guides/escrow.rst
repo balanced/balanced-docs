@@ -21,8 +21,11 @@ customer dissatisfaction.
   :body_class: alert alert-green
   
   Balanced does not collect interest of any kind on funds in escrow.
+  |
+  Transactions involving credit cards and bank accounts associated to your
+  marketplace are free of charge.
 
-
+  
 Pre-funding Escrow
 ------------------------
 
@@ -36,14 +39,14 @@ done via the API or via the Balanced `dashboard`_. To do this via the API:
 
 .. code-block:: ruby
 
-  Balanced::Marketplace.mine.owner_customer.debit(
+  Balanced::Marketplace.mine.owner_customer.bank_accounts.first.debit(
     :amount => 2000000,
     :description => 'Pre-fund Balanced escrow'
   )
 
 .. code-block:: python
 
-  balanced.Marketplace.mine.owner_customer.debit(
+  balanced.Marketplace.mine.owner_customer.bank_accounts[0].debit(
     amount=2000000,
     description='Pre-fund Balanced escrow'
   )
@@ -62,12 +65,29 @@ may fund your account **instantly** by debiting a credit card associated to your
 marketplace.
 
 
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-green
-  
-  Transactions involving credit cards and bank accounts associated to your
-  marketplace are free of charge.
+Obtaining funds from Escrow
+---------------------------
+
+To transfer funds from your marketplace escrow to your marketplace bank account,
+issue a credit:
+
+.. code-block:: ruby
+
+  Balanced::Marketplace.mine.owner_customer.bank_accounts.first.credit(
+    :amount => 2000000,
+    :description => 'Credit from Balanced escrow'
+  )
+
+.. code-block:: python
+
+  balanced.Marketplace.mine.owner_customer.bank_accounts[0].credit(
+    amount=2000000,
+    description='Credit from Balanced escrow'
+  )
+
+Credits can take 1-3 days for the funds to become available depending on
+the target bank.
+
 
 .. _dashboard: https://dashboard.balancedpayments.com/
 .. _github issue #132: https://github.com/balanced/balanced-api/issues/132
