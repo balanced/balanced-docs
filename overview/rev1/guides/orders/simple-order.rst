@@ -1,6 +1,34 @@
 Creating a Simple Order
 -------------------------
 
+API References:
+
+.. cssclass:: list-noindent
+
+- `Create a Customer </1.1/api/customers/#create-a-customer>`_
+- `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
+- `Create an Order </1.1/api/orders/#create-an-order>`_
+- `Update an Order </1.1/api/orders/#update-an-order>`_
+- `Create a Credit </1.1/api/credits/#create-a-credit>`_
+
+|
+
+By the end of this guide, you should understand how to do following:
+
+.. cssclass:: list-noindent
+
+  - \* Create a ``Customer`` representing a seller (merchant) and associate a ``BankAccount`` to it.
+  - \* Create a ``Customer`` representing a buyer and associate a ``BankAccount`` to it.
+  - \* Create an ``Order``
+  - \* Update an ``Order``
+  - \* Create an order debit
+  - \* Check the order ``amount``
+  - \* Check the order ``amount_escrowed``
+  - \* Issue a credit from an ``Order`` to a seller
+  - \* Issue a credit from an ``Order`` to the marketplace bank account
+
+|
+
 Let's begin by creating a ``Customer`` that represents our merchant.
 
 .. container:: section-ruby
@@ -213,3 +241,21 @@ Likewise, we can retrieve all of the order's credits with:
 
   .. literalinclude:: curl/simple/order-credits-fetch.sh
      :language: bash
+
+
+Checkpoint
+~~~~~~~~~~~~
+
+You should understand how to do following:
+
+.. cssclass:: list-noindent
+
+  - ✓ Create a ``Customer`` representing a seller (merchant) and associate a ``BankAccount1`` to it.
+  - ✓ Create a ``Customer`` representing a buyer and associate a ``BankAccount`` to it.
+  - ✓ Create an ``Order``
+  - ✓ Update an ``Order``
+  - ✓ Create an order debit
+  - ✓ Check the order ``amount``
+  - ✓ Check the order ``amount_escrowed``
+  - ✓ Issue a credit from an ``Order`` to a seller
+  - ✓ Issue a credit from an ``Order`` to the marketplace bank account
