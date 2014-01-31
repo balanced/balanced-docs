@@ -1,6 +1,16 @@
 Handling Taxes
 ===============
 
+.. note::
+   :header_class: alert alert-tab-red
+   :body_class: alert alert-red
+
+   Information in this section may not cover all your businesses tax liability.
+   We recommend you consult with your business tax advisor to determine your
+   business' tax liability.
+
+|
+
 1099-K
 -----------------
 
