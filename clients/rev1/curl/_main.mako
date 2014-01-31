@@ -57,7 +57,7 @@
   %>
   curl ${Endpoint.qualify_uri(ctx, request['uri'])} ${slash}
   %if 'accept_type' in ctx.storage:
-     -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
+     -H "Accept: ${ctx.storage['accept_type']}" ${slash}
   %endif
      -u ${ctx.api_key}:
 %endif
@@ -76,7 +76,7 @@
   %>
   curl ${Endpoint.qualify_uri(ctx, request[uri])} ${slash}
   %if 'accept_type' in ctx.storage:
-     -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
+     -H "Accept: ${ctx.storage['accept_type']}" ${slash}
   %endif
      -u ${ctx.api_key}: ${slash}
   %if 'payload' in request:
@@ -101,7 +101,7 @@
   %>
   curl ${Endpoint.qualify_uri(ctx, request[uri])} ${slash}
   %if 'accept_type' in ctx.storage:
-     -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
+     -H "Accept: ${ctx.storage['accept_type']}" ${slash}
   %endif
      -u ${ctx.api_key}: ${slash}
      -X PUT ${slash}
@@ -124,7 +124,7 @@
   %>
    curl ${Endpoint.qualify_uri(ctx, request[uri])} ${slash}
    %if 'accept_type' in ctx.storage:
-      -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
+      -H "Accept: ${ctx.storage['accept_type']}" ${slash}
    %endif
       -u ${ctx.api_key}:
 %endif
@@ -142,7 +142,7 @@
   %>
    curl ${Endpoint.qualify_uri(ctx, request[uri])} ${slash}
    %if 'accept_type' in ctx.storage:
-     -H "Accept-Type: ${ctx.storage['accept_type']}" ${slash}
+     -H "Accept: ${ctx.storage['accept_type']}" ${slash}
    %endif
      -u ${ctx.api_key}: ${slash}
      -X DELETE
