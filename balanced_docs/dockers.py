@@ -1,11 +1,14 @@
 import json
 import re
 import os
+import rev1_api_spec
 
 def load(file_path, rev=None):
     rev = rev or os.environ.get('BALANCED_REV', 'rev0')
     data = json.load(file_path)
     spec = Spec(data[rev], rev=rev)
+    if rev == 'rev1':
+        return rev1_api_spec.Spec('./balanced-api/fixtures', spec)
     return spec
 
 
