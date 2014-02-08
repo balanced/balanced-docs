@@ -8,7 +8,8 @@ def load(file_path, rev=None):
     data = json.load(file_path)
     spec = Spec(data[rev], rev=rev)
     if rev == 'rev1':
-        return rev1_api_spec.Spec('./balanced-api/fixtures', spec)
+        data_rev1 = json.load(open('./balanced.rev1.json'))
+        return rev1_api_spec.Spec(data_rev1, dockers=spec)
     return spec
 
 
