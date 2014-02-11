@@ -87,9 +87,11 @@ class Spec(dict):
             'holds': 'card_holds'
         }.get(resource, resource)
 
-        if resource == 'card_holds' and action == 'update':
-            # TODO asdfasdf
-            return self.dockers.match_form('holds.update')
+        if resource == 'card_holds': # and action == 'update':
+            # TODO asdfasdf, gaaaa
+            return self.dockers.match_form('holds.' + action)
+        if resource == 'credits':
+            return self.dockers.match_form(name)
 
         # action is currently create or update
         #method = 'POST' if action == 'create' else 'PUT'
