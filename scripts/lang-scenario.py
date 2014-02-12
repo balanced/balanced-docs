@@ -607,13 +607,11 @@ def generate(write, name, blocks, response, section_chars):
             write('.. container:: response\n\n')
             with write:
                 write('Example Response\n\n')
-                for block in blocks:
-                    pygment = pygments.get(block['lang'], block['lang'])
-                    write('.. code-block:: {0}\n'.format(pygment))
-                    write('\n')
-                    with write:
-                        write(block['response'])
-                    write('\n\n')
+                write('.. code-block:: {0}\n'.format('javascript'))
+                write('\n')
+                with write:
+                    write(response)
+                write('\n\n')
 
 
 # main
