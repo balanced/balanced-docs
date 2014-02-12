@@ -46,29 +46,29 @@ an HTTP ``GET`` or ``POST`` request to the endpoint of your choice.
     :include: card.* bank_account.* bank_account_verification.*
 
 
-.. Fetch an Event
-.. -----------------
-.. 
-.. .. _events.show:
-.. 
-.. Fetches the details of an event that was previously created.
-.. 
-.. .. container:: code-white
-.. 
-..     .. dcode:: scenario event_show
-.. 
-.. 
-.. List all Events
-.. ---------------
-.. 
-.. .. cssclass:: dl-horizontal dl-params
-.. 
-..   ``limit``
-..       *optional* integer. Defaults to ``10``.
-.. 
-..   ``offset``
-..       *optional* integer. Defaults to ``0``.
-.. 
-.. .. container:: code-white
-.. 
-..   .. dcode:: scenario event_list
+Fetch an Event
+-----------------
+
+.. _events.show:
+
+Fetches the details of an event that was previously created.
+
+.. container:: code-white
+
+    .. dcode:: scenario event_show
+
+
+List all Events
+---------------
+
+.. cssclass:: dl-horizontal dl-params
+
+  ``limit``
+      *optional* integer. Defaults to ``10``.
+
+  ``offset``
+      *optional* integer. Defaults to ``0``.
+
+.. container:: code-white
+
+  .. dcode:: scenario event_list
