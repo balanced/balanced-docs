@@ -87,11 +87,11 @@ class Spec(dict):
             'holds': 'card_holds'
         }.get(resource, resource)
 
-        if resource == 'card_holds': # and action == 'update':
-            # TODO asdfasdf, gaaaa
-            return self.dockers.match_form('holds.' + action)
-        if resource == 'credits':
-            return self.dockers.match_form(name)
+        # if resource == 'card_holds': # and action == 'update':
+        #     # TODO asdfasdf, gaaaa
+        #     return self.dockers.match_form('holds.' + action)
+        # if resource == 'credits':
+        #     return self.dockers.match_form(name)
 
         # action is currently create or update
         #method = 'POST' if action == 'create' else 'PUT'
@@ -138,6 +138,12 @@ class Spec(dict):
                 raise
             # TODO: also get the description off the top level links descriptions
 
+        def get_type(name):
+            t = view['properties'].get(name, {}).get('type')
+            if type(t) is list:
+                return t[0]
+            return t or 'string'
+
         return {
             'fields': [
                 {
@@ -146,7 +152,7 @@ class Spec(dict):
                     'nullable': name in nullable,
                     'required': name in required,
                     'tags': [],   # TODO: ?
-                    'type': 'string',  # TODO: this is documented in the 'type' on the properties
+                    'type': get_type(name), # 'string',  # TODO: this is documented in the 'type' on the properties
                     'validate': None
                 } for name in all_keys],
             'type': 'form',
