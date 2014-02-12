@@ -36,10 +36,6 @@ Fetch a Card Hold
 
 Fetches the details of a previously created ``CardHold``.
 
-.. container:: method-description
-
-  .. no request
-
 .. container:: code-white
 
    .. dcode:: scenario card_hold_show
@@ -85,6 +81,10 @@ Capture a Card Hold
 Captures a previously created ``CardHold``. This creates a
 :ref:`debit <debits>`. Any amount up to the amount of the
 hold may be captured.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form debits.create
 
 .. container:: code-white
 
