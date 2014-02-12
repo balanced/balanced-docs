@@ -983,8 +983,8 @@ def create_arg_parser():
 
 
 def generate(write, req, resp, section_chars):
-    write('Request\n')
-    write(section_chars[0] * len('Request'))
+    write('Example Request\n')
+    write(section_chars[0] * len('Example Request'))
     write('\n\n')
 
     if 'body' in req:
@@ -998,8 +998,8 @@ def generate(write, req, resp, section_chars):
             write(req['body'])
         write('\n')
 
-    write('Response\n')
-    write(section_chars[0] * len('Response'))
+    write('Example Response\n')
+    write(section_chars[0] * len('Example Response'))
     write('\n\n')
 
     write('Headers\n')

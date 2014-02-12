@@ -593,7 +593,7 @@ def generate(write, name, blocks, response, section_chars):
     with _mark_section(write, 'request'):
         write('.. container:: request\n\n')
         with write:
-            write('Request\n\n')
+            write('Example Request\n\n')
             for block in blocks:
                 pygment = pygments.get(block['lang'], block['lang'])
                 write('.. code-block:: {0}\n'.format(pygment))
@@ -606,7 +606,7 @@ def generate(write, name, blocks, response, section_chars):
         with _mark_section(write, 'response'):
             write('.. container:: response\n\n')
             with write:
-                write('Response\n\n')
+                write('Example Response\n\n')
                 for block in blocks:
                     pygment = pygments.get(block['lang'], block['lang'])
                     write('.. code-block:: {0}\n'.format(pygment))
