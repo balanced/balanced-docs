@@ -8,5 +8,6 @@ request = {
     'uri': orders_uri,
     'payload': {
         'description': 'Order #12341234'
-    }
+    },
+    'customer_href': customer['customers'][0]['href']
 }

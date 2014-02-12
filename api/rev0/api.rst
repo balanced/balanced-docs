@@ -9,7 +9,17 @@
   :hidden:
   :glob:
 
-  api/*
+  api/authentication
+  api/bank-accounts
+  api/bank-account-verifications
+  api/cards
+  api/credits
+  api/customers
+  api/debits
+  api/errors
+  api/events
+  api/holds
+  api/accounts
 
 
 API reference

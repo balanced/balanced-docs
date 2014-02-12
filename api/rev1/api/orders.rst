@@ -2,7 +2,8 @@ Orders
 ======
 
 An ``Order`` resource is a construct that logically groups related transaction
-operations.
+operations for a particular seller (``Customer``). An ``Order`` allows issuing
+payouts to one ``Customer`` and the marketplace bank account.
 
 |
 

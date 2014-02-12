@@ -9,7 +9,9 @@ Orders
   orders/refund
 
 
-An Order is a construct that logically groups related transaction operations.
+An ``Order`` resource is a construct that logically groups related transaction
+operations for a particular seller (``Customer``). An ``Order`` allows issuing
+payouts to one ``Customer`` and the marketplace bank account.
 
 .. container:: section
 
