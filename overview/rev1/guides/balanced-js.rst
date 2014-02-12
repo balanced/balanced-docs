@@ -28,30 +28,11 @@ Including balanced.js
   support older browsers, `quirksmode`_ provides a tutorial on how to get
   javascript ``<script>`` includes to play nicely.
 
+Begin by including balanced.js in your application.
+
 .. code-block:: html
 
   <script type="text/javascript" src="https://js.balancedpayments.com/1.1/balanced.js"></script>
-
-
-.. _balanced-js.initialize:
-
-Initialize balanced.js
---------------------------
-
-balanced.js needs to be initialized with the address of the Balanced API server
-to which it should connect, as well as the revision of the API to use, in this
-case, https://api.balancedpayments.com, and revision 1.1.
-
-.. code-block:: html
-
-  <script type="text/javascript">
-    $(document).ready(function () {
-      balanced.init({
-        server: 'https://api.balancedpayments.com',
-        revision: 1.1
-      });
-    });
-  </script>
 
 
 .. _balanced-js.collecting-card-info:
@@ -97,17 +78,17 @@ was returned, e.g check for a ``cards`` or ``bank_accounts`` key.
 .. code-block:: javascript
 
   function handleResponse(response) {
-    if (response.status === 201 && response.href) {
-      // Successful tokenization
+    if (response.status_code === 201) {
+      var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
       // Call your backend
       jQuery.post("/path/to/your/backend", {
-        uri: response.href
+        uri: fundingInstrument.href
       }, function(r) {
         // Check your backend response
         if (r.status === 201) {
           // Your successful logic here from backend ruby
         } else {
-          // Your failure logic here from backend ruby
+        // Your failure logic here from backend ruby
         }
       });
     } else {
@@ -175,17 +156,17 @@ was returned, e.g check for a ``cards`` or ``bank_accounts`` key.
 .. code-block:: javascript
 
   function handleResponse(response) {
-    if (response.status === 201 && response.href) {
-      // Successful tokenization
+    if (response.status_code === 201) {
+      var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
       // Call your backend
       jQuery.post("/path/to/your/backend", {
-        uri: response.href
+        uri: fundingInstrument.href
       }, function(r) {
         // Check your backend response
         if (r.status === 201) {
           // Your successful logic here from backend ruby
         } else {
-          // Your failure logic here from backend ruby
+        // Your failure logic here from backend ruby
         }
       });
     } else {
