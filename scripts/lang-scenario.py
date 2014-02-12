@@ -36,6 +36,7 @@ from balanced_docs import (
     EnvironmentVarAction,
     dockers,
     BlockWriter,
+    rev1_api_spec,
 )
 
 
@@ -59,6 +60,7 @@ class Context(object):
             storage_file,
             spec_file,
             langs,
+            api_dir,
         ):
         self.stack = []
         self.api_location = api_location
@@ -71,6 +73,7 @@ class Context(object):
             storage_file,
             backfill=self.backfill_scenario,
         )
+        self.rev = os.environ.get('BALANCED_REV', 'rev0')
         self.spec = dockers.load(open(spec_file, 'r'))
         self.langs = ['curl'] + langs
 
@@ -359,8 +362,8 @@ class Scenario(object):
                                      headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                      auth=(ctx.storage['secret'], ''))
 
-            
-            
+
+
             if os.environ.get('BALANCED_REV') == 'rev1':
                 ctx.storage['customer'] = basic_client(customer.json())['customers'][0]
                 links = customer.json()['links']
@@ -375,7 +378,7 @@ class Scenario(object):
                                  auth=(ctx.storage['secret'], ''),
                                  data=card_data
             )
-            
+
             if os.environ.get('BALANCED_REV') == 'rev1':
                 # is this even used?
                 ctx.storage['card_uri'] = card.json()['cards'][0]['href']
@@ -385,7 +388,7 @@ class Scenario(object):
                 ctx.storage['card_uri'] = card.json()['uri']
                 ctx.storage['card_id'] = card.json()['id']
                 ctx.storage['card'] = basic_client(card.json())
-            
+
 
         marketplace_req = requests.get(ctx.storage['api_location'] + ctx.storage['marketplace_uri'],
                                        headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
@@ -673,6 +676,13 @@ def create_arg_parser():
         default='balanced.json',
         help='FILE containing spec data',
     )
+    # parser.add_argument(
+    #     '--api',
+    #     metavar='DIRECTORY',
+    #     default='./balanced-api',
+    #     dest='api_dir',
+    #     help='Directory containing balanced-api'
+    # )
     parser.add_argument(
         '--lang',
         metavar='LANGUAGE',
@@ -703,6 +713,7 @@ def main():
         storage_file=args.storage,
         spec_file=args.spec,
         langs=args.langs,
+        api_dir=os.path.abspath('./balanced-api'),
     )
     Scenario.bootstrap(ctx)
     write = BlockWriter(sys.stdout)

@@ -25,23 +25,26 @@ I18NSPHINXOPTS = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
 # common variable
 SITE_DIR = site
 
-.PHONY: clean spec-clean api-clean build-revisions all test all
+.PHONY: clean cache-clean api-clean build-revisions all test all
 
 #all:
 #	REV=rev0 make all
 #	make clean-limited
 #	REV=rev1 make all
-build-revisions: clean-site api overview #integration spec
+build-revisions: clean-site api overview
 
-all: rev0 rev1
+all: rev0 cache-clean rev1
 
-clean: clean-limited spec-clean
+cache-clean:
+	-rm -f *.cache
+
+clean: clean-limited
 	-rm -rf $(SITE_DIR)/1.0
 	-rm -rf $(SITE_DIR)/1.1
 	-rm -f $(SITE_DIR)/api-gen-*.html
 	-rm  -f $(SITE_DIR)/overview-gen-*.html
 
-clean-limited: api-clean overview-clean integration-clean
+clean-limited: api-clean overview-clean
 
 clean-site:
 	-rm -rf $(SITE_DIR)/$(REV_NUM)
@@ -50,35 +53,6 @@ rev0:
 	REV=rev0 REV_NUM=1.0 make build-revisions
 rev1:
 	REV=rev1 REV_NUM=1.1 make build-revisions
-
-# spec
-
-$(SPEC_JS_DIR)/%.js: $(SPEC_SRC_DIR)/%.spec
-	@mkdir -p $(@D)
-	$(SPEC_JS_CMD) $< > $@
-
-spec-js: $(SPEC_JS_DSTS)
-
-spec: spec-js
-
-spec-clean:
-	-rm -rf $(SPEC_JS_DIR)
-
-# integration
-
-integration/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
-	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c integration/$(REV) integration/$(REV) integration/$(REV)/html
-
-$(SITE_DIR)/integration-gen-$(REV).html: integration/html/index.html
-	mkdir -p ${SITE_DIR}/$(REV_NUM)/integration
-	mv integration/$(REV)/html/integration ${SITE_DIR}/$(REV_NUM)
-
-integration: $(SITE_DIR)/integration-gen-$(REV).html
-
-integration-clean:
-	-rm -rf integration/html
-	-rm -rf integration/rev*/html
-	-rm -f *.cache
 
 # api
 
@@ -103,7 +77,6 @@ overview/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/j
 
 $(SITE_DIR)/overview-gen-$(REV).html: overview/html/index.html
 	mkdir -p ${SITE_DIR}/$(REV_NUM)/overview
-	mkdir -p ${SITE_DIR}/$(REV_NUM)/integration
 	mv overview/$(REV)/html/overview ${SITE_DIR}/$(REV_NUM)
 	-mv overview/$(REV)/html/guides ${SITE_DIR}/$(REV_NUM)
 	

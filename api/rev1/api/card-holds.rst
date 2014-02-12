@@ -72,7 +72,7 @@ Updates information on a previously created ``CardHold``.
 
 .. cssclass:: dl-horizontal dl-params
 
-  .. dcode:: form holds.update
+  .. dcode:: form card_holds.update
 
 .. container:: code-white
 
@@ -98,7 +98,7 @@ Cancels the hold. Once voided, the hold can no longer be captured.
 
 .. cssclass:: dl-horizontal dl-params
 
-  .. dcode:: form holds.update
+  .. dcode:: form card_holds.update
 
 .. container:: code-white
 
