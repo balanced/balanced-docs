@@ -23,7 +23,7 @@ API reference
 
 .. container:: header3
 
-   The API conforms to the design principles of JSONAPI. It supports only the JSON data format.
+   The API conforms to the design principles of JSON API. It supports only the JSON data format.
 
 
 Using REST
