@@ -99,19 +99,23 @@ class Spec(dict):
                     if val is None:
                         nullable.add(key)
 
-        def get_description(name):
+        def get_description(view, name):
             try:
-                return (
-                    view['properties'].get(name, {}).get('description') or
-                    view['properties'].get('links', {}).get(name, {}).get('description')
-                )
+                description = view['properties'].get(name, {}).get('description')
             except:
-                print name
-                print resource
-                print action
-                print view
-                raise
-            # TODO: also get the description off the top level links descriptions
+                description = None
+
+            if description is None:
+                try:
+                    description = view['properties'].get('links', {}).get(name, {}).get('description')
+                except:
+                    description = None
+
+            if description is None:
+                if 'description' in view:
+                    description = view['description']
+
+            return description
 
         def get_type(name):
             disallowed_types = ['null']
@@ -122,17 +126,66 @@ class Spec(dict):
                         return t
             return field_types or 'string'
 
-        return {
-            'fields': [
-                {
-                    'name': name,
-                    'description': get_description(name),
-                    'nullable': name in nullable,
-                    'required': name in required,
-                    'tags': [],   # TODO: ?
-                    'type': get_type(name), # 'string',  # TODO: this is documented in the 'type' on the properties
-                    'validate': None
-                } for name in all_keys],
-            'type': 'form',
-            'name': '{}_{}_form'.format(resource, action)
-        }
+
+        def generate_form(resource, action):
+            fields = []
+            for name in all_keys:
+                field = {}
+                ignored_object_keys = ['links']
+                if get_type(name) == 'object' and name not in ignored_object_keys:
+                    resource_model = self._find_file('_models/{}.json'.format(name))
+                    subkeys = set()
+                    subfields = []
+
+                    for r in reqs:
+                        keys = r['request'].keys() if r['request'] else {}
+                        if name in r['request']:
+                            for key, val in r['request'][name].iteritems():
+                                subkeys.add(key)
+
+                    for sk in subkeys:
+                        subfield = {
+                            'name': sk,
+                            'description': get_description(resource_model, sk),
+                            'nullable': sk in nullable,
+                            'required': sk in required,
+                            'tags': [],
+                            'type': get_type(sk),
+                            'validate': None
+                        }
+                        subfields.append(subfield)
+
+                    field = {
+                        'form': {
+                            'fields': subfields,
+                            'type': 'form',
+                            'name': '{}_{}_form'.format(name, action),
+                            'tags': []
+                        },
+                        'tags': [],
+                        'nullable': name in nullable,
+                        'required': name in required,
+                        'validate': None,
+                        'type': 'form_field',
+                        'description': get_description(view, name),
+                        'name': name
+                    }
+                else:
+                    field = {
+                        'name': name,
+                        'description': get_description(view, name),
+                        'nullable': name in nullable,
+                        'required': name in required,
+                        'tags': [],
+                        'type': get_type(name),
+                        'validate': None
+                    }
+                fields.append(field)
+
+            return {
+                'fields': fields,
+                'type': 'form',
+                'name': '{}_{}_form'.format(resource, action)
+            }
+
+        return generate_form(resource, action)
