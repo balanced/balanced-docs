@@ -3,11 +3,11 @@ Overview
 
 .. container:: overview-large
 
-  Balanced is a payments company dedicated to increasing the world's 
-  economic output. To do this, we've decided to work with online 
+  Balanced is a payments company dedicated to increasing the world's
+  economic output. To do this, we've decided to work with online
   marketplaces and crowdfunding platforms to help them create new forms of commerce.
-  We’ve built a white-labeled API and open sourced dashboard to help them 
-  do this. And while we really like working with marketplaces and 
+  We’ve built a white-labeled API and open sourced dashboard to help them
+  do this. And while we really like working with marketplaces and
   crowdfunding platforms, Balanced can be used for e-commerce models of all types.
 
   We’ve been processing live transactions since October, 2010 and have a
@@ -260,17 +260,18 @@ Join the Balanced `community`_ and follow us on `Twitter`_.
 Certified Developers
 --------------------
 
-We've partnered with `APIXchange`_ -- a marketplace for custom API development
+We've partnered with `WorkMob`_ -- a marketplace for custom API development
 projects -- to help companies looking for assistance with their Balanced API
 integration find a quality Balanced certified developer.
 
-Create a project on `APIXchange`_ to get started:
+Create a project on `WorkMob`_ to get started:
 
-.. image:: https://apixchange.com/static/img/embed-button.png
-  :target: https://apixchange.com/landing/balanced
+.. image:: https://s3.amazonaws.com/theworkmob_partners/balanced.png
+  :target: https://theworkmob.com/integrations/balancedpayments
+  :width: 375
 
 If you'd like to find a developer to help with your Balanced integration
-outside of APIXchange, please post your criteria on `this Github issue`_.
+outside of WorkMob, please post your criteria on `this Github issue`_.
 
 
 Accounting
@@ -320,6 +321,6 @@ Interested? You should definitely check out this `post`_ about how Balanced + Su
 .. _Rent My Bike: http://rentmybike.heroku.com
 
 .. _this Github issue: https://github.com/balanced/balanced-api/issues/315
-.. _APIXchange: https://apixchange.com/
+.. _WorkMob: https://theworkmob.com/
 .. _Subledger: http://subledger.com
 .. _post: http://subledger.com/blog/rent-my-bikes-demo/
