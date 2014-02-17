@@ -211,15 +211,16 @@ Third-Party Plugins
     - `Subledger <http://subledger.com/blog/rent-my-bikes-demo/>`_
 
 
-Certified Developers
---------------------
+Integration Assistance
+-----------------------
 
-We've partnered with `APIXchange`_ -- a marketplace for custom API development
-projects -- to help companies looking for assistance with their Balanced API
-integration find a quality Balanced certified developer.
+Are you looking for a developer to help with Balanced integration? Check out these companies!
 
 .. image:: https://apixchange.com/static/img/embed-button.png
   :target: https://apixchange.com/landing/balanced
+
+
+
 
 .. _Crowdtilt.com:
 .. _crowdtilt: http://crowdtilt.com

@@ -1,20 +1,5 @@
-.. toctree::
-  :hidden:
-  :glob:
-
-  self
-  overview/*
-
-
 Overview
 ========
-
-.. container:: integration
-
-   .. container:: copy-box
-
-      Start Integrating
-
 
 .. container:: span6
 
@@ -87,6 +72,8 @@ Overview
 .. clear::
 
 .. _overview.use_cases:
+
+|
 
 |
 
@@ -242,37 +229,89 @@ dashboard.
 Join the Balanced `community`_ and follow us on `Twitter`_.
 
 
-Certified Developers
---------------------
+Third-Party Plugins
+------------------------
 
-We've partnered with `APIXchange`_ -- a marketplace for custom API development
-projects -- to help companies looking for assistance with their Balanced API
-integration find a quality Balanced certified developer.
+.. container:: section
 
-Create a project on `APIXchange`_ to get started:
+  .. container:: header3
+
+    Shopping Carts
+
+  .. cssclass:: list-noindent
+
+    - `Drupal Commerce <https://drupal.org/project/commerce_balanced_payments>`_
+    - `WordPress <https://github.com/pmgarman/wp-balanced-payments>`_
+    - `Easy Digital Downloads <https://easydigitaldownloads.com/extensions/balanced-payment-gateway/>`_
+    - `Cart66 <http://cart66.com/cloud/payment-gateways/>`_
+    - `Mijreh <http://www.mijireh.com/docs/payment-gateways/>`_
+    - `Spree <http://guides.spreecommerce.com/developer/payments.html#supported-gateways>`_
+
+
+.. container:: section
+
+  .. container:: header3
+
+    Frameworks
+
+  .. cssclass:: list-noindent
+
+    - `Meteor.js Package <https://github.com/ianserlin/meteor-balanced-payments>`_
+    - `ActiveMerchant <https://github.com/Shopify/active_merchant#supported-direct-payment-gateways>`_
+
+
+.. container:: section
+
+  .. container:: header3
+
+    Recurring Payments
+
+  .. cssclass:: list-noindent
+
+    - `Chargebee <http://www.chargebee.com/partners.html>`_
+
+
+.. container:: section
+
+  .. container:: header3
+
+    Gateways
+
+  .. cssclass:: list-noindent
+
+    - `Spreedly <https://core.spreedly.com/manual/payment-gateways/balanced>`_
+    - `Crowdtilt API/Crowdhoster - (Crowdfunding specific) <https://github.com/Crowdtilt/crowdtilt-api-spec/>`_
+
+
+.. container:: section
+
+  .. container:: header3
+
+    Card Readers
+
+  .. cssclass:: list-noindent
+
+    - `Cardflight <https://getcardflight.com/>`_
+
+
+.. container:: section
+
+  .. container:: header3
+
+    Accounting
+
+  .. cssclass:: list-noindent
+
+    - `Subledger <http://subledger.com/blog/rent-my-bikes-demo/>`_
+
+
+Integration Assistance
+-----------------------
+
+Are you looking for a developer to help with Balanced integration? Check out these companies!
 
 .. image:: https://apixchange.com/static/img/embed-button.png
   :target: https://apixchange.com/landing/balanced
-
-If you'd like to find a developer to help with your Balanced integration
-outside of APIXchange, please post your criteria on `this Github issue`_.
-
-
-Accounting
-----------
-
-`Subledger`_ is an API for in-application accounting.
-
-`Subledger`_ makes it easy to:
-
-* Produce financial reports for your finance team
-* Manage accounts payable to sellers vs cash in escrow
-* Maintain a financial audit trail for compliance reasons
-
-Interested? You should definitely check out this `post`_ about how Balanced + Subledger can work together to do your payments and accounting. *#LoveAPIs*
-
-.. image:: //static/img/subledger.png
-   :target: http://subledger.com
 
 
 .. _kitchit: http://kitchit.com
