@@ -16,7 +16,6 @@
   api/credits
   api/customers
   api/debits
-  api/errors
   api/events
   api/holds
   api/accounts
