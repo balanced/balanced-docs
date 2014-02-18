@@ -208,7 +208,8 @@ Third-Party Plugins
 
   .. cssclass:: list-noindent
 
-    - `Subledger <http://subledger.com/blog/rent-my-bikes-demo/>`_
+    .. image:: //static/img/logos/subledger.png
+      :target: http://subledger.com/blog/rent-my-bikes-demo/
 
 
 Integration Assistance
