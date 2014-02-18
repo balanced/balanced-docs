@@ -70,10 +70,10 @@ account numbers that can simulate various scenarios that can go wrong.
      - Transitions status to ``pending``
    * - ``021000021``
      - ``9900000002``
-     - Transitions status to ``paid`` (credits) or ``succeeded`` (debits)
+     - Transitions status to ``succeeded``
    * - ``321174851``
      - ``9900000003``
-     - Transitions status to ``paid`` (credits) or ``succeeded`` (debits)
+     - Transitions status to ``succeeded``
    * - ``021000021``
      - ``9900000004``
      - Transitions status to ``failed``
