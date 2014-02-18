@@ -1,3 +1,5 @@
+.. _guides.credits:
+
 Working with Credits
 =====================
 

@@ -3,7 +3,7 @@
 Resources
 =========
 
-.. _resources.test_credit_cards:
+.. _resources.test-credit-cards:
 
 Test credit card numbers
 ------------------------
@@ -29,7 +29,8 @@ These cards will be accepted in our system only for a **TEST** marketplace.
        expect this failure when a user tried to enter in a credit card which used to
        work but has been canceled.
 
-.. _resources.test_bank_accounts:
+
+.. _resources.test-bank-accounts:
 
 Test bank account numbers
 -------------------------

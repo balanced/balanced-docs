@@ -42,13 +42,13 @@ Overview
      :box-classes: box box-block box-turquoise
      :icon-classes: icon icon-page
 
-     `Sample credit card form <#collecting-credit-card-information>`_
+     `Sample credit card form <http://jsfiddle.net/balanced/ZwhrA/>`_
 
    .. icon-box-widget::
      :box-classes: box box-block box-turquoise
      :icon-classes: icon icon-page
 
-     `Sample bank account form <#collect-bank-account-info>`_
+     `Sample bank account form <http://jsfiddle.net/balanced/ZwhrA/>`_
 
 
 .. container:: span6
@@ -61,13 +61,13 @@ Overview
      :box-classes: box box-block box-purple
      :icon-classes: icon icon-page
 
-     `Test credit card numbers <#test-credit-card-numbers>`_
+     :ref:`Test bank account numbers <resources.test-credit-cards>`
 
    .. icon-box-widget::
      :box-classes: box box-block box-purple
      :icon-classes: icon icon-page
 
-     `Test bank account numbers <#test-bank-account-numbers>`_
+     :ref:`Test bank account numbers <resources.test-bank-accounts>`
 
 .. clear::
 

@@ -3,7 +3,7 @@
 Resources
 =========
 
-.. _resources.test_credit_cards:
+.. _resources.test-credit-cards:
 
 Test credit card numbers
 ------------------------
@@ -33,7 +33,7 @@ These cards will be accepted in our system only for a **TEST** marketplace.
        work but has been canceled.
 
 
-.. _resources.test_bank_accounts:
+.. _resources.test-bank-accounts:
 
 Test bank account numbers
 -------------------------

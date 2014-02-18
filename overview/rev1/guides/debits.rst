@@ -1,3 +1,5 @@
+.. _guides.debits:
+
 Working with Debits
 =======================
 

@@ -16,25 +16,25 @@ Start Integrating
      :box-classes: box box-block box-blue
      :icon-classes: icon icon-page
 
-     :ref:`Collect credit card info <getting_started.collecting_card_info>`
+     :ref:`Quickstart <quickstart>`
 
    .. icon-box-widget::
      :box-classes: box box-block box-blue
      :icon-classes: icon icon-page
 
-     :ref:`Charge a credit card <getting_started.charging_cards>`
+     :ref:`Working with Debits <guides.debits>`
 
    .. icon-box-widget::
      :box-classes: box box-block box-blue
      :icon-classes: icon icon-page
 
-     :ref:`Collect bank account info <getting_started.collecting_bank_info>`
+     :ref:`Working with Credits <guides.credits>`
 
    .. icon-box-widget::
      :box-classes: box box-block box-blue
      :icon-classes: icon icon-page
 
-     :ref:`Credit bank account <getting_started.credit_bank_account>`
+     :ref:`Working with Orders <guides.orders>`
 
 
 .. container:: span6
@@ -47,13 +47,13 @@ Start Integrating
      :box-classes: box box-block box-turquoise
      :icon-classes: icon icon-page
 
-     `Sample credit card form <#collecting-credit-card-information>`_
+     `Sample credit card form <http://jsfiddle.net/balanced/ZwhrA/>`_
 
    .. icon-box-widget::
      :box-classes: box box-block box-turquoise
      :icon-classes: icon icon-page
 
-     `Sample bank account form <#collect-bank-account-info>`_
+     `Sample bank account form <http://jsfiddle.net/balanced/ZwhrA/>`_
 
 
 .. container:: span6
@@ -66,13 +66,13 @@ Start Integrating
      :box-classes: box box-block box-purple
      :icon-classes: icon icon-page
 
-     `Test credit card numbers <#test-credit-card-numbers>`_
+     :ref:`Test bank account numbers <resources.test-credit-cards>`
 
    .. icon-box-widget::
      :box-classes: box box-block box-purple
      :icon-classes: icon icon-page
 
-     `Test bank account numbers <#test-bank-account-numbers>`_
+     :ref:`Test bank account numbers <resources.test-bank-accounts>`
 
 .. clear::
 
