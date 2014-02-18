@@ -216,15 +216,16 @@ Integration Assistance
 
 Are you looking for a developer to help with Balanced integration? Check out these companies!
 
-.. image:: https://apixchange.com/static/img/embed-button.png
-  :target: https://apixchange.com/landing/balanced
+.. image:: //static/img/logos/workmob@2x.png
+  :target: https://theworkmob.com/integrations/balancedpayments
+  :height: 50px
+  :width: 236px
 
 
 
 
 .. _Crowdtilt.com:
 .. _crowdtilt: http://crowdtilt.com
-.. _APIXchange: https://apixchange.com/
 .. _balanced-php: https://github.com/balanced/balanced-php
 .. _balanced-php tests: https://github.com/balanced/balanced-php/tree/master/tests
 .. _balanced-python: https://github.com/balanced/balanced-python

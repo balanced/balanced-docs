@@ -310,8 +310,10 @@ Integration Assistance
 
 Are you looking for a developer to help with Balanced integration? Check out these companies!
 
-.. image:: https://apixchange.com/static/img/embed-button.png
-  :target: https://apixchange.com/landing/balanced
+.. image:: //static/img/logos/workmob@2x.png
+  :target: https://theworkmob.com/integrations/balancedpayments
+  :height: 50px
+  :width: 236px
 
 
 .. _kitchit: http://kitchit.com
@@ -344,6 +346,5 @@ Are you looking for a developer to help with Balanced integration? Check out the
 .. _Rent My Bike: http://rentmybike.heroku.com
 
 .. _this Github issue: https://github.com/balanced/balanced-api/issues/315
-.. _APIXchange: https://apixchange.com/
 .. _Subledger: http://subledger.com
 .. _post: http://subledger.com/blog/rent-my-bikes-demo/
