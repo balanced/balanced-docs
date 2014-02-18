@@ -24,7 +24,7 @@ Join the Balanced `community`_ and follow us on `Twitter`_.
 
 .. cssclass:: list-noindent
 
-  -  `IRC`_ for real-time answers to technical support questions
+  -  `#balanced on Freenode IRC`_ for real-time answers to technical support questions
   -  `Stackoverflow`_ for technical questions
   -  `Quora`_ for product and business questions
   -  Email: `support@balancedpayments.com`_
@@ -35,7 +35,7 @@ what request information was received and the resulting API response. It also
 gives information about operation status codes and transaction failure
 messages along with the timing and affected parties and endpoints.
 
-If additional help is required, hop into #balanced on IRC to get help
+If additional help is required, hop into #balanced on Freenode IRC to get help
 directly from developers.
 
 Be sure to have the following handy to facilitate quick resolutions to issues:
@@ -187,7 +187,7 @@ Bank account credits - $15,000 per transaction.
 .. _fraud preventions systems: https://github.com/gvenkataraman/www.gittip.com/commit/ceb88e6f5e1eb7ae931cf2921866beccb49381b5
 .. _discussed pricing decisions: https://github.com/balanced/balanced-api/issues/48
 .. _Github: https://github.com/balanced/balanced-api/issues
-.. _IRC: http://webchat.freenode.net/?channels=balanced&uio=MTE9OTIaf
+.. _#balanced on Freenode IRC: http://webchat.freenode.net/?channels=balanced&uio=MTE9OTIaf
 .. _Stackoverflow: https://stackoverflow.com/questions/tagged/balanced-payments
 .. _Quora: https://quora.com/balanced
 .. _support@balancedpayments.com: mailto:support@balancedpayments.com

@@ -217,7 +217,7 @@ Support
 We respond to support requests and questions through several channels
 including:
 
--  `IRC`_ for real-time answers to technical support questions
+-  `#balanced on Freenode IRC`_ for real-time answers to technical support questions.
 -  `Stackoverflow`_ for technical questions
 -  `Quora`_ for product and business questions
 -  Email: `support@balancedpayments.com`_
@@ -335,7 +335,7 @@ Are you looking for a developer to help with Balanced integration? Check out the
 .. _fraud preventions systems: https://github.com/gvenkataraman/www.gittip.com/commit/ceb88e6f5e1eb7ae931cf2921866beccb49381b5
 .. _discussed pricing decisions: https://github.com/balanced/balanced-api/issues/48
 .. _Github: https://github.com/balanced/balanced-api/issues
-.. _IRC: http://webchat.freenode.net/?channels=balanced&uio=MTE9OTIaf
+.. _#balanced on Freenode IRC: http://webchat.freenode.net/?channels=balanced&uio=MTE9OTIaf
 .. _Stackoverflow: https://stackoverflow.com/questions/tagged/balanced-payments
 .. _Quora: https://quora.com/balanced
 .. _support@balancedpayments.com: mailto:support@balancedpayments.com
