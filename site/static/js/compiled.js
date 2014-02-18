@@ -295,6 +295,13 @@ $(document).ready(function () {
         fix_sidebar();
     });
 
+    $(".nav.nav-list").mouseover(function() {
+      $('body').addClass('freeze-scroll');
+    });
+    $(".nav.nav-list").mouseout(function() {
+      $('body').removeClass('freeze-scroll');
+    });
+
     $("li").bind('activate', updateNavigation);
 
     var defaultLang = defaultLang = $.cookie('language');
