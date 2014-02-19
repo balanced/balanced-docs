@@ -21,7 +21,6 @@ customer dissatisfaction.
   :body_class: alert alert-green
   
   Balanced does not collect interest of any kind on funds in escrow.
-  |
   Transactions involving credit cards and bank accounts associated to your
   marketplace are free of charge.
 
@@ -36,6 +35,24 @@ status code, stating that you do not have sufficient funds to cover your
 desired ACH operation. You will have to add funds to your marketplace escrow
 from a credit card or bank account attached to your marketplace. This may be
 done via the API or via the Balanced `dashboard`_. To do this via the API:
+
+.. code-block:: bash
+
+  # Get the marketplace
+  curl https://api.balancedpayments.com/marketplaces \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL:
+
+  # Determine owner customer from marketplaces.owner_customer link and get its bank accounts
+  curl https://api.balancedpayments.com/customers/CU1U8FEqP5FsisYD0D5G6aS4/bank_accounts \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL:
+
+  # Determine the debits href from the bank_accounts.debits link and create a debit
+  curl https://api.balancedpayments.com/bank_accounts/BA1VKlrw3m7lNyouaU5h8Xba/debits \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+       -d "amount=2000000"
 
 .. code-block:: ruby
 
@@ -70,6 +87,24 @@ Obtaining funds from Escrow
 
 To transfer funds from your marketplace escrow to your marketplace bank account,
 issue a credit:
+
+.. code-block:: bash
+
+  # Get the marketplace
+  curl https://api.balancedpayments.com/marketplaces \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL:
+
+  # Determine owner customer from marketplaces.owner_customer link and get its bank accounts
+  curl https://api.balancedpayments.com/customers/CU1U8FEqP5FsisYD0D5G6aS4/bank_accounts \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL:
+
+  # Determine the debits href from the bank_accounts.debits link and create a credit
+  curl https://api.balancedpayments.com/bank_accounts/BA1VKlrw3m7lNyouaU5h8Xba/credits \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+       -d "amount=2000000"
 
 .. code-block:: ruby
 
