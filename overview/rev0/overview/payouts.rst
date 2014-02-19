@@ -104,6 +104,25 @@ Comment on those that would be useful to you or create issues for ones you'd
 like to see supported!
 
 
+Bank statement descriptor
+--------------------------
+
+Balanced allows marketplaces to specify the text that appears on statements for
+a transaction. This is referred to as the soft descriptor and is set by
+specifying the ``appears_on_statement_as`` field when creating a credit.
+
+Characters that can be used are limited to the following (any other characters
+will be rejected):
+
+.. cssclass:: list-noindent
+
+- \- ASCII letters (a-z and A-Z)
+- \- Digits (0-9)
+- \- Special characters (``.<>(){}[]+&!$;-%_?:#@~='"^\`|``)
+
+The descriptor is limited to 14 characters. ACH credits do not have a prefix.
+
+
 Canceling Credits
 -----------------
 
