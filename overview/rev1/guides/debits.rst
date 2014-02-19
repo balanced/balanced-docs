@@ -165,7 +165,7 @@ the product, you can create a ``Refund``.
       }
   )
 
-Debit may also be refunded from the `Dashboard`_.
+A Debit may also be refunded from the `Dashboard`_.
 
 
 
