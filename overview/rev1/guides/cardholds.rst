@@ -117,8 +117,7 @@ API References:
 
 |
 
-When you wish to obtain the funds reserved with a card hold, capture the card
-hold.
+If you wish to release the reserved funds you can always void the card hold.
 
 .. code-block:: ruby
 
@@ -135,11 +134,11 @@ hold.
 .. code-block:: bash
 
   # card_hold_id is the stored id for the CardHold
-  curl https://api.balancedpayments.com/card_holds/card_hold_id/debits \
+  curl https://api.balancedpayments.com/card_holds/card_hold_id \
        -H "Accept: application/vnd.api+json;revision=1.1" \
        -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
-       -d "appears_on_statement_as=ShowsUpOnStmt" \
-       -d "description=Some descriptive text for the debit in the dashboard"
+       -X PUT \
+       -d "is_void=true"
 
 .. _sample page: https://gist.github.com/2662770
 .. _balanced.js: https://js.balancedpayments.com/v1/balanced.js
