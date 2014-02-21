@@ -54,8 +54,8 @@ Debit a credit card example:
 
 .. code-block:: bash
 
-  # card_id is the stored id for the Card
-  curl https://api.balancedpayments.com/cards/card_id/debits \
+  # :card_id is the stored id for the Card
+  curl https://api.balancedpayments.com/cards/:card_id/debits \
        -H "Accept: application/vnd.api+json;revision=1.1" \
        -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
        -d "amount=100000" \
@@ -86,8 +86,8 @@ Debit a bank account example:
 
 .. code-block:: bash
 
-  # bank_account_id is the stored id for the BankAccount
-  curl https://api.balancedpayments.com/bank_accounts/bank_account_id/debits \
+  # :bank_account_id is the stored id for the BankAccount
+  curl https://api.balancedpayments.com/bank_accounts/:bank_account_id/debits \
        -H "Accept: application/vnd.api+json;revision=1.1" \
        -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
        -d "appears_on_statement_as=Statement text" \
@@ -187,8 +187,8 @@ the product, you can create a ``Refund``.
 
 .. code-block:: bash
 
-  # debit_id is the stored id for the Debit
-  curl https://api.balancedpayments.com/debits/debit_id/refunds \
+  # :debit_id is the stored id for the Debit
+  curl https://api.balancedpayments.com/debits/:debit_id/refunds \
        -H "Accept: application/vnd.api+json;revision=1.1" \
        -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
        -d "amount=3000" \

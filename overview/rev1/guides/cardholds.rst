@@ -54,8 +54,8 @@ amount of the card hold.
 
 .. code-block:: bash
 
-  # card_id is the stored id for the Card
-  curl https://api.balancedpayments.com/cards/card_id/card_holds \
+  # :card_id is the stored id for the Card
+  curl https://api.balancedpayments.com/cards/:card_id/card_holds \
        -H "Accept: application/vnd.api+json;revision=1.1" \
        -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
        -d "amount=5000" \
@@ -97,8 +97,8 @@ hold.
 
 .. code-block:: bash
 
-  # card_hold_id is the stored id for the CardHold
-  curl https://api.balancedpayments.com/card_holds/card_hold_id/debits \
+  # :card_hold_id is the stored id for the CardHold
+  curl https://api.balancedpayments.com/card_holds/:card_hold_id/debits \
        -H "Accept: application/vnd.api+json;revision=1.1" \
        -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
        -d "appears_on_statement_as=ShowsUpOnStmt" \
@@ -133,8 +133,8 @@ If you wish to release the reserved funds you can always void the card hold.
 
 .. code-block:: bash
 
-  # card_hold_id is the stored id for the CardHold
-  curl https://api.balancedpayments.com/card_holds/card_hold_id \
+  # :card_hold_id is the stored id for the CardHold
+  curl https://api.balancedpayments.com/card_holds/:card_hold_id \
        -H "Accept: application/vnd.api+json;revision=1.1" \
        -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
        -X PUT \
