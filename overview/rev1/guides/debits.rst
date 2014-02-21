@@ -36,21 +36,30 @@ Debit a credit card example:
 
 .. code-block:: ruby
 
-  # bank_account_href is the stored href for the BankAccount
-  bank_account = Balanced::BankAccount.fetch(bank_account_href)
-  credit = bank_account.credit(
+  # card_href is the stored href for the Card
+  card = Balanced::Card.fetch(card_href)
+  debit = card.debit(
     :amount => 100000,
-    :description => 'Payout for order #1111'
+    :description => 'Some descriptive text for the debit in the dashboard'
   )
 
 .. code-block:: python
 
-  # bank_account_href is the stored href for the BankAccount
-  bank_account = balanced.BankAccount.fetch(bank_account_href)
-  credit = bank_account.credit(
+  # card_href is the stored href for the Card
+  card = balanced.Card.fetch(card_href)
+  debit = card.debit(
     amount=100000,
-    description='Payout for order #1111'
+    description='Some descriptive text for the debit in the dashboard'
   )
+
+.. code-block:: bash
+
+  # card_id is the stored id for the Card
+  curl https://api.balancedpayments.com/cards/card_id/debits \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+       -d "amount=100000" \
+       -d "description=Some descriptive text for the debit in the dashboard"
 
 
 Debit a bank account example:
@@ -59,9 +68,10 @@ Debit a bank account example:
 
   # bank_account_href is the stored href for the BankAccount
   bank_account = Balanced::BankAccount.fetch(bank_account_href)
-  credit = bank_account.credit(
+  debit = bank_account.debit(
+    :appears_on_statement_as => 'Statement text',
     :amount => 100000,
-    :description => 'Payout for order #1111'
+    :description => 'Some descriptive text for the debit in the dashboard'
   )
 
 .. code-block:: python
@@ -70,9 +80,19 @@ Debit a bank account example:
   bank_account = balanced.BankAccount.fetch(bank_account_href)
   bank_account.debit(
     appears_on_statement_as='Statement text',
-    amount=5000,
+    amount=100000,
     description='Some descriptive text for the debit in the dashboard'
   )
+
+.. code-block:: bash
+
+  # bank_account_id is the stored id for the BankAccount
+  curl https://api.balancedpayments.com/bank_accounts/bank_account_id/debits \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+       -d "appears_on_statement_as=Statement text" \
+       -d "amount=100000" \
+       -d "description=Some descriptive text for the debit in the dashboard"
 
 .. note::
   :header_class: alert alert-tab
@@ -164,6 +184,18 @@ the product, you can create a ``Refund``.
           "fulfillment.item.condition": "OK",
       }
   )
+
+.. code-block:: bash
+
+  # debit_id is the stored id for the Debit
+  curl https://api.balancedpayments.com/debits/debit_id/refunds \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+       -d "amount=3000" \
+       -d "description=Refund for Order #1111" \
+       -d "meta[merchant.feedback]=positive" \
+       -d "meta[user.refund_reason]=not happy with product" \
+       -d "meta[fulfillment.item.condition]=OK"
 
 A Debit may also be refunded from the `Dashboard`_.
 
