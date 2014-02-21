@@ -36,7 +36,7 @@ amount of the card hold.
 
 .. code-block:: ruby
 
-  # card is the stored href for the card
+  # card_href is the stored href for the Card
   card = Balanced::Card.fetch(card_href)
   card.hold(
     :amount => 5000,
@@ -45,13 +45,21 @@ amount of the card hold.
 
 .. code-block:: python
 
-  # card is the stored href for the card
+  # card_href is the stored href for the Card
   card = balanced.Card.fetch(card_href)
   card_hold = card.hold(
     amount=5000,
     description='Some descriptive text for the debit in the dashboard'
   )
 
+.. code-block:: bash
+
+  # card_id is the stored id for the Card
+  curl https://api.balancedpayments.com/cards/card_id/card_holds \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+       -d "amount=5000" \
+       -d "description=Some descriptive text for the debit in the dashboard"
 
 Capturing a card hold
 ---------------------
@@ -71,8 +79,8 @@ hold.
 
 .. code-block:: ruby
 
-  # card_hold is the stored href for the CardHold
-  card_hold = Balanced::CardHold.fetch(card_hold)
+  # card_hold_href is the stored href for the CardHold
+  card_hold = Balanced::CardHold.fetch(card_hold_href)
   debit = card_hold.capture(
     :description => 'Some descriptive text for the debit in the dashboard',
     :appears_on_statement_as => 'ShowsUpOnStmt'
@@ -80,13 +88,21 @@ hold.
 
 .. code-block:: python
 
-  # card_hold is the stored href for the CardHold
-  card_hold = balanced.CardHold.fetch(card_hold)
+  # card_hold_href is the stored href for the CardHold
+  card_hold = balanced.CardHold.fetch(card_hold_href)
   debit = card_hold.capture(
     appears_on_statement_as='ShowsUpOnStmt',
     description='Some descriptive text for the debit in the dashboard'
   )
 
+.. code-block:: bash
+
+  # card_hold_id is the stored id for the CardHold
+  curl https://api.balancedpayments.com/card_holds/card_hold_id/debits \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+       -d "appears_on_statement_as=ShowsUpOnStmt" \
+       -d "description=Some descriptive text for the debit in the dashboard"
 
 Voiding a card hold
 ---------------------
@@ -106,16 +122,24 @@ hold.
 
 .. code-block:: ruby
 
-  # card_hold is the stored href for the CardHold
-  card_hold = Balanced::CardHold.fetch(card_hold)
+  # card_hold_href is the stored href for the CardHold
+  card_hold = Balanced::CardHold.fetch(card_hold_href)
   card_hold.void
 
 .. code-block:: python
 
-  # card_hold is the stored href for the CardHold
-  card_hold = balanced.CardHold.fetch(card_hold)
+  # card_hold_href is the stored href for the CardHold
+  card_hold = balanced.CardHold.fetch(card_hold_href)
   card_hold.cancel()
 
+.. code-block:: bash
+
+  # card_hold_id is the stored id for the CardHold
+  curl https://api.balancedpayments.com/card_holds/card_hold_id/debits \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+       -d "appears_on_statement_as=ShowsUpOnStmt" \
+       -d "description=Some descriptive text for the debit in the dashboard"
 
 .. _sample page: https://gist.github.com/2662770
 .. _balanced.js: https://js.balancedpayments.com/v1/balanced.js
