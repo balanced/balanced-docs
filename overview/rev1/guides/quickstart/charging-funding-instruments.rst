@@ -39,6 +39,9 @@ First, let's create a ``Card`` to work with.
 .. literalinclude:: python/card-create.py
    :language: python
 
+.. literalinclude:: curl/card-create.sh
+   :language: bash
+
 
 Now that we have a ``Card``, we can charge it. This will issue a ``Debit`` which
 will deduct funds from the target credit card.
@@ -49,6 +52,9 @@ will deduct funds from the target credit card.
 .. literalinclude:: python/card-debit.py
    :language: python
 
+.. literalinclude:: curl/card-debit.sh
+   :language: bash
+
 
 Since card debits are immediate, we can check our escrow to see the funds are
 indeed available.
@@ -58,6 +64,9 @@ indeed available.
 
 .. literalinclude:: python/marketplace-in-escrow.py
    :language: python
+
+.. literalinclude:: curl/marketplace-in-escrow.sh
+   :language: bash
 
 
 Charging a Bank Account
@@ -96,6 +105,9 @@ First, let's create a ``BankAccount`` to work with.
 .. literalinclude:: python/bank-account-create.py
    :language: python
 
+.. literalinclude:: curl/bank-account-create.sh
+   :language: bash
+
 
 We now have a ``BankAccount`` instance to work with. Before a ``BankAccount``
 can be charged (debited) it must be verified with micro deposits. This is done
@@ -110,6 +122,9 @@ bank account. These amounts will show on the bank account statement usually in
 
 .. literalinclude:: python/bank-account-verification-create.py
    :language: python
+
+.. literalinclude:: curl/bank-account-verification-create.sh
+   :language: bash
 
 
 Once the amounts have posted on the bank account statement, the bank account
@@ -129,6 +144,9 @@ which sends the values to Balanced as follows:
 .. literalinclude:: python/bank-account-verification-confirm.py
    :language: python
 
+.. literalinclude:: curl/bank-account-verification-confirm.sh
+   :language: bash
+
 
 At this point we have a verified bank account that we can now charge (debit).
 This will issue a ``Debit`` which will deduct funds from the target credit 
@@ -141,6 +159,23 @@ bank account.
     :appears_on_statement_as => 'Statement text',
     :description => 'Some descriptive text for the debit in the dashboard'
   )
+
+.. code-block:: python
+
+  bank_account.debit(
+    appears_on_statement_as='Statement text',
+    amount=5000,
+    description='Some descriptive text for the debit in the dashboard'
+  )
+
+.. code-block:: bash
+
+  curl https://api.balancedpayments.com/bank_accounts/BA2akihQKCAhhkX5aecSubr2/debits \
+     -H "Accept: application/vnd.api+json;revision=1.1" \
+     -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+     -d "appears_on_statement_as=Statement text" \
+     -d "amount=5000" \
+     -d "description=Some descriptive text for the debit in the dashboard"
 
 
 Checkpoint

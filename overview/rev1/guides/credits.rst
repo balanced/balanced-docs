@@ -62,7 +62,17 @@ do the following:
     amount=100000,
     description='Payout for order #1111'
   )
-  
+
+.. code-block:: bash
+
+  # :bank_account_id is the stored id for the BankAccount
+  curl https://api.balancedpayments.com/bank_accounts/:bank_account_id/credits \
+          -H "Accept: application/vnd.api+json;revision=1.1" \
+          -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+          -d "amount=100000" \
+          -d "description=Payout for order #1111"
+
+
 Credits may also be initiated via the `Dashboard`_.
 
 
@@ -105,6 +115,16 @@ Example usage:
     description='Payout for order #1111',
     appears_on_statement_as='GoodCo #1111'
   )
+
+.. code-block:: bash
+
+  # :bank_account_id is the stored id for the BankAccount
+  curl https://api.balancedpayments.com/bank_accounts/:bank_account_id/credits \
+          -H "Accept: application/vnd.api+json;revision=1.1" \
+          -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+          -d "amount=100000" \
+          -d "description=Payout for order #1111" \
+          -d "appears_on_statement_as=GoodCo #1111"
 
 Payout status flow
 -------------------
@@ -172,7 +192,7 @@ satisfied with the product, you can create a ``Reversal``.
 .. code-block:: python
 
   # credit_href is the stored href for the Credit
-  credit = balanced.Credit.fetch('/credits/CR4lqO3NwBWdLYGvMAUeKt7g')
+  credit = balanced.Credit.fetch(credit_href)
   reversal = credit.reverse(
       amount=100000,
       description="Reversal for order #1111",
@@ -182,6 +202,18 @@ satisfied with the product, you can create a ``Reversal``.
           "fulfillment.item.condition": "OK",
       }
   )
+
+.. code-block:: bash
+
+  # :credit_id is the stored id for the Credit
+  curl https://api.balancedpayments.com/credits/:credit_id/reversals \
+       -H "Accept: application/vnd.api+json;revision=1.1" \
+       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+       -d "amount=100000" \
+       -d "description=Reversal for Order #1111" \
+       -d "meta[merchant.feedback]=positive" \
+       -d "meta[user.refund_reason]=not happy with product" \
+       -d "meta[fulfillment.item.condition]=OK"
 
 The status flow of a reversal is as follows:
 
