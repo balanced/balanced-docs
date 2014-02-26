@@ -154,6 +154,7 @@ passed in by you in order to help fight fraud and respond to chargebacks.
     -  shipping.address.street_address
     -  shipping.address.city
     -  shipping.address.region
+    -  shipping.address.postal_code
     -  shipping.address.country_code (`ISO 3166-1 alpha-3`_)
     -  shipping.carrier
     -  shipping.tracking_number
