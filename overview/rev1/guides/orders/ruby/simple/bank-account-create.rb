@@ -5,4 +5,4 @@ bank_account = Balanced::BankAccount.create(
   :type => 'checking'
 )
 
-bank_account.associate_to_customer(customer)
+bank_account.associate_to_customer(merchant)
