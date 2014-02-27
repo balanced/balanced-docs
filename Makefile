@@ -42,7 +42,7 @@ clean: clean-limited
 	-rm -rf $(SITE_DIR)/1.0
 	-rm -rf $(SITE_DIR)/1.1
 	-rm -f $(SITE_DIR)/api-gen-*.html
-	-rm  -f $(SITE_DIR)/overview-gen-*.html
+	-rm -f $(SITE_DIR)/overview-gen-*.html
 
 clean-limited: api-clean overview-clean
 
@@ -56,7 +56,7 @@ rev1:
 
 # api
 
-api/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
+api/html/index.html: strapped $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
 	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c api/$(REV) api/$(REV) api/$(REV)/html
 
 $(SITE_DIR)/api-gen-$(REV).html: api/html/index.html
@@ -72,7 +72,7 @@ api-clean:
 
 # overview
 
-overview/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
+overview/html/index.html: strapped $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
 	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c overview/$(REV) overview/$(REV) overview/$(REV)/html
 
 $(SITE_DIR)/overview-gen-$(REV).html: overview/html/index.html
@@ -88,13 +88,19 @@ overview-clean:
 	-rm -f *.cache
 
 # static files
+strapped:
+	-rm $(SITE_DIR)/static/css/styles.css
+	-rm -r bower_components
+	-rm -r static/less/strapped
+	bower install strapped
+	cp -r bower_components/strapped/static/less site/static/less/strapped
 
 # --line-numbers=mediaquery <-- use this to debug the compiled less
 $(SITE_DIR)/static/css/styles.css: $(wildcard $(SITE_DIR)/static/less/*.less)
-	./node_modules/.bin/lessc $(SITE_DIR)/static/less/bootstrap.less $@
+	lessc $(SITE_DIR)/static/less/base.less $@
 
 $(SITE_DIR)/static/js/compiled.js: $(wildcard $(SITE_DIR)/static/js/*.js)
-	cat 	$(SITE_DIR)/static/js/bootstrap.min.js 		\
+	cat $(SITE_DIR)/static/js/bootstrap.min.js 		\
 		$(SITE_DIR)/static/js/lunr.min.js 		\
 		$(SITE_DIR)/static/js/jquery.scrollTo-min.js 	\
 		$(SITE_DIR)/static/js/search.js 		\
