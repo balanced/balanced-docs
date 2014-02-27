@@ -31,7 +31,7 @@ SITE_DIR = site
 #	REV=rev0 make all
 #	make clean-limited
 #	REV=rev1 make all
-build-revisions: clean-site api overview
+build-revisions: clean-site strapped api overview
 
 all: rev0 cache-clean rev1
 
@@ -56,7 +56,7 @@ rev1:
 
 # api
 
-api/html/index.html: strapped $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
+api/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
 	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c api/$(REV) api/$(REV) api/$(REV)/html
 
 $(SITE_DIR)/api-gen-$(REV).html: api/html/index.html
@@ -72,7 +72,7 @@ api-clean:
 
 # overview
 
-overview/html/index.html: strapped $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
+overview/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
 	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c overview/$(REV) overview/$(REV) overview/$(REV)/html
 
 $(SITE_DIR)/overview-gen-$(REV).html: overview/html/index.html
@@ -86,16 +86,14 @@ overview-clean:
 	-rm -rf overview/html
 	-rm -rf overview/rev*/html
 	-rm -f *.cache
-
-# static files
-strapped:
 	-rm $(SITE_DIR)/static/css/styles.css
 	-rm -r bower_components
 	-rm -r site/static/less/strapped
-	-rm -r site/static/img
+	
+# static files
+strapped:
 	bower install strapped
 	cp -r bower_components/strapped/static/less site/static/less/strapped
-	cp -r bower_components/strapped/static/images site/static/img
 
 # --line-numbers=mediaquery <-- use this to debug the compiled less
 $(SITE_DIR)/static/css/styles.css: $(wildcard $(SITE_DIR)/static/less/*.less)
