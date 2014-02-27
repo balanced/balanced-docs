@@ -5,7 +5,6 @@
 @import "./variables.less";
 @import "./mixins.less";
 @import "./utility.less";
-@import "./fonts.less";
 @import "./navbar.less";
 @import "./sidebar.less";
 @import "./type.less";
@@ -75,13 +74,13 @@ ul {
 }
 
 code {
-  .fontStyle('Inconsolata', @size: inherit, @color: @black);
+  .fontStyle(@monoFontFamily, @size: inherit, @color: @black);
   background-color: @white;
   border: 1px solid @gray2;
 }
 
 a {
-  .fontStyle('NimbusSanNov-SemBol', inherit, @color: @linkColor);
+  .fontStyle(@baseFontFamilySemiBold, inherit, @color: @linkColor);
 
   &:hover {
     text-decoration: none;
@@ -89,7 +88,7 @@ a {
 }
 
 b, strong {
-  .fontStyle('NimbusSanNov-Bol', inherit, @color: inherit);
+  .fontStyle(@baseFontFamilyBold, inherit, @color: inherit);
 }
 
 ul.list-noindent, ol.list-noindent {
