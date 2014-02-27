@@ -49,7 +49,7 @@ If you've done that before just do:
 ```bash
 cd /path/to/balanced-docs
 workon balanced-docs
-git submodoule update --recursive
+git submodule update --recursive
 ```
 
 ## Build
@@ -91,7 +91,7 @@ Let's take a look at what we've built using [mongoose](https://github.com/valeno
 
 ```bash
 cd site
-./mongoose -ssi_pattern '**.shtml$|**.shtm$|**.html$'
+mongoose -ssi_pattern '**.shtml$|**.shtm$|**.html$'
 Mongoose web server v. 3.8 started on port(s) 8080 with web root [.]
 ```
 
