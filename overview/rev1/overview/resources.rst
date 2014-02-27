@@ -212,7 +212,7 @@ A short list of changes:
   - * A new resource called "Orders" has been created to allow grouping transactions. An Order can consist of 0:n buyers, 0:n debits and 0:n credits to a single seller. Each debit associated with an Order will result in the Order's escrow balance accruing the value of the debit rather than the marketplace's escrow balance. You cannot pay out more than the total amount escrowed for an Order.
   - * Accounts no longer exist, customers and orders are the primary grouping constructs for transactions, customers are the primary grouping construct for funding instruments.
   - * Funding instruments can be tokenized without specifying the marketplace, performing an authenticated GET on the tokenized funding instrument will automatically associate it to your marketplace.
-
+  - * Transaction statuses have been standardized to be one of: ``pending``, ``succeeded``, ``failed``. There is no longer a ``paid`` status.
 
 The most obvious technical difference between revision 1.1 and 1.0 is that the
 Balanced API switched from plain JSON to a `JSON API envelope`_. You can learn
