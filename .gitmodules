@@ -1,23 +1,28 @@
 [submodule "clients/rev0/python"]
 	path = clients/rev0/python
 	url = https://github.com/balanced/balanced-python.git
+  branch = rev0
 [submodule "clients/rev0/ruby"]
 	path = clients/rev0/ruby
 	url = https://github.com/balanced/balanced-ruby.git
+  branch = rev0
 [submodule "clients/rev0/java"]
 	path = clients/rev0/java
 	url = https://github.com/balanced/balanced-java.git
+  branch = rev0
 [submodule "clients/rev0/php"]
 	path = clients/rev0/php
 	url = https://github.com/balanced/balanced-php.git
-[submodule "clients/rev0/node"]
-	path = clients/rev0/node
+  branch = rev0
+[submodule "clients/rev1/node"]
+	path = clients/rev1/node
 	url = https://github.com/balanced/balanced-node.git
+  branch = master
 [submodule "clients/rev1/ruby"]
 	path = clients/rev1/ruby
 	url = https://github.com/balanced/balanced-ruby.git
-  branch = 1.1.0
+  branch = master
 [submodule "clients/rev1/python"]
 	path = clients/rev1/python
 	url = https://github.com/balanced/balanced-python.git
-  branch = 1.1
+  branch = master
