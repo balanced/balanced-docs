@@ -21,3 +21,6 @@
 	path = clients/rev1/python
 	url = https://github.com/balanced/balanced-python.git
   branch = 1.1
+[submodule "clients/rev1/node"]
+	path = clients/rev1/node
+	url = https://github.com/balanced/balanced-node.git
