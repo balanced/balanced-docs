@@ -404,9 +404,7 @@ class Scenario(object):
             amount = thresh_h - marketplace.in_escrow
             logger.debug('incrementing escrow balanced %s', amount)
             if os.environ.get('BALANCED_REV') == 'rev1':
-                #import ipdb; ipdb.set_trace()
                 debits_uri = ctx.storage['customer']['href'] + '/debits'
-                #debits_uri = customer.json()['links']['customers.debits'].replace('{customers.id}', ctx.storage['customer']['id'])
             else:
                 debits_uri = ctx.storage['customer'].debits_uri
             debit = requests.post(ctx.storage['api_location'] + debits_uri,
