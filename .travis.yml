@@ -1,6 +1,8 @@
 before_install:
   - git submodule update --init --recursive
-  - npm install less
+  - npm install -g less
+  - npm install -g bower
+  - bower install
 language: python
 python:
   - 2.7

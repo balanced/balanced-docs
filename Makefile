@@ -31,7 +31,7 @@ SITE_DIR = site
 #	REV=rev0 make all
 #	make clean-limited
 #	REV=rev1 make all
-build-revisions: clean-site api overview
+build-revisions: clean-site strapped api overview
 
 all: rev0 cache-clean rev1
 
@@ -42,7 +42,7 @@ clean: clean-limited
 	-rm -rf $(SITE_DIR)/1.0
 	-rm -rf $(SITE_DIR)/1.1
 	-rm -f $(SITE_DIR)/api-gen-*.html
-	-rm  -f $(SITE_DIR)/overview-gen-*.html
+	-rm -f $(SITE_DIR)/overview-gen-*.html
 
 clean-limited: api-clean overview-clean
 
@@ -86,15 +86,21 @@ overview-clean:
 	-rm -rf overview/html
 	-rm -rf overview/rev*/html
 	-rm -f *.cache
-
+	-rm $(SITE_DIR)/static/css/styles.css
+	-rm -r bower_components
+	-rm -r site/static/less/strapped
+	
 # static files
+strapped:
+	bower install strapped
+	cp -r bower_components/strapped/static/less site/static/less/strapped
 
 # --line-numbers=mediaquery <-- use this to debug the compiled less
 $(SITE_DIR)/static/css/styles.css: $(wildcard $(SITE_DIR)/static/less/*.less)
-	./node_modules/.bin/lessc $(SITE_DIR)/static/less/bootstrap.less $@
+	lessc $(SITE_DIR)/static/less/base.less $@
 
 $(SITE_DIR)/static/js/compiled.js: $(wildcard $(SITE_DIR)/static/js/*.js)
-	cat 	$(SITE_DIR)/static/js/bootstrap.min.js 		\
+	cat $(SITE_DIR)/static/js/bootstrap.min.js 		\
 		$(SITE_DIR)/static/js/lunr.min.js 		\
 		$(SITE_DIR)/static/js/jquery.scrollTo-min.js 	\
 		$(SITE_DIR)/static/js/search.js 		\
