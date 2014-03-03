@@ -57,12 +57,12 @@ div.integration {
     padding: 10px 20px 10px 20px;
     border: 3px solid @black;
 
-    .fontStyle('NimbusSanNovCon-Bol', 20px, @lettingSpacing: 0.1em);
+    .fontStyle(@baseFontFamilyCondensedBold, 20px, @lettingSpacing: 0.1em);
     text-transform: uppercase;
 
     a {
       color: @black;
-      .fontStyle('NimbusSanNovCon-Bol', 20px, @lettingSpacing: 0.1em);
+      .fontStyle(@baseFontFamilyCondensedBold, 20px, @lettingSpacing: 0.1em);
     }
    }
 }
@@ -74,7 +74,7 @@ ul {
 }
 
 code {
-  .fontStyle(@monoFontFamily, @size: 12px, @color: @black);
+  .fontStyle(@monoFontFamily, @size: 13px, @color: @black);
   background-color: @white;
   border: 1px solid @gray2;
 }

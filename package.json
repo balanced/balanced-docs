@@ -4,7 +4,6 @@
   "author": "balancedpayments",
   "private": true,
   "dependencies": {
-    "less": "*",
-    "strapped": "0.0.3"
+    "less": "*"
   }
 }

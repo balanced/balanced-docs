@@ -1087,7 +1087,7 @@ address {
 code,
 pre {
   padding: 0 3px 2px;
-  font-family: Consolas, Monaco, Menlo, "Courier New", monospace;
+  font-family: "Inconsolata", Monaco, Menlo, "Courier New", monospace;
   font-size: 11px;
   color: #333333;
   -webkit-border-radius: 3px;
@@ -5544,38 +5544,56 @@ a.badge:focus {
 */
 @font-face {
   font-family: 'NimbusSanNov-Med';
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_2_0.eot');
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_2_0.eot?#iefix') format('embedded-opentype'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_2_0.woff') format('woff'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_2_0.ttf') format('truetype');
+  src: url('../fonts/241122_2_0.eot');
+  src: url('../fonts/241122_2_0.eot?#iefix') format('embedded-opentype'), url('../fonts/241122_2_0.woff') format('woff'), url('../fonts/241122_2_0.ttf') format('truetype');
 }
 @font-face {
   font-family: 'NimbusSanNovCon-Med';
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/260109_1_0.eot');
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/260109_1_0.eot?#iefix') format('embedded-opentype'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/260109_1_0.woff') format('woff'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/260109_1_0.ttf') format('truetype');
+  src: url('../fonts/260109_1_0.eot');
+  src: url('../fonts/260109_1_0.eot?#iefix') format('embedded-opentype'), url('../fonts/260109_1_0.woff') format('woff'), url('../fonts/260109_1_0.ttf') format('truetype');
 }
 @font-face {
   font-family: 'NimbusSanNovCon-Bol';
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/260109_0_0.eot');
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/260109_0_0.eot?#iefix') format('embedded-opentype'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/260109_0_0.woff') format('woff'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/260109_0_0.ttf') format('truetype');
+  src: url('../fonts/260109_0_0.eot');
+  src: url('../fonts/260109_0_0.eot?#iefix') format('embedded-opentype'), url('../fonts/260109_0_0.woff') format('woff'), url('../fonts/260109_0_0.ttf') format('truetype');
 }
 @font-face {
   font-family: 'NimbusSanNov-Bol';
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_3_0.eot');
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_3_0.eot?#iefix') format('embedded-opentype'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_3_0.woff') format('woff'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_3_0.ttf') format('truetype');
+  src: url('../fonts/241122_3_0.eot');
+  src: url('../fonts/241122_3_0.eot?#iefix') format('embedded-opentype'), url('../fonts/241122_3_0.woff') format('woff'), url('../fonts/241122_3_0.ttf') format('truetype');
 }
 @font-face {
   font-family: 'NimbusSanNov-Reg';
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_0_0.eot');
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_0_0.eot?#iefix') format('embedded-opentype'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_0_0.woff') format('woff'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/241122_0_0.ttf') format('truetype');
+  src: url('../fonts/241122_0_0.eot');
+  src: url('../fonts/241122_0_0.eot?#iefix') format('embedded-opentype'), url('../fonts/241122_0_0.woff') format('woff'), url('../fonts/241122_0_0.ttf') format('truetype');
 }
 @font-face {
   font-family: 'NimbusSanNov-SemBol';
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/26A300_0_0.eot');
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/26A300_0_0.eot?#iefix') format('embedded-opentype'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/26A300_0_0.woff') format('woff'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/26A300_0_0.ttf') format('truetype');
+  src: url('../fonts/26A300_0_0.eot');
+  src: url('../fonts/26A300_0_0.eot?#iefix') format('embedded-opentype'), url('../fonts/26A300_0_0.woff') format('woff'), url('../fonts/26A300_0_0.ttf') format('truetype');
 }
 @font-face {
   font-family: 'NimbusSanConD-Bol';
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/27300D_0_0.eot');
-  src: url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/27300D_0_0.eot?#iefix') format('embedded-opentype'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/27300D_0_0.woff') format('woff'), url('https://d3n06lmttbcmxe.cloudfront.net/css/fonts/27300D_0_0.ttf') format('truetype');
+  src: url('../fonts/27300D_0_0.eot');
+  src: url('../fonts/27300D_0_0.eot?#iefix') format('embedded-opentype'), url('../fonts/27300D_0_0.woff') format('woff'), url('../fonts/27300D_0_0.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Inconsolata'), url(https://themes.googleusercontent.com/static/fonts/inconsolata/v6/BjAYBlHtW3CJxDcjzrnZCLrIa-7acMAeDBVuclsi6Gc.woff) format('woff');
+}
+@font-face {
+  font-family: 'Inconsolata';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Inconsolata Bold'), local('Inconsolata-Bold'), url(https://themes.googleusercontent.com/static/fonts/inconsolata/v6/AIed271kqQlcIRSOnQH0yRbnBKKEOwRKgsHDreGcocg.woff) format('woff');
+}
+@font-face {
+  font-family: 'Droid Serif Italic';
+  font-style: italic;
+  font-weight: 400;
+  src: local('Droid Serif Italic'), local('DroidSerif-Italic'), url(https://themes.googleusercontent.com/static/fonts/droidserif/v3/cj2hUnSRBhwmSPr9kS5894o3ZslTYfJv0R05CazkwN8.woff) format('woff');
 }
 @font-face {
   font-family: 'Bitter';
@@ -7078,7 +7096,7 @@ button.danger:hover {
 }
 .navbar.navbar-clients-search {
   top: 61px;
-  border-bottom: 1px solid #b7bbbd;
+  border-bottom: 1px solid #b1b9bd;
   z-index: 9;
 }
 .navbar .navbar-inner {
@@ -7363,7 +7381,7 @@ button.danger:hover {
 #sidebar-flyout a:hover {
   font-family: 'NimbusSanNov-Reg';
   font-size: 13px;
-  color: #b7bbbd;
+  color: #b1b9bd;
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
@@ -7387,7 +7405,7 @@ button.danger:hover {
   float: left;
 }
 #sidebar-flyout-toggle-bar ul li {
-  color: #b7bbbd;
+  color: #b1b9bd;
 }
 #sidebar-flyout-toggle-bar .caret {
   border-top: 10px solid #555555;
@@ -7497,7 +7515,7 @@ button.danger:hover {
 .sidebar-nav .nav-list li.toctree-l1 ul li.toctree-l2 a {
   font-family: 'NimbusSanNov-Reg';
   font-size: 13px;
-  color: #b7bbbd;
+  color: #b1b9bd;
   font-weight: normal;
   font-style: normal;
   letter-spacing: normal;
@@ -7606,7 +7624,7 @@ div.header2 {
 }
 .box {
   display: inline-block;
-  font-family: 'NimbusSanNov-Reg';
+  font-family: "NimbusSanNov-Reg", arial, sans-serif;
   font-size: inherit;
   color: #ffffff;
   font-weight: normal;
@@ -7816,8 +7834,8 @@ dl.dl-params dt {
   padding: 5px 0px 19px 0px;
 }
 dl.dl-params dt code {
-  font-family: Consolas, Monaco, Menlo, "Courier New", monospace;
-  font-size: 12px;
+  font-family: "Inconsolata", Monaco, Menlo, "Courier New", monospace;
+  font-size: 13px;
   color: #c88a12;
   font-weight: normal;
   font-style: normal;
@@ -8259,7 +8277,7 @@ span.text-highlight.search-active {
 }
 .code-white div p {
   text-transform: capitalize;
-  font-family: 'nimbussannov-sembol';
+  font-family: "NimbusSanNov-SemBol", arial, sans-serif;
   font-size: 15px;
   color: #000000;
   font-weight: normal;
@@ -8317,7 +8335,7 @@ div.integration div.copy-box {
   background-color: #ffffff;
   padding: 10px 20px 10px 20px;
   border: 3px solid #000000;
-  font-family: 'NimbusSanNovCon-Bol';
+  font-family: "NimbusSanConD-Bol", arial, sans-serif;
   font-size: 20px;
   color: #000000;
   font-weight: normal;
@@ -8326,7 +8344,7 @@ div.integration div.copy-box {
   text-transform: uppercase;
 }
 div.integration div.copy-box a {
-  font-family: 'NimbusSanNovCon-Bol';
+  font-family: "NimbusSanConD-Bol", arial, sans-serif;
   font-size: 20px;
   color: #000000;
   font-weight: normal;
@@ -8337,8 +8355,8 @@ ul.simple {
   list-style-type: none;
 }
 code {
-  font-family: Consolas, Monaco, Menlo, "Courier New", monospace;
-  font-size: 12px;
+  font-family: "Inconsolata", Monaco, Menlo, "Courier New", monospace;
+  font-size: 13px;
   color: #000000;
   font-weight: normal;
   font-style: normal;
