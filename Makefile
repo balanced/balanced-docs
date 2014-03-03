@@ -89,11 +89,13 @@ overview-clean:
 	-rm $(SITE_DIR)/static/css/styles.css
 	-rm -r bower_components
 	-rm -r site/static/less/strapped
+	-rm -r site/static/fonts
 	
 # static files
 strapped:
-	bower install strapped
+	bower install strapped	
 	cp -r bower_components/strapped/static/less site/static/less/strapped
+	cp -r bower_components/strapped/static/fonts site/static/fonts
 
 # --line-numbers=mediaquery <-- use this to debug the compiled less
 $(SITE_DIR)/static/css/styles.css: $(wildcard $(SITE_DIR)/static/less/*.less)
