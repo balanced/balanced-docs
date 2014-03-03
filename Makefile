@@ -97,6 +97,7 @@ strapped:
 	bower install strapped	
 	cp -r bower_components/strapped/static/less site/static/less/strapped
 	cp -r bower_components/strapped/static/fonts site/static/fonts
+	cp -r bower_components/strapped/static/images site/static/img
 
 # --line-numbers=mediaquery <-- use this to debug the compiled less
 $(SITE_DIR)/static/css/styles.css: $(wildcard $(SITE_DIR)/static/less/*.less)
