@@ -7816,8 +7816,8 @@ dl.dl-params dt {
   padding: 5px 0px 19px 0px;
 }
 dl.dl-params dt code {
-  font-family: 'Inconsolata';
-  font-size: inherit;
+  font-family: Consolas, Monaco, Menlo, "Courier New", monospace;
+  font-size: 12px;
   color: #c88a12;
   font-weight: normal;
   font-style: normal;
@@ -8165,7 +8165,6 @@ ul + table.footnote {
 }
 #context-content {
   padding-top: 80px;
-  line-height: 36px;
 }
 #context-content section section {
   border-top: 1px solid #bcbbb6;
@@ -8175,6 +8174,7 @@ ul + table.footnote {
   border-top: 2px solid #404040;
   display: inline;
   padding-top: 10px;
+  line-height: 36px;
   clear: both;
   *zoom: 1;
 }
@@ -8338,7 +8338,7 @@ ul.simple {
 }
 code {
   font-family: Consolas, Monaco, Menlo, "Courier New", monospace;
-  font-size: inherit;
+  font-size: 12px;
   color: #000000;
   font-weight: normal;
   font-style: normal;
