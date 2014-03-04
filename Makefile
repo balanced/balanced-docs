@@ -42,7 +42,12 @@ clean: clean-limited
 	-rm -rf $(SITE_DIR)/1.0
 	-rm -rf $(SITE_DIR)/1.1
 	-rm -f $(SITE_DIR)/api-gen-*.html
-	-rm -f $(SITE_DIR)/overview-gen-*.html
+	-rm $(SITE_DIR)/overview-gen-*.html
+	-rm -f $(SITE_DIR)/static/css/styles.css
+	-rm -rf bower_components
+	-rm -rf site/static/less/strapped
+	-rm -rf site/static/fonts
+
 
 clean-limited: api-clean overview-clean
 
@@ -86,14 +91,13 @@ overview-clean:
 	-rm -rf overview/html
 	-rm -rf overview/rev*/html
 	-rm -f *.cache
-	-rm $(SITE_DIR)/static/css/styles.css
-	-rm -r bower_components
-	-rm -r site/static/less/strapped
-	
+
 # static files
 strapped:
-	bower install strapped
+	bower install strapped	
 	cp -r bower_components/strapped/static/less site/static/less/strapped
+	cp -r bower_components/strapped/static/fonts site/static/fonts
+	cp -r bower_components/strapped/static/images site/static/img
 
 # --line-numbers=mediaquery <-- use this to debug the compiled less
 $(SITE_DIR)/static/css/styles.css: $(wildcard $(SITE_DIR)/static/less/*.less)
