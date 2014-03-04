@@ -17,7 +17,7 @@
 [submodule "clients/rev1/node"]
 	path = clients/rev1/node
 	url = https://github.com/balanced/balanced-node.git
-  branch = master
+  branch = rev1
 [submodule "clients/rev1/ruby"]
 	path = clients/rev1/ruby
 	url = https://github.com/balanced/balanced-ruby.git
