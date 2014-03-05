@@ -58,5 +58,6 @@ site/1.1
 scenario.cache
 site/static/fonts/
 site/static/less/strapped/
+site/static/img/images/
 site/static/css/styles.css
 bower_components
