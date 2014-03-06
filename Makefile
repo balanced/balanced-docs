@@ -42,7 +42,7 @@ clean: clean-limited
 	-rm -rf $(SITE_DIR)/1.0
 	-rm -rf $(SITE_DIR)/1.1
 	-rm -f $(SITE_DIR)/api-gen-*.html
-	-rm $(SITE_DIR)/overview-gen-*.html
+	-rm -f $(SITE_DIR)/overview-gen-*.html
 	-rm -f $(SITE_DIR)/static/css/styles.css
 	-rm -rf bower_components
 	-rm -rf site/static/less/strapped
