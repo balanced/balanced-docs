@@ -42,7 +42,7 @@ clean: clean-limited
 	-rm -rf $(SITE_DIR)/1.0
 	-rm -rf $(SITE_DIR)/1.1
 	-rm -f $(SITE_DIR)/api-gen-*.html
-	-rm $(SITE_DIR)/overview-gen-*.html
+	-rm -f $(SITE_DIR)/overview-gen-*.html
 	-rm -f $(SITE_DIR)/static/css/styles.css
 	-rm -rf bower_components
 	-rm -rf site/static/less/strapped
@@ -94,7 +94,7 @@ overview-clean:
 
 # static files
 strapped:
-	bower install strapped	
+	bower install --allow-root strapped
 	cp -r bower_components/strapped/static/less site/static/less/strapped
 	cp -r bower_components/strapped/static/fonts site/static/fonts
 	cp -r bower_components/strapped/static/images site/static/img
