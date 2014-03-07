@@ -70,14 +70,6 @@ class Spec(dict):
             'holds': 'card_holds'
         }.get(resource, resource)
 
-        # if resource == 'card_holds': # and action == 'update':
-        #     # TODO asdfasdf, gaaaa
-        #     return self.dockers.match_form('holds.' + action)
-        # if resource == 'credits':
-        #     return self.dockers.match_form(name)
-
-        # action is currently create or update
-        #method = 'POST' if action == 'create' else 'PUT'
         if action == 'create':
             reqs = self['resources_create'][resource]
         else:
@@ -107,13 +99,13 @@ class Spec(dict):
 
             if description is None:
                 try:
-                    description = view['properties'].get('links', {}).get(name, {}).get('description')
+                    description = (
+                        view['properties']
+                        .get('links', {}).get('properties', {})
+                        .get(name, {}).get('description')
+                    )
                 except:
                     description = None
-
-            if description is None:
-                if 'description' in view:
-                    description = view['description']
 
             return description
 
@@ -132,7 +124,7 @@ class Spec(dict):
             for name in all_keys:
                 field = {}
                 ignored_object_keys = ['links']
-                if get_type(name) == 'object' and name not in ignored_object_keys:
+                if get_type(name) == 'object':# and name not in ignored_object_keys:
                     resource_model = self._find_file('_models/{}.json'.format(name))
                     subkeys = set()
                     subfields = []
@@ -144,9 +136,13 @@ class Spec(dict):
                                 subkeys.add(key)
 
                     for sk in subkeys:
+                        descr = get_description(resource_model, sk)
+                        if not descr:
+                            continue
+
                         subfield = {
                             'name': sk,
-                            'description': get_description(resource_model, sk),
+                            'description': descr,
                             'nullable': sk in nullable,
                             'required': sk in required,
                             'tags': [],
@@ -166,7 +162,7 @@ class Spec(dict):
                         'nullable': name in nullable,
                         'required': name in required,
                         'validate': None,
-                        'type': 'form_field',
+                        'type': 'form_field' if subfields else 'object',
                         'description': get_description(view, name),
                         'name': name
                     }
