@@ -33,3 +33,4 @@
 [submodule "clients/rev1/php"]
 	path = clients/rev1/php
 	url = https://github.com/balanced/balanced-php.git
+  branch = rev1-development
