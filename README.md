@@ -38,7 +38,7 @@ And then you can setup your environment like this:
 ```bash
 git clone git@github.com:balanced/balanced-docs.git
 cd balanced-docs
-git submodule update --init --recursive
+git submodule update --init --recursive --remote
 mkvirtualenv balanced-docs
 python setup.py develop
 pip install -r requirements.txt
@@ -49,7 +49,7 @@ If you've done that before just do:
 ```bash
 cd /path/to/balanced-docs
 workon balanced-docs
-git submodule update --recursive
+git submodule update --init --recursive --remote
 ```
 
 ## Build
@@ -91,8 +91,8 @@ Let's take a look at what we've built using [mongoose](https://github.com/valeno
 
 ```bash
 cd site
-mongoose -ssi_pattern '**.shtml$|**.shtm$|**.html$'
-Mongoose web server v. 3.8 started on port(s) 8080 with web root [.]
+mongoose
+// Mongoose web server v. 3.8 started on port(s) 8080 with web root [.]
 ```
 
 ### Specification
