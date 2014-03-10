@@ -29,7 +29,7 @@
 [submodule "java"]
 	path = clients/rev1/java
 	url = https://github.com/balanced/balanced-java.git
-	branch = 1.0
+	branch = master
 [submodule "clients/rev1/php"]
 	path = clients/rev1/php
 	url = https://github.com/balanced/balanced-php.git
