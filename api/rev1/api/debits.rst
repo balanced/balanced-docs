@@ -63,8 +63,8 @@ Create a Bank Account Debit
 Debit (charge) a bank account.
 
 .. note::
-  :header_class: alert alert-tab-red
-  :body_class: alert alert-green
+  :header_class: alert alert-tab-yellow
+  :body_class: alert alert-yellow
   
   A bank account must be verified with micro deposits before it can be debited. See :ref:`bank-account-verifications`.
 
