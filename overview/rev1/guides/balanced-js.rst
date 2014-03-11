@@ -189,7 +189,7 @@ our form field values into a payload object and submit it to the Balanced API.
       account_number: $('#ba-number').val()
     };
 
-    // Create credit card
+    // Create bank account
     balanced.bankAccount.create(payload, handleResponse);
   });
 
