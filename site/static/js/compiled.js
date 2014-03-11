@@ -89,10 +89,10 @@ $(document).ready(function () {
     }
 
     if($('#overview-content').length){
-        add_to_search('/1.1/api/index.html');
+        add_to_search('api.html');
     }
     else if($('#api-content').length){
-        add_to_search('/1.1/overview/index.html');
+        add_to_search('overview.html');
     }
 
 
@@ -225,10 +225,13 @@ $(document).ready(function () {
         }
         return string_to_check
     }
+
+
 });
 //////////////
 // docs.js //
 /////////////
+
 function updateQueryStringParameter(uri, key, value) {
     var re = new RegExp("([?&])" + key + "=.*?(&|$)", "i");
     var separator = uri.indexOf("?") > -1 ? "&" : "?";
@@ -336,4 +339,10 @@ $(document).ready(function () {
     scrollToAnchor(window.location.hash);
     $("body").on("click", "a", scrollToAnchor);
     fix_sidebar();
-});
+});(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-30733850-5', 'balancedpayments.com');
+ga('send', 'pageview');

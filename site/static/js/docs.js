@@ -32,14 +32,34 @@ function updateNavigation(e) {
     }
     var currentTopic = $active.first().find('a').first();
     window.history.replaceState({}, null, currentTopic.attr('href'));
-    $('.nav.nav-list').scrollTo('.active', 100, {offset : -100});
-    //console.log(currentTopic.attr('href'));
+    $('.nav.nav-list').scrollTo('.active', 100, {offset : -150});
+}
+function scrollToAnchor(href) {
+    var href = typeof(href) == "string" ? href : $(this).attr("href");
+    var fromTop = 50;
+    if (href != null && href.indexOf("#") == 0) {
+        var $target = $(href);
+        if ($target.length) {
+            $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+            if (history && "pushState" in history) {
+                history.pushState({}, document.title, window.location.pathname + href);
+                return false;
+            }
+        }
+    }
+}
+function updateLangTitle(text){
+    $('#lang-dropdown-head').html("lang: " + text + " <b class='caret'></b>");
 }
 $(document).ready(function () {
-    //SIDEBAR TO STICK TO BOTTOM
-    function fix_sidebar(){
+    var langParam = getParameterByName('language', window.location.href)[0];
+    if (langParam != null) {
+        $.cookie('language', langParam, { expires: 7, path: '/' });
+    }
+
+    function fix_sidebar() {
         var window_height = $(window).height();
-        var top_of_sidebar = 300;
+        var top_of_sidebar = 65;
         var height_of_sidebar = window_height - top_of_sidebar;
         $('.nav.nav-list').css('height', height_of_sidebar);
     }
@@ -48,93 +68,45 @@ $(document).ready(function () {
         fix_sidebar();
     });
 
-    //FIX ON LOAD
-    fix_sidebar();
+    $(".nav.nav-list").mouseover(function() {
+      $('body').addClass('freeze-scroll');
+    });
+    $(".nav.nav-list").mouseout(function() {
+      $('body').removeClass('freeze-scroll');
+    });
 
-    //HIDE OVERVIEW REQUEST BOXES:
-    var $overview_content = $('#overview-content');
-    $overview_content.find('.request > p:first-child').hide();
-    $overview_content.find('.response > p:first-child').hide();
+    $("li").bind('activate', updateNavigation);
 
-   //BIND URL UPDATE
-   $("li").bind('activate', updateNavigation);
-    function update_lang_head(text){
-        var lang_head = $('#lang-dropdown-head');
-        lang_head.html(text + " <b class='caret'></b>")
-    }
-
-    //LOAD DEFAULT LANGUAGE
-    var default_lang = getParameterByName('language', window.location.href);
-    default_lang = (default_lang.length > 0) ? default_lang[0] : 'bash';
-    default_lang_dd = $("[data-lang='" + default_lang +"']");
-    update_lang_head(default_lang_dd.text());
-    default_lang_dd.parent().hide();
+    var defaultLang = defaultLang = $.cookie('language');
+    defaultLang = (defaultLang != null) ? defaultLang : 'bash';
+    defaultLang_dd = $("[data-lang='" + defaultLang +"']");
+    updateLangTitle(defaultLang_dd.text());
+    defaultLang_dd.parent().hide();
     $("[class^='highlight-']").hide();
-    $(".highlight-" + default_lang).show();
+    $("[class^='section-']").hide();
+    $(".highlight-" + defaultLang).show();
+    $(".section-" + defaultLang).show();
     $('.highlight-javascript').show();
     $('.highlight-html').show();
 
-    $('a').each(function() {
-        if ($(this).attr('href') != null) {
-            if ($(this).attr('href').indexOf("api.html") != -1 ||
-                $(this).attr('href').indexOf("overview.html") != -1) {
-                    var href = $(this).attr('href');
-                    var insertPos = href.indexOf('.html') + 5;
-                    if (href.indexOf('?') != -1) {
-                        insertPos += 1;
-                    }
-                    $(this).attr('href', [href.slice(0, insertPos), "?language=" + default_lang, href.slice(insertPos)].join(''));
-                }
-        }
-    });
-    
-    //SWAP LANGUAGE METHODS
-    $('.lang-change').click(function () {
+    $('.lang-change').click(function (e) {
+        e.preventDefault();
         var lang = $(this).attr('data-lang');
+        $.cookie('language', lang, { expires: 7, path: '/' });
         var langtext = $(this).text();
-        update_lang_head(langtext);
+        updateLangTitle(langtext);
         var parent = $(this).parent();
         parent.siblings().show();
         parent.hide();
         $("[class^='highlight-']").hide();
-        $(".highlight-javascript").show();
+        $("[class^='section-']").hide();
         $(".highlight-" + lang).show();
-        var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
-        uri = uri + '' + window.location.hash;
-        console.log(window.location.hash);
-        console.log(uri);
-        window.location = uri;
-        //window.history.replaceState(null, null, uri);
-        $('[data-spy="scroll"]').each(function () {
-            var $spy = $(this).scrollspy('refresh');
-        });
+        $(".section-" + lang).show();
+        $('.highlight-javascript').show();
+        $('.highlight-html').show();
     });
 
-    //SWITCH SELECTORS
-    $('#context-selector > li').click(function (){
-        window.location = $(this).find('a').attr('href');
-    });
-
-    // VERSION SELECTOR
-    var default_version = "rev0";
-    try {
-	    default_version = location.pathname.split('/')[1];
-    }
-    catch(e) {}
-    var version_element = $("[data-version='" + default_version + "']");
-    if(!version_element.length) {
-	    default_version='rev0';
-    	version_element = $("[data-version=rev0]");
-    }
-    version_element.parent().hide();
-    $("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
-    $("#version-dropdown-head > .version-change").removeClass("version-change").attr('href', '#');
-    $("[class^=rev-]").hide();
-    $(".rev-"+default_version).show();
-    $("a.version-change").click(function() {
-    	var $this = $(this);
-    	var href = $this.attr('data-version');
-    	location.href = location.href.replace(/rev\d+/, href);
-    	return false;
-    });
+    scrollToAnchor(window.location.hash);
+    $("body").on("click", "a", scrollToAnchor);
+    fix_sidebar();
 });

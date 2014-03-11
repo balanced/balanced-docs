@@ -48,10 +48,10 @@ clean-limited: api-clean overview-clean
 
 clean-site:
 	-rm -rf $(SITE_DIR)/$(REV_NUM)
-	-rm -f $(SITE_DIR)/static/js/compiled.js
-	-rm -f $(SITE_DIR)/static/css/styles.css
 	-rm -rf $(SITE_DIR)/static/less/strapped
 	-rm -rf $(SITE_DIR)/static/fonts
+	-rm -f $(SITE_DIR)/static/js/compiled.js
+	-rm -f $(SITE_DIR)/static/css/styles.js
 	-rm -rf bower_components
 
 rev0:
@@ -107,6 +107,7 @@ $(SITE_DIR)/static/js/compiled.js: $(wildcard $(SITE_DIR)/static/js/*.js)
 	cat $(SITE_DIR)/static/js/bootstrap.min.js 		\
 		$(SITE_DIR)/static/js/lunr.min.js 		\
 		$(SITE_DIR)/static/js/jquery.scrollTo-min.js 	\
+		$(SITE_DIR)/static/js/jquery-cookie.js 	\
 		$(SITE_DIR)/static/js/search.js 		\
 		$(SITE_DIR)/static/js/docs.js 			\
 		$(SITE_DIR)/static/js/google-analytics.js 			\
