@@ -43,16 +43,16 @@ clean: clean-limited
 	-rm -rf $(SITE_DIR)/1.1
 	-rm -f $(SITE_DIR)/api-gen-*.html
 	-rm -f $(SITE_DIR)/overview-gen-*.html
-	-rm -f $(SITE_DIR)/static/css/styles.css
-	-rm -rf bower_components
-	-rm -rf site/static/less/strapped
-	-rm -rf site/static/fonts
-
 
 clean-limited: api-clean overview-clean
 
 clean-site:
 	-rm -rf $(SITE_DIR)/$(REV_NUM)
+	-rm -f $(SITE_DIR)/static/js/compiled.js
+	-rm -f $(SITE_DIR)/static/css/styles.css
+	-rm -rf $(SITE_DIR)/static/less/strapped
+	-rm -rf $(SITE_DIR)/static/fonts
+	-rm -rf bower_components
 
 rev0:
 	REV=rev0 REV_NUM=1.0 make build-revisions
@@ -109,6 +109,7 @@ $(SITE_DIR)/static/js/compiled.js: $(wildcard $(SITE_DIR)/static/js/*.js)
 		$(SITE_DIR)/static/js/jquery.scrollTo-min.js 	\
 		$(SITE_DIR)/static/js/search.js 		\
 		$(SITE_DIR)/static/js/docs.js 			\
+		$(SITE_DIR)/static/js/google-analytics.js 			\
 			> $@
 
 ddd:
