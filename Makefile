@@ -94,7 +94,7 @@ overview-clean:
 
 # static files
 strapped:
-	bower install strapped
+	bower install --allow-root --config.interactive=false strapped
 	cp -r bower_components/strapped/static/less site/static/less/strapped
 	cp -r bower_components/strapped/static/fonts site/static/fonts
 	cp -r bower_components/strapped/static/images site/static/img
