@@ -178,6 +178,16 @@ class Spec(dict):
                     }
                 fields.append(field)
 
+            def fields_sort(a, b):
+                if a['required'] and not b['required']:
+                    return -1
+                if not a['required'] and b['required']:
+                    return 1
+                return 0
+
+            fields.sort(key=lambda x: x['name'])
+            fields.sort(cmp=fields_sort)
+
             return {
                 'fields': fields,
                 'type': 'form',
