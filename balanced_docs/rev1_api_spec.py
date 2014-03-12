@@ -183,8 +183,9 @@ class Spec(dict):
                     return -1
                 if not a['required'] and b['required']:
                     return 1
-                return a['name'] > b['name']
+                return 0
 
+            fields.sort(key=lambda x: x['name'])
             fields.sort(cmp=fields_sort)
 
             return {
