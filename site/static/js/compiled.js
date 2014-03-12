@@ -23,7 +23,6 @@ var lunr=function(t){var e=new lunr.Index;return e.pipeline.add(lunr.stopWordFil
 ///////////////
 
 $('.search link').attr('href','/static/css/styles.css')
-$('.gsc-input').attr('background-color', '#59606B')
 
 $( document ).ready(function() {
     setTimeout(function(){

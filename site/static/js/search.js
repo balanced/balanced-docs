@@ -3,7 +3,6 @@
 ///////////////
 
 $('.search link').attr('href','/static/css/styles.css')
-$('.gsc-input').attr('background-color', '#59606B')
 
 $( document ).ready(function() {
     setTimeout(function(){
