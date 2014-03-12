@@ -49,9 +49,9 @@ clean-limited: api-clean overview-clean
 clean-site:
 	-rm -rf $(SITE_DIR)/$(REV_NUM)
 	-rm -f $(SITE_DIR)/static/js/compiled.js
-	-rm -f $(SITE_DIR)/static/css/styles.css
 	-rm -rf $(SITE_DIR)/static/less/strapped
 	-rm -rf $(SITE_DIR)/static/fonts
+	-rm -f $(SITE_DIR)/static/css/styles.css
 	-rm -rf bower_components
 
 rev0:
@@ -101,7 +101,7 @@ strapped:
 
 # --line-numbers=mediaquery <-- use this to debug the compiled less
 $(SITE_DIR)/static/css/styles.css: $(wildcard $(SITE_DIR)/static/less/*.less)
-	lessc $(SITE_DIR)/static/less/base.less $@
+	./node_modules/.bin/lessc $(SITE_DIR)/static/less/base.less $@
 
 $(SITE_DIR)/static/js/compiled.js: $(wildcard $(SITE_DIR)/static/js/*.js)
 	cat $(SITE_DIR)/static/js/bootstrap.min.js 		\
