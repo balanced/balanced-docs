@@ -889,6 +889,7 @@ input.gsc-input {
 
 .gsc-result {
   margin-bottom: 10px;
+  border-bottom-width: 0px;
 }
 
 .gsc-result .gs-title {
@@ -1067,14 +1068,21 @@ input.gsc-configSettingSubmit {
 
 .gsc-webResult {
   zoom: 1;  /* IE-specific hack to get the layout clearing right. */
+  border-bottom-style: solid !important;
+  border-bottom-width: 0px !important;
+  border-color: @gray3 !important;
 }
 
 /* Wrapper for a result. */
 .gsc-webResult .gsc-result {
   margin: 0;
   padding: .5em 0;
-  border-bottom: 1px solid #ebebeb;
+  margin-left: -24px;
+  width: 500px;
+  padding-left: 20px;
 }
+
+
 
 .gsc-above-wrapper-area {
   display: none;
@@ -1466,7 +1474,7 @@ div.gs-action.link a.gs-action {
 .gsc-results .gsc-imageResult-popup:hover {
   margin: 0;
   padding: 0;
-  border: 0;
+  border: 1px;
 }
 
 .gsc-imageResult .gs-imageResult-popup {
@@ -1621,11 +1629,13 @@ div.gs-action.link a.gs-action {
 .gsc-control-cse .gs-spelling,
 .gsc-control-cse .gs-result .gs-title,
 .gsc-control-cse .gs-result .gs-title * {
-  font-size: @baseFontSize;
+  font-size: @searchResultsTitleFont;
+  padding:10px 0px 10px 0px;
 }
 
 .gsc-control-cse .gs-result .gs-spelling-original {
   font-size: @baseFontSize;
+
 }
 
 .gs-divider {
@@ -1732,7 +1742,7 @@ span.gs-fileFormatType {
 
 .gs-promotion table .gs-snippet a span.gs-title,
 .gs-promotion table .gs-snippet a span.gs-title * {
-  font-size: @baseFontSize;
+  font-size: @searchResultsTitleFont;
 }
 
 .gs-promotion em {
@@ -1833,6 +1843,10 @@ span.gs-fileFormatType {
 .gs-result .gs-watermark{
   font-size: 10px;
   color: #7777cc;
+}
+
+.gs-snippet {
+  padding-bottom: 10px;
 }
 
 div.gs-results-attribution {
