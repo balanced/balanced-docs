@@ -138,10 +138,10 @@ associated to a customer.
   .. dcode:: scenario bank_account_associate_to_customer
 
 
-Charge a Bank Account
+Debit a Bank Account
 ---------------------
 
-Charge a bank account.
+Debit a bank account.
 
 .. note::
   :header_class: alert alert-tab-yellow
