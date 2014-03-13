@@ -95,8 +95,8 @@ Debit a bank account example:
        -d "description=Some descriptive text for the debit in the dashboard"
 
 .. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-green
+  :header_class: alert alert-tab-yellow
+  :body_class: alert alert-yellow
 
   Bank accounts you wish to debit must first `be verified`_.
 
@@ -118,11 +118,19 @@ throughout the payout process. There are three possible ``status`` values:
     until **3pm PST** the next business day.
   ``succeeded``
     After 3-4 days, the status will change to ``succeeded`` and the funds will be
-    available in escrow.
+    available in escrow. Note, even after a succeeded status, the status may still
+    transition to failed even after a few weeks.
   ``failed``
     After 3-4 days, the status will change to ``failed`` if the transaction was
     not successful due to a problem such as an incorrect bank account number
     or insufficient funds.
+
+.. note::
+  :header_class: alert alert-tab-yellow
+  :body_class: alert alert-yellow
+
+  Even after a succeeded status, the status may still transition to failed, even
+  after a few weeks.
 
 |
 
