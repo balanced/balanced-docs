@@ -116,6 +116,28 @@ with a deleted bank account will not be affected.
    .. dcode:: scenario bank_account_delete
 
 
+Associate a Bank Account to a Customer
+---------------------------------------
+
+Add a ``BankAccount`` to a specific ``Customer``. Multiple bank accounts may be
+associated to a customer.
+
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+
+  Once a ``BankAccount`` has been associated to a ``Customer``, it cannot be
+  associated to another ``Customer``.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form bank_accounts.create
+
+.. container:: code-white
+
+  .. dcode:: scenario bank_account_associate_to_customer
+
+
 Charge a Bank Account
 ---------------------
 

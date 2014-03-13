@@ -113,6 +113,28 @@ with a deleted credit card will not be affected.
    .. dcode:: scenario card_delete
 
 
+Associate a Card to a Customer
+--------------------------------
+
+Add a ``Card`` to a specific ``Customer``. Multiple cards may be associated to
+a ``Customer``.
+
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+
+  Once a ``Card`` has been associated to a customer, it cannot be
+  associated to another customer.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form cards.create
+
+.. container:: code-white
+
+  .. dcode:: scenario card_associate_to_customer
+
+
 Charge a Card
 ------------------
 
