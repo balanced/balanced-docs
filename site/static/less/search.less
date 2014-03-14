@@ -483,7 +483,7 @@ div.gsc-clear-button {
   border: none;
   margin: auto;
   border-radius: 1px;
-  overflow: auto;
+  overflow: hidden;
   height: 100%;
   border-collapse: separate;
   border-color: #D2D6D9;
@@ -509,7 +509,7 @@ div.gsc-clear-button {
   opacity: 1 !important;
   visibility: visible !important;
   width: @searchbarInputWidth;
-  margin-top: 14px;
+  margin-top: 13px;
 }
 
 .search .icon-search{
@@ -1078,8 +1078,10 @@ input.gsc-configSettingSubmit {
   margin: 0;
   padding: .5em 0;
   margin-left: -24px;
-  width: 500px;
+  width: 475px;
   padding-left: 20px;
+  border-right-width: 0px;
+  overflow: hidden;
 }
 
 
@@ -1588,7 +1590,7 @@ div.gs-action.link a.gs-action {
   color : #000000;
   margin-right : 8px;
   display : inline;
-  color: @persianBlue100;
+  color: @linkColor;
 }
 
 .gsc-results .gsc-cursor-box .gsc-cursor-current-page {
@@ -1623,14 +1625,21 @@ div.gs-action.link a.gs-action {
  */
 .gs-result .gs-title,
 .gs-result .gs-title * {
-  color: #0000cc;
+  color: @linkColor;
 }
+
+.gs-result:hover, .gs-title:hover,
+.gs-result:hover, .gs-title *:hover {
+  color: @linkColorHover;
+}
+
+
 
 .gsc-control-cse .gs-spelling,
 .gsc-control-cse .gs-result .gs-title,
 .gsc-control-cse .gs-result .gs-title * {
   font-size: @searchResultsTitleFont;
-  padding:10px 0px 10px 0px;
+  padding:10px 0px 5px 0px;
 }
 
 .gsc-control-cse .gs-result .gs-spelling-original {
