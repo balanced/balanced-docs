@@ -53,6 +53,13 @@ Begin by including balanced.js in your application.
 
   <script type="text/javascript" src="https://js.balancedpayments.com/1.1/balanced.js"></script>
 
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+
+  Balanced recommends against locally hosting versions of balanced.js as this limits the
+  deliverability of important fixes.
+
 
 .. _balanced-js.collecting-card-info:
 
