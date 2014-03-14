@@ -128,7 +128,7 @@ and Order.
 .. container:: section-bash
 
   .. literalinclude:: curl/simple/order-update.sh
-     :language: bash
+    :language: bash
 
 
 Let's debit the buyer for this Order. This is accomplished by debiting a
@@ -221,8 +221,9 @@ We can now retrieve all of the order's debits with:
 
 .. container:: section-bash
 
-  .. literalinclude:: curl/simple/order-amount-fetch.sh
-     :language: bash
+  .. literalinclude:: curl/simple/order-debits-fetch.sh
+    :language: bash
+
   
 
 Likewise, we can retrieve all of the order's credits with:
