@@ -80,6 +80,7 @@
                             var customSearchControl =   new google.search.CustomSearchControl('017607265209527678717:bcvxfoio9vw', customSearchOptions);
                             customSearchControl.setResultSetSize(google.search.Search.SMALL_RESULTSET);
                             var options = new google.search.DrawOptions();
+                            options.setAutoComplete(true);
                             customSearchControl.draw('cse', options);
                         }, true);
                     </script>
