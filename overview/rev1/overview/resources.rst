@@ -14,7 +14,7 @@ These cards will be accepted in our system only for a **TEST** marketplace.
 .. cssclass:: table
 
   ============== =========================== ================ ==============================
-   Card Brand          Number                  Security Code     Result
+   Card Brand          Number                       CVV         Result
   ============== =========================== ================ ==============================
   ``VISA``        ``4111111111111111``            ``123``       Success
   ``MasterCard``  ``5105105105105100``            ``123``       Success
@@ -90,8 +90,7 @@ Testing Customer identity verification
 ``Customer`` resources have a ``merchant_status`` attribute for determining
 the Customer's underwritten status.
 
-Omit address data to trigger a ``false`` response. Supply address data
-to trigger a ``true`` response.
+Supply address and date of birth information to trigger a ``true`` response.
 
 The following will set ``merchant_status`` to ``underwritten``
 
@@ -99,7 +98,8 @@ The following will set ``merchant_status`` to ``underwritten``
 
   {
       "name": "Henry Ford",
-      "dob": "1863-07",
+      "dob_month": 07,
+      "dob_year": 1985,
       "address": {
           "postal_code": "48120"
       }
@@ -112,7 +112,8 @@ The following will set ``merchant_status`` to ``need-more-information``
 
   {
       "name": "Henry Ford",
-      "dob": "1863-07"
+      "dob_month": 07,
+      "dob_year": 1985
   }
 
 ``merchant_status`` will be one of: ``need-more-information``, ``underwritten``,
