@@ -55,7 +55,6 @@ site/spec
 site/*gen*.html
 site/1.0
 site/1.1
-scenario.cache
 site/static/fonts/
 site/static/less/strapped/
 site/static/img/images/
