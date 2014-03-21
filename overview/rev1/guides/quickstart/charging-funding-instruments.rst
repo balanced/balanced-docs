@@ -165,41 +165,20 @@ which sends the values to Balanced as follows:
 
 
 At this point we have a verified bank account that we can now charge (debit).
-This will issue a ``Debit`` which will deduct funds from the target credit 
+This will issue a ``Debit`` which will deduct funds from the specified 
 bank account.
 
-.. code-block:: ruby
+.. literalinclude:: curl/bank-account-debit.sh
+   :language: bash
 
-  bank_account.debit(
-    :amount => 5000,
-    :appears_on_statement_as => 'Statement text',
-    :description => 'Some descriptive text for the debit in the dashboard'
-  )
+.. literalinclude:: python/bank-account-debit.py
+   :language: python
 
-.. code-block:: python
+.. literalinclude:: ruby/bank-account-debit.rb
+   :language: ruby
 
-  bank_account.debit(
-    appears_on_statement_as='Statement text',
-    amount=5000,
-    description='Some descriptive text for the debit in the dashboard'
-  )
-
-.. code-block:: bash
-
-  curl https://api.balancedpayments.com/bank_accounts/BA2akihQKCAhhkX5aecSubr2/debits \
-     -H "Accept: application/vnd.api+json;revision=1.1" \
-     -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
-     -d "appears_on_statement_as=Statement text" \
-     -d "amount=5000" \
-     -d "description=Some descriptive text for the debit in the dashboard"
-
-.. code-block:: php
-
-  $bank_account->debits->create(array(
-    "amount" => "5000",
-    "appears_on_statement_as" => "Statement text",
-    "description" => "Some descriptive text for the debit in the dashboard",
-  ));
+.. literalinclude:: php/bank-account-debit.php
+   :language: php
 
 
 Checkpoint
@@ -214,6 +193,7 @@ Up to this point you should have:
 
 Ensure you have met these points before proceeding.
 
+|
 
 .. container:: box-left
 

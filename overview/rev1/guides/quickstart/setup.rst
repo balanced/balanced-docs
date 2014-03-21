@@ -13,6 +13,8 @@ API References:
 
   - `Authentication </1.1/api/authentication/#authenticating-to-balanced>`_
 
+|
+
 Prerequisites
 ---------------
 
@@ -27,6 +29,10 @@ Prerequisites
 .. container:: section-java
 
   .. include:: java/prerequisites.rst
+
+.. container:: section-php
+
+  .. include:: php/prerequisites.rst
 
 
 Obtaining the library
@@ -43,6 +49,10 @@ Obtaining the library
 .. container:: section-java
 
   .. include:: java/library-setup.rst
+
+.. container:: section-php
+
+  .. include:: php/library-setup.rst
 
 
 Configuring the Client
@@ -63,6 +73,10 @@ be configured with your marketplace API key secret.
 
   .. include:: java/configure.rst
 
+.. container:: section-php
+
+  .. include:: php/configure.rst
+
 
 Checkpoint
 -----------
@@ -82,6 +96,6 @@ Ensure you have met these points before proceeding.
    :box-classes: box box-block box-blue right
    :icon-classes: icon icon-arrow
 
-   :doc:`Charging Cards <charging-funding-instruments>`
+   :doc:`Charging Funding Instruments <charging-funding-instruments>`
 
 |
