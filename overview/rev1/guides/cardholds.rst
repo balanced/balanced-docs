@@ -61,6 +61,17 @@ amount of the card hold.
        -d "amount=5000" \
        -d "description=Some descriptive text for the debit in the dashboard"
 
+.. code-block:: php
+
+  <?php
+  # card_href is the stored href for the Card
+  $card = Balanced\Card::get(card_href);
+  $card->card_holds->create(array(
+    "amount" => "5000",
+    "description" => "Some descriptive text for the debit in the dashboard",
+  ));
+  ?>
+
 Capturing a card hold
 ---------------------
 
@@ -104,6 +115,14 @@ hold.
        -d "appears_on_statement_as=ShowsUpOnStmt" \
        -d "description=Some descriptive text for the debit in the dashboard"
 
+.. code-block:: php
+
+  <?php
+  # card_hold_href is the stored href for the CardHold
+  $hold = Balanced\CardHold::get(card_hold_href);
+  $hold->capture();
+  ?>
+
 Voiding a card hold
 ---------------------
 
@@ -139,6 +158,14 @@ If you wish to release the reserved funds you can always void the card hold.
        -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
        -X PUT \
        -d "is_void=true"
+
+.. code-block:: php
+
+  <?php
+  # card_hold_href is the stored href for the CardHold
+  $hold = Balanced\CardHold::get(card_hold_href);
+  $hold->void();
+  ?>
 
 .. _sample page: https://gist.github.com/2662770
 .. _balanced.js: https://js.balancedpayments.com/v1/balanced.js
