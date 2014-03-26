@@ -64,8 +64,8 @@ amount of the card hold.
 .. code-block:: php
 
   <?php
-  # card_href is the stored href for the Card
-  $card = Balanced\Card::get(card_href);
+  # $card_href is the stored href for the Card
+  $card = Balanced\Card::get($card_href);
   $card->card_holds->create(array(
     "amount" => "5000",
     "description" => "Some descriptive text for the debit in the dashboard",
@@ -118,8 +118,8 @@ hold.
 .. code-block:: php
 
   <?php
-  # card_hold_href is the stored href for the CardHold
-  $hold = Balanced\CardHold::get(card_hold_href);
+  # $card_hold_href is the stored href for the CardHold
+  $hold = Balanced\CardHold::get($card_hold_href);
   $hold->capture();
   ?>
 
@@ -162,8 +162,8 @@ If you wish to release the reserved funds you can always void the card hold.
 .. code-block:: php
 
   <?php
-  # card_hold_href is the stored href for the CardHold
-  $hold = Balanced\CardHold::get(card_hold_href);
+  # $card_hold_href is the stored href for the CardHold
+  $hold = Balanced\CardHold::get($card_hold_href);
   $hold->void();
   ?>
 

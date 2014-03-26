@@ -64,8 +64,8 @@ Debit a credit card example:
 .. code-block:: php
 
   <?php
-  # card_href is the stored href for the Card
-  $card = Balanced\Card::get(card_href);
+  # $card_href is the stored href for the Card
+  $card = Balanced\Card::get($card_href);
     $card->debits->create(array(
     "amount" => "100000",
     "description" => "Some descriptive text for the debit in the dashboard",
@@ -108,8 +108,8 @@ Debit a bank account example:
 .. code-block:: php
 
   <?php
-  # bank_account_href is the stored href for the BankAccount
-  $bank_account = Balanced\BankAccount::get(bank_account_href);
+  # $bank_account_href is the stored href for the BankAccount
+  $bank_account = Balanced\BankAccount::get($bank_account_href);
   $bank_account->debits->create(array(
     "amount" => "100000",
     "description" => "Some descriptive text for the debit in the dashboard",
@@ -230,8 +230,8 @@ the product, you can create a ``Refund``.
 .. code-block:: php
 
   <?php
-  # debit_href is the stored href for the Debit
-  $debit = Balanced\Debit::get(debit_href);
+  # $debit_href is the stored href for the Debit
+  $debit = Balanced\Debit::get($debit_href);
   $debit->refunds->create(array(
     'description' => 'Refund for Order #1111',
     'meta' => array(
