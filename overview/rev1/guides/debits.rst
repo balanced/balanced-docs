@@ -61,6 +61,17 @@ Debit a credit card example:
        -d "amount=100000" \
        -d "description=Some descriptive text for the debit in the dashboard"
 
+.. code-block:: php
+
+  <?php
+  # $card_href is the stored href for the Card
+  $card = Balanced\Card::get($card_href);
+    $card->debits->create(array(
+    "amount" => "100000",
+    "description" => "Some descriptive text for the debit in the dashboard",
+  ));
+  ?>
+
 
 Debit a bank account example:
 
@@ -93,6 +104,17 @@ Debit a bank account example:
        -d "appears_on_statement_as=Statement text" \
        -d "amount=100000" \
        -d "description=Some descriptive text for the debit in the dashboard"
+
+.. code-block:: php
+
+  <?php
+  # $bank_account_href is the stored href for the BankAccount
+  $bank_account = Balanced\BankAccount::get($bank_account_href);
+  $bank_account->debits->create(array(
+    "amount" => "100000",
+    "description" => "Some descriptive text for the debit in the dashboard",
+  ?>
+
 
 .. note::
   :header_class: alert alert-tab-yellow
@@ -204,6 +226,22 @@ the product, you can create a ``Refund``.
        -d "meta[merchant.feedback]=positive" \
        -d "meta[user.refund_reason]=not happy with product" \
        -d "meta[fulfillment.item.condition]=OK"
+
+.. code-block:: php
+
+  <?php
+  # $debit_href is the stored href for the Debit
+  $debit = Balanced\Debit::get($debit_href);
+  $debit->refunds->create(array(
+    'description' => 'Refund for Order #1111',
+    'meta' => array(
+            "fulfillment.item.condition" => "OK",
+            "merchant.feedback" => "positive",
+            "user.refund_reason" => "not happy with product",
+        )
+   ));
+  ?>
+
 
 A Debit may also be refunded from the `Dashboard`_.
 
