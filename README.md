@@ -32,6 +32,7 @@ You'll first need:
 
 * python 2.6+
 * [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/install.html)
+* [bower](http://bower.io/)
 
 And then you can setup your environment like this:
 
