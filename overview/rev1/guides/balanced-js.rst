@@ -147,7 +147,7 @@ our form field values into a payload object and submit it to the Balanced API.
 .. _balanced-js.collecting-bank-account-info:
 
 Collecting bank account information
-----------------------------------
+-------------------------------------
 
 Before we can collect credit card information, we need a place where users can
 enter it in, a form. The example below is extracted from this

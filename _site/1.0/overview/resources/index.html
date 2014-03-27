@@ -1,0 +1,368 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
+      <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+      <link href="/static/css/styles.css" rel="stylesheet">
+      <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+
+     <!-- <script src="static/js/html5shiv.js"></script> -->
+      <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar-nav" data-offset="10">
+
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <div class="logo">
+              <a class="brand" href="https://www.balancedpayments.com"></a>
+            </div>
+            <div class="span16">
+              <ul class="nav nav-api-context">
+    	          <li class="dropdown">
+                  <a class="dropdown-toggle context api-context" data-toggle="dropdown" id="context-dropdown-head">
+                    <div id="logo"></div>
+                    Overview
+                    <b class="caret"></b>
+                  </a>
+            	    <ul class="dropdown-menu context">
+            		    <li>
+                      <a class="context-change" data-context="api" href="/1.0/api/">API Reference</a>
+                    </li>
+            		    <li>
+                      <a class="context-change" data-context="faq" href="https://support.balancedpayments.com/hc/en-us">FAQ</a>
+                    </li>
+            	    </ul>
+                </li>
+              </ul>
+      
+      	      <ul class="nav nav-api-version">
+                <li class="dropdown">
+                  <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">v 1.0
+                    <b class="caret"></b>
+                  </a>
+        	        <ul class="dropdown-menu version">
+        		        <li>
+                      <a class="version-change" data-version="1.1" href="/1.1/overview/">v 1.1</a>
+                    </li>
+        	        </ul>
+                </li>
+      	      </ul>
+      
+              <ul class="nav nav-api-clients">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle lang" id="lang-dropdown-head" data-toggle="dropdown">lang: cURL <b class="caret"></b></a>
+                  <ul class="dropdown-menu lang">
+                    <li><a class="lang-change" data-lang="ruby" href="#">Ruby</a></li>
+                    <li><a class="lang-change" data-lang="python" href="#">Python</a></li>
+                    <li><a class="lang-change" data-lang="php" href="#">PHP</a></li>
+                    <li><a class="lang-change" data-lang="java" href="#">Java</a></li>
+                    <li><a class="lang-change" data-lang="bash" href="#">cURL</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <ul class="nav nav-links pull-right">
+              <li>
+                <a href="/1.1/overview/#support">Help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+  
+    <div class="api-version-rev">
+      
+      <div class="container content" id="overview-content">
+        <div class="row">
+
+          <div id="sidebar-top" style="display:none">
+            <div id="sidebar-top-content">
+              <ul class="inline">
+                <li style="vertical-align: middle;">
+                  <div id="logo" style="background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAMAAAC+oj0CAAAAV1BMVEVymix4oi/vQDXjPDJ4oi94oi/vQDXvQDXvQDXvQDV4oi91ni7vQDXqPjN4oi/foRLanRHopxNznC3mPTPopxPopxMAAABwmCzgPDHanRHopxN4oi/vQDXwPhJhAAAAF3RSTlPbICDbYBBQYEAQgLOAs1DH7hDHx6CAAHwvTFAAAABmSURBVHja1cjXDYAwDABR01sCpAEh2X9ObCFkJLMA93cPSpcPtb0a92QLqDLWsdYJA8iUY7aJulkzTzdr4p55Jp1gUM61uOzWjg1sn/2Iw7IEyeHEguCVeBUciaNgT+wFG49qnrsAe+cllBc1FLYAAAAASUVORK5CYII=) no-repeat center;width: 25px;height: 25px;float: left;">
+                  </div>
+                </li>
+                <li id="context-title" style="font-size: 16px;">Overview</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="span6 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+              <div class="row">
+                <div class="span6">
+                  <div class="nav nav-list context-navlist">
+                    <!-- The table of contents menu -->
+                    <ul class="nav nav-list context-navlist">
+<li class="toctree-l1">Overview<ul>
+<li class="toctree-l2"><a class="reference internal" href="../#client-libraries">Client Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#use-cases">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#github-discussions">Github Discussions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#support">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#third-party-plugins">Third-Party Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#integration-assistance">Integration Assistance</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Best Practices<ul>
+<li class="toctree-l2"><a class="reference internal" href="../best-practices/#use-balanced-js">Use balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best-practices/#reducing-declined-transactions">Reducing Declined Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best-practices/#catching-fraud-early">Catching Fraud Early</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best-practices/#reducing-payout-delays">Reducing Payout Delays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best-practices/#use-meta">Use Meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best-practices/#store-uris">Store URIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best-practices/#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Pricing and fees<ul>
+<li class="toctree-l2"><a class="reference internal" href="../fees/#payout-pricing">Payout Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fees/#processing-pricing">Processing Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fees/#invoicing-fees">Invoicing fees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fees/#funds-flow">Funds Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Getting Started<ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#obtain-a-test-marketplace">Obtain a Test Marketplace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#obtain-a-production-marketplace">Obtain a Production Marketplace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#balanced-js">Balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#collecting-credit-card-information">Collecting credit card information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#charge-a-credit-card">Charge a credit card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#collect-bank-account-info">Collect bank account info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#credit-a-bank-account">Credit a bank account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#balanced-js-card-reference">Balanced.js Card Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#balanced-js-bankaccount-reference">Balanced.js BankAccount Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Marketplaces<ul>
+<li class="toctree-l2"><a class="reference internal" href="../marketplaces/#simulating-verified-with-customers">Simulating verified with customers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marketplaces/#associating-debits-with-a-merchant">Associating debits with a merchant</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Balanced Payouts<ul>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#credits">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#credit-s-status-field">Credit's Status Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#payout-methods">Payout Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#bank-statement-descriptor">Bank statement descriptor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#canceling-credits">Canceling Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#pre-funding-your-account">Pre-funding Your Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#submission-delivery-times">Submission &amp; Delivery times</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Processing<ul>
+<li class="toctree-l2"><a class="reference internal" href="../processing/#debits">Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/#refunds">Refunds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/#holds">Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/#transaction-limits">Transaction Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current">Resources<ul>
+<li class="toctree-l2"><a class="reference internal" href="#test-credit-card-numbers">Test credit card numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-bank-account-numbers">Test bank account numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-identity-verification">Test identity verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#request-logs">Request Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-hash-attribute">The Hash Attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#address-verification-service">Address Verification Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#card-security-code">Card Security Code</a></li>
+</ul>
+</li>
+</ul>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="context-content" class="span19 offset1">
+            
+  <section id="resources">
+<span id="id1"></span><h1>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">∵</a></h1>
+<section id="test-credit-card-numbers">
+<span id="resources-test-credit-cards"></span><h2>Test credit card numbers<a class="headerlink" href="#test-credit-card-numbers" title="Permalink to this headline">∵</a></h2>
+<p>These cards will be accepted in our system only for a <strong>TEST</strong> marketplace.</p>
+<table border="1" class="table docutils">
+<colgroup>
+<col width="16%" />
+<col width="31%" />
+<col width="18%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Card Brand</th>
+<th class="head">Number</th>
+<th class="head">Security Code</th>
+<th class="head">Result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="docutils literal"><code>VISA</code></span></td>
+<td><span class="docutils literal"><code>4111111111111111</code></span></td>
+<td><span class="docutils literal"><code>123</code></span></td>
+<td>SUCCESS</td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>MasterCard</code></span></td>
+<td><span class="docutils literal"><code>5105105105105100</code></span></td>
+<td><span class="docutils literal"><code>123</code></span></td>
+<td>SUCCESS</td>
+</tr>
+<tr class="row-even"><td><span class="docutils literal"><code>AMEX</code></span></td>
+<td><span class="docutils literal"><code>341111111111111</code></span></td>
+<td><span class="docutils literal"><code>1234</code></span></td>
+<td>SUCCESS</td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>VISA</code></span></td>
+<td><span class="docutils literal"><code>4444444444444448</code></span> <a class="footnote-reference" href="#id4" id="id2">[1]</a></td>
+<td><span class="docutils literal"><code>123</code></span></td>
+<td>SIMULATE PROCESSOR FAILURE</td>
+</tr>
+<tr class="row-even"><td><span class="docutils literal"><code>VISA</code></span></td>
+<td><span class="docutils literal"><code>4222222222222220</code></span> <a class="footnote-reference" href="#id5" id="id3">[2]</a></td>
+<td><span class="docutils literal"><code>123</code></span></td>
+<td>SIMULATE TOKENIZATION ERROR</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Simulate a card which can be tokenized but will not be accepted for creating
+holds or debits. This type of failure is what you would expect if you try to
+create a hold on a card with insufficient funds.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>To simulate a card which cannot be tokenized but passes a LUHN check. You could
+expect this failure when a user tried to enter in a credit card which used to
+work but has been canceled.</td></tr>
+</tbody>
+</table>
+</section><section id="test-bank-account-numbers">
+<span id="resources-test-bank-accounts"></span><h2>Test bank account numbers<a class="headerlink" href="#test-bank-account-numbers" title="Permalink to this headline">∵</a></h2>
+<p>Balanced provides various utilities to aid you in testing your <a class="reference internal" href="../payouts/#payouts"><em>Balanced Payouts</em></a>
+integration.</p>
+<p>When integrating payouts, it's worth noting that incorrect bank routing numbers
+are a very commonly encountered error as Balanced does real-time checks against
+the <a class="reference external" href="https://www.fededirectory.frb.org">FedACH directory</a>.</p>
+<p>To aid you while integrating, Balanced provides special routing and
+account numbers that can simulate various scenarios that can go wrong.</p>
+<table border="1" class="table docutils">
+<colgroup>
+<col width="20%" />
+<col width="27%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Routing Number</th>
+<th class="head">Account Number</th>
+<th class="head">Scenario</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="docutils literal"><code>100000007</code></span></td>
+<td><span class="docutils literal"><code>8887776665555</code></span></td>
+<td>Invalid Routing Number</td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>111111118</code></span></td>
+<td><span class="docutils literal"><code>8887776665555</code></span></td>
+<td>Invalid Routing Number</td>
+</tr>
+<tr class="row-even"><td><span class="docutils literal"><code>021000021</code></span></td>
+<td><span class="docutils literal"><code>9900000000</code></span></td>
+<td>Transitions state to <span class="docutils literal"><code>pending</code></span></td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>321174851</code></span></td>
+<td><span class="docutils literal"><code>9900000001</code></span></td>
+<td>Transitions state to <span class="docutils literal"><code>pending</code></span></td>
+</tr>
+<tr class="row-even"><td><span class="docutils literal"><code>021000021</code></span></td>
+<td><span class="docutils literal"><code>9900000002</code></span></td>
+<td>Transitions state to <span class="docutils literal"><code>paid</code></span> (credits) or <span class="docutils literal"><code>succeeded</code></span> (debits)</td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>321174851</code></span></td>
+<td><span class="docutils literal"><code>9900000003</code></span></td>
+<td>Transitions state to <span class="docutils literal"><code>paid</code></span> (credits) or <span class="docutils literal"><code>succeeded</code></span> (debits)</td>
+</tr>
+<tr class="row-even"><td><span class="docutils literal"><code>021000021</code></span></td>
+<td><span class="docutils literal"><code>9900000004</code></span></td>
+<td>Transitions state to <span class="docutils literal"><code>failed</code></span></td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>321174851</code></span></td>
+<td><span class="docutils literal"><code>9900000005</code></span></td>
+<td>Transitions state to <span class="docutils literal"><code>failed</code></span></td>
+</tr>
+</tbody>
+</table>
+</section><section id="test-identity-verification">
+<span id="resources-test-identity-verification"></span><h2>Test identity verification<a class="headerlink" href="#test-identity-verification" title="Permalink to this headline">∵</a></h2>
+<p><span class="docutils literal"><code>Customer</code></span> resources have an <span class="docutils literal"><code>is_identity_verified</code></span> attribute.</p>
+<p>Omit address data to trigger a <span class="docutils literal"><code>false</code></span> response. Supply address data
+to trigger a <span class="docutils literal"><code>true</code></span> response.</p>
+<p>The following will set <span class="docutils literal"><code>is_identity_verified</code></span> to <span class="docutils literal"><code>true</code></span></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Henry Ford&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dob&#39;</span><span class="o">:</span> <span class="s1">&#39;1863-07&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;address&#39;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s1">&#39;postal_code&#39;</span><span class="o">:</span> <span class="s1">&#39;48120&#39;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following will set <span class="docutils literal"><code>is_identity_verified</code></span> to <span class="docutils literal"><code>false</code></span></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s1">&#39;name&#39;</span><span class="o">:</span> <span class="s1">&#39;Henry Ford&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;dob&#39;</span><span class="o">:</span> <span class="s1">&#39;1863-07&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section><section id="request-logs">
+<span id="resources-request-logs"></span><h2>Request Logs<a class="headerlink" href="#request-logs" title="Permalink to this headline">∵</a></h2>
+<p>As you integrate and test <a class="reference internal" href="../payouts/#payouts"><em>Balanced Payouts</em></a>, you may find it useful to view
+all your sanitized API request logs. They are viewable via the logs section
+in the <a class="reference external" href="https://dashboard.balancedpayments.com/">dashboard</a></p>
+</section><section id="the-hash-attribute">
+<h2>The Hash Attribute<a class="headerlink" href="#the-hash-attribute" title="Permalink to this headline">∵</a></h2>
+<p>Every <span class="docutils literal"><code>Card</code></span> and <span class="docutils literal"><code>BankAccount</code></span> resource has an attribute than can be used
+to check if the same card is being added again.</p>
+<p>For credit cards, this is the <span class="docutils literal"><code>hash</code></span> attribute. This is calculated using
+<span class="docutils literal"><code>card_number</code></span> and the expiration.</p>
+<p>For bank accounts, this is the <span class="docutils literal"><code>fingerprint</code></span> attribute. This is calculated using
+<span class="docutils literal"><code>account_number</code></span>, <span class="docutils literal"><code>routing_number</code></span>, <span class="docutils literal"><code>name</code></span>, and <span class="docutils literal"><code>type</code></span>.</p>
+</section><section id="address-verification-service">
+<span id="resources-address-verification-service"></span><h2>Address Verification Service<a class="headerlink" href="#address-verification-service" title="Permalink to this headline">∵</a></h2>
+<p>AVS, <strong>A</strong>ddress <strong>V</strong>erification <strong>S</strong>ervice, provides a means to
+verify that the postal_code supplied during card tokenization matches the
+billing zip code of the credit card.</p>
+<p>Supplying a <span class="docutils literal"><code>postal_code</code></span> during tokenization initiates the AVS check.
+The <span class="docutils literal"><code>Card</code></span> will have a <span class="docutils literal"><code>postal_code_check</code></span> attribute containing the
+AVS check result.</p>
+<p><span class="docutils literal"><code>postal_code_check</code></span> will be one of: <span class="docutils literal"><code>passed</code></span>, <span class="docutils literal"><code>failed</code></span>, <span class="docutils literal"><code>unknown</code></span></p>
+</section><section id="card-security-code">
+<span id="resources-card-security-code"></span><h2>Card Security Code<a class="headerlink" href="#card-security-code" title="Permalink to this headline">∵</a></h2>
+<p>CSC, <strong>C</strong>ard <strong>S</strong>ecurity <strong>C</strong>ode, provides a means to verify that the
+<span class="docutils literal"><code>security_code</code></span> supplied during card tokenization matches the security_code
+for the credit card. The <span class="docutils literal"><code>Card</code></span> will have a <span class="docutils literal"><code>security_code_check</code></span>
+attribute containing the CSC check result. It's strongly recommended you do
+not process transactions with cards that fail this check.</p>
+<p><span class="docutils literal"><code>security_code_check</code></span> will be one of: <span class="docutils literal"><code>passed</code></span>, <span class="docutils literal"><code>failed</code></span>, <span class="docutils literal"><code>unknown</code></span></p>
+</section></section>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/compiled.js"></script>
+  </body>
+</html>

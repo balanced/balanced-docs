@@ -1,0 +1,466 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
+      <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+      <link href="/static/css/styles.css" rel="stylesheet">
+      <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+
+     <!-- <script src="static/js/html5shiv.js"></script> -->
+      <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar-nav" data-offset="10">
+
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <div class="logo">
+              <a class="brand" href="https://www.balancedpayments.com"></a>
+            </div>
+            <div class="span16">
+              <ul class="nav nav-api-context">
+                <li class="dropdown">
+                  <a class="dropdown-toggle context api-context" data-toggle="dropdown" id="context-dropdown-head">
+                    <div id="logo"></div>
+                    Overview
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu context">
+                    <li>
+                      <a class="context-change" data-context="api" href="/1.1/api/">API Reference</a>
+                    </li>
+                    <li>
+                      <a class="context-change" data-context="faq" href="https://support.balancedpayments.com/hc/en-us">FAQ</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <ul class="nav nav-api-version">
+                <li class="dropdown">
+                  <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">v 1.1
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu version">
+                    <li>
+                      <a class="version-change" data-version="1.0" href="/1.0/overview/">v 1.0</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <ul class="nav nav-api-clients">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle lang" id="lang-dropdown-head" data-toggle="dropdown">lang: cURL <b class="caret"></b></a>
+                  <ul class="dropdown-menu lang">
+                    <li><a class="lang-change" data-lang="ruby" href="#">Ruby</a></li>
+                    <li><a class="lang-change" data-lang="python" href="#">Python</a></li>
+                    <li><a class="lang-change" data-lang="node" href="#">Node.js</a></li>
+                    <li><a class="lang-change" data-lang="php" href="#">PHP</a></li>
+                    <li><a class="lang-change" data-lang="java" href="#">Java</a></li>
+                    <li><a class="lang-change" data-lang="bash" href="#">cURL</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <ul class="nav nav-links pull-right">
+              <li>
+                <a href="/1.1/overview/#support">Help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="api-version-rev">
+      
+      <div class="container content" id="overview-content">
+        <div class="row">
+
+          <div id="sidebar-top" style="display:none">
+            <div id="sidebar-top-content">
+              <ul class="inline">
+                <li style="vertical-align: middle;">
+                  <div id="logo" style="background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAMAAAC+oj0CAAAAV1BMVEVymix4oi/vQDXjPDJ4oi94oi/vQDXvQDXvQDXvQDV4oi91ni7vQDXqPjN4oi/foRLanRHopxNznC3mPTPopxPopxMAAABwmCzgPDHanRHopxN4oi/vQDXwPhJhAAAAF3RSTlPbICDbYBBQYEAQgLOAs1DH7hDHx6CAAHwvTFAAAABmSURBVHja1cjXDYAwDABR01sCpAEh2X9ObCFkJLMA93cPSpcPtb0a92QLqDLWsdYJA8iUY7aJulkzTzdr4p55Jp1gUM61uOzWjg1sn/2Iw7IEyeHEguCVeBUciaNgT+wFG49qnrsAe+cllBc1FLYAAAAASUVORK5CYII=) no-repeat center;width: 25px;height: 25px;float: left;">
+                  </div>
+                </li>
+                <li id="context-title" style="font-size: 16px;">Overview</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="span6 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+              <div class="row">
+                <div class="span6">
+                  <div class="nav nav-list context-navlist">
+                    <!-- The table of contents menu -->
+                    <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/#feature-requests">Feature Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/#support">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/#submission-delivery-times">Submission &amp; Delivery times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/#pricing">Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/#transaction-limits">Transaction Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/getting-started/">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/getting-started/#start-integrating">Start Integrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/getting-started/#client-libraries">Client Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/getting-started/#third-party-plugins">Third-Party Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/getting-started/#integration-assistance">Integration Assistance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/best-practices/">Best Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/best-practices/#use-balanced-js">Use balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/best-practices/#reducing-declined-transactions">Reducing Declined Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/best-practices/#catching-fraud-early">Catching Fraud Early</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/best-practices/#reducing-payout-delays">Reducing Payout Delays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/best-practices/#use-meta">Use Meta</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../overview/resources/">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/resources/#test-credit-card-numbers">Test credit card numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/resources/#test-bank-account-numbers">Test bank account numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/resources/#testing-customer-identity-verification">Testing Customer identity verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/resources/#funding-instrument-fingerprint">Funding Instrument Fingerprint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/resources/#address-verification-service">Address Verification Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/resources/#card-verification-value">Card Verification Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../overview/resources/#changelog">1.1 Changelog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../">Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../escrow/">Understanding Escrow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../balanced-js/">Using balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../debits/">Working with Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../credits/">Working with Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cardholds/">Working with Card Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../orders/">Orders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../collecting-fees/">Collecting Fees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../taxes/">Handling Taxes</a></li>
+</ul>
+</li>
+</ul>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="context-content" class="span19 offset1">
+            
+  <section id="charging-funding-instruments">
+<h1>Charging Funding Instruments<a class="headerlink" href="#charging-funding-instruments" title="Permalink to this headline">∵</a></h1>
+<p>A funding instrument is a resource which represents a source or target for
+interactions involving money.</p>
+<section id="charging-a-card">
+<h2>Charging a Card<a class="headerlink" href="#charging-a-card" title="Permalink to this headline">∵</a></h2>
+<p>Charging a card is a synchronous operation. Immediately after charging a card,
+the funds will be available for use.</p>
+<p>API References:</p>
+<ul class="list-noindent simple">
+<li><a class="reference external" href="/1.1/api/cards/#create-a-card-direct">Create a Card (Direct)</a></li>
+<li><a class="reference external" href="/1.1/api/cards/#charge-a-card">Charge a Card</a></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="alert alert-tab-red admonition note">
+note</div>
+<div class="alert alert-red">
+The example below demonstrates how to create cards directly via the API.
+This method is not recommended for production environments. Please use
+balanced.js to create cards.</div>
+<p>First, let's create a <span class="docutils literal"><code>Card</code></span> to work with.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">card</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Card</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+  <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;John Doe&#39;</span><span class="p">,</span>
+  <span class="ss">:expiration_month</span> <span class="o">=&gt;</span> <span class="s1">&#39;12&#39;</span><span class="p">,</span>
+  <span class="ss">:number</span> <span class="o">=&gt;</span> <span class="s1">&#39;5105105105105100&#39;</span><span class="p">,</span>
+  <span class="ss">:expiration_year</span> <span class="o">=&gt;</span> <span class="s1">&#39;2020&#39;</span><span class="p">,</span>
+  <span class="ss">:security_code</span> <span class="o">=&gt;</span> <span class="s1">&#39;123&#39;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">save</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">card</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Card</span><span class="p">(</span>
+  <span class="n">expiration_month</span><span class="o">=</span><span class="s">&#39;12&#39;</span><span class="p">,</span>
+  <span class="n">security_code</span><span class="o">=</span><span class="s">&#39;123&#39;</span><span class="p">,</span>
+  <span class="n">number</span><span class="o">=</span><span class="s">&#39;5105105105105100&#39;</span><span class="p">,</span>
+  <span class="n">expiration_year</span><span class="o">=</span><span class="s">&#39;2020&#39;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/cards <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: <span class="se">\</span>
+     -d <span class="s2">&quot;expiration_month=12&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;security_code=123&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;number=5105105105105100&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;expiration_year=2020&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$card</span> <span class="o">=</span> <span class="nx">Balanced\Marketplace</span><span class="o">::</span><span class="na">mine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">cards</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;expiration_month&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;12&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;expiration_year&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;2020&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;number&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;5105105105105100&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;security_code&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;123&quot;</span><span class="p">,</span>
+<span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<p>Now that we have a <span class="docutils literal"><code>Card</code></span>, we can charge it. This will issue a <span class="docutils literal"><code>Debit</code></span> which
+will deduct funds from the target credit card.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">card</span><span class="o">.</span><span class="n">debit</span><span class="p">(</span>
+  <span class="ss">:amount</span> <span class="o">=&gt;</span> <span class="mi">5000</span><span class="p">,</span>
+  <span class="ss">:appears_on_statement_as</span> <span class="o">=&gt;</span> <span class="s1">&#39;Statement text&#39;</span><span class="p">,</span>
+  <span class="ss">:description</span> <span class="o">=&gt;</span> <span class="s1">&#39;Some descriptive text for the debit in the dashboard&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">card</span><span class="o">.</span><span class="n">debit</span><span class="p">(</span>
+  <span class="n">appears_on_statement_as</span><span class="o">=</span><span class="s">&#39;Statement text&#39;</span><span class="p">,</span>
+  <span class="n">amount</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+  <span class="n">description</span><span class="o">=</span><span class="s">&#39;Some descriptive text for the debit in the dashboard&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/cards/CC3een2nuWqIdotngtII70TS/debits <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: <span class="se">\</span>
+     -d <span class="s2">&quot;appears_on_statement_as=Statement text&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;amount=5000&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;description=Some descriptive text for the debit in the dashboard&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$card</span><span class="o">-&gt;</span><span class="na">debits</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;amount&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;5000&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;appears_on_statement_as&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span>
+<span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<p>Since card debits are immediate, we can check our escrow to see the funds are
+indeed available.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Marketplace</span><span class="o">.</span><span class="n">mine</span><span class="o">.</span><span class="n">in_escrow</span> <span class="c1"># will have increased by 5000</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Marketplace</span><span class="o">.</span><span class="n">my_marketplace</span><span class="o">.</span><span class="n">in_escrow</span> <span class="c"># will have increased by 5000</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/marketplaces/TEST-MP1U7M592WT19sxxYwz98hLW <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL:
+<span class="c"># will have increased by 5000</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$marketplace</span> <span class="o">=</span> <span class="nx">Balanced\Marketplace</span><span class="o">::</span><span class="na">mine</span><span class="p">();</span>
+<span class="nv">$marketplace</span><span class="o">-&gt;</span><span class="na">in_escrow</span><span class="p">;</span> <span class="c1"># will have increased by 5000</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</section><section id="charging-a-bank-account">
+<h2>Charging a Bank Account<a class="headerlink" href="#charging-a-bank-account" title="Permalink to this headline">∵</a></h2>
+<p>Charging a bank account is an asynchronous operation. An ACH debit is not
+immediate and takes 1-4 days to complete. Eventually you'll want to create a
+<span class="docutils literal"><code>Callback</code></span> and listen for an <span class="docutils literal"><code>Event</code></span> to be alerted on changes to ACH
+transactions.</p>
+<p>API References:</p>
+<ul class="list-noindent simple">
+<li><a class="reference external" href="/1.1/api/bank-accounts/#create-a-bank-account-direct">Create a Bank Account (Direct)</a></li>
+<li><a class="reference external" href="/1.1/api/bank-account-verifications/#create-a-bank-account-verification">Create a Bank Account Verification</a></li>
+<li><a class="reference external" href="/1.1/api/bank-account-verifications/#confirm-a-bank-account-verification">Confirm a Bank Account Verification</a></li>
+<li><a class="reference external" href="/1.1/api/bank-accounts/#charge-a-bank-account">Charge a Bank Account</a></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="alert alert-tab-red admonition note">
+note</div>
+<div class="alert alert-red">
+The example below demonstrates how to create bank accounts directly via the
+API. This method is not recommended for production environments. Please use
+balanced.js to create bank accounts.</div>
+<p>First, let's create a <span class="docutils literal"><code>BankAccount</code></span> to work with.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">bank_account</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">BankAccount</span><span class="o">.</span><span class="n">new</span><span class="p">(</span>
+  <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">&#39;checking&#39;</span><span class="p">,</span>
+  <span class="ss">:routing_number</span> <span class="o">=&gt;</span> <span class="s1">&#39;121000358&#39;</span><span class="p">,</span>
+  <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Johann Bernoulli&#39;</span><span class="p">,</span>
+  <span class="ss">:account_number</span> <span class="o">=&gt;</span> <span class="s1">&#39;9900000001&#39;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">save</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">bank_account</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">BankAccount</span><span class="p">(</span>
+  <span class="n">routing_number</span><span class="o">=</span><span class="s">&#39;121000358&#39;</span><span class="p">,</span>
+  <span class="nb">type</span><span class="o">=</span><span class="s">&#39;checking&#39;</span><span class="p">,</span>
+  <span class="n">account_number</span><span class="o">=</span><span class="s">&#39;9900000001&#39;</span><span class="p">,</span>
+  <span class="n">name</span><span class="o">=</span><span class="s">&#39;Johann Bernoulli&#39;</span>
+<span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/bank_accounts <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: <span class="se">\</span>
+     -d <span class="s2">&quot;routing_number=121000358&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;type=checking&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;name=Johann Bernoulli&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;account_number=9900000001&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$bank_account</span> <span class="o">=</span> <span class="nx">Balanced\Marketplace</span><span class="o">::</span><span class="na">mine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">bank_accounts</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;account_number&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;9900000001&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Johann Bernoulli&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;routing_number&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;121000358&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;checking&quot;</span><span class="p">,</span>
+<span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<p>We now have a <span class="docutils literal"><code>BankAccount</code></span> instance to work with. Before a <span class="docutils literal"><code>BankAccount</code></span>
+can be charged (debited) it must be verified with micro deposits. This is done
+by initiating a bank account verification. When a bank account verification is
+initiated, Balanced will send two random amounts each less than $1 to the target
+bank account. These amounts will show on the bank account statement usually in
+1-2 days. Since time is going to pass here, you probably want to store the
+<span class="docutils literal"><code>BankAccountVerification</code></span> href to simplify later fetching.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">verification</span> <span class="o">=</span> <span class="n">bank_account</span><span class="o">.</span><span class="n">verify</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">verification</span> <span class="o">=</span> <span class="n">bank_account</span><span class="o">.</span><span class="n">verify</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/bank_accounts/BA2akihQKCAhhkX5aecSubr2/verifications <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: <span class="se">\</span>
+     -X POST
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$verification</span> <span class="o">=</span> <span class="nv">$bank_account</span><span class="o">-&gt;</span><span class="na">verify</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<p>Once the amounts have posted on the bank account statement, the bank account
+owner then should return to your application and enter these amounts into a form
+which sends the values to Balanced as follows:</p>
+<div class="alert alert-tab admonition note">
+note</div>
+<div class="alert alert-green">
+The verification values in test marketplaces are always 1 and 1.</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="c1"># time has elapsed, so find the BankAccountVerification</span>
+<span class="n">verification</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">BankAccountVerification</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/verifications/BZ6Hm2DoTpcgoDzbIr6dWHpw&#39;</span><span class="p">)</span>
+<span class="n">amount_1</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">amount_2</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">verification</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">amount_1</span><span class="p">,</span> <span class="n">amount_2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># time has elapsed, so find the BankAccountVerification</span>
+<span class="n">verification</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">BankAccountVerification</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/verifications/BZ2Sy2Z4Bp2mARnCLztiu2VG&#39;</span><span class="p">)</span>
+<span class="n">verification</span><span class="o">.</span><span class="n">confirm</span><span class="p">(</span><span class="n">amount_1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">amount_2</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/verifications/BZ2dDV6QbwbSB33RkVUQZbVk <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: <span class="se">\</span>
+     -X PUT <span class="se">\</span>
+     -d <span class="s2">&quot;amount_1=1&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;amount_2=1&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="c1"># time has elapsed, so find the BankAccountVerification</span>
+<span class="nv">$verification</span> <span class="o">=</span> <span class="nx">Balanced\BankAccountVerification</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s1">&#39;/verifications/BZ2Sy2Z4Bp2mARnCLztiu2VG&#39;</span><span class="p">);</span>
+<span class="nv">$verification</span><span class="o">-&gt;</span><span class="na">amount_1</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$verification</span><span class="o">-&gt;</span><span class="na">amount_2</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nv">$verification</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<p>At this point we have a verified bank account that we can now charge (debit).
+This will issue a <span class="docutils literal"><code>Debit</code></span> which will deduct funds from the specified
+bank account.</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/bank_accounts/BA2akihQKCAhhkX5aecSubr2/debits <span class="se">\</span>
+   -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+   -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: <span class="se">\</span>
+   -d <span class="s2">&quot;appears_on_statement_as=Statement text&quot;</span> <span class="se">\</span>
+   -d <span class="s2">&quot;amount=5000&quot;</span> <span class="se">\</span>
+   -d <span class="s2">&quot;description=Some descriptive text for the debit in the dashboard&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">bank_account</span><span class="o">.</span><span class="n">debit</span><span class="p">(</span>
+  <span class="n">appears_on_statement_as</span><span class="o">=</span><span class="s">&#39;Statement text&#39;</span><span class="p">,</span>
+  <span class="n">amount</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+  <span class="n">description</span><span class="o">=</span><span class="s">&#39;Some descriptive text for the debit in the dashboard&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">bank_account</span><span class="o">.</span><span class="n">debit</span><span class="p">(</span>
+  <span class="ss">:amount</span> <span class="o">=&gt;</span> <span class="mi">5000</span><span class="p">,</span>
+  <span class="ss">:appears_on_statement_as</span> <span class="o">=&gt;</span> <span class="s1">&#39;Statement text&#39;</span><span class="p">,</span>
+  <span class="ss">:description</span> <span class="o">=&gt;</span> <span class="s1">&#39;Some descriptive text for the debit in the dashboard&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+<span class="nv">$bank_account</span><span class="o">-&gt;</span><span class="na">debits</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;amount&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;5000&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;appears_on_statement_as&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span>
+<span class="p">));</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</section><section id="checkpoint">
+<h2>Checkpoint<a class="headerlink" href="#checkpoint" title="Permalink to this headline">∵</a></h2>
+<p>Up to this point you should have:</p>
+<ul class="simple">
+<li>✓ Created a <span class="docutils literal"><code>Card</code></span> and/or <span class="docutils literal"><code>BankAccount</code></span></li>
+<li>✓ Initiated a bank account verification</li>
+<li>✓ Confirmed a bank account verification</li>
+<li>✓ Charged a <span class="docutils literal"><code>Card</code></span> and/or <span class="docutils literal"><code>BankAccount</code></span></li>
+</ul>
+<p>Ensure you have met these points before proceeding.</p>
+<p>For additional information, read <a class="reference internal" href="../../debits/"><em>Working with Debits</em></a>.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="box-left">
+<div class="box box-block box-blue">
+<span class="icon icon-arrow-left"></span>
+<a class="reference internal" href="../setup/"><em>Setup</em></a></div>
+</div>
+<div class="box-right">
+<div class="box box-block box-blue right">
+<a class="reference internal" href="../payouts/"><em>Issuing Payouts</em></a><span class="icon icon-arrow"></span>
+</div>
+<div class="clear">
+</div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</section></section>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/compiled.js"></script>
+  </body>
+</html>

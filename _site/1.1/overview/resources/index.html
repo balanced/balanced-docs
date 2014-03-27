@@ -1,0 +1,521 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
+      <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+      <link href="/static/css/styles.css" rel="stylesheet">
+      <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+
+     <!-- <script src="static/js/html5shiv.js"></script> -->
+      <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar-nav" data-offset="10">
+
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <div class="logo">
+              <a class="brand" href="https://www.balancedpayments.com"></a>
+            </div>
+            <div class="span16">
+              <ul class="nav nav-api-context">
+                <li class="dropdown">
+                  <a class="dropdown-toggle context api-context" data-toggle="dropdown" id="context-dropdown-head">
+                    <div id="logo"></div>
+                    Overview
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu context">
+                    <li>
+                      <a class="context-change" data-context="api" href="/1.1/api/">API Reference</a>
+                    </li>
+                    <li>
+                      <a class="context-change" data-context="faq" href="https://support.balancedpayments.com/hc/en-us">FAQ</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <ul class="nav nav-api-version">
+                <li class="dropdown">
+                  <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">v 1.1
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu version">
+                    <li>
+                      <a class="version-change" data-version="1.0" href="/1.0/overview/">v 1.0</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <ul class="nav nav-api-clients">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle lang" id="lang-dropdown-head" data-toggle="dropdown">lang: cURL <b class="caret"></b></a>
+                  <ul class="dropdown-menu lang">
+                    <li><a class="lang-change" data-lang="ruby" href="#">Ruby</a></li>
+                    <li><a class="lang-change" data-lang="python" href="#">Python</a></li>
+                    <li><a class="lang-change" data-lang="node" href="#">Node.js</a></li>
+                    <li><a class="lang-change" data-lang="php" href="#">PHP</a></li>
+                    <li><a class="lang-change" data-lang="java" href="#">Java</a></li>
+                    <li><a class="lang-change" data-lang="bash" href="#">cURL</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <ul class="nav nav-links pull-right">
+              <li>
+                <a href="/1.1/overview/#support">Help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="api-version-rev">
+      
+      <div class="container content" id="overview-content">
+        <div class="row">
+
+          <div id="sidebar-top" style="display:none">
+            <div id="sidebar-top-content">
+              <ul class="inline">
+                <li style="vertical-align: middle;">
+                  <div id="logo" style="background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAMAAAC+oj0CAAAAV1BMVEVymix4oi/vQDXjPDJ4oi94oi/vQDXvQDXvQDXvQDV4oi91ni7vQDXqPjN4oi/foRLanRHopxNznC3mPTPopxPopxMAAABwmCzgPDHanRHopxN4oi/vQDXwPhJhAAAAF3RSTlPbICDbYBBQYEAQgLOAs1DH7hDHx6CAAHwvTFAAAABmSURBVHja1cjXDYAwDABR01sCpAEh2X9ObCFkJLMA93cPSpcPtb0a92QLqDLWsdYJA8iUY7aJulkzTzdr4p55Jp1gUM61uOzWjg1sn/2Iw7IEyeHEguCVeBUciaNgT+wFG49qnrsAe+cllBc1FLYAAAAASUVORK5CYII=) no-repeat center;width: 25px;height: 25px;float: left;">
+                  </div>
+                </li>
+                <li id="context-title" style="font-size: 16px;">Overview</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="span6 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+              <div class="row">
+                <div class="span6">
+                  <div class="nav nav-list context-navlist">
+                    <!-- The table of contents menu -->
+                    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../#feature-requests">Feature Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#support">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#submission-delivery-times">Submission &amp; Delivery times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#pricing">Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#transaction-limits">Transaction Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../getting-started/">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#start-integrating">Start Integrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#client-libraries">Client Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#third-party-plugins">Third-Party Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#integration-assistance">Integration Assistance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../best-practices/">Best Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../best-practices/#use-balanced-js">Use balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best-practices/#reducing-declined-transactions">Reducing Declined Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best-practices/#catching-fraud-early">Catching Fraud Early</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best-practices/#reducing-payout-delays">Reducing Payout Delays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../best-practices/#use-meta">Use Meta</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#test-credit-card-numbers">Test credit card numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-bank-account-numbers">Test bank account numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-customer-identity-verification">Testing Customer identity verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#funding-instrument-fingerprint">Funding Instrument Fingerprint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#address-verification-service">Address Verification Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#card-verification-value">Card Verification Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#changelog">1.1 Changelog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../guides/">Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/quickstart/">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/escrow/">Understanding Escrow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/balanced-js/">Using balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/debits/">Working with Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/credits/">Working with Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/cardholds/">Working with Card Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/orders/">Orders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/collecting-fees/">Collecting Fees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../guides/taxes/">Handling Taxes</a></li>
+</ul>
+</li>
+</ul>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="context-content" class="span19 offset1">
+            
+  <section id="resources">
+<span id="id1"></span><h1>Resources<a class="headerlink" href="#resources" title="Permalink to this headline">∵</a></h1>
+<section id="test-credit-card-numbers">
+<span id="resources-test-credit-cards"></span><h2>Test credit card numbers<a class="headerlink" href="#test-credit-card-numbers" title="Permalink to this headline">∵</a></h2>
+<p>These cards will be accepted in our system only for a <strong>TEST</strong> marketplace.
+<strong>Do not use these card numbers in Production marketplaces.</strong></p>
+<table border="1" class="table docutils">
+<colgroup>
+<col width="16%" />
+<col width="31%" />
+<col width="18%" />
+<col width="34%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Card Brand</th>
+<th class="head">Number</th>
+<th class="head">CVV</th>
+<th class="head">Result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="docutils literal"><code>VISA</code></span></td>
+<td><span class="docutils literal"><code>4111111111111111</code></span></td>
+<td><span class="docutils literal"><code>123</code></span></td>
+<td>Success</td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>MasterCard</code></span></td>
+<td><span class="docutils literal"><code>5105105105105100</code></span></td>
+<td><span class="docutils literal"><code>123</code></span></td>
+<td>Success</td>
+</tr>
+<tr class="row-even"><td><span class="docutils literal"><code>AMEX</code></span></td>
+<td><span class="docutils literal"><code>341111111111111</code></span></td>
+<td><span class="docutils literal"><code>1234</code></span></td>
+<td>Success</td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>VISA</code></span></td>
+<td><span class="docutils literal"><code>4444444444444448</code></span> <a class="footnote-reference" href="#id4" id="id2">[1]</a></td>
+<td><span class="docutils literal"><code>123</code></span></td>
+<td>Processor Failure</td>
+</tr>
+<tr class="row-even"><td><span class="docutils literal"><code>VISA</code></span></td>
+<td><span class="docutils literal"><code>4222222222222220</code></span> <a class="footnote-reference" href="#id5" id="id3">[2]</a></td>
+<td><span class="docutils literal"><code>123</code></span></td>
+<td>Tokenization Error</td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>MasterCard</code></span></td>
+<td><span class="docutils literal"><code>5112000200000002</code></span></td>
+<td><span class="docutils literal"><code>200</code></span></td>
+<td>CVV Match Fail</td>
+</tr>
+<tr class="row-even"><td><span class="docutils literal"><code>VISA</code></span></td>
+<td><span class="docutils literal"><code>4457000300000007</code></span></td>
+<td><span class="docutils literal"><code>901</code></span></td>
+<td>CVV Unsupported</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[1]</a></td><td>Simulate a card which can be tokenized but will not be accepted for creating
+holds or debits. This type of failure is what you would expect if you try to
+create a hold on a card with insufficient funds.</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id5" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[2]</a></td><td>To simulate a card which cannot be tokenized but passes a LUHN check. You could
+expect this failure when a user tried to enter in a credit card which used to
+work but has been canceled.</td></tr>
+</tbody>
+</table>
+</section><section id="test-bank-account-numbers">
+<span id="resources-test-bank-accounts"></span><h2>Test bank account numbers<a class="headerlink" href="#test-bank-account-numbers" title="Permalink to this headline">∵</a></h2>
+<p>Balanced provides various utilities to aid you in testing your <em class="xref std std-ref">payouts</em>
+integration.</p>
+<p>When integrating payouts, it's worth noting that incorrect bank routing numbers
+are a very commonly encountered error as Balanced does real-time checks against
+the <a class="reference external" href="https://www.fededirectory.frb.org">FedACH directory</a>.</p>
+<p>To aid you while integrating, Balanced provides special routing and
+account numbers that can simulate various scenarios that can go wrong.</p>
+<table border="1" class="table docutils">
+<colgroup>
+<col width="20%" />
+<col width="27%" />
+<col width="53%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Routing Number</th>
+<th class="head">Account Number</th>
+<th class="head">Scenario</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="docutils literal"><code>100000007</code></span></td>
+<td><span class="docutils literal"><code>8887776665555</code></span></td>
+<td>Invalid Routing Number</td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>111111118</code></span></td>
+<td><span class="docutils literal"><code>8887776665555</code></span></td>
+<td>Invalid Routing Number</td>
+</tr>
+<tr class="row-even"><td><span class="docutils literal"><code>021000021</code></span></td>
+<td><span class="docutils literal"><code>9900000000</code></span></td>
+<td>Transitions status to <span class="docutils literal"><code>pending</code></span></td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>321174851</code></span></td>
+<td><span class="docutils literal"><code>9900000001</code></span></td>
+<td>Transitions status to <span class="docutils literal"><code>pending</code></span></td>
+</tr>
+<tr class="row-even"><td><span class="docutils literal"><code>021000021</code></span></td>
+<td><span class="docutils literal"><code>9900000002</code></span></td>
+<td>Transitions status to <span class="docutils literal"><code>succeeded</code></span></td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>321174851</code></span></td>
+<td><span class="docutils literal"><code>9900000003</code></span></td>
+<td>Transitions status to <span class="docutils literal"><code>succeeded</code></span></td>
+</tr>
+<tr class="row-even"><td><span class="docutils literal"><code>021000021</code></span></td>
+<td><span class="docutils literal"><code>9900000004</code></span></td>
+<td>Transitions status to <span class="docutils literal"><code>failed</code></span></td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>321174851</code></span></td>
+<td><span class="docutils literal"><code>9900000005</code></span></td>
+<td>Transitions status to <span class="docutils literal"><code>failed</code></span></td>
+</tr>
+</tbody>
+</table>
+</section><section id="testing-customer-identity-verification">
+<span id="resources-test-identity-verification"></span><h2>Testing Customer identity verification<a class="headerlink" href="#testing-customer-identity-verification" title="Permalink to this headline">∵</a></h2>
+<p><span class="docutils literal"><code>Customer</code></span> resources have a <span class="docutils literal"><code>merchant_status</code></span> attribute for determining
+the Customer's underwritten status.</p>
+<p>Supply address and date of birth information to trigger a <span class="docutils literal"><code>true</code></span> response.</p>
+<p>The following will set <span class="docutils literal"><code>merchant_status</code></span> to <span class="docutils literal"><code>underwritten</code></span></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Henry Ford&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dob_month&quot;</span><span class="o">:</span> <span class="mi">07</span><span class="p">,</span>
+    <span class="s2">&quot;dob_year&quot;</span><span class="o">:</span> <span class="mi">1985</span><span class="p">,</span>
+    <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;postal_code&quot;</span><span class="o">:</span> <span class="s2">&quot;48120&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The following will set <span class="docutils literal"><code>merchant_status</code></span> to <span class="docutils literal"><code>need-more-information</code></span></p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Henry Ford&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;dob_month&quot;</span><span class="o">:</span> <span class="mi">07</span><span class="p">,</span>
+    <span class="s2">&quot;dob_year&quot;</span><span class="o">:</span> <span class="mi">1985</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><span class="docutils literal"><code>merchant_status</code></span> will be one of: <span class="docutils literal"><code>need-more-information</code></span>, <span class="docutils literal"><code>underwritten</code></span>,
+or <span class="docutils literal"><code>rejected</code></span>.</p>
+</section><section id="funding-instrument-fingerprint">
+<h2>Funding Instrument Fingerprint<a class="headerlink" href="#funding-instrument-fingerprint" title="Permalink to this headline">∵</a></h2>
+<p>Every <span class="docutils literal"><code>Card</code></span> and <span class="docutils literal"><code>BankAccount</code></span> resource has a <span class="docutils literal"><code>fingerprint</code></span> attribute
+that can be used to check if a card has already been tokenized.</p>
+<p>For credit cards, <span class="docutils literal"><code>fingerprint</code></span> is calculated using <span class="docutils literal"><code>card_number</code></span> and the
+card expiration date.</p>
+<p>For bank accounts, <span class="docutils literal"><code>fingerprint</code></span> is calculated using <span class="docutils literal"><code>account_number</code></span>,
+<span class="docutils literal"><code>routing_number</code></span>, <span class="docutils literal"><code>name</code></span>, and <span class="docutils literal"><code>type</code></span>.</p>
+</section><section id="address-verification-service">
+<span id="resources-address-verification-service"></span><h2>Address Verification Service<a class="headerlink" href="#address-verification-service" title="Permalink to this headline">∵</a></h2>
+<p>AVS, Address Verification Service, provides a means to verify that the address
+supplied during card tokenization matches the address of the credit card.</p>
+<p>Supplying a <span class="docutils literal"><code>street_addrees</code></span> or <span class="docutils literal"><code>postal_code</code></span> during tokenization initiates
+the AVS check. The <span class="docutils literal"><code>Card</code></span> will have a <span class="docutils literal"><code>postal_code_check</code></span> attribute
+containing the AVS check result.</p>
+<p><span class="docutils literal"><code>avs_street_match</code></span> will be one of: <span class="docutils literal"><code>yes</code></span>, <span class="docutils literal"><code>no</code></span>, <span class="docutils literal"><code>unsupported</code></span>
+<span class="docutils literal"><code>postal_code_check</code></span> will be one of: <span class="docutils literal"><code>yes</code></span>, <span class="docutils literal"><code>no</code></span>, <span class="docutils literal"><code>unsupported</code></span></p>
+<p>Additionally, <span class="docutils literal"><code>avs_result</code></span> can be examined to ascertain more detailed
+information about the address verification attempt.</p>
+<section id="simulating-postal-code-check-responses">
+<h3>Simulating Postal Code Check Responses<a class="headerlink" href="#simulating-postal-code-check-responses" title="Permalink to this headline">∵</a></h3>
+<p>Postal code test values:</p>
+<table border="1" class="table docutils">
+<colgroup>
+<col width="28%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Postal Code</th>
+<th class="head">Result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="docutils literal"><code>94301</code></span></td>
+<td>AVS Postal code matches</td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>90210</code></span></td>
+<td>AVS Postal code does not match</td>
+</tr>
+<tr class="row-even"><td><span class="docutils literal"><code>90211</code></span></td>
+<td>AVS Postal code is unsupported</td>
+</tr>
+</tbody>
+</table>
+</section><section id="simulating-avs-street-match-responses">
+<h3>Simulating AVS Street Match Responses<a class="headerlink" href="#simulating-avs-street-match-responses" title="Permalink to this headline">∵</a></h3>
+<table border="1" class="table docutils">
+<colgroup>
+<col width="30%" />
+<col width="28%" />
+<col width="42%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Address line1</th>
+<th class="head">Postal Code</th>
+<th class="head">Result</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><span class="docutils literal"><code>965</code> <code>Mission</code> <code>St</code></span></td>
+<td><span class="docutils literal"><code>94103</code></span></td>
+<td>AVS street matches</td>
+</tr>
+<tr class="row-odd"><td><span class="docutils literal"><code>21</code> <code>Jump</code> <code>St</code></span></td>
+<td><span class="docutils literal"><code>90210</code></span></td>
+<td>AVS street does not match</td>
+</tr>
+</tbody>
+</table>
+</section></section><section id="card-verification-value">
+<span id="resources-card-verification-value"></span><h2>Card Verification Value<a class="headerlink" href="#card-verification-value" title="Permalink to this headline">∵</a></h2>
+<p>CVV, Card Verification Value, provides a means to verify that the
+<span class="docutils literal"><code>cvv</code></span> supplied during card tokenization matches the CVV
+for the credit card. The <span class="docutils literal"><code>Card</code></span> will have a <span class="docutils literal"><code>cvv_match</code></span>
+attribute containing the CSC check result. It's strongly recommended you do
+not process transactions with cards that fail this check.</p>
+<p><span class="docutils literal"><code>cvv_match</code></span> will be one of: <span class="docutils literal"><code>yes</code></span>, <span class="docutils literal"><code>no</code></span>, <span class="docutils literal"><code>unsupported</code></span></p>
+<p>Additionally, <span class="docutils literal"><code>cvv_result</code></span> can be examined to ascertain more detailed
+information about the match attempt.</p>
+</section><section id="changelog">
+<h2>1.1 Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">∵</a></h2>
+<p>A short list of changes:</p>
+<ul class="list-noindent simple">
+<li><ul class="first">
+<li>Hypermedia API</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Cards can be charged without being associated to a customer</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Transactions are now created via the funding instrument, not via the customer. E.g. <cite>card.debit(amount)</cite>, <cite>bank_account.credit(amount)</cite> is now favoured over <cite>customer.debit(card, amount)</cite></li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Failing to create a transaction will result in a transaction being created with a <cite>FAILED</cite> status. E.g. debiting a card with insufficient funds will result in a transaction with a <cite>FAILED</cite> status. These are filtered out of the API by default but can be specifically retrieved with a status filter e.g. <cite>/credits?status=failed</cite></li>
+</ul>
+</li>
+<li><ul class="first">
+<li>A new resource called &quot;Orders&quot; has been created to allow grouping transactions. An Order can consist of 0:n buyers, 0:n debits and 0:n credits to a single seller. Each debit associated with an Order will result in the Order's escrow balance accruing the value of the debit rather than the marketplace's escrow balance. You cannot pay out more than the total amount escrowed for an Order.</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Accounts no longer exist, customers and orders are the primary grouping constructs for transactions, customers are the primary grouping construct for funding instruments.</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Funding instruments can be tokenized without specifying the marketplace, performing an authenticated GET on the tokenized funding instrument will automatically associate it to your marketplace.</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Transaction statuses have been standardized to be one of: <span class="docutils literal"><code>pending</code></span>, <span class="docutils literal"><code>succeeded</code></span>, <span class="docutils literal"><code>failed</code></span>. There is no longer a <span class="docutils literal"><code>paid</code></span> status.</li>
+</ul>
+</li>
+</ul>
+<p>The most obvious technical difference between revision 1.1 and 1.0 is that the
+Balanced API switched from plain JSON to a <a class="reference external" href="http://jsonapi.org/">JSON API envelope</a>. You can learn
+more about JSON API by reading the <a class="reference external" href="http://jsonapi.org/format">format spec</a>. In a nutshell, JSON API
+standardizes the structure of request and response payloads. It allows us to
+handle some edge cases that our previous formats could not handle such as side
+loading un-nested content.</p>
+<p>Here's what a typical resource now looks like with revision 1.1:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq <span class="se">\</span>
+    -u ak-test-2DBryLFR3BBam1CipbWEGSO6gqVOBKghP:
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;marketplaces&quot;</span><span class="o">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="s2">&quot;in_escrow&quot;</span><span class="o">:</span> <span class="mi">10091234</span><span class="p">,</span>
+      <span class="s2">&quot;domain_url&quot;</span><span class="o">:</span> <span class="s2">&quot;example.com&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Test Marketplace&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;owner_customer&quot;</span><span class="o">:</span> <span class="s2">&quot;CU1TEG4xJzSrSn7mVtzE7SKI&quot;</span>
+      <span class="p">},</span>
+      <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2013-11-14T19:09:10.924065Z&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;support_email_address&quot;</span><span class="o">:</span> <span class="s2">&quot;support@example.com&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2013-11-14T19:09:11.758110Z&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;support_phone_number&quot;</span><span class="o">:</span> <span class="s2">&quot;+16505551234&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;production&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span>
+      <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span>
+      <span class="s2">&quot;unsettled_fees&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;TEST-MP1TCNbswn3s3I2UxnZyM7Pq&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+    <span class="s2">&quot;marketplaces.debits&quot;</span><span class="o">:</span> <span class="s2">&quot;/debits&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;marketplaces.reversals&quot;</span><span class="o">:</span> <span class="s2">&quot;/reversals&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;marketplaces.customers&quot;</span><span class="o">:</span> <span class="s2">&quot;/customers&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;marketplaces.credits&quot;</span><span class="o">:</span> <span class="s2">&quot;/credits&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;marketplaces.cards&quot;</span><span class="o">:</span> <span class="s2">&quot;/cards&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;marketplaces.card_holds&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;marketplaces.refunds&quot;</span><span class="o">:</span> <span class="s2">&quot;/refunds&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;marketplaces.owner_customer&quot;</span><span class="o">:</span> <span class="s2">&quot;/customers/{marketplaces.owner_customer}&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;marketplaces.transactions&quot;</span><span class="o">:</span> <span class="s2">&quot;/transactions&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;marketplaces.bank_accounts&quot;</span><span class="o">:</span> <span class="s2">&quot;/bank_accounts&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;marketplaces.callbacks&quot;</span><span class="o">:</span> <span class="s2">&quot;/callbacks&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;marketplaces.events&quot;</span><span class="o">:</span> <span class="s2">&quot;/events&quot;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Here's what the same resource looked like in revision 1.0:</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq <span class="se">\</span>
+    -u ak-test-2DBryLFR3BBam1CipbWEGSO6gqVOBKghP:
+</pre></div>
+</div>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s2">&quot;callbacks_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq/callbacks&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;support_email_address&quot;</span><span class="o">:</span> <span class="s2">&quot;support@example.com&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;marketplace&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/events&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq/accounts&quot;</span><span class="p">,</span>
+  <span class="p">...</span>
+  <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq/debits&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq/credits&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1TCNbswn3s3I2UxnZyM7Pq/bank_accounts&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>By no longer nesting resources in responses clients are simpler. Payload size is
+also reduced if nested resources are duplicated. Additionally, by standardizing
+on JSON API, an open specification, Balanced enables customers to utilize
+tooling that handles JSON API out of the box. For example, Balanced <a class="reference external" href="https://github.com/balanced/balanced-dashboard/issues/671">now uses</a>
+the <a class="reference external" href="https://github.com/daliwali/ember-json-api">EmberJS JSON API support</a> rather than the old <a class="reference external" href="https://github.com/balanced/balanced-dashboard/blob/master/app/models/core/serializers/rev0.js">customized data library</a>.</p>
+<p>We've also fixed up many inconsistencies in revision 1.0 and enabled some handy
+behavior such as <a class="reference external" href="https://gist.github.com/mjallday/7589639">creating transactions with a failed status</a>, and
+<a class="reference external" href="https://gist.github.com/mjallday/7589592">charging cards without a customer</a>. We've also added a new <a class="reference external" href="https://gist.github.com/mjallday/92940a2e9dcb07f5b038">Orders resource</a>
+which allow you to keep track of order fulfillment and ensure against
+accidental over payouts.</p>
+</section></section>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/compiled.js"></script>
+  </body>
+</html>

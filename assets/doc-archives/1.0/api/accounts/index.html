@@ -1,0 +1,1380 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
+      <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+      <link href="/static/css/styles.css" rel="stylesheet">
+      <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+
+     <!-- <script src="static/js/html5shiv.js"></script> -->
+      <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar-nav" data-offset="200">
+
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <div class="logo">
+              <a class="brand" href="https://www.balancedpayments.com"></a>
+            </div>
+            <div class="span16">
+              <ul class="nav nav-api-context">
+    	          <li class="dropdown">
+                  <a class="dropdown-toggle context api-context" data-toggle="dropdown" id="context-dropdown-head">
+                    <div id="logo"></div>
+                    API Reference
+                    <b class="caret"></b>
+                  </a>
+            	    <ul class="dropdown-menu context">
+            		    <li>
+                      <a class="context-change" data-context="api" href="/1.0/overview/">Overview</a>
+                    </li>
+            		    <li>
+                      <a class="context-change" data-context="faq" href="https://support.balancedpayments.com/hc/en-us">FAQ</a>
+                    </li>
+            	    </ul>
+                </li>
+              </ul>
+      
+      	      <ul class="nav nav-api-version">
+                <li class="dropdown">
+                  <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">v 1.0
+                    <b class="caret"></b>
+                  </a>
+        	        <ul class="dropdown-menu version">
+        		        <li>
+                      <a class="version-change" data-version="1.1" href="/1.1/api/">v 1.1</a>
+                    </li>
+        	        </ul>
+                </li>
+      	      </ul>
+      
+              <ul class="nav nav-api-clients">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle lang" id="lang-dropdown-head" data-toggle="dropdown">lang: CURL <b class="caret"></b></a>
+                  <ul class="dropdown-menu lang">
+                    <li><a class="lang-change" data-lang="ruby" href="#">Ruby</a></li>
+                    <li><a class="lang-change" data-lang="python" href="#">Python</a></li>
+                    <li><a class="lang-change" data-lang="php" href="#">PHP</a></li>
+                    <li><a class="lang-change" data-lang="java" href="#">Java</a></li>
+                    <li><a class="lang-change" data-lang="bash" href="#">CURL</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <ul class="nav nav-links pull-right">
+              <li>
+                <a href="/1.1/overview/#support">Help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+  
+    <div class="api-version-rev">
+      
+      <div class="container content" id="overview-content">
+        <div class="row">
+
+          <div id="sidebar-top" style="display:none">
+            <div id="sidebar-top-content">
+              <ul class="inline">
+                <li style="vertical-align: middle;">
+                  <div id="logo" style="background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAMAAAC+oj0CAAAAV1BMVEVymix4oi/vQDXjPDJ4oi94oi/vQDXvQDXvQDXvQDV4oi91ni7vQDXqPjN4oi/foRLanRHopxNznC3mPTPopxPopxMAAABwmCzgPDHanRHopxN4oi/vQDXwPhJhAAAAF3RSTlPbICDbYBBQYEAQgLOAs1DH7hDHx6CAAHwvTFAAAABmSURBVHja1cjXDYAwDABR01sCpAEh2X9ObCFkJLMA93cPSpcPtb0a92QLqDLWsdYJA8iUY7aJulkzTzdr4p55Jp1gUM61uOzWjg1sn/2Iw7IEyeHEguCVeBUciaNgT+wFG49qnrsAe+cllBc1FLYAAAAASUVORK5CYII=) no-repeat center;width: 25px;height: 25px;float: left;">
+                  </div>
+                </li>
+                <li id="context-title" style="font-size: 16px;">API Reference</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="span6 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+              <div class="row">
+                <div class="span6">
+                  <div class="nav nav-list context-navlist">
+                    <!-- The table of contents menu -->
+                    <ul class="nav nav-list context-navlist">
+<li class="toctree-l1">Authentication<ul>
+<li class="toctree-l2"><a class="reference internal" href="../authentication/#authenticating-to-balanced">Authenticating to Balanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Bank Accounts<ul>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#creating-a-new-bank-account">Creating a New Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#retrieve-a-bank-account">Retrieve a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#list-all-bank-accounts">List All Bank Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#delete-a-bank-account">Delete a Bank Account</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Bank Account Verifications<ul>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#create-a-bank-account-verification">Create a Bank Account Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#retrieve-a-bank-account-verification">Retrieve a Bank Account Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#confirm-a-bank-account-verification">Confirm a Bank Account Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Cards<ul>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#tokenize-a-card">Tokenize a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#retrieve-a-card">Retrieve a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#list-all-cards">List All Cards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#update-a-card">Update a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#invalidating-a-card">Invalidating a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#charging-a-card">Charging a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#deleting-a-card">Deleting a Card</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Credits<ul>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#credit-a-new-bank-account">Credit a New Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#credit-an-existing-bank-account">Credit An Existing Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#retrieve-a-credit">Retrieve a Credit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#list-all-credits">List All Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#list-all-credits-for-a-bank-account">List All Credits For a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#create-a-new-credit-for-a-customer">Create a New Credit For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#listing-all-credits-for-a-customer">Listing All Credits For a Customer</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Customers<ul>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#creating-a-customer">Creating a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#adding-a-card-to-a-customer">Adding a Card to a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#adding-a-bank-account-to-a-customer">Adding a Bank Account to a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#delete-a-customer">Delete a Customer</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Debits<ul>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#create-a-new-debit">Create a New Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#retrieve-a-debit">Retrieve a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#list-all-debits">List All Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#list-all-debits-for-a-customer">List All Debits For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#update-a-debit">Update a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#refund-a-debit">Refund a Debit</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Events<ul>
+<li class="toctree-l2"><a class="reference internal" href="../events/#event-types">Event types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events/#retrieve-an-event">Retrieve an Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events/#list-all-events">List all Events</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Holds<ul>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#create-a-new-hold">Create a New Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#retrieve-a-hold">Retrieve a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#list-all-holds">List all Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#list-all-holds-for-a-customer">List All Holds For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#update-a-hold">Update a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#capture-a-hold">Capture a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#void-a-hold">Void a Hold</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current">Accounts (deprecated)<ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-an-account">Creating an Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-a-card-to-an-account">Adding a Card to an Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-a-bank-account-to-an-account">Adding a Bank Account To an Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#underwriting-an-individual">Underwriting an Individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#underwriting-a-business">Underwriting a Business</a></li>
+</ul>
+</li>
+</ul>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="context-content" class="span19 offset1">
+            
+  <section id="accounts-deprecated">
+<h1>Accounts (deprecated)<a class="headerlink" href="#accounts-deprecated" title="Permalink to this headline">∵</a></h1>
+<p>Accounts help facilitate managing multiple credit cards, debit cards,
+and bank accounts along with different financial transaction operations, i.e.
+refunds, debits, credits.</p>
+<section id="creating-an-account">
+<h2>Creating an Account<a class="headerlink" href="#creating-an-account" title="Permalink to this headline">∵</a></h2>
+<div class="alert alert-tab-red admonition note">
+note</div>
+<div class="alert alert-red">
+Accounts have been deprecated. Please use <a class="reference internal" href="../customers/#creating-a-customer"><em>Customers</em></a> instead.</div>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. The display <span class="docutils literal"><code>name</code></span> of the account. If a <span class="docutils literal"><code>card</code></span> is provided with a <span class="docutils literal"><code>name</code></span> then that is used as the
+default. Otherwise no default is provided and this field is
+<strong>required</strong>.</dd>
+<dt><span class="docutils literal"><code>email_address</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. Email address of the account. It must be <strong>unique</strong> among all accounts
+on your marketplace. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values. Defaults to <span class="docutils literal"><code>{}</code></span>.</dd>
+<dt><span class="docutils literal"><code>card_uri</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. The URI of the tokenized card.</dd>
+<dt><span class="docutils literal"><code>card</code></span></dt>
+<dd><p class="nested1 first"><em>optional</em> <strong>object</strong>.</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt><span class="docutils literal"><code>card_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. The digits of the credit card number.</dd>
+<dt><span class="docutils literal"><code>expiration_year</code></span></dt>
+<dd><em>required</em> <strong>integer</strong>. Expiration year.</dd>
+<dt><span class="docutils literal"><code>expiration_month</code></span></dt>
+<dd><em>required</em> <strong>integer</strong>. Expiration month (e.g. 1 for January).</dd>
+<dt><span class="docutils literal"><code>security_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. The 3-4 digit security code for the card.</dd>
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>phone_number</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. E.164 formatted phone number.</dd>
+<dt><span class="docutils literal"><code>city</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. City. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>region</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Region (e.g. state, province, etc). This field has been
+<strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>state</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. US state. This field has been <strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>postal_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Postal code. This is known as a zip code in the USA.
+<em>requires</em> <span class="docutils literal"><code>country_code</code></span>.</dd>
+<dt><span class="docutils literal"><code>street_address</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Street address.
+<em>requires</em> <span class="docutils literal"><code>postal_code</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>country_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Defaults to <span class="docutils literal"><code>USA</code></span>.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values. Defaults to <span class="docutils literal"><code>{}</code></span>.</dd>
+<dt><span class="docutils literal"><code>verify</code></span></dt>
+<dd><em>optional</em> <strong>boolean</strong>. Flag value, should be <span class="docutils literal"><code>true</code></span> or <span class="docutils literal"><code>false</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>is_valid</code></span></dt>
+<dd><em>optional</em> <strong>boolean</strong>. Indicates whether the card is active (<span class="docutils literal"><code>true</code></span>) or has been deactivated
+(<span class="docutils literal"><code>false</code></span>). Defaults to <span class="docutils literal"><code>true</code></span>.</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt><span class="docutils literal"><code>bank_account_uri</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. The URI of the bank account created via <em>balanced.js</em>.</dd>
+<dt><span class="docutils literal"><code>bank_account</code></span></dt>
+<dd><p class="nested1 first"><em>optional</em> <strong>object</strong>.</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Name on the bank account.</dd>
+<dt><span class="docutils literal"><code>account_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Bank account number.</dd>
+<dt><span class="docutils literal"><code>bank_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Bank account code.</dd>
+<dt><span class="docutils literal"><code>routing_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Bank account code.</dd>
+<dt><span class="docutils literal"><code>bank_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>routing_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>account_type</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>type</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values. Defaults to <span class="docutils literal"><code>{}</code></span>.</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt><span class="docutils literal"><code>merchant_uri</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. The URI of the merchant account created during a request for more
+information.</dd>
+<dt><span class="docutils literal"><code>merchant</code></span></dt>
+<dd><p class="nested1 first"><em>optional</em> <strong>object</strong>.</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt><span class="docutils literal"><code>type</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Merchant type. It should be one of: <span class="docutils literal"><code>person</code></span> or <span class="docutils literal"><code>business</code></span>.</dd>
+<dt><span class="docutils literal"><code>phone_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. E.164 formatted phone number.</dd>
+<dt><span class="docutils literal"><code>email_address</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. RFC-2822 formatted email address. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values. Defaults to <span class="docutils literal"><code>{}</code></span>.</dd>
+<dt><span class="docutils literal"><code>tax_id</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. For <em>person</em> merchants <cite>tax_id</cite> is optional, defaulting to <span class="docutils literal"><code>null</code></span>.
+For <em>business</em> merchants <cite>tax_id</cite> is required.</dd>
+<dt><span class="docutils literal"><code>ssn_last_4</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>dob</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Date-of-birth formatted as <span class="docutils literal"><code>YYYY-MM-DD</code></span>. For <em>person</em> merchants <cite>dob</cite> is required. For <em>business</em> merchants
+<cite>dob</cite> is optional, defaulting to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>person</code></span></dt>
+<dd><p class="nested1 first"><em>optional</em> <strong>object</strong>.</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>required</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>dob</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Date-of-birth formatted as <span class="docutils literal"><code>YYYY-MM-DD</code></span>.</dd>
+<dt><span class="docutils literal"><code>city</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. City. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>region</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Region (e.g. state, province, etc). This field has been
+<strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>state</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. US state. This field has been <strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>postal_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Postal code. This is known as a zip code in the USA.
+<em>requires</em> <span class="docutils literal"><code>country_code</code></span>.</dd>
+<dt><span class="docutils literal"><code>street_address</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Street address.
+<em>requires</em> <span class="docutils literal"><code>postal_code</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>country_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Defaults to <span class="docutils literal"><code>USA</code></span>.</dd>
+<dt><span class="docutils literal"><code>tax_id</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>ssn_last_4</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. If an account is referenced in the resolving URI then the default is
+null. If this is nested in an account creation then the account
+<span class="docutils literal"><code>name</code></span> is used. Otherwise no default is provided and this field is
+required.</dd>
+<dt><span class="docutils literal"><code>production</code></span></dt>
+<dd><em>optional</em> <strong>boolean</strong>. Flag value, should be <span class="docutils literal"><code>true</code></span> or <span class="docutils literal"><code>false</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>city</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. City. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>region</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Region (e.g. state, province, etc). This field has been
+<strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>state</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. US state. This field has been <strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>postal_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Postal code. This is known as a zip code in the USA.
+<em>requires</em> <span class="docutils literal"><code>country_code</code></span>.</dd>
+<dt><span class="docutils literal"><code>street_address</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Street address.
+<em>requires</em> <span class="docutils literal"><code>postal_code</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>country_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Defaults to <span class="docutils literal"><code>USA</code></span>.</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>POST https://api.balancedpayments.com/marketplaces/:marketplace_id/accounts
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Account</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Account</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\Marketplace-&gt;createAccount();</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Account</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">payload</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts <span class="se">\</span>
+     -u ak-test-zvmxAk4lw1srrw9heg99Gtlr4Y6HAmPP: <span class="se">\</span>
+     -X POST
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">account</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Account</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+<span class="n">account</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Marketplace</span><span class="o">.</span><span class="n">my_marketplace</span><span class="o">.</span><span class="n">create_account</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$account</span> <span class="o">=</span> <span class="nx">Balanced\Marketplace</span><span class="o">::</span><span class="na">mine</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">createAccount</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Account</span> <span class="n">account</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Account</span><span class="o">();</span>
+<span class="n">account</span><span class="o">.</span><span class="na">save</span><span class="o">();</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1oT3LLo6gEM0PpQzpuQKHC/bank_accounts&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1oT3LLo6gEM0PpQzpuQKHC/cards&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:09:31.179945Z&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1oT3LLo6gEM0PpQzpuQKHC/credits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU1oT3LLo6gEM0PpQzpuQKHC&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1oT3LLo6gEM0PpQzpuQKHC/debits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;email_address&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1oT3LLo6gEM0PpQzpuQKHC/holds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU1oT3LLo6gEM0PpQzpuQKHC&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1oT3LLo6gEM0PpQzpuQKHC/refunds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1oT3LLo6gEM0PpQzpuQKHC/reversals&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;roles&quot;</span><span class="o">:</span> <span class="p">[],</span> 
+    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1oT3LLo6gEM0PpQzpuQKHC/transactions&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1oT3LLo6gEM0PpQzpuQKHC&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section class="method-section" id="adding-a-card-to-an-account">
+<h2>Adding a Card to an Account<a class="headerlink" href="#adding-a-card-to-an-account" title="Permalink to this headline">∵</a></h2>
+<p>Adding a card to an account activates the ability to debit an account, more
+specifically, charging a card.</p>
+<p>You can add multiple cards to an account.</p>
+<p>Balanced associates a <span class="docutils literal"><code>buyer</code></span> role to signify whether or not an account
+has a valid credit card, to acquire funds from.</p>
+<div class="alert alert-tab-red admonition note">
+note</div>
+<div class="alert alert-red">
+Accounts have been deprecated. Please use <a class="reference internal" href="../customers/#adding-a-card-to-a-customer"><em>Customers</em></a> instead.</div>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>card_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. The digits of the credit card number.</dd>
+<dt><span class="docutils literal"><code>expiration_year</code></span></dt>
+<dd><em>required</em> <strong>integer</strong>. Expiration year.</dd>
+<dt><span class="docutils literal"><code>expiration_month</code></span></dt>
+<dd><em>required</em> <strong>integer</strong>. Expiration month (e.g. 1 for January).</dd>
+<dt><span class="docutils literal"><code>security_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. The 3-4 digit security code for the card.</dd>
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>phone_number</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. E.164 formatted phone number.</dd>
+<dt><span class="docutils literal"><code>city</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. City. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>region</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Region (e.g. state, province, etc). This field has been
+<strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>state</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. US state. This field has been <strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>postal_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Postal code. This is known as a zip code in the USA.
+<em>requires</em> <span class="docutils literal"><code>country_code</code></span>.</dd>
+<dt><span class="docutils literal"><code>street_address</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Street address.
+<em>requires</em> <span class="docutils literal"><code>postal_code</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>country_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Defaults to <span class="docutils literal"><code>USA</code></span>.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values. Defaults to <span class="docutils literal"><code>{}</code></span>.</dd>
+<dt><span class="docutils literal"><code>verify</code></span></dt>
+<dd><em>optional</em> <strong>boolean</strong>. Flag value, should be <span class="docutils literal"><code>true</code></span> or <span class="docutils literal"><code>false</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>PUT https://api.balancedpayments.com/marketplaces/:marketplace_id/accounts/:account_id
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Account</span><span class="o">.</span><span class="n">add_card</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Account</span><span class="o">.</span><span class="n">add_card</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">\Balanced\Account-&gt;addCard();</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Account</span><span class="o">.</span><span class="na">associateCard</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS <span class="se">\</span>
+     -u ak-test-zvmxAk4lw1srrw9heg99Gtlr4Y6HAmPP: <span class="se">\</span>
+     -X PUT <span class="se">\</span>
+     -d <span class="s2">&quot;card_uri=/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/cards/CC1uWeKKMTC2F8ksaNXEMAXm&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">account</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Account</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/v1/marketplaces/TEST-MP52IlCmywk6hGbgS75QSlN/accounts/CUhWPVv3F9tVZoGd1GPo2zQ&#39;</span><span class="p">)</span>
+<span class="n">account</span><span class="o">.</span><span class="n">add_card</span><span class="p">(</span><span class="s">&#39;/v1/marketplaces/TEST-MP52IlCmywk6hGbgS75QSlN/cards/CCjOJKFuXZJlQm9oKtqVZwW&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+<span class="n">account</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Account</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/v1/marketplaces/TEST-MP4h8BxozeLxe7VAllP6b5gj/accounts/AC4SoZJ23TvXIUcUOBSTXYHQ&#39;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">account</span><span class="o">.</span><span class="n">add_card</span><span class="p">(</span><span class="s1">&#39;/v1/marketplaces/TEST-MP4h8BxozeLxe7VAllP6b5gj/cards/CC4Y12fGIP0HQ1jhcDgE9cFi&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$account</span> <span class="o">=</span> <span class="nx">\Balanced\Account</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/v1/marketplaces/TEST-MP4K6K0PWGyPtXL4LZ42sQSb/accounts/CU4WT2fC14gzGQIEcMKs5gm3&quot;</span><span class="p">);</span>
+<span class="nv">$account</span><span class="o">-&gt;</span><span class="na">addCard</span><span class="p">(</span><span class="s2">&quot;/v1/marketplaces/TEST-MP4K6K0PWGyPtXL4LZ42sQSb/cards/CC4Zor9L2DEKXy0LJJ8PtkMM&quot;</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Account</span> <span class="n">account</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Account</span><span class="o">(</span><span class="s">&quot;/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/accounts/CU5U8N8xXdkTgLmmV3wSozLc&quot;</span><span class="o">);</span>
+<span class="n">account</span><span class="o">.</span><span class="na">associateCard</span><span class="o">(</span><span class="s">&quot;/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/cards/CC5WUKAGJIemxz0Bd7AJ8Lxu&quot;</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/bank_accounts&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/cards&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:09:34.469312Z&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/credits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU1sArbwrJZbgBXZZRTu2SHS&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/debits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;email_address&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/holds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU1sArbwrJZbgBXZZRTu2SHS&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/refunds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/reversals&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;roles&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">&quot;buyer&quot;</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/transactions&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section class="method-section" id="adding-a-bank-account-to-an-account">
+<h2>Adding a Bank Account To an Account<a class="headerlink" href="#adding-a-bank-account-to-an-account" title="Permalink to this headline">∵</a></h2>
+<p>Adding a bank account to an account activates the ability to credit an
+account, or in this case, initiate a next-day ACH payment.</p>
+<p>Balanced <strong>does not</strong> associate a role to signify whether or not an account
+has a valid bank account to send money to.</p>
+<div class="alert alert-tab-red admonition note">
+note</div>
+<div class="alert alert-red">
+Accounts have been deprecated. Please use <a class="reference internal" href="../customers/#adding-a-bank-account-to-a-customer"><em>Customers</em></a> instead.</div>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Name on the bank account.</dd>
+<dt><span class="docutils literal"><code>account_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Bank account number.</dd>
+<dt><span class="docutils literal"><code>bank_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Bank account code.</dd>
+<dt><span class="docutils literal"><code>routing_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Bank account code.</dd>
+<dt><span class="docutils literal"><code>bank_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>routing_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>account_type</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>type</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values. Defaults to <span class="docutils literal"><code>{}</code></span>.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>PUT https://api.balancedpayments.com/marketplaces/:marketplace_id/accounts/:account_id
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Account</span><span class="o">.</span><span class="n">add_bank_account</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Account</span><span class="o">.</span><span class="n">add_bank_account</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">\Balanced\Account-&gt;addBankAccount();</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Account</span><span class="o">.</span><span class="na">associateBankAccount</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS <span class="se">\</span>
+     -u ak-test-zvmxAk4lw1srrw9heg99Gtlr4Y6HAmPP: <span class="se">\</span>
+     -X PUT <span class="se">\</span>
+     -d <span class="s2">&quot;bank_account_uri=/v1/bank_accounts/BA1y9ctgKuNLsVs4osB62f7O&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">account</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Account</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/v1/marketplaces/TEST-MP52IlCmywk6hGbgS75QSlN/accounts/CUhWPVv3F9tVZoGd1GPo2zQ&#39;</span><span class="p">)</span>
+<span class="n">account</span><span class="o">.</span><span class="n">add_bank_account</span><span class="p">(</span><span class="s">&#39;/v1/bank_accounts/BAoA1GvbhUuFXyRKiVv76M0&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+<span class="n">account</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Account</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/v1/marketplaces/TEST-MP4h8BxozeLxe7VAllP6b5gj/accounts/AC4SoZJ23TvXIUcUOBSTXYHQ&#39;</span><span class="p">)</span>
+<span class="n">account</span><span class="o">.</span><span class="n">add_bank_account</span><span class="p">(</span><span class="s2">&quot;/v1/bank_accounts/BA5hNwwQFEWByAcdf1U5D5ok&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$account</span> <span class="o">=</span> <span class="nx">\Balanced\Account</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/v1/marketplaces/TEST-MP4K6K0PWGyPtXL4LZ42sQSb/accounts/CU4WT2fC14gzGQIEcMKs5gm3&quot;</span><span class="p">);</span>
+<span class="nv">$account</span><span class="o">-&gt;</span><span class="na">addBankAccount</span><span class="p">(</span><span class="s2">&quot;/v1/bank_accounts/BA53NVwHAXYx7fo98SdK41dg&quot;</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Account</span> <span class="n">account</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Account</span><span class="o">(</span><span class="s">&quot;/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/accounts/CU5U8N8xXdkTgLmmV3wSozLc&quot;</span><span class="o">);</span>
+<span class="n">account</span><span class="o">.</span><span class="na">associateBankAccount</span><span class="o">(</span><span class="s">&quot;/v1/bank_accounts/BA61ypiv3pJICo3jQJxGTTUO&quot;</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/bank_accounts&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/cards&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:09:34.469312Z&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/credits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU1sArbwrJZbgBXZZRTu2SHS&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/debits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;email_address&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/holds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU1sArbwrJZbgBXZZRTu2SHS&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/refunds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/reversals&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;roles&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">&quot;buyer&quot;</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS/transactions&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1sArbwrJZbgBXZZRTu2SHS&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section class="method-section" id="underwriting-an-individual">
+<h2>Underwriting an Individual<a class="headerlink" href="#underwriting-an-individual" title="Permalink to this headline">∵</a></h2>
+<p>A person, or an individual, is a US based individual or a sole proprietor.</p>
+<p>Balanced associates a <span class="docutils literal"><code>merchant</code></span> role to signify whether or not an account
+has been underwritten.</p>
+<div class="alert alert-tab-red admonition note">
+note</div>
+<div class="alert alert-red">
+Accounts have been deprecated. Please use <a class="reference internal" href="../customers/#customers"><em>Customers</em></a> instead.</div>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>type</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Merchant type. It should be one of: <span class="docutils literal"><code>person</code></span> or <span class="docutils literal"><code>business</code></span>.</dd>
+<dt><span class="docutils literal"><code>phone_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. E.164 formatted phone number.</dd>
+<dt><span class="docutils literal"><code>email_address</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. RFC-2822 formatted email address. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values. Defaults to <span class="docutils literal"><code>{}</code></span>.</dd>
+<dt><span class="docutils literal"><code>tax_id</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. For <em>person</em> merchants <cite>tax_id</cite> is optional, defaulting to <span class="docutils literal"><code>null</code></span>.
+For <em>business</em> merchants <cite>tax_id</cite> is required.</dd>
+<dt><span class="docutils literal"><code>dob</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Date-of-birth formatted as <span class="docutils literal"><code>YYYY-MM-DD</code></span>. For <em>person</em> merchants <cite>dob</cite> is required. For <em>business</em> merchants
+<cite>dob</cite> is optional, defaulting to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. If an account is referenced in the resolving URI then the default is
+null. If this is nested in an account creation then the account
+<span class="docutils literal"><code>name</code></span> is used. Otherwise no default is provided and this field is
+required.</dd>
+<dt><span class="docutils literal"><code>city</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. City. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>region</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Region (e.g. state, province, etc). This field has been
+<strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>state</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. US state. This field has been <strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>postal_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Postal code. This is known as a zip code in the USA.
+<em>requires</em> <span class="docutils literal"><code>country_code</code></span>.</dd>
+<dt><span class="docutils literal"><code>street_address</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Street address.
+<em>requires</em> <span class="docutils literal"><code>postal_code</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>country_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Defaults to <span class="docutils literal"><code>USA</code></span>.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>POST https://api.balancedpayments.com/marketplaces/:marketplace_id/accounts
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Marketplace</span><span class="o">.</span><span class="n">create_merchant</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Account</span><span class="o">.</span><span class="n">promote_to_merchant</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\Marketplace-&gt;createAccount();</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Account</span><span class="o">.</span><span class="na">promoteToMerchant</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">payload</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts <span class="se">\</span>
+        -u ak-test-zvmxAk4lw1srrw9heg99Gtlr4Y6HAmPP: <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[phone_number]=+14089999999&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[name]=Timmy Q. CopyPasta&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[dob]=1989-12&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[postal_code]=94110&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[type]=person&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[street_address]=121 Skriptkid Row&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">merchant_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s">&quot;+14089999999&quot;</span><span class="p">,</span> 
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Timmy Q. CopyPasta&quot;</span><span class="p">,</span> 
+    <span class="s">&quot;dob&quot;</span><span class="p">:</span> <span class="s">&quot;1989-12&quot;</span><span class="p">,</span> 
+    <span class="s">&quot;postal_code&quot;</span><span class="p">:</span> <span class="s">&quot;94110&quot;</span><span class="p">,</span> 
+    <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;person&quot;</span><span class="p">,</span> 
+    <span class="s">&quot;street_address&quot;</span><span class="p">:</span> <span class="s">&quot;121 Skriptkid Row&quot;</span>
+<span class="p">}</span>
+
+<span class="n">account</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Account</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">account</span><span class="o">.</span><span class="n">add_merchant</span><span class="p">(</span><span class="n">merchant_data</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">balanced</span><span class="o">.</span><span class="n">exc</span><span class="o">.</span><span class="n">MoreInformationRequiredError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+    <span class="c"># could not identify this account.</span>
+    <span class="k">print</span> <span class="s">&#39;redirect merchant to:&#39;</span><span class="p">,</span> <span class="n">ex</span><span class="o">.</span><span class="n">redirect_uri</span>
+<span class="k">except</span> <span class="n">balanced</span><span class="o">.</span><span class="n">exc</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="c"># TODO: handle 400 and 409 exceptions as required</span>
+    <span class="k">raise</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+<span class="n">marketplace</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Marketplace</span><span class="o">.</span><span class="n">my_marketplace</span>
+
+<span class="n">merchant_data</span> <span class="o">=</span> <span class="p">{</span>
+<span class="ss">:dob</span> <span class="o">=&gt;</span> <span class="s1">&#39;1989-12&#39;</span><span class="p">,</span>
+<span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Timmy Q. CopyPasta&#39;</span><span class="p">,</span>
+<span class="ss">:phone_number</span> <span class="o">=&gt;</span> <span class="s1">&#39;+14089999999&#39;</span><span class="p">,</span>
+<span class="ss">:postal_code</span> <span class="o">=&gt;</span> <span class="s1">&#39;94110&#39;</span><span class="p">,</span>
+<span class="ss">:street_address</span> <span class="o">=&gt;</span> <span class="s1">&#39;121 Skriptkid Row&#39;</span><span class="p">,</span>
+<span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">&#39;person&#39;</span>
+<span class="p">}</span>
+
+<span class="n">account</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Marketplace</span><span class="o">.</span><span class="n">my_marketplace</span><span class="o">.</span><span class="n">create_account</span>
+
+<span class="k">begin</span>
+  <span class="n">account</span><span class="o">.</span><span class="n">promote_to_merchant</span><span class="p">(</span><span class="n">merchant_data</span><span class="p">)</span>
+<span class="k">rescue</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">MoreInformationRequired</span> <span class="o">=&gt;</span> <span class="n">error</span>
+  <span class="c1"># could not identify this account.</span>
+  <span class="nb">puts</span> <span class="s1">&#39;redirect merchant to: &#39;</span> <span class="o">+</span> <span class="n">error</span><span class="o">.</span><span class="n">redirect_uri</span>
+<span class="k">rescue</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Error</span> <span class="o">=&gt;</span> <span class="n">error</span>
+  <span class="c1"># TODO: handle 400 and 409 exceptions as required</span>
+  <span class="k">raise</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$marketplace</span> <span class="o">=</span> <span class="nx">Balanced\Marketplace</span><span class="o">::</span><span class="na">mine</span><span class="p">();</span>
+
+<span class="nv">$merchant_data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;dob&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;1989-12&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Timmy Q. CopyPasta&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;phone_number&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;+14089999999&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;postal_code&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;94110&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;street_address&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;121 Skriptkid Row&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;person&quot;</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="nv">$account</span> <span class="o">=</span> <span class="nv">$marketplace</span><span class="o">-&gt;</span><span class="na">createAccount</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$account</span><span class="o">-&gt;</span><span class="na">promoteToMerchant</span><span class="p">(</span><span class="nv">$merchant_data</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Balanced\Errors\IdentityVerificationFailed</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* could not identify this account. */</span>
+    <span class="k">print</span> <span class="s2">&quot;redirect merchant to:&quot;</span> <span class="o">.</span> <span class="nv">$error</span><span class="o">-&gt;</span><span class="na">redirect_uri</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Balanced\Errors\HTTPError</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* TODO: handle 400 and 409 exceptions as required */</span>
+    <span class="k">throw</span> <span class="nv">$error</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Account</span> <span class="n">account</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Account</span><span class="o">(</span><span class="s">&quot;/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/accounts&quot;</span><span class="o">);</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">merchantPayload</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">personPayload</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="s">&quot;Timmy Q. CopyPasta&quot;</span><span class="o">);</span>
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;dob&quot;</span><span class="o">,</span> <span class="s">&quot;1989-12&quot;</span><span class="o">);</span>
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="s">&quot;+14089999999&quot;</span><span class="o">);</span>
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;postal_code&quot;</span><span class="o">,</span> <span class="s">&quot;94110&quot;</span><span class="o">);</span>
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;street_address&quot;</span><span class="o">,</span> <span class="s">&quot;121 Skriptkid Row&quot;</span><span class="o">);</span>
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;type&quot;</span><span class="o">,</span> <span class="s">&quot;person&quot;</span><span class="o">);</span>
+
+<span class="n">account</span><span class="o">.</span><span class="na">promoteToMerchant</span><span class="o">(</span><span class="n">merchantPayload</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1ATWzffwrKCNVQu756NyT8/bank_accounts&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1ATWzffwrKCNVQu756NyT8/cards&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:09:41.863021Z&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1ATWzffwrKCNVQu756NyT8/credits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU1ATWzffwrKCNVQu756NyT8&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1ATWzffwrKCNVQu756NyT8/debits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;email_address&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1ATWzffwrKCNVQu756NyT8/holds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU1ATWzffwrKCNVQu756NyT8&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Timmy Q. CopyPasta&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1ATWzffwrKCNVQu756NyT8/refunds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1ATWzffwrKCNVQu756NyT8/reversals&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;roles&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">&quot;merchant&quot;</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1ATWzffwrKCNVQu756NyT8/transactions&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1ATWzffwrKCNVQu756NyT8&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section class="method-section" id="underwriting-a-business">
+<h2>Underwriting a Business<a class="headerlink" href="#underwriting-a-business" title="Permalink to this headline">∵</a></h2>
+<p>Balanced associates a <span class="docutils literal"><code>merchant</code></span> role to signify whether or not an account
+has been underwritten.</p>
+<div class="alert alert-tab-red admonition note">
+note</div>
+<div class="alert alert-red">
+Accounts have been deprecated. Please use <a class="reference internal" href="../customers/#customers"><em>Customers</em></a> instead.</div>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>type</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Merchant type. It should be one of: <span class="docutils literal"><code>person</code></span> or <span class="docutils literal"><code>business</code></span>.</dd>
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>required</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>phone_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. E.164 formatted phone number.</dd>
+<dt><span class="docutils literal"><code>email_address</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. RFC-2822 formatted email address. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values. Defaults to <span class="docutils literal"><code>{}</code></span>.</dd>
+<dt><span class="docutils literal"><code>tax_id</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. For <em>person</em> merchants <cite>tax_id</cite> is optional, defaulting to <span class="docutils literal"><code>null</code></span>.
+For <em>business</em> merchants <cite>tax_id</cite> is required.</dd>
+<dt><span class="docutils literal"><code>dob</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Date-of-birth formatted as <span class="docutils literal"><code>YYYY-MM-DD</code></span>. For <em>person</em> merchants <cite>dob</cite> is required. For <em>business</em> merchants
+<cite>dob</cite> is optional, defaulting to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>person</code></span></dt>
+<dd><p class="nested1 first"><em>optional</em> <strong>object</strong>.</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>required</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>dob</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Date-of-birth formatted as <span class="docutils literal"><code>YYYY-MM-DD</code></span>.</dd>
+<dt><span class="docutils literal"><code>city</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. City. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>region</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Region (e.g. state, province, etc). This field has been
+<strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>state</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. US state. This field has been <strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>postal_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Postal code. This is known as a zip code in the USA.
+<em>requires</em> <span class="docutils literal"><code>country_code</code></span>.</dd>
+<dt><span class="docutils literal"><code>street_address</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Street address.
+<em>requires</em> <span class="docutils literal"><code>postal_code</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>country_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Defaults to <span class="docutils literal"><code>USA</code></span>.</dd>
+<dt><span class="docutils literal"><code>tax_id</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt><span class="docutils literal"><code>city</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. City. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>region</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Region (e.g. state, province, etc). This field has been
+<strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>state</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. US state. This field has been <strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>postal_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Postal code. This is known as a zip code in the USA.
+<em>requires</em> <span class="docutils literal"><code>country_code</code></span>.</dd>
+<dt><span class="docutils literal"><code>street_address</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Street address.
+<em>requires</em> <span class="docutils literal"><code>postal_code</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>country_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Defaults to <span class="docutils literal"><code>USA</code></span>.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>POST https://api.balancedpayments.com/marketplaces/:marketplace_id/accounts
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Marketplace</span><span class="o">.</span><span class="n">create_merchant</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Account</span><span class="o">.</span><span class="n">promote_to_merchant</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\Marketplace-&gt;createAccount();</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Account</span><span class="o">.</span><span class="na">promoteToMerchant</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">payload</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts <span class="se">\</span>
+        -u ak-test-zvmxAk4lw1srrw9heg99Gtlr4Y6HAmPP: <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[phone_number]=+140899188155&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[name]=Skripts4Kids&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[postal_code]=91111&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[type]=business&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[street_address]=555 VoidMain Road&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[tax_id]=211111111&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[person[phone_number]]=+14089999999&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[person[dob]]=1989-12&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[person[postal_code]]=94110&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[person[name]]=Timmy Q. CopyPasta&quot;</span> <span class="se">\</span>
+        -d <span class="s2">&quot;merchant[person[street_address]]=121 Skriptkid Row&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">merchant_data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s">&quot;+140899188155&quot;</span><span class="p">,</span> 
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Skripts4Kids&quot;</span><span class="p">,</span> 
+    <span class="s">&quot;person&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;dob&quot;</span><span class="p">:</span> <span class="s">&quot;1989-12&quot;</span><span class="p">,</span> 
+        <span class="s">&quot;phone_number&quot;</span><span class="p">:</span> <span class="s">&quot;+14089999999&quot;</span><span class="p">,</span> 
+        <span class="s">&quot;postal_code&quot;</span><span class="p">:</span> <span class="s">&quot;94110&quot;</span><span class="p">,</span> 
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Timmy Q. CopyPasta&quot;</span><span class="p">,</span> 
+        <span class="s">&quot;street_address&quot;</span><span class="p">:</span> <span class="s">&quot;121 Skriptkid Row&quot;</span>
+    <span class="p">},</span> 
+    <span class="s">&quot;postal_code&quot;</span><span class="p">:</span> <span class="s">&quot;91111&quot;</span><span class="p">,</span> 
+    <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;business&quot;</span><span class="p">,</span> 
+    <span class="s">&quot;street_address&quot;</span><span class="p">:</span> <span class="s">&quot;555 VoidMain Road&quot;</span><span class="p">,</span> 
+    <span class="s">&quot;tax_id&quot;</span><span class="p">:</span> <span class="s">&quot;211111111&quot;</span>
+<span class="p">}</span>
+
+<span class="n">account</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Account</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">account</span><span class="o">.</span><span class="n">add_merchant</span><span class="p">(</span><span class="n">merchant_data</span><span class="p">)</span>
+<span class="k">except</span> <span class="n">balanced</span><span class="o">.</span><span class="n">exc</span><span class="o">.</span><span class="n">MoreInformationRequiredError</span> <span class="k">as</span> <span class="n">ex</span><span class="p">:</span>
+    <span class="c"># could not identify this account.</span>
+    <span class="k">print</span> <span class="s">&#39;redirect merchant to:&#39;</span><span class="p">,</span> <span class="n">ex</span><span class="o">.</span><span class="n">redirect_uri</span>
+<span class="k">except</span> <span class="n">balanced</span><span class="o">.</span><span class="n">exc</span><span class="o">.</span><span class="n">HTTPError</span> <span class="k">as</span> <span class="n">error</span><span class="p">:</span>
+    <span class="c"># TODO: handle 400 and 409 exceptions as required</span>
+    <span class="k">raise</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+
+<span class="n">merchant_data</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Skripts4Kids&#39;</span><span class="p">,</span>
+  <span class="ss">:person</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="ss">:dob</span> <span class="o">=&gt;</span> <span class="s1">&#39;1989-12&#39;</span><span class="p">,</span>
+    <span class="ss">:name</span> <span class="o">=&gt;</span> <span class="s1">&#39;Timmy Q. CopyPasta&#39;</span><span class="p">,</span>
+    <span class="ss">:phone_number</span> <span class="o">=&gt;</span> <span class="s1">&#39;+14089999999&#39;</span><span class="p">,</span>
+    <span class="ss">:postal_code</span> <span class="o">=&gt;</span> <span class="s1">&#39;94110&#39;</span><span class="p">,</span>
+    <span class="ss">:street_address</span> <span class="o">=&gt;</span> <span class="s1">&#39;121 Skriptkid Row&#39;</span>
+  <span class="p">},</span>
+  <span class="ss">:phone_number</span> <span class="o">=&gt;</span> <span class="s1">&#39;+140899188155&#39;</span><span class="p">,</span>
+  <span class="ss">:postal_code</span> <span class="o">=&gt;</span> <span class="s1">&#39;91111&#39;</span><span class="p">,</span>
+  <span class="ss">:street_address</span> <span class="o">=&gt;</span> <span class="s1">&#39;555 VoidMain Road&#39;</span><span class="p">,</span>
+  <span class="ss">:tax_id</span> <span class="o">=&gt;</span> <span class="s1">&#39;211111111&#39;</span><span class="p">,</span>
+  <span class="ss">:type</span> <span class="o">=&gt;</span> <span class="s1">&#39;business&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">account</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Marketplace</span><span class="o">.</span><span class="n">my_marketplace</span><span class="o">.</span><span class="n">create_account</span>
+
+<span class="k">begin</span>
+  <span class="n">account</span><span class="o">.</span><span class="n">promote_to_merchant</span><span class="p">(</span><span class="n">merchant_data</span><span class="p">)</span>
+<span class="k">rescue</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">MoreInformationRequired</span> <span class="o">=&gt;</span> <span class="n">error</span>
+  <span class="c1"># could not identify this account.</span>
+  <span class="nb">puts</span> <span class="s1">&#39;redirect merchant to: &#39;</span> <span class="o">+</span> <span class="n">error</span><span class="o">.</span><span class="n">redirect_uri</span>
+<span class="k">rescue</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Error</span> <span class="o">=&gt;</span> <span class="n">error</span>
+  <span class="c1"># TODO: handle 400 and 409 exceptions as required</span>
+  <span class="k">raise</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$marketplace</span> <span class="o">=</span> <span class="nx">Balanced\Marketplace</span><span class="o">::</span><span class="na">mine</span><span class="p">();</span>
+
+<span class="nv">$merchant_data</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+        <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Skripts4Kids&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;phone_number&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;+140899188155&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;postal_code&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;91111&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;street_address&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;555 VoidMain Road&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;tax_id&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;211111111&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;type&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;business&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;person&quot;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;dob&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;1989-12&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Timmy Q. CopyPasta&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;phone_number&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;+14089999999&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;postal_code&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;94110&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;street_address&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;121 Skriptkid Row&quot;</span><span class="p">,</span>
+        <span class="p">),</span>
+<span class="p">);</span>
+
+<span class="nv">$account</span> <span class="o">=</span> <span class="nv">$marketplace</span><span class="o">-&gt;</span><span class="na">createAccount</span><span class="p">();</span>
+
+<span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$account</span><span class="o">-&gt;</span><span class="na">promoteToMerchant</span><span class="p">(</span><span class="nv">$merchant_data</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Balanced\Errors\IdentityVerificationFailed</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* could not identify this account. */</span>
+    <span class="k">print</span> <span class="s2">&quot;redirect merchant to:&quot;</span> <span class="o">.</span> <span class="nv">$error</span><span class="o">-&gt;</span><span class="na">redirect_uri</span> <span class="o">.</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Balanced\Errors\HTTPError</span> <span class="nv">$error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="cm">/* TODO: handle 400 and 409 exceptions as required */</span>
+    <span class="k">throw</span> <span class="nv">$error</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Account</span> <span class="n">account</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Account</span><span class="o">(</span><span class="s">&quot;/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/accounts&quot;</span><span class="o">);</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">merchantPayload</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">personPayload</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+
+<span class="n">personPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;dob&quot;</span><span class="o">,</span> <span class="s">&quot;1989-12&quot;</span><span class="o">);</span>
+<span class="n">personPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="s">&quot;Timmy Q. CopyPasta&quot;</span><span class="o">);</span>
+<span class="n">personPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="s">&quot;+14089999999&quot;</span><span class="o">);</span>
+<span class="n">personPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;postal_code&quot;</span><span class="o">,</span> <span class="s">&quot;94110&quot;</span><span class="o">);</span>
+<span class="n">personPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;street_address&quot;</span><span class="o">,</span> <span class="s">&quot;121 Skriptkid Row&quot;</span><span class="o">);</span>
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="s">&quot;Skripts4Kids&quot;</span><span class="o">);</span>
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;person&quot;</span><span class="o">,</span> <span class="n">personPayload</span><span class="o">);</span>
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;phone_number&quot;</span><span class="o">,</span> <span class="s">&quot;+140899188155&quot;</span><span class="o">);</span>
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;postal_code&quot;</span><span class="o">,</span> <span class="s">&quot;91111&quot;</span><span class="o">);</span>
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;street_address&quot;</span><span class="o">,</span> <span class="s">&quot;555 VoidMain Road&quot;</span><span class="o">);</span>
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;tax_id&quot;</span><span class="o">,</span> <span class="s">&quot;211111111&quot;</span><span class="o">);</span>
+<span class="n">merchantPayload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;type&quot;</span><span class="o">,</span> <span class="s">&quot;business&quot;</span><span class="o">);</span>
+
+<span class="n">account</span><span class="o">.</span><span class="na">promoteToMerchant</span><span class="o">(</span><span class="n">merchantPayload</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1DCszkU41l0oNOgJckXIjQ/bank_accounts&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1DCszkU41l0oNOgJckXIjQ/cards&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:09:44.278914Z&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1DCszkU41l0oNOgJckXIjQ/credits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU1DCszkU41l0oNOgJckXIjQ&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1DCszkU41l0oNOgJckXIjQ/debits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;email_address&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1DCszkU41l0oNOgJckXIjQ/holds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU1DCszkU41l0oNOgJckXIjQ&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="s2">&quot;Timmy Q. CopyPasta&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1DCszkU41l0oNOgJckXIjQ/refunds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1DCszkU41l0oNOgJckXIjQ/reversals&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;roles&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="s2">&quot;merchant&quot;</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1DCszkU41l0oNOgJckXIjQ/transactions&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/accounts/CU1DCszkU41l0oNOgJckXIjQ&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section></section>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/compiled.js"></script>
+  </body>
+</html>

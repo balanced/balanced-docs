@@ -1,0 +1,1116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
+      <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+      <link href="/static/css/styles.css" rel="stylesheet">
+      <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+
+     <!-- <script src="static/js/html5shiv.js"></script> -->
+      <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar-nav" data-offset="200">
+
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <div class="logo">
+              <a class="brand" href="https://www.balancedpayments.com"></a>
+            </div>
+            <div class="span16">
+              <ul class="nav nav-api-context">
+                <li class="dropdown">
+                  <a class="dropdown-toggle context api-context" data-toggle="dropdown" id="context-dropdown-head">
+                    <div id="logo"></div>
+                    API Reference
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu context">
+                    <li>
+                      <a class="context-change" data-context="api" href="/1.1/overview/">Overview</a>
+                    </li>
+                    <li>
+                      <a class="context-change" data-context="faq" href="https://support.balancedpayments.com/hc/en-us">FAQ</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <ul class="nav nav-api-version">
+                <li class="dropdown">
+                  <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">v 1.1
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu version">
+                    <li>
+                      <a class="version-change" data-version="1.0" href="/1.0/api/">v 1.0</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <ul class="nav nav-api-clients">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle lang" id="lang-dropdown-head" data-toggle="dropdown">lang: CURL <b class="caret"></b></a>
+                  <ul class="dropdown-menu lang">
+                    <li><a class="lang-change" data-lang="ruby" href="#">Ruby</a></li>
+                    <li><a class="lang-change" data-lang="python" href="#">Python</a></li>
+                    <li><a class="lang-change" data-lang="node" href="#">Node.js</a></li>
+                    <li><a class="lang-change" data-lang="php" href="#">PHP</a></li>
+                    <li><a class="lang-change" data-lang="java" href="#">Java</a></li>
+                    <li><a class="lang-change" data-lang="bash" href="#">cURL</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <ul class="nav nav-links pull-right">
+              <li>
+                <a href="/1.1/overview/#support">Help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="api-version-rev">
+      
+      <div class="container content" id="overview-content">
+        <div class="row">
+
+          <div id="sidebar-top" style="display:none">
+            <div id="sidebar-top-content">
+              <ul class="inline">
+                <li style="vertical-align: middle;">
+                  <div id="logo" style="background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAMAAAC+oj0CAAAAV1BMVEVymix4oi/vQDXjPDJ4oi94oi/vQDXvQDXvQDXvQDV4oi91ni7vQDXqPjN4oi/foRLanRHopxNznC3mPTPopxPopxMAAABwmCzgPDHanRHopxN4oi/vQDXwPhJhAAAAF3RSTlPbICDbYBBQYEAQgLOAs1DH7hDHx6CAAHwvTFAAAABmSURBVHja1cjXDYAwDABR01sCpAEh2X9ObCFkJLMA93cPSpcPtb0a92QLqDLWsdYJA8iUY7aJulkzTzdr4p55Jp1gUM61uOzWjg1sn/2Iw7IEyeHEguCVeBUciaNgT+wFG49qnrsAe+cllBc1FLYAAAAASUVORK5CYII=) no-repeat center;width: 25px;height: 25px;float: left;">
+                  </div>
+                </li>
+                <li id="context-title" style="font-size: 16px;">API Reference</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="span6 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+              <div class="row">
+                <div class="span6">
+                  <div class="nav nav-list context-navlist">
+                    <!-- The table of contents menu -->
+                    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../authentication/">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../authentication/#authenticating-to-balanced">Authenticating to Balanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../api-keys/">API Keys</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../api-keys/#create-an-api-key">Create an API Key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-keys/#fetch-an-api-key">Fetch an API Key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-keys/#list-all-api-keys">List all API Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api-keys/#delete-an-api-key">Delete an API Key</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bank-accounts/">Bank Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#create-a-bank-account-direct">Create a Bank Account (Direct)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#fetch-a-bank-account">Fetch a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#list-bank-accounts">List Bank Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#update-a-bank-account">Update a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#delete-a-bank-account">Delete a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#associate-a-bank-account-to-a-customer">Associate a Bank Account to a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#debit-a-bank-account">Debit a Bank Account</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bank-account-verifications/">Bank Account Verifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#create-a-bank-account-verification">Create a Bank Account Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#fetch-a-bank-account-verification">Fetch a Bank Account Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#confirm-a-bank-account-verification">Confirm a Bank Account Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks/">Callbacks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/#create-a-callback">Create a Callback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/#fetch-a-callback">Fetch a Callback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/#list-all-callbacks">List all Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/#delete-a-callback">Delete a Callback</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cards/">Cards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#create-a-card-direct">Create a Card (Direct)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#fetch-a-card">Fetch a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#list-all-cards">List All Cards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#update-a-card">Update a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#deleting-a-card">Deleting a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#associate-a-card-to-a-customer">Associate a Card to a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#charge-a-card">Charge a Card</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Card Holds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-new-card-hold">Create a New Card Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fetch-a-card-hold">Fetch a Card Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-all-card-holds">List all Card Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#update-a-card-hold">Update a Card Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#capture-a-card-hold">Capture a Card Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#void-a-card-hold">Void a Card Hold</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#create-a-credit">Create a Credit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#fetch-a-credit">Fetch a Credit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#list-all-credits">List All Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#list-all-credits-for-a-bank-account">List All Credits for a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#update-a-credit">Update a Credit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../customers/">Customers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#create-a-customer">Create a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#fetch-a-customer">Fetch a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#list-all-customers">List all Customers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#update-a-customer">Update a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#delete-a-customer">Delete a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#associate-a-card">Associate a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#associate-a-bank-account">Associate a Bank Account</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debits/">Debits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#create-a-card-debit">Create a Card Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#create-a-bank-account-debit">Create a Bank Account Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#fetch-a-debit">Fetch a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#list-all-debits">List All Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#update-a-debit">Update a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#refund-a-debit">Refund a Debit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../events/">Events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../events/#fetch-an-event">Fetch an Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events/#list-all-events">List all Events</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../orders/">Orders</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../orders/#create-an-order">Create an Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../orders/#fetch-an-order">Fetch an Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../orders/#list-all-orders">List All Orders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../orders/#update-an-order">Update an Order</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../refunds/">Refunds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../refunds/#create-a-refund">Create a Refund</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refunds/#fetch-a-refund">Fetch a Refund</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refunds/#list-all-refunds">List All Refunds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refunds/#update-a-refund">Update a Refund</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reversals/">Reversals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reversals/#create-a-reversal">Create a Reversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reversals/#fetch-a-reversal">Fetch a Reversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reversals/#list-all-reversals">List All Reversals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reversals/#update-a-reversal">Update a Reversal</a></li>
+</ul>
+</li>
+</ul>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="context-content" class="span19 offset1">
+            
+  <section id="card-holds">
+<span id="id1"></span><h1>Card Holds<a class="headerlink" href="#card-holds" title="Permalink to this headline">∵</a></h1>
+<p>A <span class="docutils literal"><code>CardHold</code></span> is a type of authorization that reserves a dollar amount
+on a credit card to be captured (debited) at a later date, usually within 7 days.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="header3">
+Available Query Filters</div>
+<dl class="dl-horizontal dl-params filters docutils">
+<dt><span class="docutils literal"><code>amount</code></span></dt>
+<dd><p class="first"><strong>Available Operations:</strong> =, !=, &lt;, &lt;=, &gt;, &gt;=, in, !in</p>
+<p><strong>Default Operation:</strong> =</p>
+<p class="last"><strong>Sortable:</strong> True</p>
+</dd>
+<dt><span class="docutils literal"><code>created_at</code></span></dt>
+<dd><p class="first"><strong>Available Operations:</strong> =, !=, &lt;, &lt;=, &gt;, &gt;=</p>
+<p><strong>Default Operation:</strong> =</p>
+<p class="last"><strong>Sortable:</strong> True</p>
+</dd>
+<dt><span class="docutils literal"><code>expires_at</code></span></dt>
+<dd><p class="first"><strong>Available Operations:</strong> =, !=, &lt;, &lt;=, &gt;, &gt;=</p>
+<p><strong>Default Operation:</strong> =</p>
+<p class="last"><strong>Sortable:</strong> True</p>
+</dd>
+<dt><span class="docutils literal"><code>is_void</code></span></dt>
+<dd><p class="first"><strong>Available Operations:</strong> =, !=</p>
+<p><strong>Default Operation:</strong> =</p>
+<p class="last"><strong>Sortable:</strong> False</p>
+</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><p class="first"><strong>Available Operations:</strong> contains, !contains</p>
+<p><strong>Default Operation:</strong> contains</p>
+<p class="last"><strong>Sortable:</strong> False</p>
+</dd>
+<dt><span class="docutils literal"><code>transaction_number</code></span></dt>
+<dd><p class="first"><strong>Available Operations:</strong> =, !=, startswith, endswith, contains, !contains, in, !in, ilike, !ilike</p>
+<p><strong>Default Operation:</strong> =</p>
+<p class="last"><strong>Sortable:</strong> False</p>
+</dd>
+</dl>
+<section id="create-a-new-card-hold">
+<h2>Create a New Card Hold<a class="headerlink" href="#create-a-new-card-hold" title="Permalink to this headline">∵</a></h2>
+<p>Creates a hold on a card.</p>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>amount</code></span></dt>
+<dd><em>required</em> <strong>integer</strong>. Amount in cents for this card_hold</dd>
+<dt><span class="docutils literal"><code>description</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.  A description of the hold, used for display purposes.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>POST https://api.balancedpayments.com/cards/:card_id/card_holds
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Card</span><span class="o">.</span><span class="n">hold</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Card</span><span class="p">()</span><span class="o">.</span><span class="n">hold</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">().</span><span class="nx">hold</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">CardHold</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">payload</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\Card-&gt;card_holds-&gt;create()</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/cards/CC4skRAbUHQztPehJn5oPfzN/card_holds <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL: <span class="se">\</span>
+     -d <span class="s2">&quot;amount=5000&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;description=Some descriptive text for the debit in the dashboard&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1&#39;</span><span class="p">)</span>
+
+<span class="n">card</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Card</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;/cards/CC72u3c6W1c67gNEnrMGHc7Y&#39;</span><span class="p">)</span>
+<span class="n">card</span><span class="o">.</span><span class="n">hold</span><span class="p">(</span>
+  <span class="ss">:amount</span> <span class="o">=&gt;</span> <span class="mi">5000</span><span class="p">,</span>
+  <span class="ss">:description</span> <span class="o">=&gt;</span> <span class="s1">&#39;Some descriptive text for the debit in the dashboard&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul&#39;</span><span class="p">)</span>
+
+<span class="n">card</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Card</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;/cards/CC5nCSU0yFp3qxR4p6UZST7y&#39;</span><span class="p">)</span>
+<span class="n">card_hold</span> <span class="o">=</span> <span class="n">card</span><span class="o">.</span><span class="n">hold</span><span class="p">(</span>
+  <span class="n">amount</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span>
+  <span class="n">description</span><span class="o">=</span><span class="s">&#39;Some descriptive text for the debit in the dashboard&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">balanced</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;balanced-official&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/cards/CC4skRAbUHQztPehJn5oPfzN&#39;</span><span class="p">).</span><span class="nx">hold</span><span class="p">({</span>
+    <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB&quot;</span><span class="o">);</span>
+
+<span class="n">Card</span> <span class="n">card</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Card</span><span class="o">(</span><span class="s">&quot;/cards/CC3ZsWHP2jMgvFrrzDzfZS0q&quot;</span><span class="o">);</span>
+
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">payload</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+<span class="n">payload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;amount&quot;</span><span class="o">,</span> <span class="mi">5000</span><span class="o">);</span>
+<span class="n">payload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;description&quot;</span><span class="o">,</span> <span class="s">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="o">);</span>
+
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">CardHold</span> <span class="n">cardHold</span> <span class="o">=</span> <span class="n">card</span><span class="o">.</span><span class="na">hold</span><span class="o">(</span><span class="n">payload</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="k">catch</span> <span class="o">(</span><span class="n">HTTPError</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-Hznf9GhTb2Xkj7fGwVD6lZSMH5F1eTRl&quot;</span><span class="p">;</span>
+
+<span class="nv">$card</span> <span class="o">=</span> <span class="nx">Balanced\Card</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/cards/CC2Xqq2tBl0B3AJgrHVngPQO&quot;</span><span class="p">);</span>
+<span class="nv">$card</span><span class="o">-&gt;</span><span class="na">card_holds</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;amount&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;5000&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;description&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span>
+<span class="p">));</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;card_holds&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:20.558455Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;USD&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;expires_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-04-03T16:12:20.699710Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason_code&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/HL4tohW3JdwMdiFjfUN0T2ku&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;HL4tohW3JdwMdiFjfUN0T2ku&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;card&quot;</span><span class="o">:</span> <span class="s2">&quot;CC4skRAbUHQztPehJn5oPfzN&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;debit&quot;</span><span class="o">:</span> <span class="kc">null</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;HL959-512-3616&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:20.844213Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;voided_at&quot;</span><span class="o">:</span> <span class="kc">null</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;card_holds.card&quot;</span><span class="o">:</span> <span class="s2">&quot;/cards/{card_holds.card}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.debit&quot;</span><span class="o">:</span> <span class="s2">&quot;/debits/{card_holds.debit}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.debits&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/{card_holds.id}/debits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.events&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/{card_holds.id}/events&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section id="fetch-a-card-hold">
+<h2>Fetch a Card Hold<a class="headerlink" href="#fetch-a-card-hold" title="Permalink to this headline">∵</a></h2>
+<p>Fetches the details of a previously created <span class="docutils literal"><code>CardHold</code></span>.</p>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>GET https://api.balancedpayments.com/card_holds/:card_hold_id
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">CardHold</span><span class="o">.</span><span class="n">fetch</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">CardHold</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">CardHold</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\CardHold::get()</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/card_holds/HL4tohW3JdwMdiFjfUN0T2ku <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL:
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1&#39;</span><span class="p">)</span>
+
+<span class="n">card_hold</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">CardHold</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;/card_holds/HL73rLlJ9e9d0jCowQ1BZUSP&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul&#39;</span><span class="p">)</span>
+
+<span class="n">card_hold</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">CardHold</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;/card_holds/HL5wAfv8JaMsEn9idXrLZZZT&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">balanced</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;balanced-official&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/card_holds/HL4tohW3JdwMdiFjfUN0T2ku&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB&quot;</span><span class="o">);</span>
+
+<span class="n">CardHold</span> <span class="n">cardHold</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CardHold</span><span class="o">(</span><span class="s">&quot;/card_holds/HL4a1BKhDiVV9Ueh9MTozVDs&quot;</span><span class="o">);</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-Hznf9GhTb2Xkj7fGwVD6lZSMH5F1eTRl&quot;</span><span class="p">;</span>
+
+<span class="nx">Balanced\CardHold</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/card_holds/HL2ZjCXw7QFFwhZFEzku161c&quot;</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;card_holds&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:20.558455Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;USD&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;expires_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-04-03T16:12:20.699710Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason_code&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/HL4tohW3JdwMdiFjfUN0T2ku&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;HL4tohW3JdwMdiFjfUN0T2ku&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;card&quot;</span><span class="o">:</span> <span class="s2">&quot;CC4skRAbUHQztPehJn5oPfzN&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;debit&quot;</span><span class="o">:</span> <span class="kc">null</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;HL959-512-3616&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:20.844213Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;voided_at&quot;</span><span class="o">:</span> <span class="kc">null</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;card_holds.card&quot;</span><span class="o">:</span> <span class="s2">&quot;/cards/{card_holds.card}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.debit&quot;</span><span class="o">:</span> <span class="s2">&quot;/debits/{card_holds.debit}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.debits&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/{card_holds.id}/debits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.events&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/{card_holds.id}/events&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section id="list-all-card-holds">
+<h2>List all Card Holds<a class="headerlink" href="#list-all-card-holds" title="Permalink to this headline">∵</a></h2>
+<p>Returns a list of all previously created <span class="docutils literal"><code>CardHold</code></span> resources.
+The holds are returned in sorted order, with the most recent
+holds appearing first.</p>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>limit</code></span></dt>
+<dd><em>optional</em> integer. Defaults to <span class="docutils literal"><code>10</code></span>.</dd>
+<dt><span class="docutils literal"><code>offset</code></span></dt>
+<dd><em>optional</em> integer. Defaults to <span class="docutils literal"><code>0</code></span>.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>GET https://api.balancedpayments.com/card_holds
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">CardHold</span><span class="o">.</span><span class="n">all</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">CardHold</span><span class="o">.</span><span class="n">query</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="nx">balanced</span><span class="p">.</span><span class="nx">marketplace</span><span class="p">.</span><span class="nx">card_holds</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">CardHold</span><span class="o">.</span><span class="na">Collection</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\Marketplace::mine()-&gt;card_holds</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/card_holds <span class="se">\</span>
+      -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+      -u ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL:
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1&#39;</span><span class="p">)</span>
+
+<span class="n">holds</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">CardHold</span><span class="o">.</span><span class="n">all</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul&#39;</span><span class="p">)</span>
+
+<span class="n">card_holds</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">CardHold</span><span class="o">.</span><span class="n">query</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">balanced</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;balanced-official&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">marketplace</span><span class="p">.</span><span class="nx">card_holds</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB&quot;</span><span class="o">);</span>
+
+<span class="n">CardHold</span><span class="o">.</span><span class="na">Collection</span> <span class="n">holds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CardHold</span><span class="o">.</span><span class="na">Collection</span><span class="o">(</span><span class="n">CardHold</span><span class="o">.</span><span class="na">resource_href</span><span class="o">);</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-Hznf9GhTb2Xkj7fGwVD6lZSMH5F1eTRl&quot;</span><span class="p">;</span>
+
+<span class="nv">$marketplace</span> <span class="o">=</span> <span class="nx">Balanced\Marketplace</span><span class="o">::</span><span class="na">mine</span><span class="p">();</span>
+<span class="nv">$marketplace</span><span class="o">-&gt;</span><span class="na">card_holds</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;card_holds&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:20.558455Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;USD&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;expires_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-04-03T16:12:20.699710Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason_code&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/HL4tohW3JdwMdiFjfUN0T2ku&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;HL4tohW3JdwMdiFjfUN0T2ku&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;card&quot;</span><span class="o">:</span> <span class="s2">&quot;CC4skRAbUHQztPehJn5oPfzN&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;debit&quot;</span><span class="o">:</span> <span class="kc">null</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;HL959-512-3616&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:20.844213Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;voided_at&quot;</span><span class="o">:</span> <span class="kc">null</span>
+        <span class="p">},</span> 
+        <span class="p">{</span>
+            <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">10000000</span><span class="p">,</span> 
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:11:48.430863Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;USD&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;expires_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-04-03T16:11:49.035001Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason_code&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/HL3TfI6jE8IcYTOpNNh9fEFF&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;HL3TfI6jE8IcYTOpNNh9fEFF&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;card&quot;</span><span class="o">:</span> <span class="s2">&quot;CC3SqXReMyiNBgrxe1qt1OtW&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;debit&quot;</span><span class="o">:</span> <span class="s2">&quot;WD3TlXrZZnewtPmqsRlqcq0D&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;HL332-918-1216&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:11:49.698163Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;voided_at&quot;</span><span class="o">:</span> <span class="kc">null</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;card_holds.card&quot;</span><span class="o">:</span> <span class="s2">&quot;/cards/{card_holds.card}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.debit&quot;</span><span class="o">:</span> <span class="s2">&quot;/debits/{card_holds.debit}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.debits&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/{card_holds.id}/debits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.events&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/{card_holds.id}/events&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;first&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds?limit=10&amp;offset=0&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds?limit=10&amp;offset=0&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;last&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds?limit=10&amp;offset=0&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span> 
+        <span class="s2">&quot;next&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;offset&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> 
+        <span class="s2">&quot;previous&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section id="update-a-card-hold">
+<h2>Update a Card Hold<a class="headerlink" href="#update-a-card-hold" title="Permalink to this headline">∵</a></h2>
+<p>Updates information on a previously created <span class="docutils literal"><code>CardHold</code></span>.</p>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>description</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.  A description of the hold, used for display purposes.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>object</strong>. Single level mapping from string keys to string values.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>PUT https://api.balancedpayments.com/card_holds/:card_hold_id
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">CardHold</span><span class="o">.</span><span class="n">save</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">CardHold</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">().</span><span class="nx">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">CardHold</span><span class="o">().</span><span class="na">save</span><span class="o">()</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\CardHold-&gt;save()</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/card_holds/HL4tohW3JdwMdiFjfUN0T2ku <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL: <span class="se">\</span>
+     -X PUT <span class="se">\</span>
+     -d <span class="s2">&quot;description=update this description&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;meta[holding.for]=user1&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;meta[meaningful.key]=some.value&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1&#39;</span><span class="p">)</span>
+
+<span class="n">card_hold</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">CardHold</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;/card_holds/HL73rLlJ9e9d0jCowQ1BZUSP&#39;</span><span class="p">)</span>
+<span class="n">card_hold</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;update this description&#39;</span>
+<span class="n">card_hold</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;holding.for&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;user1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;meaningful.key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;some.value&#39;</span>
+<span class="p">}</span>
+<span class="n">card_hold</span><span class="o">.</span><span class="n">save</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul&#39;</span><span class="p">)</span>
+
+<span class="n">card_hold</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">CardHold</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;/card_holds/HL5wAfv8JaMsEn9idXrLZZZT&#39;</span><span class="p">)</span>
+<span class="n">card_hold</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s">&#39;update this description&#39;</span>
+<span class="n">card_hold</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">&#39;holding.for&#39;</span><span class="p">:</span> <span class="s">&#39;user1&#39;</span><span class="p">,</span>
+  <span class="s">&#39;meaningful.key&#39;</span><span class="p">:</span> <span class="s">&#39;some.value&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">card_hold</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">balanced</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;balanced-official&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/card_holds/HL4tohW3JdwMdiFjfUN0T2ku&#39;</span><span class="p">).</span><span class="nx">set</span><span class="p">(</span><span class="s1">&#39;meta.something&#39;</span><span class="p">,</span> <span class="s1">&#39;useful&#39;</span><span class="p">).</span><span class="nx">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB&quot;</span><span class="o">);</span>
+
+<span class="n">CardHold</span> <span class="n">cardHold</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CardHold</span><span class="o">(</span><span class="s">&quot;/card_holds/HL4a1BKhDiVV9Ueh9MTozVDs&quot;</span><span class="o">);</span>
+<span class="n">cardHold</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="s">&quot;update this description&quot;</span><span class="o">;</span>
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">cardHold</span><span class="o">.</span><span class="na">save</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">catch</span> <span class="o">(</span><span class="n">HTTPError</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-Hznf9GhTb2Xkj7fGwVD6lZSMH5F1eTRl&quot;</span><span class="p">;</span>
+
+<span class="nv">$hold</span> <span class="o">=</span> <span class="nx">Balanced\Hold</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/card_holds/HL2ZjCXw7QFFwhZFEzku161c&quot;</span><span class="p">);</span>
+<span class="nv">$hold</span><span class="o">-&gt;</span><span class="na">description</span> <span class="o">=</span> <span class="s1">&#39;update this description&#39;</span><span class="p">;</span>
+<span class="nv">$hold</span><span class="o">-&gt;</span><span class="na">meta</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;holding.for&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;user1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;meaningful.key&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;some.value&quot;</span><span class="p">,</span>
+<span class="p">);</span>
+<span class="nv">$hold</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;card_holds&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:20.558455Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;USD&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;update this description&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;expires_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-04-03T16:12:20.699710Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason_code&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/HL4tohW3JdwMdiFjfUN0T2ku&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;HL4tohW3JdwMdiFjfUN0T2ku&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;card&quot;</span><span class="o">:</span> <span class="s2">&quot;CC4skRAbUHQztPehJn5oPfzN&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;debit&quot;</span><span class="o">:</span> <span class="kc">null</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;holding.for&quot;</span><span class="o">:</span> <span class="s2">&quot;user1&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;meaningful.key&quot;</span><span class="o">:</span> <span class="s2">&quot;some.value&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;HL959-512-3616&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:24.736271Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;voided_at&quot;</span><span class="o">:</span> <span class="kc">null</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;card_holds.card&quot;</span><span class="o">:</span> <span class="s2">&quot;/cards/{card_holds.card}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.debit&quot;</span><span class="o">:</span> <span class="s2">&quot;/debits/{card_holds.debit}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.debits&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/{card_holds.id}/debits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.events&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/{card_holds.id}/events&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section id="capture-a-card-hold">
+<h2>Capture a Card Hold<a class="headerlink" href="#capture-a-card-hold" title="Permalink to this headline">∵</a></h2>
+<p>Captures a previously created <span class="docutils literal"><code>CardHold</code></span>. This creates a
+<a class="reference internal" href="../debits/#debits"><em>debit</em></a>. Any amount up to the amount of the
+hold may be captured.</p>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>amount</code></span></dt>
+<dd><em>optional</em> <strong>integer</strong>. The amount of the debit in cents.</dd>
+<dt><span class="docutils literal"><code>appears_on_statement_as</code></span></dt>
+<dd><p class="first"><em>optional</em> <strong>string</strong>. Text that will appear on the buyer's statement. Characters that can be
+used are limited to:</p>
+<ul class="simple">
+<li>ASCII letters (<span class="docutils literal"><code>a-z</code></span> and <span class="docutils literal"><code>A-Z</code></span>)</li>
+<li>Digits (<span class="docutils literal"><code>0-9</code></span>)</li>
+<li>Special characters (<span class="docutils literal"><code>.&lt;&gt;(){}[]+&amp;!$;-%_?:#&#64;~=\'&quot;</code> <code>^`|</code></span>)</li>
+</ul>
+<p>Any other characters will be rejected.
+Debits - Truncated to 18 characters.
+Credits - Truncated to 14 characters.</p>
+<p>All Visa, Master Card, Discover, American Express debits will have a prefix
+of &quot;BAL*&quot; e.g. &quot;BAL*marketplace.com&quot;.</p>
+<p>ACH debits and credits do not have a prefix.</p>
+<p class="last">American Express pending transactions will be shown as &quot;BALANCED INC&quot;. AMEX
+pending transactions are hidden by default in the American Express web
+portal. Once the debit is settled it will convert to
+&quot;BAL*&lt;appears_on_statement_as&gt;&quot;.</p>
+</dd>
+<dt><span class="docutils literal"><code>description</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Free-text description of the debit for the dashboard.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>object</strong>. Single level mapping from string keys to string values.</dd>
+<dt><span class="docutils literal"><code>order</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. The order this debit is associated with</dd>
+<dt><span class="docutils literal"><code>source</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. The funding instrument debited</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>POST https://api.balancedpayments.com/card_holds/:card_hold_id/debits
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">CardHold</span><span class="o">.</span><span class="n">capture</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">CardHold</span><span class="p">()</span><span class="o">.</span><span class="n">capture</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">().</span><span class="nx">capture</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">CardHold</span><span class="o">().</span><span class="na">capture</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">payload</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\CardHold-&gt;capture();</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/card_holds/HL4tohW3JdwMdiFjfUN0T2ku/debits <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL: <span class="se">\</span>
+     -d <span class="s2">&quot;appears_on_statement_as=ShowsUpOnStmt&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;description=Some descriptive text for the debit in the dashboard&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1&#39;</span><span class="p">)</span>
+
+<span class="n">card_hold</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">CardHold</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;/card_holds/HL73rLlJ9e9d0jCowQ1BZUSP&#39;</span><span class="p">)</span>
+<span class="n">debit</span> <span class="o">=</span> <span class="n">card_hold</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span>
+  <span class="ss">:appears_on_statement_as</span> <span class="o">=&gt;</span> <span class="s1">&#39;ShowsUpOnStmt&#39;</span><span class="p">,</span>
+  <span class="ss">:description</span> <span class="o">=&gt;</span> <span class="s1">&#39;Some descriptive text for the debit in the dashboard&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul&#39;</span><span class="p">)</span>
+
+<span class="n">card_hold</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">CardHold</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;/card_holds/HL5wAfv8JaMsEn9idXrLZZZT&#39;</span><span class="p">)</span>
+<span class="n">debit</span> <span class="o">=</span> <span class="n">card_hold</span><span class="o">.</span><span class="n">capture</span><span class="p">(</span>
+  <span class="n">appears_on_statement_as</span><span class="o">=</span><span class="s">&#39;ShowsUpOnStmt&#39;</span><span class="p">,</span>
+  <span class="n">description</span><span class="o">=</span><span class="s">&#39;Some descriptive text for the debit in the dashboard&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">balanced</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;balanced-official&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/card_holds/HL4tohW3JdwMdiFjfUN0T2ku/debits&#39;</span><span class="p">).</span><span class="nx">capture</span><span class="p">({</span>
+    <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;ShowsUpOnStmt&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span>
+<span class="p">})</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB&quot;</span><span class="o">);</span>
+
+<span class="n">CardHold</span> <span class="n">cardHold</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CardHold</span><span class="o">(</span><span class="s">&quot;/card_holds/HL4a1BKhDiVV9Ueh9MTozVDs&quot;</span><span class="o">);</span>
+
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">payload</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+<span class="n">payload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;amount&quot;</span><span class="o">,</span> <span class="mi">1000</span><span class="o">);</span>
+<span class="n">payload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;description&quot;</span><span class="o">,</span> <span class="s">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="o">);</span>
+<span class="n">payload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;appears_on_statement_as&quot;</span><span class="o">,</span> <span class="s">&quot;ShowsUpOnStmt&quot;</span><span class="o">);</span>
+
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">cardHold</span><span class="o">.</span><span class="na">capture</span><span class="o">(</span><span class="n">payload</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="k">catch</span> <span class="o">(</span><span class="n">HTTPError</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-Hznf9GhTb2Xkj7fGwVD6lZSMH5F1eTRl&quot;</span><span class="p">;</span>
+
+<span class="nv">$hold</span> <span class="o">=</span> <span class="nx">Balanced\CardHold</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/card_holds/HL2ZjCXw7QFFwhZFEzku161c&quot;</span><span class="p">);</span>
+<span class="nv">$hold</span><span class="o">-&gt;</span><span class="na">capture</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;debits&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+            <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;BAL*ShowsUpOnStmt&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:25.907519Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;USD&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason_code&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/debits/WD4zp5aS1foFjwmLy6ldnEBo&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;WD4zp5aS1foFjwmLy6ldnEBo&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;customer&quot;</span><span class="o">:</span> <span class="s2">&quot;CU3PEXLQQMkegXKvKc9wptpS&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;dispute&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;order&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="s2">&quot;CC4skRAbUHQztPehJn5oPfzN&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;holding.for&quot;</span><span class="o">:</span> <span class="s2">&quot;user1&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;meaningful.key&quot;</span><span class="o">:</span> <span class="s2">&quot;some.value&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;W806-440-1364&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:26.703003Z&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;debits.customer&quot;</span><span class="o">:</span> <span class="s2">&quot;/customers/{debits.customer}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;debits.dispute&quot;</span><span class="o">:</span> <span class="s2">&quot;/disputes/{debits.dispute}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;debits.events&quot;</span><span class="o">:</span> <span class="s2">&quot;/debits/{debits.id}/events&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;debits.order&quot;</span><span class="o">:</span> <span class="s2">&quot;/orders/{debits.order}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;debits.refunds&quot;</span><span class="o">:</span> <span class="s2">&quot;/debits/{debits.id}/refunds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;debits.source&quot;</span><span class="o">:</span> <span class="s2">&quot;/resources/{debits.source}&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section id="void-a-card-hold">
+<h2>Void a Card Hold<a class="headerlink" href="#void-a-card-hold" title="Permalink to this headline">∵</a></h2>
+<p>Cancels the hold. Once voided, the hold can no longer be captured.</p>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>description</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.  A description of the hold, used for display purposes.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>object</strong>. Single level mapping from string keys to string values.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>PUT https://api.balancedpayments.com/card_holds/:card_hold_id
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">CardHold</span><span class="o">.</span><span class="n">void</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">CardHold</span><span class="p">()</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">().</span><span class="k">void</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">CardHold</span><span class="o">().</span><span class="na">unstore</span><span class="o">()</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\CardHold-&gt;void()</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/card_holds/HL4BKPJ05RNQrsvC6VS1FfGG <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL: <span class="se">\</span>
+     -X PUT <span class="se">\</span>
+     -d <span class="s2">&quot;is_void=true&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1&#39;</span><span class="p">)</span>
+
+<span class="n">card_hold</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">CardHold</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;/card_holds/HL7bTcFBCjdbuf5K5U74XxWU&#39;</span><span class="p">)</span>
+<span class="n">card_hold</span><span class="o">.</span><span class="n">void</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul&#39;</span><span class="p">)</span>
+
+<span class="n">card_hold</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">CardHold</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;/card_holds/HL5Ig892KbmJyDqED5fYsJ8m&#39;</span><span class="p">)</span>
+<span class="n">card_hold</span><span class="o">.</span><span class="n">cancel</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">balanced</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;balanced-official&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/card_holds/HL4BKPJ05RNQrsvC6VS1FfGG&#39;</span><span class="p">).</span><span class="k">void</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB&quot;</span><span class="o">);</span>
+
+<span class="n">CardHold</span> <span class="n">cardHold</span> <span class="o">=</span> <span class="k">new</span> <span class="n">CardHold</span><span class="o">(</span><span class="s">&quot;/card_holds/HL4fmk2370zAE7nAVujKxjtf&quot;</span><span class="o">);</span>
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">cardHold</span><span class="o">.</span><span class="na">unstore</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">catch</span> <span class="o">(</span><span class="n">HTTPError</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span>
+<span class="k">catch</span> <span class="o">(</span><span class="n">NotCreated</span> <span class="n">notCreated</span><span class="o">)</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-Hznf9GhTb2Xkj7fGwVD6lZSMH5F1eTRl&quot;</span><span class="p">;</span>
+
+<span class="nv">$hold</span> <span class="o">=</span> <span class="nx">Balanced\CardHold</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/card_holds/HL35KwUKUOS0EVb3uYp56a9A&quot;</span><span class="p">);</span>
+<span class="nv">$hold</span><span class="o">-&gt;</span><span class="na">void</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;card_holds&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:27.995291Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;currency&quot;</span><span class="o">:</span> <span class="s2">&quot;USD&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;expires_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-04-03T16:12:28.260407Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;failure_reason_code&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/HL4BKPJ05RNQrsvC6VS1FfGG&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;HL4BKPJ05RNQrsvC6VS1FfGG&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;card&quot;</span><span class="o">:</span> <span class="s2">&quot;CC4skRAbUHQztPehJn5oPfzN&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;debit&quot;</span><span class="o">:</span> <span class="kc">null</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;HL925-203-3263&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;updated_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:28.951382Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;voided_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:12:28.951386Z&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;card_holds.card&quot;</span><span class="o">:</span> <span class="s2">&quot;/cards/{card_holds.card}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.debit&quot;</span><span class="o">:</span> <span class="s2">&quot;/debits/{card_holds.debit}&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.debits&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/{card_holds.id}/debits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;card_holds.events&quot;</span><span class="o">:</span> <span class="s2">&quot;/card_holds/{card_holds.id}/events&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section></section>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/compiled.js"></script>
+  </body>
+</html>

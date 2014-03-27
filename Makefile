@@ -1,5 +1,5 @@
-REV? = rev0
-REV_NUM? = 1.0
+REV? = rev1
+REV_NUM? = 1.1
 
 # spec variables
 SPEC_SRC_DIR	=	spec/src
@@ -23,52 +23,48 @@ ALLSPHINXOPTS 	= -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) over
 I18NSPHINXOPTS = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) overview
 
 # common variable
-SITE_DIR = site
+ASSET_DIR = assets
+BUILD_DIR = build
 
-.PHONY: clean cache-clean api-clean build-revisions all test all
+.PHONY: clean cache-clean api-clean clean-limited build-revisions all test all bowerize compile-less compile-js cp-static pkg-old-revisions api overview
 
-#all:
-#	REV=rev0 make all
-#	make clean-limited
-#	REV=rev1 make all
-build-revisions: clean-site strapped api overview
+build-revisions: clean-build prep-dirs bowerize compile-less compile-js cp-static api overview pkg-old-revisions
 
-all: rev0 cache-clean rev1
+all: rev1
 
 cache-clean:
 	-rm -f *.cache
 
-clean: clean-limited
-	-rm -rf $(SITE_DIR)/1.0
-	-rm -rf $(SITE_DIR)/1.1
-	-rm -f $(SITE_DIR)/api-gen-*.html
-	-rm -f $(SITE_DIR)/overview-gen-*.html
+clean: cache-clean clean-limited clean-build
 
 clean-limited: api-clean overview-clean
 
-clean-site:
-	-rm -rf $(SITE_DIR)/$(REV_NUM)
-	-rm -rf $(SITE_DIR)/static/less/strapped
-	-rm -rf $(SITE_DIR)/static/fonts
-	-rm -f $(SITE_DIR)/static/js/compiled.js
-	-rm -f $(SITE_DIR)/static/css/styles.js
-	-rm -rf bower_components
+clean-build:
+	-rm -rf $(BUILD_DIR)
+	-rm -rf $(ASSET_DIR)/bower_components
 
-rev0:
-	REV=rev0 REV_NUM=1.0 make build-revisions
+prep-dirs:
+	mkdir $(BUILD_DIR)
+	mkdir $(BUILD_DIR)/static
+	mkdir $(BUILD_DIR)/static/css
+	mkdir $(BUILD_DIR)/static/js
+
+cp-static:
+	cp -r $(ASSET_DIR)/img $(BUILD_DIR)/static/img
+	cp -r $(ASSET_DIR)/fonts $(BUILD_DIR)/static/fonts
+
+pkg-old-revisions:
+	cp -r $(ASSET_DIR)/doc-archives/* $(BUILD_DIR)/
+
 rev1:
 	REV=rev1 REV_NUM=1.1 make build-revisions
 
 # api
 
-api/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
+api:
 	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c api/$(REV) api/$(REV) api/$(REV)/html
-
-$(SITE_DIR)/api-gen-$(REV).html: api/html/index.html
-	mkdir -p ${SITE_DIR}/$(REV_NUM)/api
-	mv api/$(REV)/html/api ${SITE_DIR}/$(REV_NUM)
-
-api: $(SITE_DIR)/api-gen-$(REV).html
+	mkdir -p $(BUILD_DIR)/$(REV_NUM)/api
+	mv api/$(REV)/html/api $(BUILD_DIR)/$(REV_NUM)
 
 api-clean:
 	-rm -rf api/html
@@ -76,16 +72,12 @@ api-clean:
 	-rm -f *.cache
 
 # overview
-
-overview/html/index.html: $(SITE_DIR)/static/css/styles.css $(SITE_DIR)/static/js/compiled.js
-	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c overview/$(REV) overview/$(REV) overview/$(REV)/html
-
-$(SITE_DIR)/overview-gen-$(REV).html: overview/html/index.html
-	mkdir -p ${SITE_DIR}/$(REV_NUM)/overview
-	mv overview/$(REV)/html/overview ${SITE_DIR}/$(REV_NUM)
-	-mv overview/$(REV)/html/guides ${SITE_DIR}/$(REV_NUM)
 	
-overview: $(SITE_DIR)/overview-gen-$(REV).html
+overview:
+	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c overview/$(REV) overview/$(REV) overview/$(REV)/html
+	mkdir -p $(BUILD_DIR)/$(REV_NUM)/overview
+	mv overview/$(REV)/html/overview $(BUILD_DIR)/$(REV_NUM)
+	-mv overview/$(REV)/html/guides $(BUILD_DIR)/$(REV_NUM)
 
 overview-clean:
 	-rm -rf overview/html
@@ -93,25 +85,24 @@ overview-clean:
 	-rm -f *.cache
 
 # static files
-strapped:
+bowerize:
 	bower install --allow-root --config.interactive=false strapped
-	cp -r bower_components/strapped/static/less site/static/less/strapped
-	cp -r bower_components/strapped/static/fonts site/static/fonts
-	cp -r bower_components/strapped/static/images site/static/img
+	cp -r $(ASSET_DIR)/bower_components/strapped/static/less $(ASSET_DIR)/less/strapped
+	cp -r $(ASSET_DIR)/bower_components/strapped/static/fonts $(ASSET_DIR)/fonts
+	cp -r $(ASSET_DIR)/bower_components/strapped/static/images $(ASSET_DIR)/img
 
-# --line-numbers=mediaquery <-- use this to debug the compiled less
-$(SITE_DIR)/static/css/styles.css: $(wildcard $(SITE_DIR)/static/less/*.less)
-	lessc $(SITE_DIR)/static/less/base.less $@
+compile-less: $(wildcard $(ASSET_DIR)/less/*.less)
+	lessc $(ASSET_DIR)/less/base.less > $(BUILD_DIR)/static/css/styles.css
 
-$(SITE_DIR)/static/js/compiled.js: $(wildcard $(SITE_DIR)/static/js/*.js)
-	cat $(SITE_DIR)/static/js/bootstrap.min.js 		\
-		$(SITE_DIR)/static/js/lunr.min.js 		\
-		$(SITE_DIR)/static/js/jquery.scrollTo-min.js 	\
-		$(SITE_DIR)/static/js/jquery-cookie.js 	\
-		$(SITE_DIR)/static/js/search.js 		\
-		$(SITE_DIR)/static/js/docs.js 			\
-		$(SITE_DIR)/static/js/google-analytics.js 			\
-			> $@
+compile-js:
+	cat $(ASSET_DIR)/js/bootstrap.min.js 		\
+		$(ASSET_DIR)/js/lunr.min.js 		\
+		$(ASSET_DIR)/js/jquery.scrollTo-min.js 	\
+		$(ASSET_DIR)/js/jquery-cookie.js 	\
+		$(ASSET_DIR)/js/search.js 		\
+		$(ASSET_DIR)/js/docs.js 			\
+		$(ASSET_DIR)/js/google-analytics.js 			\
+			> $(BUILD_DIR)/static/js/compiled.js
 
 ddd:
 	BALANCED_REV=$(REV) env

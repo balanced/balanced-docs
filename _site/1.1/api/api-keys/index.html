@@ -1,0 +1,626 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
+      <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+      <link href="/static/css/styles.css" rel="stylesheet">
+      <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+
+     <!-- <script src="static/js/html5shiv.js"></script> -->
+      <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar-nav" data-offset="200">
+
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <div class="logo">
+              <a class="brand" href="https://www.balancedpayments.com"></a>
+            </div>
+            <div class="span16">
+              <ul class="nav nav-api-context">
+                <li class="dropdown">
+                  <a class="dropdown-toggle context api-context" data-toggle="dropdown" id="context-dropdown-head">
+                    <div id="logo"></div>
+                    API Reference
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu context">
+                    <li>
+                      <a class="context-change" data-context="api" href="/1.1/overview/">Overview</a>
+                    </li>
+                    <li>
+                      <a class="context-change" data-context="faq" href="https://support.balancedpayments.com/hc/en-us">FAQ</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <ul class="nav nav-api-version">
+                <li class="dropdown">
+                  <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">v 1.1
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu version">
+                    <li>
+                      <a class="version-change" data-version="1.0" href="/1.0/api/">v 1.0</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <ul class="nav nav-api-clients">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle lang" id="lang-dropdown-head" data-toggle="dropdown">lang: CURL <b class="caret"></b></a>
+                  <ul class="dropdown-menu lang">
+                    <li><a class="lang-change" data-lang="ruby" href="#">Ruby</a></li>
+                    <li><a class="lang-change" data-lang="python" href="#">Python</a></li>
+                    <li><a class="lang-change" data-lang="node" href="#">Node.js</a></li>
+                    <li><a class="lang-change" data-lang="php" href="#">PHP</a></li>
+                    <li><a class="lang-change" data-lang="java" href="#">Java</a></li>
+                    <li><a class="lang-change" data-lang="bash" href="#">cURL</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <ul class="nav nav-links pull-right">
+              <li>
+                <a href="/1.1/overview/#support">Help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="api-version-rev">
+      
+      <div class="container content" id="overview-content">
+        <div class="row">
+
+          <div id="sidebar-top" style="display:none">
+            <div id="sidebar-top-content">
+              <ul class="inline">
+                <li style="vertical-align: middle;">
+                  <div id="logo" style="background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAMAAAC+oj0CAAAAV1BMVEVymix4oi/vQDXjPDJ4oi94oi/vQDXvQDXvQDXvQDV4oi91ni7vQDXqPjN4oi/foRLanRHopxNznC3mPTPopxPopxMAAABwmCzgPDHanRHopxN4oi/vQDXwPhJhAAAAF3RSTlPbICDbYBBQYEAQgLOAs1DH7hDHx6CAAHwvTFAAAABmSURBVHja1cjXDYAwDABR01sCpAEh2X9ObCFkJLMA93cPSpcPtb0a92QLqDLWsdYJA8iUY7aJulkzTzdr4p55Jp1gUM61uOzWjg1sn/2Iw7IEyeHEguCVeBUciaNgT+wFG49qnrsAe+cllBc1FLYAAAAASUVORK5CYII=) no-repeat center;width: 25px;height: 25px;float: left;">
+                  </div>
+                </li>
+                <li id="context-title" style="font-size: 16px;">API Reference</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="span6 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+              <div class="row">
+                <div class="span6">
+                  <div class="nav nav-list context-navlist">
+                    <!-- The table of contents menu -->
+                    <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../authentication/">Authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../authentication/#authenticating-to-balanced">Authenticating to Balanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">API Keys</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#create-an-api-key">Create an API Key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fetch-an-api-key">Fetch an API Key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#list-all-api-keys">List all API Keys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delete-an-api-key">Delete an API Key</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bank-accounts/">Bank Accounts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#create-a-bank-account-direct">Create a Bank Account (Direct)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#fetch-a-bank-account">Fetch a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#list-bank-accounts">List Bank Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#update-a-bank-account">Update a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#delete-a-bank-account">Delete a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#associate-a-bank-account-to-a-customer">Associate a Bank Account to a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#debit-a-bank-account">Debit a Bank Account</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bank-account-verifications/">Bank Account Verifications</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#create-a-bank-account-verification">Create a Bank Account Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#fetch-a-bank-account-verification">Fetch a Bank Account Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#confirm-a-bank-account-verification">Confirm a Bank Account Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../callbacks/">Callbacks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/#create-a-callback">Create a Callback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/#fetch-a-callback">Fetch a Callback</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/#list-all-callbacks">List all Callbacks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../callbacks/#delete-a-callback">Delete a Callback</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../cards/">Cards</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#create-a-card-direct">Create a Card (Direct)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#fetch-a-card">Fetch a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#list-all-cards">List All Cards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#update-a-card">Update a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#deleting-a-card">Deleting a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#associate-a-card-to-a-customer">Associate a Card to a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#charge-a-card">Charge a Card</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../card-holds/">Card Holds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../card-holds/#create-a-new-card-hold">Create a New Card Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../card-holds/#fetch-a-card-hold">Fetch a Card Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../card-holds/#list-all-card-holds">List all Card Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../card-holds/#update-a-card-hold">Update a Card Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../card-holds/#capture-a-card-hold">Capture a Card Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../card-holds/#void-a-card-hold">Void a Card Hold</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../credits/">Credits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#create-a-credit">Create a Credit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#fetch-a-credit">Fetch a Credit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#list-all-credits">List All Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#list-all-credits-for-a-bank-account">List All Credits for a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#update-a-credit">Update a Credit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../customers/">Customers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#create-a-customer">Create a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#fetch-a-customer">Fetch a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#list-all-customers">List all Customers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#update-a-customer">Update a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#delete-a-customer">Delete a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#associate-a-card">Associate a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#associate-a-bank-account">Associate a Bank Account</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../debits/">Debits</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#create-a-card-debit">Create a Card Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#create-a-bank-account-debit">Create a Bank Account Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#fetch-a-debit">Fetch a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#list-all-debits">List All Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#update-a-debit">Update a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#refund-a-debit">Refund a Debit</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../events/">Events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../events/#fetch-an-event">Fetch an Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events/#list-all-events">List all Events</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../orders/">Orders</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../orders/#create-an-order">Create an Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../orders/#fetch-an-order">Fetch an Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../orders/#list-all-orders">List All Orders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../orders/#update-an-order">Update an Order</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../refunds/">Refunds</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../refunds/#create-a-refund">Create a Refund</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refunds/#fetch-a-refund">Fetch a Refund</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refunds/#list-all-refunds">List All Refunds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../refunds/#update-a-refund">Update a Refund</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../reversals/">Reversals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../reversals/#create-a-reversal">Create a Reversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reversals/#fetch-a-reversal">Fetch a Reversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reversals/#list-all-reversals">List All Reversals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../reversals/#update-a-reversal">Update a Reversal</a></li>
+</ul>
+</li>
+</ul>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="context-content" class="span19 offset1">
+            
+  <section id="api-keys">
+<h1>API Keys<a class="headerlink" href="#api-keys" title="Permalink to this headline">∵</a></h1>
+<p>An <span class="docutils literal"><code>APIKey</code></span> resource represents the API key secret used to perform
+authenticated requests with the Balanced API.</p>
+<section id="create-an-api-key">
+<h2>Create an API Key<a class="headerlink" href="#create-an-api-key" title="Permalink to this headline">∵</a></h2>
+<p>Create a new API key.</p>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>POST https://api.balancedpayments.com/api_keys
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">ApiKey</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">APIKey</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="nx">balanced</span><span class="p">.</span><span class="nx">api_key</span><span class="p">.</span><span class="nx">create</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">ApiKey</span><span class="o">(</span><span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">payload</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\APIKey()</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/api_keys <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL: <span class="se">\</span>
+     -X POST
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1&#39;</span><span class="p">)</span>
+
+<span class="n">key</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">ApiKey</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">save</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul&#39;</span><span class="p">)</span>
+
+<span class="n">api_key</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">APIKey</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">balanced</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;balanced-official&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">api_key</span><span class="p">.</span><span class="nx">create</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB&quot;</span><span class="o">);</span>
+
+<span class="n">ApiKey</span> <span class="n">key</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiKey</span><span class="o">();</span>
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">key</span><span class="o">.</span><span class="na">save</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">catch</span> <span class="o">(</span><span class="n">HTTPError</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-Hznf9GhTb2Xkj7fGwVD6lZSMH5F1eTRl&quot;</span><span class="p">;</span>
+
+<span class="nv">$key</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Balanced\APIKey</span><span class="p">();</span>
+<span class="nv">$key</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;api_keys&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:11:50.286628Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/api_keys/AK3VllCSnVVb5o6vyiNWtJ7E&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;AK3VllCSnVVb5o6vyiNWtJ7E&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;secret&quot;</span><span class="o">:</span> <span class="s2">&quot;ak-test-2bfUqtKjkJGC9Nyzn4WxT48LqJQUWOulz&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section id="fetch-an-api-key">
+<h2>Fetch an API Key<a class="headerlink" href="#fetch-an-api-key" title="Permalink to this headline">∵</a></h2>
+<p>Get an existing API key.</p>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>GET https://api.balancedpayments.com/api_keys/:api_key_id
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">ApiKey</span><span class="o">.</span><span class="n">fetch</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">APIKey</span><span class="o">.</span><span class="n">fetch</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">ApiKey</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\APIKey::get()</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/api_keys/AK3VllCSnVVb5o6vyiNWtJ7E <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL:
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1&#39;</span><span class="p">)</span>
+
+<span class="n">card</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">ApiKey</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;/api_keys/AK6vYazRHYGP5Tiqeuo9kMUq&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul&#39;</span><span class="p">)</span>
+
+<span class="n">key</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">APIKey</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;/api_keys/AK4Vt1mJyCtjdSiGgqAebarR&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">balanced</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;balanced-official&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api_keys/AK3VllCSnVVb5o6vyiNWtJ7E&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB&quot;</span><span class="o">);</span>
+
+<span class="n">ApiKey</span> <span class="n">apiKey</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiKey</span><span class="o">(</span><span class="s">&quot;/api_keys/AK3zUFsQ8aJ3aae9ZylavXLp&quot;</span><span class="o">);</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-Hznf9GhTb2Xkj7fGwVD6lZSMH5F1eTRl&quot;</span><span class="p">;</span>
+
+<span class="nx">Balanced\APIKey</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/api_keys/AK2BVfJvQoxinxsgjqoinQWH&quot;</span><span class="p">)</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;api_keys&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:11:50.286628Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/api_keys/AK3VllCSnVVb5o6vyiNWtJ7E&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;AK3VllCSnVVb5o6vyiNWtJ7E&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{}</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section id="list-all-api-keys">
+<h2>List all API Keys<a class="headerlink" href="#list-all-api-keys" title="Permalink to this headline">∵</a></h2>
+<p>List all API keys for the marketplace.</p>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>limit</code></span></dt>
+<dd><em>optional</em> integer. Defaults to <span class="docutils literal"><code>10</code></span>.</dd>
+<dt><span class="docutils literal"><code>offset</code></span></dt>
+<dd><em>optional</em> integer. Defaults to <span class="docutils literal"><code>0</code></span>.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>GET https://api.balancedpayments.com/api_keys
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">ApiKey</span><span class="o">.</span><span class="n">all</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">APIKey</span><span class="o">.</span><span class="n">query</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="nx">balanced</span><span class="p">.</span><span class="nx">api_key</span><span class="p">.</span><span class="nx">query</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">ApiKey</span><span class="o">.</span><span class="na">Collection</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\APIKey-&gt;query()-&gt;all()</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/api_keys <span class="se">\</span>
+      -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+      -u ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL:
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1&#39;</span><span class="p">)</span>
+
+<span class="n">card</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">ApiKey</span><span class="o">.</span><span class="n">all</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul&#39;</span><span class="p">)</span>
+
+<span class="n">keys</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">APIKey</span><span class="o">.</span><span class="n">query</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">balanced</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;balanced-official&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">api_key</span><span class="p">.</span><span class="nx">query</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB&quot;</span><span class="o">);</span>
+
+<span class="n">ApiKey</span><span class="o">.</span><span class="na">Collection</span> <span class="n">apiKeys</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiKey</span><span class="o">.</span><span class="na">Collection</span><span class="o">(</span><span class="n">ApiKey</span><span class="o">.</span><span class="na">resource_href</span><span class="o">);</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-Hznf9GhTb2Xkj7fGwVD6lZSMH5F1eTRl&quot;</span><span class="p">;</span>
+
+<span class="nx">Balanced\APIKey</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;api_keys&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:11:50.286628Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/api_keys/AK3VllCSnVVb5o6vyiNWtJ7E&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;AK3VllCSnVVb5o6vyiNWtJ7E&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{}</span>
+        <span class="p">},</span> 
+        <span class="p">{</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:11:44.741479Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/api_keys/AK3P6Leemt0eV7Mm7z4LXIpW&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;AK3P6Leemt0eV7Mm7z4LXIpW&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;secret&quot;</span><span class="o">:</span> <span class="s2">&quot;ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;links&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;first&quot;</span><span class="o">:</span> <span class="s2">&quot;/api_keys?limit=10&amp;offset=0&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;href&quot;</span><span class="o">:</span> <span class="s2">&quot;/api_keys?limit=10&amp;offset=0&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;last&quot;</span><span class="o">:</span> <span class="s2">&quot;/api_keys?limit=10&amp;offset=0&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">10</span><span class="p">,</span> 
+        <span class="s2">&quot;next&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;offset&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> 
+        <span class="s2">&quot;previous&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="mi">2</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section id="delete-an-api-key">
+<h2>Delete an API Key<a class="headerlink" href="#delete-an-api-key" title="Permalink to this headline">∵</a></h2>
+<p>Delete an API key.</p>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>DELETE https://api.balancedpayments.com/api_keys/:api_key_id
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">ApiKey</span><span class="o">.</span><span class="n">unstore</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">APIKey</span><span class="p">()</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">().</span><span class="nx">unstore</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">ApiKey</span><span class="o">().</span><span class="na">unstore</span><span class="o">()</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\APIKey-&gt;unstore();</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/api_keys/AK3VllCSnVVb5o6vyiNWtJ7E <span class="se">\</span>
+     -H <span class="s2">&quot;Accept: application/vnd.api+json;revision=1.1&quot;</span> <span class="se">\</span>
+     -u ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL: <span class="se">\</span>
+     -X DELETE
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-KpEgsMpSFwzAvYlXHB93rcjPDKYFviQ1&#39;</span><span class="p">)</span>
+
+<span class="n">key</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">ApiKey</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s1">&#39;/api_keys/AK6vYazRHYGP5Tiqeuo9kMUq&#39;</span><span class="p">)</span>
+<span class="n">key</span><span class="o">.</span><span class="n">unstore</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-2ADpvITfpgBn8uBzEGsQ2bIgWaftUWiul&#39;</span><span class="p">)</span>
+
+<span class="n">key</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">APIKey</span><span class="o">.</span><span class="n">fetch</span><span class="p">(</span><span class="s">&#39;/api_keys/AK4Vt1mJyCtjdSiGgqAebarR&#39;</span><span class="p">)</span>
+<span class="n">key</span><span class="o">.</span><span class="n">delete</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-node"><div class="highlight"><pre><span class="kd">var</span> <span class="nx">balanced</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;balanced-official&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">configure</span><span class="p">(</span><span class="s1">&#39;ak-test-1pRsPki9kvFvTP1B0JzJRWX4JPFLJkMWL&#39;</span><span class="p">);</span>
+
+<span class="nx">balanced</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s1">&#39;/api_keys/AK3VllCSnVVb5o6vyiNWtJ7E&#39;</span><span class="p">).</span><span class="nx">unstore</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-2cSDy37BKy5K4NUHKHVNXNTjTHPEqjRtB&quot;</span><span class="o">);</span>
+
+<span class="n">ApiKey</span> <span class="n">key</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ApiKey</span><span class="o">(</span><span class="s">&quot;/api_keys/AK3zUFsQ8aJ3aae9ZylavXLp&quot;</span><span class="o">);</span>
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">key</span><span class="o">.</span><span class="na">unstore</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">catch</span> <span class="o">(</span><span class="n">APIError</span> <span class="n">e</span><span class="o">)</span> <span class="o">{}</span>
+<span class="k">catch</span> <span class="o">(</span><span class="n">NotCreated</span> <span class="n">notCreated</span><span class="o">)</span> <span class="o">{}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-Hznf9GhTb2Xkj7fGwVD6lZSMH5F1eTRl&quot;</span><span class="p">;</span>
+
+<span class="nv">$api_key</span> <span class="o">=</span> <span class="nx">Balanced\APIKey</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/api_keys/AK2BVfJvQoxinxsgjqoinQWH&quot;</span><span class="p">);</span>
+<span class="nv">$api_key</span><span class="o">-&gt;</span><span class="na">unstore</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+</div>
+</section></section>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/compiled.js"></script>
+  </body>
+</html>

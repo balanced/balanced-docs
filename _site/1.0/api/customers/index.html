@@ -1,0 +1,807 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
+      <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+      <link href="/static/css/styles.css" rel="stylesheet">
+      <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+
+     <!-- <script src="static/js/html5shiv.js"></script> -->
+      <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar-nav" data-offset="200">
+
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <div class="logo">
+              <a class="brand" href="https://www.balancedpayments.com"></a>
+            </div>
+            <div class="span16">
+              <ul class="nav nav-api-context">
+    	          <li class="dropdown">
+                  <a class="dropdown-toggle context api-context" data-toggle="dropdown" id="context-dropdown-head">
+                    <div id="logo"></div>
+                    API Reference
+                    <b class="caret"></b>
+                  </a>
+            	    <ul class="dropdown-menu context">
+            		    <li>
+                      <a class="context-change" data-context="api" href="/1.0/overview/">Overview</a>
+                    </li>
+            		    <li>
+                      <a class="context-change" data-context="faq" href="https://support.balancedpayments.com/hc/en-us">FAQ</a>
+                    </li>
+            	    </ul>
+                </li>
+              </ul>
+      
+      	      <ul class="nav nav-api-version">
+                <li class="dropdown">
+                  <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">v 1.0
+                    <b class="caret"></b>
+                  </a>
+        	        <ul class="dropdown-menu version">
+        		        <li>
+                      <a class="version-change" data-version="1.1" href="/1.1/api/">v 1.1</a>
+                    </li>
+        	        </ul>
+                </li>
+      	      </ul>
+      
+              <ul class="nav nav-api-clients">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle lang" id="lang-dropdown-head" data-toggle="dropdown">lang: CURL <b class="caret"></b></a>
+                  <ul class="dropdown-menu lang">
+                    <li><a class="lang-change" data-lang="ruby" href="#">Ruby</a></li>
+                    <li><a class="lang-change" data-lang="python" href="#">Python</a></li>
+                    <li><a class="lang-change" data-lang="php" href="#">PHP</a></li>
+                    <li><a class="lang-change" data-lang="java" href="#">Java</a></li>
+                    <li><a class="lang-change" data-lang="bash" href="#">CURL</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <ul class="nav nav-links pull-right">
+              <li>
+                <a href="/1.1/overview/#support">Help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+  
+    <div class="api-version-rev">
+      
+      <div class="container content" id="overview-content">
+        <div class="row">
+
+          <div id="sidebar-top" style="display:none">
+            <div id="sidebar-top-content">
+              <ul class="inline">
+                <li style="vertical-align: middle;">
+                  <div id="logo" style="background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAMAAAC+oj0CAAAAV1BMVEVymix4oi/vQDXjPDJ4oi94oi/vQDXvQDXvQDXvQDV4oi91ni7vQDXqPjN4oi/foRLanRHopxNznC3mPTPopxPopxMAAABwmCzgPDHanRHopxN4oi/vQDXwPhJhAAAAF3RSTlPbICDbYBBQYEAQgLOAs1DH7hDHx6CAAHwvTFAAAABmSURBVHja1cjXDYAwDABR01sCpAEh2X9ObCFkJLMA93cPSpcPtb0a92QLqDLWsdYJA8iUY7aJulkzTzdr4p55Jp1gUM61uOzWjg1sn/2Iw7IEyeHEguCVeBUciaNgT+wFG49qnrsAe+cllBc1FLYAAAAASUVORK5CYII=) no-repeat center;width: 25px;height: 25px;float: left;">
+                  </div>
+                </li>
+                <li id="context-title" style="font-size: 16px;">API Reference</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="span6 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+              <div class="row">
+                <div class="span6">
+                  <div class="nav nav-list context-navlist">
+                    <!-- The table of contents menu -->
+                    <ul class="nav nav-list context-navlist">
+<li class="toctree-l1">Authentication<ul>
+<li class="toctree-l2"><a class="reference internal" href="../authentication/#authenticating-to-balanced">Authenticating to Balanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Bank Accounts<ul>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#creating-a-new-bank-account">Creating a New Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#retrieve-a-bank-account">Retrieve a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#list-all-bank-accounts">List All Bank Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#delete-a-bank-account">Delete a Bank Account</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Bank Account Verifications<ul>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#create-a-bank-account-verification">Create a Bank Account Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#retrieve-a-bank-account-verification">Retrieve a Bank Account Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#confirm-a-bank-account-verification">Confirm a Bank Account Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Cards<ul>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#tokenize-a-card">Tokenize a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#retrieve-a-card">Retrieve a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#list-all-cards">List All Cards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#update-a-card">Update a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#invalidating-a-card">Invalidating a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#charging-a-card">Charging a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#deleting-a-card">Deleting a Card</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Credits<ul>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#credit-a-new-bank-account">Credit a New Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#credit-an-existing-bank-account">Credit An Existing Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#retrieve-a-credit">Retrieve a Credit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#list-all-credits">List All Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#list-all-credits-for-a-bank-account">List All Credits For a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#create-a-new-credit-for-a-customer">Create a New Credit For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#listing-all-credits-for-a-customer">Listing All Credits For a Customer</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current">Customers<ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-customer">Creating a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-a-card-to-a-customer">Adding a Card to a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-a-bank-account-to-a-customer">Adding a Bank Account to a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#delete-a-customer">Delete a Customer</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Debits<ul>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#create-a-new-debit">Create a New Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#retrieve-a-debit">Retrieve a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#list-all-debits">List All Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#list-all-debits-for-a-customer">List All Debits For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#update-a-debit">Update a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#refund-a-debit">Refund a Debit</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Events<ul>
+<li class="toctree-l2"><a class="reference internal" href="../events/#event-types">Event types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events/#retrieve-an-event">Retrieve an Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events/#list-all-events">List all Events</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Holds<ul>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#create-a-new-hold">Create a New Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#retrieve-a-hold">Retrieve a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#list-all-holds">List all Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#list-all-holds-for-a-customer">List All Holds For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#update-a-hold">Update a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#capture-a-hold">Capture a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#void-a-hold">Void a Hold</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Accounts (deprecated)<ul>
+<li class="toctree-l2"><a class="reference internal" href="../accounts/#creating-an-account">Creating an Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../accounts/#adding-a-card-to-an-account">Adding a Card to an Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../accounts/#adding-a-bank-account-to-an-account">Adding a Bank Account To an Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../accounts/#underwriting-an-individual">Underwriting an Individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../accounts/#underwriting-a-business">Underwriting a Business</a></li>
+</ul>
+</li>
+</ul>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="context-content" class="span19 offset1">
+            
+  <section id="customers">
+<span id="id1"></span><h1>Customers<a class="headerlink" href="#customers" title="Permalink to this headline">∵</a></h1>
+<p>Customers represent businesses or people within your marketplace. You can
+associate credit cards, debit cards, bank accounts and transactions,
+i.e. refunds, debits, credits.</p>
+<section class="method-section" id="creating-a-customer">
+<span id="id2"></span><h2>Creating a Customer<a class="headerlink" href="#creating-a-customer" title="Permalink to this headline">∵</a></h2>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. Name of the customer or representative of the business.</dd>
+<dt><span class="docutils literal"><code>email</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. Email address of the customer.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong> or <strong>null</strong>. Single level mapping from string keys to string values.</dd>
+<dt><span class="docutils literal"><code>ssn_last4</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. Last four digits of the Social Security Number of the customer or
+representative of the business.</dd>
+<dt><span class="docutils literal"><code>business_name</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. Full business name if the customer is a business. If there is a business
+name and EIN present, the customer will be treated as a business instead
+of a person.</dd>
+<dt><span class="docutils literal"><code>address</code></span></dt>
+<dd><p class="nested1 first"><em>optional</em> <strong>object</strong>.</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt><span class="docutils literal"><code>line1</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Street address of the person or business.</dd>
+<dt><span class="docutils literal"><code>line2</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Second line of the address for the person or business.</dd>
+<dt><span class="docutils literal"><code>city</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. City of the person or business.</dd>
+<dt><span class="docutils literal"><code>state</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. State of the person or business.</dd>
+<dt><span class="docutils literal"><code>postal_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Postal code/zip code of the person or business.</dd>
+<dt><span class="docutils literal"><code>country_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Two character country code.</dd>
+</dl>
+</div></blockquote>
+</dd>
+<dt><span class="docutils literal"><code>phone</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. Phone number of the person or business.</dd>
+<dt><span class="docutils literal"><code>dob</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. Date of birth of the customer or representative of the business.
+Format is YYYY-MM e.g. &quot;1980-05&quot;.</dd>
+<dt><span class="docutils literal"><code>ein</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. Employee Identification Number of the business if the customer is a
+business. If there is a business name and EIN present, the customer will
+be treated as a business instead of a person.</dd>
+<dt><span class="docutils literal"><code>facebook</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. Facebook ID or username of the customer or representative of the
+business.</dd>
+<dt><span class="docutils literal"><code>twitter</code></span></dt>
+<dd><em>optional</em> <strong>string</strong> or <strong>null</strong>. Twitter ID or username of the customer or representative of the
+business.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>POST https://api.balancedpayments.com/customers
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Customer</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Customer</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\Customer()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Customer</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/customers <span class="se">\</span>
+     -u ak-test-zvmxAk4lw1srrw9heg99Gtlr4Y6HAmPP: <span class="se">\</span>
+     -X POST
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">customer</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Customer</span><span class="p">()</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+<span class="n">customer</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Customer</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">save</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$customer</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\Balanced\Customer</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
+  <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;William Henry Cavendish III&quot;</span><span class="p">,</span>
+  <span class="s2">&quot;email&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;william@example.com&quot;</span><span class="p">,</span>
+<span class="p">));</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;</span> <span class="n">payload</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">Object</span><span class="o">&gt;();</span>
+<span class="n">payload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;name&quot;</span><span class="o">,</span> <span class="s">&quot;William Henry Cavendish III&quot;</span><span class="o">);</span>
+<span class="n">payload</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;email&quot;</span><span class="o">,</span> <span class="s">&quot;william@example.com&quot;</span><span class="o">);</span>
+
+<span class="n">Customer</span> <span class="n">customer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="o">(</span><span class="n">payload</span><span class="o">);</span>
+<span class="n">customer</span><span class="o">.</span><span class="na">save</span><span class="o">();</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2rp0EqfrshTqEFLjn1BPKT/bank_accounts&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;business_name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2rp0EqfrshTqEFLjn1BPKT/cards&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:10:28.544549Z&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2rp0EqfrshTqEFLjn1BPKT/credits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2rp0EqfrshTqEFLjn1BPKT/debits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;destination&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;dob&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;ein&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;facebook&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2rp0EqfrshTqEFLjn1BPKT/holds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU2rp0EqfrshTqEFLjn1BPKT&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;is_identity_verified&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;phone&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2rp0EqfrshTqEFLjn1BPKT/refunds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2rp0EqfrshTqEFLjn1BPKT/reversals&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;ssn_last4&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2rp0EqfrshTqEFLjn1BPKT/transactions&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;twitter&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2rp0EqfrshTqEFLjn1BPKT&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section class="method-section" id="adding-a-card-to-a-customer">
+<span id="id3"></span><h2>Adding a Card to a Customer<a class="headerlink" href="#adding-a-card-to-a-customer" title="Permalink to this headline">∵</a></h2>
+<p>Adding a card to a customer activates the ability to debit an account, more
+specifically, charging a card.</p>
+<p>You can add multiple cards to a customer.</p>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>card_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. The digits of the credit card number.</dd>
+<dt><span class="docutils literal"><code>expiration_year</code></span></dt>
+<dd><em>required</em> <strong>integer</strong>. Expiration year.</dd>
+<dt><span class="docutils literal"><code>expiration_month</code></span></dt>
+<dd><em>required</em> <strong>integer</strong>. Expiration month (e.g. 1 for January).</dd>
+<dt><span class="docutils literal"><code>security_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. The 3-4 digit security code for the card.</dd>
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>phone_number</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. E.164 formatted phone number.</dd>
+<dt><span class="docutils literal"><code>city</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. City. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>region</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Region (e.g. state, province, etc). This field has been
+<strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>state</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. US state. This field has been <strong>deprecated</strong>.</dd>
+<dt><span class="docutils literal"><code>postal_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Postal code. This is known as a zip code in the USA.
+<em>requires</em> <span class="docutils literal"><code>country_code</code></span>.</dd>
+<dt><span class="docutils literal"><code>street_address</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Street address.
+<em>requires</em> <span class="docutils literal"><code>postal_code</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>country_code</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. Defaults to <span class="docutils literal"><code>USA</code></span>.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values. Defaults to <span class="docutils literal"><code>{}</code></span>.</dd>
+<dt><span class="docutils literal"><code>verify</code></span></dt>
+<dd><em>optional</em> <strong>boolean</strong>. Flag value, should be <span class="docutils literal"><code>true</code></span> or <span class="docutils literal"><code>false</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>PUT https://api.balancedpayments.com/customers/:customer_id
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Customer</span><span class="o">.</span><span class="n">add_card</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Customer</span><span class="o">.</span><span class="n">add_card</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">\Balanced\Customer-&gt;addCard();</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Customer</span><span class="o">.</span><span class="na">addCard</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/customers/CU2to6nfv5KCrTxvj2OJQrFB <span class="se">\</span>
+     -u ak-test-zvmxAk4lw1srrw9heg99Gtlr4Y6HAmPP: <span class="se">\</span>
+     -X PUT <span class="se">\</span>
+     -d <span class="s2">&quot;card_uri=/v1/marketplaces/TEST-MP1hxqlRYt0CWvKIF5C4VXcz/cards/CC2vkrru0BmsfsULOH90PhEI&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">customer</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Customer</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/v1/customers/CU3yqhHviPZ4ZbpHMcaa3SKH&#39;</span><span class="p">)</span>
+<span class="n">customer</span><span class="o">.</span><span class="n">add_card</span><span class="p">(</span><span class="s">&#39;/v1/marketplaces/TEST-MP52IlCmywk6hGbgS75QSlN/cards/CC3AiMy0KEP1PhwnffMk32RF&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+<span class="n">customer</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Customer</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/v1/customers/ACO702cHD2tPiOCRSKYzVf1&#39;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">customer</span><span class="o">.</span><span class="n">add_card</span><span class="p">(</span><span class="s1">&#39;/v1/marketplaces/TEST-MP4h8BxozeLxe7VAllP6b5gj/cards/CCQv8XnGsBHF9afrEdc0um3&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$customer</span> <span class="o">=</span> <span class="nx">\Balanced\Customer</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/v1/customers/CU70CIWA2NrZwwMQqjBuWFUb&quot;</span><span class="p">);</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">addCard</span><span class="p">(</span><span class="s2">&quot;/v1/marketplaces/TEST-MP4K6K0PWGyPtXL4LZ42sQSb/cards/CC72hXVwWbCJsozvJoRELzIc&quot;</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Customer</span> <span class="n">customer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="o">(</span><span class="s">&quot;/v1/customers/CU12eUdTk8OgEj7VbJVFeP0q&quot;</span><span class="o">);</span>
+<span class="n">customer</span><span class="o">.</span><span class="na">addCard</span><span class="o">(</span><span class="s">&quot;/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/cards/CC15RAm6JJIEIae6bicvlWRw&quot;</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2to6nfv5KCrTxvj2OJQrFB/bank_accounts&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;business_name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2to6nfv5KCrTxvj2OJQrFB/cards&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:10:30.309727Z&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2to6nfv5KCrTxvj2OJQrFB/credits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2to6nfv5KCrTxvj2OJQrFB/debits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;destination&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;dob&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;ein&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;facebook&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2to6nfv5KCrTxvj2OJQrFB/holds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU2to6nfv5KCrTxvj2OJQrFB&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;is_identity_verified&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;phone&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2to6nfv5KCrTxvj2OJQrFB/refunds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2to6nfv5KCrTxvj2OJQrFB/reversals&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2to6nfv5KCrTxvj2OJQrFB/cards/CC2vkrru0BmsfsULOH90PhEI&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;ssn_last4&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2to6nfv5KCrTxvj2OJQrFB/transactions&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;twitter&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2to6nfv5KCrTxvj2OJQrFB&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section class="method-section" id="adding-a-bank-account-to-a-customer">
+<span id="id4"></span><h2>Adding a Bank Account to a Customer<a class="headerlink" href="#adding-a-bank-account-to-a-customer" title="Permalink to this headline">∵</a></h2>
+<p>Adding a bank account to a customer activates the ability to credit a
+customer, or in this case, initiate a next-day ACH payment.</p>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Name on the bank account.</dd>
+<dt><span class="docutils literal"><code>account_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Bank account number.</dd>
+<dt><span class="docutils literal"><code>bank_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Bank account code.</dd>
+<dt><span class="docutils literal"><code>routing_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Bank account code.</dd>
+<dt><span class="docutils literal"><code>bank_code</code></span></dt>
+<dd><em>required</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>routing_number</code></span></dt>
+<dd><em>required</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>account_type</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>type</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values. Defaults to <span class="docutils literal"><code>{}</code></span>.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>PUT https://api.balancedpayments.com/customers/:customer_id
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Customer</span><span class="o">.</span><span class="n">add_bank_account</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Customer</span><span class="o">.</span><span class="n">add_bank_account</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">\Balanced\Customer-&gt;addBankAccount();</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Customer</span><span class="o">.</span><span class="na">addBankAccount</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/customers/CU2xSTIm4ZD89wT63RynxVAy <span class="se">\</span>
+     -u ak-test-zvmxAk4lw1srrw9heg99Gtlr4Y6HAmPP: <span class="se">\</span>
+     -X PUT <span class="se">\</span>
+     -d <span class="s2">&quot;bank_account_uri=/v1/bank_accounts/BA2zkCVjpZZX2VnlPJ1YFpry&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">customer</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Customer</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/v1/customers/CU22xHvLbgGKfzamLW8IZJsr&#39;</span><span class="p">)</span>
+<span class="n">customer</span><span class="o">.</span><span class="n">add_bank_account</span><span class="p">(</span><span class="s">&#39;/v1/bank_accounts/BA24Zc2jo1moflunJDxKrCrB&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+<span class="n">customer</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Customer</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/v1/customers/AC6TepGAIZ5HUdhfTZKOoUhh&#39;</span><span class="p">)</span>
+<span class="n">customer</span><span class="o">.</span><span class="n">add_bank_account</span><span class="p">(</span><span class="s2">&quot;/v1/bank_accounts/BA6V90Tau7B5YTGPFjC0PlzA&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$customer</span> <span class="o">=</span> <span class="nx">\Balanced\Customer</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/v1/customers/CU6n0viWQoT86ttbkCsPgV0Y&quot;</span><span class="p">);</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">addBankAccount</span><span class="p">(</span><span class="s2">&quot;/v1/bank_accounts/BA6oxYWJXxeM63vMorgtSIhI&quot;</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Customer</span> <span class="n">customer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="o">(</span><span class="s">&quot;/v1/customers/CU7o5OSA8KuFSSjweE54NITe&quot;</span><span class="o">);</span>
+<span class="n">customer</span><span class="o">.</span><span class="na">addBankAccount</span><span class="o">(</span><span class="s">&quot;/v1/bank_accounts/BA7q1HxYvJr41fVUPk8vMrCm&quot;</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;destination_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_account&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;destination&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2xSTIm4ZD89wT63RynxVAy/bank_accounts&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;business_name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2xSTIm4ZD89wT63RynxVAy/cards&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-27T16:10:34.304534Z&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2xSTIm4ZD89wT63RynxVAy/credits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2xSTIm4ZD89wT63RynxVAy/debits&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;destination_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2xSTIm4ZD89wT63RynxVAy/bank_accounts/BA2zkCVjpZZX2VnlPJ1YFpry&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;dob&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;ein&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;facebook&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2xSTIm4ZD89wT63RynxVAy/holds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU2xSTIm4ZD89wT63RynxVAy&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;is_identity_verified&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;phone&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2xSTIm4ZD89wT63RynxVAy/refunds&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2xSTIm4ZD89wT63RynxVAy/reversals&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;source&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;ssn_last4&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2xSTIm4ZD89wT63RynxVAy/transactions&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;twitter&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU2xSTIm4ZD89wT63RynxVAy&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section class="method-section" id="delete-a-customer">
+<h2>Delete a Customer<a class="headerlink" href="#delete-a-customer" title="Permalink to this headline">∵</a></h2>
+<p>Permanently delete a customer. It cannot be undone. Only customers
+without transactions can be deleted.</p>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>DELETE https://api.balancedpayments.com/customers/:customer_id
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Customer</span><span class="p">(</span><span class="o">...</span><span class="p">)</span><span class="o">.</span><span class="n">unstore</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Customer</span><span class="o">.</span><span class="n">unstore</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\Customer()-&gt;unstore()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Customer</span><span class="o">.</span><span class="na">unstore</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/customers/CU2BM740vux0PzIkvSIqUgda <span class="se">\</span>
+     -u ak-test-zvmxAk4lw1srrw9heg99Gtlr4Y6HAmPP: <span class="se">\</span>
+     -X DELETE
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">customer</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Customer</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/v1/customers/CU29FAMV807phGkX4wGIuymW&#39;</span><span class="p">)</span>
+<span class="n">customer</span><span class="o">.</span><span class="n">unstore</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">customer</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Customer</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/v1/customers/AC6YytlZWy1ECh6PGUXxqeFy&#39;</span><span class="p">)</span>
+<span class="n">customer</span><span class="o">.</span><span class="n">unstore</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$customer</span> <span class="o">=</span> <span class="nx">Balanced\Customer</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/v1/customers/CU6sqf8CB3M3l6VeSsBqVHhC&quot;</span><span class="p">);</span>
+<span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">();</span>
+
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Customer</span> <span class="n">customer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="o">(</span><span class="s">&quot;/v1/customers/CU7tcMPhFkoiaOjRkmmdBhXO&quot;</span><span class="o">);</span>
+
+<span class="k">try</span> <span class="o">{</span>
+    <span class="n">customer</span><span class="o">.</span><span class="na">unstore</span><span class="o">();</span>
+<span class="o">}</span>
+<span class="k">catch</span> <span class="o">(</span><span class="n">NotCreated</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+    <span class="c1">// the customer didn&#39;t exist in the first place</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section></section>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/compiled.js"></script>
+  </body>
+</html>

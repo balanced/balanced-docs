@@ -1,0 +1,390 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
+      <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+      <link href="/static/css/styles.css" rel="stylesheet">
+      <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+
+     <!-- <script src="static/js/html5shiv.js"></script> -->
+      <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar-nav" data-offset="10">
+
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <div class="logo">
+              <a class="brand" href="https://www.balancedpayments.com"></a>
+            </div>
+            <div class="span16">
+              <ul class="nav nav-api-context">
+                <li class="dropdown">
+                  <a class="dropdown-toggle context api-context" data-toggle="dropdown" id="context-dropdown-head">
+                    <div id="logo"></div>
+                    Overview
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu context">
+                    <li>
+                      <a class="context-change" data-context="api" href="/1.1/api/">API Reference</a>
+                    </li>
+                    <li>
+                      <a class="context-change" data-context="faq" href="https://support.balancedpayments.com/hc/en-us">FAQ</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <ul class="nav nav-api-version">
+                <li class="dropdown">
+                  <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">v 1.1
+                    <b class="caret"></b>
+                  </a>
+                  <ul class="dropdown-menu version">
+                    <li>
+                      <a class="version-change" data-version="1.0" href="/1.0/overview/">v 1.0</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+
+              <ul class="nav nav-api-clients">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle lang" id="lang-dropdown-head" data-toggle="dropdown">lang: cURL <b class="caret"></b></a>
+                  <ul class="dropdown-menu lang">
+                    <li><a class="lang-change" data-lang="ruby" href="#">Ruby</a></li>
+                    <li><a class="lang-change" data-lang="python" href="#">Python</a></li>
+                    <li><a class="lang-change" data-lang="node" href="#">Node.js</a></li>
+                    <li><a class="lang-change" data-lang="php" href="#">PHP</a></li>
+                    <li><a class="lang-change" data-lang="java" href="#">Java</a></li>
+                    <li><a class="lang-change" data-lang="bash" href="#">cURL</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <ul class="nav nav-links pull-right">
+              <li>
+                <a href="/1.1/overview/#support">Help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="api-version-rev">
+      
+      <div class="container content" id="overview-content">
+        <div class="row">
+
+          <div id="sidebar-top" style="display:none">
+            <div id="sidebar-top-content">
+              <ul class="inline">
+                <li style="vertical-align: middle;">
+                  <div id="logo" style="background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAMAAAC+oj0CAAAAV1BMVEVymix4oi/vQDXjPDJ4oi94oi/vQDXvQDXvQDXvQDV4oi91ni7vQDXqPjN4oi/foRLanRHopxNznC3mPTPopxPopxMAAABwmCzgPDHanRHopxN4oi/vQDXwPhJhAAAAF3RSTlPbICDbYBBQYEAQgLOAs1DH7hDHx6CAAHwvTFAAAABmSURBVHja1cjXDYAwDABR01sCpAEh2X9ObCFkJLMA93cPSpcPtb0a92QLqDLWsdYJA8iUY7aJulkzTzdr4p55Jp1gUM61uOzWjg1sn/2Iw7IEyeHEguCVeBUciaNgT+wFG49qnrsAe+cllBc1FLYAAAAASUVORK5CYII=) no-repeat center;width: 25px;height: 25px;float: left;">
+                  </div>
+                </li>
+                <li id="context-title" style="font-size: 16px;">Overview</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="span6 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+              <div class="row">
+                <div class="span6">
+                  <div class="nav nav-list context-navlist">
+                    <!-- The table of contents menu -->
+                    <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Overview</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#feature-requests">Feature Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#support">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#submission-delivery-times">Submission &amp; Delivery times</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pricing">Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#transaction-limits">Transaction Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started/">Getting Started</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#start-integrating">Start Integrating</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#client-libraries">Client Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#third-party-plugins">Third-Party Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#integration-assistance">Integration Assistance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="best-practices/">Best Practices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/#use-balanced-js">Use balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/#reducing-declined-transactions">Reducing Declined Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/#catching-fraud-early">Catching Fraud Early</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/#reducing-payout-delays">Reducing Payout Delays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/#use-meta">Use Meta</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="resources/">Resources</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="resources/#test-credit-card-numbers">Test credit card numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources/#test-bank-account-numbers">Test bank account numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources/#testing-customer-identity-verification">Testing Customer identity verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources/#funding-instrument-fingerprint">Funding Instrument Fingerprint</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources/#address-verification-service">Address Verification Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources/#card-verification-value">Card Verification Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources/#changelog">1.1 Changelog</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../guides/">Guides</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../guides/quickstart/">Quickstart</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/escrow/">Understanding Escrow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/balanced-js/">Using balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/debits/">Working with Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/credits/">Working with Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/cardholds/">Working with Card Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/orders/">Orders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/collecting-fees/">Collecting Fees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../guides/taxes/">Handling Taxes</a></li>
+</ul>
+</li>
+</ul>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="context-content" class="span19 offset1">
+            
+  <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">∵</a></h1>
+<section id="feature-requests">
+<h2>Feature Requests<a class="headerlink" href="#feature-requests" title="Permalink to this headline">∵</a></h2>
+<p>As Balanced embraces the <a class="reference external" href="https://www.balancedpayments.com/open">open company philosophy</a>, we actively and publicly
+discuss feature requests and product decisions with our community on <a class="reference external" href="https://github.com/balanced/balanced-api/issues">github</a>.
+Do you have a feature request or issue? We’d love to hear from you!</p>
+</section><section id="support">
+<span id="overview-support"></span><h2>Support<a class="headerlink" href="#support" title="Permalink to this headline">∵</a></h2>
+<p>We respond to support requests and questions through several channels
+including:</p>
+<p>Follow <a class="reference external" href="https://twitter.com/balancedstatus">&#64;balancedstatus</a> or check out <a class="reference external" href="https://status.balancedpayments.com/">status.balancedpayments.com</a>
+for real-time status updates on the API, balanced.js, and Balanced’s
+dashboard.</p>
+<p>Join the Balanced <a class="reference external" href="https://www.balancedpayments.com/community">community</a> and follow us on <a class="reference external" href="https://twitter.com/balanced">Twitter</a>.</p>
+<ul class="list-noindent simple">
+<li><a class="reference external" href="http://webchat.freenode.net/?channels=balanced&amp;uio=MTE9OTIaf">#balanced on Freenode IRC</a> for real-time answers to technical support questions</li>
+<li><a class="reference external" href="https://stackoverflow.com/questions/tagged/balanced-payments">Stackoverflow</a> for technical questions</li>
+<li><a class="reference external" href="https://quora.com/balanced">Quora</a> for product and business questions</li>
+<li>Email: <a class="reference external" href="mailto:support&#37;&#52;&#48;balancedpayments&#46;com">support<span>&#64;</span>balancedpayments<span>&#46;</span>com</a></li>
+</ul>
+<p>When encountering a problem, one of the best tools available to you is
+the Logs area in the Dashboard. These logs give valuable insight into
+what request information was received and the resulting API response. It also
+gives information about operation status codes and transaction failure
+messages along with the timing and affected parties and endpoints.</p>
+<p>If additional help is required, hop into #balanced on Freenode IRC to get help
+directly from developers.</p>
+<p>Be sure to have the following handy to facilitate quick resolutions to issues:</p>
+<ul class="simple">
+<li><ul class="first">
+<li>A description of the problem</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>The Dashboard link to the transaction(s) related to the issue</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Transaction OHM (this is the identifier for the corresponding log message. It's returned on errors)</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Marketplace name</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Timeframe of issue</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Affected customer(s)</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Amount and type of transaction</li>
+</ul>
+</li>
+<li><ul class="first">
+<li>Last 4 digits and type of the affected card (if applicable)</li>
+</ul>
+</li>
+</ul>
+</section><section id="submission-delivery-times">
+<span id="payouts-cutoff"></span><h2>Submission &amp; Delivery times<a class="headerlink" href="#submission-delivery-times" title="Permalink to this headline">∵</a></h2>
+<div class="table-header">
+The cutoff for submitting payouts is <strong>3:00 PM Pacific (PT)</strong> time. Payouts will <em>not</em> be
+delivered on weekends or <a class="reference external" href="http://www.federalreserve.gov/aboutthefed/k8.htm">bank holidays</a>:</div>
+<table border="1" class="table table-hover docutils">
+<colgroup>
+<col width="51%" />
+<col width="16%" />
+<col width="17%" />
+<col width="16%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Holiday</th>
+<th class="head">2014</th>
+<th class="head">2015</th>
+<th class="head">2016</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>New Year's Day</td>
+<td>January 1</td>
+<td>January 1</td>
+<td>January 1</td>
+</tr>
+<tr class="row-odd"><td>Birthday of Martin Luther King, Jr.</td>
+<td>January 20</td>
+<td>January 19</td>
+<td>January 18</td>
+</tr>
+<tr class="row-even"><td>Washington's Birthday</td>
+<td>February 17</td>
+<td>February 16</td>
+<td>February 15</td>
+</tr>
+<tr class="row-odd"><td>Memorial Day</td>
+<td>May 26</td>
+<td>May 25</td>
+<td>May 30</td>
+</tr>
+<tr class="row-even"><td>Independence Day</td>
+<td>July 4</td>
+<td>July 4 <a class="footnote-reference" href="#id2" id="id1">[*]</a></td>
+<td>July 4</td>
+</tr>
+<tr class="row-odd"><td>Labor Day</td>
+<td>September 1</td>
+<td>September 7</td>
+<td>September 5</td>
+</tr>
+<tr class="row-even"><td>Columbus Day</td>
+<td>October 13</td>
+<td>October 12</td>
+<td>October 10</td>
+</tr>
+<tr class="row-odd"><td>Veterans Day</td>
+<td>November 11</td>
+<td>November 11</td>
+<td>November 11</td>
+</tr>
+<tr class="row-even"><td>Thanksgiving Day</td>
+<td>November 27</td>
+<td>November 26</td>
+<td>November 24</td>
+</tr>
+<tr class="row-odd"><td>Christmas Day</td>
+<td>December 25</td>
+<td>December 25</td>
+<td>December 26</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id2" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[*]</a></td><td>Saturday</td></tr>
+</tbody>
+</table>
+<div class="table-header">
+Here's some common scenarios for payouts. Remember, the next-day cut off is
+at <strong>3:00 PM Pacific (PT)</strong>.</div>
+<table border="1" class="table table-hover docutils">
+<colgroup>
+<col width="27%" />
+<col width="47%" />
+<col width="27%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Type of scenario</th>
+<th class="head">Example submission date</th>
+<th class="head">Available when? <a class="footnote-reference" href="#id4" id="id3">[†]</a></th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Most common</td>
+<td>Tuesday &#64; 1:45PM PT</td>
+<td>Wednesday &#64; 9:00AM PT</td>
+</tr>
+<tr class="row-odd"><td><a class="reference external" href="http://www.federalreserve.gov/aboutthefed/k8.htm">Bank holidays</a></td>
+<td>July 3rd &#64; 1:30PM PT</td>
+<td>July 5th &#64; 9:00AM PT</td>
+</tr>
+<tr class="row-even"><td>Late submission</td>
+<td>Friday &#64; 3:30PM PT</td>
+<td>Tuesday &#64; 9:00AM PT</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[†]</a></td><td>Assumes that day is a working business day -- does not fall on a
+weekend or a <a class="reference external" href="bankholidays">federal reserve holiday</a>.</td></tr>
+</tbody>
+</table>
+</section><section id="pricing">
+<h2>Pricing<a class="headerlink" href="#pricing" title="Permalink to this headline">∵</a></h2>
+<div class="section">
+<div class="header3">
+Check out the <a class="reference external" href="https://www.balancedpayments.com/pricing">pricing page</a> for out current pricing structure!</div>
+</div>
+<p>Balanced will create invoices to collect fees daily. These invoices can be
+viewed under the invoices tab of the Balanced dashboard. Fees are debited from
+the bank account most recently attached to the owner account of the marketplace.</p>
+<p>For example, a buyer pays for a service on Monday from a third-party merchant. You charge
+the buyer $10, which increases your escrow balance by $10. Balanced will invoice
+you, on Monday for 2.9% of $10 (or 29¢), plus 30¢, and debit your bank account
+for a total of 59¢.</p>
+<p>On Wednesday, the third-party merchant completes performing a service for the
+buyer, and the buyer acknowledges this. You credit out payment to the
+merchant, likely keeping a portion to pay your fees. Perhaps you pay out $7
+to the merchant, leaving you with $3 in your escrow account. Balanced will
+invoice you, on Wednesday, 25¢ for this ACH credit.</p>
+<p>The $3 that is left from the buyer's $10 is your revenue from this order. You
+decide to credit this to your own bank account on Friday. Balanced doesn't
+charge you for this credit, as credits to owner accounts are free.</p>
+<div class="alert alert-tab admonition note">
+note</div>
+<div class="alert alert-green">
+<strong>Balanced will never take fees from the operating capital (escrow account) of the marketplace.</strong></div>
+</section><section id="transaction-limits">
+<span id="processing-transaction-limits"></span><h2>Transaction Limits<a class="headerlink" href="#transaction-limits" title="Permalink to this headline">∵</a></h2>
+<p>The minimum transaction amount is $0.50.</p>
+<p>The maximum transaction amounts are as follows:</p>
+<p>Credit cards - $15,000 per transaction.</p>
+<p>Bank account debits - $15,000 per transaction.</p>
+<p>Bank account credits - $15,000 per transaction.</p>
+<div class="alert alert-tab admonition note">
+note</div>
+<div class="alert alert-green">
+<p>Please contact <a class="reference external" href="mailto:support&#37;&#52;&#48;balancedpayments&#46;com">support<span>&#64;</span>balancedpayments<span>&#46;</span>com</a>
+if you are planning to process larger amounts.</p>
+<p>These limits do not apply to the marketplace owner bank account.</p>
+</div>
+</section></section>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/compiled.js"></script>
+  </body>
+</html>

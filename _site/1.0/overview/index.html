@@ -1,0 +1,404 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
+      <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+      <link href="/static/css/styles.css" rel="stylesheet">
+      <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+
+     <!-- <script src="static/js/html5shiv.js"></script> -->
+      <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar-nav" data-offset="10">
+
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="row">
+            <div class="logo">
+              <a class="brand" href="https://www.balancedpayments.com"></a>
+            </div>
+            <div class="span16">
+              <ul class="nav nav-api-context">
+    	          <li class="dropdown">
+                  <a class="dropdown-toggle context api-context" data-toggle="dropdown" id="context-dropdown-head">
+                    <div id="logo"></div>
+                    Overview
+                    <b class="caret"></b>
+                  </a>
+            	    <ul class="dropdown-menu context">
+            		    <li>
+                      <a class="context-change" data-context="api" href="/1.0/api/">API Reference</a>
+                    </li>
+            		    <li>
+                      <a class="context-change" data-context="faq" href="https://support.balancedpayments.com/hc/en-us">FAQ</a>
+                    </li>
+            	    </ul>
+                </li>
+              </ul>
+      
+      	      <ul class="nav nav-api-version">
+                <li class="dropdown">
+                  <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">v 1.0
+                    <b class="caret"></b>
+                  </a>
+        	        <ul class="dropdown-menu version">
+        		        <li>
+                      <a class="version-change" data-version="1.1" href="/1.1/overview/">v 1.1</a>
+                    </li>
+        	        </ul>
+                </li>
+      	      </ul>
+      
+              <ul class="nav nav-api-clients">
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle lang" id="lang-dropdown-head" data-toggle="dropdown">lang: cURL <b class="caret"></b></a>
+                  <ul class="dropdown-menu lang">
+                    <li><a class="lang-change" data-lang="ruby" href="#">Ruby</a></li>
+                    <li><a class="lang-change" data-lang="python" href="#">Python</a></li>
+                    <li><a class="lang-change" data-lang="php" href="#">PHP</a></li>
+                    <li><a class="lang-change" data-lang="java" href="#">Java</a></li>
+                    <li><a class="lang-change" data-lang="bash" href="#">cURL</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            <ul class="nav nav-links pull-right">
+              <li>
+                <a href="/1.1/overview/#support">Help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+  
+    <div class="api-version-rev">
+      
+      <div class="container content" id="overview-content">
+        <div class="row">
+
+          <div id="sidebar-top" style="display:none">
+            <div id="sidebar-top-content">
+              <ul class="inline">
+                <li style="vertical-align: middle;">
+                  <div id="logo" style="background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAMAAAC+oj0CAAAAV1BMVEVymix4oi/vQDXjPDJ4oi94oi/vQDXvQDXvQDXvQDV4oi91ni7vQDXqPjN4oi/foRLanRHopxNznC3mPTPopxPopxMAAABwmCzgPDHanRHopxN4oi/vQDXwPhJhAAAAF3RSTlPbICDbYBBQYEAQgLOAs1DH7hDHx6CAAHwvTFAAAABmSURBVHja1cjXDYAwDABR01sCpAEh2X9ObCFkJLMA93cPSpcPtb0a92QLqDLWsdYJA8iUY7aJulkzTzdr4p55Jp1gUM61uOzWjg1sn/2Iw7IEyeHEguCVeBUciaNgT+wFG49qnrsAe+cllBc1FLYAAAAASUVORK5CYII=) no-repeat center;width: 25px;height: 25px;float: left;">
+                  </div>
+                </li>
+                <li id="context-title" style="font-size: 16px;">Overview</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="span6 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+              <div class="row">
+                <div class="span6">
+                  <div class="nav nav-list context-navlist">
+                    <!-- The table of contents menu -->
+                    <ul class="nav nav-list context-navlist">
+<li class="toctree-l1 current">Overview<ul>
+<li class="toctree-l2"><a class="reference internal" href="#client-libraries">Client Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-cases">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#github-discussions">Github Discussions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#support">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#third-party-plugins">Third-Party Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#integration-assistance">Integration Assistance</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Best Practices<ul>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/#use-balanced-js">Use balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/#reducing-declined-transactions">Reducing Declined Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/#catching-fraud-early">Catching Fraud Early</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/#reducing-payout-delays">Reducing Payout Delays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/#use-meta">Use Meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/#store-uris">Store URIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best-practices/#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Pricing and fees<ul>
+<li class="toctree-l2"><a class="reference internal" href="fees/#payout-pricing">Payout Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fees/#processing-pricing">Processing Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fees/#invoicing-fees">Invoicing fees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fees/#funds-flow">Funds Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Getting Started<ul>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#obtain-a-test-marketplace">Obtain a Test Marketplace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#obtain-a-production-marketplace">Obtain a Production Marketplace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#balanced-js">Balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#collecting-credit-card-information">Collecting credit card information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#charge-a-credit-card">Charge a credit card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#collect-bank-account-info">Collect bank account info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#credit-a-bank-account">Credit a bank account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#balanced-js-card-reference">Balanced.js Card Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="getting-started/#balanced-js-bankaccount-reference">Balanced.js BankAccount Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Marketplaces<ul>
+<li class="toctree-l2"><a class="reference internal" href="marketplaces/#simulating-verified-with-customers">Simulating verified with customers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="marketplaces/#associating-debits-with-a-merchant">Associating debits with a merchant</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Balanced Payouts<ul>
+<li class="toctree-l2"><a class="reference internal" href="payouts/#credits">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="payouts/#credit-s-status-field">Credit's Status Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="payouts/#payout-methods">Payout Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="payouts/#bank-statement-descriptor">Bank statement descriptor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="payouts/#canceling-credits">Canceling Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="payouts/#pre-funding-your-account">Pre-funding Your Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="payouts/#submission-delivery-times">Submission &amp; Delivery times</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Processing<ul>
+<li class="toctree-l2"><a class="reference internal" href="processing/#debits">Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/#refunds">Refunds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/#holds">Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="processing/#transaction-limits">Transaction Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Resources<ul>
+<li class="toctree-l2"><a class="reference internal" href="resources/#test-credit-card-numbers">Test credit card numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources/#test-bank-account-numbers">Test bank account numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources/#test-identity-verification">Test identity verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources/#request-logs">Request Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources/#the-hash-attribute">The Hash Attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources/#address-verification-service">Address Verification Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="resources/#card-security-code">Card Security Code</a></li>
+</ul>
+</li>
+</ul>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="context-content" class="span19 offset1">
+            
+  <section id="overview">
+<h1>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">∵</a></h1>
+<div class="span6">
+<div class="header3">
+Tutorials</div>
+<div class="box box-block box-blue">
+<span class="icon icon-page"></span>
+<a class="reference internal" href="getting-started/#getting-started-collecting-card-info"><em>Collect credit card info</em></a></div>
+<div class="box box-block box-blue">
+<span class="icon icon-page"></span>
+<a class="reference internal" href="getting-started/#getting-started-charging-cards"><em>Charge a credit card</em></a></div>
+<div class="box box-block box-blue">
+<span class="icon icon-page"></span>
+<a class="reference internal" href="getting-started/#getting-started-collecting-bank-info"><em>Collect bank account info</em></a></div>
+<div class="box box-block box-blue">
+<span class="icon icon-page"></span>
+<a class="reference internal" href="getting-started/#getting-started-credit-bank-account"><em>Credit bank account</em></a></div>
+</div>
+<div class="span6">
+<div class="header3">
+Form Building</div>
+<div class="box box-block box-turquoise">
+<span class="icon icon-page"></span>
+<a class="reference external" href="http://jsfiddle.net/balanced/ZwhrA/">Sample credit card form</a></div>
+<div class="box box-block box-turquoise">
+<span class="icon icon-page"></span>
+<a class="reference external" href="http://jsfiddle.net/balanced/ZwhrA/">Sample bank account form</a></div>
+</div>
+<div class="span6">
+<div class="header3">
+Testing</div>
+<div class="box box-block box-purple">
+<span class="icon icon-page"></span>
+<a class="reference internal" href="resources/#resources-test-credit-cards"><em>Test bank account numbers</em></a></div>
+<div class="box box-block box-purple">
+<span class="icon icon-page"></span>
+<a class="reference internal" href="resources/#resources-test-bank-accounts"><em>Test bank account numbers</em></a></div>
+</div>
+<div class="clear">
+</div>
+<div class="line-block" id="overview-use-cases">
+<div class="line"><br /></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="client-libraries">
+<h2>Client Libraries<a class="headerlink" href="#client-libraries" title="Permalink to this headline">∵</a></h2>
+<p>Balanced attempts very hard to write idiomatic code for all it's API libraries
+and we pride ourselves in an extensive test suite for every client that
+demonstrates almost every single method / function executed for your
+convenience.</p>
+<p>We find that this is the best way to use the client libraries. If you encounter
+and issue, please file a github issue and get in touch through one our
+many <a class="reference internal" href="#overview-support"><em>support channels</em></a>.</p>
+<table border="1" class="table table-hover docutils">
+<colgroup>
+<col width="23%" />
+<col width="26%" />
+<col width="28%" />
+<col width="23%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Language / Platform</th>
+<th class="head">Repository</th>
+<th class="head">Tests</th>
+<th class="head">Primary Contributor</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>python</td>
+<td><a class="reference external" href="https://github.com/balanced/balanced-python">balanced-python</a></td>
+<td><a class="reference external" href="https://github.com/balanced/balanced-python/tree/master/tests">balanced-python tests</a></td>
+<td>Balanced</td>
+</tr>
+<tr class="row-odd"><td>ruby</td>
+<td><a class="reference external" href="https://github.com/balanced/balanced-ruby">balanced-ruby</a></td>
+<td><a class="reference external" href="https://github.com/balanced/balanced-ruby/tree/master/spec">balanced-ruby tests</a></td>
+<td>Balanced</td>
+</tr>
+<tr class="row-even"><td>php</td>
+<td><a class="reference external" href="https://github.com/balanced/balanced-php">balanced-php</a></td>
+<td><a class="reference external" href="https://github.com/balanced/balanced-php/tree/master/tests">balanced-php tests</a></td>
+<td>Balanced</td>
+</tr>
+<tr class="row-odd"><td>php (symfony2 bundle)</td>
+<td><a class="reference external" href="https://github.com/jeremymarc/JmBalancedPaymentBundle">JmBalancedPaymentBundle</a></td>
+<td><a class="reference external" href="https://github.com/jeremymarc/JmBalancedPaymentBundle/tree/master/Tests">JmBalancedPaymentBundle Tests</a></td>
+<td><a class="reference external" href="https://twitter.com/jeremymarc">Jeremy Marc</a></td>
+</tr>
+<tr class="row-even"><td>java</td>
+<td><a class="reference external" href="https://github.com/balanced/balanced-java">balanced-java</a></td>
+<td><a class="reference external" href="https://github.com/balanced/balanced-java/tree/master/src/test">balanced-java tests</a></td>
+<td>Balanced</td>
+</tr>
+<tr class="row-odd"><td>iOS</td>
+<td><a class="reference external" href="https://github.com/balanced/balanced-ios">balanced-ios</a></td>
+<td><a class="reference external" href="https://github.com/balanced/balanced-ios/tree/master/BalancedTests">balanced-ios tests</a></td>
+<td><a class="reference external" href="http://unfiniti.com">Ben Mills (Remear)</a></td>
+</tr>
+<tr class="row-even"><td>perl</td>
+<td><a class="reference external" href="https://github.com/Crowdtilt/Business-BalancedPayments">Business-BalancedPayments</a></td>
+<td><a class="reference external" href="https://github.com/Crowdtilt/Business-BalancedPayments/tree/master/t">Business-BalancedPayments tests</a></td>
+<td><a class="reference external" href="http://crowdtilt.com">Crowdtilt.com</a></td>
+</tr>
+</tbody>
+</table>
+</section><section id="use-cases">
+<h2>Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">∵</a></h2>
+<div class="header3 mb-ten">
+Marketplaces</div>
+<p>Balanced is most often used to power payments for online and mobile
+marketplaces -- any platform facilitating payments between buyers and
+sellers. For example, <a class="reference external" href="http://kitchit.com">kitchit</a>, <a class="reference external" href="http://copious.com">copious</a>, <a class="reference external" href="http://zaarly.com">zaarly</a>, <a class="reference external" href="http://visual.ly">visual.ly</a>,
+and many others are connecting Balanced Processing and Balanced Payouts
+to charge a buyer’s credit card on behalf of a seller.</p>
+<p>Some customers have even implemented a shopping cart checkout flow where
+a single buyer can buy from many sellers with a single transaction. And
+holding the funds with Balanced between Payouts and Processing can allow
+the marketplace to implement an escrow-like functionality.</p>
+<div class="header3 mb-ten">
+Crowd-Funding</div>
+<p>Balanced is commonly used to power payments for crowd-funding and group
+purchasing platforms. For example, <a class="reference external" href="http://crowdtilt.com">crowdtilt</a>, <a class="reference external" href="http://wanderable.com">wanderable</a>,
+<a class="reference external" href="http://gittip.com">gittip</a>, and many others are connecting Balanced Processing and
+Balanced Payouts to charge many buyers’ credit cards on behalf of a
+single seller.</p>
+<div class="header3 mb-ten">
+Vendor Payments</div>
+<p>Balanced Payouts is used by many businesses that need to pay their
+sellers or vendors for supplies and services rendered.</p>
+<div class="header3 mb-ten">
+E-Commerce</div>
+<p>Balanced Processing is used by a merchants to simply charge buyers for
+items they sell directly.</p>
+</section><section id="github-discussions">
+<span id="overview-github-issues"></span><h2>Github Discussions<a class="headerlink" href="#github-discussions" title="Permalink to this headline">∵</a></h2>
+<p>We actively and publicly discuss feature requests and product decisions
+with our community on <a class="reference external" href="https://github.com/balanced/balanced-api/issues">github</a>. We’d love to hear from you.</p>
+</section><section id="support">
+<span id="overview-support"></span><h2>Support<a class="headerlink" href="#support" title="Permalink to this headline">∵</a></h2>
+<p>We respond to support requests and questions through several channels
+including:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://webchat.freenode.net/?channels=balanced&amp;uio=MTE9OTIaf">#balanced on Freenode IRC</a> for real-time answers to technical support questions.</li>
+<li><a class="reference external" href="https://stackoverflow.com/questions/tagged/balanced-payments">Stackoverflow</a> for technical questions</li>
+<li><a class="reference external" href="https://quora.com/balanced">Quora</a> for product and business questions</li>
+<li>Email: <a class="reference external" href="mailto:support&#37;&#52;&#48;balancedpayments&#46;com">support<span>&#64;</span>balancedpayments<span>&#46;</span>com</a></li>
+</ul>
+<p>Follow <a class="reference external" href="https://twitter.com/balancedstatus">&#64;balancedstatus</a> or check out <a class="reference external" href="https://status.balancedpayments.com/">status.balancedpayments.com</a>
+for real-time status updates on the API, balanced.js, and Balanced’s
+dashboard.</p>
+<p>Join the Balanced <a class="reference external" href="https://www.balancedpayments.com/community">community</a> and follow us on <a class="reference external" href="https://twitter.com/balanced">Twitter</a>.</p>
+</section><section id="third-party-plugins">
+<h2>Third-Party Plugins<a class="headerlink" href="#third-party-plugins" title="Permalink to this headline">∵</a></h2>
+<div class="section">
+<div class="header3">
+Shopping Carts</div>
+<ul class="list-noindent simple">
+<li><a class="reference external" href="https://drupal.org/project/commerce_balanced_payments">Drupal Commerce</a></li>
+<li><a class="reference external" href="https://github.com/pmgarman/wp-balanced-payments">WordPress</a></li>
+<li><a class="reference external" href="https://easydigitaldownloads.com/extensions/balanced-payment-gateway/">Easy Digital Downloads</a></li>
+<li><a class="reference external" href="http://cart66.com/cloud/payment-gateways/">Cart66</a></li>
+<li><a class="reference external" href="http://www.mijireh.com/docs/payment-gateways/">Mijreh</a></li>
+<li><a class="reference external" href="http://guides.spreecommerce.com/developer/payments.html#supported-gateways">Spree</a></li>
+</ul>
+</div>
+<div class="section">
+<div class="header3">
+Frameworks</div>
+<ul class="list-noindent simple">
+<li><a class="reference external" href="https://github.com/ianserlin/meteor-balanced-payments">Meteor.js Package</a></li>
+<li><a class="reference external" href="https://github.com/Shopify/active_merchant#supported-direct-payment-gateways">ActiveMerchant</a></li>
+</ul>
+</div>
+<div class="section">
+<div class="header3">
+Recurring Payments</div>
+<ul class="list-noindent simple">
+<li><a class="reference external" href="http://www.chargebee.com/partners.html">Chargebee</a></li>
+</ul>
+</div>
+<div class="section">
+<div class="header3">
+Gateways</div>
+<ul class="list-noindent simple">
+<li><a class="reference external" href="https://core.spreedly.com/manual/payment-gateways/balanced">Spreedly</a></li>
+<li><a class="reference external" href="https://github.com/Crowdtilt/crowdtilt-api-spec/">Crowdtilt API/Crowdhoster - (Crowdfunding specific)</a></li>
+</ul>
+</div>
+<div class="section">
+<div class="header3">
+Card Readers</div>
+<ul class="list-noindent simple">
+<li><a class="reference external" href="https://getcardflight.com/">Cardflight</a></li>
+</ul>
+</div>
+<div class="section">
+<div class="header3">
+Accounting</div>
+<a class="list-noindent reference external image-reference" href="http://subledger.com/blog/rent-my-bikes-demo/"><img alt="/static/img/logos/subledger.png" src="/static/img/logos/subledger.png" /></a>
+</div>
+</section><section id="integration-assistance">
+<h2>Integration Assistance<a class="headerlink" href="#integration-assistance" title="Permalink to this headline">∵</a></h2>
+<p>Are you looking for a developer to help with Balanced integration? Check out these companies!</p>
+<a class="logos-inline reference external image-reference" href="https://theworkmob.com/integrations/balancedpayments"><img alt="/static/img/logos/workmob&#64;2x.png" src="/static/img/logos/workmob&#64;2x.png" style="width: 236px; height: 50px;" /></a>
+<a class="logos-inline reference external image-reference" href="http://www.airpair.com/balanced-payments"><img alt="/static/img/logos/airpair&#64;2x.png" src="/static/img/logos/airpair&#64;2x.png" style="width: 187px; height: 50px;" /></a>
+</section></section>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/compiled.js"></script>
+  </body>
+</html>
