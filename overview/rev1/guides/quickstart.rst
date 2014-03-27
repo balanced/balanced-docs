@@ -52,4 +52,23 @@ cards and issuing payouts.
 
       :doc:`Read Part 2: Charging Credit Cards <quickstart/charging-funding-instruments>`
 
-    .. clear::
+  .. clear::
+
+
+.. container:: section
+
+  .. container:: header2
+
+    Issuing Payouts
+
+  This section demonstrates how to issue credits (payouts) to bank accounts.
+
+  .. container:: box-right
+
+    .. read-more-widget::
+      :box-classes: box box-block box-blue right
+      :icon-classes: icon icon-arrow
+
+      :doc:`Read Part 3: Issuing Payouts <quickstart/payouts>`
+
+  .. clear::

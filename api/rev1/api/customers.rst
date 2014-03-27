@@ -106,8 +106,8 @@ a customer.
   :header_class: alert alert-tab-red
   :body_class: alert alert-red
   
-  Once a card has been associated to a customer, it cannot be
-  associated to another customer.
+  Once a ``Card`` has been associated to a ``Customer``, it cannot be
+  associated to another ``Customer``.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -123,15 +123,15 @@ a customer.
 Associate a Bank Account
 --------------------------
 
-Add a ``BankAccount`` to a specific ``Customer``. Multiple bank accounts may be
-associated to a customer.
+Add a ``BankAccount`` to a specific ``Customer``. Multiple ``BankAccount``s may be
+associated to a ``Customer``.
 
 .. note::
   :header_class: alert alert-tab-red
   :body_class: alert alert-red
   
-  Once a bank account has been associated to a customer, it cannot be
-  associated to another customer.
+  Once a ``BankAccount`` has been associated to a ``Customer``, it cannot be
+  associated to another ``Customer``.
 
 .. cssclass:: dl-horizontal dl-params
 

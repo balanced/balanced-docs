@@ -118,3 +118,18 @@ Updates information about a debit
 .. container:: code-white
 
   .. dcode:: scenario debit_update
+
+
+Refund a Debit
+----------------
+
+Issues a refund for a ``Debit``. A ``Refund`` can be for any amount less than or
+equal to the original ``Debit`` amount.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form refunds.create
+
+.. container:: code-white
+
+  .. dcode:: scenario refund_create

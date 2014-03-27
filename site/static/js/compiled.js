@@ -18,6 +18,14 @@ var lunr=function(t){var e=new lunr.Index;return e.pipeline.add(lunr.stopWordFil
  * @version 1.4.3.1
  */
 ;(function($){var h=$.scrollTo=function(a,b,c){$(window).scrollTo(a,b,c)};h.defaults={axis:'xy',duration:parseFloat($.fn.jquery)>=1.3?0:1,limit:true};h.window=function(a){return $(window)._scrollable()};$.fn._scrollable=function(){return this.map(function(){var a=this,isWin=!a.nodeName||$.inArray(a.nodeName.toLowerCase(),['iframe','#document','html','body'])!=-1;if(!isWin)return a;var b=(a.contentWindow||a).document||a.ownerDocument||a;return/webkit/i.test(navigator.userAgent)||b.compatMode=='BackCompat'?b.body:b.documentElement})};$.fn.scrollTo=function(e,f,g){if(typeof f=='object'){g=f;f=0}if(typeof g=='function')g={onAfter:g};if(e=='max')e=9e9;g=$.extend({},h.defaults,g);f=f||g.duration;g.queue=g.queue&&g.axis.length>1;if(g.queue)f/=2;g.offset=both(g.offset);g.over=both(g.over);return this._scrollable().each(function(){if(e==null)return;var d=this,$elem=$(d),targ=e,toff,attr={},win=$elem.is('html,body');switch(typeof targ){case'number':case'string':if(/^([+-]=)?\d+(\.\d+)?(px|%)?$/.test(targ)){targ=both(targ);break}targ=$(targ,this);if(!targ.length)return;case'object':if(targ.is||targ.style)toff=(targ=$(targ)).offset()}$.each(g.axis.split(''),function(i,a){var b=a=='x'?'Left':'Top',pos=b.toLowerCase(),key='scroll'+b,old=d[key],max=h.max(d,a);if(toff){attr[key]=toff[pos]+(win?0:old-$elem.offset()[pos]);if(g.margin){attr[key]-=parseInt(targ.css('margin'+b))||0;attr[key]-=parseInt(targ.css('border'+b+'Width'))||0}attr[key]+=g.offset[pos]||0;if(g.over[pos])attr[key]+=targ[a=='x'?'width':'height']()*g.over[pos]}else{var c=targ[pos];attr[key]=c.slice&&c.slice(-1)=='%'?parseFloat(c)/100*max:c}if(g.limit&&/^\d+$/.test(attr[key]))attr[key]=attr[key]<=0?0:Math.min(attr[key],max);if(!i&&g.queue){if(old!=attr[key])animate(g.onAfterFirst);delete attr[key]}});animate(g.onAfter);function animate(a){$elem.animate(attr,f,g.easing,a&&function(){a.call(this,e,g)})}}).end()};h.max=function(a,b){var c=b=='x'?'Width':'Height',scroll='scroll'+c;if(!$(a).is('html,body'))return a[scroll]-$(a)[c.toLowerCase()]();var d='client'+c,html=a.ownerDocument.documentElement,body=a.ownerDocument.body;return Math.max(html[scroll],body[scroll])-Math.min(html[d],body[d])};function both(a){return typeof a=='object'?a:{top:a,left:a}}})(jQuery);
+/*!
+ * jQuery Cookie Plugin v1.4.0
+ * https://github.com/carhartl/jquery-cookie
+ *
+ * Copyright 2013 Klaus Hartl
+ * Released under the MIT license
+ */
+(function(e){if(typeof define==="function"&&define.amd){define(["jquery"],e)}else{e(jQuery)}})(function(e){function n(e){return u.raw?e:encodeURIComponent(e)}function r(e){return u.raw?e:decodeURIComponent(e)}function i(e){return n(u.json?JSON.stringify(e):String(e))}function s(e){if(e.indexOf('"')===0){e=e.slice(1,-1).replace(/\\"/g,'"').replace(/\\\\/g,"\\")}try{e=decodeURIComponent(e.replace(t," "));return u.json?JSON.parse(e):e}catch(n){}}function o(t,n){var r=u.raw?t:s(t);return e.isFunction(n)?n(r):r}var t=/\+/g;var u=e.cookie=function(t,s,a){if(s!==undefined&&!e.isFunction(s)){a=e.extend({},u.defaults,a);if(typeof a.expires==="number"){var f=a.expires,l=a.expires=new Date;l.setTime(+l+f*864e5)}return document.cookie=[n(t),"=",i(s),a.expires?"; expires="+a.expires.toUTCString():"",a.path?"; path="+a.path:"",a.domain?"; domain="+a.domain:"",a.secure?"; secure":""].join("")}var c=t?undefined:{};var h=document.cookie?document.cookie.split("; "):[];for(var p=0,d=h.length;p<d;p++){var v=h[p].split("=");var m=r(v.shift());var g=v.join("=");if(t&&t===m){c=o(g,s);break}if(!t&&(g=o(g))!==undefined){c[m]=g}}return c};u.defaults={};e.removeCookie=function(t,n){if(e.cookie(t)===undefined){return false}e.cookie(t,"",e.extend({},n,{expires:-1}));return!e.cookie(t)}})
 ///////////////
 // search.js //
 ///////////////
@@ -79,14 +87,34 @@ function updateNavigation(e) {
     }
     var currentTopic = $active.first().find('a').first();
     window.history.replaceState({}, null, currentTopic.attr('href'));
-    $('.nav.nav-list').scrollTo('.active', 100, {offset : -100});
-    //console.log(currentTopic.attr('href'));
+    $('.nav.nav-list').scrollTo('.active', 100, {offset : -150});
+}
+function scrollToAnchor(href) {
+    var href = typeof(href) == "string" ? href : $(this).attr("href");
+    var fromTop = 50;
+    if (href != null && href.indexOf("#") == 0) {
+        var $target = $(href);
+        if ($target.length) {
+            $('html, body').animate({ scrollTop: $target.offset().top - fromTop });
+            if (history && "pushState" in history) {
+                history.pushState({}, document.title, window.location.pathname + href);
+                return false;
+            }
+        }
+    }
+}
+function updateLangTitle(text){
+    $('#lang-dropdown-head').html("lang: " + text + " <b class='caret'></b>");
 }
 $(document).ready(function () {
-    //SIDEBAR TO STICK TO BOTTOM
-    function fix_sidebar(){
+    var langParam = getParameterByName('language', window.location.href)[0];
+    if (langParam != null) {
+        $.cookie('language', langParam, { expires: 7, path: '/' });
+    }
+
+    function fix_sidebar() {
         var window_height = $(window).height();
-        var top_of_sidebar = 300;
+        var top_of_sidebar = 65;
         var height_of_sidebar = window_height - top_of_sidebar;
         $('.nav.nav-list').css('height', height_of_sidebar);
     }
@@ -95,97 +123,48 @@ $(document).ready(function () {
         fix_sidebar();
     });
 
-    //FIX ON LOAD
-    fix_sidebar();
+    $(".nav.nav-list").mouseover(function() {
+      $('body').addClass('freeze-scroll');
+    });
+    $(".nav.nav-list").mouseout(function() {
+      $('body').removeClass('freeze-scroll');
+    });
 
-    //HIDE OVERVIEW REQUEST BOXES:
-    var $overview_content = $('#overview-content');
-    $overview_content.find('.request > p:first-child').hide();
-    $overview_content.find('.response > p:first-child').hide();
+    $("li").bind('activate', updateNavigation);
 
-   //BIND URL UPDATE
-   $("li").bind('activate', updateNavigation);
-    function update_lang_head(text){
-        var lang_head = $('#lang-dropdown-head');
-        lang_head.html(text + " <b class='caret'></b>")
-    }
-
-    //LOAD DEFAULT LANGUAGE
-    var default_lang = getParameterByName('language', window.location.href);
-    default_lang = (default_lang.length > 0) ? default_lang[0] : 'bash';
-    default_lang_dd = $("[data-lang='" + default_lang +"']");
-    update_lang_head(default_lang_dd.text());
-    default_lang_dd.parent().hide();
+    var defaultLang = defaultLang = $.cookie('language');
+    defaultLang = (defaultLang != null) ? defaultLang : 'bash';
+    defaultLang_dd = $("[data-lang='" + defaultLang +"']");
+    updateLangTitle(defaultLang_dd.text());
+    defaultLang_dd.parent().hide();
     $("[class^='highlight-']").hide();
-    $(".highlight-" + default_lang).show();
+    $("[class^='section-']").hide();
+    $(".highlight-" + defaultLang).show();
+    $(".section-" + defaultLang).show();
     $('.highlight-javascript').show();
     $('.highlight-html').show();
 
-    $('a').each(function() {
-        if ($(this).attr('href') != null) {
-            if ($(this).attr('href').indexOf("api.html") != -1 ||
-                $(this).attr('href').indexOf("overview.html") != -1) {
-                    var href = $(this).attr('href');
-                    var insertPos = href.indexOf('.html') + 5;
-                    if (href.indexOf('?') != -1) {
-                        insertPos += 1;
-                    }
-                    $(this).attr('href', [href.slice(0, insertPos), "?language=" + default_lang, href.slice(insertPos)].join(''));
-                }
-        }
-    });
-    
-    //SWAP LANGUAGE METHODS
-    $('.lang-change').click(function () {
+    $('.lang-change').click(function (e) {
+        e.preventDefault();
         var lang = $(this).attr('data-lang');
+        $.cookie('language', lang, { expires: 7, path: '/' });
         var langtext = $(this).text();
-        update_lang_head(langtext);
+        updateLangTitle(langtext);
         var parent = $(this).parent();
         parent.siblings().show();
         parent.hide();
         $("[class^='highlight-']").hide();
-        $(".highlight-javascript").show();
+        $("[class^='section-']").hide();
         $(".highlight-" + lang).show();
-        var uri = updateQueryStringParameter(window.location.pathname + window.location.search, 'language', lang);
-        uri = uri + '' + window.location.hash;
-        console.log(window.location.hash);
-        console.log(uri);
-        window.location = uri;
-        //window.history.replaceState(null, null, uri);
-        $('[data-spy="scroll"]').each(function () {
-            var $spy = $(this).scrollspy('refresh');
-        });
+        $(".section-" + lang).show();
+        $('.highlight-javascript').show();
+        $('.highlight-html').show();
     });
 
-    //SWITCH SELECTORS
-    $('#context-selector > li').click(function (){
-        window.location = $(this).find('a').attr('href');
-    });
-
-    // VERSION SELECTOR
-    var default_version = "rev0";
-    try {
-	    default_version = location.pathname.split('/')[1];
-    }
-    catch(e) {}
-    var version_element = $("[data-version='" + default_version + "']");
-    if(!version_element.length) {
-	    default_version='rev0';
-    	version_element = $("[data-version=rev0]");
-    }
-    version_element.parent().hide();
-    $("#version-dropdown-head").html(version_element.html() + ' <b class="caret"></b>');
-    $("#version-dropdown-head > .version-change").removeClass("version-change").attr('href', '#');
-    $("[class^=rev-]").hide();
-    $(".rev-"+default_version).show();
-    $("a.version-change").click(function() {
-    	var $this = $(this);
-    	var href = $this.attr('data-version');
-    	location.href = location.href.replace(/rev\d+/, href);
-    	return false;
-    });
-});
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    scrollToAnchor(window.location.hash);
+    $("body").on("click", "a", scrollToAnchor);
+    fix_sidebar();
+});(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
 m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');

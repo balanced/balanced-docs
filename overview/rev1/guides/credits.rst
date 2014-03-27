@@ -37,7 +37,6 @@ API References:
 
 .. cssclass:: list-noindent
 
-- `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
 - `Create a Credit </1.1/api/credits/#create-a-credit>`_
 
 |
@@ -45,35 +44,24 @@ API References:
 Initiating a credit (payout) is simple. Assuming we have an existing ``BankAccount`` we can
 do the following:
 
-.. code-block:: ruby
+.. literalinclude:: examples/curl/credit-create.sh
+   :language: bash
 
-  # bank_account_href is the stored href for the BankAccount
-  bank_account = Balanced::BankAccount.fetch(bank_account_href)
-  credit = bank_account.credit(
-    :amount => 100000,
-    :description => 'Payout for order #1111'
-  )
+.. literalinclude:: examples/python/credit-create.py
+   :language: python
 
-.. code-block:: python
+.. literalinclude:: examples/ruby/credit-create.rb
+   :language: ruby
 
-  # bank_account_href is the stored href for the BankAccount
-  bank_account = balanced.BankAccount.fetch(bank_account_href)
-  credit = bank_account.credit(
-    amount=100000,
-    description='Payout for order #1111'
-  )
-
-.. code-block:: bash
-
-  # :bank_account_id is the stored id for the BankAccount
-  curl https://api.balancedpayments.com/bank_accounts/:bank_account_id/credits \
-          -H "Accept: application/vnd.api+json;revision=1.1" \
-          -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
-          -d "amount=100000" \
-          -d "description=Payout for order #1111"
+.. literalinclude:: examples/php/credit-create.php
+   :language: php
 
 
-Credits may also be initiated via the `Dashboard`_.
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-green
+  
+  Credits may also be initiated via the `Dashboard`_.
 
 
 Bank statement descriptor
@@ -96,35 +84,18 @@ The descriptor is limited to 14 characters. ACH credits do not have a prefix.
 
 Example usage:
 
-.. code-block:: ruby
+.. literalinclude:: examples/curl/credit-soft-descriptor.sh
+   :language: bash
 
-  # bank_account_href is the stored href for the BankAccount
-  bank_account = Balanced::BankAccount.fetch(bank_account_href)
-  credit = bank_account.credit(
-    :amount => 100000,
-    :description => 'Payout for order #1111',
-    :appears_on_statement_as => 'GoodCo #1111'
-  )
+.. literalinclude:: examples/python/credit-soft-descriptor.py
+   :language: python
 
-.. code-block:: python
+.. literalinclude:: examples/ruby/credit-soft-descriptor.rb
+   :language: ruby
 
-  # bank_account_href is the stored href for the BankAccount
-  bank_account = balanced.BankAccount.fetch(bank_account_href)
-  credit = bank_account.credit(
-    amount=100000,
-    description='Payout for order #1111',
-    appears_on_statement_as='GoodCo #1111'
-  )
+.. literalinclude:: examples/php/credit-soft-descriptor.php
+   :language: php
 
-.. code-block:: bash
-
-  # :bank_account_id is the stored id for the BankAccount
-  curl https://api.balancedpayments.com/bank_accounts/:bank_account_id/credits \
-          -H "Accept: application/vnd.api+json;revision=1.1" \
-          -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
-          -d "amount=100000" \
-          -d "description=Payout for order #1111" \
-          -d "appears_on_statement_as=GoodCo #1111"
 
 Payout status flow
 -------------------
@@ -175,45 +146,19 @@ API References:
 In the event that you need to cancel a payout, e.g. a user is not
 satisfied with the product, you can create a ``Reversal``.
 
-.. code-block:: ruby
+.. literalinclude:: examples/curl/reversal-create.sh
+   :language: bash
 
-  # credit_href is the stored href for the Credit
-  credit = Balanced::Credit.fetch(credit_href)
-  reversal = credit.reverse(
-    :amount => 100000,
-    :description => 'Reversal for Order #1111',
-    :meta => {
-      'merchant.feedback' => 'positive',
-      'fulfillment.item.condition' => 'OK',
-      'user.refund_reason' => 'not happy with product'
-    }
-  )
+.. literalinclude:: examples/python/reversal-create.py
+   :language: python
 
-.. code-block:: python
+.. literalinclude:: examples/ruby/reversal-create.rb
+   :language: ruby
 
-  # credit_href is the stored href for the Credit
-  credit = balanced.Credit.fetch(credit_href)
-  reversal = credit.reverse(
-      amount=100000,
-      description="Reversal for order #1111",
-      meta={
-          "merchant.feedback": "positive",
-          "user.refund_reason": "not happy with product",
-          "fulfillment.item.condition": "OK",
-      }
-  )
+.. literalinclude:: examples/php/reversal-create.php
+   :language: php
 
-.. code-block:: bash
-
-  # :credit_id is the stored id for the Credit
-  curl https://api.balancedpayments.com/credits/:credit_id/reversals \
-       -H "Accept: application/vnd.api+json;revision=1.1" \
-       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
-       -d "amount=100000" \
-       -d "description=Reversal for Order #1111" \
-       -d "meta[merchant.feedback]=positive" \
-       -d "meta[user.refund_reason]=not happy with product" \
-       -d "meta[fulfillment.item.condition]=OK"
+  
 
 The status flow of a reversal is as follows:
 
@@ -221,15 +166,12 @@ The status flow of a reversal is as follows:
 
 |
 
-Credits may also be reversed from the `Dashboard`_.
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-green
+  
+  Credits may also be reversed from the `Dashboard`_.
 
 
 
-.. _sample page: https://gist.github.com/2662770
-.. _balanced.js: https://js.balancedpayments.com/v1/balanced.js
-.. _testing documentation: /docs/testing#simulating-card-failures
-.. _jQuery: http://www.jquery.com
-.. _issues: https://github.com/balanced/balanced-api/issues
-.. _github issue #151: https://github.com/balanced/balanced-api/issues/151
-.. _github issue #70: https://github.com/balanced/balanced-api/issues/70
 .. _Dashboard: https://dashboard.balancedpayments.com/

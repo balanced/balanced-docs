@@ -68,6 +68,15 @@ done via the API or via the Balanced `dashboard`_. To do this via the API:
     description='Pre-fund Balanced escrow'
   )
 
+.. code-block:: php
+
+  <?php
+  Balanced\Marketplace::mine()->owner_customer->bank_accounts->query()->first()->debits->create(array(
+    "amount" => "2000000",
+    "description" => "Pre-fund Balanced escrow",
+  ));
+  ?>
+
 
 .. tip::
   :header_class: alert alert-tab
@@ -119,6 +128,15 @@ issue a credit:
     amount=2000000,
     description='Credit from Balanced escrow'
   )
+
+.. code-block:: php
+
+  <?php
+  Balanced\Marketplace::mine()->owner_customer->bank_accounts->query()->first()->credits->create(array(
+    "amount" => "2000000",
+    "description" => "Credit from Balanced escrow",
+  ));
+  ?>
 
 Credits can take 1-3 days for the funds to become available depending on
 the target bank.

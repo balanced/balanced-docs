@@ -33,40 +33,49 @@ API References:
 
 First, let's create a ``Card`` to work with.
 
-.. literalinclude:: ruby/card-create.rb
+.. literalinclude:: ../examples/ruby/card-create.rb
    :language: ruby
 
-.. literalinclude:: python/card-create.py
+.. literalinclude:: ../examples/python/card-create.py
    :language: python
 
-.. literalinclude:: curl/card-create.sh
+.. literalinclude:: ../examples/curl/card-create.sh
    :language: bash
+
+.. literalinclude:: ../examples/php/card-create.php
+   :language: php
 
 
 Now that we have a ``Card``, we can charge it. This will issue a ``Debit`` which
 will deduct funds from the target credit card.
 
-.. literalinclude:: ruby/card-debit.rb
+.. literalinclude:: ../examples/ruby/card-debit.rb
    :language: ruby
 
-.. literalinclude:: python/card-debit.py
+.. literalinclude:: ../examples/python/card-debit.py
    :language: python
 
-.. literalinclude:: curl/card-debit.sh
+.. literalinclude:: ../examples/curl/card-debit.sh
    :language: bash
+
+.. literalinclude:: ../examples/php/card-debit.php
+   :language: php
 
 
 Since card debits are immediate, we can check our escrow to see the funds are
 indeed available.
 
-.. literalinclude:: ruby/marketplace-in-escrow.rb
+.. literalinclude:: ../examples/ruby/marketplace-in-escrow.rb
    :language: ruby
 
-.. literalinclude:: python/marketplace-in-escrow.py
+.. literalinclude:: ../examples/python/marketplace-in-escrow.py
    :language: python
 
-.. literalinclude:: curl/marketplace-in-escrow.sh
+.. literalinclude:: ../examples/curl/marketplace-in-escrow.sh
    :language: bash
+
+.. literalinclude:: ../examples/php/marketplace-in-escrow.php
+   :language: php
 
 
 Charging a Bank Account
@@ -99,15 +108,17 @@ API References:
 
 First, let's create a ``BankAccount`` to work with.
 
-.. literalinclude:: ruby/bank-account-create.rb
+.. literalinclude:: ../examples/ruby/bank-account-create.rb
    :language: ruby
 
-.. literalinclude:: python/bank-account-create.py
+.. literalinclude:: ../examples/python/bank-account-create.py
    :language: python
 
-.. literalinclude:: curl/bank-account-create.sh
+.. literalinclude:: ../examples/curl/bank-account-create.sh
    :language: bash
 
+.. literalinclude:: ../examples/php/bank-account-create.php
+   :language: php
 
 We now have a ``BankAccount`` instance to work with. Before a ``BankAccount``
 can be charged (debited) it must be verified with micro deposits. This is done
@@ -117,15 +128,17 @@ bank account. These amounts will show on the bank account statement usually in
 1-2 days. Since time is going to pass here, you probably want to store the
 ``BankAccountVerification`` href to simplify later fetching.
 
-.. literalinclude:: ruby/bank-account-verification-create.rb
+.. literalinclude:: ../examples/ruby/bank-account-verification-create.rb
    :language: ruby
 
-.. literalinclude:: python/bank-account-verification-create.py
+.. literalinclude:: ../examples/python/bank-account-verification-create.py
    :language: python
 
-.. literalinclude:: curl/bank-account-verification-create.sh
+.. literalinclude:: ../examples/curl/bank-account-verification-create.sh
    :language: bash
 
+.. literalinclude:: ../examples/php/bank-account-verification-create.php
+   :language: php
 
 Once the amounts have posted on the bank account statement, the bank account
 owner then should return to your application and enter these amounts into a form
@@ -138,44 +151,34 @@ which sends the values to Balanced as follows:
   The verification values in test marketplaces are always 1 and 1.
 
 
-.. literalinclude:: ruby/bank-account-verification-confirm.rb
+.. literalinclude:: ../examples/ruby/bank-account-verification-confirm.rb
    :language: ruby
 
-.. literalinclude:: python/bank-account-verification-confirm.py
+.. literalinclude:: ../examples/python/bank-account-verification-confirm.py
    :language: python
 
-.. literalinclude:: curl/bank-account-verification-confirm.sh
+.. literalinclude:: ../examples/curl/bank-account-verification-confirm.sh
    :language: bash
+
+.. literalinclude:: ../examples/php/bank-account-verification-confirm.php
+   :language: php
 
 
 At this point we have a verified bank account that we can now charge (debit).
-This will issue a ``Debit`` which will deduct funds from the target credit 
+This will issue a ``Debit`` which will deduct funds from the specified 
 bank account.
 
-.. code-block:: ruby
+.. literalinclude:: ../examples/curl/bank-account-debit.sh
+   :language: bash
 
-  bank_account.debit(
-    :amount => 5000,
-    :appears_on_statement_as => 'Statement text',
-    :description => 'Some descriptive text for the debit in the dashboard'
-  )
+.. literalinclude:: ../examples/python/bank-account-debit.py
+   :language: python
 
-.. code-block:: python
+.. literalinclude:: ../examples/ruby/bank-account-debit.rb
+   :language: ruby
 
-  bank_account.debit(
-    appears_on_statement_as='Statement text',
-    amount=5000,
-    description='Some descriptive text for the debit in the dashboard'
-  )
-
-.. code-block:: bash
-
-  curl https://api.balancedpayments.com/bank_accounts/BA2akihQKCAhhkX5aecSubr2/debits \
-     -H "Accept: application/vnd.api+json;revision=1.1" \
-     -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
-     -d "appears_on_statement_as=Statement text" \
-     -d "amount=5000" \
-     -d "description=Some descriptive text for the debit in the dashboard"
+.. literalinclude:: ../examples/php/bank-account-debit.php
+   :language: php
 
 
 Checkpoint
@@ -190,6 +193,9 @@ Up to this point you should have:
 
 Ensure you have met these points before proceeding.
 
+For additional information, read :doc:`Working with Debits <../debits>`.
+
+|
 
 .. container:: box-left
 

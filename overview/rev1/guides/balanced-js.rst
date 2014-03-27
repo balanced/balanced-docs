@@ -15,6 +15,25 @@ which is `PCI-DSS Level 1 Compliant`_.
    itself doesn't rely on any Javascript framework.
 
 
+Migrating from v1.0
+-----------------------
+
+A few notable changes have occurred between v1.0 and v1.1 in terms of operation.
+
+.. cssclass:: list-noindent
+
+  - \- Credit cards and bank accounts (funding instruments) are now tokenized at the root level
+    (``/cards`` and ``/bank_accounts``) and no longer under marketplaces. As such, tokenizations
+    will no longer appear in Dashboard logs.
+
+  - \- balanced.js no longer requires an init with the marketplace URI.
+
+  - \- Tokenized funding instruments are "claimed" by executing an authenticated request on them
+    such as associating them to a ``Customer`` or a simple fetch (GET).
+
+  - \- Unclaimed tokenized funding instruments are discarded after a short timeframe.
+
+
 .. _balanced-js.include:
 
 Including balanced.js
@@ -33,6 +52,13 @@ Begin by including balanced.js in your application.
 .. code-block:: html
 
   <script type="text/javascript" src="https://js.balancedpayments.com/1.1/balanced.js"></script>
+
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+
+  Balanced recommends against locally hosting versions of balanced.js as this limits the
+  deliverability of important fixes.
 
 
 .. _balanced-js.collecting-card-info:
@@ -189,7 +215,7 @@ our form field values into a payload object and submit it to the Balanced API.
       account_number: $('#ba-number').val()
     };
 
-    // Create credit card
+    // Create bank account
     balanced.bankAccount.create(payload, handleResponse);
   });
 

@@ -45,7 +45,12 @@ Let's begin by creating a ``Customer`` that represents our merchant.
 
   .. literalinclude:: curl/simple/customer-create.sh
      :language: bash
-  
+
+.. container:: section-php
+
+  .. literalinclude:: php/simple/customer-create.php
+    :language: php
+
 
 Next, add a bank account to the merchant. In this guide we will tokenize the
 bank account directly, however, balanced.js should be used to tokenize bank
@@ -66,6 +71,11 @@ information on implementing balanced.js in your application.
 
   .. literalinclude:: curl/simple/bank-account-create.sh
      :language: bash
+
+.. container:: section-php
+
+  .. literalinclude:: php/simple/bank-account-create.php
+    :language: php
 
 
 Now create a buyer and add a card to it. Again, in this guide we will tokenize
@@ -89,6 +99,10 @@ implementing balanced.js in your application.
   .. literalinclude:: curl/simple/create-buyer-and-card.sh
      :language: bash
 
+.. container:: section-php
+
+  .. literalinclude:: php/simple/create-buyer-and-card.php
+    :language: php
 
 Next, create an ``Order``.
 
@@ -106,6 +120,11 @@ Next, create an ``Order``.
 
   .. literalinclude:: curl/simple/order-create.sh
      :language: bash
+
+.. container:: section-php
+
+  .. literalinclude:: php/simple/order-create.php
+    :language: php
 
 
 At this point we have a merchant ``Customer`` with a bank account, a buyer
@@ -128,7 +147,13 @@ and Order.
 .. container:: section-bash
 
   .. literalinclude:: curl/simple/order-update.sh
-     :language: bash
+    :language: bash
+
+.. container:: section-php
+
+  .. literalinclude:: php/simple/order-update.php
+    :language: php
+
 
 
 Let's debit the buyer for this Order. This is accomplished by debiting a
@@ -148,7 +173,13 @@ specific card, in this case, the buyer's, through the Order.
 
   .. literalinclude:: curl/simple/order-debit.sh
      :language: bash
-  
+
+.. container:: section-php
+
+  .. literalinclude:: php/simple/order-debit.php
+    :language: php
+
+
 
 At this point, if we inspect the Order, we'll see it now has an ``amount`` of
 10000 and an escrowed amount of 10000. `amount` is the total amount of the
@@ -169,6 +200,12 @@ Order. ``amount_escrowed`` is the amount available for issuing payouts.
   .. literalinclude:: curl/simple/order-amount-escrowed.sh
      :language: bash
 
+.. container:: section-php
+
+  .. literalinclude:: php/simple/order-amount-escrowed.php
+    :language: php
+
+
 
 Let's issue a payout (credit) to our merchant.
 
@@ -186,6 +223,12 @@ Let's issue a payout (credit) to our merchant.
 
   .. literalinclude:: curl/simple/order-credit.sh
      :language: bash
+
+.. container:: section-php
+
+  .. literalinclude:: php/simple/order-credit.php
+    :language: php
+
 
 
 Now when inspecting the order object we'll see it still has an ``amount`` of 10000
@@ -206,6 +249,11 @@ and ``amount_escrowed`` is now 2000.
   .. literalinclude:: curl/simple/order-amount-escrowed.sh
      :language: bash
 
+.. container:: section-php
+
+  .. literalinclude:: php/simple/order-amount-escrowed.php
+    :language: php
+
 
 We can now retrieve all of the order's debits with:
 
@@ -221,8 +269,14 @@ We can now retrieve all of the order's debits with:
 
 .. container:: section-bash
 
-  .. literalinclude:: curl/simple/order-amount-fetch.sh
-     :language: bash
+  .. literalinclude:: curl/simple/order-debits-fetch.sh
+    :language: bash
+
+.. container:: section-php
+
+  .. literalinclude:: php/simple/order-debits-fetch.php
+    :language: php
+
   
 
 Likewise, we can retrieve all of the order's credits with:
@@ -241,6 +295,11 @@ Likewise, we can retrieve all of the order's credits with:
 
   .. literalinclude:: curl/simple/order-credits-fetch.sh
      :language: bash
+
+.. container:: section-php
+
+  .. literalinclude:: php/simple/order-credits-fetch.php
+    :language: php
 
 
 Checkpoint
