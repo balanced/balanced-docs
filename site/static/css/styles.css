@@ -8675,9 +8675,9 @@ ul + table.footnote {
   background-color: #ffffff;
 }
 /**
- * Default theme
- *
- */
+* Default theme
+*
+*/
 /* Slight reset to make the preview have ample padding. */
 .cse .gsc-control-cse,
 .gsc-control-cse {
@@ -8801,16 +8801,16 @@ input.gsc-search-button {
 .cse .gsc-webResult.gsc-result.gsc-promotion,
 .gsc-webResult.gsc-result.gsc-promotion {
   background-color: #FFFFFF;
-  border-color: #336699;
+  border-color: #4789b0;
 }
 /* Promotion links */
-.cse .gs-promotion a.gs-title:link,
-.gs-promotion a.gs-title:link,
-.cse .gs-promotion a.gs-title:link *,
-.gs-promotion a.gs-title:link *,
-.cse .gs-promotion .gs-snippet a:link,
-.gs-promotion .gs-snippet a:link {
-  color: #0000CC;
+.cse .gs-promotion a.gs-title,
+.gs-promotion a.gs-title,
+.cse .gs-promotion a.gs-title *,
+.gs-promotion a.gs-title *,
+.cse .gs-promotion .gs-snippet a,
+.gs-promotion .gs-snippet a {
+  color: #0063b4;
 }
 .cse .gs-promotion a.gs-title:visited,
 .gs-promotion a.gs-title:visited,
@@ -8818,7 +8818,7 @@ input.gsc-search-button {
 .gs-promotion a.gs-title:visited *,
 .cse .gs-promotion .gs-snippet a:visited,
 .gs-promotion .gs-snippet a:visited {
-  color: #0000CC;
+  color: #0063b4;
 }
 .cse .gs-promotion a.gs-title:hover,
 .gs-promotion a.gs-title:hover,
@@ -8826,7 +8826,7 @@ input.gsc-search-button {
 .gs-promotion a.gs-title:hover *,
 .cse .gs-promotion .gs-snippet a:hover,
 .gs-promotion .gs-snippet a:hover {
-  color: #0000CC;
+  color: #0063b4;
 }
 .cse .gs-promotion a.gs-title:active,
 .gs-promotion a.gs-title:active,
@@ -8834,7 +8834,7 @@ input.gsc-search-button {
 .gs-promotion a.gs-title:active *,
 .cse .gs-promotion .gs-snippet a:active,
 .gs-promotion .gs-snippet a:active {
-  color: #0000CC;
+  color: #0063b4;
 }
 /* Promotion snippet */
 .cse .gs-promotion .gs-snippet,
@@ -8851,9 +8851,9 @@ input.gsc-search-button {
   color: #008000;
 }
 /* Style for auto-completion table
- * .gsc-completion-selected : styling for a suggested query which the user has moused-over
- * .gsc-completion-container : styling for the table which contains the completions
- */
+* .gsc-completion-selected : styling for a suggested query which the user has moused-over
+* .gsc-completion-container : styling for the table which contains the completions
+*/
 .gsc-completion-selected {
   background: #EEE;
 }
@@ -8872,7 +8872,7 @@ input.gsc-search-button {
   width: 474px !important;
 }
 .gsc-completion-title {
-  color: #0000CC;
+  color: #0063b4;
 }
 .gsc-completion-snippet {
   color: #000000;
@@ -8926,8 +8926,8 @@ input.gsc-search-button {
 }
 /** Copyright 2005 Google Inc. All rights reserved. */
 /* the GSearchControl CSS Classes
- * .gsc-control : the primary class of the control
- */
+* .gsc-control : the primary class of the control
+*/
 .gsc-control {
   width: 300px;
 }
@@ -8944,10 +8944,10 @@ input.gsc-search-button {
   position: static;
 }
 /* control inputs
- * .gsc-search-box : the container that hosts the text input area
- * .gsc-input : the text input area
- * .gsc-keeper : the save link below savable results
- */
+* .gsc-search-box : the container that hosts the text input area
+* .gsc-input : the text input area
+* .gsc-keeper : the save link below savable results
+*/
 form.gsc-search-box {
   font-size: 13px;
   margin-top: 0;
@@ -8957,10 +8957,10 @@ form.gsc-search-box {
   width: 100%;
 }
 /*
- * This table contains the input element as well as the search button
- * Note that the search button column is fixed width, designed to hold the
- * button div's background image
- */
+* This table contains the input element as well as the search button
+* Note that the search button column is fixed width, designed to hold the
+* button div's background image
+*/
 table.gsc-search-box {
   border-style: none;
   border-width: 0;
@@ -8981,9 +8981,9 @@ td.gsc-clear-button {
   width: 14px;
 }
 /**
- * undo common generic table rules
- * that tend to impact branding
- */
+* undo common generic table rules
+* that tend to impact branding
+*/
 table.gsc-branding td,
 table.gsc-branding,
 table.gcsc-branding td,
@@ -9169,10 +9169,10 @@ input.gsc-input {
   overflow: hidden;
 }
 /*
- * Given that this is sitting in a variable width tabel cell, the idea is
- * for it to consume the entire cell. The adjacent cell contains the search
- * button and that is a fixed width cell.
- */
+* Given that this is sitting in a variable width tabel cell, the idea is
+* for it to consume the entire cell. The adjacent cell contains the search
+* button and that is a fixed width cell.
+*/
 input.gsc-input {
   padding: 1px 6px;
   border: 1px solid #DDD;
@@ -9189,16 +9189,16 @@ input.gsc-input {
   background-image: url('//www.google.com/uds/css/blue_check.gif');
 }
 /* each section of results has a results header table
- * .gsc-resultsHeader : the header itseld
- * td.twiddleRegionCell : the section that controls twiddleing of the section to expand/collapse
- * td.configLabelCell : the twiddler that controls active configuration of a searcher (used in GlocalSearch)
- * .gsc-twiddle : the twiddle image, note, this is a div that wraps gsc-title so that standard image replacement is feasible
- * .gsc-twiddle-closed : class added to gsc-twiddle when the twiddler is in the closed state
- * .gsc-twiddle-opened : class added to gsc-twiddle when the twiddler is in the opened state
- * .gsc-title : the section's title (e.g., Web Results, etc.)
- * .gsc-stats : contains the result counts
- * .gsc-stats
- */
+* .gsc-resultsHeader : the header itseld
+* td.twiddleRegionCell : the section that controls twiddleing of the section to expand/collapse
+* td.configLabelCell : the twiddler that controls active configuration of a searcher (used in GlocalSearch)
+* .gsc-twiddle : the twiddle image, note, this is a div that wraps gsc-title so that standard image replacement is feasible
+* .gsc-twiddle-closed : class added to gsc-twiddle when the twiddler is in the closed state
+* .gsc-twiddle-opened : class added to gsc-twiddle when the twiddler is in the opened state
+* .gsc-title : the section's title (e.g., Web Results, etc.)
+* .gsc-stats : contains the result counts
+* .gsc-stats
+*/
 .gsc-resultsHeader {
   width: 100%;
   clear: both;
@@ -9211,15 +9211,15 @@ input.gsc-input {
   width: 75%;
 }
 /*
- * note that the next three classes are all joined together
- * to implement the twiddle image. apps can substitute in their
- * own images but will need to account for the image size here
- * as well as in the left padding of the title element
- *
- * Note: uds provides the following images that work with the geometry/padding defined below
- *  to use these images simply over-ride the.gsc-twiddle-opened/-closed class and specify an alternate image
- *  or use an image of your own design
- */
+* note that the next three classes are all joined together
+* to implement the twiddle image. apps can substitute in their
+* own images but will need to account for the image size here
+* as well as in the left padding of the title element
+*
+* Note: uds provides the following images that work with the geometry/padding defined below
+*  to use these images simply over-ride the.gsc-twiddle-opened/-closed class and specify an alternate image
+*  or use an image of your own design
+*/
 .gsc-resultsHeader .gsc-twiddle {
   margin-top: 4px;
   display: inline;
@@ -9249,12 +9249,12 @@ input.gsc-input {
   display: none;
 }
 /*
- * .gsc-results-selector : box surrounding individual selectors for 1, more, or all results
- * .gsc-result-selector : an individual selector
- * .gsc-one-result : single result selector
- * .gsc-more-results : more (4) results selector
- * .gsc-all-results : all results (8) selector
- */
+* .gsc-results-selector : box surrounding individual selectors for 1, more, or all results
+* .gsc-result-selector : an individual selector
+* .gsc-one-result : single result selector
+* .gsc-more-results : more (4) results selector
+* .gsc-all-results : all results (8) selector
+*/
 .gsc-results-selector {
   display: inline;
 }
@@ -9303,15 +9303,15 @@ input.gsc-input {
   background-image: url('//www.google.com/uds/css/settings.gif');
 }
 /* tabbed mode of search control
- * .gsc-tabsArea : the box containing all of the tabs
- * .gsc-tabsAreaInvisible : same as above, but this is the state when search has been cleared
- * .gsc-tabHeader : an individual tab
- * .gsc-tabHeader.gsc-tabhActive : the active tab
- * .gsc-tabHeader.gsc-tabhInactive : an inactive tab
- * .gsc-tabData : the data area/box containg results and header data for each tab
- * .gsc-tabData.gsc-tabdActive : the data area for the active tab
- * .gsc-tabData.gsc-tabdInactive : the data area for inactive tabs
- */
+* .gsc-tabsArea : the box containing all of the tabs
+* .gsc-tabsAreaInvisible : same as above, but this is the state when search has been cleared
+* .gsc-tabHeader : an individual tab
+* .gsc-tabHeader.gsc-tabhActive : the active tab
+* .gsc-tabHeader.gsc-tabhInactive : an inactive tab
+* .gsc-tabData : the data area/box containg results and header data for each tab
+* .gsc-tabData.gsc-tabdActive : the data area for the active tab
+* .gsc-tabData.gsc-tabdInactive : the data area for inactive tabs
+*/
 .gsc-tabsArea {
   clear: both;
   margin-top: 6px;
@@ -9378,10 +9378,10 @@ input.gsc-input {
   cursor: pointer;
 }
 /* tab specific results header supression
- * - no twiddle, tabbed mode runs in full expand mode
- * - no title
- * - no stats
- */
+* - no twiddle, tabbed mode runs in full expand mode
+* - no title
+* - no stats
+*/
 .gsc-tabData .gsc-resultsHeader .gsc-title {
   display: none;
 }
@@ -9392,10 +9392,10 @@ input.gsc-input {
   display: none;
 }
 /* style for auto-completion table
- * .gsc-completion-selected : highlighted completions.
- * .gsc-completion-container : styling for the table which contains the completions
- * .gsc-completion-promotion-selected: highlighted promotions
- */
+* .gsc-completion-selected : highlighted completions.
+* .gsc-completion-container : styling for the table which contains the completions
+* .gsc-completion-promotion-selected: highlighted promotions
+*/
 .gsc-completion-selected {
   background: #EEEEEE;
   cursor: default;
@@ -9415,7 +9415,7 @@ input.gsc-input {
   margin: 0;
 }
 .gsc-completion-title {
-  color: #0000cc;
+  color: #0063b4;
   line-height: normal;
   white-space: normal;
 }
@@ -9442,10 +9442,10 @@ input.gsc-input {
   width: 100%;
 }
 /* the results for each section
- * .gsc-resultsbox-{visible,invisible} : a complete-collection of results including headers
- * .gsc-results : the collection of results for a given searcher
- * .gsc-result : a generic result within the control. each result has this class, as well as .gsc-xxxResult where xxx is web, image, local, blog, etc.
- */
+* .gsc-resultsbox-{visible,invisible} : a complete-collection of results including headers
+* .gsc-results : the collection of results for a given searcher
+* .gsc-result : a generic result within the control. each result has this class, as well as .gsc-xxxResult where xxx is web, image, local, blog, etc.
+*/
 .gsc-resultsbox-visible {
   display: block;
 }
@@ -9461,7 +9461,7 @@ input.gsc-input {
   border-bottom-width: 0px;
 }
 .gsc-result .gs-title {
-  height: 1.4em;
+  height: auto;
   overflow: hidden;
 }
 /* specialized, result type specific, fine grained controls */
@@ -9469,7 +9469,7 @@ input.gsc-input {
   display: none;
 }
 /* Ads
- */
+*/
 .gsc-results .gsc-result img.gs-ad-marker {
   display: none;
 }
@@ -9497,7 +9497,7 @@ input.gsc-input {
 }
 .gsc-adBlock .gsc-ad a {
   font-weight: bolder;
-  color: #0000CC;
+  color: #0063b4;
   line-height: 1.4em;
 }
 .gsc-adBlock .gsc-ad cite {
@@ -9539,13 +9539,24 @@ input.gsc-input {
   color: #676767;
   margin-top: 6px;
 }
+.google-remove-watermark {
+  width: 100%;
+  padding: 0px;
+  border: none;
+  margin: -0.0625em 0px 0px;
+  height: 1.25em;
+  outline: none;
+  background-color: #59606B;
+  background-position: 0% 50%;
+  background-repeat: no-repeat no-repeat;
+}
 .gsc-adBlockVertical .gsc-ad {
   padding-left: 8px;
   padding-top: 5px;
 }
 .gsc-adBlockVertical .gsc-ad a {
   font-weight: bolder;
-  color: #0000CC;
+  color: #0063b4;
   line-height: 1.4em;
 }
 .gsc-adBlockVertical .gsc-ad cite {
@@ -9868,7 +9879,7 @@ div.gs-action.link a.gs-action {
   background-position: -159px -321px;
 }
 /* Image Search
- */
+*/
 .gsc-imageResult .gs-imageResult .gs-text-box .gs-ellipsis {
   overflow: hidden;
   text-align: left;
@@ -10014,8 +10025,8 @@ div.gs-action.link a.gs-action {
   display: none;
 }
 /* Video Search
- * - single line title
- */
+* - single line title
+*/
 .gsc-videoResult .gs-videoResult .gs-title {
   line-height: 1.3em;
   height: 1.3em;
@@ -10027,8 +10038,8 @@ div.gs-action.link a.gs-action {
   overflow: hidden;
 }
 /* trailing more link at the bottom of
- * a collection of results
- */
+* a collection of results
+*/
 .gsc-imageResult .gsc-trailing-more-results {
   clear: both;
 }
@@ -10037,10 +10048,10 @@ div.gs-action.link a.gs-action {
 }
 .gsc-results .gsc-trailing-more-results,
 .gsc-results .gsc-trailing-more-results * {
-  color: #0000cc;
+  color: #0063b4;
 }
 /* trailing cursor section
- */
+*/
 .gsc-imageResult .gsc-cursor-box {
   clear: both;
 }
@@ -10075,24 +10086,24 @@ div.gs-action.link a.gs-action {
 }
 /*** End of Control, Begin Results ***/
 /* generic, cross cutting result style
- * - in the form of .gs-result .gs-xxx where xxx is the generic style
- * .gs-title : typically the first line of a result, typically a link, image results over ride this, since for image results, the image is the link
- * .gs-divider : typically seperates results from ads
- * .gs-visibleUrl : typically the last line of a result, displayed in green. sometimes a link (like in blog search)
- * .gs-clusterUrl : for news, and other similar services, this is a cluster of additional results
- * img.gs-image : an actial image in a result
- * .gs-phone : a phone number
- * .gs-address : an address (includes street, city, region, country)
- * .gs-streetAddress : a street (including #)
- * .gs-city : a city
- * .gs-region : a region (zip code, area, etc.)
- * .gs-country : a country
- * .gs-snippet : snippetized content
- * .gs-watermark : indicator that user selected this result
- * .gs-metadata : generic metadata, e.g.,
- * .gs-image-box : generic container for a result's image (within a table)
- * .gs-text-box : generic container for a result's text content (within a table). Note that this class, and image-box are only used in video
- */
+* - in the form of .gs-result .gs-xxx where xxx is the generic style
+* .gs-title : typically the first line of a result, typically a link, image results over ride this, since for image results, the image is the link
+* .gs-divider : typically seperates results from ads
+* .gs-visibleUrl : typically the last line of a result, displayed in green. sometimes a link (like in blog search)
+* .gs-clusterUrl : for news, and other similar services, this is a cluster of additional results
+* img.gs-image : an actial image in a result
+* .gs-phone : a phone number
+* .gs-address : an address (includes street, city, region, country)
+* .gs-streetAddress : a street (including #)
+* .gs-city : a city
+* .gs-region : a region (zip code, area, etc.)
+* .gs-country : a country
+* .gs-snippet : snippetized content
+* .gs-watermark : indicator that user selected this result
+* .gs-metadata : generic metadata, e.g.,
+* .gs-image-box : generic container for a result's image (within a table)
+* .gs-text-box : generic container for a result's text content (within a table). Note that this class, and image-box are only used in video
+*/
 .gs-result .gs-title,
 .gs-result .gs-title * {
   color: #0096af;
@@ -10139,13 +10150,13 @@ div.gs-action.link a.gs-action {
   text-decoration: none;
 }
 /*
- * For news results there are two dates...
- * The relative date is visible while in the
- * search control and the published date
- * is visible when clipped. Why? It doesn't
- * make sense to say 4 hours ago for a clipped
- * result...
- */
+* For news results there are two dates...
+* The relative date is visible while in the
+* search control and the published date
+* is visible when clipped. Why? It doesn't
+* make sense to say 4 hours ago for a clipped
+* result...
+*/
 /* establish the base style */
 .gs-newsResult .gs-relativePublishedDate,
 .gs-newsResult .gs-publishedDate {
@@ -10227,14 +10238,14 @@ span.gs-fileFormatType {
   cursor: pointer;
 }
 /* wrapper around user supplied to/from mode directions
- * normally this is disabled by default, and gs-directions is enabled
- * apps can easily switch this by setting display:block on the rule below,
- * and display:none on the rule above
- * e.g., add these two rules to switch local results into
- * alternate style driving directions
- * .gs-localResult .gs-directions-to-from { display : block; }
- * .gs-localResult .gs-directions { display : none; }
- */
+* normally this is disabled by default, and gs-directions is enabled
+* apps can easily switch this by setting display:block on the rule below,
+* and display:none on the rule above
+* e.g., add these two rules to switch local results into
+* alternate style driving directions
+* .gs-localResult .gs-directions-to-from { display : block; }
+* .gs-localResult .gs-directions { display : none; }
+*/
 .gs-result .gs-directions-to-from {
   display: none;
   margin-top: 4px;
@@ -10294,38 +10305,38 @@ div.gs-results-attribution * {
   text-decoration: none;
 }
 div.gs-results-attribution a {
-  color: #0000cc;
+  color: #0063b4;
   cursor: pointer;
 }
 .gs-result .gs-metadata {
   color: #676767;
 }
 /* searcher specific styling for
- * - web ad
- * - web
- * - local
- * - image (none)
- * - blog (none)
- * - video (none)
- */
+* - web ad
+* - web
+* - local
+* - image (none)
+* - blog (none)
+* - video (none)
+*/
 /* webAd search specific over rides
- * .gs-ad-marker : disabled in control, but on in green to indicate clipped result is an ad
- */
+* .gs-ad-marker : disabled in control, but on in green to indicate clipped result is an ad
+*/
 .gs-localAd img.gs-ad-marker,
 .gs-webAd img.gs-ad-marker {
   padding-left: 4px;
 }
 /* default is to not show long mode visible urls
- * apps should selectively enable this while disabling
- * div.gs-visibleUrl-short
- */
+* apps should selectively enable this while disabling
+* div.gs-visibleUrl-short
+*/
 .gs-webResult div.gs-visibleUrl-long,
 .gs-promotion div.gs-visibleUrl-long {
   overflow: hidden;
   display: none;
 }
 /* Per result labels
- */
+*/
 .gs-webResult div.gs-per-result-labels a.gs-label {
   cursor: pointer;
   padding: 3px;
@@ -10336,10 +10347,10 @@ div.gs-results-attribution a {
   text-decoration: none;
 }
 /* local search specific over rides
- * - city, region displayed inline
- * - country supressed
- * - small font size for info window's
- */
+* - city, region displayed inline
+* - country supressed
+* - small font size for info window's
+*/
 .gs-localAd div.gs-address * {
   color: #676767;
 }
@@ -10359,10 +10370,10 @@ div.gs-infoWindow * {
   font-size: 11px;
 }
 /* video search specific over rides
- * - align the table data
- * - default image width garuntee
- * - appropriate cell seperation
- */
+* - align the table data
+* - default image width garuntee
+* - appropriate cell seperation
+*/
 /* todo(markl): workaround until gre in gmail fixes his styles */
 .gs-videoResult * {
   font-size: 13px;
@@ -10384,9 +10395,9 @@ div.gs-infoWindow * {
   margin-left: 4px;
 }
 /* book search specific over rides
- * - default image width garuntee
- * - appropriate cell seperation
- */
+* - default image width garuntee
+* - appropriate cell seperation
+*/
 div.gs-book-image-box td,
 .gs-bookResult td {
   vertical-align: top;
@@ -10436,9 +10447,9 @@ div.gs-book-image-box img.gs-image {
   margin-left: 4px;
 }
 /* book search specific over rides
- * - default image width garuntee
- * - appropriate cell seperation
- */
+* - default image width garuntee
+* - appropriate cell seperation
+*/
 .gs-patentResult td {
   vertical-align: top;
 }
@@ -10454,7 +10465,7 @@ div.gs-book-image-box img.gs-image {
   border: 1px solid #7777cc;
 }
 .gs-spelling a {
-  color: #0000cc;
+  color: #0063b4;
   cursor: pointer;
 }
 .gsc-control-cse:after {
@@ -10579,9 +10590,9 @@ div.gs-book-image-box img.gs-image {
   cursor: pointer;
 }
 /*
- * Cross-browser implementation of the "display: inline-block" CSS property.
- * See http://www.w3.org/TR/CSS21/visuren.html#propdef-display for details.
- */
+* Cross-browser implementation of the "display: inline-block" CSS property.
+* See http://www.w3.org/TR/CSS21/visuren.html#propdef-display for details.
+*/
 /* Gecko hack */
 html > body .gsc-inline-block {
   display: -moz-inline-box;
@@ -10658,7 +10669,7 @@ html > body .gsc-inline-block {
   white-space: nowrap;
   margin-top: 10px;
   font-size: 13px;
-  color: #0000CC;
+  color: #0063b4;
   text-overflow: ellipsis;
   overflow: hidden;
   display: block;
