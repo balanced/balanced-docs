@@ -18,24 +18,19 @@
   api/reversals
 
 
-API reference
-=============
+Balanced API Documentation
+==========================
 
-.. container:: header3
+Welcome to the documentation for the Balanced API! Balanced's API is a REST API
+based on the `JSON API <http://jsonapi.org>`_ specification. All of the details
+are re-explained here, but if you've used other JSON APIs, you will find it
+familliar.
 
-   The API conforms to the design principles of JSON API. It supports only the JSON data format.
+There are two ways to browse our documentation. The sidebar on the left
+contains API level documentation, which explains the specifics of the various
+entities and how to interact with them. In the upper left part of the page, there
+is a drop-down menu, from which you can choose the 'Overview', which contains
+long-form, guides style documentation. That menu also contains a link to the FAQ.
 
-
-Using REST
-----------
-
-.. container:: compact
-
-  Methods to retrieve data from the Balanced API require an HTTP ``GET`` request.
-
-  Methods that submit data to the Balanced API require an HTTP ``POST`` request.
-
-  Methods that change data in the Balanced API require an HTTP ``PUT`` request.
-
-  Methods that destroy data in the Balanced API require an HTTP ``DELETE`` request.
-
+If you're not sure where to start, the `Getting Started Guide
+<../overview/getting-started/>`_ is a good place.
