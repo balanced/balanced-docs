@@ -101,7 +101,7 @@ strapped:
 
 # --line-numbers=mediaquery <-- use this to debug the compiled less
 $(SITE_DIR)/static/css/styles.css: $(wildcard $(SITE_DIR)/static/less/*.less)
-	./node_modules/.bin/lessc $(SITE_DIR)/static/less/base.less $@
+	$(SITE_DIR)/static/less/base.less $@
 
 $(SITE_DIR)/static/js/compiled.js: $(wildcard $(SITE_DIR)/static/js/*.js)
 	cat $(SITE_DIR)/static/js/bootstrap.min.js 		\
