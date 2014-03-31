@@ -149,7 +149,7 @@ our form field values into a payload object and submit it to the Balanced API.
 Collecting bank account information
 ----------------------------------
 
-Before we can collect credit card information, we need a place where users can
+Before we can collect bank account information, we need a place where users can
 enter it in, a form. The example below is extracted from this
 `jsFiddle example`_.
 
