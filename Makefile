@@ -52,8 +52,6 @@ prep-dirs:
 cp-static:
 	cp -r $(ASSET_DIR)/img $(BUILD_DIR)/static/img
 	cp -r $(ASSET_DIR)/fonts $(BUILD_DIR)/static/fonts
-	cp -r $(ASSET_DIR)/bower_components/strapped/static/fonts $(BUILD_DIR)/static/fonts
-	cp -r $(ASSET_DIR)/bower_components/strapped/static/images $(BUILD_DIR)/static/img
 
 pkg-old-revisions:
 	cp -r $(ASSET_DIR)/doc-archives/* $(BUILD_DIR)/
@@ -86,10 +84,14 @@ overview-clean:
 	-rm -rf overview/rev*/html
 	-rm -f *.cache
 
+# static files
 bowerize:
 	bower install --allow-root --config.interactive=false strapped
+	cp -r $(ASSET_DIR)/bower_components/strapped/static/less $(ASSET_DIR)/less/strapped
+	cp -r $(ASSET_DIR)/bower_components/strapped/static/fonts $(ASSET_DIR)/fonts
+	cp -r $(ASSET_DIR)/bower_components/strapped/static/images $(ASSET_DIR)/img
 
-compile-less: $(wildcard $(ASSET_DIR)/less/*.less) $(wildcard $(ASSET_DIR)/bower_components/strapped/static/less/*.less)
+compile-less: $(wildcard $(ASSET_DIR)/less/*.less)
 	lessc $(ASSET_DIR)/less/base.less > $(BUILD_DIR)/static/css/styles.css
 
 compile-js:
