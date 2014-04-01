@@ -58,4 +58,5 @@ site/1.1
 site/static/fonts/
 site/static/less/strapped/
 site/static/img/images/
-bower_components
+assets/bower_components
+assets/less/strapped

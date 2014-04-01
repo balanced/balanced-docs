@@ -1,0 +1,1750 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
+      <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
+      <link href="/static/css/styles.css" rel="stylesheet">
+      <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+
+     <!-- <script src="static/js/html5shiv.js"></script> -->
+      <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar-nav" data-offset="200">
+
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="row">
+          <div class="logo">
+            <a class="brand" href="https://www.balancedpayments.com"></a>
+          </div>
+          <div class="span22">
+            <ul class="nav nav-api-context">
+  	          <li class="dropdown">
+                <a class="dropdown-toggle context api-context" data-toggle="dropdown" id="context-dropdown-head">
+                  <div id="logo"></div>
+                  API Reference
+                  <b class="caret"></b>
+                </a>
+          	    <ul class="dropdown-menu context">
+          		    <li>
+                    <a class="context-change" data-context="api" href="/1.0/overview/">Overview</a>
+                  </li>
+          		    <li>
+                    <a class="context-change" data-context="faq" href="https://support.balancedpayments.com/hc/en-us">FAQ</a>
+                  </li>
+          	    </ul>
+              </li>
+            </ul>
+    
+    	      <ul class="nav nav-api-version">
+              <li class="dropdown">
+                <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">v 1.0
+                  <b class="caret"></b>
+                </a>
+      	        <ul class="dropdown-menu version">
+      		        <li>
+                    <a class="version-change" data-version="1.1" href="/1.1/api/">v 1.1</a>
+                  </li>
+      	        </ul>
+              </li>
+    	      </ul>
+    
+            <ul class="nav nav-api-clients">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle lang" id="lang-dropdown-head" data-toggle="dropdown">lang: CURL <b class="caret"></b></a>
+                <ul class="dropdown-menu lang">
+                  <li><a class="lang-change" data-lang="ruby" href="#">Ruby</a></li>
+                  <li><a class="lang-change" data-lang="python" href="#">Python</a></li>
+                  <li><a class="lang-change" data-lang="php" href="#">PHP</a></li>
+                  <li><a class="lang-change" data-lang="java" href="#">Java</a></li>
+                  <li><a class="lang-change" data-lang="bash" href="#">CURL</a></li>
+                </ul>
+              </li>
+            </ul>
+              <ul class="nav search">
+                  <div class="icon-search"></div>
+                  <div id='cse'></div>
+                  <script src='//www.google.com/jsapi' type='text/javascript'></script>
+                  <script type='text/javascript'>
+                      google.load('search', '1', {language: 'en', style: google.loader.themes.V2_DEFAULT});
+                      google.setOnLoadCallback(function() {
+                          var customSearchOptions = {};
+                          customSearchOptions['overlayResults'] = true;
+                          var customSearchControl =   new google.search.CustomSearchControl('017607265209527678717:hqn2c1cpavy', customSearchOptions);
+                          customSearchControl.setResultSetSize(google.search.Search.SMALL_RESULTSET);
+                          customSearchControl.setLinkTarget(google.search.Search.LINK_TARGET_SELF );
+                          var options = new google.search.DrawOptions();
+                          options.setAutoComplete(true);
+                          customSearchControl.draw('cse', options);
+                      }, true);
+                  </script>
+              </ul>
+          </div>
+          <ul class="nav nav-links pull-right">
+            <li>
+              <a href="/1.1/overview/#support">Help</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+  
+    <div class="api-version-rev">
+      
+      <div class="container content" id="overview-content">
+        <div class="row">
+
+          <div id="sidebar-top" style="display:none">
+            <div id="sidebar-top-content">
+              <ul class="inline">
+                <li style="vertical-align: middle;">
+                  <div id="logo" style="background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAMAAAC+oj0CAAAAV1BMVEVymix4oi/vQDXjPDJ4oi94oi/vQDXvQDXvQDXvQDV4oi91ni7vQDXqPjN4oi/foRLanRHopxNznC3mPTPopxPopxMAAABwmCzgPDHanRHopxN4oi/vQDXwPhJhAAAAF3RSTlPbICDbYBBQYEAQgLOAs1DH7hDHx6CAAHwvTFAAAABmSURBVHja1cjXDYAwDABR01sCpAEh2X9ObCFkJLMA93cPSpcPtb0a92QLqDLWsdYJA8iUY7aJulkzTzdr4p55Jp1gUM61uOzWjg1sn/2Iw7IEyeHEguCVeBUciaNgT+wFG49qnrsAe+cllBc1FLYAAAAASUVORK5CYII=) no-repeat center;width: 25px;height: 25px;float: left;">
+                  </div>
+                </li>
+                <li id="context-title" style="font-size: 16px;">API Reference</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="span6 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+              <div class="row">
+                <div class="span6">
+                  <div class="nav nav-list context-navlist">
+                    <!-- The table of contents menu -->
+                    <ul class="nav nav-list context-navlist">
+<li class="toctree-l1">Authentication<ul>
+<li class="toctree-l2"><a class="reference internal" href="../authentication/#authenticating-to-balanced">Authenticating to Balanced</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Bank Accounts<ul>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#creating-a-new-bank-account">Creating a New Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#retrieve-a-bank-account">Retrieve a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#list-all-bank-accounts">List All Bank Accounts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-accounts/#delete-a-bank-account">Delete a Bank Account</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Bank Account Verifications<ul>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#create-a-bank-account-verification">Create a Bank Account Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#retrieve-a-bank-account-verification">Retrieve a Bank Account Verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bank-account-verifications/#confirm-a-bank-account-verification">Confirm a Bank Account Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Cards<ul>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#tokenize-a-card">Tokenize a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#retrieve-a-card">Retrieve a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#list-all-cards">List All Cards</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#update-a-card">Update a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#invalidating-a-card">Invalidating a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#charging-a-card">Charging a Card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cards/#deleting-a-card">Deleting a Card</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Credits<ul>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#credit-a-new-bank-account">Credit a New Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#credit-an-existing-bank-account">Credit An Existing Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#retrieve-a-credit">Retrieve a Credit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#list-all-credits">List All Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#list-all-credits-for-a-bank-account">List All Credits For a Bank Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#create-a-new-credit-for-a-customer">Create a New Credit For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../credits/#listing-all-credits-for-a-customer">Listing All Credits For a Customer</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Customers<ul>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#creating-a-customer">Creating a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#adding-a-card-to-a-customer">Adding a Card to a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#adding-a-bank-account-to-a-customer">Adding a Bank Account to a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../customers/#delete-a-customer">Delete a Customer</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Debits<ul>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#create-a-new-debit">Create a New Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#retrieve-a-debit">Retrieve a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#list-all-debits">List All Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#list-all-debits-for-a-customer">List All Debits For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#update-a-debit">Update a Debit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../debits/#refund-a-debit">Refund a Debit</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Events<ul>
+<li class="toctree-l2"><a class="reference internal" href="../events/#event-types">Event types</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events/#retrieve-an-event">Retrieve an Event</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events/#list-all-events">List all Events</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Holds<ul>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#create-a-new-hold">Create a New Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#retrieve-a-hold">Retrieve a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#list-all-holds">List all Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#list-all-holds-for-a-customer">List All Holds For a Customer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#update-a-hold">Update a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#capture-a-hold">Capture a Hold</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../holds/#void-a-hold">Void a Hold</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Accounts (deprecated)<ul>
+<li class="toctree-l2"><a class="reference internal" href="../accounts/#creating-an-account">Creating an Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../accounts/#adding-a-card-to-an-account">Adding a Card to an Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../accounts/#adding-a-bank-account-to-an-account">Adding a Bank Account To an Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../accounts/#underwriting-an-individual">Underwriting an Individual</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../accounts/#underwriting-a-business">Underwriting a Business</a></li>
+</ul>
+</li>
+</ul>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="context-content" class="span19 offset1">
+            
+  <section id="refunds">
+<span id="id1"></span><h1>Refunds<a class="headerlink" href="#refunds" title="Permalink to this headline">∵</a></h1>
+<section class="method-section" id="issue-a-refund">
+<h2>Issue a Refund<a class="headerlink" href="#issue-a-refund" title="Permalink to this headline">∵</a></h2>
+<p>Issues a refund from a debit. You can either refund the full amount of the
+debit or you can issue a partial refund, where the amount is less than the
+charged amount.</p>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>amount</code></span></dt>
+<dd><em>optional</em> <strong>integer</strong>. USD cents. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
+<dt><span class="docutils literal"><code>description</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values. Defaults to <span class="docutils literal"><code>{}</code></span>.</dd>
+<dt><span class="docutils literal"><code>debit_uri</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>. USD cents. If the resolving URI references a <span class="docutils literal"><code>debit</code></span> then that
+is used as the default. Otherwise no default is provided and this field
+is <strong>required</strong>.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>POST https://api.balancedpayments.com/customers/:customer_id/refunds
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Debit</span><span class="o">.</span><span class="n">refund</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Debit</span><span class="o">.</span><span class="n">refund</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\Debit-&gt;refund()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Debit</span><span class="o">.</span><span class="na">refund</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds <span class="se">\</span>
+     -u ak-test-2755A6Q56FwdnGMNXK72fHjCSXXlruJe6: <span class="se">\</span>
+     -d <span class="s2">&quot;debit_uri=/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD5iP67XF8HbnQr7ZUltoJts&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;description=Refund for Order #1111&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;meta[merchant.feedback]=positive&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;meta[user.refund_reason]=not happy with product&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;meta[fulfillment.item.condition]=OK&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">debit</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Debit</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/v1/marketplaces/TEST-MP52IlCmywk6hGbgS75QSlN/debits/WD3dI1cfIvXo7p2f9tNMNSc2&#39;</span><span class="p">)</span>
+<span class="n">debit</span><span class="o">.</span><span class="n">refund</span><span class="p">(</span>
+    <span class="n">description</span><span class="o">=</span><span class="s">&#39;Refund for Order #1111&#39;</span><span class="p">,</span>
+    <span class="n">meta</span><span class="o">=</span><span class="p">{</span>
+        <span class="s">&#39;fulfillment.item.condition&#39;</span><span class="p">:</span> <span class="s">&#39;OK&#39;</span><span class="p">,</span>
+        <span class="s">&#39;user.refund_reason&#39;</span><span class="p">:</span> <span class="s">&#39;not happy with product&#39;</span><span class="p">,</span>
+        <span class="s">&#39;merchant.feedback&#39;</span><span class="p">:</span> <span class="s">&#39;positive&#39;</span><span class="p">,</span>
+    <span class="p">},</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+<span class="n">debit</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Debit</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/v1/marketplaces/TEST-MP4h8BxozeLxe7VAllP6b5gj/debits/WD1aYGtAuoJxpGSUYr8jVlyy&#39;</span><span class="p">)</span>
+<span class="n">debit</span><span class="o">.</span><span class="n">refund</span><span class="p">(</span>
+  <span class="ss">:description</span> <span class="o">=&gt;</span> <span class="s1">&#39;Refund for Order #1111&#39;</span><span class="p">,</span>
+  <span class="ss">:meta</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="s1">&#39;fulfillment.item.condition&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OK&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;merchant.feedback&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;positive&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;user.refund_reason&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;not happy with product&#39;</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$debit</span> <span class="o">=</span> <span class="nx">Balanced\Debit</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/v1/marketplaces/TEST-MP4K6K0PWGyPtXL4LZ42sQSb/debits/WD7omMnm45N2JcPZ6fcaRRgY&quot;</span><span class="p">);</span>
+<span class="nv">$debit</span><span class="o">-&gt;</span><span class="na">refund</span><span class="p">(</span>
+    <span class="k">null</span><span class="p">,</span>
+    <span class="s2">&quot;Refund for Order #1111&quot;</span><span class="p">,</span>
+    <span class="k">array</span><span class="p">(</span>
+            <span class="s2">&quot;fulfillment.item.condition&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;merchant.feedback&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;positive&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;user.refund_reason&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;not happy with product&quot;</span><span class="p">,</span>
+        <span class="p">)</span>
+<span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Debit</span> <span class="n">debit</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Debit</span><span class="o">(</span><span class="s">&quot;/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/debits/WDE7lu1wLfsf2JhWHYM6U2W&quot;</span><span class="o">);</span>
+<span class="n">debit</span><span class="o">.</span><span class="na">refund</span><span class="o">();</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;refund&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+    <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:31.609442Z&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;customer&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/bank_accounts&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;business_name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/cards&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.554918Z&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/credits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/debits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;destination&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;dob&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;ein&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;facebook&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/holds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;is_identity_verified&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
+        <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;phone&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/reversals&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/cards/CC5lS6EhNdO4fDFr9pazANDa&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;ssn_last4&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/transactions&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;twitter&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;debit&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;debit&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;events&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;hold_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;hold&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;hold&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+        <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;available_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.834012Z&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:29.540541Z&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/debits/WD5iP67XF8HbnQr7ZUltoJts/events&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;fee&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;hold_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/holds/HL5iOa2Fsq2HvjLU0WAAh3NA&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;WD5iP67XF8HbnQr7ZUltoJts&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+        <span class="s2">&quot;on_behalf_of&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD5iP67XF8HbnQr7ZUltoJts/refunds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/cards/CC5lS6EhNdO4fDFr9pazANDa&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;W999-015-4014&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD5iP67XF8HbnQr7ZUltoJts&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Refund for Order #1111&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/refunds/RF5l9e2lPpmscJWiRjFfk1ue/events&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;fee&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;RF5l9e2lPpmscJWiRjFfk1ue&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;fulfillment.item.condition&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;merchant.feedback&quot;</span><span class="o">:</span> <span class="s2">&quot;positive&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;user.refund_reason&quot;</span><span class="o">:</span> <span class="s2">&quot;not happy with product&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;RF336-934-5507&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds/RF5l9e2lPpmscJWiRjFfk1ue&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section class="method-section" id="retrieve-a-refund">
+<h2>Retrieve a Refund<a class="headerlink" href="#retrieve-a-refund" title="Permalink to this headline">∵</a></h2>
+<p>Retrieves the details of a refund that you've previously created. Use the
+<span class="docutils literal"><code>uri</code></span> that was previously returned, and the corresponding refund
+information will be returned.</p>
+<div class="method-description">
+</div>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>GET https://api.balancedpayments.com/customers/:customer_id/refunds/:refund_id
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Refund</span><span class="o">.</span><span class="n">find</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Refund</span><span class="o">.</span><span class="n">find</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\Refund::get</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Refund</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds/RF5l9e2lPpmscJWiRjFfk1ue <span class="se">\</span>
+     -u ak-test-2755A6Q56FwdnGMNXK72fHjCSXXlruJe6:
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">refund</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Refund</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/v1/customers/CU35rlJBXqlvD9LC26PWu0cy/refunds/RF3fVPCag0ppfvvWLSc2oQ4O&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+<span class="n">refund</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Refund</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/v1/customers/ACO702cHD2tPiOCRSKYzVf1/refunds/RF1cWzNKWwQnCCbeonFdLVkC&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$refund</span> <span class="o">=</span> <span class="nx">Balanced\Refund</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/v1/customers/CU7gMTGKh2yGHYn1lUxH9STS/refunds/RF7qwuLxprQJuVGf7sTAdwKc&quot;</span><span class="p">);</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Refund</span> <span class="n">refund</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Refund</span><span class="o">(</span><span class="s">&quot;/v1/customers/CUuDKfPHvZhTmaNbEsg1BOO/refunds/RFHBiohkzkfO6RPYOrjc9US&quot;</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;refund&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;account&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/bank_accounts&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/cards&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.554918Z&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/credits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/debits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;email_address&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/holds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/refunds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/reversals&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;roles&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;buyer&quot;</span>
+        <span class="p">],</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/transactions&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+    <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:31.609442Z&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;customer&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/bank_accounts&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;business_name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/cards&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.554918Z&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/credits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/debits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;destination&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;dob&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;ein&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;facebook&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/holds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;is_identity_verified&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
+        <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;phone&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/reversals&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/cards/CC5lS6EhNdO4fDFr9pazANDa&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;ssn_last4&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/transactions&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;twitter&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;debit&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;debit&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;account_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;events&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;hold_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;hold&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;hold&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;account_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+        <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;available_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.834012Z&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:29.540541Z&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/debits/WD5iP67XF8HbnQr7ZUltoJts/events&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;fee&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;hold_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/holds/HL5iOa2Fsq2HvjLU0WAAh3NA&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;WD5iP67XF8HbnQr7ZUltoJts&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+        <span class="s2">&quot;on_behalf_of&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD5iP67XF8HbnQr7ZUltoJts/refunds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/cards/CC5lS6EhNdO4fDFr9pazANDa&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;W999-015-4014&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD5iP67XF8HbnQr7ZUltoJts&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Refund for Order #1111&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/refunds/RF5l9e2lPpmscJWiRjFfk1ue/events&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;fee&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;RF5l9e2lPpmscJWiRjFfk1ue&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;fulfillment.item.condition&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;merchant.feedback&quot;</span><span class="o">:</span> <span class="s2">&quot;positive&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;user.refund_reason&quot;</span><span class="o">:</span> <span class="s2">&quot;not happy with product&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;RF336-934-5507&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/refunds/RF5l9e2lPpmscJWiRjFfk1ue&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section class="method-section" id="list-all-refunds">
+<h2>List All Refunds<a class="headerlink" href="#list-all-refunds" title="Permalink to this headline">∵</a></h2>
+<p>Returns a list of refunds you've previously created. The refunds are returned
+in sorted order, with the most recent refunds appearing first.</p>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>limit</code></span></dt>
+<dd><em>optional</em> integer. Defaults to <span class="docutils literal"><code>10</code></span>.</dd>
+<dt><span class="docutils literal"><code>offset</code></span></dt>
+<dd><em>optional</em> integer. Defaults to <span class="docutils literal"><code>0</code></span>.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>GET https://api.balancedpayments.com/marketplaces/:marketplace_id/refunds
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Refund</span><span class="o">.</span><span class="n">query</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Refund</span><span class="o">.</span><span class="n">all</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\Marketplace::mine()-&gt;refunds</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Refund</span><span class="o">.</span><span class="na">Collection</span><span class="o">(</span><span class="n">String</span> <span class="n">uri</span><span class="o">)</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/refunds?limit<span class="o">=</span>2 <span class="se">\</span>
+      -u ak-test-2755A6Q56FwdnGMNXK72fHjCSXXlruJe6:
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">refunds</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Refund</span><span class="o">.</span><span class="n">query</span><span class="o">.</span><span class="n">all</span><span class="p">();</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+<span class="n">marketplace</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Marketplace</span><span class="o">.</span><span class="n">my_marketplace</span>
+
+<span class="n">refunds</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Refund</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="ss">:limit</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$marketplace</span> <span class="o">=</span> <span class="nx">Balanced\Marketplace</span><span class="o">::</span><span class="na">mine</span><span class="p">();</span>
+<span class="nv">$refunds</span> <span class="o">=</span> <span class="nv">$marketplace</span><span class="o">-&gt;</span><span class="na">refunds</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Refund</span><span class="o">.</span><span class="na">Collection</span> <span class="n">refunds</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Refund</span><span class="o">.</span><span class="na">Collection</span><span class="o">(</span><span class="s">&quot;/v1/marketplaces/TEST-MP5FKPQwyjvVgTDt7EiRw3Kq/refunds&quot;</span><span class="o">);</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;first_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;first&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;last_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;last&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;next_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;next&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;previous_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;previous&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;first_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/refunds?limit=2&amp;offset=0&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;refund&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;account&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span> 
+                <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/bank_accounts&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/cards&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.554918Z&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/credits&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/debits&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;email_address&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/holds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/refunds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/reversals&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;roles&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;buyer&quot;</span>
+                <span class="p">],</span> 
+                <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/transactions&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+            <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:31.609442Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;customer&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span> 
+                <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+                <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/bank_accounts&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;business_name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/cards&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.554918Z&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/credits&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/debits&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;destination&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;dob&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;ein&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;facebook&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/holds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;is_identity_verified&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
+                <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;phone&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/reversals&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/cards/CC5lS6EhNdO4fDFr9pazANDa&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;ssn_last4&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/transactions&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;twitter&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;debit&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;debit&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;account_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;events&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;hold_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;hold&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;hold&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span> 
+                <span class="s2">&quot;account_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+                <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;available_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.834012Z&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:29.540541Z&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/debits/WD5iP67XF8HbnQr7ZUltoJts/events&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;fee&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;hold_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/holds/HL5iOa2Fsq2HvjLU0WAAh3NA&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;WD5iP67XF8HbnQr7ZUltoJts&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+                <span class="s2">&quot;on_behalf_of&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD5iP67XF8HbnQr7ZUltoJts/refunds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/cards/CC5lS6EhNdO4fDFr9pazANDa&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;W999-015-4014&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD5iP67XF8HbnQr7ZUltoJts&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Refund for Order #1111&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/refunds/RF5l9e2lPpmscJWiRjFfk1ue/events&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;fee&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;RF5l9e2lPpmscJWiRjFfk1ue&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;fulfillment.item.condition&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;merchant.feedback&quot;</span><span class="o">:</span> <span class="s2">&quot;positive&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;user.refund_reason&quot;</span><span class="o">:</span> <span class="s2">&quot;not happy with product&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;RF336-934-5507&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/refunds/RF5l9e2lPpmscJWiRjFfk1ue&quot;</span>
+        <span class="p">},</span> 
+        <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;refund&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;account&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span> 
+                <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU4oFMy0LA3HQkdF2UGIlZHV/bank_accounts&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU4oFMy0LA3HQkdF2UGIlZHV/cards&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:22:29.589184Z&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU4oFMy0LA3HQkdF2UGIlZHV/credits&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU4oFMy0LA3HQkdF2UGIlZHV&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU4oFMy0LA3HQkdF2UGIlZHV/debits&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;email_address&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU4oFMy0LA3HQkdF2UGIlZHV/holds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU4oFMy0LA3HQkdF2UGIlZHV&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU4oFMy0LA3HQkdF2UGIlZHV/refunds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU4oFMy0LA3HQkdF2UGIlZHV/reversals&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;roles&quot;</span><span class="o">:</span> <span class="p">[</span>
+                    <span class="s2">&quot;buyer&quot;</span>
+                <span class="p">],</span> 
+                <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU4oFMy0LA3HQkdF2UGIlZHV/transactions&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU4oFMy0LA3HQkdF2UGIlZHV&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+            <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:22:56.063946Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;customer&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span> 
+                <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+                <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU4oFMy0LA3HQkdF2UGIlZHV/bank_accounts&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;business_name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU4oFMy0LA3HQkdF2UGIlZHV/cards&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:22:29.589184Z&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU4oFMy0LA3HQkdF2UGIlZHV/credits&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU4oFMy0LA3HQkdF2UGIlZHV/debits&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;destination&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;dob&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;ein&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;facebook&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU4oFMy0LA3HQkdF2UGIlZHV/holds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU4oFMy0LA3HQkdF2UGIlZHV&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;is_identity_verified&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
+                <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;phone&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU4oFMy0LA3HQkdF2UGIlZHV/refunds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU4oFMy0LA3HQkdF2UGIlZHV/reversals&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU4oFMy0LA3HQkdF2UGIlZHV/cards/CC4qDHsyv6V5JCeDeMaAGtI4&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;ssn_last4&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU4oFMy0LA3HQkdF2UGIlZHV/transactions&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;twitter&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU4oFMy0LA3HQkdF2UGIlZHV&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;debit&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;debit&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;account_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;events&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;hold_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;hold&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;hold&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span> 
+                <span class="s2">&quot;account_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU4oFMy0LA3HQkdF2UGIlZHV&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+                <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;available_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:22:42.880107Z&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:22:52.603644Z&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU4oFMy0LA3HQkdF2UGIlZHV&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/debits/WD4DhocEg54lVA8kemDND1pY/events&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;fee&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;hold_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/holds/HL4DcZ8GjyeqU0OdyJ9FXr26&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;WD4DhocEg54lVA8kemDND1pY&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+                <span class="s2">&quot;on_behalf_of&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD4DhocEg54lVA8kemDND1pY/refunds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/cards/CC4qDHsyv6V5JCeDeMaAGtI4&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;W936-152-1787&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD4DhocEg54lVA8kemDND1pY&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/refunds/RF4IvKeEnQvPKNGbCcnIwP16/events&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;fee&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;RF4IvKeEnQvPKNGbCcnIwP16&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;RF883-421-5690&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/refunds/RF4IvKeEnQvPKNGbCcnIwP16&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;last_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/refunds?limit=2&amp;offset=0&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> 
+    <span class="s2">&quot;next_uri&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;offset&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> 
+    <span class="s2">&quot;previous_uri&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/refunds?limit=2&amp;offset=0&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section class="method-section" id="list-all-refunds-for-a-customer">
+<h2>List All Refunds For a Customer<a class="headerlink" href="#list-all-refunds-for-a-customer" title="Permalink to this headline">∵</a></h2>
+<p>Returns a list of refunds you've previously created against a specific account.
+The refunds are returned in sorted order, with the most recent refunds
+appearing first.</p>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>limit</code></span></dt>
+<dd><em>optional</em> integer. Defaults to <span class="docutils literal"><code>10</code></span>.</dd>
+<dt><span class="docutils literal"><code>offset</code></span></dt>
+<dd><em>optional</em> integer. Defaults to <span class="docutils literal"><code>0</code></span>.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>GET https://api.balancedpayments.com/customers/:customer_id/refunds
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Customer</span><span class="o">.</span><span class="n">refunds</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Customer</span><span class="o">.</span><span class="n">refunds</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\Balanced-&gt;refunds()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Customer</span><span class="o">.</span><span class="na">refunds</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds?limit<span class="o">=</span>2 <span class="se">\</span>
+      -u ak-test-2755A6Q56FwdnGMNXK72fHjCSXXlruJe6:
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">customer</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Customer</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/v1/customers/CU35rlJBXqlvD9LC26PWu0cy&#39;</span><span class="p">)</span>
+<span class="n">refunds</span> <span class="o">=</span> <span class="n">customer</span><span class="o">.</span><span class="n">refunds</span><span class="o">.</span><span class="n">all</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+<span class="n">customer</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Customer</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/v1/customers/ACO702cHD2tPiOCRSKYzVf1&#39;</span><span class="p">)</span>
+<span class="n">refunds</span> <span class="o">=</span> <span class="n">customer</span><span class="o">.</span><span class="n">refunds</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$customer</span> <span class="o">=</span> <span class="nx">Balanced\Customer</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/v1/customers/CU7gMTGKh2yGHYn1lUxH9STS&quot;</span><span class="p">);</span>
+<span class="nv">$refunds</span> <span class="o">=</span> <span class="nv">$customer</span><span class="o">-&gt;</span><span class="na">refunds</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">all</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Customer</span> <span class="n">customer</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Customer</span><span class="o">(</span><span class="s">&quot;/v1/customers/CUuDKfPHvZhTmaNbEsg1BOO&quot;</span><span class="o">);</span>
+<span class="n">Refund</span><span class="o">.</span><span class="na">Collection</span> <span class="n">refunds</span> <span class="o">=</span> <span class="n">customer</span><span class="o">.</span><span class="na">refunds</span><span class="o">;</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;first_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;first&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;last_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;last&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;next_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;next&quot;</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;previous_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;previous&quot;</span>
+        <span class="p">}</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;first_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds?limit=2&amp;offset=0&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;items&quot;</span><span class="o">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;refund&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+            <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+            <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:31.609442Z&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;customer&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span> 
+                <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+                <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/bank_accounts&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;business_name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/cards&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.554918Z&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/credits&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/debits&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;destination&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;dob&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;ein&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;facebook&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/holds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;is_identity_verified&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
+                <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+                <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;phone&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/reversals&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/cards/CC5lS6EhNdO4fDFr9pazANDa&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;ssn_last4&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/transactions&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;twitter&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;debit&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;debit&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;events&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;hold_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;hold&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;hold&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+                    <span class="p">},</span> 
+                    <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+                        <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+                    <span class="p">}</span>
+                <span class="p">},</span> 
+                <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+                <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;available_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.834012Z&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:29.540541Z&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/debits/WD5iP67XF8HbnQr7ZUltoJts/events&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;fee&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;hold_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/holds/HL5iOa2Fsq2HvjLU0WAAh3NA&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;WD5iP67XF8HbnQr7ZUltoJts&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+                <span class="s2">&quot;on_behalf_of&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+                <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD5iP67XF8HbnQr7ZUltoJts/refunds&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/cards/CC5lS6EhNdO4fDFr9pazANDa&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;W999-015-4014&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD5iP67XF8HbnQr7ZUltoJts&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Refund for Order #1111&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/refunds/RF5l9e2lPpmscJWiRjFfk1ue/events&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;fee&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+            <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;RF5l9e2lPpmscJWiRjFfk1ue&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;fulfillment.item.condition&quot;</span><span class="o">:</span> <span class="s2">&quot;OK&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;merchant.feedback&quot;</span><span class="o">:</span> <span class="s2">&quot;positive&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;user.refund_reason&quot;</span><span class="o">:</span> <span class="s2">&quot;not happy with product&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;RF336-934-5507&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds/RF5l9e2lPpmscJWiRjFfk1ue&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span> 
+    <span class="s2">&quot;last_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds?limit=2&amp;offset=0&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;limit&quot;</span><span class="o">:</span> <span class="mi">2</span><span class="p">,</span> 
+    <span class="s2">&quot;next_uri&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;offset&quot;</span><span class="o">:</span> <span class="mi">0</span><span class="p">,</span> 
+    <span class="s2">&quot;previous_uri&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;total&quot;</span><span class="o">:</span> <span class="mi">1</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds?limit=2&amp;offset=0&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section><section class="method-section" id="update-a-refund">
+<h2>Update a Refund<a class="headerlink" href="#update-a-refund" title="Permalink to this headline">∵</a></h2>
+<p>Updates information about a refund</p>
+<dl class="dl-horizontal dl-params docutils">
+<dt><span class="docutils literal"><code>description</code></span></dt>
+<dd><em>optional</em> <strong>string</strong>.</dd>
+<dt><span class="docutils literal"><code>meta</code></span></dt>
+<dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values.</dd>
+</dl>
+<div class="code-white">
+<div class="definition">
+<p>Definition</p>
+<div class="highlight-bash"><div class="highlight"><pre>PUT https://api.balancedpayments.com/customers/:customer_id/refunds/:refund_id
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">balanced</span><span class="o">.</span><span class="n">Refund</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Balanced</span><span class="o">::</span><span class="no">Refund</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="x">Balanced\Refund-&gt;save()</span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Refund</span><span class="o">.</span><span class="na">save</span><span class="o">()</span>
+</pre></div>
+</div>
+</div>
+<div class="request">
+<p>Example Request</p>
+<div class="highlight-bash"><div class="highlight"><pre>curl https://api.balancedpayments.com/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds/RF5l9e2lPpmscJWiRjFfk1ue <span class="se">\</span>
+     -u ak-test-2755A6Q56FwdnGMNXK72fHjCSXXlruJe6: <span class="se">\</span>
+     -X PUT <span class="se">\</span>
+     -d <span class="s2">&quot;description=update this description&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;meta[user.refund.count]=3&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;meta[refund.reason]=user not happy with product&quot;</span> <span class="se">\</span>
+     -d <span class="s2">&quot;meta[user.notes]=very polite on the phone&quot;</span>
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">balanced</span>
+
+<span class="n">balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s">&#39;ak-test-14W5azoiV99O1XiPwZ3faH10MaUdZ1kCA&#39;</span><span class="p">)</span>
+
+<span class="n">refund</span> <span class="o">=</span> <span class="n">balanced</span><span class="o">.</span><span class="n">Refund</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s">&#39;/v1/customers/CU35rlJBXqlvD9LC26PWu0cy/refunds/RF3fVPCag0ppfvvWLSc2oQ4O&#39;</span><span class="p">)</span>
+<span class="n">refund</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s">&#39;update this description&#39;</span>
+<span class="n">refund</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="s">&#39;user.refund.count&#39;</span><span class="p">:</span> <span class="s">&#39;3&#39;</span><span class="p">,</span>
+  <span class="s">&#39;refund.reason&#39;</span><span class="p">:</span> <span class="s">&#39;user not happy with product&#39;</span><span class="p">,</span>
+  <span class="s">&#39;user.notes&#39;</span><span class="p">:</span> <span class="s">&#39;very polite on the phone&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">refund</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">require</span> <span class="s1">&#39;balanced&#39;</span>
+<span class="no">Balanced</span><span class="o">.</span><span class="n">configure</span><span class="p">(</span><span class="s1">&#39;8c3aeeb80e9e11e38901026ba7f8ec28&#39;</span><span class="p">)</span>
+
+<span class="n">refund</span> <span class="o">=</span> <span class="no">Balanced</span><span class="o">::</span><span class="no">Refund</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="s1">&#39;/v1/customers/ACO702cHD2tPiOCRSKYzVf1/refunds/RF1cWzNKWwQnCCbeonFdLVkC&#39;</span><span class="p">)</span>
+<span class="n">refund</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="s1">&#39;update this description&#39;</span>
+<span class="n">refund</span><span class="o">.</span><span class="n">meta</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;refund.reason&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;user not happy with product&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;user.notes&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;very polite on the phone&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;user.refund.count&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;3&#39;</span>
+<span class="p">}</span>
+<span class="n">refund</span><span class="o">.</span><span class="n">save</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span class="cp">&lt;?php</span>
+
+<span class="k">require</span><span class="p">(</span><span class="nx">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/vendor/autoload.php&#39;</span><span class="p">);</span>
+
+<span class="nx">Httpful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">RESTful\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+<span class="nx">Balanced\Bootstrap</span><span class="o">::</span><span class="na">init</span><span class="p">();</span>
+
+<span class="nx">Balanced\Settings</span><span class="o">::</span><span class="nv">$api_key</span> <span class="o">=</span> <span class="s2">&quot;ak-test-2KZfoLyijij3Y6OyhDAvFRF9tXzelBLpD&quot;</span><span class="p">;</span>
+
+<span class="nv">$refund</span> <span class="o">=</span> <span class="nx">Balanced\Refund</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="s2">&quot;/v1/customers/CU7gMTGKh2yGHYn1lUxH9STS/refunds/RF7qwuLxprQJuVGf7sTAdwKc&quot;</span><span class="p">);</span>
+<span class="nv">$refund</span><span class="o">-&gt;</span><span class="na">description</span> <span class="o">=</span> <span class="s2">&quot;update this description&quot;</span><span class="p">;</span>
+<span class="nv">$refund</span><span class="o">-&gt;</span><span class="na">meta</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span>
+    <span class="s2">&quot;refund.reason&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;user not happy with product&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user.notes&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;very polite on the phone&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user.refund.count&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span>
+<span class="p">);</span>
+<span class="nv">$refund</span><span class="o">-&gt;</span><span class="na">save</span><span class="p">();</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+<div class="highlight-java"><div class="highlight"><pre><span class="n">Balanced</span><span class="o">.</span><span class="na">configure</span><span class="o">(</span><span class="s">&quot;ak-test-1p1Tsac7gHeMQowL2seB7ieliuAJAufyq&quot;</span><span class="o">);</span>
+
+<span class="n">Refund</span> <span class="n">refund</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Refund</span><span class="o">(</span><span class="s">&quot;/v1/customers/CUuDKfPHvZhTmaNbEsg1BOO/refunds/RFHBiohkzkfO6RPYOrjc9US&quot;</span><span class="o">);</span>
+
+<span class="n">Map</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;</span> <span class="n">meta</span> <span class="o">=</span> <span class="k">new</span> <span class="n">HashMap</span><span class="o">&lt;</span><span class="n">String</span><span class="o">,</span> <span class="n">String</span><span class="o">&gt;();</span>
+<span class="n">meta</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;refund.reason&quot;</span><span class="o">,</span> <span class="s">&quot;user not happy with product&quot;</span><span class="o">);</span>
+<span class="n">meta</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;user.notes&quot;</span><span class="o">,</span> <span class="s">&quot;very polite on the phone&quot;</span><span class="o">);</span>
+<span class="n">meta</span><span class="o">.</span><span class="na">put</span><span class="o">(</span><span class="s">&quot;user.refund.count&quot;</span><span class="o">,</span> <span class="s">&quot;3&quot;</span><span class="o">);</span>
+<span class="n">refund</span><span class="o">.</span><span class="na">meta</span> <span class="o">=</span> <span class="n">meta</span><span class="o">;</span>
+<span class="n">refund</span><span class="o">.</span><span class="na">description</span> <span class="o">=</span> <span class="s">&quot;update this description&quot;</span><span class="o">;</span>
+<span class="n">refund</span><span class="o">.</span><span class="na">save</span><span class="o">();</span>
+</pre></div>
+</div>
+</div>
+<div class="response">
+<p>Example Response</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;refund&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+    <span class="s2">&quot;account&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/bank_accounts&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/cards&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.554918Z&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/credits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/debits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;email_address&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/holds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/refunds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/reversals&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;roles&quot;</span><span class="o">:</span> <span class="p">[</span>
+            <span class="s2">&quot;buyer&quot;</span>
+        <span class="p">],</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE/transactions&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+    <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:31.609442Z&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;customer&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;bank_accounts&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;cards&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;credits&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;debits&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;holds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;reversals&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;transactions&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;address&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+        <span class="s2">&quot;bank_accounts_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/bank_accounts&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;business_name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;cards_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/cards&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.554918Z&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;credits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/credits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;debits_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/debits&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;destination&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;dob&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;ein&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;email&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;facebook&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;holds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/holds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;is_identity_verified&quot;</span><span class="o">:</span> <span class="kc">false</span><span class="p">,</span> 
+        <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+        <span class="s2">&quot;name&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;phone&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/refunds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;reversals_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/reversals&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/cards/CC5lS6EhNdO4fDFr9pazANDa&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;ssn_last4&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;transactions_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE/transactions&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;twitter&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;debit&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;debit&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;_uris&quot;</span><span class="o">:</span> <span class="p">{</span>
+            <span class="s2">&quot;account_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;account&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;customer&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;events&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;hold_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;hold&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;hold&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;page&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;refunds&quot;</span>
+            <span class="p">},</span> 
+            <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="p">{</span>
+                <span class="s2">&quot;_type&quot;</span><span class="o">:</span> <span class="s2">&quot;card&quot;</span><span class="p">,</span> 
+                <span class="s2">&quot;key&quot;</span><span class="o">:</span> <span class="s2">&quot;source&quot;</span>
+            <span class="p">}</span>
+        <span class="p">},</span> 
+        <span class="s2">&quot;account_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/accounts/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;amount&quot;</span><span class="o">:</span> <span class="mi">5000</span><span class="p">,</span> 
+        <span class="s2">&quot;appears_on_statement_as&quot;</span><span class="o">:</span> <span class="s2">&quot;Statement text&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;available_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:19.834012Z&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;created_at&quot;</span><span class="o">:</span> <span class="s2">&quot;2014-03-31T21:23:29.540541Z&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;customer_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/customers/CU5iRPGcufJ3RZhf3CsbLxaE&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;Some descriptive text for the debit in the dashboard&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/debits/WD5iP67XF8HbnQr7ZUltoJts/events&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;fee&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;hold_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/holds/HL5iOa2Fsq2HvjLU0WAAh3NA&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;WD5iP67XF8HbnQr7ZUltoJts&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{},</span> 
+        <span class="s2">&quot;on_behalf_of&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+        <span class="s2">&quot;refunds_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD5iP67XF8HbnQr7ZUltoJts/refunds&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;source_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/cards/CC5lS6EhNdO4fDFr9pazANDa&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;W999-015-4014&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/debits/WD5iP67XF8HbnQr7ZUltoJts&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;description&quot;</span><span class="o">:</span> <span class="s2">&quot;update this description&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;events_uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/refunds/RF5l9e2lPpmscJWiRjFfk1ue/events&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;fee&quot;</span><span class="o">:</span> <span class="kc">null</span><span class="p">,</span> 
+    <span class="s2">&quot;id&quot;</span><span class="o">:</span> <span class="s2">&quot;RF5l9e2lPpmscJWiRjFfk1ue&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;meta&quot;</span><span class="o">:</span> <span class="p">{</span>
+        <span class="s2">&quot;refund.reason&quot;</span><span class="o">:</span> <span class="s2">&quot;user not happy with product&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;user.notes&quot;</span><span class="o">:</span> <span class="s2">&quot;very polite on the phone&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;user.refund.count&quot;</span><span class="o">:</span> <span class="s2">&quot;3&quot;</span>
+    <span class="p">},</span> 
+    <span class="s2">&quot;status&quot;</span><span class="o">:</span> <span class="s2">&quot;succeeded&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;transaction_number&quot;</span><span class="o">:</span> <span class="s2">&quot;RF336-934-5507&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;uri&quot;</span><span class="o">:</span> <span class="s2">&quot;/v1/marketplaces/TEST-MP2zmzeddBrHjK5zoThHGpzi/refunds/RF5l9e2lPpmscJWiRjFfk1ue&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section></section>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/compiled.js"></script>
+  </body>
+</html>

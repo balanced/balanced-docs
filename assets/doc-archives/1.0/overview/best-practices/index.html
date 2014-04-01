@@ -1,0 +1,400 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="utf-8">
+      <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
+      <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+      <link href="/static/css/styles.css" rel="stylesheet">
+      <!--<link href="static/css/pygments.css" rel="stylesheet">-->
+      <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+      <!--[if lt IE 9]>
+
+     <!-- <script src="static/js/html5shiv.js"></script> -->
+      <![endif]-->
+  </head>
+
+  <body data-spy="scroll" data-target=".sidebar-nav" data-offset="10">
+
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="row">
+          <div class="logo">
+            <a class="brand" href="https://www.balancedpayments.com"></a>
+          </div>
+          <div class="span22">
+            <ul class="nav nav-api-context">
+  	          <li class="dropdown">
+                <a class="dropdown-toggle context api-context" data-toggle="dropdown" id="context-dropdown-head">
+                  <div id="logo"></div>
+                  Overview
+                  <b class="caret"></b>
+                </a>
+          	    <ul class="dropdown-menu context">
+          		    <li>
+                    <a class="context-change" data-context="api" href="/1.0/api/">API Reference</a>
+                  </li>
+          		    <li>
+                    <a class="context-change" data-context="faq" href="https://support.balancedpayments.com/hc/en-us">FAQ</a>
+                  </li>
+          	    </ul>
+              </li>
+            </ul>
+    
+    	      <ul class="nav nav-api-version">
+              <li class="dropdown">
+                <a class="dropdown-toggle version api-version" data-toggle="dropdown" id="version-dropdown-head">v 1.0
+                  <b class="caret"></b>
+                </a>
+      	        <ul class="dropdown-menu version">
+      		        <li>
+                    <a class="version-change" data-version="1.1" href="/1.1/overview/">v 1.1</a>
+                  </li>
+      	        </ul>
+              </li>
+    	      </ul>
+    
+            <ul class="nav nav-api-clients">
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle lang" id="lang-dropdown-head" data-toggle="dropdown">lang: cURL <b class="caret"></b></a>
+                <ul class="dropdown-menu lang">
+                  <li><a class="lang-change" data-lang="ruby" href="#">Ruby</a></li>
+                  <li><a class="lang-change" data-lang="python" href="#">Python</a></li>
+                  <li><a class="lang-change" data-lang="php" href="#">PHP</a></li>
+                  <li><a class="lang-change" data-lang="java" href="#">Java</a></li>
+                  <li><a class="lang-change" data-lang="bash" href="#">cURL</a></li>
+                </ul>
+              </li>
+            </ul>
+
+              <ul class="nav search">
+                  <div class="icon-search"></div>
+                  <div id='cse'></div>
+                  <script src='//www.google.com/jsapi' type='text/javascript'></script>
+                  <script type='text/javascript'>
+                      google.load('search', '1', {language: 'en', style: google.loader.themes.V2_DEFAULT});
+                      google.setOnLoadCallback(function() {
+                          var customSearchOptions = {};
+                          customSearchOptions['overlayResults'] = true;
+                          var customSearchControl =   new google.search.CustomSearchControl('017607265209527678717:hqn2c1cpavy', customSearchOptions);
+                          customSearchControl.setResultSetSize(google.search.Search.SMALL_RESULTSET);
+                          customSearchControl.setLinkTarget(google.search.Search.LINK_TARGET_SELF );
+                          var options = new google.search.DrawOptions();
+                          options.setAutoComplete(true);
+                          customSearchControl.draw('cse', options);
+                      }, true);
+                  </script>
+              </ul>
+          </div>
+          <ul class="nav nav-links pull-right">
+            <li>
+              <a href="/1.1/overview/#support">Help</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </header>
+  
+    <div class="api-version-rev">
+      
+      <div class="container content" id="overview-content">
+        <div class="row">
+
+          <div id="sidebar-top" style="display:none">
+            <div id="sidebar-top-content">
+              <ul class="inline">
+                <li style="vertical-align: middle;">
+                  <div id="logo" style="background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABYAAAAUCAMAAAC+oj0CAAAAV1BMVEVymix4oi/vQDXjPDJ4oi94oi/vQDXvQDXvQDXvQDV4oi91ni7vQDXqPjN4oi/foRLanRHopxNznC3mPTPopxPopxMAAABwmCzgPDHanRHopxN4oi/vQDXwPhJhAAAAF3RSTlPbICDbYBBQYEAQgLOAs1DH7hDHx6CAAHwvTFAAAABmSURBVHja1cjXDYAwDABR01sCpAEh2X9ObCFkJLMA93cPSpcPtb0a92QLqDLWsdYJA8iUY7aJulkzTzdr4p55Jp1gUM61uOzWjg1sn/2Iw7IEyeHEguCVeBUciaNgT+wFG49qnrsAe+cllBc1FLYAAAAASUVORK5CYII=) no-repeat center;width: 25px;height: 25px;float: left;">
+                  </div>
+                </li>
+                <li id="context-title" style="font-size: 16px;">Overview</li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="span6 context-sidebar">
+            <div class="sidebar-nav" data-spy="affix">
+              <div class="row">
+                <div class="span6">
+                  <div class="nav nav-list context-navlist">
+                    <!-- The table of contents menu -->
+                    <ul class="nav nav-list context-navlist">
+<li class="toctree-l1">Overview<ul>
+<li class="toctree-l2"><a class="reference internal" href="../#client-libraries">Client Libraries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#use-cases">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#github-discussions">Github Discussions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#support">Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#third-party-plugins">Third-Party Plugins</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../#integration-assistance">Integration Assistance</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current">Best Practices<ul>
+<li class="toctree-l2"><a class="reference internal" href="#use-balanced-js">Use balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reducing-declined-transactions">Reducing Declined Transactions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#catching-fraud-early">Catching Fraud Early</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reducing-payout-delays">Reducing Payout Delays</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#use-meta">Use Meta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#store-uris">Store URIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-help">Getting Help</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Pricing and fees<ul>
+<li class="toctree-l2"><a class="reference internal" href="../fees/#payout-pricing">Payout Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fees/#processing-pricing">Processing Pricing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fees/#invoicing-fees">Invoicing fees</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fees/#funds-flow">Funds Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Getting Started<ul>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#obtain-a-test-marketplace">Obtain a Test Marketplace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#obtain-a-production-marketplace">Obtain a Production Marketplace</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#balanced-js">Balanced.js</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#collecting-credit-card-information">Collecting credit card information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#charge-a-credit-card">Charge a credit card</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#collect-bank-account-info">Collect bank account info</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#credit-a-bank-account">Credit a bank account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#balanced-js-card-reference">Balanced.js Card Reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../getting-started/#balanced-js-bankaccount-reference">Balanced.js BankAccount Reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Marketplaces<ul>
+<li class="toctree-l2"><a class="reference internal" href="../marketplaces/#simulating-verified-with-customers">Simulating verified with customers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../marketplaces/#associating-debits-with-a-merchant">Associating debits with a merchant</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Balanced Payouts<ul>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#credits">Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#credit-s-status-field">Credit's Status Field</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#payout-methods">Payout Methods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#bank-statement-descriptor">Bank statement descriptor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#canceling-credits">Canceling Credits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#pre-funding-your-account">Pre-funding Your Account</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../payouts/#submission-delivery-times">Submission &amp; Delivery times</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Processing<ul>
+<li class="toctree-l2"><a class="reference internal" href="../processing/#debits">Debits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/#refunds">Refunds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/#holds">Holds</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../processing/#transaction-limits">Transaction Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l1">Resources<ul>
+<li class="toctree-l2"><a class="reference internal" href="../resources/#test-credit-card-numbers">Test credit card numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/#test-bank-account-numbers">Test bank account numbers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/#test-identity-verification">Test identity verification</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/#request-logs">Request Logs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/#the-hash-attribute">The Hash Attribute</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/#address-verification-service">Address Verification Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../resources/#card-security-code">Card Security Code</a></li>
+</ul>
+</li>
+</ul>
+
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="context-content" class="span19 offset1">
+            
+  <section id="best-practices">
+<span id="id1"></span><h1>Best Practices<a class="headerlink" href="#best-practices" title="Permalink to this headline">∵</a></h1>
+<section id="use-balanced-js">
+<span id="id2"></span><h2>Use balanced.js<a class="headerlink" href="#use-balanced-js" title="Permalink to this headline">∵</a></h2>
+<p>Use balanced.js to tokenize cards and bank accounts. balanced.js keeps your systems PCI compliant
+by sending sensitive information over SSL directly to the Balanced servers.</p>
+<div class="alert alert-tab admonition note">
+note</div>
+<div class="alert alert-green">
+This does not remove the need for you to use SSL on your servers as all financial transactions
+should occur over SSL.</div>
+</section><section id="reducing-declined-transactions">
+<span id="best-practices-payouts"></span><h2>Reducing Declined Transactions<a class="headerlink" href="#reducing-declined-transactions" title="Permalink to this headline">∵</a></h2>
+<p>Fraud and Card declinations can be reduced if the following information is supplied when tokenizing a card:</p>
+<ul class="simple">
+<li><span class="docutils literal"><code>name</code></span> (Name on card)</li>
+<li><span class="docutils literal"><code>security_code</code></span> (CVV)</li>
+<li><span class="docutils literal"><code>postal_code</code></span> (Postal code)</li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="alert alert-tab-red admonition note">
+note</div>
+<div class="alert alert-green">
+American Express declines transactions with cards that do not include <span class="docutils literal"><code>security_code</code></span> and
+<span class="docutils literal"><code>postal_code</code></span>.</div>
+</section><section id="catching-fraud-early">
+<h2>Catching Fraud Early<a class="headerlink" href="#catching-fraud-early" title="Permalink to this headline">∵</a></h2>
+<p>It's very important to take a proactive stance against fraud. Below are some
+tips to help guard against it. We recommend marketplaces take advantage of
+the following:</p>
+<ul class="simple">
+<li>Utilize customer verification. We highly recommended that you do not issue payouts to
+unverified customers. Refer to <a class="reference internal" href="../resources/#resources-test-identity-verification"><em>Test identity verification</em></a></li>
+<li>Utilize AVS. Refer to <a class="reference internal" href="../resources/#resources-address-verification-service"><em>Address Verification Service</em></a></li>
+<li>Utilize CSC. Refer to <a class="reference internal" href="../resources/#resources-card-security-code"><em>Card Security Code</em></a></li>
+<li>Respond in a timely fashion to Balanced inquiries about chargebacks or suspicious transactions</li>
+<li>Report fraud to <a class="reference external" href="mailto:support&#37;&#52;&#48;balancedpayments&#46;com">support<span>&#64;</span>balancedpayments<span>&#46;</span>com</a>.</li>
+</ul>
+</section><section id="reducing-payout-delays">
+<span id="best-practices-reducing-payout-delays"></span><h2>Reducing Payout Delays<a class="headerlink" href="#reducing-payout-delays" title="Permalink to this headline">∵</a></h2>
+<p>Automated Clearing House transactions are asynchronous, requiring upfront effort
+in educating your consumers and setting the appropriate expectations to deliver
+a great product.</p>
+<p>Balanced validates bank routing numbers in real-time using the
+<a class="reference external" href="https://www.fededirectory.frb.org">FedACH directory</a>, but since bank account numbers are not standardized, incorrect
+bank account numbers are not caught until the payout fails.
+Unfortunately, due to the nature of the ACH network, failure notifications can be delayed
+for up to (4) four business days. This means that an account number typo can, on average,
+cause payment delays by up to (3) three to (5) five business days.</p>
+<p>Since you or your users may rely on these funds as operating capital, this delay can be
+extremely inconvenient and frustrating to you and your users.</p>
+<p>Our recommendation, for mitigating these user experience issues, is to properly
+invest time in building a robust and reliable form to collect the merchant
+bank account information properly.</p>
+<p>Here are some tips:</p>
+<ol class="arabic">
+<li><p class="first">Display a check image to illustrate which number is the routing number vs.
+account number.</p>
+<p>We've conveniently provided one - however, you may choose to design your
+own:</p>
+<div class="figure">
+<img alt="https://s3.amazonaws.com/justice.web/docs/check_image.png" src="https://s3.amazonaws.com/justice.web/docs/check_image.png" />
+</div>
+</li>
+<li><p class="first">US routing numbers are 9 digits and are usually located in the lower left
+corner of most checks. Common aliases to <strong>routing number</strong>:</p>
+<ul class="simple">
+<li>RTN (Routing Transit Number)</li>
+<li>ABA</li>
+<li><a class="reference external" href="http://en.wikipedia.org/wiki/Bank_code">Bank code</a></li>
+</ul>
+</li>
+<li><p class="first">Routing numbers are used to set up direct deposit transfers. You can use this
+as an aid to your customers who are inquiring whether or not they have the
+right routing number.</p>
+</li>
+<li><p class="first">If you're double checking routing numbers for customers, most banks assign routing numbers
+according to the state or region of the state that the bank account was opened in.</p>
+</li>
+<li><p class="first">Encourage customers to check their bank websites for the routing number used specifically
+for ACH or electronic deposits. Some large banks, particularly Bank Of America, may have
+different routing numbers for checks and direct deposits.</p>
+</li>
+<li><p class="first">Balanced has provided very useful routing number validators in our
+<a class="reference internal" href="../getting-started/#getting-started-balanced-js-bank-accounts"><em>balanced.js</em></a> library.
+Use these helper functions to build a robust form.</p>
+</li>
+<li><p class="first">Set your customer's expectation that payments might be delayed by up to
+(3) three to (5) five business days if incorrect information is provided.</p>
+</li>
+<li><p class="first">Highlight to your customers that <em>wire transfer numbers</em> are <strong>NOT</strong> the same
+as the routing number, and they are <strong>NOT</strong> the same as the bank account
+number. Be sure to clarify this when asking your users for their information.</p>
+</li>
+</ol>
+<p>Our statistics show that most of the time, with the help of a properly designed and robust
+form, your users will provide the correct bank routing and account numbers.</p>
+<p>With correct bank information their payout will usually appear the next business day, as
+expected. Once a successful payout has been made, future credits to that bank account
+will continue to take one business day when issued before the
+<a class="reference internal" href="../payouts/#payouts-cutoff"><em>next-day cut-offs</em></a>.</p>
+<p>If a payout does fail for any reason, we’ll notify you via email, dashboard, and webhook.
+If a customer complains about a payout failure and you do not see any notification with in
+the expected time window, please reach out to <a class="reference external" href="mailto:support&#37;&#52;&#48;balanedpayments&#46;com">support<span>&#64;</span>balanedpayments<span>&#46;</span>com</a> and we'll track
+down the payout as soon as possible.</p>
+</section><section id="use-meta">
+<h2>Use Meta<a class="headerlink" href="#use-meta" title="Permalink to this headline">∵</a></h2>
+<p>The <span class="docutils literal"><code>meta</code></span> field exists on all resources in the Balanced API. It may be used
+as a dictionary of arbitrary key/value pairs, where each key and value is a
+string of length 255 characters or less. Illustratively, this may be used to annotate
+accounts in our system with the account name on your system or annotate
+transactions with order numbers. The format is generally up to you, but
+Balanced reserves some keys in the <span class="docutils literal"><code>meta</code></span> field. These are fields that may be
+passed in by you in order to help fight fraud and respond to chargebacks.</p>
+<section id="shipping-address">
+<h3>Shipping Address<a class="headerlink" href="#shipping-address" title="Permalink to this headline">∵</a></h3>
+<p>You may supply shipping fulfillment information by prefixing keys
+specifying address data with the <span class="docutils literal"><code>shipping.</code></span> prefix. The specific
+fields you may provide are:</p>
+<ul class="simple">
+<li>shipping.address.street_address</li>
+<li>shipping.address.city</li>
+<li>shipping.address.region</li>
+<li>shipping.address.postal_code</li>
+<li>shipping.address.country_code (<a class="reference external" href="http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3">ISO 3166-1 alpha-3</a>)</li>
+<li>shipping.carrier</li>
+<li>shipping.tracking_number</li>
+</ul>
+<p>Let's say you want to pass on shipping address, along with shipping
+carrier (USPS, UPS, FedEx, etc.) and tracking number on a debit. This is
+what the <span class="docutils literal"><code>meta</code></span> field would look like when represented as a JSON
+dictionary:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span class="nx">meta</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;shipping.address.street_address&#39;</span><span class="o">:</span> <span class="s1">&#39;801 High St&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;shipping.address.city&#39;</span><span class="o">:</span> <span class="s1">&#39;Palo Alto&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;shipping.address.region&#39;</span><span class="o">:</span> <span class="s1">&#39;CA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;shipping.address.postal_code&#39;</span><span class="o">:</span> <span class="s1">&#39;94301&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;shipping.address.country_code&#39;</span><span class="o">:</span> <span class="s1">&#39;USA&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;shipping.carrier&#39;</span><span class="o">:</span> <span class="s1">&#39;FEDEX&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;shipping.tracking_number&#39;</span><span class="o">:</span> <span class="s1">&#39;1234567890&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section></section><section id="store-uris">
+<span id="best-practices-uri-vs-id"></span><h2>Store URIs<a class="headerlink" href="#store-uris" title="Permalink to this headline">∵</a></h2>
+<p>Do you store the <span class="docutils literal"><code>uri</code></span> or the <span class="docutils literal"><code>id</code></span> in your database? <strong>Always, always
+store the uri</strong>.</p>
+<p>The <span class="docutils literal"><code>uri</code></span> stands for <strong>u</strong>niversal <strong>r</strong>esource <strong>i</strong>dentifier and it's
+exactly what it is. An identifier.</p>
+<p>Do not attempt to be clever and try to save a few bytes by storing the <span class="docutils literal"><code>id</code></span>
+and constructing the <span class="docutils literal"><code>uri</code></span> later.</p>
+<p>This will almost always lead to disaster. A <span class="docutils literal"><code>uri</code></span> is opaque and Balanced
+reserves the right to use HTTP semantics later to change them. This means that while
+Balanced will not change the <span class="docutils literal"><code>uri</code></span> we may change components of the <span class="docutils literal"><code>uri</code></span>
+including the <span class="docutils literal"><code>id</code></span>, so you should <strong>NEVER</strong> store the <span class="docutils literal"><code>id</code></span>.</p>
+<p>Our internal statistics show that client libraries that construct the <span class="docutils literal"><code>uri</code></span>
+receive roughly <strong>2 orders of magnitude</strong> more <span class="docutils literal"><code>404</code></span> status codes from Balanced
+than clients which use the <span class="docutils literal"><code>uri</code></span> directly.</p>
+<div class="alert alert-tab admonition note">
+note</div>
+<div class="alert alert-green">
+URIs will not be longer than 255 characters.</div>
+</section><section id="getting-help">
+<span id="best-practices-getting-help"></span><h2>Getting Help<a class="headerlink" href="#getting-help" title="Permalink to this headline">∵</a></h2>
+<p>When encountering a problem, one of the best tools available to you is
+the Logs area in the Dashboard. These logs give valuable insight into
+what request infomation was received and the resulting API response. It also
+gives information about operation status codes and transaction failure
+messages along with the timing and affected parties and endpoints.</p>
+<p>If additional help is required, hop into #balanced on IRC to get help
+directly from developers.</p>
+<p>Be sure to have the following handy to facilitate quick resolutions to issues:</p>
+<ul class="simple">
+<li>A description of the problem</li>
+<li>The Dashboard link to the transaction(s) related to the issue (if one exists. if there
+is more than one please provide enough transactions and their corresponding links so
+that we have a sample set that we can begin investigating)</li>
+<li>Transaction OHM (this is the identifier for the corresponding log message. It's returned on errors)</li>
+<li>Marketplace name</li>
+<li>Timeframe of issue</li>
+<li>Affected customer(s)</li>
+<li>Amount and type of transaction</li>
+<li>Last 4 digits and type of the affected card (if applicable)</li>
+</ul>
+</section></section>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/compiled.js"></script>
+  </body>
+</html>

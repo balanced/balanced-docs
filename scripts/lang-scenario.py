@@ -73,7 +73,7 @@ class Context(object):
             storage_file,
             backfill=self.backfill_scenario,
         )
-        self.rev = os.environ.get('BALANCED_REV', 'rev0')
+        self.rev = os.environ.get('BALANCED_REV', 'rev1')
         self.spec = dockers.load(open(spec_file, 'r'))
         self.langs = ['curl'] + langs
 
@@ -290,27 +290,21 @@ class Scenario(object):
         # api conf
         if ctx.storage.get('api_location') != ctx.api_location:
             ctx.storage.clear()
-        if ctx.storage.get('api_rev') != os.environ.get('BALANCED_REV', 'rev0'):
+        if ctx.storage.get('api_rev') != os.environ.get('BALANCED_REV', 'rev1'):
             ctx.storage.clear()
         if 'api_key' not in ctx.storage:
             ctx.storage.clear()
             ctx.storage['api_location'] = ctx.api_location
-            ctx.storage['api_rev'] = os.environ.get('BALANCED_REV', 'rev0')
-            if ctx.storage['api_rev'] != 'rev0':
-                ctx.storage['accept_type'] = {
-                    'rev1': 'application/vnd.api+json;revision=1.1',
-                }[ctx.storage['api_rev']]
+            ctx.storage['api_rev'] = os.environ.get('BALANCED_REV', 'rev1')
+
+            ctx.storage['accept_type'] = {
+                'rev1': 'application/vnd.api+json;revision=1.1',
+            }[ctx.storage['api_rev']]
             logger.debug('creating api key')
-            #key = balanced.APIKey().save()
-            #ctx.storage['api_key'] = key.secret
-            key = requests.post(ctx.storage['api_location'] + ('/v1/api_keys' if ctx.storage['api_rev'] == 'rev0' else '/api_keys'),
+            key = requests.post(ctx.storage['api_location'] + '/api_keys',
                                 headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')}
             )
-            #import ipdb; ipdb.set_trace()
-            if os.environ.get('BALANCED_REV') == 'rev1':
-                secret = key.json()['api_keys'][0]['secret']
-            else:
-                secret = key.json()['secret']
+            secret = key.json()['api_keys'][0]['secret']
             ctx.storage['secret'] = ctx.storage['api_key'] = secret
 
         balanced.config.root_uri = ctx.storage['api_location']
@@ -323,21 +317,11 @@ class Scenario(object):
                                         headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                         auth=(ctx.storage['secret'], '')
             )
-            if os.environ.get('BALANCED_REV') == 'rev1':
-                mp = marketplace.json()['marketplaces'][0]
-                ctx.storage['marketplace_uri'] = mp['href']
-                ctx.storage['marketplace_id'] = mp['id']
-                ctx.storage['marketplace'] = basic_client(mp)
-                ctx.storage['customers_uri'] = marketplace.json()['links']['marketplaces.customers']
-            else:
-                ctx.storage['marketplace_uri'] = marketplace.json()['uri']
-                ctx.storage['marketplace_id'] = marketplace.json()['id']
-                ctx.storage['marketplace'] = basic_client(marketplace.json())
-            # marketplace = balanced.Marketplace().save()
-            # ctx.storage['marketplace_uri'] = marketplace.uri
-            # ctx.storage['marketplace_id'] = marketplace.id
-        #    ctx.storage['marketplace_uri'] = 'TODO'
-        #    ctx.storage['marketplace_id'] = 'TODO'
+            mp = marketplace.json()['marketplaces'][0]
+            ctx.storage['marketplace_uri'] = mp['href']
+            ctx.storage['marketplace_id'] = mp['id']
+            ctx.storage['marketplace'] = basic_client(mp)
+            ctx.storage['customers_uri'] = marketplace.json()['links']['marketplaces.customers']
 
         # card
         if 'card_id' not in ctx.storage:
@@ -352,26 +336,15 @@ class Scenario(object):
                 'address[postal_code]': '10023',
                 'address[country_code]': 'USA',
             }
-            # card = ctx.marketplace.create_card()
-            # ctx.marketplace.create_buyer(None, card.uri)
-            # ctx.storage['card_uri'] = card.uri
-            # ctx.storage['card_id'] = card.id
-
 
             customer = requests.post(ctx.storage['api_location'] + ('/v1/customers' if ctx.storage['api_rev'] == 'rev0' else '/customers'),
                                      headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                      auth=(ctx.storage['secret'], ''))
 
-
-
-            if os.environ.get('BALANCED_REV') == 'rev1':
-                ctx.storage['customer'] = basic_client(customer.json())['customers'][0]
-                links = customer.json()['links']
-                ctx.storage['cards_uri'] = links['customers.cards'].replace('{customers.id}', ctx.storage['customer']['id'])
-                cards_uri = ctx.storage['cards_uri']
-            else:
-                ctx.storage['customer'] = basic_client(customer.json())
-                cards_uri = ctx.storage['customer'].cards_uri
+            ctx.storage['customer'] = basic_client(customer.json())['customers'][0]
+            links = customer.json()['links']
+            ctx.storage['cards_uri'] = links['customers.cards'].replace('{customers.id}', ctx.storage['customer']['id'])
+            cards_uri = ctx.storage['cards_uri']
 
             card = requests.post(ctx.storage['api_location'] + cards_uri,
                                  headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
@@ -379,34 +352,23 @@ class Scenario(object):
                                  data=card_data
             )
 
-            if os.environ.get('BALANCED_REV') == 'rev1':
-                # is this even used?
-                ctx.storage['card_uri'] = card.json()['cards'][0]['href']
-                ctx.storage['card_id'] = card.json()['cards'][0]['id']
-                ctx.storage['card'] = basic_client(card.json()['cards'][0])
-            else:
-                ctx.storage['card_uri'] = card.json()['uri']
-                ctx.storage['card_id'] = card.json()['id']
-                ctx.storage['card'] = basic_client(card.json())
-
+            # is this even used?
+            ctx.storage['card_uri'] = card.json()['cards'][0]['href']
+            ctx.storage['card_id'] = card.json()['cards'][0]['id']
+            ctx.storage['card'] = basic_client(card.json()['cards'][0])
 
         marketplace_req = requests.get(ctx.storage['api_location'] + ctx.storage['marketplace_uri'],
                                        headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                        auth=(ctx.storage['secret'], ''))
 
-        if os.environ.get('BALANCED_REV') == 'rev1':
-            marketplace = basic_client(marketplace_req.json()['marketplaces'][0])
-        else:
-            marketplace = basic_client(marketplace_req.json())
+        marketplace = basic_client(marketplace_req.json()['marketplaces'][0])
+
         # escrow
         thresh_h, thresh_l = 10000000, 100000
         if marketplace.in_escrow < thresh_l:
             amount = thresh_h - marketplace.in_escrow
             logger.debug('incrementing escrow balanced %s', amount)
-            if os.environ.get('BALANCED_REV') == 'rev1':
-                debits_uri = ctx.storage['customer']['href'] + '/debits'
-            else:
-                debits_uri = ctx.storage['customer'].debits_uri
+            debits_uri = ctx.storage['customer']['href'] + '/debits'
             debit = requests.post(ctx.storage['api_location'] + debits_uri,
                                   headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                                   auth=(ctx.storage['secret'], ''),
@@ -457,10 +419,10 @@ class Scenario(object):
             return None
         template_path = os.path.join(self.path, lang + '.mako')
         if lang in ['php', 'ruby', 'node', 'python']:
-            template_path = os.path.join(self.ctx.client_dir, os.environ.get('BALANCED_REV', 'rev0'), lang,
+            template_path = os.path.join(self.ctx.client_dir, os.environ.get('BALANCED_REV', 'rev1'), lang,
                                          'scenarios', self.name, lang+'.mako')
         if lang == 'java':
-            template_path = os.path.join(self.ctx.client_dir, os.environ.get('BALANCED_REV', 'rev0'), lang, 'src',
+            template_path = os.path.join(self.ctx.client_dir, os.environ.get('BALANCED_REV', 'rev1'), lang, 'src',
                                          'scenarios', self.name, lang+'.mako')
         block = self._render(template_path)
         block['lang'] = lang
@@ -716,13 +678,6 @@ def main():
     Scenario.bootstrap(ctx)
     write = BlockWriter(sys.stdout)
     for scenario in args.scenarios:
-        if os.environ.get('BALANCED_REV', 'rev0') != 'rev0':
-            if re.match('^account_', scenario):
-            #if 'account' in scenario.replace('bank_account', '') and False:
-            # TODO: make this work
-                with open('./empty-scenario', 'r') as some_file:
-                    print some_file.read()
-                continue
         logger.debug('scenario "%s"', scenario)
         scenario = ctx.lookup_scenario(scenario)
         blocks, response = scenario()
