@@ -52,8 +52,8 @@ prep-dirs:
 cp-static:
 	cp -r $(ASSET_DIR)/img $(BUILD_DIR)/static/img
 	cp -r $(ASSET_DIR)/fonts $(BUILD_DIR)/static/fonts
-	cp -r $(ASSET_DIR)/bower_components/strapped/static/fonts $(BUILD_DIR)/fonts
-	cp -r $(ASSET_DIR)/bower_components/strapped/static/images $(BUILD_DIR)/img
+	cp -r $(ASSET_DIR)/bower_components/strapped/static/fonts $(BUILD_DIR)/static/fonts
+	cp -r $(ASSET_DIR)/bower_components/strapped/static/images $(BUILD_DIR)/static/img
 
 pkg-old-revisions:
 	cp -r $(ASSET_DIR)/doc-archives/* $(BUILD_DIR)/
