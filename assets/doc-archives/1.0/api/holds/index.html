@@ -224,26 +224,7 @@ create a debit, up to the full amount of the hold.</p>
 <dd><em>required</em> <strong>integer</strong>. USD cents.</dd>
 <dt><span class="docutils literal"><code>account_uri</code></span></dt>
 <dd><em>optional</em> <strong>string</strong>. If the resolving URI references an <span class="docutils literal"><code>account</code></span> then that is used as the
-default. Otherwise no default is provided and this field is
-<strong>required</strong>.</dd>
-<dt><span class="docutils literal"><code>appears_on_statement_as</code></span></dt>
-<dd><p class="first"><em>optional</em> <strong>string</strong>. Text that will appear on the buyer's statement. Characters that can be
-used are limited to:</p>
-<ul class="simple">
-<li>ASCII letters (<span class="docutils literal"><code>a-z</code></span> and <span class="docutils literal"><code>A-Z</code></span>)</li>
-<li>Digits (<span class="docutils literal"><code>0-9</code></span>)</li>
-<li>Special characters (<span class="docutils literal"><code>.&lt;&gt;(){}[]+&amp;!$;-%_?:#&#64;~='&quot;</code> <code>^\`|</code></span>)</li>
-</ul>
-<p>Any other characters will be rejected.</p>
-<p>Debits - Truncated to 18 characters.
-Credits - Truncated to 14 characters.</p>
-<p>All Visa, Master Card, Discover, American Express debits will have a prefix of &quot;BAL*&quot;
-e.g. &quot;BAL*marketplace.com&quot;.</p>
-<p>ACH debits and credits do not have a prefix.</p>
-<p class="last">American Express pending transactions will be shown as &quot;BALANCED INC&quot;. AMEX
-pending transactions are hidden by default in the American Express web portal.
-Once the debit is settled it will convert to &quot;BAL*&lt;appears_on_statement_as&gt;&quot;.</p>
-</dd>
+default. Otherwise no default is provided and this field is <strong>required</strong>.</dd>
 <dt><span class="docutils literal"><code>description</code></span></dt>
 <dd><em>optional</em> <strong>string</strong>.</dd>
 <dt><span class="docutils literal"><code>meta</code></span></dt>
@@ -1909,25 +1890,6 @@ be captured. This operation is irreversible.</p>
 <dl class="dl-horizontal dl-params docutils">
 <dt><span class="docutils literal"><code>is_void</code></span></dt>
 <dd><em>optional</em> <strong>boolean</strong>. Flag value, should be <span class="docutils literal"><code>true</code></span> or <span class="docutils literal"><code>false</code></span>. Defaults to <span class="docutils literal"><code>null</code></span>.</dd>
-<dt><span class="docutils literal"><code>appears_on_statement_as</code></span></dt>
-<dd><p class="first"><em>optional</em> <strong>string</strong>. Text that will appear on the buyer's statement. Characters that can be
-used are limited to:</p>
-<ul class="simple">
-<li>ASCII letters (<span class="docutils literal"><code>a-z</code></span> and <span class="docutils literal"><code>A-Z</code></span>)</li>
-<li>Digits (<span class="docutils literal"><code>0-9</code></span>)</li>
-<li>Special characters (<span class="docutils literal"><code>.&lt;&gt;(){}[]+&amp;!$;-%_?:#&#64;~='&quot;</code> <code>^\`|</code></span>)</li>
-</ul>
-<p>Any other characters will be rejected.</p>
-<p>Debits - Truncated to 18 characters.
-Credits - Truncated to 14 characters.</p>
-<p>All Visa, Master Card, Discover, American Express debits will have a prefix of &quot;BAL*&quot;
-e.g. &quot;BAL*marketplace.com&quot;.</p>
-<p>ACH debits and credits do not have a prefix.</p>
-<p class="last">American Express pending transactions will be shown as &quot;BALANCED INC&quot;. AMEX
-pending transactions are hidden by default in the American Express web portal.
-Once the debit is settled it will convert to &quot;BAL*&lt;appears_on_statement_as&gt;&quot;.</p>
-</dd>
-</dl>
 <div class="code-white">
 <div class="definition">
 <p>Definition</p>

@@ -267,9 +267,11 @@ used are limited to:</p>
 <li>Digits (<span class="docutils literal"><code>0-9</code></span>)</li>
 <li>Special characters (<span class="docutils literal"><code>.&lt;&gt;(){}[]+&amp;!$;-%_?:#&#64;~='&quot;</code> <code>^\`|</code></span>)</li>
 </ul>
-<p>Any other characters will be rejected.</p>
-<p>Debits - Truncated to 18 characters.
-Credits - Truncated to 14 characters.</p>
+<br>
+<p>Card Debits - Max length 22 characters, truncated to 18 characters with the "BAL*" prefix.</p>
+<p>Bank account debits - Max length 14 characters (no truncation).</p>
+<p>Credits - Max length 14 characters (no truncation).</p>
+<br>
 <p>All Visa, Master Card, Discover, American Express debits will have a prefix of &quot;BAL*&quot;
 e.g. &quot;BAL*marketplace.com&quot;.</p>
 <p>ACH debits and credits do not have a prefix.</p>
