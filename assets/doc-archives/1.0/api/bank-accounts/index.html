@@ -222,22 +222,14 @@ To debit a bank account you must first <a class="reference internal" href="../ba
 <h2>Creating a New Bank Account<a class="headerlink" href="#creating-a-new-bank-account" title="Permalink to this headline">∵</a></h2>
 <p>Creates a new bank account.</p>
 <dl class="dl-horizontal dl-params docutils">
-<dt><span class="docutils literal"><code>name</code></span></dt>
-<dd><em>required</em> <strong>string</strong>. Name on the bank account.</dd>
 <dt><span class="docutils literal"><code>account_number</code></span></dt>
 <dd><em>required</em> <strong>string</strong>. Bank account number.</dd>
-<dt><span class="docutils literal"><code>bank_code</code></span></dt>
-<dd><em>required</em> <strong>string</strong>. Bank account code.</dd>
+<dt><span class="docutils literal"><code>name</code></span></dt>
+<dd><em>required</em> <strong>string</strong>. Name on the bank account.</dd>
 <dt><span class="docutils literal"><code>routing_number</code></span></dt>
-<dd><em>required</em> <strong>string</strong>. Bank account code.</dd>
-<dt><span class="docutils literal"><code>bank_code</code></span></dt>
-<dd><em>required</em> <strong>string</strong>.</dd>
-<dt><span class="docutils literal"><code>routing_number</code></span></dt>
-<dd><em>required</em> <strong>string</strong>.</dd>
-<dt><span class="docutils literal"><code>account_type</code></span></dt>
-<dd><em>optional</em> <strong>string</strong>.</dd>
+<dd><em>required</em> <strong>string</strong> Bank routing number.</dd>
 <dt><span class="docutils literal"><code>type</code></span></dt>
-<dd><em>optional</em> <strong>string</strong>.</dd>
+<dd><em>required</em> <strong>string</strong> Type of the bank account. <span class="docutils literal"><code>checking</code></span> or <span class="docutils literal"><code>savings</code></span></dd>
 <dt><span class="docutils literal"><code>meta</code></span></dt>
 <dd><em>optional</em> <strong>key-value</strong>. Single level mapping from string keys to string values. Defaults to <span class="docutils literal"><code>{}</code></span>.</dd>
 </dl>
