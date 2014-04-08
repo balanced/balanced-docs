@@ -141,15 +141,23 @@ Address Verification Service
 AVS, Address Verification Service, provides a means to verify that the address
 supplied during card tokenization matches the address of the credit card.
 
-Supplying a ``street_addrees`` or ``postal_code`` during tokenization initiates
-the AVS check. The ``Card`` will have a ``postal_code_check`` attribute
-containing the AVS check result.
+Supplying an ``address`` object containing at least a ``postal_code`` attribute
+during tokenization will initiate an AVS check. Supplying ``line1`` in the address
+object will also initiate a street match check.
 
-``avs_street_match`` will be one of: ``yes``, ``no``, ``unsupported``
-``postal_code_check`` will be one of: ``yes``, ``no``, ``unsupported``
+.. cssclass:: list-noindent
 
-Additionally, ``avs_result`` can be examined to ascertain more detailed
+    - ``avs_street_match`` will be one of: ``yes``, ``no``, ``unsupported``
+    - ``avs_postal_match`` will be one of: ``yes``, ``no``, ``unsupported``
+
+Additionally, ``avs_result`` may be examined to ascertain more detailed
 information about the address verification attempt. 
+
+.. note::
+  :header_class: alert alert-tab-yellow
+  :body_class: alert alert-yellow
+
+  ``postal_code`` is required when supplying an address object.
 
 
 Simulating Postal Code Check Responses
