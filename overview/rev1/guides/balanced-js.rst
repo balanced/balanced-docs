@@ -251,12 +251,13 @@ Method Reference - Cards
   Sends the data stored in the ``cardDataObject`` to Balanced's servers for
   tokenization.
 
-  :param cardDataObject.number: *required*. The credit card number
   :param cardDataObject.expiration_month: *required*. The credit card's expiration month in the format of MM
   :param cardDataObject.expiration_year: *required*. The credit card's expiration year in the format of YYYY
+  :param cardDataObject.number: *required*. The credit card number
+  :param cardDataObject.address: *optional*. An object containing the credit card's address information
   :param cardDataObject.cvv: *optional*. The credit card's security code
   :param cardDataObject.name: *optional*. The credit card holder's name
-  :param cardDataObject.postal_code: *optional*. The credit card's billing postal code (zip code in the USA)
+  
   :returns: ``null``. Invokes the ``callback`` function with three parameters -
             ``data``, ``errors`` and ``status``. If successful, the ``data``
             parameter has a resource representation which can be identified by
