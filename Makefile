@@ -86,7 +86,7 @@ overview-clean:
 
 # static files
 bowerize:
-	bower install --allow-root --config.interactive=false strapped
+	bower install --allow-root --config.interactive=false strapped#0.0.3
 	cp -r $(ASSET_DIR)/bower_components/strapped/static/less $(ASSET_DIR)/less/strapped
 	cp -r $(ASSET_DIR)/bower_components/strapped/static/fonts $(ASSET_DIR)/fonts
 	cp -r $(ASSET_DIR)/bower_components/strapped/static/images $(ASSET_DIR)/img
