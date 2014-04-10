@@ -48,9 +48,10 @@ prep-dirs:
 	mkdir $(BUILD_DIR)/static
 	mkdir $(BUILD_DIR)/static/css
 	mkdir $(BUILD_DIR)/static/js
+	mkdir $(BUILD_DIR)/static/img
 
 cp-static:
-	cp -r $(ASSET_DIR)/img $(BUILD_DIR)/static/img
+	cp -r $(ASSET_DIR)/img/* $(BUILD_DIR)/static/img/
 	cp -r $(ASSET_DIR)/fonts $(BUILD_DIR)/static/fonts
 
 pkg-old-revisions:
@@ -86,13 +87,14 @@ overview-clean:
 
 # static files
 bowerize:
-	bower install --allow-root --config.interactive=false strapped
-	cp -r $(ASSET_DIR)/bower_components/strapped/static/less $(ASSET_DIR)/less/strapped
-	cp -r $(ASSET_DIR)/bower_components/strapped/static/fonts $(ASSET_DIR)/fonts
-	cp -r $(ASSET_DIR)/bower_components/strapped/static/images $(ASSET_DIR)/img
+	bower install --allow-root --config.interactive=false strapped#0.0.3
+	cp -r $(ASSET_DIR)/bower_components/strapped/static/less/. $(ASSET_DIR)/less/strapped/
+	cp -r $(ASSET_DIR)/bower_components/strapped/static/fonts $(BUILD_DIR)/static/fonts
+	cp -r $(ASSET_DIR)/bower_components/strapped/static/images/* $(BUILD_DIR)/static/img/
 
 compile-less: $(wildcard $(ASSET_DIR)/less/*.less)
 	lessc $(ASSET_DIR)/less/base.less > $(BUILD_DIR)/static/css/styles.css
+	rm -rf $(ASSET_DIR)/less/strapped
 
 compile-js:
 	cat $(ASSET_DIR)/js/bootstrap.min.js 		\
