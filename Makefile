@@ -52,7 +52,6 @@ prep-dirs:
 
 cp-static:
 	cp -r $(ASSET_DIR)/img/* $(BUILD_DIR)/static/img/
-	cp -r $(ASSET_DIR)/fonts $(BUILD_DIR)/static/fonts
 
 pkg-old-revisions:
 	cp -r $(ASSET_DIR)/doc-archives/* $(BUILD_DIR)/
