@@ -55,8 +55,5 @@ site/spec
 site/*gen*.html
 site/1.0
 site/1.1
-site/static/fonts/
-site/static/less/strapped/
-site/static/img/images/
 assets/bower_components
 assets/less/strapped

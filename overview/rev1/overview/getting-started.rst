@@ -208,7 +208,7 @@ Third-Party Plugins
 
   .. cssclass:: list-noindent
 
-    .. image:: //static/img/logos/subledger.png
+    .. image:: //static/images/logos/subledger.png
       :target: http://subledger.com/blog/rent-my-bikes-demo/
 
 
@@ -219,12 +219,12 @@ Are you looking for a developer to help with Balanced integration? Check out the
 
 .. cssclass:: logos-inline
 
-  .. image:: //static/img/logos/workmob@2x.png
+  .. image:: //static/images/logos/workmob@2x.png
     :target: https://theworkmob.com/integrations/balancedpayments
     :height: 50px
     :width: 236px
 
-  .. image:: //static/img/logos/airpair@2x.png
+  .. image:: //static/images/logos/airpair@2x.png
     :target: http://www.airpair.com/balanced-payments
     :height: 50px
     :width: 187px
