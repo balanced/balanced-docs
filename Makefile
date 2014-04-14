@@ -86,10 +86,11 @@ overview-clean:
 
 # static files
 bowerize:
-	bower install --allow-root --config.interactive=false strapped#0.0.3
+	bower install --allow-root --config.interactive=false strapped#0.1.18
 	cp -r $(ASSET_DIR)/bower_components/strapped/static/less/. $(ASSET_DIR)/less/strapped/
 	cp -r $(ASSET_DIR)/bower_components/strapped/static/fonts $(BUILD_DIR)/static/fonts
 	cp -r $(ASSET_DIR)/bower_components/strapped/static/images/* $(BUILD_DIR)/static/images/
+	cp -r $(ASSET_DIR)/html/notfound.html $(BUILD_DIR)/static/notfound.html
 
 compile-less: $(wildcard $(ASSET_DIR)/less/*.less)
 	lessc $(ASSET_DIR)/less/base.less > $(BUILD_DIR)/static/css/styles.css
