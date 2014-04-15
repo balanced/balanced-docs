@@ -28,9 +28,9 @@ BUILD_DIR = build
 
 .PHONY: clean cache-clean api-clean clean-limited build-revisions all test all bowerize compile-less compile-js cp-static pkg-old-revisions api overview
 
-build-revisions: clean-build prep-dirs bowerize compile-less compile-js cp-static api overview pkg-old-revisions
-
 all: rev1
+
+build-revisions: clean-build prep-dirs bowerize compile-less compile-js cp-static api overview pkg-old-revisions
 
 cache-clean:
 	-rm -f *.cache
@@ -72,7 +72,7 @@ api-clean:
 	-rm -f *.cache
 
 # overview
-	
+
 overview:
 	BALANCED_REV=$(REV) $(SPHINXBUILD) -b dirhtml -c overview/$(REV) overview/$(REV) overview/$(REV)/html
 	mkdir -p $(BUILD_DIR)/$(REV_NUM)/overview

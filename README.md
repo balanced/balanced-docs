@@ -30,7 +30,7 @@ your t-shirt size so we can send you your very own
 
 You'll first need:
 
-* python 2.6+
+* python 2.7+
 * [virtualenvwrapper](http://virtualenvwrapper.readthedocs.org/en/latest/install.html)
 * [bower](http://bower.io/)
 
@@ -91,7 +91,7 @@ make api
 Let's take a look at what we've built using [mongoose](https://github.com/valenok/mongoose):
 
 ```bash
-cd site
+cd build
 mongoose
 // Mongoose web server v. 3.8 started on port(s) 8080 with web root [.]
 ```

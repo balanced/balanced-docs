@@ -2,6 +2,8 @@ import json
 import re
 import os
 import sys
+from urlparse import urlparse
+from collections import defaultdict
 
 import dockers
 
@@ -18,13 +20,70 @@ class Spec(dict):
                 return schema
         return {}
 
-    # endpoint is currently unused
     @property
     def endpoints(self):
-        return self.dockers.endpoints
+        methods_to_act = {
+            'POST': 'create',
+            'PUT': 'update',
+            'PATCH': 'patch',
+            'DELETE': 'delete',
+        }
+        def _compute_pattern(url):
+            path = urlparse(url).path.split('/')
+            for x in xrange(1, len(path)):
+                if x % 2 == 0:
+                    path[x] = ':{}_id'.format(path[x-1][:-1])
+            return '/'.join(path)
+        results = defaultdict(set)
+        for req in self['requests']:
+            u = _compute_pattern(req['endpoint'])
+            results[u].add(req['method'])
+        names = {}
+        for k,v  in results.iteritems():
+            n = k.split('/')
+            if len(n) <= 3:
+                # /cards or /cards/CC123123
+                resource = n[1]
+            elif len(n) >= 4:
+                # /customers/:customer_id/orders
+                resource = n[3]
+            for method in v:
+                nn = '{}.{}'.format(resource,
+                                    methods_to_act.get(method, 'show'))
+                if not names.get(nn) or len(names[nn]['path']) > len(k):
+                    names[nn] = {
+                        'description': 'TODO:',
+                        'methods': list(v),
+                        'name': nn,
+                        'path': k,
+                    }
+        return names
 
     def match_endpoint(self, name):
-        return self.dockers.match_endpoint(name)
+        resource, act = name.split('.')
+        resource = {
+            # omg, why
+            'bank_account_verifications': 'verifications',
+        }.get(resource, resource)
+        name = '{}.{}'.format(resource, act)
+        g = self.endpoints.get(name)
+        if g:
+            return [g]
+        if act == 'index':
+            # the indexs all have the same form in rev1
+            return [{
+                'description': 'TODO:',
+                'methods': ['GET', 'HEAD'],
+                'name': name,
+                'path': '/{}'.format(name)
+            }]
+        if act == 'delete':
+            # me being lazy, not all resources have a delete example
+            act = 'show'
+            g = self.endpoints['{}.{}'.format(resource, act)].copy()
+            g['methods'] = ['DELETE']
+            return [g]
+        return []
 
     # errors is currently unused
     @property
@@ -56,11 +115,6 @@ class Spec(dict):
 
     def match_query(self, name):
         return self.dockers.match_query(name)
-
-    # this is the big one, lots of
-    # @property
-    # def forms(self):
-    #     return self.dockers.forms
 
     def match_form(self, name):
         resource, action = name.split('.')
