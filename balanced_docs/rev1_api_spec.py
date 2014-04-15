@@ -20,13 +20,13 @@ class Spec(dict):
                 return schema
         return {}
 
-    #@memoi
     @property
     def endpoints(self):
         methods_to_act = {
             'POST': 'create',
             'PUT': 'update',
             'PATCH': 'patch',
+            'DELETE': 'delete',
         }
         def _compute_pattern(url):
             path = urlparse(url).path.split('/')
@@ -70,6 +70,7 @@ class Spec(dict):
         if g:
             return [g]
         if act == 'index':
+            # the indexs all have the same form in rev1
             return [{
                 'description': 'TODO:',
                 'methods': ['GET', 'HEAD'],
@@ -114,11 +115,6 @@ class Spec(dict):
 
     def match_query(self, name):
         return self.dockers.match_query(name)
-
-    # this is the big one, lots of
-    # @property
-    # def forms(self):
-    #     return self.dockers.forms
 
     def match_form(self, name):
         resource, action = name.split('.')
