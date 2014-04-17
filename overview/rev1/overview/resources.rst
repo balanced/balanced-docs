@@ -8,8 +8,19 @@ Resources
 Test credit card numbers
 ------------------------
 
-These cards will be accepted in our system only for a **TEST** marketplace.
-**Do not use these card numbers in Production marketplaces.**
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-green
+
+  These cards will be accepted in our system only for a **TEST** marketplace.
+  **Do not use these card numbers in Production marketplaces.**
+
+.. note::
+  :header_class: alert alert-tab-yellow
+  :body_class: alert alert-yellow
+
+  Validation of cards does not occur until an authenticated operation is performed against it.
+  Therefore, simulated results will not be reflected during tokenization.
 
 .. cssclass:: table
 
