@@ -12,6 +12,7 @@
   api/credits
   api/customers
   api/debits
+  api/disputes
   api/events
   api/orders
   api/refunds

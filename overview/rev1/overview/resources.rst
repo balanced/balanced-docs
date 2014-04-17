@@ -23,6 +23,7 @@ These cards will be accepted in our system only for a **TEST** marketplace.
   ``VISA``        ``4222222222222220`` [#]_       ``123``       Tokenization Error
   ``MasterCard``  ``5112000200000002``            ``200``       CVV Match Fail
   ``VISA``        ``4457000300000007``            ``901``       CVV Unsupported
+  ``Discover``    ``6500000000000002``            ``123``       Disputed Charge
   ============== =========================== ================ ==============================
 
 .. [#] Simulate a card which can be tokenized but will not be accepted for creating

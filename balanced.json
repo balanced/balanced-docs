@@ -8528,7 +8528,17 @@
      "OPTIONS", 
      "GET"
     ]
-   }, 
+   },
+   {
+    "path": "/disputes", 
+    "description": "", 
+    "name": "disputes.index", 
+    "methods": [
+     "HEAD", 
+     "OPTIONS", 
+     "GET"
+    ]
+   },
    {
     "path": "/orders", 
     "description": "", 
@@ -10446,6 +10456,25 @@
     "methods": [
      "OPTIONS", 
      "PATCH"
+    ]
+   },
+   {
+    "path": "/disputes/:dispute_id", 
+    "description": "", 
+    "name": "disputes.show", 
+    "methods": [
+     "HEAD", 
+     "OPTIONS", 
+     "GET"
+    ]
+   },
+   {
+    "path": "/disputes/:dispute_id", 
+    "description": "Missing resource member endpoints use this.", 
+    "name": "disputes.delete", 
+    "methods": [
+     "OPTIONS", 
+     "DELETE"
     ]
    }
   ], 
