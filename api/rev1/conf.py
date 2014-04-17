@@ -28,7 +28,7 @@ sys.path.append(os.path.abspath('.'))
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinx.ext.todo']
+extensions = ['sphinx.ext.todo', 'rst2pdf.pdfbuilder']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -194,13 +194,42 @@ latex_elements = {
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'Balanced.tex', u'Balanced Documentation',
+  ('api', 'Balanced.tex', u'Balanced Documentation',
    u'Balanced', 'manual'),
 ]
 
+pdf_documents = [
+  ('api', 'Balanced.tex', u'Balanced Documentation',
+   u'Balanced', 'manual'),
+]
+
+# A comma-separated list of custom stylesheets. Example:
+pdf_stylesheets = ['test', 'monokai']
+
+
+# A list of folders to search for stylesheets. Example:
+pdf_style_path = ['.', 'assets']
+
+# Mode for literal blocks wider than the frame. Can be
+# overflow, shrink or truncate
+pdf_fit_mode = "shrink"
+
+# Section level that forces a break page.
+# For example: 1 means top-level sections start in a new page
+# 0 means disabled
+pdf_break_level = 1
+
+# If false, no coverpage is generated.
+#pdf_use_coverpage = True
+
+
+# Name of the cover page template to use
+#pdf_cover_template = 'sphinxcover.tmpl'
+
+
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
-#latex_logo = None
+latex_logo = '../../assets/img/logo.png'
 
 # For "manual" documents, if this is true, then toplevel headings are parts,
 # not chapters.
@@ -270,7 +299,7 @@ def setup(app):
     dcode.DCodeDefaultDirective.registry['scenario'].update({
         'script': "scripts/lang-scenario.py -d clients/{0}/curl -c scenario.cache".format(os.environ.get('BALANCED_REV', 'rev1')),
         'section-chars': '~^',
-        'lang': ['ruby', 'python', 'node', 'java', 'php']
+        #'lang': ['ruby', 'python', 'node', 'java', 'php']
     })
     dcode.DCodeDefaultDirective.registry['endpoint'].update({
         'script': 'scripts/rst.py endpoint'

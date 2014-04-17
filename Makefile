@@ -30,7 +30,13 @@ BUILD_DIR = build
 
 build-revisions: clean-build prep-dirs bowerize compile-less compile-js cp-static api overview pkg-old-revisions
 
-all: rev1
+all: rev1 
+
+pdf:
+	REV=rev1 REV_NUM=1.1 make latex
+
+latex: 
+	REV=rev1 REV_NUM=1.1 BALANCED_REV=rev1 $(SPHINXBUILD) -b pdf -c api/rev1 api/rev1 api/rev1/latex
 
 cache-clean:
 	-rm -f *.cache
