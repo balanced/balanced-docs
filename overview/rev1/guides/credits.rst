@@ -127,7 +127,7 @@ throughout the payout process. There are three possible ``status`` values:
 
 |
 
-.. image:: https://www.balancedpayments.com/images/payouts/payouts_status-2x-0ed0a72a.png
+.. image:: https://www.balancedpayments.com/images/payouts/payouts_status-2x-30c2fcdc.png
 
 
 Reversing a credit
@@ -162,7 +162,7 @@ satisfied with the product, you can create a ``Reversal``.
 
 The status flow of a reversal is as follows:
 
-.. image:: https://www.balancedpayments.com/images/payouts/payouts_reversal_status-2x-dc135471.png
+.. image:: https://www.balancedpayments.com/images/payouts/payouts_reversal_status-2x-83ac62b3.png
 
 |
 

@@ -156,7 +156,7 @@ throughout the payout process. There are three possible ``status`` values:
 
 |
 
-.. image:: https://www.balancedpayments.com/images/ach-debits/ach_debits_payment_status-01-2x-ca6bbfd6.png
+.. image:: https://www.balancedpayments.com/images/ach-debits/ach_debits_payment_status-01-2x-882f3b99.png
 
 
 .. _be verified: /1.1/api/bank-account-verifications
