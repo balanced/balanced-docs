@@ -251,7 +251,7 @@ def setup(app):
         'section-include': ['request'],
         'section-filter-class': 'LangSectionFilter',
         # TODO: remove when clients have been updated with scenarios for rev1
-        'lang': ['python', 'ruby'],
+        #'lang': ['python', 'ruby'],
     })
     dcode.DCodeDefaultDirective.registry['endpoint'].update({
         'script': 'scripts/rst.py endpoint'
