@@ -88,9 +88,14 @@ enter it in, a form. The example below is extracted from this
       <input type="text" id="cc-ex-year" autocomplete="off" placeholder="2013" maxlength="4" />
     </div>
     <div>
-      <label>Security Code (CVV)</label>
-      <input type="text" id="ex-csc" autocomplete="off" placeholder="453" maxlength="4" />
+      <label>Card Verification Code (CVV)</label>
+      <input type="text" id="ex-cvv" autocomplete="off" placeholder="453" maxlength="4" />
     </div>
+    <div>
+      <label>Postal Code</label>
+      <input type="text" id="ex-postal-code" autocomplete="off" placeholder="453" />
+    </div>
+
     <a id="cc-submit">Tokenize</a>
   </form>
 
@@ -136,7 +141,10 @@ our form field values into a payload object and submit it to the Balanced API.
       number: $('#cc-number').val(),
       expiration_month: $('#cc-ex-month').val(),
       expiration_year: $('#cc-ex-year').val(),
-      security_code: $('#ex-csc').val()
+      cvv: $('#ex-cvv').val(),
+      address: {
+        postal_code: $('#ex-postal-code').val()
+      }
     };
 
     // Create credit card
@@ -218,8 +226,6 @@ our form field values into a payload object and submit it to the Balanced API.
     // Create bank account
     balanced.bankAccount.create(payload, handleResponse);
   });
-
-
 
 
 Handling Input Validation
