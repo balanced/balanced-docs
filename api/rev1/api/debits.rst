@@ -133,3 +133,12 @@ equal to the original ``Debit`` amount.
 .. container:: code-white
 
   .. dcode:: scenario refund_create
+
+
+Retrieve a Debit Dispute
+-------------------------
+
+
+.. container:: code-white
+
+  .. dcode:: scenario debit_dispute_show

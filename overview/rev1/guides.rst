@@ -13,6 +13,7 @@ Guides
   guides/credits
   guides/cardholds
   guides/orders
+  guides/disputes
   guides/collecting-fees
   guides/taxes
 ..  guides/merchant-dashboard
@@ -153,6 +154,26 @@ Balanced API and client libraries.
       :icon-classes: icon icon-arrow
 
       :doc:`Read: Orders <guides/orders>`
+
+  .. clear::
+
+
+.. container:: section
+
+  .. container:: header2
+
+    Disputes
+
+  This guide describes disputes, advice on reducing the number of disputes
+  received, and the process for challenging them.
+
+  .. container:: box-right
+
+    .. read-more-widget::
+      :box-classes: box box-block box-blue right
+      :icon-classes: icon icon-arrow
+
+      :doc:`Read: Disputes <guides/disputes>`
 
   .. clear::
 
