@@ -129,7 +129,7 @@ ACH Debit status flow
 Debits have a ``status`` attribute representing the current status of the debit
 throughout the payout process. There are three possible ``status`` values:
 
-.. cssclass:: dd-noindent dd-marginbottom
+.. cssclass:: dl-horizontal dl-params dl-param-values dd-noindent dd-marginbottom
 
   ``pending``
     As soon as the debit is created through the API, the status shows
