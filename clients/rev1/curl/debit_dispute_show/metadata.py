@@ -23,4 +23,5 @@ while True:
 
 request = {
     'uri': debit['links']['debits.dispute'].replace('{debits.dispute}', debit['debits'][0]['links']['dispute']),
+    'debit_href': debit['debits'][0]['href']
 }
