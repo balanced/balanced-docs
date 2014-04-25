@@ -135,9 +135,10 @@ equal to the original ``Debit`` amount.
   .. dcode:: scenario refund_create
 
 
-Retrieve a Debit Dispute
+Fetch a Debit Dispute
 -------------------------
 
+Fetch a dispute via a debit.
 
 .. container:: code-white
 

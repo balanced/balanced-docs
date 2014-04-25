@@ -38,7 +38,7 @@ Fetches the details of an event that was previously created.
   .. dcode:: scenario dispute_show
 
 
-List all Disputes
+List All Disputes
 ------------------
 
 .. cssclass:: dl-horizontal dl-params

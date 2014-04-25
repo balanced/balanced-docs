@@ -13,8 +13,8 @@ transaction.
 |
 
 
-Common causes of disputes
----------------------------
+Reducing the number of chargebacks
+------------------------------------
 
 Not all disputes are intentional. Chargebacks are often the result of a customer seeing
 a charge that they don’t recognize or don’t remember on their credit card statement.
@@ -84,19 +84,146 @@ or the customer, which status will be indicated by a transition from a value of
 Dispute Notifications
 -------------------------
 
-
-
+When your marketplace has chargebacks, in addition to them being visible in your `Dashboard`_,
+Balanced will also send an email to your marketplace email address to advise you of them.
 
 
 Viewing Disputes
 ---------------------
 
-In production marketplaces, disputes will
+|
 
+API References:
+
+.. cssclass:: list-noindent
+
+- `Fetch a Debit Dispute </1.1/api/debits/#fetch-a-debit-dispute>`_
+- `Fetch a Dispute </1.1/api/disputes/#fetch-a-dispute>`_
+- `List All Disputes </1.1/api/disputes/#list-all-disputes>`_
+
+|
+
+Disputes may be retrieved in three ways.
+
+Retrieve via the ``Debit``:
+
+.. container:: section-ruby
+
+  .. literalinclude:: examples/ruby/debit-dispute-show.rb
+    :language: ruby
+
+.. container:: section-python
+
+  .. literalinclude:: examples/python/debit-dispute-show.py
+    :language: python
+
+.. container:: section-bash
+
+  .. literalinclude:: examples/curl/debit-dispute-show.sh
+     :language: bash
+
+.. container:: section-php
+
+  .. literalinclude:: examples/php/debit-dispute-show.php
+    :language: php
+
+.. container:: section-java
+
+  .. literalinclude:: examples/java/debit-dispute-show.java
+    :language: java
+
+.. container:: section-node
+
+  .. literalinclude:: examples/node/debit-dispute-show.js
+    :language: javascript
+
+
+Retrieve by href:
+
+.. container:: section-ruby
+
+  .. literalinclude:: examples/ruby/dispute-show.rb
+    :language: ruby
+
+.. container:: section-python
+
+  .. literalinclude:: examples/python/dispute-show.py
+    :language: python
+
+.. container:: section-bash
+
+  .. literalinclude:: examples/curl/dispute-show.sh
+     :language: bash
+
+.. container:: section-php
+
+  .. literalinclude:: examples/php/dispute-show.php
+    :language: php
+
+.. container:: section-java
+
+  .. literalinclude:: examples/java/dispute-show.java
+    :language: java
+
+.. container:: section-node
+
+  .. literalinclude:: examples/node/dispute-show.js
+    :language: javascript
+
+
+You may also list all disputes:
+
+.. container:: section-ruby
+
+  .. literalinclude:: examples/ruby/dispute-list.rb
+    :language: ruby
+
+.. container:: section-python
+
+  .. literalinclude:: examples/python/dispute-list.py
+    :language: python
+
+.. container:: section-bash
+
+  .. literalinclude:: examples/curl/dispute-list.sh
+     :language: bash
+
+.. container:: section-php
+
+  .. literalinclude:: examples/php/dispute-list.php
+    :language: php
+
+.. container:: section-java
+
+  .. literalinclude:: examples/java/dispute-list.java
+    :language: java
+
+.. container:: section-node
+
+  .. literalinclude:: examples/node/dispute-list.js
+    :language: javascript
+
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-green
+  
+  Disputes are also accessible via the `Dashboard`_.
 
 
 Testing Disputes
 ------------------
+
+|
+
+API References:
+
+.. cssclass:: list-noindent
+
+- `Create a Card </1.1/api/cards/#create-a-card-direct>`_
+- `Create a Card Debit </1.1/api/debits/#create-a-card-debit>`_
+
+|
 
 In test marketplaces, creating a ``Card`` with the number ``6500000000000002``, will create a dispute for
 any debit created with the card.
@@ -168,105 +295,6 @@ Now debit the card.
 
 
 After some time has passed, a dispute will be associated to the ``Debit``.
-The dispute may be retrieved in several ways.
-
-Retrieve via the ``Debit``:
-
-.. container:: section-ruby
-
-  .. literalinclude:: examples/ruby/dispute-list.rb
-    :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: examples/python/dispute-list.py
-    :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: examples/curl/dispute-list.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: examples/php/dispute-list.php
-    :language: php
-
-.. container:: section-java
-
-  .. literalinclude:: examples/java/dispute-list.java
-    :language: java
-
-.. container:: section-node
-
-  .. literalinclude:: examples/node/dispute-list.js
-    :language: javascript
-
-
-Retrieve by href:
-
-.. container:: section-ruby
-
-  .. literalinclude:: examples/ruby/dispute-show.rb
-    :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: examples/python/dispute-show.py
-    :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: examples/curl/dispute-show.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: examples/php/dispute-show.php
-    :language: php
-
-.. container:: section-java
-
-  .. literalinclude:: examples/java/dispute-show.java
-    :language: java
-
-.. container:: section-node
-
-  .. literalinclude:: examples/node/dispute-show.js
-    :language: javascript
-
-
-You may also list all disputes:
-
-.. container:: section-ruby
-
-  .. literalinclude:: examples/ruby/dispute-list.rb
-    :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: examples/python/dispute-list.py
-    :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: examples/curl/dispute-list.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: examples/php/dispute-list.php
-    :language: php
-
-.. container:: section-java
-
-  .. literalinclude:: examples/java/dispute-list.java
-    :language: java
-
-.. container:: section-node
-
-  .. literalinclude:: examples/node/dispute-list.js
-    :language: javascript
 
 
 
