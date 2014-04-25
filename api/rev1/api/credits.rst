@@ -7,7 +7,7 @@ of sending money to a bank account.
 Credits have a ``status`` attribute representing the current status of the credit
 throughout the payout process. There are three possible ``status`` values:
 
-.. cssclass:: dd-noindent dd-marginbottom
+.. cssclass:: dl-horizontal dl-params dl-param-values dd-noindent dd-marginbottom
 
   ``pending``
     As soon as the credit is created through the API, the status shows
