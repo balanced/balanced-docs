@@ -19,12 +19,6 @@ dispute and may be one of:
     The card processor has ruled in favor of the customer that the transaction
     was not fulfilled or otherwise not legitimate.
 
-.. note::
-   :header_class: alert alert-tab
-   :body_class: alert alert-green
-
-   -
-
 
 Fetch a Dispute
 -----------------
