@@ -88,6 +88,7 @@ $(document).ready(function () {
     $(".section-" + defaultLang).show();
     $('.highlight-javascript').show();
     $('.highlight-html').show();
+    $("[class^='highlight-text']").show();
 
     $('.lang-change').click(function (e) {
         e.preventDefault();
@@ -104,6 +105,7 @@ $(document).ready(function () {
         $(".section-" + lang).show();
         $('.highlight-javascript').show();
         $('.highlight-html').show();
+        $("[class^='highlight-text']").show();
     });
 
     scrollToAnchor(window.location.hash);

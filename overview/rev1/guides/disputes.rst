@@ -31,7 +31,27 @@ Some helpful tips to prevent chargebacks:
 
 Dispute fees
 ---------------
-There is a non-refundable $15 fee for each chargeback regardless of the outcome of the dispute.
+
+There is a non-refundable $15 fee for each dispute **regardless of the outcome of the dispute**.
+
+The day Balanced receives notice of a dispute the marketplace's verified bank account
+will be invoiced for the cost of the dispute and the $15 fee. Dispute charges are itemized
+in Invoices assessed to the marketplace.
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-green
+  
+  Invoices are also accessible via the `Dashboard`_.
+
+
+Refunding a disputed charge
+-------------------------------
+
+Balanced does not allow disputed debits to be refunded, as this opens the marketplace
+to potentially losing these funds twice, once for the refund, and again for the dispute
+itself. Rather than issuing a refund, contact support@balancedpayments.com and ask that
+the dispute be accepted on your behalf, which will effectively refund the customer.
 
 
 Challenging a Dispute
@@ -86,6 +106,32 @@ Dispute Notifications
 
 When your marketplace has chargebacks, in addition to them being visible in your `Dashboard`_,
 Balanced will also send an email to your marketplace email address to advise you of them.
+
+.. code-block:: text
+
+  Greetings, 
+
+  You have received 2 disputes in the past seven days. 
+
+  You may view further details at the following link:   
+  https://dashboard.balancedpayments.com/#/marketplaces/MP5G864SDF86S4jy8qsdf4zK/activity/disputes 
+
+  Once you receive notification of a new chargeback please reach out to the 
+  customer and remind them of the charge, and ask them to rescind the 
+  chargeback if they recognize and accept the charge. Additionally, please 
+  send supporting documentation to support@balancedpayments.com so that we 
+  can fight the chargeback on your behalf. This documentation may include: 
+
+  - An email exchange between yourself and the customer where they recognize 
+  and accept the charges, and promise to cancel the chargeback 
+  - A receipt emailed to the cardholder upon purchase of the good or service 
+  - Delivery tracking information, such as Fedex/UPS shipping numbers. 
+
+  If you have any questions about how to respond to a specific chargeback 
+  please don't hesitate to ask us at support@balancedpayments.com. 
+
+  Thanks, 
+  Balanced
 
 
 Viewing Disputes
