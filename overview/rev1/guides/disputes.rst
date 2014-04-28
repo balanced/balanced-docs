@@ -50,8 +50,9 @@ Refunding a disputed charge
 
 Balanced does not allow disputed debits to be refunded, as this opens the marketplace
 to potentially losing these funds twice, once for the refund, and again for the dispute
-itself. Rather than issuing a refund, contact support@balancedpayments.com and ask that
-the dispute be accepted on your behalf, which will effectively refund the customer.
+itself. If challenging the dispute is undesired, rather than issuing a refund, contact
+support@balancedpayments.com and ask that the dispute be accepted on your behalf, which
+will effectively refund the customer.
 
 
 Challenging a Dispute
@@ -90,7 +91,7 @@ This information may be provided only in the following formats:
   - \- docx
   - \- jpg
 
-Even if a customer agrees to cancel the chargeback themself, Balanced recommends
+Even if a customer agrees to cancel the chargeback, Balanced recommends
 submitting documentation of transaction fulfillment so the dispute is contested
 on your behalf so you’re protected in the event the customer forgets to cancel
 the dispute!
