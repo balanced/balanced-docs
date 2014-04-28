@@ -35,7 +35,7 @@ Dispute fees
 There is a non-refundable $15 fee for each dispute **regardless of the outcome of the dispute**.
 
 The day Balanced receives notice of a dispute the marketplace's verified bank account
-will be invoiced for the cost of the dispute and the $15 fee. Dispute charges are itemized
+will be invoiced for the amount of the dispute and the $15 fee. Dispute charges are itemized
 in Invoices assessed to the marketplace.
 
 .. note::
