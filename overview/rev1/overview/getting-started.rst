@@ -83,14 +83,13 @@ Start Integrating
 Client Libraries
 ----------------------------
 
-Balanced attempts very hard to write idiomatic code for all it's API libraries
-and we pride ourselves in an extensive test suite for every client that
-demonstrates almost every single method / function executed for your
+Balanced tries very hard to write idiomatic code for all of its API libraries.
+We pride ourselves in an extensive test suite for every client that
+demonstrates almost every single method/function executed for your
 convenience.
 
-We find that this is the best way to use the client libraries. If you encounter
-and issue, please file a github issue and get in touch through one our
-many :ref:`support channels <overview.support>`.
+If you encounter an issue with a client library, please file a Github issue and
+get in touch through one our many :ref:`support channels <overview.support>`.
 
 .. list-table::
    :widths: 15 17 18 15
