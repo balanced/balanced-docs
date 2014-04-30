@@ -77,6 +77,20 @@ Debit (charge) a bank account.
    .. dcode:: scenario bank_account_debit
 
 
+Create a Debit for an Order
+---------------------------
+
+Debit a previously created order.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form debits.create
+
+.. container:: code-white
+
+  .. dcode:: scenario debit_order
+
+
 Fetch a Debit
 ----------------
 

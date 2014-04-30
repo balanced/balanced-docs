@@ -4,4 +4,4 @@ callback = json.loads(
 
 request = {
     'uri': callback['href'],
-}
+    }
