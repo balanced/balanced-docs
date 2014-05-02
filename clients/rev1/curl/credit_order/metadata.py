@@ -16,5 +16,6 @@ request = {
         'amount': 5000,
         'order': order['href'],
         },
-    'bank_account_href': bank_account_href
+    'bank_account_href': bank_account_href,
+    'href': order['href'],
 }
