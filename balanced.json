@@ -11908,7 +11908,7 @@
      "order.updated": "Occurs whenever an order is updated.",
      "settlement.created": "Occurs whenever an invoice settlement is created.",
      "settlement.updated": "Occurs whenever an invoice settlement is updated.",
-     "settlement.failed": "Occurs whenever an invoice settlement is failed.",
+     "settlement.failed": "Occurs whenever an invoice settlement has failed.",
      "settlement.canceled": "Occurs whenever an invoice settlement is canceled."
     },
     "name": "AuditEventType"
