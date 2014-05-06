@@ -14,7 +14,7 @@ request = {
     'payload': {
         'amount': 5000,
         'order': order['href'],
-        },
+    },
     'card_href': card['cards'][0]['href'],
     'order_href': order['href'],
 }

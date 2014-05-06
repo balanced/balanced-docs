@@ -15,7 +15,7 @@ request = {
     'payload': {
         'amount': 5000,
         'order': order['href'],
-        },
+    },
     'bank_account_href': bank_account_href,
     'order_href': order['href'],
 }
