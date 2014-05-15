@@ -60,6 +60,19 @@ Send money to a bank account.
   .. dcode:: scenario bank_account_credit
 
 
+Create a Credit for an Order
+----------------------------
+
+Credit a previously created order.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form credits.create
+
+.. container:: code-white
+
+  .. dcode:: scenario credit_order
+
 Fetch a Credit
 -----------------
 

@@ -3,7 +3,11 @@ Orders
 
 An ``Order`` resource is a construct that logically groups related transaction
 operations for a particular seller (``Customer``). An ``Order`` allows issuing
-payouts to one ``Customer`` and the marketplace bank account.
+payouts to only one ``Customer`` and the marketplace bank account. An ``Order``
+is useful for reconciliation purposes, as each ``Order`` maintains its own
+individual escrow balance, which is separate from the total marketplace escrow.
+Attempts to credit an ``Order`` beyond the amount debited into the ``Order``
+will fail.
 
 |
 
