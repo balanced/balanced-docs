@@ -9696,6 +9696,15 @@
     ]
    }, 
    {
+    "path": "/cards/:card_id/credits", 
+    "description": "", 
+    "name": "credits.create", 
+    "methods": [
+     "POST", 
+     "OPTIONS"
+    ]
+   }, 
+   {
     "path": "/cards/:card_id/debits", 
     "description": "", 
     "name": "debits.index", 
