@@ -147,3 +147,17 @@ Charge a tokenized credit card.
 .. container:: code-white
 
   .. dcode:: scenario card_debit
+
+
+Credit a Card
+------------------
+
+Issue a Credit to a tokenized credit card.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form credits.create
+
+.. container:: code-white
+
+  .. dcode:: scenario card_credit

@@ -39,17 +39,41 @@ throughout the payout process. There are three possible ``status`` values:
 
   .. dcode:: query Credits
 
+
+Create a Card Credit
+-----------------------------
+
+Send money to a supported credit card. The Card must have a ``can_credit`` attribute
+with a value of ``true``. The Card must have also included the name on the card during
+tokenization.
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-green
+
+  The maximum amount that may be credited to a card is $2,500 per transaction.
+
+
+.. cssclass:: dl-horizontal dl-params
+
+    .. dcode:: form credits.create
+
+.. container:: code-white
+
+  .. dcode:: scenario card_credit
+
+
+Create a Bank Account Credit
+-----------------------------
+
+Send money to a bank account.
+
 .. note::
   :header_class: alert alert-tab
   :body_class: alert alert-green
 
   Bank accounts that only receive credits do **not** need to be verified.
 
-
-Create a Credit
----------------
-
-Send money to a bank account.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -72,6 +96,7 @@ Credit a previously created order.
 .. container:: code-white
 
   .. dcode:: scenario credit_order
+
 
 Fetch a Credit
 -----------------
