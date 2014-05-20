@@ -1,6 +1,6 @@
 .. _guides.credits:
 
-Working with Credits
+Credits
 =====================
 
 A credit (payout) is a transaction where funds are sent to a bank account with
@@ -16,20 +16,11 @@ throughout the payout process. There are three possible ``status`` values:
 Payout methods
 --------------
 
-Currently Balanced only supports payouts to bank accounts via ACH but we will
-add more. All of this is publicly tracked via Github issues. For example:
-
-.. cssclass:: list-noindent
-
-* `Payouts via Check <https://github.com/balanced/balanced-api/issues/69>`_
-* `Pushing to Cards <https://github.com/balanced/balanced-api/issues/32>`_
-
-Feel free to chime in on an existing issue or create a new one if you'd like
-to see another payment method supported.
+Balanced currently supports payouts to bank accounts via ACH and debit cards.
 
 
-Initiating a credit
---------------------
+Credit a bank account
+----------------------
 
 |
 
@@ -37,7 +28,7 @@ API References:
 
 .. cssclass:: list-noindent
 
-- `Create a Credit </1.1/api/credits/#create-a-credit>`_
+- `Create a Bank Account Credit </1.1/api/credits/#create-a-bank-account-credit>`_
 
 |
 
@@ -64,7 +55,7 @@ do the following:
   Credits may also be initiated via the `Dashboard`_.
 
 
-Bank statement descriptor
+Statement descriptor
 --------------------------
 
 Balanced allows marketplaces to specify the text that appears on statements for

@@ -1,6 +1,6 @@
 .. _guides.debits:
 
-Working with Debits
+Debits
 =======================
 
 A debit is a transaction where funds are obtained from a credit card or from a
