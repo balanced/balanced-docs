@@ -1,4 +1,4 @@
-Working with Card Holds
+Card Holds
 ========================
 
 Balanced supports the concepts of :term:`holds`. Holds are a type of
