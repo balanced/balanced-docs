@@ -6,7 +6,8 @@ Debits
 A debit is a transaction where funds are obtained from a credit card or from a
 bank account via the ACH Network. Funds obtained via credit card debits are
 immediately available in escrow. Funds being obtained via ACH debits are
-generally available in escrow in 3-4 business days.
+generally available in escrow in 3-4 business days. Currently Balanced supports
+credit card debits as well as bank accounts debits via ACH.
 
 Debits have a ``status`` attribute representing the current status of the debit
 throughout the payout process. There are three possible ``status`` values:
@@ -14,113 +15,75 @@ throughout the payout process. There are three possible ``status`` values:
 
 |
 
-Processing methods
--------------------
-
-Currently Balanced supports credit card debits and bank accounts via ACH.
-
-
 Creating a debit
 --------------------
 
-API References:
+.. admonition:: References
+  :header_class: alert alert-tab full-width alert-tab-persianBlue60
+  :body_class: alert alert-green alert-persianBlue20
+  
+  .. cssclass:: mini-header
+  
+    API
 
-.. cssclass:: list-noindent
+  .. cssclass:: list-noindent
 
-- `Create a Card Debit </1.1/api/debits/#create-a-card-debit>`_
-- `Create a Bank Account Debit </1.1/api/debits/#create-a-bank-account-debit>`_
+    - `Create a Card Debit </1.1/api/debits/#create-a-card-debit>`_
+    - `Create a Bank Account Debit </1.1/api/debits/#create-a-bank-account-debit>`_
+    - `Create a Bank Account Verification </1.1/api/bank-account-verifications/#create-a-bank-account-verification>`_
 
-|
+
+Debit a credit card
+~~~~~~~~~~~~~~~~~~~~~
 
 Debit a credit card example:
 
-.. code-block:: ruby
+.. literalinclude:: examples/curl/card-debit.sh
+   :language: bash
 
-  # card_href is the stored href for the Card
-  card = Balanced::Card.fetch(card_href)
-  debit = card.debit(
-    :amount => 100000,
-    :description => 'Some descriptive text for the debit in the dashboard'
-  )
+.. literalinclude:: examples/python/card-debit.py
+   :language: python
 
-.. code-block:: python
+.. literalinclude:: examples/ruby/card-debit.rb
+   :language: ruby
 
-  # card_href is the stored href for the Card
-  card = balanced.Card.fetch(card_href)
-  debit = card.debit(
-    amount=100000,
-    description='Some descriptive text for the debit in the dashboard'
-  )
+.. literalinclude:: examples/php/card-debit.php
+   :language: php
 
-.. code-block:: bash
+.. literalinclude:: examples/java/card-debit.java
+   :language: java
 
-  # :card_id is the stored id for the Card
-  curl https://api.balancedpayments.com/cards/:card_id/debits \
-       -H "Accept: application/vnd.api+json;revision=1.1" \
-       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
-       -d "amount=100000" \
-       -d "description=Some descriptive text for the debit in the dashboard"
-
-.. code-block:: php
-
-  <?php
-  # $card_href is the stored href for the Card
-  $card = Balanced\Card::get($card_href);
-    $card->debits->create(array(
-    "amount" => "100000",
-    "description" => "Some descriptive text for the debit in the dashboard",
-  ));
-  ?>
+.. literalinclude:: examples/node/card-debit.js
+   :language: node
 
 
-Debit a bank account example:
+Debit a bank account
+~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: ruby
-
-  # bank_account_href is the stored href for the BankAccount
-  bank_account = Balanced::BankAccount.fetch(bank_account_href)
-  debit = bank_account.debit(
-    :appears_on_statement_as => 'Statement text',
-    :amount => 100000,
-    :description => 'Some descriptive text for the debit in the dashboard'
-  )
-
-.. code-block:: python
-
-  # bank_account_href is the stored href for the BankAccount
-  bank_account = balanced.BankAccount.fetch(bank_account_href)
-  bank_account.debit(
-    appears_on_statement_as='Statement text',
-    amount=100000,
-    description='Some descriptive text for the debit in the dashboard'
-  )
-
-.. code-block:: bash
-
-  # :bank_account_id is the stored id for the BankAccount
-  curl https://api.balancedpayments.com/bank_accounts/:bank_account_id/debits \
-       -H "Accept: application/vnd.api+json;revision=1.1" \
-       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
-       -d "appears_on_statement_as=Statement text" \
-       -d "amount=100000" \
-       -d "description=Some descriptive text for the debit in the dashboard"
-
-.. code-block:: php
-
-  <?php
-  # $bank_account_href is the stored href for the BankAccount
-  $bank_account = Balanced\BankAccount::get($bank_account_href);
-  $bank_account->debits->create(array(
-    "amount" => "100000",
-    "description" => "Some descriptive text for the debit in the dashboard",
-  ?>
-
-
-.. note::
-  :header_class: alert alert-tab-yellow
-  :body_class: alert alert-yellow
-
+.. admonition:: Requirements
+  :header_class: alert alert-tab full-width alert-tab-yellow
+  :body_class: alert alert-green alert-yellow
+  
   Bank accounts you wish to debit must first `be verified`_.
+
+
+.. literalinclude:: examples/curl/bank-account-debit.sh
+   :language: bash
+
+.. literalinclude:: examples/python/bank-account-debit.py
+   :language: python
+
+.. literalinclude:: examples/ruby/bank-account-debit.rb
+   :language: ruby
+
+.. literalinclude:: examples/php/bank-account-debit.php
+   :language: php
+
+.. literalinclude:: examples/java/bank-account-debit.java
+   :language: java
+
+.. literalinclude:: examples/node/bank-account-debit.js
+   :language: node
 
 
 ACH Debit status flow
@@ -151,7 +114,7 @@ throughout the payout process. There are three possible ``status`` values:
   :header_class: alert alert-tab-yellow
   :body_class: alert alert-yellow
 
-  Even after a succeeded status, the status may still transition to failed, even
+  After a succeeded status, the status may still transition to failed, even
   after a few weeks.
 
 |
@@ -165,18 +128,17 @@ throughout the payout process. There are three possible ``status`` values:
 Refunding a debit
 -------------------
 
-|
+.. admonition:: References
+  :header_class: alert alert-tab full-width alert-tab-persianBlue60
+  :body_class: alert alert-green alert-persianBlue20
+  
+  .. cssclass:: mini-header
+  
+    API
 
-API References:
+  .. cssclass:: list-noindent
 
-.. cssclass:: list-noindent
-
-- `Create a Refund </1.1/api/refunds/#create-a-refund>`_
-
-|
-
-In the event that you need to cancel a payout, e.g. a user is not satisfied with
-the product, you can create a ``Refund``.
+    - `Create a Refund </1.1/api/refunds/#create-a-refund>`_
 
 .. note::
   :header_class: alert alert-tab
@@ -187,64 +149,35 @@ the product, you can create a ``Refund``.
   take as many as five business days to process a refund. ACH debit refunds
   generally take 3-5 days to process.
 
-.. code-block:: ruby
 
-  # debit_href is the stored href for the Debit
-  debit = Balanced::Debit.fetch(debit_href)
-  debit.refund(
-    :amount => 3000,
-    :description => 'Refund for Order #1111',
-    :meta => {
-      'merchant.feedback' => 'positive',
-      'fulfillment.item.condition' => 'OK',
-      'user.refund_reason' => 'not happy with product'
-    }
-  )
-
-.. code-block:: python
-
-  # debit_href is the stored href for the Debit
-  debit = balanced.Debit.fetch(debit_href)
-  refund = debit.refund(
-      amount=3000,
-      description="Refund for Order #1111",
-      meta={
-          "merchant.feedback": "positive",
-          "user.refund_reason": "not happy with product",
-          "fulfillment.item.condition": "OK",
-      }
-  )
-
-.. code-block:: bash
-
-  # :debit_id is the stored id for the Debit
-  curl https://api.balancedpayments.com/debits/:debit_id/refunds \
-       -H "Accept: application/vnd.api+json;revision=1.1" \
-       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
-       -d "amount=3000" \
-       -d "description=Refund for Order #1111" \
-       -d "meta[merchant.feedback]=positive" \
-       -d "meta[user.refund_reason]=not happy with product" \
-       -d "meta[fulfillment.item.condition]=OK"
-
-.. code-block:: php
-
-  <?php
-  # $debit_href is the stored href for the Debit
-  $debit = Balanced\Debit::get($debit_href);
-  $debit->refunds->create(array(
-    'description' => 'Refund for Order #1111',
-    'meta' => array(
-            "fulfillment.item.condition" => "OK",
-            "merchant.feedback" => "positive",
-            "user.refund_reason" => "not happy with product",
-        )
-   ));
-  ?>
+In the event that you need to cancel a payout, e.g. a user is not satisfied with
+the product, you can create a ``Refund``.
 
 
-A Debit may also be refunded from the `Dashboard`_.
+.. literalinclude:: examples/curl/refund-create.sh
+   :language: bash
 
+.. literalinclude:: examples/python/refund-create.py
+   :language: python
+
+.. literalinclude:: examples/ruby/refund-create.rb
+   :language: ruby
+
+.. literalinclude:: examples/php/refund-create.php
+   :language: php
+
+.. literalinclude:: examples/java/refund-create.java
+   :language: java
+
+.. literalinclude:: examples/node/refund-create.js
+   :language: node
+
+
+.. note::
+  :header_class: alert alert-tab
+  :body_class: alert alert-green
+
+  A Debit may also be refunded from the `Dashboard`_.
 
 
 .. _Dashboard: https://dashboard.balancedpayments.com/
