@@ -11,28 +11,44 @@ Credits have a ``status`` attribute representing the current status of the credi
 throughout the payout process. There are three possible ``status`` values:
 ``pending``, ``succeeded``, ``failed``
 
+
+Balanced currently supports payouts to:
+
+- \- Bank accounts via ACH
+- \- Debit cards
+
 |
 
-Payout methods
---------------
-
-Balanced currently supports payouts to bank accounts via ACH and debit cards.
-
-
-Credit a bank account
+Create a credit
 ----------------------
 
+.. admonition:: References
+  :header_class: alert alert-tab full-width alert-tab-persianBlue60
+  :body_class: alert alert-green alert-persianBlue20
+  
+  .. cssclass:: mini-header
+  
+    API
+
+  .. cssclass:: list-noindent
+
+    - `Create a Bank Account Credit </1.1/api/credits/#create-a-bank-account-credit>`_
+    - `Create a Card Credit </1.1/api/credits/#create-a-card-credit>`_
+
 |
 
-API References:
-
-.. cssclass:: list-noindent
-
-- `Create a Bank Account Credit </1.1/api/credits/#create-a-bank-account-credit>`_
+.. note::
+  :header_class: alert alert-tab alert-tab-pineGreen80
+  :body_class: alert alert-green alert-pineGreen20
+  
+  Credits may also be initiated via the `Dashboard`_.
 
 |
 
-Initiating a credit (payout) is simple. Assuming we have an existing ``BankAccount`` we can
+Credit a bank account
+~~~~~~~~~~~~~~~~~~~~~~
+
+Initiating a credit (payout) to a bank account is simple. Assuming we have an existing ``BankAccount`` we can
 do the following:
 
 .. literalinclude:: examples/curl/credit-create.sh
@@ -47,12 +63,51 @@ do the following:
 .. literalinclude:: examples/php/credit-create.php
    :language: php
 
+.. literalinclude:: examples/java/credit-create.java
+   :language: java
 
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-green
-  
-  Credits may also be initiated via the `Dashboard`_.
+.. literalinclude:: examples/node/credit-create.js
+   :language: node
+
+
+Credit a card
+~~~~~~~~~~~~~~~
+
+Initiating a credit (payout) to a card is simple, but there are a few requirements to be aware of.
+
+.. admonition:: Requirements
+  :header_class: alert alert-tab full-width alert-tab-yellow
+  :body_class: alert alert-green alert-yellow
+
+  .. cssclass:: list-noindent no-border
+
+    - ``name`` must have been supplied on card tokenization.
+    - ``card_type`` must be ``debit``
+    - ``card_category`` must be ``other``. Pre-paid cards are not supported.
+
+  The maximum amount per transaction is $2,500.
+
+|
+
+Assuming we have an existing and creditable ``Card`` we can do the following:
+
+.. literalinclude:: examples/curl/card-credit.sh
+   :language: bash
+
+.. literalinclude:: examples/python/card-credit.py
+   :language: python
+
+.. literalinclude:: examples/ruby/card-credit.rb
+   :language: ruby
+
+.. literalinclude:: examples/php/card-credit.php
+   :language: php
+
+.. literalinclude:: examples/java/card-credit.java
+   :language: java
+
+.. literalinclude:: examples/node/card-credit.js
+   :language: node
 
 
 Statement descriptor
@@ -62,16 +117,27 @@ Balanced allows marketplaces to specify the text that appears on statements for
 a transaction. This is referred to as the soft descriptor and is set by
 specifying the ``appears_on_statement_as`` field when creating a credit.
 
-Characters that can be used are limited to the following (any other characters
-will be rejected):
 
-.. cssclass:: list-noindent
+.. admonition:: Requirements
+  :header_class: alert alert-tab full-width alert-tab-yellow
+  :body_class: alert alert-green alert-yellow
 
-- \- ASCII letters (a-z and A-Z)
-- \- Digits (0-9)
-- \- Special characters (``.<>(){}[]+&!$;-%_?:#@~='"^\`|``)
+  Characters that can be used are limited to the following (any other characters
+  will be rejected):
 
-The descriptor is limited to 14 characters. ACH credits do not have a prefix.
+  .. cssclass:: no-border
+
+    - \- ASCII letters (a-z and A-Z)
+    - \- Digits (0-9)
+    - \- Special characters (``.<>(){}[]+&!$;-%_?:#@~='"^\`|``)
+
+  Descriptor length limit:
+
+  .. cssclass:: no-border
+
+    - \- ACH credits: 14 characters. ACH credits do not have a prefix.
+    - \- Card credits: 12 characters.
+
 
 Example usage:
 
@@ -86,6 +152,12 @@ Example usage:
 
 .. literalinclude:: examples/php/credit-soft-descriptor.php
    :language: php
+
+.. literalinclude:: examples/java/credit-soft-descriptor.java
+   :language: java
+
+.. literalinclude:: examples/node/credit-soft-descriptor.js
+   :language: node
 
 
 Payout status flow
@@ -124,15 +196,18 @@ throughout the payout process. There are three possible ``status`` values:
 Reversing a credit
 -------------------
 
-|
+.. admonition:: References
+  :header_class: alert alert-tab full-width alert-tab-persianBlue60
+  :body_class: alert alert-green alert-persianBlue20
+  
+  .. cssclass:: mini-header
+  
+    API
+  
+  .. cssclass:: list-noindent
 
-API References:
+    - `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
 
-.. cssclass:: list-noindent
-
-- `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
-
-|
 
 In the event that you need to cancel a payout, e.g. a user is not
 satisfied with the product, you can create a ``Reversal``.
@@ -148,6 +223,12 @@ satisfied with the product, you can create a ``Reversal``.
 
 .. literalinclude:: examples/php/reversal-create.php
    :language: php
+
+.. literalinclude:: examples/java/reversal-create.java
+   :language: java
+
+.. literalinclude:: examples/node/reversal-create.js
+   :language: node
 
   
 

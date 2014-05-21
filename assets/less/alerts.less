@@ -3,7 +3,36 @@
   .border-radius(0px);
   text-shadow: none;
   padding: 20px 15px 20px 15px;
-  margin-bottom: 50px;
+  
+  ul {
+    li {
+      border-bottom: 1px @persianBlue20 solid;
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      a {
+        background-color: @persianBlue40;
+        display: block;
+        padding: 10px;
+        color: white;
+        &:hover {
+          color: white;
+          background-color: @persianBlue100;
+        }
+      }
+    }
+    &.no-border {
+      li {
+        border-bottom: none;
+      }
+    }
+  }
+  
+  .mini-header {
+    padding: 3px 5px 2px 5px;
+    background-color: @persianBlue60;
+  }
 }
 
 .alert-gray {
@@ -22,8 +51,56 @@
 }
 
 .alert-yellow {
-  background-color: #F5E7D1;
+  background-color: @curryYellow20;
   color: @black;
+}
+
+.alert-persianBlue80 {
+    background-color: @persianBlue80;
+    color: white;
+    a {
+        color: @egyptianBlue20;
+        &:hover {
+            color: #F0F1F2;
+        }
+    }
+}
+
+.alert-persianBlue60 {
+    background-color: @persianBlue60;
+    color: white;
+    a {
+        color: @egyptianBlue20;
+        &:hover {
+            color: #F0F1F2;
+        }
+    }
+}
+
+.alert-persianBlue20 {
+    background-color: @persianBlue20;
+    color: white;
+    a {
+        color: @egyptianBlue20;
+        &:hover {
+            color: #F0F1F2;
+        }
+    }
+}
+
+.alert-pineGreen80 {
+    background-color: @pineGreen80;
+    color: white;
+    a {
+        color: @pineGreen20;
+        &:hover {
+            color: #F0F1F2;
+        }
+    }
+}
+
+.alert-pineGreen20 {
+    background-color: @pineGreen20;
 }
 
 .alert-tab {
@@ -33,7 +110,11 @@
   color: @white;
   display: inline-block;
   margin-bottom: 0px;
-  padding: 5px 12px;
+  padding: 10px 12px 8px 12px;
+  
+  &.full-width {
+      width: 816px;
+  }
 }
 
 .alert-tab-red {
@@ -43,5 +124,25 @@
 
 .alert-tab-yellow {
   .alert-tab;
-  background-color: #D5A359;
+  background-color: @curryYellow60;
+}
+
+.alert-tab-persianBlue80 {
+    background-color: @persianBlue80;
+    color: white;
+}
+
+.alert-tab-persianBlue60 {
+    background-color: @persianBlue60;
+    color: white;
+}
+
+.alert-tab-persianBlue20 {
+    background-color: @persianBlue20;
+    color: white;
+}
+
+.alert-tab-pineGreen20 {
+    background-color: @pineGreen20;
+    color: white;
 }

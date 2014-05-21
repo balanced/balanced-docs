@@ -1,0 +1,7 @@
+# :card_id is the stored ID for the card
+curl https://api.balancedpayments.com/cards/:card_id/credits \
+     -H "Accept: application/vnd.api+json;revision=1.1" \
+     -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
+     -d "appears_on_statement_as=Some text" \
+     -d "amount=5000" \
+     -d "description=Some descriptive text for the debit in the dashboard"
