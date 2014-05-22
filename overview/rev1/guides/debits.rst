@@ -36,7 +36,7 @@ Creating a debit
 Debit a credit card
 ~~~~~~~~~~~~~~~~~~~~~
 
-Debit a credit card example:
+Assuming we have an existing ``Card`` we can do the following:
 
 .. literalinclude:: examples/curl/card-debit.sh
    :language: bash
@@ -66,6 +66,8 @@ Debit a bank account
   
   Bank accounts you wish to debit must first `be verified`_.
 
+
+Assuming we have an existing ``BankAccount`` we can do the following:
 
 .. literalinclude:: examples/curl/bank-account-debit.sh
    :language: bash
