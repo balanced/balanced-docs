@@ -40,7 +40,7 @@ throughout the payout process. There are three possible ``status`` values:
   .. dcode:: query Credits
 
 
-Create a Card Credit
+Create a Credit to a Card
 -----------------------------
 
 Send money to a supported credit card. The Card must have a ``can_credit`` attribute
@@ -63,8 +63,8 @@ tokenization.
   .. dcode:: scenario card_credit
 
 
-Create a Bank Account Credit
------------------------------
+Create a Credit to a Bank Account
+------------------------------------
 
 Send money to a bank account.
 

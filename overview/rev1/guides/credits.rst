@@ -32,8 +32,8 @@ Create a credit
 
   .. cssclass:: list-noindent
 
-    - `Create a Bank Account Credit </1.1/api/credits/#create-a-bank-account-credit>`_
-    - `Create a Card Credit </1.1/api/credits/#create-a-card-credit>`_
+    - `Create a Credit to a Bank Account </1.1/api/credits/#create-a-credit-to-a-bank-account>`_
+    - `Create a Credit to a Card </1.1/api/credits/#create-a-credit-to-a-card>`_
 
 |
 
@@ -45,8 +45,8 @@ Create a credit
 
 |
 
-Credit a bank account
-~~~~~~~~~~~~~~~~~~~~~~
+Create a credit to a bank account
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Initiating a credit (payout) to a bank account is simple. Assuming we have an existing ``BankAccount`` we can
 do the following:
@@ -70,8 +70,8 @@ do the following:
    :language: node
 
 
-Credit a card
-~~~~~~~~~~~~~~~
+Create a credit to a Card
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Initiating a credit (payout) to a card is simple, but there are a few requirements to be aware of.
 
