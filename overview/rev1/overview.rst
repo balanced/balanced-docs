@@ -57,8 +57,8 @@ Submission & Delivery times
 
 .. container:: table-header
 
-   The cutoff for submitting payouts is **3:00 PM Pacific (PT)** time. Payouts will *not* be
-   delivered on weekends or `bank holidays`_:
+   The cutoff for submitting payouts is **3:00 PM Pacific (PT)** time on business days.
+   Payouts will *not* be delivered on weekends or `bank holidays`_:
 
 .. cssclass:: table table-hover
 

@@ -83,7 +83,7 @@ Initiating a credit (payout) to a card is simple, but there are a few requiremen
 
     - ``name`` must have been supplied on card tokenization.
     - ``card_type`` must be ``debit``
-    - ``card_category`` must be ``other``. Pre-paid cards are not supported.
+    - ``card_category`` cannot be ``prepaid``. Pre-paid cards are not supported.
 
   The maximum amount per transaction is $2,500.
 
