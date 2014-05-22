@@ -323,6 +323,116 @@ behavior such as `creating transactions with a failed status`_, and
 which allow you to keep track of order fulfillment and ensure against
 accidental over payouts.
 
+
+Migrating to 1.1
+------------------
+
+To begin, we recommend reviewing the v1.1 changelog overview in the above section.
+
+**Is v1.1 backward-compatible with v1.0?**
+
+No. Resources deprecated in v1.0 were removed in 1.1, ``Account`` for example.
+Many attribute names were standardized. Features were superseded. In short, it's not
+backward-compatible. The good news though, upgrading to v1.1 is relatively simple.
+
+When using API v1.1, v1.0 URIs (/v1/...) are automatically handled by the API, so no
+modification is necessary. As always, do not manually build URIs/hrefs.
+
+|
+
+
+Migrate from Account to Customer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The ``Account`` resource was deprecated in v1.0 in favor of the ``Customer`` resource.
+Migrating to Customer is simple and must be dome before migrating to v1.1. To simplify
+migration, each ``Account`` has a 1:1 mapping to a ``Customer`` instance that has the
+same ``Card``, ``BankAccount``, and transaction information. This ``Customer`` instance
+is accessible through the ``Account``'s ``customer_uri`` attribute.
+
+Since everyone's application code differs, we'll offer some simple pseudocode:
+
+.. code-block:: html
+
+  for each stored account uri
+    replace stored uri with account's customer_uri attribute
+
+
+The underwriting process differs between ``Account`` and ``Customer``. Underwriting success is not
+required for ``Customer`` resource creation. Keep updating the ``Customer`` resource with more information
+until underwriting succeeds.
+
+There is no unique email constraint on ``Customer``.
+
+
+Update the client library version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Update your client library version to the latest 1.x version available. **1.x library versions work with
+API v1.1 or newer. 0.x library versions work only with API v1.0.**
+
+
+Upgrade balanced.js
+~~~~~~~~~~~~~~~~~~~~~~
+
+Review the `balanced.js guide </1.1/guides/balanced-js>`_.
+
+Tokenization now happens at the root level and not under a marketplace. Perform an authenticated
+request to claim a tokenized funding instrument. Verification occurs on authenticated request on
+the tokenized funding instrument. Tokenizations do not appear in marketplace logs because
+tokenizations occur at the root level and not under the marketplace.
+
+balanced.js no longer requires an ``init`` call with the marketplace URI.
+
+Unclaimed tokenized funding instruments are discarded after a short timeframe.
+
+
+Funding Instruments
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Transactions are now created via the funding instrument, not via the ``Customer`` as was the case in v1.0.
+
+For example, in v1.0 via the ``Customer``:
+
+.. code-block:: html
+
+  customer.debit(amount=1000)
+
+Now in v1.1, directly via the funding instrument:
+
+.. code-block:: html
+
+  card.debit(amount=1000)
+
+
+Additionally, associating a ``Customer`` and a ``Card`` is now also done via the funding instrument.
+
+For example, in v1.0 via the ``Customer``:
+
+.. code-block:: html
+
+  customer.add_card(card)
+
+
+Now in v1.1, directly via the funding instrument:
+
+.. code-block:: html
+
+  card.associate_to_customer(customer)
+
+
+Other Notes
+~~~~~~~~~~~~~~~~~~~
+
+``uri`` attributes replaced with ``href`` attributes
+
+``on_behalf_of`` was removed. The Order resource supersedes this.
+
+There is no longer a ``paid`` transaction status. All transaction statuses are one of:
+``pending``, ``succeeded``, ``failed``
+
+
+
 .. _FedACH directory: https://www.fededirectory.frb.org
 
 .. _now uses: https://github.com/balanced/balanced-dashboard/issues/671
