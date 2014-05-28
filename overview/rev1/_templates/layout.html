@@ -120,7 +120,7 @@
                   <div class="nav nav-list context-navlist">
                     <!-- The table of contents menu -->
                     {%- block sidebar2 %}
-                    {{ toctree(maxdepth=2, collapse=False) }}
+                    {{ toctree(maxdepth=2, collapse=False, includehidden=True) }}
                     {% endblock %}
                   </div>
                 </div>
