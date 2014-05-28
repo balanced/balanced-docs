@@ -264,10 +264,8 @@ Method Reference - Cards
   :param cardDataObject.cvv: *optional*. The credit card's security code
   :param cardDataObject.name: *optional*. The credit card holder's name
   
-  :returns: ``null``. Invokes the ``callback`` function with three parameters -
-            ``data``, ``errors`` and ``status``. If successful, the ``data``
-            parameter has a resource representation which can be identified by
-            its ``uri``
+  :returns: ``null``. Invokes the ``callback`` function with a response payload for the
+            result of the tokenization.
 
 .. js:function:: balanced.card.isCardNumberValid(cardNumber)
 
