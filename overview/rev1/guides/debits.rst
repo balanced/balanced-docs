@@ -123,12 +123,16 @@ throughout the payout process. There are three possible ``status`` values:
 
 .. image:: https://www.balancedpayments.com/images/ach-debits/ach_debits_payment_status-01-2x-882f3b99.png
 
-
-.. _be verified: /1.1/api/bank-account-verifications
+|
 
 
 Refunding a debit
 -------------------
+
+A ``Refund`` resource represents a refund of a ``Debit`` transaction. The
+amount of the refund may be any value up to the amount of the original
+``Debit``. Refunds generally process in one day or less.
+
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
@@ -141,15 +145,6 @@ Refunding a debit
   .. cssclass:: list-noindent
 
     - `Create a Refund </1.1/api/refunds/#create-a-refund>`_
-
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-green
-
-  For credit cards it typically takes one business day for refunds to
-  be reflected on a card statement, but it's possible for the issuing bank to
-  take as many as five business days to process a refund. ACH debit refunds
-  generally take 3-5 days to process.
 
 
 In the event that you need to cancel a payout, e.g. a user is not satisfied with
@@ -182,4 +177,5 @@ the product, you can create a ``Refund``.
   A Debit may also be refunded from the `Dashboard`_.
 
 
+.. _be verified: /1.1/api/bank-account-verifications
 .. _Dashboard: https://dashboard.balancedpayments.com/
