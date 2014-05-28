@@ -345,7 +345,7 @@ Migrate from Account to Customer
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The ``Account`` resource was deprecated in v1.0 in favor of the ``Customer`` resource.
-Migrating to Customer is simple and must be dome before migrating to v1.1. To simplify
+Migrating to Customer is simple and must be done before migrating to v1.1. To simplify
 migration, each ``Account`` has a 1:1 mapping to a ``Customer`` instance that has the
 same ``Card``, ``BankAccount``, and transaction information. This ``Customer`` instance
 is accessible through the ``Account``'s ``customer_uri`` attribute.
