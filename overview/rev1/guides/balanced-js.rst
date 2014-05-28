@@ -1,4 +1,4 @@
-Using balanced.js
+balanced.js
 ==================
 
 Using ``balanced.js`` is essential in ensuring that you're PCI compliant.

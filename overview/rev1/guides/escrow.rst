@@ -1,4 +1,4 @@
-Understanding Escrow
+Escrow
 ======================
 
 Every marketplace has a single escrow. This escrow account is essentially like a
