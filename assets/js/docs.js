@@ -88,6 +88,8 @@ $(document).ready(function () {
     $(".section-" + defaultLang).show();
     $('.highlight-javascript').show();
     $('.highlight-html').show();
+    $('.highlight-objc').show();
+    $('.highlight-android').show();
     $("[class^='highlight-text']").show();
 
     $('.lang-change').click(function (e) {

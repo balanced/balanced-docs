@@ -277,7 +277,9 @@ def setup(app):
     app.add_directive(Clear.name, Clear)
     app.add_directive(Gist.name, Gist)
 
+    app.add_lexer('android', pygments.lexers.jvm.JavaLexer())
     app.add_lexer('node', pygments.lexers.web.JavascriptLexer())
+    app.add_lexer('objc', pygments.lexers.compiled.ObjectiveCLexer())
 
     app.connect('html-page-context', html_page_context)
 

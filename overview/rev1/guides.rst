@@ -14,6 +14,7 @@ Guides
   guides/cardholds
   guides/orders
   guides/disputes
+  guides/mobile
   guides/collecting-fees
   guides/taxes
 ..  guides/merchant-dashboard

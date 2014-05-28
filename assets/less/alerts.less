@@ -10,7 +10,6 @@
       &:last-child {
         border-bottom: none;
       }
-      
       a {
         background-color: @persianBlue40;
         display: block;
@@ -53,6 +52,25 @@
 .alert-yellow {
   background-color: @curryYellow20;
   color: @black;
+  
+  ul {
+    li {
+      border-bottom: 1px @curryYellow20 solid;
+      &:last-child {
+        border-bottom: none;
+      }
+      a {
+        background-color: @curryYellow40;
+        display: block;
+        padding: 10px;
+        color: #333333;
+        &:hover {
+          color: white;
+          background-color: @curryYellow100;
+        }
+      }
+    }
+  }
 }
 
 .alert-persianBlue80 {
