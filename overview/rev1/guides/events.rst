@@ -288,7 +288,7 @@ To daemonize:
 
 
 Security
-~~~~~~~~~~~
+-----------
 
 Many applications that use Balanced become internally driven by Events. This highlights
 a security concern. What if a malicious user sent a manually constructed payload to your
