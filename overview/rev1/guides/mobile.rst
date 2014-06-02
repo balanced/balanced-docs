@@ -235,6 +235,51 @@ Setup
 Since editor usage and project setup varies, follow the recommended procedure for adding an Android
 Library Project in your application.
 
+Here are some helpful tips for importing balanced-android into an application using ADT, however,
+note that application configurations and development environments vastly differ, therefore,
+your mileage may vary.
+
+.. cssclass:: list-noindent
+
+  - \- Go to Help -> Install New Software...
+  - \- Select "Juno - http://download.eclipse.org/releases/juno" for the "Work with" field.
+  - \- Expand "General Purpose tools".
+  - \- Select "m2e - Maven Integration for Eclipse".
+  - \- Accept the license and install. Restart ADT.
+  - \- File -> Import -> Maven -> Existing Maven Projects.
+  - \- Navigate to balanced-android/balanced-android (NOTE the nested directory. The balanced-android library project is named "balanced-android" and is contained in the parent balanced-android project folder)
+  - \- Make sure pom.xml com.balancedpayments.android....jar is selected. Click Finish.
+  - \- Right click on your project and select Properties.
+  - \- Go to Android -> Library -> Add. Select balanced-android. Click Ok.
+
+If you encounter dex errors, you'll have to work with your dependencies to resolve the issue.
+
+My example project is also a maven project. If yours is not and you want to convert it to one,
+right click the project and select Maven -> Convert to maven project. You can then open pom.xml
+and add the following to satisfy dependencies:
+
+.. code-block:: xml
+
+  <dependencies>
+      <dependency>
+          <groupId>com.google.code.gson</groupId>
+          <artifactId>gson</artifactId>
+          <version>2.2.4</version>
+          <scope>compile</scope>
+      </dependency>
+      <dependency>
+          <groupId>org.apache.httpcomponents</groupId>
+          <artifactId>httpclient</artifactId>
+          <version>4.2.1</version>
+          <scope>compile</scope>
+      </dependency>
+  </dependencies>
+
+
+If your project uses maven, you'll probably want your Java Build Path -> Default output folder
+to be ``/bin/classes``. I ran into Android errors when this was set to ``/target/...``
+
+
 Next, import the headers:
 
 .. code-block:: android

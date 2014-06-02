@@ -89,6 +89,7 @@ $(document).ready(function () {
     $(".section-" + defaultLang).show();
     $('.highlight-javascript').show();
     $('.highlight-html').show();
+    $('.highlight-xml').show();
     $('.highlight-objc').show();
     $('.highlight-android').show();
     $("[class^='highlight-text']").show();
@@ -109,6 +110,7 @@ $(document).ready(function () {
         $(".section-" + lang).show();
         $('.highlight-javascript').show();
         $('.highlight-html').show();
+        $('.highlight-xml').show();
         $('.highlight-objc').show();
         $('.highlight-android').show();
         $("[class^='highlight-text']").show();
