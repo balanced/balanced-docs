@@ -280,6 +280,7 @@ def setup(app):
     app.add_lexer('android', pygments.lexers.jvm.JavaLexer())
     app.add_lexer('node', pygments.lexers.web.JavascriptLexer())
     app.add_lexer('objc', pygments.lexers.compiled.ObjectiveCLexer())
+    app.add_lexer('ruby-nohide', pygments.lexers.agile.RubyLexer())
 
     app.connect('html-page-context', html_page_context)
 

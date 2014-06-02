@@ -84,6 +84,7 @@ $(document).ready(function () {
     defaultLang_dd.parent().hide();
     $("[class^='highlight-']").hide();
     $("[class^='section-']").hide();
+    $("[class$='nohide']").show();
     $(".highlight-" + defaultLang).show();
     $(".section-" + defaultLang).show();
     $('.highlight-javascript').show();
@@ -103,10 +104,13 @@ $(document).ready(function () {
         parent.hide();
         $("[class^='highlight-']").hide();
         $("[class^='section-']").hide();
+        $("[class$='nohide']").show();
         $(".highlight-" + lang).show();
         $(".section-" + lang).show();
         $('.highlight-javascript').show();
         $('.highlight-html').show();
+        $('.highlight-objc').show();
+        $('.highlight-android').show();
         $("[class^='highlight-text']").show();
     });
 
