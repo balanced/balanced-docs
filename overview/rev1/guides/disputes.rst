@@ -10,6 +10,32 @@ they did not authorize the transaction, which results in a dispute.
 Fortunately, a marketplace may challenge the dispute by providing evidence of a legitimate
 transaction.
 
+
+.. admonition:: References
+  :header_class: alert alert-tab full-width alert-tab-persianBlue60
+  :body_class: alert alert-persianBlue20
+
+  .. cssclass:: mini-header
+
+    API Specification
+
+  .. cssclass:: list-noindent
+
+    - `Disputes Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/disputes.json>`_
+    - `Dispute Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/dispute.json>`_
+
+  .. cssclass:: mini-header
+
+    API Reference
+
+  .. cssclass:: list-noindent
+
+    - `Create a Card </1.1/api/cards/#create-a-card-direct>`_
+    - `Create a Card Debit </1.1/api/debits/#create-a-card-debit>`_
+    - `Fetch a Debit Dispute </1.1/api/debits/#fetch-a-debit-dispute>`_
+    - `Fetch a Dispute </1.1/api/disputes/#fetch-a-dispute>`_
+    - `List All Disputes </1.1/api/disputes/#list-all-disputes>`_
+
 |
 
 
@@ -138,18 +164,6 @@ Balanced will also send an email to your marketplace email address to advise you
 Viewing Disputes
 ---------------------
 
-|
-
-API References:
-
-.. cssclass:: list-noindent
-
-- `Fetch a Debit Dispute </1.1/api/debits/#fetch-a-debit-dispute>`_
-- `Fetch a Dispute </1.1/api/disputes/#fetch-a-dispute>`_
-- `List All Disputes </1.1/api/disputes/#list-all-disputes>`_
-
-|
-
 Disputes may be retrieved in three ways.
 
 Retrieve via the ``Debit``:
@@ -260,17 +274,6 @@ You may also list all disputes:
 
 Testing Disputes
 ------------------
-
-|
-
-API References:
-
-.. cssclass:: list-noindent
-
-- `Create a Card </1.1/api/cards/#create-a-card-direct>`_
-- `Create a Card Debit </1.1/api/debits/#create-a-card-debit>`_
-
-|
 
 In test marketplaces, creating a ``Card`` with the number ``6500000000000002``, will create a dispute for
 any debit created with the card.
