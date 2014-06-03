@@ -1,17 +1,31 @@
 Creating a Simple Order
 -------------------------
 
-API References:
+.. admonition:: References
+  :header_class: alert alert-tab full-width alert-tab-persianBlue60
+  :body_class: alert alert-persianBlue20
 
-.. cssclass:: list-noindent
+  .. cssclass:: mini-header
 
-- `Create a Customer </1.1/api/customers/#create-a-customer>`_
-- `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
-- `Create an Order </1.1/api/orders/#create-an-order>`_
-- `Update an Order </1.1/api/orders/#update-an-order>`_
-- `Create a Credit </1.1/api/credits/#create-a-credit>`_
+    API Specification
 
-|
+  .. cssclass:: list-noindent
+
+    - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
+    - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
+
+  .. cssclass:: mini-header
+
+    API Reference
+
+  .. cssclass:: list-noindent
+
+    - `Create a Customer </1.1/api/customers/#create-a-customer>`_
+    - `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
+    - `Create an Order </1.1/api/orders/#create-an-order>`_
+    - `Update an Order </1.1/api/orders/#update-an-order>`_
+    - `Create a Credit </1.1/api/credits/#create-a-credit>`_
+
 
 By the end of this guide, you should understand how to do following:
 
