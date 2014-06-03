@@ -9,21 +9,33 @@ Credits have a ``status`` attribute representing the current status of the credi
 throughout the payout process. There are three possible ``status`` values:
 ``pending``, ``succeeded``, ``failed``
 
+
+.. admonition:: References
+  :header_class: alert alert-tab full-width alert-tab-persianBlue60
+  :body_class: alert alert-persianBlue20
+
+  .. cssclass:: mini-header
+
+    API Specification
+
+  .. cssclass:: list-noindent
+
+    - `Credits Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/credits.json>`_
+    - `Credit Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/credit.json>`_
+
+  .. cssclass:: mini-header
+
+    API Reference
+
+  .. cssclass:: list-noindent
+
+    - `Create a Credit </1.1/api/credits/#create-a-credit>`_
+
 |
 
 
 Initiating a credit
 --------------------
-
-|
-
-API References:
-
-.. cssclass:: list-noindent
-
-- `Create a Credit </1.1/api/credits/#create-a-credit>`_
-
-|
 
 Initiating a credit (payout) is simple. Assuming we have an existing ``BankAccount`` we can
 do the following:
@@ -50,16 +62,6 @@ do the following:
 
 Splitting Payments
 --------------------
-
-|
-
-API References:
-
-.. cssclass:: list-noindent
-
-- `Create a Credit </1.1/api/credits/#create-a-credit>`_
-
-|
 
 Splitting payments is accomplished by simply initiating a separate credit to each recipient's bank account:
 

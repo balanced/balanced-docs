@@ -7,20 +7,39 @@ A funding instrument is a resource which represents a source or target for
 interactions involving money.
 
 
+.. admonition:: References
+  :header_class: alert alert-tab full-width alert-tab-persianBlue60
+  :body_class: alert alert-persianBlue20
+
+  .. cssclass:: mini-header
+
+    API Specification
+
+  .. cssclass:: list-noindent
+
+    - `Debits Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/debits.json>`_
+    - `Debit Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/debit.json>`_
+
+  .. cssclass:: mini-header
+
+    API Reference
+
+  .. cssclass:: list-noindent
+
+    - `Create a Card (Direct) </1.1/api/cards/#create-a-card-direct>`_
+    - `Charge a Card </1.1/api/cards/#charge-a-card>`_
+    - `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
+    - `Create a Bank Account Verification </1.1/api/bank-account-verifications/#create-a-bank-account-verification>`_
+    - `Confirm a Bank Account Verification </1.1/api/bank-account-verifications/#confirm-a-bank-account-verification>`_
+    - `Charge a Bank Account </1.1/api/bank-accounts/#charge-a-bank-account>`_
+
+|
+
 Charging a Card
 ----------------
 
 Charging a card is a synchronous operation. Immediately after charging a card,
 the funds will be available for use.
-
-API References:
-
-.. cssclass:: list-noindent
-
-  - `Create a Card (Direct) </1.1/api/cards/#create-a-card-direct>`_
-  - `Charge a Card </1.1/api/cards/#charge-a-card>`_
-
-|
 
 .. note::
   :header_class: alert alert-tab-red
@@ -85,17 +104,6 @@ Charging a bank account is an asynchronous operation. An ACH debit is not
 immediate and takes 1-4 days to complete. Eventually you'll want to create a
 ``Callback`` and listen for an ``Event`` to be alerted on changes to ACH
 transactions.
-
-API References:
-
-.. cssclass:: list-noindent
-
-  - `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
-  - `Create a Bank Account Verification </1.1/api/bank-account-verifications/#create-a-bank-account-verification>`_
-  - `Confirm a Bank Account Verification </1.1/api/bank-account-verifications/#confirm-a-bank-account-verification>`_
-  - `Charge a Bank Account </1.1/api/bank-accounts/#charge-a-bank-account>`_
-
-|
 
 .. note::
   :header_class: alert alert-tab-red

@@ -7,16 +7,27 @@ This section explains how to obtain, set up, and prepare to integrate a client
 library into an application. All official Balanced client libraries are
 open source and stored on Github.
 
-API References:
+.. admonition:: References
+  :header_class: alert alert-tab full-width alert-tab-persianBlue60
+  :body_class: alert alert-persianBlue20
 
-.. cssclass:: list-noindent
+  .. cssclass:: mini-header
 
-  - `Authentication </1.1/api/authentication/#authenticating-to-balanced>`_
+    API Reference
+
+  .. cssclass:: list-noindent
+
+    - `Authentication </1.1/api/authentication/#authenticating-to-balanced>`_
 
 |
 
+
 Prerequisites
 ---------------
+
+.. container:: section-bash
+
+  .. include:: curl/prerequisites.rst
 
 .. container:: section-ruby
 
@@ -37,6 +48,10 @@ Prerequisites
 
 Obtaining the library
 ----------------------
+
+.. container:: section-bash
+
+  .. include:: curl/library-setup.rst
 
 .. container:: section-ruby
 
@@ -60,6 +75,10 @@ Configuring the Client
 
 To communicate with the Balanced API, the Balanced client library needs to
 be configured with your marketplace API key secret.
+
+.. container:: section-bash
+
+  .. include:: curl/configure.rst
 
 .. container:: section-ruby
 
