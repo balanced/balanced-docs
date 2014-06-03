@@ -1,5 +1,9 @@
+order_debit = json.loads(
+    storage['debit_order']['response']
+)
+
 bank_accounts = json.loads(
-    storage['bank_account_list']['response']
+    storage['bank_account_associate_to_customer']['response']
 )
 
 bank_account_href = bank_accounts['links']['bank_accounts.credits'].replace('{bank_accounts.id}', bank_accounts['bank_accounts'][0]['id'])
