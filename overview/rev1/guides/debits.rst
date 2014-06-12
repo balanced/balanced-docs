@@ -7,7 +7,9 @@ A debit is a transaction where funds are obtained from a credit card or from a
 bank account via the ACH Network. Funds obtained via credit card debits are
 immediately available in escrow. Funds being obtained via ACH debits are
 generally available in escrow in 3-4 business days. Currently Balanced supports
-credit card debits as well as bank accounts debits via ACH.
+credit card debits as well as bank accounts debits via ACH. Marketplaces that
+make use of ACH are advised to utilize a ``Callback`` (webhook) and listen for
+``Events`` to be notified of status changes.
 
 Debits have a ``status`` attribute representing the current status of the debit
 throughout the payout process. There are three possible ``status`` values:
@@ -60,6 +62,8 @@ Assuming we have an existing ``Card`` we can do the following:
 Debit a bank account
 ~~~~~~~~~~~~~~~~~~~~~
 
+Debiting a bank account (ACH) is very similar to debiting a credit card.
+
 .. admonition:: Requirements
   :header_class: alert alert-tab full-width alert-tab-yellow
   :body_class: alert alert-green alert-yellow
@@ -67,7 +71,8 @@ Debit a bank account
   Bank accounts you wish to debit must first `be verified`_.
 
 
-Assuming we have an existing ``BankAccount`` we can do the following:
+Assuming we have an existing ``BankAccount``, and it is already verified,
+we can do the following:
 
 .. literalinclude:: examples/curl/bank-account-debit.sh
    :language: bash
@@ -88,8 +93,8 @@ Assuming we have an existing ``BankAccount`` we can do the following:
    :language: node
 
 
-ACH Debit status flow
----------------------
+ACH debit status flow
+-----------------------
 
 Debits have a ``status`` attribute representing the current status of the debit
 throughout the payout process. There are three possible ``status`` values:
