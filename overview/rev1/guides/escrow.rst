@@ -21,10 +21,11 @@ customer dissatisfaction.
   :body_class: alert alert-green
   
   Balanced does not collect interest of any kind on funds in escrow.
-  Transactions involving credit cards and bank accounts associated to your
-  marketplace are free of charge.
+  Transactions involving bank accounts associated to the marketplace owner
+  customer are free of charge.
 
-  
+|
+
 Pre-funding Escrow
 ------------------------
 
@@ -78,7 +79,7 @@ done via the API or via the Balanced `dashboard`_. To do this via the API:
   ?>
 
 
-.. tip::
+.. note::
   :header_class: alert alert-tab
   :body_class: alert alert-green
 

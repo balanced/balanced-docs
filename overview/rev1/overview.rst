@@ -133,7 +133,7 @@ invoice you, on Wednesday, 25¢ for this ACH credit.
 
 The $3 that is left from the buyer's $10 is your revenue from this order. You
 decide to credit this to your own bank account on Friday. Balanced doesn't
-charge you for this credit, as credits to owner accounts are free.
+charge you for this credit, as credits to marketplace owner bank accounts are free.
 
 
 .. note::
