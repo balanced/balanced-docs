@@ -128,14 +128,14 @@ get in touch through one our many :ref:`support channels <overview.support>`.
      - `Business-BalancedPayments`_
      - `Business-BalancedPayments tests`_
      - `Crowdtilt.com`_
+   * - go
+     - `balanced-go`_
+     - `balanced-go tests`_
+     - `Brian Noguchi`_
 ..   * - node
      - `balanced-node`_
      - `balanced-node tests`_
      - Balanced
-   * - go
-     - `balanced-go`_
-     - `balanced-go tests <https://github.com/bnoguchi/balanced-go/blob/master/balanced_test.go>`_
-     - `Brian Noguchi <https://briannoguchi.com>`_
 
 
 Third-Party Plugins
@@ -252,3 +252,6 @@ Are you looking for a developer to help with Balanced integration? Check out the
 .. _balanced-ios: https://github.com/balanced/balanced-ios
 .. _balanced-ios tests: https://github.com/balanced/balanced-ios/tree/master/BalancedTests
 .. _Ben Mills (Remear): http://unfiniti.com
+.. _balanced-go: https://github.com/bnoguchi/balanced-go
+.. _balanced-go tests: https://github.com/bnoguchi/balanced-go/blob/master/balanced_test.go
+.. _Brian Noguchi: http://briannoguchi.com
