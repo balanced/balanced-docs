@@ -132,6 +132,10 @@ get in touch through one our many :ref:`support channels <overview.support>`.
      - `balanced-node`_
      - `balanced-node tests`_
      - Balanced
+   * - go
+     - `balanced-go`_
+     - `balanced-go tests <https://github.com/bnoguchi/balanced-go/blob/master/balanced_test.go>`_
+     - `Brian Noguchi <https://briannoguchi.com>`_
 
 
 Third-Party Plugins
