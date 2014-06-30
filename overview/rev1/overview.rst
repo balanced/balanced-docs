@@ -153,12 +153,15 @@ The minimum transaction amount is $0.50.
 
 The maximum transaction amounts are as follows:
 
-Credit cards - $15,000 per transaction.
+- \- Card debits - $15,000 per transaction.
 
-Bank account debits - $15,000 per transaction.
+- \- Card credits - $2,500 per transaction.
 
-Bank account credits - $15,000 per transaction.
+- \- Bank account debits - $15,000 per transaction.
 
+- \- Bank account credits - $15,000 per transaction.
+
+|
 
 .. note::
   :header_class: alert alert-tab
