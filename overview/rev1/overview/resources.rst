@@ -30,7 +30,7 @@ Test credit card numbers
   ``VISA``        ``4111111111111111``            ``123``       Success
   ``MasterCard``  ``5105105105105100``            ``123``       Success
   ``AMEX``        ``341111111111111``             ``1234``      Success
-  ``Visa``        ``4342561111111118``            ``123``       Creditable Card
+  ``VISA``        ``4342561111111118``            ``123``       Creditable Card
   ``VISA``        ``4444444444444448`` [#]_       ``123``       Processor Failure
   ``VISA``        ``4222222222222220`` [#]_       ``123``       Tokenization Error
   ``MasterCard``  ``5112000200000002``            ``200``       CVV Match Fail
