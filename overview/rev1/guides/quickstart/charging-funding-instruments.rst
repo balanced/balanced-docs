@@ -64,6 +64,9 @@ First, let's create a ``Card`` to work with.
 .. literalinclude:: ../examples/php/card-create.php
    :language: php
 
+.. literalinclude:: ../examples/node/card-create.js
+   :language: node
+
 
 Now that we have a ``Card``, we can charge it. This will issue a ``Debit`` which
 will deduct funds from the target credit card.
@@ -80,6 +83,9 @@ will deduct funds from the target credit card.
 .. literalinclude:: ../examples/php/card-debit.php
    :language: php
 
+.. literalinclude:: ../examples/node/card-debit.js
+   :language: node
+
 
 Since card debits are immediate, we can check our escrow to see the funds are
 indeed available.
@@ -95,6 +101,9 @@ indeed available.
 
 .. literalinclude:: ../examples/php/marketplace-in-escrow.php
    :language: php
+
+.. literalinclude:: ../examples/node/marketplace-in-escrow.js
+   :language: node
 
 
 Charging a Bank Account
@@ -128,6 +137,10 @@ First, let's create a ``BankAccount`` to work with.
 .. literalinclude:: ../examples/php/bank-account-create.php
    :language: php
 
+.. literalinclude:: ../examples/node/bank-account-create.js
+   :language: node
+
+
 We now have a ``BankAccount`` instance to work with. Before a ``BankAccount``
 can be charged (debited) it must be verified with micro deposits. This is done
 by initiating a bank account verification. When a bank account verification is
@@ -147,6 +160,10 @@ bank account. These amounts will show on the bank account statement usually in
 
 .. literalinclude:: ../examples/php/bank-account-verification-create.php
    :language: php
+
+.. literalinclude:: ../examples/node/bank-account-verification-create.js
+   :language: node
+
 
 Once the amounts have posted on the bank account statement, the bank account
 owner then should return to your application and enter these amounts into a form
@@ -170,6 +187,9 @@ which sends the values to Balanced as follows:
 
 .. literalinclude:: ../examples/php/bank-account-verification-confirm.php
    :language: php
+  
+.. literalinclude:: ../examples/node/bank-account-verification-confirm.js
+   :language: node
 
 
 At this point we have a verified bank account that we can now charge (debit).
@@ -187,6 +207,9 @@ bank account.
 
 .. literalinclude:: ../examples/php/bank-account-debit.php
    :language: php
+
+.. literalinclude:: ../examples/node/bank-account-debit.js
+   :language: node
 
 
 Checkpoint

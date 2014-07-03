@@ -45,6 +45,10 @@ Prerequisites
 
   .. include:: php/prerequisites.rst
 
+.. container:: section-node
+
+  .. include:: node/prerequisites.rst
+
 
 Obtaining the library
 ----------------------
@@ -68,6 +72,10 @@ Obtaining the library
 .. container:: section-php
 
   .. include:: php/library-setup.rst
+
+.. container:: section-node
+
+  .. include:: node/library-setup.rst
 
 
 Configuring the Client
@@ -95,6 +103,10 @@ be configured with your marketplace API key secret.
 .. container:: section-php
 
   .. include:: php/configure.rst
+
+.. container:: section-node
+
+  .. include:: node/configure.rst
 
 
 Checkpoint

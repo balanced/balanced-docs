@@ -52,6 +52,9 @@ do the following:
 .. literalinclude:: ../examples/php/credit-create.php
    :language: php
 
+.. literalinclude:: ../examples/node/credit-create.js
+   :language: node
+
 
 .. note::
   :header_class: alert alert-tab
@@ -76,6 +79,9 @@ Splitting payments is accomplished by simply initiating a separate credit to eac
 
 .. literalinclude:: ../examples/php/credit-split.php
    :language: php
+
+.. literalinclude:: ../examples/node/credit-split.js
+   :language: node
 
 
 Checkpoint
