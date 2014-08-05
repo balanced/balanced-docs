@@ -102,7 +102,7 @@ enter it in, a form. The example below is extracted from this
 
 Now let's define our `callback`_, the block of code we want to execute after
 having received a response for our tokenization request to the Balanced API.
-If desired, this can be the same method as the one handling bank account 
+If desired, this can be the same method as the one handling bank account
 creation request responses. Just add some checking to see what kind of response
 was returned, e.g check for a ``cards`` or ``bank_accounts`` key.
 
@@ -183,7 +183,7 @@ enter it in, a form. The example below is extracted from this
 
 Now let's define our `callback`_, the block of code we want to execute after
 having received a response for our bank account creation request to the
-Balanced API. If desired, this can be the same method as the one handling card 
+Balanced API. If desired, this can be the same method as the one handling card
 creation request responses. Just add some checking to see what kind of response
 was returned, e.g check for a ``cards`` or ``bank_accounts`` key.
 
@@ -245,7 +245,7 @@ You should understand how to do following:
 - ✓ Initialize balanced.js with a server address and revision number
 - ✓ Build an input form(s) for collecting credit card and/or bank account information
 - ✓ Create a response callback handler
-- ✓ Register a click event for the form submit button that assembles the form values into a payload attempts to create a card. 
+- ✓ Register a click event for the form submit button that assembles the form values into a payload attempts to create a card.
 
 
 
@@ -263,7 +263,7 @@ Method Reference - Cards
   :param cardDataObject.address: *optional*. An object containing the credit card's address information
   :param cardDataObject.cvv: *optional*. The credit card's security code
   :param cardDataObject.name: *optional*. The credit card holder's name
-  
+
   :returns: ``null``. Invokes the ``callback`` function with a response payload for the
             result of the tokenization.
 
@@ -348,7 +348,7 @@ Method Reference - Cards
   :returns: ``{}`` if all fields are valid, else a dictionary of errors otherwise.
 
   Valid input example:
-  
+
   .. code-block:: javascript
 
     balanced.card.validate({
@@ -361,7 +361,7 @@ Method Reference - Cards
   Will return:
 
   .. code-block:: javascript
-  
+
     {
         "cards": [
             {
@@ -373,8 +373,8 @@ Method Reference - Cards
         "links": {},
         "status_code": 201
     }
-  
-  
+
+
   Invalid input example:
 
   .. code-block:: javascript
@@ -459,15 +459,15 @@ Method Reference - Bank Accounts
   .. code-block:: javascript
 
     balanced.bankAccount.validate({
-       bank_code:'321174851',
+       routing_number:'321174851',
        account_number:'9900000000',
        name:'John Doe'
     })
 
   Will return:
-  
+
   .. code-block:: javascript
-  
+
     {
         "bank_accounts": [
             {
@@ -479,21 +479,21 @@ Method Reference - Bank Accounts
         "links": {},
         "status_code": 201
     }
-  
+
   Invalid input example:
 
   .. code-block:: javascript
 
     balanced.bankAccount.validate({
-       bank_code:'32117485',
+       routing_number:'32117485',
        account_number:'9900000000',
        name:'John Doe'
     })
 
   Will return:
-  
+
   .. code-block:: javascript
-  
+
     {
         "errors": [
             {
