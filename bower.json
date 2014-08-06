@@ -1,0 +1,22 @@
+{
+  "name": "balanced-docs",
+  "version": "1.0.7",
+  "homepage": "https://github.com/remear/balanced-docs",
+  "authors": [
+    "Ben Mills <ben@unfiniti.com>"
+  ],
+  "description": "Documentation for the Balanced API",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "strapped": "0.0.3"
+  }
+}
