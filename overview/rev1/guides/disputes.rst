@@ -198,6 +198,11 @@ Retrieve via the ``Debit``:
   .. literalinclude:: examples/node/debit-dispute-show.js
     :language: javascript
 
+.. container:: section-csharp
+
+  .. literalinclude:: examples/csharp/debit-dispute-show.cs
+    :language: csharp
+
 
 Retrieve by href:
 
@@ -230,6 +235,11 @@ Retrieve by href:
 
   .. literalinclude:: examples/node/dispute-show.js
     :language: javascript
+
+.. container:: section-csharp
+
+  .. literalinclude:: examples/csharp/dispute-show.cs
+    :language: csharp
 
 
 You may also list all disputes:
@@ -264,6 +274,10 @@ You may also list all disputes:
   .. literalinclude:: examples/node/dispute-list.js
     :language: javascript
 
+.. container:: section-csharp
+
+  .. literalinclude:: examples/csharp/dispute-list.cs
+    :language: csharp
 
 .. note::
   :header_class: alert alert-tab
@@ -309,6 +323,11 @@ any debit created with the card.
   .. literalinclude:: examples/node/card-create-dispute.js
     :language: javascript
 
+.. container:: section-csharp
+
+  .. literalinclude:: examples/csharp/card-create-dispute.cs
+    :language: csharp
+
 
 Now debit the card.
 
@@ -342,6 +361,11 @@ Now debit the card.
 
   .. literalinclude:: examples/node/card-debit.js
     :language: javascript
+
+.. container:: section-csharp
+
+  .. literalinclude:: examples/csharp/card-debit.cs
+    :language: csharp
 
 
 After some time has passed, a dispute will be associated to the ``Debit``.
