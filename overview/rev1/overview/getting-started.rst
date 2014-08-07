@@ -132,9 +132,13 @@ get in touch through one our many :ref:`support channels <overview.support>`.
      - `balanced-go`_
      - `balanced-go tests`_
      - `Brian Noguchi`_
-..   * - node
+   * - node
      - `balanced-node`_
      - `balanced-node tests`_
+     - Balanced
+   * - csharp
+     - `balanced-csharp`_
+     - `balanced-csharp tests`_
      - Balanced
 
 
@@ -255,3 +259,5 @@ Are you looking for a developer to help with Balanced integration? Check out the
 .. _balanced-go: https://github.com/bnoguchi/balanced-go
 .. _balanced-go tests: https://github.com/bnoguchi/balanced-go/blob/master/balanced_test.go
 .. _Brian Noguchi: http://briannoguchi.com
+.. _balanced-csharp: https://github.com/balanced/balanced-csharp
+.. _balanced-csharp tests: https://github.com/balanced/balanced-csharp/tree/master/BalancedTests
