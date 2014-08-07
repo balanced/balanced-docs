@@ -18,3 +18,6 @@
 	path = clients/rev1/php
 	url = https://github.com/balanced/balanced-php.git
   branch = master
+[submodule "clients/rev1/csharp"]
+	path = clients/rev1/csharp
+	url = https://github.com/balanced/balanced-csharp.git
