@@ -65,6 +65,11 @@ Let's begin by creating a ``Customer`` that represents our merchant.
   .. literalinclude:: php/simple/customer-create.php
     :language: php
 
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/simple/customer-create.cs
+    :language: csharp
+
 
 Next, add a bank account to the merchant. In this guide we will tokenize the
 bank account directly, however, balanced.js should be used to tokenize bank
@@ -90,6 +95,11 @@ information on implementing balanced.js in your application.
 
   .. literalinclude:: php/simple/bank-account-create.php
     :language: php
+
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/simple/bank-account-create.cs
+    :language: csharp
 
 
 Now create a buyer and add a card to it. Again, in this guide we will tokenize
@@ -118,6 +128,12 @@ implementing balanced.js in your application.
   .. literalinclude:: php/simple/create-buyer-and-card.php
     :language: php
 
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/simple/create-buyer-and-card.cs
+    :language: csharp
+
+
 Next, create an ``Order``.
 
 .. container:: section-ruby
@@ -139,6 +155,11 @@ Next, create an ``Order``.
 
   .. literalinclude:: php/simple/order-create.php
     :language: php
+
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/simple/order-create.cs
+    :language: csharp
 
 
 At this point we have a merchant ``Customer`` with a bank account, a buyer
@@ -168,6 +189,10 @@ and Order.
   .. literalinclude:: php/simple/order-update.php
     :language: php
 
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/simple/order-update.cs
+    :language: csharp
 
 
 Let's debit the buyer for this Order. This is accomplished by debiting a
@@ -193,6 +218,10 @@ specific card, in this case, the buyer's, through the Order.
   .. literalinclude:: php/simple/order-debit.php
     :language: php
 
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/simple/order-debit.cs
+    :language: csharp
 
 
 At this point, if we inspect the Order, we'll see it now has an ``amount`` of
@@ -219,6 +248,10 @@ Order. ``amount_escrowed`` is the amount available for issuing payouts.
   .. literalinclude:: php/simple/order-amount-escrowed.php
     :language: php
 
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/simple/order-amount-escrowed.cs
+    :language: csharp
 
 
 Let's issue a payout (credit) to our merchant.
@@ -244,6 +277,11 @@ Let's issue a payout (credit) to our merchant.
     :language: php
 
 
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/simple/order-credit.cs
+    :language: csharp
+
 
 Now when inspecting the order object we'll see it still has an ``amount`` of 10000
 and ``amount_escrowed`` is now 2000.
@@ -268,6 +306,11 @@ and ``amount_escrowed`` is now 2000.
   .. literalinclude:: php/simple/order-amount-escrowed.php
     :language: php
 
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/simple/order-amount-escrowed.cs
+    :language: csharp
+
 
 We can now retrieve all of the order's debits with:
 
@@ -291,7 +334,11 @@ We can now retrieve all of the order's debits with:
   .. literalinclude:: php/simple/order-debits-fetch.php
     :language: php
 
-  
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/simple/order-debits-fetch.cs
+    :language: csharp
+
 
 Likewise, we can retrieve all of the order's credits with:
 
@@ -314,6 +361,11 @@ Likewise, we can retrieve all of the order's credits with:
 
   .. literalinclude:: php/simple/order-credits-fetch.php
     :language: php
+
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/simple/order-credits-fetch.cs
+    :language: csharp
 
 
 Checkpoint
