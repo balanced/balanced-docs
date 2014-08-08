@@ -78,6 +78,14 @@ done via the API or via the Balanced `dashboard`_. To do this via the API:
   ));
   ?>
 
+.. code-block:: csharp
+
+    BankAccount bankAccount = Marketplace.Mine.owner_customer.bank_accounts.First();
+    Dictionary<string, object> payload = new Dictionary<string, object>();
+    payload.Add("amount", 2000000);
+    payload.Add("description", "Pre-fund Balanced escrow");
+    Debit debit = bankAccount.Debit(payload);
+
 
 .. note::
   :header_class: alert alert-tab
@@ -138,6 +146,15 @@ issue a credit:
     "description" => "Credit from Balanced escrow",
   ));
   ?>
+
+.. code-block:: csharp
+
+    BankAccount bankAccount = Marketplace.Mine.owner_customer.bank_accounts.First();
+    Dictionary<string, object> payload = new Dictionary<string, object>();
+    payload.Add("amount", 2000000);
+    payload.Add("description", "Credit from Balanced escrow");
+    Credit credit = bankAccount.Credit(payload);
+
 
 Credits can take 1-3 days for the funds to become available depending on
 the target bank.

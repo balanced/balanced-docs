@@ -66,6 +66,9 @@ amount of the card hold.
 .. literalinclude:: examples/node/card-hold-create.js
    :language: node
 
+.. literalinclude:: examples/csharp/card-hold-create.cs
+   :language: csharp
+
 
 Capturing a card hold
 ---------------------
@@ -104,6 +107,8 @@ hold.
 .. literalinclude:: examples/node/card-hold-capture.js
    :language: node
 
+.. literalinclude:: examples/csharp/card-hold-capture.cs
+   :language: csharp
 
 Voiding a card hold
 ---------------------
@@ -141,6 +146,8 @@ If you wish to release the reserved funds you can always void the card hold.
 .. literalinclude:: examples/node/card-hold-void.js
    :language: node
 
+.. literalinclude:: examples/csharp/card-hold-void.cs
+   :language: csharp
 
 
 .. _sample page: https://gist.github.com/2662770

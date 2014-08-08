@@ -103,7 +103,6 @@ class Context(object):
                                          headers={'Accept-Type': self.storage.get('accept_type', '*/*')},
                                          auth=(self.storage['secret'], ''))
         ret = basic_client(resp.json())
-        #import ipdb; ipdb.set_trace()
         return ret
 
     @property
@@ -424,6 +423,9 @@ class Scenario(object):
         if lang == 'java':
             template_path = os.path.join(self.ctx.client_dir, os.environ.get('BALANCED_REV', 'rev1'), lang, 'src',
                                          'scenarios', self.name, lang+'.mako')
+        if lang == 'csharp':
+            template_path = os.path.join(self.ctx.client_dir, os.environ.get('BALANCED_REV', 'rev1'), lang, 'scenarios',
+                                         'scenarios', self.name, lang+'.mako')
         block = self._render(template_path)
         block['lang'] = lang
         if block['lang'] == 'curl':
@@ -649,7 +651,7 @@ def create_arg_parser():
         dest='langs',
         action='append',
         default=[],
-        choices=['php', 'python', 'ruby', 'java', 'node'],
+        choices=['php', 'python', 'ruby', 'java', 'node', 'csharp'],
         help='Enable LANGUAGE for the scenario',
     )
     return parser

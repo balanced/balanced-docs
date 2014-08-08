@@ -1,0 +1,1 @@
+List<Dispute> disputes = Dispute.Query().All();

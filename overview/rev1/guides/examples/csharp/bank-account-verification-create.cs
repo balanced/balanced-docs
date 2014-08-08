@@ -1,0 +1,1 @@
+verification = bankAccount.Verify();

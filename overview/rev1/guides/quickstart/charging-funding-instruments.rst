@@ -67,6 +67,9 @@ First, let's create a ``Card`` to work with.
 .. literalinclude:: ../examples/node/card-create.js
    :language: node
 
+.. literalinclude:: ../examples/csharp/card-create.cs
+    :language: csharp
+
 
 Now that we have a ``Card``, we can charge it. This will issue a ``Debit`` which
 will deduct funds from the target credit card.
@@ -86,6 +89,9 @@ will deduct funds from the target credit card.
 .. literalinclude:: ../examples/node/card-debit.js
    :language: node
 
+.. literalinclude:: ../examples/csharp/card-debit.cs
+   :language: csharp
+
 
 Since card debits are immediate, we can check our escrow to see the funds are
 indeed available.
@@ -104,6 +110,9 @@ indeed available.
 
 .. literalinclude:: ../examples/node/marketplace-in-escrow.js
    :language: node
+
+.. literalinclude:: ../examples/csharp/marketplace-in-escrow.cs
+   :language: csharp
 
 
 Charging a Bank Account
@@ -140,6 +149,9 @@ First, let's create a ``BankAccount`` to work with.
 .. literalinclude:: ../examples/node/bank-account-create.js
    :language: node
 
+.. literalinclude:: ../examples/csharp/bank-account-create.cs
+   :language: csharp
+
 
 We now have a ``BankAccount`` instance to work with. Before a ``BankAccount``
 can be charged (debited) it must be verified with micro deposits. This is done
@@ -163,6 +175,9 @@ bank account. These amounts will show on the bank account statement usually in
 
 .. literalinclude:: ../examples/node/bank-account-verification-create.js
    :language: node
+
+.. literalinclude:: ../examples/csharp/bank-account-verification-create.cs
+    :language: csharp
 
 
 Once the amounts have posted on the bank account statement, the bank account
@@ -191,6 +206,9 @@ which sends the values to Balanced as follows:
 .. literalinclude:: ../examples/node/bank-account-verification-confirm.js
    :language: node
 
+.. literalinclude:: ../examples/csharp/bank-account-verification-confirm.cs
+    :language: csharp
+
 
 At this point we have a verified bank account that we can now charge (debit).
 This will issue a ``Debit`` which will deduct funds from the specified 
@@ -210,6 +228,9 @@ bank account.
 
 .. literalinclude:: ../examples/node/bank-account-debit.js
    :language: node
+
+.. literalinclude:: ../examples/csharp/bank-account-debit.cs
+    :language: csharp
 
 
 Checkpoint
