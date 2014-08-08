@@ -55,6 +55,9 @@ do the following:
 .. literalinclude:: ../examples/node/credit-create.js
    :language: node
 
+.. literalinclude:: ../examples/csharp/credit-create.cs
+    :language: csharp
+
 
 .. note::
   :header_class: alert alert-tab
@@ -82,6 +85,10 @@ Splitting payments is accomplished by simply initiating a separate credit to eac
 
 .. literalinclude:: ../examples/node/credit-split.js
    :language: node
+
+
+.. literalinclude:: ../examples/csharp/credit-split.cs
+   :language: csharp
 
 
 Checkpoint

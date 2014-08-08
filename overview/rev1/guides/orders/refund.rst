@@ -48,6 +48,11 @@ Begin by finding the Order you wish to refund.
   .. literalinclude:: php/refund/order-fetch.php
     :language: php
 
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/refund/order-fetch.cs
+    :language: csharp
+
 
 Next, reverse any credits that need to be reversed.
 
@@ -71,6 +76,10 @@ Next, reverse any credits that need to be reversed.
   .. literalinclude:: php/refund/credit-reverse.php
     :language: php
 
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/refund/credit-reverse.cs
+    :language: csharp
 
 
 Once the credit has been reversed, the Order's ``amount_escrowed`` will
@@ -97,6 +106,11 @@ days depending on the bank where the account resides.
   .. literalinclude:: php/refund/examine-order-after-reversal.php
     :language: php
 
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/refund/examine-order-after-reversal.cs
+    :language: csharp
+
 Next, refund the original debit.
 
 .. container:: section-ruby
@@ -118,6 +132,11 @@ Next, refund the original debit.
 
   .. literalinclude:: php/refund/debit-refund.php
     :language: php
+
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/refund/debit-refund.cs
+    :language: csharp
 
 
 Once the debit has been refunded, the ``amount_escrowed`` will decrease by the
@@ -142,3 +161,8 @@ amount of the refund.
 
   .. literalinclude:: php/refund/examine-order-after-refund.php
     :language: php
+
+.. container:: section-csharp
+
+  .. literalinclude:: csharp/refund/examine-order-after-refund.cs
+    :language: csharp
