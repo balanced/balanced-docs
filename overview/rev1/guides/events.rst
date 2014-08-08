@@ -69,6 +69,9 @@ we'd like to receive event payloads, one of: ``GET``, ``POST`` (default), or ``P
 .. literalinclude:: examples/node/callback-create.js
    :language: node
 
+.. literalinclude:: examples/csharp/callback-create.cs
+    :language: csharp
+
 
 Now that we have a ``Callback``, we'll start receiving event payloads from Balanced
 for activity in the marketplace.

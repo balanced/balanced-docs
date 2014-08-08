@@ -58,6 +58,9 @@ Assuming we have an existing ``Card`` we can do the following:
 .. literalinclude:: examples/node/card-debit.js
    :language: node
 
+.. literalinclude:: examples/csharp/card-debit.cs
+   :language: csharp
+
 
 Debit a bank account
 ~~~~~~~~~~~~~~~~~~~~~
@@ -91,6 +94,9 @@ we can do the following:
 
 .. literalinclude:: examples/node/bank-account-debit.js
    :language: node
+
+.. literalinclude:: examples/csharp/bank-account-debit.cs
+   :language: csharp
 
 
 ACH debit status flow
@@ -173,6 +179,9 @@ the product, you can create a ``Refund``.
 
 .. literalinclude:: examples/node/refund-create.js
    :language: node
+
+.. literalinclude:: examples/csharp/refund-create.cs
+   :language: csharp
 
 
 .. note::

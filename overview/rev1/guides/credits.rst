@@ -69,6 +69,9 @@ do the following:
 .. literalinclude:: examples/node/credit-create.js
    :language: node
 
+.. literalinclude:: examples/csharp/credit-create.cs
+   :language: csharp
+
 
 Create a credit to a Card
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -108,6 +111,9 @@ Assuming we have an existing and creditable ``Card`` we can do the following:
 
 .. literalinclude:: examples/node/card-credit.js
    :language: node
+
+.. literalinclude:: examples/csharp/card-credit.cs
+   :language: csharp
 
 
 Statement descriptor
@@ -158,6 +164,9 @@ Example usage:
 
 .. literalinclude:: examples/node/credit-soft-descriptor.js
    :language: node
+
+.. literalinclude:: examples/csharp/credit-soft-descriptor.cs
+   :language: csharp
 
 
 Payout status flow
@@ -230,7 +239,9 @@ satisfied with the product, you can create a ``Reversal``.
 .. literalinclude:: examples/node/reversal-create.js
    :language: node
 
-  
+.. literalinclude:: examples/csharp/reversal-create.cs
+   :language: csharp
+
 
 The status flow of a reversal is as follows:
 
