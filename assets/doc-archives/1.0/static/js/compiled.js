@@ -92,7 +92,6 @@ function updateNavigation(e) {
 function scrollToAnchor(href) {
     var href = typeof(href) == "string" ? href : $(this).attr("href");
     var fromTop = 100;
-    console.log(href);
     if (href != null && href.indexOf("#") == 0) {
         var $target = $(href);
         if ($target.length) {
