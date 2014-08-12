@@ -236,6 +236,10 @@ htmlhelp_basename = 'Balanceddoc'
 # How to display URL addresses: 'footnote', 'no', or 'inline'.
 #texinfo_show_urls = 'footnote'
 import pygments.lexers.web
+import pygments.lexers.jvm
+import pygments.lexers.compiled
+import pygments.lexers.agile
+import pygments.lexers.dotnet
 from customizations import (
     html_page_context, IconBoxWidget, ReadMoreWidget, Span, Clear, Gist, patch_admonition
 )
@@ -280,6 +284,7 @@ def setup(app):
     app.add_lexer('android', pygments.lexers.jvm.JavaLexer())
     app.add_lexer('node', pygments.lexers.web.JavascriptLexer())
     app.add_lexer('objc', pygments.lexers.compiled.ObjectiveCLexer())
+    app.add_lexer('csharp', pygments.lexers.dotnet.CSharpLexer())
     app.add_lexer('ruby-nohide', pygments.lexers.agile.RubyLexer())
 
     app.connect('html-page-context', html_page_context)
