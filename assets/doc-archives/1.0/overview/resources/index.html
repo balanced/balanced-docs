@@ -6,7 +6,7 @@
       <title>Balanced - Payments processing, escrow, and payouts in one simple API</title>
       <link rel="shortcut icon" href="data:image/x-icon;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAAB50RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNS4xqx9I6wAAAStJREFUWIXtlT1SwzAQRp+YHMAeGsrcIGlc4yukpDHODaBLF6dzB5yAkIYyOYJSu/INUtIw9g1MgZhhZJlITogbfZ12Pu2+0c+uaJqGIXU1aHUP4AGAkR4QQlDF0Rh4BWKgBl5CWWQuiRebyROQAgEggXmelAf913WdwFYVRyVYVnGUOhRPgQe1F5Vra/K2AKo4CoCpwXtvC9DhnS42k/FRgD9Un+rNk/JwFCCURc33nel6cwAweXcmY9cJzICVApHALJSFMYFJeVLuVI6f/c/A3OQV+qsUQtjW6SXbX3AxeQAP4AFa09BWH+/XGXCrlvubu8+sT55ejUgVX2rhlQ3EuRqRadq5TMuTAQLL2L8BmAaT9bA6B8AjsP61XquYs1qP8NIavA94AA/wBRJiTbdsTuB4AAAAAElFTkSuQmCC" type="image/x-icon">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-      <link href="/static/css/styles.css" rel="stylesheet">
+      <link href="/1.0/static/css/styles.css" rel="stylesheet">
       <!--<link href="static/css/pygments.css" rel="stylesheet">-->
       <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
       <!--[if lt IE 9]>
@@ -19,11 +19,11 @@
 
     <header class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="row">
+        <div class="row-fluid">
           <div class="logo">
             <a class="brand" href="https://www.balancedpayments.com"></a>
           </div>
-          <div class="span22">
+          <div>
             <ul class="nav nav-api-context">
   	          <li class="dropdown">
                 <a class="dropdown-toggle context api-context" data-toggle="dropdown" id="context-dropdown-head">
@@ -93,6 +93,13 @@
             </li>
           </ul>
         </div>
+        <div class="row deprecation-notice" style="
+            background-color: #E71D1C;
+            color: #ffffff;
+            padding: 10px;
+            text-align: center;
+        ">API v1.0 was officially deprecated March 2014. Please migrate to or integrate the latest version. <a href="/1.1/overview/resources/#migrating-to-1-1">Learn more.</a></div>
+
       </div>
     </header>
   
@@ -380,6 +387,6 @@ not process transactions with cards that fail this check.</p>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script type="text/javascript" src="/static/js/compiled.js"></script>
+    <script type="text/javascript" src="/1.0/static/js/compiled.js"></script>
   </body>
 </html>
