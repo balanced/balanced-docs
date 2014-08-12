@@ -1,4 +1,4 @@
-# card_href is the stored href for the Card
+// card_href is the stored href for the Card
 Card card = Card.Fetch(card_href);
 Dictionary<string, object> holdPayload = new Dictionary<string, object>();
 holdPayload.Add("amount", 5000);

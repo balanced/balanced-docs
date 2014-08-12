@@ -1,4 +1,4 @@
-# bank_account_href is the stored href for the BankAccount
+// bank_account_href is the stored href for the BankAccount
 BankAccount bankAccount = BankAccount.Fetch(bank_account_href);
 Dictionary<string, object> payload = new Dictionary<string, object>();
 payload.Add("amount", 5000);

@@ -41,6 +41,10 @@ Prerequisites
 
   .. include:: java/prerequisites.rst
 
+.. container:: section-csharp
+
+  .. include:: csharp/prerequisites.rst
+
 .. container:: section-php
 
   .. include:: php/prerequisites.rst
@@ -68,6 +72,10 @@ Obtaining the library
 .. container:: section-java
 
   .. include:: java/library-setup.rst
+
+.. container:: section-csharp
+
+  .. include:: csharp/library-setup.rst
 
 .. container:: section-php
 
@@ -99,6 +107,10 @@ be configured with your marketplace API key secret.
 .. container:: section-java
 
   .. include:: java/configure.rst
+
+.. container:: section-csharp
+
+  .. include:: csharp/configure.rst
 
 .. container:: section-php
 

@@ -1,4 +1,4 @@
-# credit_href is the stored href for the Credit
+// credit_href is the stored href for the Credit
 Credit credit = Credit.Fetch(credit_href);
 Dictionary<string, string> payload = new Dictionary<string, string>();
 payload.Add("amount", "3000");
