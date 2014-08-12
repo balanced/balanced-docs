@@ -7890,6 +7890,12 @@ p.more-link a {
   background-color: #bee0cd;
   color: white;
 }
+.deprecation-notice {
+  background-color: #E71D1C;
+  color: #ffffff;
+  padding: 10px;
+  text-align: center;
+}
 .deprecation-notice a {
   color: #ffffff;
   text-decoration: underline;
