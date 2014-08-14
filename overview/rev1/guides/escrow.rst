@@ -31,7 +31,7 @@ customer dissatisfaction.
 Determine Escrow balance
 -------------------------
 
-.. example:: marketplace-in-escrow
+.. snippet:: marketplace-in-escrow
 
 
 Pre-funding Escrow

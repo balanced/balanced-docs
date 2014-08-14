@@ -81,7 +81,6 @@ class LangSnippet(Directive):
             try:
                 f = codecs.open(fn, 'rU')
                 lines = f.readlines()
-                print lines
                 f.close()
             except (IOError, OSError):
                 return [document.reporter.warning(

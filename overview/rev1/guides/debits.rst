@@ -40,26 +40,7 @@ Debit a credit card
 
 Assuming we have an existing ``Card`` we can do the following:
 
-.. literalinclude:: examples/curl/card-debit.sh
-   :language: bash
-
-.. literalinclude:: examples/python/card-debit.py
-   :language: python
-
-.. literalinclude:: examples/ruby/card-debit.rb
-   :language: ruby
-
-.. literalinclude:: examples/php/card-debit.php
-   :language: php
-
-.. literalinclude:: examples/java/card-debit.java
-   :language: java
-
-.. literalinclude:: examples/node/card-debit.js
-   :language: node
-
-.. literalinclude:: examples/csharp/card-debit.cs
-   :language: csharp
+.. snippet:: card-debit
 
 
 Debit a bank account
@@ -77,26 +58,7 @@ Debiting a bank account (ACH) is very similar to debiting a credit card.
 Assuming we have an existing ``BankAccount``, and it is already verified,
 we can do the following:
 
-.. literalinclude:: examples/curl/bank-account-debit.sh
-   :language: bash
-
-.. literalinclude:: examples/python/bank-account-debit.py
-   :language: python
-
-.. literalinclude:: examples/ruby/bank-account-debit.rb
-   :language: ruby
-
-.. literalinclude:: examples/php/bank-account-debit.php
-   :language: php
-
-.. literalinclude:: examples/java/bank-account-debit.java
-   :language: java
-
-.. literalinclude:: examples/node/bank-account-debit.js
-   :language: node
-
-.. literalinclude:: examples/csharp/bank-account-debit.cs
-   :language: csharp
+.. snippet:: bank-account-debit
 
 
 ACH debit status flow
@@ -162,26 +124,7 @@ In the event that you need to cancel a payout, e.g. a user is not satisfied with
 the product, you can create a ``Refund``.
 
 
-.. literalinclude:: examples/curl/refund-create.sh
-   :language: bash
-
-.. literalinclude:: examples/python/refund-create.py
-   :language: python
-
-.. literalinclude:: examples/ruby/refund-create.rb
-   :language: ruby
-
-.. literalinclude:: examples/php/refund-create.php
-   :language: php
-
-.. literalinclude:: examples/java/refund-create.java
-   :language: java
-
-.. literalinclude:: examples/node/refund-create.js
-   :language: node
-
-.. literalinclude:: examples/csharp/refund-create.cs
-   :language: csharp
+.. snippet:: refund-create
 
 
 .. note::

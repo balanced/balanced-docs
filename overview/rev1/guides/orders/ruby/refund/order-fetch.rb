@@ -1,1 +1,0 @@
-@order = Balanced::Order.fetch(order_href)

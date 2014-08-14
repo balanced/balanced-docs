@@ -45,30 +45,8 @@ By the end of this guide, you should understand how to do following:
 
 Let's begin by creating a ``Customer`` that represents our merchant.
 
-.. container:: section-ruby
 
-  .. literalinclude:: ruby/simple/customer-create.rb
-     :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: python/simple/customer-create.py
-     :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: curl/simple/customer-create.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: php/simple/customer-create.php
-    :language: php
-
-.. container:: section-csharp
-
-  .. literalinclude:: csharp/simple/customer-create.cs
-    :language: csharp
+.. snippet:: customer-create
 
 
 Next, add a bank account to the merchant. In this guide we will tokenize the
@@ -76,30 +54,7 @@ bank account directly, however, balanced.js should be used to tokenize bank
 accounts in production. Refer to the balanced.js guide for more
 information on implementing balanced.js in your application.
 
-.. container:: section-ruby
-
-  .. literalinclude:: ruby/simple/bank-account-create.rb
-     :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: python/simple/bank-account-create.py
-     :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: curl/simple/bank-account-create.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: php/simple/bank-account-create.php
-    :language: php
-
-.. container:: section-csharp
-
-  .. literalinclude:: csharp/simple/bank-account-create.cs
-    :language: csharp
+.. snippet:: order-bank-account-create
 
 
 Now create a buyer and add a card to it. Again, in this guide we will tokenize
@@ -107,59 +62,12 @@ the card directly, however, balanced.js should be used to tokenize credit cards
 in production. Refer to the balanced.js guide for more information on
 implementing balanced.js in your application.
 
-
-.. container:: section-ruby
-
-  .. literalinclude:: ruby/simple/create-buyer-and-card.rb
-     :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: python/simple/create-buyer-and-card.py
-     :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: curl/simple/create-buyer-and-card.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: php/simple/create-buyer-and-card.php
-    :language: php
-
-.. container:: section-csharp
-
-  .. literalinclude:: csharp/simple/create-buyer-and-card.cs
-    :language: csharp
+.. snippet:: create-buyer-and-card
 
 
 Next, create an ``Order``.
 
-.. container:: section-ruby
-
-  .. literalinclude:: ruby/simple/order-create.rb
-     :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: python/simple/order-create.py
-     :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: curl/simple/order-create.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: php/simple/order-create.php
-    :language: php
-
-.. container:: section-csharp
-
-  .. literalinclude:: csharp/simple/order-create.cs
-    :language: csharp
+.. snippet:: order-create
 
 
 At this point we have a merchant ``Customer`` with a bank account, a buyer
@@ -169,203 +77,41 @@ Let's give the order a description and some meta so it's easier to remember
 what it was for. Of course, this information can also be specified when creating
 and Order.
 
-.. container:: section-ruby
-
-  .. literalinclude:: ruby/simple/order-update.rb
-     :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: python/simple/order-update.py
-     :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: curl/simple/order-update.sh
-    :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: php/simple/order-update.php
-    :language: php
-
-.. container:: section-csharp
-
-  .. literalinclude:: csharp/simple/order-update.cs
-    :language: csharp
+.. snippet:: order-update
 
 
 Let's debit the buyer for this Order. This is accomplished by debiting a
 specific card, in this case, the buyer's, through the Order.
 
-.. container:: section-ruby
-
-  .. literalinclude:: ruby/simple/order-debit.rb
-     :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: python/simple/order-debit.py
-     :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: curl/simple/order-debit.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: php/simple/order-debit.php
-    :language: php
-
-.. container:: section-csharp
-
-  .. literalinclude:: csharp/simple/order-debit.cs
-    :language: csharp
+.. snippet:: order-debit
 
 
 At this point, if we inspect the Order, we'll see it now has an ``amount`` of
 10000 and an escrowed amount of 10000. `amount` is the total amount of the
 Order. ``amount_escrowed`` is the amount available for issuing payouts.
 
-.. container:: section-ruby
-
-  .. literalinclude:: ruby/simple/order-amount-escrowed.rb
-     :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: python/simple/order-amount-escrowed.py
-     :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: curl/simple/order-amount-escrowed.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: php/simple/order-amount-escrowed.php
-    :language: php
-
-.. container:: section-csharp
-
-  .. literalinclude:: csharp/simple/order-amount-escrowed.cs
-    :language: csharp
+.. snippet:: order-amount-escrowed
 
 
 Let's issue a payout (credit) to our merchant.
 
-.. container:: section-ruby
-
-  .. literalinclude:: ruby/simple/order-credit.rb
-     :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: python/simple/order-credit.py
-     :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: curl/simple/order-credit.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: php/simple/order-credit.php
-    :language: php
-
-
-.. container:: section-csharp
-
-  .. literalinclude:: csharp/simple/order-credit.cs
-    :language: csharp
+.. snippet:: order-credit
 
 
 Now when inspecting the order object we'll see it still has an ``amount`` of 10000
 and ``amount_escrowed`` is now 2000.
 
-.. container:: section-ruby
-
-  .. literalinclude:: ruby/simple/order-amount-escrowed.rb
-     :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: python/simple/order-amount-escrowed.py
-     :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: curl/simple/order-amount-escrowed.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: php/simple/order-amount-escrowed.php
-    :language: php
-
-.. container:: section-csharp
-
-  .. literalinclude:: csharp/simple/order-amount-escrowed.cs
-    :language: csharp
+.. snippet:: order-amount-escrowed
 
 
 We can now retrieve all of the order's debits with:
 
-.. container:: section-ruby
-
-  .. literalinclude:: ruby/simple/order-debits-fetch.rb
-     :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: python/simple/order-debits-fetch.py
-     :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: curl/simple/order-debits-fetch.sh
-    :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: php/simple/order-debits-fetch.php
-    :language: php
-
-.. container:: section-csharp
-
-  .. literalinclude:: csharp/simple/order-debits-fetch.cs
-    :language: csharp
+.. snippet:: order-debits-fetch
 
 
 Likewise, we can retrieve all of the order's credits with:
 
-.. container:: section-ruby
-
-  .. literalinclude:: ruby/simple/order-credits-fetch.rb
-     :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: python/simple/order-credits-fetch.py
-     :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: curl/simple/order-credits-fetch.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: php/simple/order-credits-fetch.php
-    :language: php
-
-.. container:: section-csharp
-
-  .. literalinclude:: csharp/simple/order-credits-fetch.cs
-    :language: csharp
+.. snippet:: order-credits-fetch
 
 
 Checkpoint

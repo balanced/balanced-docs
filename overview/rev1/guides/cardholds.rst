@@ -48,7 +48,7 @@ A hold is created in a way similar to creating a debit. Creating a card hold
 will return a href which can be used to perform a capture later, up to the full
 amount of the card hold.
 
-.. example:: card-hold-create
+.. snippet:: card-hold-create
 
 
 Capturing a card hold
@@ -70,7 +70,7 @@ Capturing a card hold
 When you wish to obtain the funds reserved with a card hold, capture the card
 hold.
 
-.. example:: card-hold-capture
+.. snippet:: card-hold-capture
 
 
 Voiding a card hold
@@ -91,4 +91,4 @@ Voiding a card hold
 
 If you wish to release the reserved funds you can always void the card hold.
 
-.. example:: card-hold-void
+.. snippet:: card-hold-void

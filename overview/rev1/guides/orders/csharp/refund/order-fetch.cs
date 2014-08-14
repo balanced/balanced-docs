@@ -1,1 +1,0 @@
-Order order = Order.Fetch(order_href);

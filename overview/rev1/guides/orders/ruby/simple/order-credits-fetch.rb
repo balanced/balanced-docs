@@ -1,1 +1,0 @@
-order.credits # instance of Balanced::Pager. Lazily iterate as an array.
