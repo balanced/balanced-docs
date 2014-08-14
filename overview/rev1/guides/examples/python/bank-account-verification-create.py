@@ -1,1 +1,0 @@
-verification = bank_account.verify
