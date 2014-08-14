@@ -1,7 +1,7 @@
 Card Holds
 ========================
 
-Balanced supports the concepts of :term:`holds`. Holds are a type of
+Balanced supports the concept of holds. Holds are a type of
 authorization that reserves a dollar amount on a credit card to be captured at
 a later time, usually within 7 days. If the transaction is not processed
 (known as post-authorization) by the end of the hold period, the amount is
@@ -48,26 +48,7 @@ A hold is created in a way similar to creating a debit. Creating a card hold
 will return a href which can be used to perform a capture later, up to the full
 amount of the card hold.
 
-.. literalinclude:: examples/curl/card-hold-create.sh
-   :language: bash
-
-.. literalinclude:: examples/python/card-hold-create.py
-   :language: python
-
-.. literalinclude:: examples/ruby/card-hold-create.rb
-   :language: ruby
-
-.. literalinclude:: examples/php/card-hold-create.php
-   :language: php
-
-.. literalinclude:: examples/java/card-hold-create.java
-   :language: java
-
-.. literalinclude:: examples/node/card-hold-create.js
-   :language: node
-
-.. literalinclude:: examples/csharp/card-hold-create.cs
-   :language: csharp
+.. example:: card-hold-create
 
 
 Capturing a card hold
@@ -89,26 +70,8 @@ Capturing a card hold
 When you wish to obtain the funds reserved with a card hold, capture the card
 hold.
 
-.. literalinclude:: examples/curl/card-hold-capture.sh
-   :language: bash
+.. example:: card-hold-capture
 
-.. literalinclude:: examples/python/card-hold-capture.py
-   :language: python
-
-.. literalinclude:: examples/ruby/card-hold-capture.rb
-   :language: ruby
-
-.. literalinclude:: examples/php/card-hold-capture.php
-   :language: php
-
-.. literalinclude:: examples/java/card-hold-capture.java
-   :language: java
-
-.. literalinclude:: examples/node/card-hold-capture.js
-   :language: node
-
-.. literalinclude:: examples/csharp/card-hold-capture.cs
-   :language: csharp
 
 Voiding a card hold
 ---------------------
@@ -128,29 +91,4 @@ Voiding a card hold
 
 If you wish to release the reserved funds you can always void the card hold.
 
-.. literalinclude:: examples/curl/card-hold-void.sh
-   :language: bash
-
-.. literalinclude:: examples/python/card-hold-void.py
-   :language: python
-
-.. literalinclude:: examples/ruby/card-hold-void.rb
-   :language: ruby
-
-.. literalinclude:: examples/php/card-hold-void.php
-   :language: php
-
-.. literalinclude:: examples/java/card-hold-void.java
-   :language: java
-
-.. literalinclude:: examples/node/card-hold-void.js
-   :language: node
-
-.. literalinclude:: examples/csharp/card-hold-void.cs
-   :language: csharp
-
-
-.. _sample page: https://gist.github.com/2662770
-.. _balanced.js: https://js.balancedpayments.com/v1/balanced.js
-.. _testing documentation: /docs/testing#simulating-card-failures
-.. _jQuery: http://www.jquery.com
+.. example:: card-hold-void

@@ -247,6 +247,7 @@ from customizations import (
 
 def setup(app):
     from balanced_docs import dcode
+    from balanced_docs import lang_snippet
 
     # dcode directive default registrations
     dcode.DCodeDefaultDirective.registry[None]['cache'] = 'dcode.cache'
@@ -272,9 +273,13 @@ def setup(app):
     dcode.DCodeDefaultDirective.registry['view'].update({
         'script': 'scripts/rst.py view'
     })
-
+    
+    lang_snippet.LangSnippet.langs = ['curl', 'python', 'ruby', 'java', 'csharp', 'php', 'node']
+    lang_snippet.LangSnippet.client_dir = os.path.join(os.path.abspath('.'), 'clients')
+    
     app.add_directive('dcode-default', dcode.DCodeDefaultDirective)
     app.add_directive('dcode', dcode.DCodeDirective)
+    app.add_directive('snippet', lang_snippet.LangSnippet)
     app.add_directive(IconBoxWidget.name, IconBoxWidget)
     app.add_directive(ReadMoreWidget.name, ReadMoreWidget)
     app.add_directive(Span.name, Span)

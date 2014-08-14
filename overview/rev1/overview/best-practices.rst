@@ -101,7 +101,7 @@ Here are some tips:
    different routing numbers for checks and direct deposits.
 
 #. Balanced has provided very useful routing number validators in our
-   :ref:`balanced.js <getting_started.balanced.js_bank_accounts>` library.
+   :ref:`balanced.js <balanced-js.method-reference-bank-accounts>` library.
    Use these helper functions to build a robust form.
 
 #. Set your customer's expectation that payments might be delayed by up to

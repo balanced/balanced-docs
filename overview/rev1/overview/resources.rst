@@ -51,7 +51,7 @@ Test credit card numbers
 Test bank account numbers
 -------------------------
 
-Balanced provides various utilities to aid you in testing your :ref:`payouts`
+Balanced provides various utilities to aid you in testing your :ref:`guides.credits`
 integration.
 
 When integrating payouts, it's worth noting that incorrect bank routing numbers
