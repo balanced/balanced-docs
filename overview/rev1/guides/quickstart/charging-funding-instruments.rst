@@ -52,67 +52,19 @@ the funds will be available for use.
 
 First, let's create a ``Card`` to work with.
 
-.. literalinclude:: ../examples/ruby/card-create.rb
-   :language: ruby
-
-.. literalinclude:: ../examples/python/card-create.py
-   :language: python
-
-.. literalinclude:: ../examples/curl/card-create.sh
-   :language: bash
-
-.. literalinclude:: ../examples/php/card-create.php
-   :language: php
-
-.. literalinclude:: ../examples/node/card-create.js
-   :language: node
-
-.. literalinclude:: ../examples/csharp/card-create.cs
-    :language: csharp
+.. snippet:: card-create
 
 
 Now that we have a ``Card``, we can charge it. This will issue a ``Debit`` which
 will deduct funds from the target credit card.
 
-.. literalinclude:: ../examples/ruby/card-debit.rb
-   :language: ruby
-
-.. literalinclude:: ../examples/python/card-debit.py
-   :language: python
-
-.. literalinclude:: ../examples/curl/card-debit.sh
-   :language: bash
-
-.. literalinclude:: ../examples/php/card-debit.php
-   :language: php
-
-.. literalinclude:: ../examples/node/card-debit.js
-   :language: node
-
-.. literalinclude:: ../examples/csharp/card-debit.cs
-   :language: csharp
+.. snippet:: card-debit
 
 
 Since card debits are immediate, we can check our escrow to see the funds are
 indeed available.
 
-.. literalinclude:: ../examples/ruby/marketplace-in-escrow.rb
-   :language: ruby
-
-.. literalinclude:: ../examples/python/marketplace-in-escrow.py
-   :language: python
-
-.. literalinclude:: ../examples/curl/marketplace-in-escrow.sh
-   :language: bash
-
-.. literalinclude:: ../examples/php/marketplace-in-escrow.php
-   :language: php
-
-.. literalinclude:: ../examples/node/marketplace-in-escrow.js
-   :language: node
-
-.. literalinclude:: ../examples/csharp/marketplace-in-escrow.cs
-   :language: csharp
+.. snippet:: marketplace-in-escrow
 
 
 Charging a Bank Account
@@ -134,23 +86,7 @@ transactions.
 
 First, let's create a ``BankAccount`` to work with.
 
-.. literalinclude:: ../examples/ruby/bank-account-create.rb
-   :language: ruby
-
-.. literalinclude:: ../examples/python/bank-account-create.py
-   :language: python
-
-.. literalinclude:: ../examples/curl/bank-account-create.sh
-   :language: bash
-
-.. literalinclude:: ../examples/php/bank-account-create.php
-   :language: php
-
-.. literalinclude:: ../examples/node/bank-account-create.js
-   :language: node
-
-.. literalinclude:: ../examples/csharp/bank-account-create.cs
-   :language: csharp
+.. snippet:: bank-account-create
 
 
 We now have a ``BankAccount`` instance to work with. Before a ``BankAccount``
@@ -161,23 +97,7 @@ bank account. These amounts will show on the bank account statement usually in
 1-2 days. Since time is going to pass here, you probably want to store the
 ``BankAccountVerification`` href to simplify later fetching.
 
-.. literalinclude:: ../examples/ruby/bank-account-verification-create.rb
-   :language: ruby
-
-.. literalinclude:: ../examples/python/bank-account-verification-create.py
-   :language: python
-
-.. literalinclude:: ../examples/curl/bank-account-verification-create.sh
-   :language: bash
-
-.. literalinclude:: ../examples/php/bank-account-verification-create.php
-   :language: php
-
-.. literalinclude:: ../examples/node/bank-account-verification-create.js
-   :language: node
-
-.. literalinclude:: ../examples/csharp/bank-account-verification-create.cs
-    :language: csharp
+.. snippet:: bank-account-verification-create
 
 
 Once the amounts have posted on the bank account statement, the bank account
@@ -191,46 +111,14 @@ which sends the values to Balanced as follows:
   The verification values in test marketplaces are always 1 and 1.
 
 
-.. literalinclude:: ../examples/ruby/bank-account-verification-confirm.rb
-   :language: ruby
-
-.. literalinclude:: ../examples/python/bank-account-verification-confirm.py
-   :language: python
-
-.. literalinclude:: ../examples/curl/bank-account-verification-confirm.sh
-   :language: bash
-
-.. literalinclude:: ../examples/php/bank-account-verification-confirm.php
-   :language: php
-  
-.. literalinclude:: ../examples/node/bank-account-verification-confirm.js
-   :language: node
-
-.. literalinclude:: ../examples/csharp/bank-account-verification-confirm.cs
-    :language: csharp
+.. snippet:: bank-account-verification-confirm
 
 
 At this point we have a verified bank account that we can now charge (debit).
 This will issue a ``Debit`` which will deduct funds from the specified 
 bank account.
 
-.. literalinclude:: ../examples/curl/bank-account-debit.sh
-   :language: bash
-
-.. literalinclude:: ../examples/python/bank-account-debit.py
-   :language: python
-
-.. literalinclude:: ../examples/ruby/bank-account-debit.rb
-   :language: ruby
-
-.. literalinclude:: ../examples/php/bank-account-debit.php
-   :language: php
-
-.. literalinclude:: ../examples/node/bank-account-debit.js
-   :language: node
-
-.. literalinclude:: ../examples/csharp/bank-account-debit.cs
-    :language: csharp
+.. snippet:: bank-account-debit
 
 
 Checkpoint

@@ -40,23 +40,7 @@ Initiating a credit
 Initiating a credit (payout) is simple. Assuming we have an existing ``BankAccount`` we can
 do the following:
 
-.. literalinclude:: ../examples/curl/credit-create.sh
-   :language: bash
-
-.. literalinclude:: ../examples/python/credit-create.py
-   :language: python
-
-.. literalinclude:: ../examples/ruby/credit-create.rb
-   :language: ruby
-
-.. literalinclude:: ../examples/php/credit-create.php
-   :language: php
-
-.. literalinclude:: ../examples/node/credit-create.js
-   :language: node
-
-.. literalinclude:: ../examples/csharp/credit-create.cs
-    :language: csharp
+.. snippet:: credit-create
 
 
 .. note::
@@ -71,24 +55,7 @@ Splitting Payments
 
 Splitting payments is accomplished by simply initiating a separate credit to each recipient's bank account:
 
-.. literalinclude:: ../examples/curl/credit-split.sh
-   :language: bash
-
-.. literalinclude:: ../examples/python/credit-split.py
-   :language: python
-
-.. literalinclude:: ../examples/ruby/credit-split.rb
-   :language: ruby
-
-.. literalinclude:: ../examples/php/credit-split.php
-   :language: php
-
-.. literalinclude:: ../examples/node/credit-split.js
-   :language: node
-
-
-.. literalinclude:: ../examples/csharp/credit-split.cs
-   :language: csharp
+.. snippet:: credit-split
 
 
 Checkpoint
