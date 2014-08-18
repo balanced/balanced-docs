@@ -51,26 +51,7 @@ Create a credit to a bank account
 Initiating a credit (payout) to a bank account is simple. Assuming we have an existing ``BankAccount`` we can
 do the following:
 
-.. literalinclude:: examples/curl/credit-create.sh
-   :language: bash
-
-.. literalinclude:: examples/python/credit-create.py
-   :language: python
-
-.. literalinclude:: examples/ruby/credit-create.rb
-   :language: ruby
-
-.. literalinclude:: examples/php/credit-create.php
-   :language: php
-
-.. literalinclude:: examples/java/credit-create.java
-   :language: java
-
-.. literalinclude:: examples/node/credit-create.js
-   :language: node
-
-.. literalinclude:: examples/csharp/credit-create.cs
-   :language: csharp
+.. snippet:: credit-create
 
 
 Create a credit to a Card
@@ -94,26 +75,7 @@ Initiating a credit (payout) to a card is simple, but there are a few requiremen
 
 Assuming we have an existing and creditable ``Card`` we can do the following:
 
-.. literalinclude:: examples/curl/card-credit.sh
-   :language: bash
-
-.. literalinclude:: examples/python/card-credit.py
-   :language: python
-
-.. literalinclude:: examples/ruby/card-credit.rb
-   :language: ruby
-
-.. literalinclude:: examples/php/card-credit.php
-   :language: php
-
-.. literalinclude:: examples/java/card-credit.java
-   :language: java
-
-.. literalinclude:: examples/node/card-credit.js
-   :language: node
-
-.. literalinclude:: examples/csharp/card-credit.cs
-   :language: csharp
+.. snippet:: card-credit
 
 
 Statement descriptor
@@ -147,26 +109,7 @@ specifying the ``appears_on_statement_as`` field when creating a credit.
 
 Example usage:
 
-.. literalinclude:: examples/curl/credit-soft-descriptor.sh
-   :language: bash
-
-.. literalinclude:: examples/python/credit-soft-descriptor.py
-   :language: python
-
-.. literalinclude:: examples/ruby/credit-soft-descriptor.rb
-   :language: ruby
-
-.. literalinclude:: examples/php/credit-soft-descriptor.php
-   :language: php
-
-.. literalinclude:: examples/java/credit-soft-descriptor.java
-   :language: java
-
-.. literalinclude:: examples/node/credit-soft-descriptor.js
-   :language: node
-
-.. literalinclude:: examples/csharp/credit-soft-descriptor.cs
-   :language: csharp
+.. snippet:: credit-soft-descriptor
 
 
 Payout status flow
@@ -221,26 +164,7 @@ Reversing a credit
 In the event that you need to cancel a payout, e.g. a user is not
 satisfied with the product, you can create a ``Reversal``.
 
-.. literalinclude:: examples/curl/reversal-create.sh
-   :language: bash
-
-.. literalinclude:: examples/python/reversal-create.py
-   :language: python
-
-.. literalinclude:: examples/ruby/reversal-create.rb
-   :language: ruby
-
-.. literalinclude:: examples/php/reversal-create.php
-   :language: php
-
-.. literalinclude:: examples/java/reversal-create.java
-   :language: java
-
-.. literalinclude:: examples/node/reversal-create.js
-   :language: node
-
-.. literalinclude:: examples/csharp/reversal-create.cs
-   :language: csharp
+.. snippet:: reversal-create
 
 
 The status flow of a reversal is as follows:

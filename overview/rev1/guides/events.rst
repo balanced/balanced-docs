@@ -51,26 +51,7 @@ To begin receiving events, we first need to create a Callback and specify the ``
 where we'll be listening. Optionally, we can also specify the ``method`` by which
 we'd like to receive event payloads, one of: ``GET``, ``POST`` (default), or ``PUT``.
 
-.. literalinclude:: examples/curl/callback-create.sh
-   :language: bash
-
-.. literalinclude:: examples/python/callback-create.py
-   :language: python
-
-.. literalinclude:: examples/ruby/callback-create.rb
-   :language: ruby
-
-.. literalinclude:: examples/php/callback-create.php
-   :language: php
-
-.. literalinclude:: examples/java/callback-create.java
-   :language: java
-
-.. literalinclude:: examples/node/callback-create.js
-   :language: node
-
-.. literalinclude:: examples/csharp/callback-create.cs
-    :language: csharp
+.. snippet:: callback-create
 
 
 Now that we have a ``Callback``, we'll start receiving event payloads from Balanced

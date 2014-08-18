@@ -168,116 +168,18 @@ Disputes may be retrieved in three ways.
 
 Retrieve via the ``Debit``:
 
-.. container:: section-ruby
-
-  .. literalinclude:: examples/ruby/debit-dispute-show.rb
-    :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: examples/python/debit-dispute-show.py
-    :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: examples/curl/debit-dispute-show.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: examples/php/debit-dispute-show.php
-    :language: php
-
-.. container:: section-java
-
-  .. literalinclude:: examples/java/debit-dispute-show.java
-    :language: java
-
-.. container:: section-node
-
-  .. literalinclude:: examples/node/debit-dispute-show.js
-    :language: javascript
-
-.. container:: section-csharp
-
-  .. literalinclude:: examples/csharp/debit-dispute-show.cs
-    :language: csharp
+.. snippet:: debit-dispute-show
 
 
 Retrieve by href:
 
-.. container:: section-ruby
-
-  .. literalinclude:: examples/ruby/dispute-show.rb
-    :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: examples/python/dispute-show.py
-    :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: examples/curl/dispute-show.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: examples/php/dispute-show.php
-    :language: php
-
-.. container:: section-java
-
-  .. literalinclude:: examples/java/dispute-show.java
-    :language: java
-
-.. container:: section-node
-
-  .. literalinclude:: examples/node/dispute-show.js
-    :language: javascript
-
-.. container:: section-csharp
-
-  .. literalinclude:: examples/csharp/dispute-show.cs
-    :language: csharp
+.. snippet:: dispute-show
 
 
 You may also list all disputes:
 
-.. container:: section-ruby
+.. snippet:: dispute-list
 
-  .. literalinclude:: examples/ruby/dispute-list.rb
-    :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: examples/python/dispute-list.py
-    :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: examples/curl/dispute-list.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: examples/php/dispute-list.php
-    :language: php
-
-.. container:: section-java
-
-  .. literalinclude:: examples/java/dispute-list.java
-    :language: java
-
-.. container:: section-node
-
-  .. literalinclude:: examples/node/dispute-list.js
-    :language: javascript
-
-.. container:: section-csharp
-
-  .. literalinclude:: examples/csharp/dispute-list.cs
-    :language: csharp
 
 .. note::
   :header_class: alert alert-tab
@@ -293,84 +195,15 @@ In test marketplaces, creating a ``Card`` with the number ``6500000000000002``, 
 any debit created with the card.
 
 
-.. container:: section-ruby
-
-  .. literalinclude:: examples/ruby/card-create-dispute.rb
-    :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: examples/python/card-create-dispute.py
-    :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: examples/curl/card-create-dispute.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: examples/php/card-create-dispute.php
-    :language: php
-
-.. container:: section-java
-
-  .. literalinclude:: examples/java/card-create-dispute.java
-    :language: java
-
-.. container:: section-node
-
-  .. literalinclude:: examples/node/card-create-dispute.js
-    :language: javascript
-
-.. container:: section-csharp
-
-  .. literalinclude:: examples/csharp/card-create-dispute.cs
-    :language: csharp
+.. snippet:: card-create-dispute
 
 
 Now debit the card.
 
-
-.. container:: section-ruby
-
-  .. literalinclude:: examples/ruby/card-debit.rb
-    :language: ruby
-
-.. container:: section-python
-
-  .. literalinclude:: examples/python/card-debit.py
-    :language: python
-
-.. container:: section-bash
-
-  .. literalinclude:: examples/curl/card-debit.sh
-     :language: bash
-
-.. container:: section-php
-
-  .. literalinclude:: examples/php/card-debit.php
-    :language: php
-
-.. container:: section-java
-
-  .. literalinclude:: examples/java/card-debit.java
-    :language: java
-
-.. container:: section-node
-
-  .. literalinclude:: examples/node/card-debit.js
-    :language: javascript
-
-.. container:: section-csharp
-
-  .. literalinclude:: examples/csharp/card-debit.cs
-    :language: csharp
+.. snippet:: card-debit
 
 
 After some time has passed, a dispute will be associated to the ``Debit``.
-
-
 
 
 

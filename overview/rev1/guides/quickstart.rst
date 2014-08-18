@@ -8,8 +8,8 @@ Quickstart
   :glob:
 
   quickstart/setup
-  quickstart/charging-cards
-  
+  quickstart/charging-funding-instruments
+  quickstart/payouts
 
 
 In this quickstart guide we'll go through a basic setup for charging credit

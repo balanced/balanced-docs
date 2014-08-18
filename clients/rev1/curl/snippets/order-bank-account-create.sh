@@ -7,8 +7,7 @@ curl https://api.balancedpayments.com/bank_accounts \
      -d "name=Henry Ford" \
      -d "account_number=9900000001"
 
-# associate bank account to customer
-# bank_account_id: use id attribute from bank account created previously
+# bank_account_id: id attribute from a previously created bank account
 curl https://api.balancedpayments.com/bank_accounts/:bank_account_id \
      -H "Accept-Type: application/vnd.api+json;revision=1.1" \
      -u ak-test-1sKqYrBZG6WYpHphDAsM7ZXFEmJlAn1GE: \

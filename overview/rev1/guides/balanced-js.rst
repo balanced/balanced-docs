@@ -409,6 +409,8 @@ Method Reference - Cards
     }
 
 
+.. _balanced-js.method-reference-bank-accounts:
+
 Method Reference - Bank Accounts
 ----------------------------------
 

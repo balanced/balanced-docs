@@ -3,7 +3,8 @@ Escrow
 
 Every marketplace has a single escrow. This escrow account is essentially like a
 pool of funds. Debits bring funds into the marketplace escrow. Credits take
-funds out of the marketplace escrow.
+funds out of the marketplace escrow. Transactions involving Orders do not involve
+the marketplace escrow.
 
 Marketplaces have complete control over how funds are disbursed from escrow.
 Funds in escrow may be distributed to recipients as desired. There is inherently
@@ -25,6 +26,13 @@ customer dissatisfaction.
   customer are free of charge.
 
 |
+
+
+Determine Escrow balance
+-------------------------
+
+.. snippet:: marketplace-in-escrow
+
 
 Pre-funding Escrow
 ------------------------
@@ -85,15 +93,6 @@ done via the API or via the Balanced `dashboard`_. To do this via the API:
     payload.Add("amount", 2000000);
     payload.Add("description", "Pre-fund Balanced escrow");
     Debit debit = bankAccount.Debit(payload);
-
-
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-green
-
-  We advise that you transfer a large amount in your Balanced account or you
-  may request that Balanced always keep a constant amount in your account for
-  you. We're publicly tracking this on `github issue #132`_ and appreciate your input
 
 Transfers may take 2-5 days for the funds to become available; alternatively, you
 may fund your account **instantly** by debiting a credit card associated to your
@@ -161,4 +160,4 @@ the target bank.
 
 
 .. _dashboard: https://dashboard.balancedpayments.com/
-.. _github issue #132: https://github.com/balanced/balanced-api/issues/132
+.. _billy issue #1: https://github.com/balanced/billy/issues/1

@@ -1,1 +1,0 @@
-disputes = Balanced::Dispute.all

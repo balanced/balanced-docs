@@ -2,6 +2,7 @@
   :hidden:
   :glob:
 
+  .
   api/authentication
   api/api-keys
   api/bank-accounts
