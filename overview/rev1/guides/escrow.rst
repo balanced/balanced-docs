@@ -7,13 +7,21 @@ funds out of the marketplace escrow. Transactions involving Orders do not involv
 the marketplace escrow.
 
 Marketplaces have complete control over how funds are disbursed from escrow.
-Funds in escrow may be distributed to recipients as desired. There is inherently
-no time limit for the duration funds may sit in escrow. Best practice is to
+Funds in escrow may be distributed to recipients as desired, however, funds must
+be paid to merchants within 30 days of the charge. Best practice is to
 refrain from releasing funds until after merchant fulfillment has occurred,
 confirmation of a shipped product or completion of a service for example. Escrow
 is not meant as a means of extended withholding. Holding funds in escrow for
 extended periods of time often leads to an increased number in chargebacks and
 customer dissatisfaction.
+
+
+.. admonition:: Requirements
+  :header_class: alert alert-tab full-width alert-tab-yellow
+  :body_class: alert alert-green alert-yellow
+
+  Funds must be paid to merchants within 30 days of the charge.
+
 
 |
 
