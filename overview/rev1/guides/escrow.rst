@@ -20,7 +20,7 @@ customer dissatisfaction.
 .. note::
   :header_class: alert alert-tab
   :body_class: alert alert-green
-  
+
   Balanced does not collect interest of any kind on funds in escrow.
   Transactions involving bank accounts associated to the marketplace owner
   customer are free of charge.
@@ -94,6 +94,22 @@ done via the API or via the Balanced `dashboard`_. To do this via the API:
     payload.Add("description", "Pre-fund Balanced escrow");
     Debit debit = bankAccount.Debit(payload);
 
+.. code-block:: node
+
+    balanced.marketplace.owner_customer.bank_accounts.get(0).debits.create({
+        "amount": 2000000,
+        "description": "Pre-fund Balanced escrow"
+    })
+
+.. code-block:: java
+
+    BankAccount bankAccount =  Marketplace.mine().owner_customer.bank_accounts.query().first();
+    HashMap<String, Object> payload = new HashMap<String, Object>();
+    payload.put("amount", 2000000);
+    payload.put("description", "Pre-fund Balanced escrow");
+    Debit debit = bankAccount.debit(payload);
+
+
 Transfers may take 2-5 days for the funds to become available; alternatively, you
 may fund your account **instantly** by debiting a credit card associated to your
 marketplace.
@@ -153,6 +169,20 @@ issue a credit:
     payload.Add("amount", 2000000);
     payload.Add("description", "Credit from Balanced escrow");
     Credit credit = bankAccount.Credit(payload);
+
+.. code-block:: node
+
+    balanced.marketplace.owner_customer.bank_accounts.get(0).credits.create({
+            amount: 100
+    })
+
+.. code-block:: java
+
+    BankAccount bankAccount =  Marketplace.mine().owner_customer.bank_accounts.query().first();
+    HashMap<String, Object> payload = new HashMap<String, Object>();
+    payload.put("amount", 2000000);
+    payload.put("description", "Pre-fund Balanced escrow");
+    Credit credit = bankAccount.credit(payload);
 
 
 Credits can take 1-3 days for the funds to become available depending on
