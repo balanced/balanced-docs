@@ -61,11 +61,12 @@ After reviewing each of the following topics, you should understand how to do fo
   - \* Create a ``Customer`` representing a buyer and associate a ``BankAccount`` to it
   - \* Create an ``Order``
   - \* Update an ``Order``
-  - \* Create an order debit
-  - \* Check the order ``amount``
-  - \* Check the order ``amount_escrowed``
-  - \* Issue a credit from an ``Order`` to a seller
+  - \* Debit a buyer
+  - \* Issue a credit from an ``Order`` to the merchant
   - \* Issue a credit from an ``Order`` to the marketplace bank account
+  - \* Check an ``Order`` balance
+  - \* Retrieve all ``Debits`` for an ``Order``
+  - \* Retrieve all ``Credits`` for an ``Order``
 
 |
 
