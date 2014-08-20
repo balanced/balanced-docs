@@ -53,7 +53,7 @@ If you do not have a sufficient balance, Balanced will return a ``409`` http
 status code, stating that you do not have sufficient funds to cover your
 desired ACH operation. You will have to add funds to your marketplace escrow
 from a credit card or bank account attached to your marketplace. This may be
-done via the API or via the Balanced `dashboard`_. To do this via the API:
+done via the API or via the Balanced `Dashboard`_. To do this via the API:
 
 .. snippet:: debit-marketplace-escrow
 
@@ -76,5 +76,5 @@ Credits can take 1-3 days for the funds to become available depending on
 the target bank.
 
 
-.. _dashboard: https://dashboard.balancedpayments.com/
+.. _Dashboard: https://dashboard.balancedpayments.com/
 .. _billy issue #1: https://github.com/balanced/billy/issues/1
