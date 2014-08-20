@@ -1,3 +1,5 @@
+.. _guides.disputes:
+
 Escrow
 ======================
 
@@ -45,69 +47,7 @@ desired ACH operation. You will have to add funds to your marketplace escrow
 from a credit card or bank account attached to your marketplace. This may be
 done via the API or via the Balanced `dashboard`_. To do this via the API:
 
-.. code-block:: bash
-
-  # Get the marketplace
-  curl https://api.balancedpayments.com/marketplaces \
-       -H "Accept: application/vnd.api+json;revision=1.1" \
-       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL:
-
-  # Determine owner customer from marketplaces.owner_customer link and get its bank accounts
-  curl https://api.balancedpayments.com/customers/CU1U8FEqP5FsisYD0D5G6aS4/bank_accounts \
-       -H "Accept: application/vnd.api+json;revision=1.1" \
-       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL:
-
-  # Determine the debits href from the bank_accounts.debits link and create a debit
-  curl https://api.balancedpayments.com/bank_accounts/BA1VKlrw3m7lNyouaU5h8Xba/debits \
-       -H "Accept: application/vnd.api+json;revision=1.1" \
-       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
-       -d "amount=2000000"
-
-.. code-block:: ruby
-
-  Balanced::Marketplace.mine.owner_customer.bank_accounts.first.debit(
-    :amount => 2000000,
-    :description => 'Pre-fund Balanced escrow'
-  )
-
-.. code-block:: python
-
-  balanced.Marketplace.mine.owner_customer.bank_accounts[0].debit(
-    amount=2000000,
-    description='Pre-fund Balanced escrow'
-  )
-
-.. code-block:: php
-
-  <?php
-  Balanced\Marketplace::mine()->owner_customer->bank_accounts->query()->first()->debits->create(array(
-    "amount" => "2000000",
-    "description" => "Pre-fund Balanced escrow",
-  ));
-  ?>
-
-.. code-block:: csharp
-
-    BankAccount bankAccount = Marketplace.Mine.owner_customer.bank_accounts.First();
-    Dictionary<string, object> payload = new Dictionary<string, object>();
-    payload.Add("amount", 2000000);
-    payload.Add("description", "Pre-fund Balanced escrow");
-    Debit debit = bankAccount.Debit(payload);
-
-.. code-block:: node
-
-    balanced.marketplace.owner_customer.bank_accounts.get(0).debits.create({
-        "amount": 2000000,
-        "description": "Pre-fund Balanced escrow"
-    })
-
-.. code-block:: java
-
-    BankAccount bankAccount =  Marketplace.mine().owner_customer.bank_accounts.query().first();
-    HashMap<String, Object> payload = new HashMap<String, Object>();
-    payload.put("amount", 2000000);
-    payload.put("description", "Pre-fund Balanced escrow");
-    Debit debit = bankAccount.debit(payload);
+.. snippet:: debit-marketplace-escrow
 
 
 Transfers may take 2-5 days for the funds to become available; alternatively, you
@@ -121,68 +61,7 @@ Obtaining funds from Escrow
 To transfer funds from your marketplace escrow to your marketplace bank account,
 issue a credit:
 
-.. code-block:: bash
-
-  # Get the marketplace
-  curl https://api.balancedpayments.com/marketplaces \
-       -H "Accept: application/vnd.api+json;revision=1.1" \
-       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL:
-
-  # Determine owner customer from marketplaces.owner_customer link and get its bank accounts
-  curl https://api.balancedpayments.com/customers/CU1U8FEqP5FsisYD0D5G6aS4/bank_accounts \
-       -H "Accept: application/vnd.api+json;revision=1.1" \
-       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL:
-
-  # Determine the debits href from the bank_accounts.debits link and create a credit
-  curl https://api.balancedpayments.com/bank_accounts/BA1VKlrw3m7lNyouaU5h8Xba/credits \
-       -H "Accept: application/vnd.api+json;revision=1.1" \
-       -u ak-test-h7F8F3u41y6LzCK4nZeVd5BafaWOUuZL: \
-       -d "amount=2000000"
-
-.. code-block:: ruby
-
-  Balanced::Marketplace.mine.owner_customer.bank_accounts.first.credit(
-    :amount => 2000000,
-    :description => 'Credit from Balanced escrow'
-  )
-
-.. code-block:: python
-
-  balanced.Marketplace.mine.owner_customer.bank_accounts[0].credit(
-    amount=2000000,
-    description='Credit from Balanced escrow'
-  )
-
-.. code-block:: php
-
-  <?php
-  Balanced\Marketplace::mine()->owner_customer->bank_accounts->query()->first()->credits->create(array(
-    "amount" => "2000000",
-    "description" => "Credit from Balanced escrow",
-  ));
-  ?>
-
-.. code-block:: csharp
-
-    BankAccount bankAccount = Marketplace.Mine.owner_customer.bank_accounts.First();
-    Dictionary<string, object> payload = new Dictionary<string, object>();
-    payload.Add("amount", 2000000);
-    payload.Add("description", "Credit from Balanced escrow");
-    Credit credit = bankAccount.Credit(payload);
-
-.. code-block:: node
-
-    balanced.marketplace.owner_customer.bank_accounts.get(0).credits.create({
-            amount: 100
-    })
-
-.. code-block:: java
-
-    BankAccount bankAccount =  Marketplace.mine().owner_customer.bank_accounts.query().first();
-    HashMap<String, Object> payload = new HashMap<String, Object>();
-    payload.put("amount", 2000000);
-    payload.put("description", "Pre-fund Balanced escrow");
-    Credit credit = bankAccount.credit(payload);
+.. snippet:: credit-marketplace-escrow
 
 
 Credits can take 1-3 days for the funds to become available depending on

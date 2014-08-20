@@ -61,22 +61,16 @@ class LangSnippet(Directive):
                                                   line=self.lineno)]
             env = document.settings.env
 
-            if lang in ['python', 'ruby', 'php', 'node']:
-                fn = os.path.join(self.client_dir, self.rev, lang,
-                                             'snippets', filename + '.' + self.lang_extensions[lang])
-            if lang == 'curl':
-                fn = os.path.join(self.client_dir, self.rev, lang,
-                                             'snippets', filename + '.' + self.lang_extensions[lang])
+            prefix_path = [self.client_dir, self.rev, lang]
+            mid_path = ['snippets']
             if lang == 'java':
-                fn = os.path.join(self.client_dir, self.rev, lang,
-                                             'src', 'snippets',
-                                             filename + '.' + self.lang_extensions[lang])
-            if lang == 'csharp':
-                fn = os.path.join(self.client_dir, self.rev, lang,
-                                             'scenarios', 'snippets',
-                                             filename + '.' + self.lang_extensions[lang])
-            
+                mid_path = ['src', 'snippets']
+            elif lang == 'csharp':
+                mid_path = ['scenarios', 'snippets']
 
+            suffix_path = [filename + '.' + self.lang_extensions[lang]]
+
+            fn = os.path.join(*(prefix_path + mid_path + suffix_path))
             encoding = self.options.get('encoding', env.config.source_encoding)
             try:
                 f = codecs.open(fn, 'rU')
@@ -84,7 +78,10 @@ class LangSnippet(Directive):
                 f.close()
             except (IOError, OSError):
                 return [document.reporter.warning(
-                    'Include file %r not found or reading it failed' % filename,
+                    'Include file %r not found or reading it failed. Please '
+                    'check that %s exists. This prevents the rendering of any '
+                    'snippets from other clients as well.' %
+                    (filename, suffix_path),
                     line=self.lineno)]
             except UnicodeError:
                 return [document.reporter.warning(
