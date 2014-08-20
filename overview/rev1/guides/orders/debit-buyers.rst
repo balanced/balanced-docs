@@ -33,23 +33,24 @@ Debiting Buyers
     - `Create a Debit for an Order </1.1/api/debits/#create-a-debit-for-an-order>`_
 
 
-Topic Overview
+Topic overview
 ~~~~~~~~~~~~~~~~~~
 
 By the end of this topic, you should understand how to do following:
 
 .. cssclass:: list-noindent
 
-  - \* Create a ``Customer`` representing a seller (merchant) and associate a ``BankAccount`` to it.
-  - \* Create an ``Order``
-  - \* Update an ``Order``
+  - \* Create a ``Customer`` representing a buyer and associate a ``BankAccount`` to it
+  - \* Debit a buyer
+  - \* Check an ``Order`` balance
+  - \* Retrieve all ``Debits`` for an ``Order``
 
 
 Prepare a buyer
 ~~~~~~~~~~~~~~~~~
 
-Before we can charge our buyer we need to have a ``Customer`` resource representing them
-on which we can operate. Let's create one now and add a card so we can charge them.
+Before we can charge our buyer we need to have a ``Customer`` resource representing them.
+Let's create one now and add a card so we can charge them.
 
 .. note::
   :header_class: alert alert-tab-yellow
@@ -69,21 +70,69 @@ on which we can operate. Let's create one now and add a card so we can charge th
 Debit a buyer
 ~~~~~~~~~~~~~~~
 
-Let's debit the buyer for this Order. To achieve this we debit the buyer's funding instrument.
-In this example, we'll debit the buyer's ``Card``.
+Let's debit the buyer for this Order. To achieve this we supply the buyer's funding instrument
+as the ``source``. In this example, we'll debit the buyer's ``Card``.
 
 .. snippet:: order-debit
 
 
-Debiting the buyer's bank account works in the same manner.
-
-.. snippet:: order-debit-bank-account
-
+Debiting the buyer's bank account works in the same manner. Supply the buyer's bank account as
+the ``source``.
 
 We've now successfully debited a buyer. Charges to credit cards are immediate, therefore, funds will be
-immediately reflected in the Order escrow.    and the funds are immediately available in the Order escrow.
-At this point, if we inspect the Order, we'll see it now has an ``amount`` of
-10000 and an escrowed amount of 10000. `amount` is the total amount of the
+immediately reflected in the Order escrow. In production marketplaces, charges to bank accounts take
+3-4 days to settle. Therefore, funds will be available at a later date. Marketplaces should utilize
+a ``Callback`` to listen for ``Events`` from Balanced to be notified of ACH transaction state changes.
+Please refer to the :doc:`Events <../events>` guide for more information.
+
+In the case of a credit card debit, at this point, if we inspect the Order, we'll see it now has
+an ``amount`` of 10000 and an escrowed amount of 10000. `amount` is the total amount of the
 Order. ``amount_escrowed`` is the amount available for issuing payouts.
 
 .. snippet:: order-amount-escrowed
+
+
+Examine Debits for an Order
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+We can now retrieve all of the order's debits and ensure our recent debit is there.
+
+.. snippet:: order-debits-fetch
+
+
+
+Checkpoint
+~~~~~~~~~~~~
+
+You should understand how to do following:
+
+.. cssclass:: list-noindent
+
+  - ✓ Create a ``Customer`` representing a buyer and associate a ``BankAccount`` to it
+  - ✓ Debit a buyer
+  - ✓ Check the ``Order`` balance
+  - ✓ Retrieve all ``Debits`` for an ``Order``
+
+|
+
+Ensure you have met these points before proceeding.
+
+|
+
+.. container:: box-left
+
+ .. icon-box-widget::
+   :box-classes: box box-block box-blue
+   :icon-classes: icon icon-arrow-left
+
+   :doc:`Create an Order <create>`
+
+.. container:: box-right
+
+ .. read-more-widget::
+   :box-classes: box box-block box-blue right
+   :icon-classes: icon icon-arrow
+
+   :doc:`Crediting the merchant <credit-merchant>`
+
+|

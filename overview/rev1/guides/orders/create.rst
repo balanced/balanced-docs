@@ -36,7 +36,7 @@ Creating an Order
 
 |
 
-Topic Overview
+Topic overview
 ~~~~~~~~~~~~~~~~~~
 
 By the end of this topic, you should understand how to do following:
@@ -46,6 +46,7 @@ By the end of this topic, you should understand how to do following:
   - \* Create a ``Customer`` representing a seller (merchant) and associate a ``BankAccount`` to it.
   - \* Create an ``Order``
   - \* Update an ``Order``
+  - \* Check an ``Order`` balance
 
 |
 
@@ -84,7 +85,6 @@ Next, create an ``Order`` for the merchant.
 
 
 
-
 Update the Order
 ~~~~~~~~~~~~~~~~~
 
@@ -96,6 +96,19 @@ can also be specified when creating and Order.
 .. snippet:: order-update
 
 
+Check the Order balance
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+When inspecting the order object we'll see it has an ``amount`` of 0
+and ``amount_escrowed`` of now 0.
+
+.. snippet:: order-amount-escrowed
+
+.. cssclass:: list-noindent
+
+  - ``amount`` is the total amount of all funds obtained into the Order since its creation.
+  - ``amount_escrowed`` is the total amount of funds that have not yet been paid out.
+
 
 Checkpoint
 ~~~~~~~~~~~~
@@ -104,9 +117,10 @@ You should understand how to do following:
 
 .. cssclass:: list-noindent
 
-  - ✓ Create a ``Customer`` representing a seller (merchant) and associate a ``BankAccount`` to it.
+  - ✓ Create a ``Customer`` representing a merchant (seller) and associate a ``BankAccount`` to it.
   - ✓ Create an ``Order``
   - ✓ Update an ``Order``
+  - ✓ Check an ``Order`` balance
 
 |
 
@@ -123,30 +137,3 @@ Ensure you have met these points before proceeding.
 
 |
 
-
-Sort
-~~~~~~~~~~
-
-
-
-
-
-Let's issue a payout (credit) to our merchant.
-
-.. snippet:: order-credit
-
-
-Now when inspecting the order object we'll see it still has an ``amount`` of 10000
-and ``amount_escrowed`` is now 2000.
-
-.. snippet:: order-amount-escrowed
-
-
-We can now retrieve all of the order's debits with:
-
-.. snippet:: order-debits-fetch
-
-
-Likewise, we can retrieve all of the order's credits with:
-
-.. snippet:: order-credits-fetch
