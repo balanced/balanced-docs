@@ -7,13 +7,21 @@ Orders
   :hidden:
   :glob:
 
-  orders/simple-order
+  orders/create
+  orders/debit-buyers
+  orders/credit-merchant
+  orders/credit-marketplace
   orders/refund
 
 
 An ``Order`` resource is a construct that logically groups related transaction
-operations for a particular seller (``Customer``). An ``Order`` allows issuing
-payouts to one ``Customer`` and the marketplace bank account.
+operations for a particular merchant (``Customer``).
+
+The ``Order`` resource facilitates transaction reconciliation in the following ways:
+
+  - \* each ``Order`` maintains an individual escrow balance, which is separate from the marketplace escrow
+  - \* prevents over crediting funds by allowing payouts up to the ``amount_escrowed`` in each ``Order``
+  - \* Flow of funds is trackable as funds credited from an ``Order`` are mapped to the ``Debits`` that brought the funds into it
 
 
 .. admonition:: Requirements
@@ -77,7 +85,7 @@ After reviewing each of the following topics, you should understand how to do fo
     Creating an Order
 
   An Order groups transactions together with the merchant at the center.
-  This section explains how to create an ``Order`` for a merchant.
+  This topic explains how to create an ``Order`` for a merchant.
 
   .. container:: box-right
 
@@ -89,13 +97,72 @@ After reviewing each of the following topics, you should understand how to do fo
 
   .. clear::
 
+
+.. container:: section
+
+  .. container:: header2
+
+    Debiting buyers
+
+  This topic demonstrates how to debit buyers for an ``Order``.
+
+  .. container:: box-right
+
+   .. read-more-widget::
+     :box-classes: box box-block box-blue right
+     :icon-classes: icon icon-arrow
+
+     :doc:`Read More: Creating an Order <orders/create>`
+
+  .. clear::
+
+
+.. container:: section
+
+  .. container:: header2
+
+    Crediting the Merchant
+
+  This topic explains how to issue credits (payouts) to merchants.
+
+  .. container:: box-right
+
+   .. read-more-widget::
+     :box-classes: box box-block box-blue right
+     :icon-classes: icon icon-arrow
+
+     :doc:`Read More: Crediting the Merchant <orders/credit-merchant>`
+
+  .. clear::
+
+
+.. container:: section
+
+  .. container:: header2
+
+    Crediting the Marketplace
+
+  Marketplaces often need to take a cut of transactions. This topic demonstrates how to
+  issue credits (payouts) to the marketplace.
+
+  .. container:: box-right
+
+   .. read-more-widget::
+     :box-classes: box box-block box-blue right
+     :icon-classes: icon icon-arrow
+
+     :doc:`Read More: Crediting the Marketplace <orders/credit-marketplace>`
+
+  .. clear::
+
+
 .. container:: section
 
   .. container:: header2
 
     Refund an Order
 
-  This section demonstrates how to refund an order.
+  Sometimes it becomes necessary to refund a transaction. This topic demonstrates how to refund an ``Order``.
 
   .. container:: box-right
 

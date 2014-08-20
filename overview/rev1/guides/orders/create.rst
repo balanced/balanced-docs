@@ -47,6 +47,10 @@ By the end of this topic, you should understand how to do following:
   - \* Create an ``Order``
   - \* Update an ``Order``
   - \* Check an ``Order`` balance
+  - \* Create a ``Customer`` representing a buyer and associate a ``BankAccount`` to it
+  - \* Debit a buyer
+  - \* Check an ``Order`` balance
+  - \* Retrieve all ``Debits`` for an ``Order``
 
 |
 

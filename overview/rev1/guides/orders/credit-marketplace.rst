@@ -71,12 +71,18 @@ Let's issue a payout (credit) to our marketplace bank account.
 .. snippet:: order-credit-marketplace
 
 
+Check the Order balance
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now when inspecting the order object we'll see it still has an ``amount`` of 10000
+and ``amount_escrowed`` is now 0 since we've now paid out all funds from the Order.
+
 
 Examine Credits for an Order
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now when inspecting the order object we'll see it still has an ``amount`` of 10000
-and ``amount_escrowed`` is now 0 since we've now paid out all funds from the Order.
+We can now retrieve all of the order's credits. This time we should see one credit to the merchant
+bank account and one credit to the marketplace bank account.
 
 .. snippet:: order-credits-fetch
 
@@ -106,5 +112,13 @@ Ensure you have met these points before proceeding.
    :icon-classes: icon icon-arrow-left
 
    :doc:`Crediting the merchant <credit-merchant>`
+
+.. container:: box-right
+
+ .. read-more-widget::
+   :box-classes: box box-block box-blue right
+   :icon-classes: icon icon-arrow
+
+   :doc:`Refunding an Order <refund>`
 
 |
