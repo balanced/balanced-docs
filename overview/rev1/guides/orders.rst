@@ -50,12 +50,15 @@ payouts to one ``Customer`` and the marketplace bank account.
 |
 
 
+Topics
+~~~~~~~~
+
 After reviewing each of the following topics, you should understand how to do following:
 
 .. cssclass:: list-noindent
 
-  - \* Create a ``Customer`` representing a seller (merchant) and associate a ``BankAccount`` to it.
-  - \* Create a ``Customer`` representing a buyer and associate a ``BankAccount`` to it.
+  - \* Create a ``Customer`` representing a seller (merchant) and associate a ``BankAccount`` to it
+  - \* Create a ``Customer`` representing a buyer and associate a ``BankAccount`` to it
   - \* Create an ``Order``
   - \* Update an ``Order``
   - \* Create an order debit
