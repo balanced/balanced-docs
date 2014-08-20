@@ -68,6 +68,9 @@ Let's issue a payout (credit) to our merchant so they can receive funds from the
 .. snippet:: order-credit
 
 
+Check the Order balance
+~~~~~~~~~~~~~~~~~~~~~~~~
+
 Now when inspecting the order object we'll see it still has an ``amount`` of 10000
 and ``amount_escrowed`` is now 2000.
 
@@ -78,7 +81,7 @@ and ``amount_escrowed`` is now 2000.
 Examine Credits for an Order
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-We can now retrieve all of the order's credits and ensure our recent credit is there.
+We can now retrieve all of the order's credits and ensure the credit to the merchant is there.
 
 .. snippet:: order-credits-fetch
 

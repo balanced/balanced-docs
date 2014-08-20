@@ -1,4 +1,4 @@
-.. _guides.disputes:
+.. _guides.escrow:
 
 Escrow
 ======================

@@ -79,6 +79,10 @@ as the ``source``. In this example, we'll debit the buyer's ``Card``.
 Debiting the buyer's bank account works in the same manner. Supply the buyer's bank account as
 the ``source``.
 
+
+Check the Order balance
+~~~~~~~~~~~~~~~~~~~~~~~~
+
 We've now successfully debited a buyer. Charges to credit cards are immediate, therefore, funds will be
 immediately reflected in the Order escrow. In production marketplaces, charges to bank accounts take
 3-4 days to settle. Therefore, funds will be available at a later date. Marketplaces should utilize
