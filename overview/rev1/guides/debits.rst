@@ -17,28 +17,50 @@ throughout the payout process. There are three possible ``status`` values:
 
 |
 
-Creating a debit
---------------------
-
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
   :body_class: alert alert-green alert-persianBlue20
   
   .. cssclass:: mini-header
   
-    API
+    API Reference
 
   .. cssclass:: list-noindent
 
     - `Create a Card Debit </1.1/api/debits/#create-a-card-debit>`_
     - `Create a Bank Account Debit </1.1/api/debits/#create-a-bank-account-debit>`_
     - `Create a Bank Account Verification </1.1/api/bank-account-verifications/#create-a-bank-account-verification>`_
+    - `Create a Refund </1.1/api/refunds/#create-a-refund>`_
+
+  .. cssclass:: mini-header
+
+    API Specification
+
+  .. cssclass:: list-noindent
+
+    - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
+    - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
+    - `Debits Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/debits.json>`_
+    - `Debit Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/debit.json>`_
+    - `Refunds Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/refunds.json>`_
+    - `Refund Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/refund.json>`_
+
+|
+
+.. admonition:: Requirements
+  :header_class: alert alert-tab full-width alert-tab-yellow
+  :body_class: alert alert-green alert-yellow
+
+  Funds must be paid to merchants within 30 days of the charge.
+
+|
 
 
 Debit a credit card
 ~~~~~~~~~~~~~~~~~~~~~
 
-Assuming we have an existing ``Card`` we can do the following:
+Let's go ahead and debit the buyer's card. First we'll fetch the buyer's card then debit (charge)
+it for an ``Order``.
 
 .. snippet:: card-debit
 
@@ -55,10 +77,12 @@ Debiting a bank account (ACH) is very similar to debiting a credit card.
   Bank accounts you wish to debit must first `be verified`_.
 
 
-Assuming we have an existing ``BankAccount``, and it is already verified,
-we can do the following:
+We'll first fetch the buyer's verified bank account then debit (charge) it for an ``Order``.
 
 .. snippet:: bank-account-debit
+
+
+|
 
 
 ACH debit status flow
@@ -100,24 +124,11 @@ throughout the payout process. There are three possible ``status`` values:
 
 
 Refunding a debit
--------------------
+~~~~~~~~~~~~~~~~~~~
 
 A ``Refund`` resource represents a refund of a ``Debit`` transaction. The
 amount of the refund may be any value up to the amount of the original
 ``Debit``. Refunds generally process in one day or less.
-
-
-.. admonition:: References
-  :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-green alert-persianBlue20
-  
-  .. cssclass:: mini-header
-  
-    API
-
-  .. cssclass:: list-noindent
-
-    - `Create a Refund </1.1/api/refunds/#create-a-refund>`_
 
 
 In the event that you need to cancel a payout, e.g. a user is not satisfied with

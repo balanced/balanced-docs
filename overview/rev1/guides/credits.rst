@@ -19,37 +19,49 @@ Balanced currently supports payouts to:
 
 |
 
-Create a credit
-----------------------
-
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
   :body_class: alert alert-green alert-persianBlue20
   
   .. cssclass:: mini-header
   
-    API
+    API Reference
 
   .. cssclass:: list-noindent
 
     - `Create a Credit to a Bank Account </1.1/api/credits/#create-a-credit-to-a-bank-account>`_
     - `Create a Credit to a Card </1.1/api/credits/#create-a-credit-to-a-card>`_
-
-|
-
-.. note::
-  :header_class: alert alert-tab alert-tab-pineGreen80
-  :body_class: alert alert-green alert-pineGreen20
+    - `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
   
-  Credits may also be initiated via the `Dashboard`_.
+  .. cssclass:: mini-header
+
+    API Specification
+
+  .. cssclass:: list-noindent
+
+    - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
+    - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
+    - `Credits Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/credits.json>`_
+    - `Credit Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/credit.json>`_
+    - `Reversals Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/reversals.json>`_
+    - `Reversal Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/reversal.json>`_
 
 |
+
+.. admonition:: Requirements
+  :header_class: alert alert-tab full-width alert-tab-yellow
+  :body_class: alert alert-green alert-yellow
+
+  Funds must be paid to merchants within 30 days of the charge.
+
+|
+
 
 Create a credit to a bank account
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Initiating a credit (payout) to a bank account is simple. Assuming we have an existing ``BankAccount`` we can
-do the following:
+Let's issue a credit to the bank account. Note that bank accounts to which you only wish to credit
+do not need to be verified.
 
 .. snippet:: credit-create
 
@@ -147,19 +159,6 @@ throughout the payout process. There are three possible ``status`` values:
 
 Reversing a credit
 -------------------
-
-.. admonition:: References
-  :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-green alert-persianBlue20
-  
-  .. cssclass:: mini-header
-  
-    API
-  
-  .. cssclass:: list-noindent
-
-    - `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
-
 
 In the event that you need to cancel a payout, e.g. a user is not
 satisfied with the product, you can create a ``Reversal``.
