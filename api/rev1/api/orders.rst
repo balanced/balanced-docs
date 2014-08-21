@@ -6,7 +6,7 @@ operations for a particular merchant (``Customer``).
 
 The ``Order`` resource facilitates transaction reconciliation in the following ways:
 
-  - \* each ``Order`` maintains an individual escrow balance, which is separate from the marketplace escrow
+  - \* each ``Order`` maintains an individual balance, which is separate from the marketplace escrow
   - \* prevents over crediting funds by allowing payouts up to the ``amount_escrowed`` in each ``Order``
   - \* Flow of funds is trackable as funds credited from an ``Order`` are mapped to the ``Debits`` that brought the funds into it
 
