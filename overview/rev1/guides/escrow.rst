@@ -1,6 +1,6 @@
 .. _guides.escrow:
 
-Escrow
+Marketplace Escrow
 ======================
 
 Every marketplace has a single escrow. This escrow account is essentially like a
