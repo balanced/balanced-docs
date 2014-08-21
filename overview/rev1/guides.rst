@@ -7,12 +7,12 @@ Guides
   :glob:
 
   guides/quickstart
-  guides/escrow
   guides/balanced-js
+  guides/orders
   guides/debits
   guides/credits
   guides/cardholds
-  guides/orders
+  guides/escrow
   guides/disputes
   guides/mobile
   guides/events

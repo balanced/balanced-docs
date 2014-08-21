@@ -26,7 +26,7 @@ Balanced API Documentation
 Welcome to the documentation for the Balanced API! Balanced's API is a REST API
 based on the `JSON API <http://jsonapi.org>`_ specification. All of the details
 are re-explained here, but if you've used other JSON APIs, you will find it
-familliar.
+familiar.
 
 There are two ways to browse our documentation. The sidebar on the left
 contains API level documentation, which explains the specifics of the various

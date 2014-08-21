@@ -2,12 +2,48 @@ Orders
 ======
 
 An ``Order`` resource is a construct that logically groups related transaction
-operations for a particular seller (``Customer``). An ``Order`` allows issuing
-payouts to only one ``Customer`` and the marketplace bank account. An ``Order``
-is useful for reconciliation purposes, as each ``Order`` maintains its own
-individual escrow balance, which is separate from the total marketplace escrow.
-Attempts to credit an ``Order`` beyond the amount debited into the ``Order``
-will fail.
+operations for a particular merchant (``Customer``).
+
+The ``Order`` resource facilitates transaction reconciliation in the following ways:
+
+  - \* each ``Order`` maintains an individual balance, which is separate from the marketplace escrow
+  - \* prevents over crediting funds by allowing payouts up to the ``amount_escrowed`` in each ``Order``
+  - \* Flow of funds is trackable as funds credited from an ``Order`` are mapped to the ``Debits`` that brought the funds into it
+
+
+|
+
+.. admonition:: Requirements
+  :header_class: alert alert-tab full-width alert-tab-yellow
+  :body_class: alert alert-green alert-yellow
+
+  .. cssclass:: list-noindent
+
+    - Funds must be paid to merchants within 30 days of the charge.
+    - For each ``Order``, only one merchant and the marketplace may be credited.
+
+|
+
+.. admonition:: References
+  :header_class: alert alert-tab full-width alert-tab-persianBlue60
+  :body_class: alert alert-green alert-persianBlue20
+
+  .. cssclass:: mini-header
+
+    Guides
+
+  .. cssclass:: list-noindent
+
+    - `Orders </1.1/guides/orders>`_
+
+  .. cssclass:: mini-header
+
+    API Specification
+
+  .. cssclass:: list-noindent
+
+    - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
+    - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
 
 |
 

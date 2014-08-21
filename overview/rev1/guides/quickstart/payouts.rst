@@ -64,7 +64,7 @@ Checkpoint
 Up to this point you should have:
 
 - ✓ Created a ``Credit``
-- ✓ Created several ``Credit``s to a split payment to multiple recipient bank accounts
+- ✓ Created several ``Credits`` to a split payment to multiple recipient bank accounts
 
 Ensure you have met these points before proceeding.
 

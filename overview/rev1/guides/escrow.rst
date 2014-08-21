@@ -1,6 +1,6 @@
-.. _guides.disputes:
+.. _guides.escrow:
 
-Escrow
+Marketplace Escrow
 ======================
 
 Every marketplace has a single escrow. This escrow account is essentially like a
@@ -9,13 +9,21 @@ funds out of the marketplace escrow. Transactions involving Orders do not involv
 the marketplace escrow.
 
 Marketplaces have complete control over how funds are disbursed from escrow.
-Funds in escrow may be distributed to recipients as desired. There is inherently
-no time limit for the duration funds may sit in escrow. Best practice is to
+Funds in escrow may be distributed to recipients as desired, however, funds must
+be paid to merchants within 30 days of the charge. Best practice is to
 refrain from releasing funds until after merchant fulfillment has occurred,
 confirmation of a shipped product or completion of a service for example. Escrow
 is not meant as a means of extended withholding. Holding funds in escrow for
 extended periods of time often leads to an increased number in chargebacks and
 customer dissatisfaction.
+
+
+.. admonition:: Requirements
+  :header_class: alert alert-tab full-width alert-tab-yellow
+  :body_class: alert alert-green alert-yellow
+
+  Funds must be paid to merchants within 30 days of the charge.
+
 
 |
 
@@ -45,7 +53,7 @@ If you do not have a sufficient balance, Balanced will return a ``409`` http
 status code, stating that you do not have sufficient funds to cover your
 desired ACH operation. You will have to add funds to your marketplace escrow
 from a credit card or bank account attached to your marketplace. This may be
-done via the API or via the Balanced `dashboard`_. To do this via the API:
+done via the API or via the Balanced `Dashboard`_. To do this via the API:
 
 .. snippet:: debit-marketplace-escrow
 
@@ -68,5 +76,5 @@ Credits can take 1-3 days for the funds to become available depending on
 the target bank.
 
 
-.. _dashboard: https://dashboard.balancedpayments.com/
+.. _Dashboard: https://dashboard.balancedpayments.com/
 .. _billy issue #1: https://github.com/balanced/billy/issues/1
