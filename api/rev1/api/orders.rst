@@ -20,7 +20,7 @@ The ``Order`` resource facilitates transaction reconciliation in the following w
   .. cssclass:: list-noindent
 
     - Funds must be paid to merchants within 30 days of the charge.
-    - For each ``Order``, only one merchant bank account and the marketplace bank account may be credited.
+    - For each ``Order``, only one merchant and the marketplace may be credited.
 
 |
 
