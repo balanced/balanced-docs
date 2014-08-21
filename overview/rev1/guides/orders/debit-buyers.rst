@@ -32,6 +32,7 @@ Debiting Buyers
     - `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
     - `Create a Debit for an Order </1.1/api/debits/#create-a-debit-for-an-order>`_
 
+|
 
 Topic overview
 ~~~~~~~~~~~~~~~~~~

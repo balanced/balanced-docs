@@ -1,11 +1,6 @@
 Crediting the Marketplace
 ============================
 
-Marketplaces often wish to take a cut of transactions. In addition to the ability for one merchant
-bank account to be credited, the marketplace bank account may be credited. This topic demonstrates
-how to issue a credit (payout) from an ``Order`` to the marketplace bank account.
-
-
 .. admonition:: Requirements
   :header_class: alert alert-tab full-width alert-tab-yellow
   :body_class: alert alert-green alert-yellow
@@ -53,6 +48,10 @@ how to issue a credit (payout) from an ``Order`` to the marketplace bank account
 Topic overview
 ~~~~~~~~~~~~~~~
 
+Marketplaces often wish to take a cut of transactions. In addition to the ability for one merchant
+bank account to be credited, the marketplace bank account may be credited. This topic demonstrates
+how to issue a credit (payout) from an ``Order`` to the marketplace bank account.
+
 By the end of this topic, you should understand how to do following:
 
 .. cssclass:: list-noindent
@@ -76,6 +75,8 @@ Check the Order balance
 
 Now when inspecting the order object we'll see it still has an ``amount`` of 10000
 and ``amount_escrowed`` is now 0 since we've now paid out all funds from the Order.
+
+.. snippet:: order-amount-escrowed
 
 
 Examine Credits for an Order

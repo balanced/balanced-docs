@@ -43,16 +43,11 @@ By the end of this topic, you should understand how to do following:
 
 .. cssclass:: list-noindent
 
-  - \* Create a ``Customer`` representing a seller (merchant) and associate a ``BankAccount`` to it.
+  - \* Create a ``Customer`` representing a merchant (seller) and associate a ``BankAccount`` to it.
   - \* Create an ``Order``
   - \* Update an ``Order``
   - \* Check an ``Order`` balance
-  - \* Create a ``Customer`` representing a buyer and associate a ``BankAccount`` to it
-  - \* Debit a buyer
-  - \* Check an ``Order`` balance
-  - \* Retrieve all ``Debits`` for an ``Order``
 
-|
 
 Prepare a merchant
 ~~~~~~~~~~~~~~~~~~~

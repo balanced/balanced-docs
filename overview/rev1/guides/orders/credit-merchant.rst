@@ -1,9 +1,6 @@
 Crediting the Merchant
 =========================
 
-In the previous topics for this guide, we created an ``Order`` for a merchant and debited
-a buyer for the order. This topic demonstrates how to issue a payout from an ``Order`` to the merchant.
-
 .. admonition:: Requirements
   :header_class: alert alert-tab full-width alert-tab-yellow
   :body_class: alert alert-green alert-yellow
@@ -50,6 +47,9 @@ a buyer for the order. This topic demonstrates how to issue a payout from an ``O
 
 Topic overview
 ~~~~~~~~~~~~~~~
+
+In the previous topics for this guide, we created an ``Order`` for a merchant and debited
+a buyer for the order. This topic demonstrates how to issue a payout from an ``Order`` to the merchant.
 
 By the end of this topic, you should understand how to do following:
 

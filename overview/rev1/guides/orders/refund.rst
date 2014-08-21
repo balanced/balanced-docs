@@ -44,7 +44,7 @@ Next, retrieve all the credits for the ``Order``.
 .. snippet:: order-credits-fetch
 
 
-Determine which credits you wish to reverse and reverse them.
+Determine which credits you wish to reverse and reverse each of them.
 
 .. snippet:: credit-reverse
 
@@ -69,7 +69,7 @@ Retrieve all the debits for the ``Order``.
 .. snippet:: order-debits-fetch
 
 
-Determine which debits you wish to refund and refund them.
+Determine which debits you wish to refund and refund each of them.
 
 .. snippet:: debit-refund
 
