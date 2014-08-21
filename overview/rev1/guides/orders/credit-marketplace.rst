@@ -26,6 +26,15 @@ Crediting the Marketplace
 
   .. cssclass:: mini-header
 
+    API Reference
+
+  .. cssclass:: list-noindent
+
+    - `Create a Credit for an Order </1.1/api/debits/#create-a-credit-for-an-order>`_
+    - `Fetch an Order </1.1/api/orders/#fetch-an-order>`_
+
+  .. cssclass:: mini-header
+
     API Specification
 
   .. cssclass:: list-noindent
@@ -33,14 +42,6 @@ Crediting the Marketplace
     - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
     - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
     - `Marketplace Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/marketplace.json>`_
-
-  .. cssclass:: mini-header
-
-    API Reference
-
-  .. cssclass:: list-noindent
-
-    - `Create a Credit for an Order </1.1/api/debits/#create-a-credit-for-an-order>`_
 
 |
 

@@ -15,6 +15,18 @@ Debiting Buyers
 
   .. cssclass:: mini-header
 
+    API Reference
+
+  .. cssclass:: list-noindent
+
+    - `Create a Customer </1.1/api/customers/#create-a-customer>`_
+    - `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
+    - `Associate a Bank Account to a Customer </1.1/api/bank-accounts/#associate-a-bank-account-to-a-customer>`_
+    - `Create a Debit for an Order </1.1/api/debits/#create-a-debit-for-an-order>`_
+    - `Fetch an Order </1.1/api/orders/#fetch-an-order>`_
+
+  .. cssclass:: mini-header
+
     API Specification
 
   .. cssclass:: list-noindent
@@ -22,17 +34,8 @@ Debiting Buyers
     - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
     - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
 
-  .. cssclass:: mini-header
-
-    API Reference
-
-  .. cssclass:: list-noindent
-
-    - `Create a Customer </1.1/api/customers/#create-a-customer>`_
-    - `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
-    - `Create a Debit for an Order </1.1/api/debits/#create-a-debit-for-an-order>`_
-
 |
+
 
 Topic overview
 ~~~~~~~~~~~~~~~~~~

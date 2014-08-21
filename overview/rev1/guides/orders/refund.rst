@@ -7,6 +7,16 @@ Refunding an Order
 
   .. cssclass:: mini-header
 
+    API Reference
+
+  .. cssclass:: list-noindent
+
+    - `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
+    - `Create a Refund </1.1/api/refunds/#create-a-refund>`_
+    - `Fetch an Order </1.1/api/orders/#fetch-an-order>`_
+
+  .. cssclass:: mini-header
+
     API Specification
 
   .. cssclass:: list-noindent
@@ -18,15 +28,7 @@ Refunding an Order
     - `Refunds Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/refunds.json>`_
     - `Refund Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/refund.json>`_
 
-  .. cssclass:: mini-header
-
-    API Reference
-
-  .. cssclass:: list-noindent
-
-    - `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
-    - `Create a Refund </1.1/api/refunds/#create-a-refund>`_
-
+  
 
 Reverse credits
 ~~~~~~~~~~~~~~~~
