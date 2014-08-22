@@ -16,14 +16,24 @@ Each ``BankAccountVerification`` allows 3 attempts to enter the correct verifica
 3 failed attempts, a new verification must be created and the process must begin anew. Only one
 ``BankAccountVerification`` at a time may exist for a bank account.
 
+.. admonition:: Requirements
+  :header_class: alert alert-tab full-width alert-tab-yellow
+  :body_class: alert alert-green alert-yellow
+
+  .. cssclass:: list-noindent
+
+    - The ``BankAccount`` must be associated to a ``Customer`` before it can be verified.
+    - Verification is **required** before a ``BankAccount`` can be debited.
+
+|
+
 .. note::
   :header_class: alert alert-tab
   :body_class: alert alert-green
 
   Verification is **not required** for bank accounts to which only credits will be issued.
-  
-  Verification is **required** before a bank account can be debited.
 
+|
 
 .. container:: header3
 
