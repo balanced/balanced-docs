@@ -15,6 +15,19 @@ Creating an Order
 
   .. cssclass:: mini-header
 
+    API Reference
+
+  .. cssclass:: list-noindent
+
+    - `Create a Customer </1.1/api/customers/#create-a-customer>`_
+    - `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
+    - `Associate a Bank Account to a Customer </1.1/api/bank-accounts/#associate-a-bank-account-to-a-customer>`_
+    - `Create an Order </1.1/api/orders/#create-an-order>`_
+    - `Update an Order </1.1/api/orders/#update-an-order>`_
+    - `Fetch an Order </1.1/api/orders/#fetch-an-order>`_
+
+  .. cssclass:: mini-header
+
     API Specification
 
   .. cssclass:: list-noindent
@@ -22,19 +35,8 @@ Creating an Order
     - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
     - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
 
-  .. cssclass:: mini-header
-
-    API Reference
-
-  .. cssclass:: list-noindent
-
-    - `Create a Customer </1.1/api/customers/#create-a-customer>`_
-    - `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
-    - `Create an Order </1.1/api/orders/#create-an-order>`_
-    - `Update an Order </1.1/api/orders/#update-an-order>`_
-    - `Create a Credit </1.1/api/credits/#create-a-credit>`_
-
 |
+
 
 Topic overview
 ~~~~~~~~~~~~~~~~~~
@@ -46,6 +48,7 @@ By the end of this topic, you should understand how to do following:
   - \* Create a ``Customer`` representing a merchant (seller) and associate a ``BankAccount`` to it.
   - \* Create an ``Order``
   - \* Update an ``Order``
+  - \* Fetch an ``Order``
   - \* Check an ``Order`` balance
 
 
@@ -83,7 +86,6 @@ Next, create an ``Order`` for the merchant.
 .. snippet:: order-create
 
 
-
 Update the Order
 ~~~~~~~~~~~~~~~~~
 
@@ -109,6 +111,16 @@ and ``amount_escrowed`` of now 0.
   - ``amount_escrowed`` is the total amount of funds that have not yet been paid out.
 
 
+Fetch an Order
+~~~~~~~~~~~~~~~~~
+
+You'll want to store ``Order`` hrefs in your database for quick retrieval at a later date. When that
+time arrives, fetch the ``Order`` resource with the href.
+
+.. snippet:: order-fetch
+
+
+
 Checkpoint
 ~~~~~~~~~~~~
 
@@ -119,6 +131,7 @@ You should understand how to do following:
   - ✓ Create a ``Customer`` representing a merchant (seller) and associate a ``BankAccount`` to it.
   - ✓ Create an ``Order``
   - ✓ Update an ``Order``
+  - ✓ Fetch an ``Order``
   - ✓ Check an ``Order`` balance
 
 |
