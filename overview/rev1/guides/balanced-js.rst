@@ -3,8 +3,8 @@ balanced.js
 
 Using ``balanced.js`` is essential in ensuring that you're PCI compliant.
 When using balanced.js, sensitive data never touches your servers. As a result,
-the burden of PCI compliance shifts to Balanced,
-which is `PCI-DSS Level 1 Compliant`_.
+the burden of PCI compliance for collecting sensitive credit card information shifts
+to Balanced. Balanced is `PCI-DSS Level 1 Compliant`_.
 
 .. note::
    :header_class: alert alert-tab
@@ -14,6 +14,7 @@ which is `PCI-DSS Level 1 Compliant`_.
    For the sake of brevity, we'll also use `jQuery`_, but note that balanced.js
    itself doesn't rely on any Javascript framework.
 
+|
 
 Migrating from v1.0
 -----------------------
@@ -34,10 +35,36 @@ A few notable changes have occurred between v1.0 and v1.1 in terms of operation.
   - \- Unclaimed tokenized funding instruments are discarded after a short timeframe.
 
 
+Topic overview
+-----------------
+
+By the end of this topic, you should understand how to do following:
+
+.. cssclass:: list-noindent
+
+  - \- Include balanced.js in your application
+  - \- Build input forms for collecting credit card and/or bank account information
+  - \- Register a click event for the form submit button that assembles the form values into a payload attempts to create a card
+  - \- Create a response callback handler
+  - \- Send a tokenized funding instrument href to your back-end server
+  - \- Claim a funding instrument
+
+
+Tokenization Flow
+--------------------
+
+.. image:: //static/img/tokenization-flow.jpg
+
+
+
+Step 1: Collect and send funding instrument information
+---------------------------------------------------------
+
+
 .. _balanced-js.include:
 
-Including balanced.js
------------------------
+Include balanced.js
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. note::
   :header_class: alert alert-tab-yellow
@@ -64,7 +91,7 @@ Begin by including balanced.js in your application.
 .. _balanced-js.collecting-card-info:
 
 Collecting credit card information
-----------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Before we can collect credit card information, we need a place where users can
 enter it in, a form. The example below is extracted from this
@@ -93,69 +120,18 @@ enter it in, a form. The example below is extracted from this
     </div>
     <div>
       <label>Postal Code</label>
-      <input type="text" id="ex-postal-code" autocomplete="off" placeholder="453" />
+      <input type="text" id="postal-code" autocomplete="off" placeholder="453" />
     </div>
 
     <a id="cc-submit">Tokenize</a>
   </form>
 
 
-Now let's define our `callback`_, the block of code we want to execute after
-having received a response for our tokenization request to the Balanced API.
-If desired, this can be the same method as the one handling bank account
-creation request responses. Just add some checking to see what kind of response
-was returned, e.g check for a ``cards`` or ``bank_accounts`` key.
-
-.. code-block:: javascript
-
-  function handleResponse(response) {
-    if (response.status_code === 201) {
-      var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
-      // Call your backend
-      jQuery.post("/path/to/your/backend", {
-        uri: fundingInstrument.href
-      }, function(r) {
-        // Check your backend response
-        if (r.status === 201) {
-          // Your successful logic here from backend ruby
-        } else {
-        // Your failure logic here from backend ruby
-        }
-      });
-    } else {
-      // Failed to tokenize, your error logic here
-    }
-  }
-
-
-Now register a click event for the submit button. This is where we will place
-our form field values into a payload object and submit it to the Balanced API.
-
-.. code-block:: javascript
-
-  $('#cc-submit').click(function (e) {
-    e.preventDefault();
-
-    var payload = {
-      name: $('#cc-name').val(),
-      number: $('#cc-number').val(),
-      expiration_month: $('#cc-ex-month').val(),
-      expiration_year: $('#cc-ex-year').val(),
-      cvv: $('#ex-cvv').val(),
-      address: {
-        postal_code: $('#ex-postal-code').val()
-      }
-    };
-
-    // Create credit card
-    balanced.card.create(payload, handleResponse);
-  });
-
 
 .. _balanced-js.collecting-bank-account-info:
 
 Collecting bank account information
--------------------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Before we can collect bank account information, we need a place where users can
 enter it in, a form. The example below is extracted from this
@@ -181,9 +157,12 @@ enter it in, a form. The example below is extracted from this
   </form>
 
 
+Step 2: Handle the response from Balanced
+--------------------------------------------
+
 Now let's define our `callback`_, the block of code we want to execute after
-having received a response for our bank account creation request to the
-Balanced API. If desired, this can be the same method as the one handling card
+having received a response for our tokenization request to the Balanced API.
+If desired, this can be the same method as the one handling bank account
 creation request responses. Just add some checking to see what kind of response
 was returned, e.g check for a ``cards`` or ``bank_accounts`` key.
 
@@ -192,25 +171,41 @@ was returned, e.g check for a ``cards`` or ``bank_accounts`` key.
   function handleResponse(response) {
     if (response.status_code === 201) {
       var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
-      // Call your backend
-      jQuery.post("/path/to/your/backend", {
-        uri: fundingInstrument.href
-      }, function(r) {
-        // Check your backend response
-        if (r.status === 201) {
-          // Your successful logic here from backend ruby
-        } else {
-        // Your failure logic here from backend ruby
-        }
-      });
+      // Call your backend, described in Step 3
     } else {
       // Failed to tokenize, your error logic here
     }
   }
 
 
-Now register a click event for the submit button. This is where we will place
-our form field values into a payload object and submit it to the Balanced API.
+Now register a click event for the submit button in the credit card form. This is
+where we will place our form field values into a payload object and submit it to
+the Balanced API.
+
+.. code-block:: javascript
+
+  $('#cc-submit').click(function (e) {
+    e.preventDefault();
+
+    var payload = {
+      name: $('#cc-name').val(),
+      number: $('#cc-number').val(),
+      expiration_month: $('#cc-ex-month').val(),
+      expiration_year: $('#cc-ex-year').val(),
+      cvv: $('#ex-cvv').val(),
+      address: {
+        postal_code: $('#postal-code').val()
+      }
+    };
+
+    // Create credit card
+    balanced.card.create(payload, handleResponse);
+  });
+
+
+Next, register a click event for the submit button in the bank account form. This is
+where we will place our form field values into a payload object and submit it to
+the Balanced API.
 
 .. code-block:: javascript
 
@@ -228,12 +223,57 @@ our form field values into a payload object and submit it to the Balanced API.
   });
 
 
+Step 3: Send funding instrument href to back-end
+---------------------------------------------------
+
+We now have an ``href``, a unique identifier that represents this instance of the tokenized
+funding instrument. This is also the ideal time to store the ``href``, if desired, for easy
+lookup in the future.
+
+Expanding upon the handler we created in Step 2, send the ``href`` from your application's front-end
+to your server back-end.
+
+.. code-block:: javascript
+
+  function handleResponse(response) {
+    if (response.status_code === 201) {
+      var fundingInstrument = response.cards != null ? response.cards[0] : response.bank_accounts[0];
+      // Call your backend
+      jQuery.post("/path/to/your/backend", {
+        uri: fundingInstrument.href
+      }, function(r) {
+        // Check your backend response
+        if (r.status === 201) {
+          // Your successful logic here from backend
+        } else {
+        // Your failure logic here from backend
+        }
+      });
+    } else {
+      // Failed to tokenize, your error logic here
+    }
+  }
+
+
+Step 4: Claim the funding instrument
+---------------------------------------
+
+Before the funding instrument can be used it must be claimed to your marketplace. This can
+be done by performing an authenticated request on the funding instrument. This could be a
+request to associate the funding instrument to a ``Customer`` or even a simple ``GET`` on
+the funding instrument.
+
+
+.. snippet:: card-associate-to-customer
+
+
+
 Handling Input Validation
 --------------------------
 
-When calling ``balanced.card.create``, the supplied payload will be validated
-before it is sent to Balanced. For more extensive information on validating
-input values, read the sections below.
+When calling ``balanced.card.create`` or ``balanced.bankAccount.create``, the supplied
+payload will be validated before it is sent to Balanced. For more extensive information
+on validating input values, read the sections below.
 
 
 Checkpoint
@@ -241,12 +281,14 @@ Checkpoint
 
 You should understand how to do following:
 
-- ✓ Include balanced.js in your application
-- ✓ Initialize balanced.js with a server address and revision number
-- ✓ Build an input form(s) for collecting credit card and/or bank account information
-- ✓ Create a response callback handler
-- ✓ Register a click event for the form submit button that assembles the form values into a payload attempts to create a card.
+.. cssclass:: list-noindent
 
+  - ✓ Include balanced.js in your application
+  - ✓ Build input forms for collecting credit card and/or bank account information
+  - ✓ Register a click event for the form submit button that assembles the form values into a payload attempts to create a card
+  - ✓ Create a response callback handler
+  - ✓ Send a tokenized funding instrument href to your back-end server
+  - ✓ Claim a funding instrument
 
 
 Method Reference - Cards
