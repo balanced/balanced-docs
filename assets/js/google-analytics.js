@@ -5,5 +5,5 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 ga('create', 'UA-30733850-5', 'balancedpayments.com');
 ga('send', 'pageview', {
-  'dimension1': ($.cookie('language') != null) ? $.cookie('language') : 'bash'
+  'dimension1': $.cookbook('language') || 'bash'
 });
