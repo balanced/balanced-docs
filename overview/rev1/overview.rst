@@ -117,7 +117,7 @@ Pricing
     Check out the `pricing page`_ for out current pricing structure!
 
 Balanced will create invoices to collect fees daily. These invoices can be
-viewed under My Marketplace -> Account statements area of the Balanced dashboard.
+viewed under the My Marketplace -> Account statements area of the Balanced dashboard.
 Fees are debited from the bank account most recently attached to the owner account
 of the marketplace.
 
