@@ -117,8 +117,9 @@ Pricing
     Check out the `pricing page`_ for out current pricing structure!
 
 Balanced will create invoices to collect fees daily. These invoices can be
-viewed under the invoices tab of the Balanced dashboard. Fees are debited from
-the bank account most recently attached to the owner account of the marketplace.
+viewed under My Marketplace -> Account statements area of the Balanced dashboard.
+Fees are debited from the bank account most recently attached to the owner account
+of the marketplace.
 
 For example, a buyer pays for a service on Monday from a third-party merchant. You charge
 the buyer $10, which increases your escrow balance by $10. Balanced will invoice
