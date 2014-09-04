@@ -19,41 +19,35 @@ operations for a particular merchant (``Customer``).
 
 The ``Order`` resource facilitates transaction reconciliation in the following ways:
 
-  - \* each ``Order`` maintains an individual escrow balance, which is separate from the marketplace escrow
-  - \* prevents over crediting funds by allowing payouts up to the ``amount_escrowed`` in each ``Order``
-  - \* Flow of funds is trackable as funds credited from an ``Order`` are mapped to the ``Debits`` that brought the funds into it
+  - each ``Order`` maintains an individual escrow balance, which is separate from the marketplace escrow
+  - prevents over crediting funds by allowing payouts up to the ``amount_escrowed`` in each ``Order``
+  - Flow of funds is trackable as funds credited from an ``Order`` are mapped to the ``Debits`` that brought the funds into it
 
 
 .. admonition:: Requirements
   :header_class: alert alert-tab full-width alert-tab-yellow
   :body_class: alert alert-green alert-yellow
 
-  .. cssclass:: list-noindent
-
-    - Funds must be paid to merchants within 30 days of the charge.
-    - For each ``Order``, only one merchant and the marketplace may be credited.
+  - Funds must be paid to merchants within 30 days of the charge.
+  - For each ``Order``, only one merchant and the marketplace may be credited.
 
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-green alert-persianBlue20
+  :body_class: alert alert-green alert-persianBlue20 references
 
   .. cssclass:: mini-header
 
     API Reference
 
-  .. cssclass:: list-noindent
-
-    - `Orders </1.1/api/orders>`_
+  - `Orders </1.1/api/orders>`_
 
   .. cssclass:: mini-header
 
     API Specification
 
-  .. cssclass:: list-noindent
-
-    - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
-    - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
+  - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
+  - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
 
 |
 
@@ -63,18 +57,16 @@ Topics
 
 After reviewing each of the following topics, you should understand how to do following:
 
-.. cssclass:: list-noindent
-
-  - \* Create a ``Customer`` representing a seller (merchant) and associate a ``BankAccount`` to it
-  - \* Create a ``Customer`` representing a buyer and associate a ``BankAccount`` to it
-  - \* Create an ``Order``
-  - \* Update an ``Order``
-  - \* Debit a buyer
-  - \* Issue a credit from an ``Order`` to the merchant
-  - \* Issue a credit from an ``Order`` to the marketplace bank account
-  - \* Check an ``Order`` balance
-  - \* Retrieve all ``Debits`` for an ``Order``
-  - \* Retrieve all ``Credits`` for an ``Order``
+- Create a ``Customer`` representing a seller (merchant) and associate a ``BankAccount`` to it
+- Create a ``Customer`` representing a buyer and associate a ``BankAccount`` to it
+- Create an ``Order``
+- Update an ``Order``
+- Debit a buyer
+- Issue a credit from an ``Order`` to the merchant
+- Issue a credit from an ``Order`` to the marketplace bank account
+- Check an ``Order`` balance
+- Retrieve all ``Debits`` for an ``Order``
+- Retrieve all ``Credits`` for an ``Order``
 
 |
 

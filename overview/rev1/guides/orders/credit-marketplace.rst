@@ -5,43 +5,35 @@ Crediting the Marketplace
   :header_class: alert alert-tab full-width alert-tab-yellow
   :body_class: alert alert-green alert-yellow
 
-  .. cssclass:: list-noindent
-
-    - Funds must be paid to merchants within 30 days of the charge.
-    - For each ``Order``, only one merchant and the marketplace may be credited.
+  - Funds must be paid to merchants within 30 days of the charge.
+  - For each ``Order``, only one merchant and the marketplace may be credited.
 
 |
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-persianBlue20
+  :body_class: alert alert-persianBlue20 references
 
   .. cssclass:: mini-header
 
     Guides
 
-  .. cssclass:: list-noindent
-
-    - `balanced.js </1.1/guides/balanced-js>`_
+  - `balanced.js </1.1/guides/balanced-js>`_
 
   .. cssclass:: mini-header
 
     API Reference
 
-  .. cssclass:: list-noindent
-
-    - `Create a Credit for an Order </1.1/api/debits/#create-a-credit-for-an-order>`_
-    - `Fetch an Order </1.1/api/orders/#fetch-an-order>`_
+  - `Create a Credit for an Order </1.1/api/debits/#create-a-credit-for-an-order>`_
+  - `Fetch an Order </1.1/api/orders/#fetch-an-order>`_
 
   .. cssclass:: mini-header
 
     API Specification
 
-  .. cssclass:: list-noindent
-
-    - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
-    - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
-    - `Marketplace Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/marketplace.json>`_
+  - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
+  - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
+  - `Marketplace Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/marketplace.json>`_
 
 |
 
@@ -55,11 +47,9 @@ how to issue a credit (payout) from an ``Order`` to the marketplace bank account
 
 By the end of this topic, you should understand how to do following:
 
-.. cssclass:: list-noindent
-
-  - \* Issue a credit from an ``Order`` to the marketplace bank account
-  - \* Check an ``Order`` balance
-  - \* Retrieve all ``Credits`` for an ``Order``
+- Issue a credit from an ``Order`` to the marketplace bank account
+- Check an ``Order`` balance
+- Retrieve all ``Credits`` for an ``Order``
 
 
 
@@ -95,7 +85,7 @@ Checkpoint
 
 You should understand how to do following:
 
-.. cssclass:: list-noindent
+.. cssclass:: list-noindent list-style-none
 
   - ✓ Issue a credit from an ``Order`` to the marketplace bank account
   - ✓ Check an ``Order`` balance

@@ -9,31 +9,38 @@ interactions involving money.
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-persianBlue20
+  :body_class: alert alert-persianBlue20 references
 
   .. cssclass:: mini-header
 
     API Specification
 
-  .. cssclass:: list-noindent
-
-    - `Debits Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/debits.json>`_
-    - `Debit Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/debit.json>`_
+  - `Debits Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/debits.json>`_
+  - `Debit Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/debit.json>`_
 
   .. cssclass:: mini-header
 
     API Reference
 
-  .. cssclass:: list-noindent
-
-    - `Create a Card (Direct) </1.1/api/cards/#create-a-card-direct>`_
-    - `Charge a Card </1.1/api/cards/#charge-a-card>`_
-    - `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
-    - `Create a Bank Account Verification </1.1/api/bank-account-verifications/#create-a-bank-account-verification>`_
-    - `Confirm a Bank Account Verification </1.1/api/bank-account-verifications/#confirm-a-bank-account-verification>`_
-    - `Charge a Bank Account </1.1/api/bank-accounts/#charge-a-bank-account>`_
+  - `Create a Card (Direct) </1.1/api/cards/#create-a-card-direct>`_
+  - `Charge a Card </1.1/api/cards/#charge-a-card>`_
+  - `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
+  - `Create a Bank Account Verification </1.1/api/bank-account-verifications/#create-a-bank-account-verification>`_
+  - `Confirm a Bank Account Verification </1.1/api/bank-account-verifications/#confirm-a-bank-account-verification>`_
+  - `Charge a Bank Account </1.1/api/bank-accounts/#charge-a-bank-account>`_
 
 |
+
+Topic overview
+-----------------
+
+By the end of this topic, you should understand how to do following:
+
+- Create a ``Card`` and/or ``BankAccount``
+- Initiate a bank account verification
+- Confirm a bank account verification
+- Charge a ``Card`` and/or ``BankAccount``
+
 
 Charging a Card
 ----------------
@@ -124,12 +131,14 @@ bank account.
 Checkpoint
 -----------
 
-Up to this point you should have:
+You should understand how to do following:
 
-- ✓ Created a ``Card`` and/or ``BankAccount``
-- ✓ Initiated a bank account verification
-- ✓ Confirmed a bank account verification
-- ✓ Charged a ``Card`` and/or ``BankAccount``
+.. cssclass:: list-noindent list-style-none
+
+  - ✓ Create a ``Card`` and/or ``BankAccount``
+  - ✓ Initiate a bank account verification
+  - ✓ Confirm a bank account verification
+  - ✓ Charge a ``Card`` and/or ``BankAccount``
 
 Ensure you have met these points before proceeding.
 

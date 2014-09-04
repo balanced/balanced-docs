@@ -97,13 +97,30 @@ account numbers that can simulate various scenarios that can go wrong.
 
 .. _resources.test-identity-verification:
 
-Testing Customer identity verification
+Customer identity verification
 ---------------------------------------
 
+Merchants (sellers) to whom you wish to pay out must be underwritten as per `KYC regulations`_.
 ``Customer`` resources have a ``merchant_status`` attribute for determining
 the Customer's underwritten status.
 
-Supply address and date of birth information to trigger a ``true`` response.
+``merchant_status`` will be one of: ``underwritten``, ``need-more-information``,
+or ``rejected``.
+
+.. cssclass:: dl-horizontal dl-params dl-param-values dd-noindent dd-marginbottom
+
+  ``underwritten``
+    An identity match was found.
+  ``need-more-information``
+    Based on the information supplied, an identity match was not found. Try supplying more information.
+  ``rejected``
+    The identity is restricted from transacting.
+
+
+Testing merchant status
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Supply address and date of birth information to trigger an ``underwritten`` response.
 
 The following will set ``merchant_status`` to ``underwritten``
 
@@ -129,8 +146,6 @@ The following will set ``merchant_status`` to ``need-more-information``
       "dob_year": 1985
   }
 
-``merchant_status`` will be one of: ``need-more-information``, ``underwritten``,
-or ``rejected``.
 
 
 Funding Instrument Fingerprint
@@ -148,8 +163,8 @@ For bank accounts, ``fingerprint`` is calculated using ``account_number``,
 
 .. _resources.address-verification-service:
 
-Address Verification Service
-----------------------------
+Address Verification Service (AVS)
+-----------------------------------
 
 AVS, Address Verification Service, provides a means to verify that the address
 supplied during card tokenization matches the address of the credit card.
@@ -158,11 +173,6 @@ Supplying an ``address`` object containing at least a ``postal_code`` attribute
 during tokenization will initiate an AVS check. Supplying ``line1`` in the address
 object will also initiate a street match check.
 
-.. cssclass:: list-noindent
-
-    - ``avs_street_match`` will be one of: ``yes``, ``no``, ``unsupported``
-    - ``avs_postal_match`` will be one of: ``yes``, ``no``, ``unsupported``
-
 Additionally, ``avs_result`` may be examined to ascertain more detailed
 information about the address verification attempt. 
 
@@ -170,11 +180,36 @@ information about the address verification attempt.
   :header_class: alert alert-tab-yellow
   :body_class: alert alert-yellow
 
-  ``postal_code`` is required when supplying an address object.
+  - ``postal_code`` is required when supplying an address object.
+  - AVS is not reliable outside the U.S.
 
 
-Simulating Postal Code Check Responses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+``avs_street_match`` will be one of: ``yes``, ``no``, ``unsupported``
+
+.. cssclass:: dl-horizontal dl-params dl-param-values dd-noindent dd-marginbottom
+
+  ``yes``
+    The supplied street address matched the credit card's street address.
+  ``no``
+    The supplied street address did not match the credit card's street address.
+  ``unsupported``
+    No street address was supplied or a street address match was not supported.
+
+
+``avs_postal_match`` will be one of: ``yes``, ``no``, ``unsupported``
+
+.. cssclass:: dl-horizontal dl-params dl-param-values dd-noindent dd-marginbottom
+
+  ``yes``
+    The supplied postal code matched the credit card's postal code.
+  ``no``
+    The supplied postal code did not match the credit card's postal code.
+  ``unsupported``
+    No postal code was supplied or a postal code match was not supported.
+
+
+Test Postal Codes
+~~~~~~~~~~~~~~~~~~~~
 
 Postal code test values:
 
@@ -189,8 +224,8 @@ Postal code test values:
   ============== ====================================
 
 
-Simulating AVS Street Match Responses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Test AVS Addresses
+~~~~~~~~~~~~~~~~~~~~~
 
 .. cssclass:: table
 
@@ -205,19 +240,31 @@ Simulating AVS Street Match Responses
 
 .. _resources.card-verification-value:
 
-Card Verification Value
------------------------
+Card Verification Value (CVV)
+-------------------------------
 
-CVV, Card Verification Value, provides a means to verify that the
-``cvv`` supplied during card tokenization matches the CVV
-for the credit card. The ``Card`` will have a ``cvv_match``
-attribute containing the CSC check result. It's strongly recommended you do
+``Card`` resources have a ``cvv_match`` attribute containing the CVV check result,
+which provides a means to verify that the ``cvv`` supplied during card tokenization
+matches the CVV for the credit card. It's strongly recommended you do
 not process transactions with cards that fail this check.
+
+Any authenticated request performed for the first time on a tokenized ``Card`` claims
+the ``Card`` to the marketplace and triggers verifications for the ``Card``. If you wish to check
+the CVV match result before attempting to charge the ``Card``, first perform an authenticated request
+such as a ``GET`` request on the ``Card``, or associate the ``Card`` to a ``Customer`` resource.
+
+Additionally, ``cvv_result`` can be examined to ascertain more detailed information about the match attempt.
 
 ``cvv_match`` will be one of: ``yes``, ``no``, ``unsupported``
 
-Additionally, ``cvv_result`` can be examined to ascertain more detailed
-information about the match attempt.
+.. cssclass:: dl-horizontal dl-params dl-param-values dd-noindent dd-marginbottom
+
+  ``yes``
+    The supplied CVV matched the credit card's CVV.
+  ``no``
+    The supplied CVV did not match the credit card's CVV.
+  ``unsuported``
+    No CVV was supplied or a CVV match was not supported.
 
 
 1.1 Changelog
@@ -225,16 +272,14 @@ information about the match attempt.
 
 A short list of changes:
 
-.. cssclass:: list-noindent
-
-  - * Hypermedia API
-  - * Cards can be charged without being associated to a customer
-  - * Transactions are now created via the funding instrument, not via the customer. E.g. `card.debit(amount)`, `bank_account.credit(amount)` is now favoured over `customer.debit(card, amount)`
-  - * Failing to create a transaction will result in a transaction being created with a `FAILED` status. E.g. debiting a card with insufficient funds will result in a transaction with a `FAILED` status. These are filtered out of the API by default but can be specifically retrieved with a status filter e.g. `/credits?status=failed`
-  - * A new resource called "Orders" has been created to allow grouping transactions. An Order can consist of 0:n buyers, 0:n debits and 0:n credits to a single seller. Each debit associated with an Order will result in the Order's escrow balance accruing the value of the debit rather than the marketplace's escrow balance. You cannot pay out more than the total amount escrowed for an Order.
-  - * Accounts no longer exist, customers and orders are the primary grouping constructs for transactions, customers are the primary grouping construct for funding instruments.
-  - * Funding instruments can be tokenized without specifying the marketplace, performing an authenticated GET on the tokenized funding instrument will automatically associate it to your marketplace.
-  - * Transaction statuses have been standardized to be one of: ``pending``, ``succeeded``, ``failed``. There is no longer a ``paid`` status.
+- Hypermedia API
+- Cards can be charged without being associated to a customer
+- Transactions are now created via the funding instrument, not via the customer. E.g. ``card.debit(amount)``, ``bank_account.credit(amount)`` is now favored over ``customer.debit(card, amount)``
+- Failing to create a transaction will result in a transaction being created with a ``FAILED`` status. E.g. debiting a card with insufficient funds will result in a transaction with a ``FAILED`` status. These are filtered out of the API by default but can be specifically retrieved with a status filter e.g. ``/credits?status=failed``
+- A new resource called ``Orders`` has been created to allow grouping transactions. An ``Order`` can consist of 0:n buyers, 0:n debits and 0:n credits to a single seller. Each debit associated with an ``Order`` will result in the Order's balance accruing the value of the debit rather than the marketplace's balance. You cannot pay out more than the total amount of an ``Order``.
+- Accounts no longer exist, customers and orders are the primary grouping constructs for transactions, customers are the primary grouping construct for funding instruments.
+- Funding instruments can be tokenized without specifying the marketplace, performing an authenticated GET on the tokenized funding instrument will automatically associate it to your marketplace.
+- Transaction statuses have been standardized to be one of: ``pending``, ``succeeded``, ``failed``. There is no longer a ``paid`` status.
 
 The most obvious technical difference between revision 1.1 and 1.0 is that the
 Balanced API switched from plain JSON to a `JSON API envelope`_. You can learn
@@ -336,7 +381,7 @@ Many attribute names were standardized. Features were superseded. In short, it's
 backward-compatible. The good news though, upgrading to v1.1 is relatively simple.
 
 When using API v1.1, v1.0 URIs (/v1/...) are automatically handled by the API, so no
-modification is necessary. As always, do not manually build URIs/hrefs.
+modification is necessary. As always, **do not manually build URIs/hrefs**.
 
 |
 
@@ -443,3 +488,4 @@ There is no longer a ``paid`` transaction status. All transaction statuses are o
 .. _creating transactions with a failed status: https://gist.github.com/mjallday/7589639
 .. _charging cards without a customer: https://gist.github.com/mjallday/7589592
 .. _Orders resource: https://gist.github.com/mjallday/92940a2e9dcb07f5b038
+.. _KYC regulations: https://en.wikipedia.org/wiki/Know_your_customer

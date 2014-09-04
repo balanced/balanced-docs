@@ -3,32 +3,40 @@ Refunding an Order
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-persianBlue20
+  :body_class: alert alert-persianBlue20 references
 
   .. cssclass:: mini-header
 
     API Reference
 
-  .. cssclass:: list-noindent
-
-    - `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
-    - `Create a Refund </1.1/api/refunds/#create-a-refund>`_
-    - `Fetch an Order </1.1/api/orders/#fetch-an-order>`_
+  - `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
+  - `Create a Refund </1.1/api/refunds/#create-a-refund>`_
+  - `Fetch an Order </1.1/api/orders/#fetch-an-order>`_
 
   .. cssclass:: mini-header
 
     API Specification
 
-  .. cssclass:: list-noindent
-
-    - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
-    - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
-    - `Reversals Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/reversals.json>`_
-    - `Reversal Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/reversal.json>`_
-    - `Refunds Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/refunds.json>`_
-    - `Refund Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/refund.json>`_
+  - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
+  - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
+  - `Reversals Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/reversals.json>`_
+  - `Reversal Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/reversal.json>`_
+  - `Refunds Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/refunds.json>`_
+  - `Refund Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/refund.json>`_
 
   
+Topic overview
+~~~~~~~~~~~~~~~~~~
+
+By the end of this topic, you should understand how to do following:
+
+- Fetch an ``Order``
+- Retrieve ``Credits`` for an ``Order``
+- Reverse an ``Order`` ``Credit``
+- Retrieve ``Debits`` for an ``Order``
+- Refund an ``Order`` ``Debit``
+- Check an ``Order`` balance
+
 
 Reverse credits
 ~~~~~~~~~~~~~~~~
@@ -80,6 +88,21 @@ Once the debit has been refunded, the ``amount_escrowed`` will decrease by the
 amount of the refund.
 
 .. snippet:: order-amount-escrowed
+
+
+Checkpoint
+~~~~~~~~~~~~
+
+You should understand how to do following:
+
+.. cssclass:: list-noindent list-style-none
+
+  - ✓ Fetch an ``Order``
+  - ✓ Retrieve ``Credits`` for an ``Order``
+  - ✓ Reverse an ``Order`` ``Credit``
+  - ✓ Retrieve ``Debits`` for an ``Order``
+  - ✓ Refund an ``Order`` ``Debit``
+  - ✓ Check an ``Order`` balance
 
 |
 

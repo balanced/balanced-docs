@@ -17,33 +17,27 @@ The ``Order`` resource facilitates transaction reconciliation in the following w
   :header_class: alert alert-tab full-width alert-tab-yellow
   :body_class: alert alert-green alert-yellow
 
-  .. cssclass:: list-noindent
-
-    - Funds must be paid to merchants within 30 days of the charge.
-    - For each ``Order``, only one merchant and the marketplace may be credited.
+  - Funds must be paid to merchants within 30 days of the charge.
+  - For each ``Order``, only one merchant and the marketplace may be credited.
 
 |
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-green alert-persianBlue20
+  :body_class: alert alert-green alert-persianBlue20 references
 
   .. cssclass:: mini-header
 
     Guides
 
-  .. cssclass:: list-noindent
-
-    - `Orders </1.1/guides/orders>`_
+  - `Orders </1.1/guides/orders>`_
 
   .. cssclass:: mini-header
 
     API Specification
 
-  .. cssclass:: list-noindent
-
-    - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
-    - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
+  - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
+  - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
 
 |
 

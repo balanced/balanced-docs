@@ -3,37 +3,31 @@ Creating an Order
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-persianBlue20
+  :body_class: alert alert-persianBlue20 references
 
   .. cssclass:: mini-header
 
     Guides
 
-  .. cssclass:: list-noindent
-
-    - `balanced.js </1.1/guides/balanced-js>`_
+  - `balanced.js </1.1/guides/balanced-js>`_
 
   .. cssclass:: mini-header
 
     API Reference
 
-  .. cssclass:: list-noindent
-
-    - `Create a Customer </1.1/api/customers/#create-a-customer>`_
-    - `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
-    - `Associate a Bank Account to a Customer </1.1/api/bank-accounts/#associate-a-bank-account-to-a-customer>`_
-    - `Create an Order </1.1/api/orders/#create-an-order>`_
-    - `Update an Order </1.1/api/orders/#update-an-order>`_
-    - `Fetch an Order </1.1/api/orders/#fetch-an-order>`_
+  - `Create a Customer </1.1/api/customers/#create-a-customer>`_
+  - `Create a Bank Account (Direct) </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
+  - `Associate a Bank Account to a Customer </1.1/api/bank-accounts/#associate-a-bank-account-to-a-customer>`_
+  - `Create an Order </1.1/api/orders/#create-an-order>`_
+  - `Update an Order </1.1/api/orders/#update-an-order>`_
+  - `Fetch an Order </1.1/api/orders/#fetch-an-order>`_
 
   .. cssclass:: mini-header
 
     API Specification
 
-  .. cssclass:: list-noindent
-
-    - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
-    - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
+  - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
+  - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
 
 |
 
@@ -43,13 +37,11 @@ Topic overview
 
 By the end of this topic, you should understand how to do following:
 
-.. cssclass:: list-noindent
-
-  - \* Create a ``Customer`` representing a merchant (seller) and associate a ``BankAccount`` to it.
-  - \* Create an ``Order``
-  - \* Update an ``Order``
-  - \* Fetch an ``Order``
-  - \* Check an ``Order`` balance
+- Create a ``Customer`` representing a merchant (seller) and associate a ``BankAccount`` to it.
+- Create an ``Order``
+- Update an ``Order``
+- Fetch an ``Order``
+- Check an ``Order`` balance
 
 
 Prepare a merchant
@@ -105,10 +97,8 @@ and ``amount_escrowed`` of now 0.
 
 .. snippet:: order-amount-escrowed
 
-.. cssclass:: list-noindent
-
-  - ``amount`` is the total amount of all funds obtained into the Order since its creation.
-  - ``amount_escrowed`` is the total amount of funds that have not yet been paid out.
+- ``amount`` is the total amount of all funds obtained into the Order since its creation.
+- ``amount_escrowed`` is the total amount of funds that have not yet been paid out.
 
 
 Fetch an Order
@@ -126,7 +116,7 @@ Checkpoint
 
 You should understand how to do following:
 
-.. cssclass:: list-noindent
+.. cssclass:: list-noindent list-style-none
 
   - ✓ Create a ``Customer`` representing a merchant (seller) and associate a ``BankAccount`` to it.
   - ✓ Create an ``Order``

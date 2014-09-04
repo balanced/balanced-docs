@@ -17,9 +17,9 @@ throughout the payout process. There are three possible ``status`` values:
     As soon as the debit is created through the API, the status shows
     as ``pending``. This indicates that Balanced received the information for the
     debit and will begin processing. The ACH network itself processes transactions
-    in a batch format. Batch submissions are processed at 3pm PST on business days.
-    If the debit is created after 3pm PST, it will not be submitted for processing
-    until **3pm PST** the next business day.
+    in a batch format. Batch submissions are processed at 3:30 PM Pacific Time on business days.
+    If the debit is created after 3:30 PM Pacific Time, it will not be submitted for processing
+    until **3:30 PM Pacific Time the next business day**.
   ``succeeded``
     After 3-4 days, the status will change to ``succeeded`` and the funds will be
     available in escrow.

@@ -9,36 +9,30 @@ their usage and best practices.
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-persianBlue20
+  :body_class: alert alert-persianBlue20 references
 
   .. cssclass:: mini-header
 
     API Specification
 
-  .. cssclass:: list-noindent
-
-    - `Callbacks Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/callbacks.json>`_
-    - `Callback Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/callback.json>`_
-    - `Events Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/events.json>`_
-    - `Event Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/event.json>`_
+  - `Callbacks Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/callbacks.json>`_
+  - `Callback Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/callback.json>`_
+  - `Events Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/events.json>`_
+  - `Event Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/event.json>`_
 
   .. cssclass:: mini-header
   
     API Reference
 
-  .. cssclass:: list-noindent
-
-    - `Create a Callback </1.1/api/callbacks/#create-a-callback>`_
-    - `Event Types </1.1/api/events/>`_
+  - `Create a Callback </1.1/api/callbacks/#create-a-callback>`_
+  - `Event Types </1.1/api/events/>`_
   
   .. cssclass:: mini-header
 
     Code Libraries
 
-  .. cssclass:: list-noindent
-
-    - `balanced-spectator <https://github.com/remear/balanced-spectator>`_
-    - `Cloverleaf <https://github.com/remear/cloverleaf>`_
+  - `balanced-spectator <https://github.com/remear/balanced-spectator>`_
+  - `Cloverleaf <https://github.com/remear/cloverleaf>`_
 
 
 Callbacks

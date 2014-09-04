@@ -78,6 +78,60 @@ ul+table.footnote{
       }
     }
   }
+  
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 1em;
+    li:before {
+        display: inline-block;
+        content: "-";
+        width: 1em;
+        margin-left: -1em;
+    }
+    &.list-style-none {
+      list-style-type: none;
+      margin-left: 15px;
+      li:before {
+        display: inline;
+        content: "";
+      }
+    }
+    &.list-indent {
+      margin-left: 10px;
+    }
+  }
+  
+  .references ul {
+    list-style-type: none;
+    margin-left: 0px;
+    padding-left: 0px;
+    li:before {
+      display: none;
+      content: "";
+    }
+  }
+  
+  ul.list-noindent {
+    margin-left: 10px !important;
+  }
+  
+  .float-right {
+    float: right;
+    
+    &.diagram {
+      img {
+        padding-left: 40px;
+        margin-top: -58px;
+      }
+    }
+    &.diagram-subsection {
+      img {
+        padding-left: 40px;
+        margin-top: -20px;
+      }
+    }
+  }
 }
 
 #funding-instrument-events .dl-params dt {

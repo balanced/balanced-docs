@@ -14,37 +14,33 @@ throughout the payout process. There are three possible ``status`` values:
 
 Balanced currently supports payouts to:
 
-- \- Bank accounts via ACH
-- \- Debit cards
+- Bank accounts via ACH
+- Debit cards
 
 |
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-green alert-persianBlue20
+  :body_class: alert alert-green alert-persianBlue20 references
   
   .. cssclass:: mini-header
   
     API Reference
 
-  .. cssclass:: list-noindent
-
-    - `Create a Credit to a Bank Account </1.1/api/credits/#create-a-credit-to-a-bank-account>`_
-    - `Create a Credit to a Card </1.1/api/credits/#create-a-credit-to-a-card>`_
-    - `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
+  - `Create a Credit to a Bank Account </1.1/api/credits/#create-a-credit-to-a-bank-account>`_
+  - `Create a Credit to a Card </1.1/api/credits/#create-a-credit-to-a-card>`_
+  - `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
   
   .. cssclass:: mini-header
 
     API Specification
 
-  .. cssclass:: list-noindent
-
-    - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
-    - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
-    - `Credits Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/credits.json>`_
-    - `Credit Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/credit.json>`_
-    - `Reversals Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/reversals.json>`_
-    - `Reversal Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/reversal.json>`_
+  - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
+  - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
+  - `Credits Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/credits.json>`_
+  - `Credit Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/credit.json>`_
+  - `Reversals Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/reversals.json>`_
+  - `Reversal Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/reversal.json>`_
 
 |
 
@@ -75,11 +71,9 @@ Initiating a credit (payout) to a card is simple, but there are a few requiremen
   :header_class: alert alert-tab full-width alert-tab-yellow
   :body_class: alert alert-green alert-yellow
 
-  .. cssclass:: list-noindent no-border
-
-    - ``name`` must have been supplied on card tokenization.
-    - ``card_type`` must be ``debit``
-    - ``card_category`` cannot be ``prepaid``. Pre-paid cards are not supported.
+  - ``name`` must have been supplied on card tokenization.
+  - ``card_type`` must be ``debit``
+  - ``card_category`` cannot be ``prepaid``. Pre-paid cards are not supported.
 
   The maximum amount per transaction is $2,500.
 
@@ -105,18 +99,18 @@ specifying the ``appears_on_statement_as`` field when creating a credit.
   Characters that can be used are limited to the following (any other characters
   will be rejected):
 
-  .. cssclass:: no-border
+  .. cssclass:: list-indent
 
-    - \- ASCII letters (a-z and A-Z)
-    - \- Digits (0-9)
-    - \- Special characters (``.<>(){}[]+&!$;-%_?:#@~='"^\`|``)
+    - ASCII letters (a-z and A-Z)
+    - Digits (0-9)
+    - Special characters (``.<>(){}[]+&!$;-%_?:#@~='"^\`|``)
 
   Descriptor length limit:
 
-  .. cssclass:: no-border
+  .. cssclass:: list-indent
 
-    - \- ACH credits: 14 characters. ACH credits do not have a prefix.
-    - \- Card credits: 12 characters.
+    - ACH credits: 14 characters. ACH credits do not have a prefix.
+    - Card credits: 12 characters.
 
 
 Example usage:
@@ -127,8 +121,14 @@ Example usage:
 Payout status flow
 -------------------
 
+.. cssclass:: float-right diagram-subsection
+
+  .. image:: https://www.balancedpayments.com/images/payouts/payouts_status-2x-37d77a93.png
+    :width: 570px
+    :height: 400px
+
 Credits have a ``status`` attribute representing the current status of the credit
-throughout the payout process. There are three possible ``status`` values:
+throughout the payout process.
 
 .. cssclass:: dl-horizontal dl-params dl-param-values dd-noindent dd-marginbottom
 
@@ -136,9 +136,9 @@ throughout the payout process. There are three possible ``status`` values:
     As soon as the credit is created through the API, the status shows
     as ``pending``. This indicates that Balanced received the information for the
     credit and will begin processing. The ACH network itself processes transactions
-    in a batch format. Batch submissions are processed at 3pm PST on business days.
-    If the credit is created after 3pm PST, it will not be submitted for processing
-    until **3pm PST** the next business day.
+    in a batch format. Batch submissions are processed at 3:30 PM Pacific Time on business days.
+    If the credit is created after 3:30 PM Pacific Time, it will not be submitted for processing
+    until **3:30 PM Pacific Time the next business day**.
   ``succeeded``
     One business day after the batch submission, the status will change to
     ``succeeded``. That is the *expected* status of the credit. If the account
@@ -152,10 +152,6 @@ throughout the payout process. There are three possible ``status`` values:
     after three business days with a rejection. As soon as Balanced receives the
     rejection, the status is updated to ``failed``.
 
-|
-
-.. image:: https://www.balancedpayments.com/images/payouts/payouts_status-2x-30c2fcdc.png
-
 
 Reversing a credit
 -------------------
@@ -163,20 +159,43 @@ Reversing a credit
 In the event that you need to cancel a payout, e.g. a user is not
 satisfied with the product, you can create a ``Reversal``.
 
+
+Reverse a credit
+------------------
+
 .. snippet:: reversal-create
 
 
-The status flow of a reversal is as follows:
+Reversal status flow
+~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: https://www.balancedpayments.com/images/payouts/payouts_reversal_status-2x-83ac62b3.png
+.. cssclass:: float-right diagram
 
-|
+  .. image:: https://www.balancedpayments.com/images/payouts/payouts_reversal_status-2x-6fa384aa.png
+    :width: 570px
+    :height: 400px
 
-.. note::
-  :header_class: alert alert-tab
-  :body_class: alert alert-green
-  
-  Credits may also be reversed from the `Dashboard`_.
+``Reversals`` have a ``status`` attribute representing the current status of the reversal process.
+
+Credits may also be reversed from the `Dashboard`_.
+
+
+.. cssclass:: dl-horizontal dl-params dl-param-values dd-noindent dd-marginbottom
+
+  ``pending``
+    As soon as the reversal is created through the API, the ``status`` attribute shows
+    as ``pending``. This indicates that Balanced received the information for the
+    refund and will begin processing. The ACH network itself processes transactions
+    in a batch format. Batch submissions are processed at 3:30 PM Pacific Time on business days.
+    If the refund is created after 3:30 PM Pacific Time, it will not be submitted for processing
+    until **3:30 PM Pacific Time the next business day**.
+  ``succeeded``
+    A ``succeeded`` status is displayed as the expected state of the deposit one day after payout submission;
+    however, there is no immediate confirmation regarding the success of the payout.
+  ``failed``
+    If a credit fails due to incorrect account information, Balanced will be notified in 1–4 business days.
+    The status will update from ``pending`` to ``failed`` or ``succeeded`` to ``failed`` depending on when the failed
+    notice is received.
 
 
 

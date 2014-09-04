@@ -20,10 +20,8 @@ Each ``BankAccountVerification`` allows 3 attempts to enter the correct verifica
   :header_class: alert alert-tab full-width alert-tab-yellow
   :body_class: alert alert-green alert-yellow
 
-  .. cssclass:: list-noindent
-
-    - The ``BankAccount`` must be associated to a ``Customer`` before it can be verified.
-    - Verification is **required** before a ``BankAccount`` can be debited.
+  - The ``BankAccount`` must be associated to a ``Customer`` before it can be verified.
+  - Verification is **required** before a ``BankAccount`` can be debited.
 
 |
 

@@ -22,12 +22,10 @@ dashboard.
 
 Join the Balanced `community`_ and follow us on `Twitter`_.
 
-.. cssclass:: list-noindent
-
-  -  `#balanced on Freenode IRC`_ for real-time answers to technical support questions
-  -  `Stackoverflow`_ for technical questions
-  -  `Quora`_ for product and business questions
-  -  Email: `support@balancedpayments.com`_
+-  `#balanced on Freenode IRC`_ for real-time answers to technical support questions
+-  `Stackoverflow`_ for technical questions
+-  `Quora`_ for product and business questions
+-  Email: `support@balancedpayments.com`_
 
 When encountering a problem, one of the best tools available to you is
 the Logs area in the Dashboard. These logs give valuable insight into
@@ -40,14 +38,14 @@ directly from developers.
 
 Be sure to have the following handy to facilitate quick resolutions to issues:
 
-- * A description of the problem
-- * The Dashboard link to the transaction(s) related to the issue
-- * Transaction OHM (this is the identifier for the corresponding log message. It's returned on errors)
-- * Marketplace name
-- * Timeframe of issue
-- * Affected customer(s)
-- * Amount and type of transaction
-- * Last 4 digits and type of the affected card (if applicable)
+- A description of the problem
+- The Dashboard link to the transaction(s) related to the issue
+- Transaction OHM (this is the identifier for the corresponding log message. It's returned on errors)
+- Marketplace name
+- Timeframe of issue
+- Affected customer(s)
+- Amount and type of transaction
+- Last 4 digits and type of the affected card (if applicable)
 
 
 .. _payouts.cutoff:
@@ -57,7 +55,7 @@ Submission & Delivery times
 
 .. container:: table-header
 
-   The cutoff for submitting payouts is **3:00 PM Pacific (PT)** time on business days.
+   The cutoff for submitting payouts is **3:30 PM Pacific Time on business days**.
    Payouts will *not* be delivered on weekends or `bank holidays`_:
 
 .. cssclass:: table table-hover
@@ -82,7 +80,7 @@ Submission & Delivery times
 .. container:: table-header
 
    Here's some common scenarios for payouts. Remember, the next-day cut off is
-   at **3:00 PM Pacific (PT)**.
+   at **3:30 PM Pacific Time**.
 
 .. list-table::
    :widths: 20 35 20
@@ -93,14 +91,14 @@ Submission & Delivery times
      - Example submission date
      - Available when? [*]_
    * - Most common
-     - Tuesday @ 1:45PM PT
-     - Wednesday @ 9:00AM PT
+     - Tuesday @ 1:45PM Pacific Time
+     - Wednesday @ 9:00 AM Pacific Time
    * - `Bank holidays`_
-     - July 3rd @ 1:30PM PT
-     - July 5th @ 9:00AM PT
+     - July 3rd @ 1:30 PM Pacific Time
+     - July 5th @ 9:00 AM Pacific Time
    * - Late submission
-     - Friday @ 3:30PM PT
-     - Tuesday @ 9:00AM PT
+     - Friday @ 3:30 PM Pacific Time
+     - Tuesday @ 9:00 AM Pacific Time
 
 .. [*] Assumes that day is a working business day -- does not fall on a
        weekend or a `federal reserve holiday <bank holidays>`_.
@@ -150,20 +148,6 @@ charge you for this credit, as credits to marketplace owner bank accounts are fr
 Transaction Limits
 ------------------
 
-The minimum transaction amount is $0.50.
-
-The maximum transaction amounts are as follows:
-
-- \- Card debits - $15,000 per transaction.
-
-- \- Card credits - $2,500 per transaction.
-
-- \- Bank account debits - $15,000 per transaction.
-
-- \- Bank account credits - $15,000 per transaction.
-
-|
-
 .. note::
   :header_class: alert alert-tab
   :body_class: alert alert-green
@@ -172,24 +156,53 @@ The maximum transaction amounts are as follows:
   if you are planning to process larger amounts.
 
   These limits do not apply to the marketplace owner bank account.
+
+|
+
+The minimum transaction amount is $0.50.
+
+The maximum transaction amounts are as follows:
+
+.. cssclass:: list-indent
+
+  - Card debits - $15,000 per transaction
+  - Card credits - $2,500 per transaction
+  - Bank account (ACH) debits - $15,000 per transaction, see requirements section below
+  - Bank account (ACH) credits - $15,000 per transaction
+
+|
+
+.. admonition:: Requirements
+  :header_class: alert alert-tab full-width alert-tab-yellow
+  :body_class: alert alert-green alert-yellow
+
+  ACH debits larger than $15,000 may be held for review while Balanced attempts to communicate
+  with the marketplace to ensure:
+  
+  |
+  
+  .. cssclass:: inline-links
+  
+    - The intended payer has been properly informed of the intent to debit their bank account
+    - The payer has provided proof to the marketplace of having whitelisted the following company IDs to debit their account:
+      
+      .. cssclass:: list-style-none
+      
+        - 5330903620 
+        - 2330903620 
+        - 1330903620 
+        - 1550895818
+        - 1000141923
+        - 1273720697
+        - 2273720697
+        - 3273720697
+
+    - The marketplace has collected from the payer a signed copy of the `Authorization Agreement for ACH Payments/Debits`_
+    - The marketplace has provided proof to Balanced of the payer having whitelisted the company IDs to debit their account
+    - The marketplace has provided to Balanced the `Authorization Agreement for ACH Payments/Debits`_ signed by the payer
+
  
 
-
-.. _kitchit: http://kitchit.com
-.. _copious: http://copious.com
-.. _zaarly: http://zaarly.com
-.. _visual.ly: http://visual.ly
-.. _Crowdtilt.com:
-.. _crowdtilt: http://crowdtilt.com
-.. _wanderable: http://wanderable.com
-.. _Gittip: http://gittip.com
-.. _ACH: http://en.wikipedia.org/wiki/Automated_Clearing_House
-.. _open partnership: http://blog.gittip.com/post/28351995405/open-partnerships
-.. _mitigate the risks of running a marketplace: https://github.com/gittip/www.gittip.com/issues/67
-.. _payments infrastructure: https://github.com/gittip/www.gittip.com/pull/137
-.. _visual design: https://github.com/gittip/www.gittip.com/issues/66#issuecomment-7439689
-.. _fraud preventions systems: https://github.com/gvenkataraman/www.gittip.com/commit/ceb88e6f5e1eb7ae931cf2921866beccb49381b5
-.. _discussed pricing decisions: https://github.com/balanced/balanced-api/issues/48
 .. _Github: https://github.com/balanced/balanced-api/issues
 .. _#balanced on Freenode IRC: http://webchat.freenode.net/?channels=balanced&uio=MTE9OTIaf
 .. _Stackoverflow: https://stackoverflow.com/questions/tagged/balanced-payments
@@ -198,9 +211,10 @@ The maximum transaction amounts are as follows:
 .. _@balancedstatus: https://twitter.com/balancedstatus
 .. _Twitter: https://twitter.com/balanced
 .. _status.balancedpayments.com: https://status.balancedpayments.com/
-.. _community: https://www.balancedpayments.com/community
-.. _Rent My Bike: http://rentmybike.heroku.com
+.. _community: https://www.balancedpayments.com/open
+.. _Rent My Bike: http://rentmybike.co
 .. _bank holidays: http://www.federalreserve.gov/aboutthefed/k8.htm
 .. _FedACH directory: https://www.fededirectory.frb.org
 .. _open company philosophy: https://www.balancedpayments.com/open
 .. _pricing page: https://www.balancedpayments.com/pricing
+.. _Authorization Agreement for ACH Payments/Debits: https://s3-us-west-1.amazonaws.com/balanced-documents/authorization-agreement-achd.pdf

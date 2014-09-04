@@ -12,26 +12,30 @@ throughout the payout process. There are three possible ``status`` values:
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-persianBlue20
+  :body_class: alert alert-persianBlue20 references
 
   .. cssclass:: mini-header
 
     API Specification
 
-  .. cssclass:: list-noindent
-
-    - `Credits Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/credits.json>`_
-    - `Credit Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/credit.json>`_
+  - `Credits Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/credits.json>`_
+  - `Credit Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/credit.json>`_
 
   .. cssclass:: mini-header
 
     API Reference
 
-  .. cssclass:: list-noindent
-
-    - `Create a Credit </1.1/api/credits/#create-a-credit>`_
+  - `Create a Credit </1.1/api/credits/#create-a-credit>`_
 
 |
+
+Topic overview
+-----------------
+
+By the end of this topic, you should understand how to do following:
+
+- Create a ``Credit``
+- Create several ``Credits`` to a split payment to multiple recipient bank accounts
 
 
 Initiating a credit
@@ -61,10 +65,12 @@ Splitting payments is accomplished by simply initiating a separate credit to eac
 Checkpoint
 -----------
 
-Up to this point you should have:
+You should understand how to do following:
 
-- ✓ Created a ``Credit``
-- ✓ Created several ``Credits`` to a split payment to multiple recipient bank accounts
+.. cssclass:: list-noindent list-style-none
+
+  - ✓ Create a ``Credit``
+  - ✓ Create several ``Credits`` to a split payment to multiple recipient bank accounts
 
 Ensure you have met these points before proceeding.
 
@@ -72,6 +78,14 @@ For additional information, read :doc:`Working with Credits <../credits>`.
 
 
 |
+
+.. container:: box-left
+
+  .. icon-box-widget::
+     :box-classes: box box-block box-blue
+     :icon-classes: icon icon-arrow-left
+
+     :doc:`Charging Funding Instruments <charging-funding-instruments>`
 
 .. container:: box-right
 

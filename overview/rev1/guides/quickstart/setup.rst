@@ -9,17 +9,24 @@ open source and stored on Github.
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-persianBlue20
+  :body_class: alert alert-persianBlue20 references
 
   .. cssclass:: mini-header
 
     API Reference
 
-  .. cssclass:: list-noindent
-
-    - `Authentication </1.1/api/authentication/#authenticating-to-balanced>`_
+  - `Authentication </1.1/api/authentication/#authenticating-to-balanced>`_
 
 |
+
+Topic overview
+-----------------
+
+By the end of this topic, you should understand how to do following:
+
+- Obtain the client library of your choice
+- Install necessary prerequisites
+- Configure the library for use in your application
 
 
 Prerequisites
@@ -367,11 +374,13 @@ be configured with your marketplace API key secret.
 Checkpoint
 -----------
 
-Up to this point you should have:
+You should understand how to do following:
 
-- ✓ Obtained the client library of your choice
-- ✓ Installed any necessary prerequisites
-- ✓ Configured the library for use in your application
+.. cssclass:: list-noindent list-style-none
+
+  - ✓ Obtain the client library of your choice
+  - ✓ Install necessary prerequisites
+  - ✓ Configure the library for use in your application
 
 Ensure you have met these points before proceeding.
 

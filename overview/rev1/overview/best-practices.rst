@@ -26,12 +26,11 @@ Reducing Declined Transactions
 
 Fraud and Card declinations can be reduced if the following information is supplied when tokenizing a card:
 
-.. cssclass:: list-noindent
+- ``name`` (Name on card)
+- ``cvv`` (CVV)
+- ``postal_code`` (Postal code)
+- ``country_code`` (Country code, `ISO 3166-1 alpha-3`_)
 
-  - ``name`` (Name on card)
-  - ``cvv`` (CVV)
-  - ``postal_code`` (Postal code)
-  - ``country_code`` (Country code, `ISO 3166-1 alpha-3`_)
 
 Catching Fraud Early
 --------------------
@@ -40,13 +39,11 @@ It's very important to take a proactive stance against fraud. Below are some
 tips to help guard against it. We recommend marketplaces take advantage of
 the following:
 
-.. cssclass:: list-noindent
-
-  - * Utilize customer verification. We highly recommended that you do not issue payouts to unverified customers. Refer to :ref:`resources.test-identity-verification`
-  - * Utilize AVS. Refer to :ref:`resources.address-verification-service`
-  - * Utilize CVV. Refer to :ref:`resources.card-verification-value`
-  - * Respond in a timely fashion to Balanced inquiries about chargebacks or suspicious transactions
-  - * Report fraud to support@balancedpayments.com.
+- Utilize customer verification. We highly recommended that you do not issue payouts to unverified customers. Refer to :ref:`resources.test-identity-verification`
+- Utilize AVS. Refer to :ref:`resources.address-verification-service`
+- Utilize CVV. Refer to :ref:`resources.card-verification-value`
+- Respond in a timely fashion to Balanced inquiries about chargebacks or suspicious transactions
+- Report fraud to support@balancedpayments.com.
 
 
 .. _best_practices.reducing-payout-delays:
@@ -149,15 +146,13 @@ passed in by you in order to help fight fraud and respond to chargebacks.
   specifying address data with the ``shipping.`` prefix. The specific
   fields you may provide are:
 
-  .. cssclass:: list-noindent
-
-    -  shipping.address.street_address
-    -  shipping.address.city
-    -  shipping.address.region
-    -  shipping.address.postal_code
-    -  shipping.address.country_code (`ISO 3166-1 alpha-3`_)
-    -  shipping.carrier
-    -  shipping.tracking_number
+  -  shipping.address.street_address
+  -  shipping.address.city
+  -  shipping.address.region
+  -  shipping.address.postal_code
+  -  shipping.address.country_code (`ISO 3166-1 alpha-3`_)
+  -  shipping.carrier
+  -  shipping.tracking_number
 
   Let's say you want to pass on shipping address, along with shipping
   carrier (USPS, UPS, FedEx, etc.) and tracking number on a debit. This is

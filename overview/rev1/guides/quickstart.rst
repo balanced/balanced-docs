@@ -39,10 +39,10 @@ cards and issuing payouts.
 
   .. container:: header2
 
-    Charging Credit Cards
+    Charging Funding Instruments
 
-  This section demonstrates how to obtain credit card information and charge a
-  credit card.
+  This section demonstrates how to obtain credit card and/or bank account information and charge a
+  credit card and/or bank account.
 
   .. container:: box-right
 
@@ -50,7 +50,7 @@ cards and issuing payouts.
       :box-classes: box box-block box-blue right
       :icon-classes: icon icon-arrow
 
-      :doc:`Read Part 2: Charging Credit Cards <quickstart/charging-funding-instruments>`
+      :doc:`Read Part 2: Charging Funding Instruments <quickstart/charging-funding-instruments>`
 
   .. clear::
 

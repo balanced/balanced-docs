@@ -26,6 +26,18 @@
         border-bottom: none;
       }
     }
+    &.inline-links {
+      a {
+        padding: 0px;
+        display: inline;
+        background-color: transparent;
+        margin: 0px;
+        &:hover {
+          color: white;
+          background-color: transparent !important;
+        }
+      }
+    }
   }
   
   .mini-header {
@@ -63,10 +75,17 @@
         background-color: @curryYellow40;
         display: block;
         padding: 10px;
-        color: #333333;
         &:hover {
           color: white;
           background-color: @curryYellow100;
+        }
+      }
+    }
+    &.inline-links {
+      a {
+        color: @turmericYellow100;
+        &:hover {
+          color: #333333;
         }
       }
     }

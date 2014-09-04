@@ -18,14 +18,12 @@ never touches your servers, thereby lessening your PCI compliance burden.
 
 The flow for mobile tokenization should be implemented as in this manner:
 
-.. cssclass:: list-noindent
-
-  - \- Add the Balanced mobile library for the device's platform
-  - \- Obtain funding instrument information via a simple form view
-  - \- Send funding instrument information from mobile device to Balanced API
-  - \- Obtain the ``href`` from the successful tokenization response
-  - \- Send the href to your server
-  - \- Perform an authenticated request on the funding instrument href to claim it for your marketplace. This can be a simple GET/fetch or associate it to a Customer.
+- Add the Balanced mobile library for the device's platform
+- Obtain funding instrument information via a simple form view
+- Send funding instrument information from mobile device to Balanced API
+- Obtain the ``href`` from the successful tokenization response
+- Send the href to your server
+- Perform an authenticated request on the funding instrument href to claim it for your marketplace. This can be a simple GET/fetch or associate it to a Customer.
 
 |
 
@@ -37,58 +35,52 @@ The flow for mobile tokenization should be implemented as in this manner:
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-green alert-persianBlue20
+  :body_class: alert alert-green alert-persianBlue20 references
   
   .. cssclass:: mini-header
   
     API
 
-  .. cssclass:: list-noindent
-
-    - `Create a Card </1.1/api/cards/#create-a-card-direct>`_
-    - `Create a Bank Account </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
+  - `Create a Card </1.1/api/cards/#create-a-card-direct>`_
+  - `Create a Bank Account </1.1/api/bank-accounts/#create-a-bank-account-direct>`_
 
 |
 
 
 balanced-ios
----------------------------
+----------------
 
 balanced-ios is an iOS static library for tokenizing funding instruments in Balanced.
-
-Supported OS versions:
-
-- >= iOS 6.1
-
-Support architectures:
-
-- Simulator
-- armv7
-- armv7s
-- arm64
-
-|
 
 .. admonition:: Requirements
   :header_class: alert alert-tab full-width alert-tab-yellow
   :body_class: alert alert-green alert-yellow
 
-  .. cssclass:: list-noindent no-border
+  iOS:
 
-    - ARC
-    - CoreTelephony.framework
+  - >= iOS 6.1
+
+  Architectures:
+
+  - Simulator
+  - armv7
+  - armv7s
+  - arm64
+
+  Frameworks:
+  
+  - ARC
+  - CoreTelephony.framework
 
 |
 
 Setup
 ~~~~~~~~~~
 
-.. cssclass:: list-noindent
-
-  - \- `Download the latest pre-built library`_ and extract it
-  - \- Copy ``balanced.a`` to your project and add it to Build Phases -> Link Binary With Libraries
-  - \- Add ``CoreTelephony.framework`` to Build Phases -> Link Binary With Libraries
-  - \- Copy the include folder to your project (or include/balanced to your existing include folder). Drag the folder to your project to add the references. The includes folder is automatically included in the project's header search path. **If you copy the files to a location other than includes you'll need to add the path to User Header Search Paths in your project settings.**
+- `Download the latest pre-built library`_ and extract it
+- Copy ``balanced.a`` to your project and add it to Build Phases -> Link Binary With Libraries
+- Add ``CoreTelephony.framework`` to Build Phases -> Link Binary With Libraries
+- Copy the include folder to your project (or include/balanced to your existing include folder). Drag the folder to your project to add the references. The includes folder is automatically included in the project's header search path. **If you copy the files to a location other than includes you'll need to add the path to User Header Search Paths in your project settings.**
 
 |
 
@@ -221,12 +213,18 @@ balanced-android is an `Android Library Project`_ for tokenizing funding instrum
   :header_class: alert alert-tab full-width alert-tab-yellow
   :body_class: alert alert-green alert-yellow
 
-  .. cssclass:: list-noindent
+  Android:
+  
+  - >= 19
+  
+  Libraries:
+
+  .. cssclass:: inline-links
 
     - `gson 2.2.4`_
     - `httpclient 4.2.1`_
-    
-    These are installable via maven.
+  
+  These are installable via maven.
 
 
 Setup
@@ -239,18 +237,16 @@ Here are some helpful tips for importing balanced-android into an application us
 note that application configurations and development environments vastly differ, therefore,
 your mileage may vary.
 
-.. cssclass:: list-noindent
-
-  - \- Go to Help -> Install New Software...
-  - \- Select "Juno - http://download.eclipse.org/releases/juno" for the "Work with" field.
-  - \- Expand "General Purpose tools".
-  - \- Select "m2e - Maven Integration for Eclipse".
-  - \- Accept the license and install. Restart ADT.
-  - \- File -> Import -> Maven -> Existing Maven Projects.
-  - \- Navigate to balanced-android/balanced-android (NOTE the nested directory. The balanced-android library project is named "balanced-android" and is contained in the parent balanced-android project folder)
-  - \- Make sure pom.xml com.balancedpayments.android....jar is selected. Click Finish.
-  - \- Right click on your project and select Properties.
-  - \- Go to Android -> Library -> Add. Select balanced-android. Click Ok.
+- Go to Help -> Install New Software...
+- Select "Juno - http://download.eclipse.org/releases/juno" for the "Work with" field.
+- Expand "General Purpose tools".
+- Select "m2e - Maven Integration for Eclipse".
+- Accept the license and install. Restart ADT.
+- File -> Import -> Maven -> Existing Maven Projects.
+- Navigate to balanced-android/balanced-android (NOTE the nested directory. The balanced-android library project is named "balanced-android" and is contained in the parent balanced-android project folder)
+- Make sure pom.xml com.balancedpayments.android....jar is selected. Click Finish.
+- Right click on your project and select Properties.
+- Go to Android -> Library -> Add. Select balanced-android. Click Ok.
 
 If you encounter dex errors, you'll have to work with your dependencies to resolve the issue.
 

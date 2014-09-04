@@ -33,15 +33,13 @@ Creating a card hold
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-green alert-persianBlue20
+  :body_class: alert alert-green alert-persianBlue20 references
   
   .. cssclass:: mini-header
   
     API
 
-  .. cssclass:: list-noindent
-
-    - `Create a Card Hold </1.1/api/card-holds/#create-a-card-hold>`_
+  - `Create a Card Hold </1.1/api/card-holds/#create-a-card-hold>`_
 
 
 A hold is created in a way similar to creating a debit. Creating a card hold
@@ -56,15 +54,13 @@ Capturing a card hold
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-green alert-persianBlue20
+  :body_class: alert alert-green alert-persianBlue20 references
   
   .. cssclass:: mini-header
   
     API
 
-  .. cssclass:: list-noindent
-
-    - `Capture a Card Hold </1.1/api/card-holds/#capture-a-card-hold>`_
+  - `Capture a Card Hold </1.1/api/card-holds/#capture-a-card-hold>`_
 
 
 When you wish to obtain the funds reserved with a card hold, capture the card
@@ -78,15 +74,13 @@ Voiding a card hold
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-green alert-persianBlue20
+  :body_class: alert alert-green alert-persianBlue20 references
   
   .. cssclass:: mini-header
   
     API
 
-  .. cssclass:: list-noindent
-
-    - `Void a Card Hold </1.1/api/card-holds/#void-a-card-hold>`_
+  - `Void a Card Hold </1.1/api/card-holds/#void-a-card-hold>`_
 
 
 If you wish to release the reserved funds you can always void the card hold.

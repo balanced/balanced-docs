@@ -13,28 +13,24 @@ transaction.
 
 .. admonition:: References
   :header_class: alert alert-tab full-width alert-tab-persianBlue60
-  :body_class: alert alert-persianBlue20
+  :body_class: alert alert-persianBlue20 references
 
   .. cssclass:: mini-header
 
     API Specification
 
-  .. cssclass:: list-noindent
-
-    - `Disputes Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/disputes.json>`_
-    - `Dispute Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/dispute.json>`_
+  - `Disputes Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/disputes.json>`_
+  - `Dispute Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/dispute.json>`_
 
   .. cssclass:: mini-header
 
     API Reference
 
-  .. cssclass:: list-noindent
-
-    - `Create a Card </1.1/api/cards/#create-a-card-direct>`_
-    - `Create a Card Debit </1.1/api/debits/#create-a-card-debit>`_
-    - `Fetch a Debit Dispute </1.1/api/debits/#fetch-a-debit-dispute>`_
-    - `Fetch a Dispute </1.1/api/disputes/#fetch-a-dispute>`_
-    - `List All Disputes </1.1/api/disputes/#list-all-disputes>`_
+  - `Create a Card </1.1/api/cards/#create-a-card-direct>`_
+  - `Create a Card Debit </1.1/api/debits/#create-a-card-debit>`_
+  - `Fetch a Debit Dispute </1.1/api/debits/#fetch-a-debit-dispute>`_
+  - `Fetch a Dispute </1.1/api/disputes/#fetch-a-dispute>`_
+  - `List All Disputes </1.1/api/disputes/#list-all-disputes>`_
 
 |
 
@@ -47,12 +43,10 @@ a charge that they don’t recognize or don’t remember on their credit card st
 
 Some helpful tips to prevent chargebacks:
 
-.. cssclass:: list-noindent
-
-  - \- Use an easily identifiable statement descriptor by setting ``appears_on_statement_as``
-  - \- Set expectations regarding shipping times for physical goods and contact your customers right away if you’re alerted to any delays
-  - \- Clearly state refund policies on your website
-  - \- Make it very easy for customers to contact you, and respond in a timely fashion
+- Use an easily identifiable statement descriptor by setting ``appears_on_statement_as``
+- Set expectations regarding shipping times for physical goods and contact your customers right away if you’re alerted to any delays
+- Clearly state refund policies on your website
+- Make it very easy for customers to contact you, and respond in a timely fashion
 
 
 Dispute fees
@@ -103,19 +97,16 @@ to support@balancedpayments.com. Balanced will use the supplied documentation to
 fight the dispute on your behalf directly with the credit card provider. The
 following types of documentation can help you win a chargeback:
 
-.. cssclass:: list-noindent
 
-  - \- Tracking information for goods that are physically delivered, such as a Fedex/UPS tracking number, etc.
-  - \- A PDF of any email exchanges between yourself and the customer where you remind them of the initial charge
-  - \- Receipts of purchase emailed to the cardholder upon completion of the purchase process
+- Tracking information for goods that are physically delivered, such as a Fedex/UPS tracking number, etc.
+- A PDF of any email exchanges between yourself and the customer where you remind them of the initial charge
+- Receipts of purchase emailed to the cardholder upon completion of the purchase process
 
 This information may be provided only in the following formats:
 
-.. cssclass:: list-noindent
-
-  - \- pdf
-  - \- docx
-  - \- jpg
+- pdf
+- docx
+- jpg
 
 Even if a customer agrees to cancel the chargeback, Balanced recommends
 submitting documentation of transaction fulfillment so the dispute is contested
