@@ -38,14 +38,12 @@ Topic overview
 
 By the end of this topic, you should understand how to do following:
 
-.. cssclass:: list-noindent
-
-  - \- Include balanced.js in your application
-  - \- Build input forms for collecting credit card and/or bank account information
-  - \- Register a click event for the form submit button that assembles the form values into a payload attempts to create a card
-  - \- Create a response callback handler
-  - \- Send a tokenized funding instrument href to your back-end server
-  - \- Claim a funding instrument
+- Include balanced.js in your application
+- Build input forms for collecting credit card and/or bank account information
+- Register a click event for the form submit button that assembles the form values into a payload attempts to create a card
+- Create a response callback handler
+- Send a tokenized funding instrument href to your back-end server
+- Claim a funding instrument
 
 
 Tokenization Flow
