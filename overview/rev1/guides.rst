@@ -6,6 +6,7 @@ Guides
   :titlesonly:
   :glob:
 
+  guides/migrating-api-1-1
   guides/quickstart
   guides/balanced-js
   guides/orders
