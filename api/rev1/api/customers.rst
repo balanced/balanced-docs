@@ -71,7 +71,7 @@ Update the details of a previously created ``Customer``.
 
 .. cssclass:: dl-horizontal dl-params
 
-  .. dcode:: form customers.update
+  .. dcode:: form customers.create
 
 .. container:: code-white
 
