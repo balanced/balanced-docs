@@ -43433,7 +43433,11 @@
         "endpoing": "https://api.balancedpayments.com/cards/CC6Jo1vLukxIxjmC6uAPqX8P/card_holds",
         "request": {
           "amount": 1234,
-          "description": "something for the dashboard"
+          "description": "something for the dashboard",
+          "meta": {
+                "fb_accouint": "48120"
+          },
+          "order": "orders/a12312312311231"
         },
         "response": {
           "card_holds": [
@@ -53621,8 +53625,19 @@
           "dob_month": 7,
           "dob_year": 1963,
           "address": {
-            "postal_code": "48120"
-          }
+            "postal_code": "48120",
+            "line1": "48120",
+            "line2": "Santa Ana",
+            "state": "CA",
+            "country_code": "US"
+          },
+          "business_name": "Bobs Burgers",
+          "ein": "8767573764",
+          "meta": {
+              "fb_accouint": "48120"
+          },
+          "phone": "1231231234",
+          "ssn_last4": "1234"
         },
         "response": {
           "customers": [
