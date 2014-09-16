@@ -43435,7 +43435,7 @@
           "amount": 1234,
           "description": "something for the dashboard",
           "meta": {
-                "fb_accouint": "48120"
+                "fb_account": "48120"
           },
           "order": "orders/a12312312311231"
         },
@@ -53631,10 +53631,10 @@
             "state": "CA",
             "country_code": "US"
           },
-          "business_name": "Bobs Burgers",
+          "business_name": "Bob's Burgers",
           "ein": "8767573764",
           "meta": {
-              "fb_accouint": "48120"
+              "fb_account": "48120"
           },
           "phone": "1231231234",
           "ssn_last4": "1234"
