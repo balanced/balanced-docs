@@ -35,8 +35,9 @@ Creates a new ``BankAccount`` resource that represents a bank account funding in
   :header_class: alert alert-tab-red
   :body_class: alert alert-red
   
-  This method is not recommended for production environments. Please use balanced.js for
-  creating bank accounts.
+  `balanced.js </1.1/guides/balanced-js>`_ is required to tokenize bank accounts in production
+  marketplaces. If you wish to tokenize bank accounts via the API directly, contact support
+  with your use case and include details of how you plan to secure this information.
 
 .. cssclass:: dl-horizontal dl-params
 

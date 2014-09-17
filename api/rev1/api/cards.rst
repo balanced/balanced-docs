@@ -30,8 +30,9 @@ Creates a new card.
   :header_class: alert alert-tab-red
   :body_class: alert alert-red
   
-  This method is not recommended for production environments. Please use balanced.js to
-  create cards.
+  `balanced.js </1.1/guides/balanced-js>`_ is required to tokenize cards in production marketplaces.
+  If you wish to tokenize cards via the API directly, contact support
+  with your use case and include proof of PCI certification.
 
 .. cssclass:: dl-horizontal dl-params
 
