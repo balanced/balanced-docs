@@ -155,4 +155,6 @@ balanced-api. The "forms" used in balanced-docs are assembled from parameters
 supplied in the scenarios in balanced-api. Those scenarios should be 
 updated to include the fields missing the specific scenario section and a 
 newly generated balanced.rev1.json be committed into the docs. To generate 
-balanced.rev1.json in balanced-api run: bundle exec rake parallel:features
+balanced.rev1.json in balanced-api run: bundle exec rake features:all. DO NOT
+run bundle exec rake parallel:features, doing so causes the file to overwrite 
+itself.
