@@ -147,3 +147,14 @@ directive above will result in this call:
 
 ```scripts/lang-scenario.py -d clients/{REVISION}/curl hold_create
 ```
+
+### Edit field descriptions for scenarios 
+
+Field descriptions are from balanced.rev1.json, which are generated from 
+balanced-api. The "forms" used in balanced-docs are assembled from parameters 
+supplied in the scenarios in balanced-api. Those scenarios should be 
+updated to include the fields missing the specific scenario section and a 
+newly generated balanced.rev1.json be committed into the docs. To generate 
+balanced.rev1.json in balanced-api run: bundle exec rake features:all. DO NOT
+run bundle exec rake parallel:features, doing so causes the file to overwrite 
+itself.

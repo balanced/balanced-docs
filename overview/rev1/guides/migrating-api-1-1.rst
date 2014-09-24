@@ -296,6 +296,9 @@ of the ``Order`` resource.
 
 | RentMyBikes Rails 1.1 - https://github.com/balanced/rentmybikes-rails/pull/22
 | RentMyBikes Rails Orders - https://github.com/balanced/rentmybikes-rails/pull/25
+| RentMyBikes Python 1.1 - https://github.com/balanced/rentmybikes/pull/8
+| RentMyBikes Python Orders - https://github.com/balanced/rentmybikes/pull/12
+
 
 
 
