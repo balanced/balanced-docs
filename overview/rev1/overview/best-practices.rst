@@ -173,3 +173,45 @@ passed in by you in order to help fight fraud and respond to chargebacks.
 
 
 .. _ISO 3166-1 alpha-3: http://en.wikipedia.org/wiki/ISO_3166-1_alpha-3
+
+
+Statement descriptor
+----------------------------
+
+Balanced allows marketplaces to specify the text that appears on statements for
+a transaction. This is referred to as the soft descriptor and is set by
+specifying the ``appears_on_statement_as`` field when creating a credit. This
+field's primary purpose is to concisely convey the origin of a transaction so that
+it may be easily identified on buy the buyer on their statement. More detailed
+transaction information, including itemized descriptions, should be provided to
+buyers in the form of invoices.
+
+A good statement descriptor generally follows one of the following formats as space permits:
+
+- [recognizable marketplace name]-Order [order identifier] (e.g - BuyLots-Order #3211)
+- [recognizable marketplace name]-[Brief reason for transaction]  (e.g - BuyLots-Payout)
+
+|
+
+
+.. admonition:: Requirements
+  :header_class: alert alert-tab full-width alert-tab-yellow
+  :body_class: alert alert-green alert-yellow
+
+  Characters that can be used are limited to the following (any other characters
+  will be rejected):
+
+  .. cssclass:: list-indent
+
+    - ASCII letters (a-z and A-Z)
+    - Digits (0-9)
+    - Special characters (``.<>(){}[]+&!$;-%_?:#@~='"^\`|``)
+
+  Descriptor length limit:
+
+  .. cssclass:: list-indent
+
+    - Card debits: 22 characters, truncated to 18 characters with the "BAL*" prefix.
+    - ACH debits: 14 characters.
+    - ACH credits: 14 characters. ACH credits do not have a prefix.
+    - Card credits: 12 characters.
