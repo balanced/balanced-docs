@@ -35,7 +35,7 @@ Topic overview
 By the end of this topic, you should understand how to do following:
 
 - Create a ``Credit``
-- Create several ``Credits`` to a split payment to multiple recipient bank accounts
+- Create ``Credits`` to a split payment to between the merchant and marketplace
 
 
 Initiating a credit
@@ -57,9 +57,17 @@ do the following:
 Splitting Payments
 --------------------
 
-Splitting payments is accomplished by simply initiating a separate credit to each recipient's bank account:
+Splitting payments is only supported between the marketplace and the merchant. This is accomplished by
+issuing separate credits to each as follows.
 
-.. snippet:: credit-split
+Credit the merchant:
+
+.. snippet:: order-credit
+
+
+Credit the marketplace:
+
+.. snippet:: order-credit-marketplace
 
 
 Checkpoint
@@ -70,7 +78,7 @@ You should understand how to do following:
 .. cssclass:: list-noindent list-style-none
 
   - ✓ Create a ``Credit``
-  - ✓ Create several ``Credits`` to a split payment to multiple recipient bank accounts
+  - ✓ Create ``Credits`` to a split payment to between the merchant and marketplace
 
 Ensure you have met these points before proceeding.
 
