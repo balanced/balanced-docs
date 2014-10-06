@@ -5,8 +5,5 @@ card_hold = json.loads(
 )['card_holds'][0]
 
 request = {
-    'uri': card_hold['href'],
-    'payload': {
-        'is_void': 'true'
-    }
+    'uri': card_hold['href']
 }

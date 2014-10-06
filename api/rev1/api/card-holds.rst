@@ -96,10 +96,6 @@ Void a Card Hold
 
 Cancels the hold. Once voided, the hold can no longer be captured.
 
-.. cssclass:: dl-horizontal dl-params
-
-  .. dcode:: form card_holds.update
-
 .. container:: code-white
 
    .. dcode:: scenario card_hold_void
