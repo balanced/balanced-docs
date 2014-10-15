@@ -104,7 +104,7 @@ After reviewing each of the following topics, you should understand how to do fo
      :box-classes: box box-block box-blue right
      :icon-classes: icon icon-arrow
 
-     :doc:`Read More: Creating an Order <orders/create>`
+     :doc:`Read More: Debiting buyers <orders/debit-buyers>`
 
   .. clear::
 
