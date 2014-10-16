@@ -248,9 +248,9 @@ Obtaining the library
   .. code-block:: php
 
     <?php
-    require(__DIR__ . "/httpful/bootstrap.php")
-    require(__DIR__ . "/restful/bootstrap.php")
-    require(__DIR__ . "/balanced/bootstrap.php")
+    require(__DIR__ . "/httpful/bootstrap.php");
+    require(__DIR__ . "/restful/bootstrap.php");
+    require(__DIR__ . "/balanced/bootstrap.php");
 
     \Httpful\Bootstrap::init();
     \RESTful\Bootstrap::init();
