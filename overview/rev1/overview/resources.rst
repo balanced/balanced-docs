@@ -32,18 +32,17 @@ Test credit card numbers
   ``AMEX``        ``341111111111111``             ``1234``      Success
   ``VISA``        ``4342561111111118``            ``123``       Creditable Card
   ``VISA``        ``4444444444444448`` [#]_       ``123``       Processor Failure
-  ``VISA``        ``4222222222222220`` [#]_       ``123``       Tokenization Error
+  ``VISA``        ``4222222222222220`` [#]_       ``123``       Invalid Card
   ``MasterCard``  ``5112000200000002``            ``200``       CVV Match Fail
   ``VISA``        ``4457000300000007``            ``901``       CVV Unsupported
   ``Discover``    ``6500000000000002``            ``123``       Disputed Charge
   ============== =========================== ================ ==============================
 
-.. [#] Simulate a card which can be tokenized but will not be accepted for creating
-       holds or debits. This type of failure is what you would expect if you try to
-       create a hold on a card with insufficient funds.
-.. [#] To simulate a card which cannot be tokenized but passes a LUHN check. You could
-       expect this failure when a user tried to enter in a credit card which used to
-       work but has been canceled.
+.. [#] Simulate a card which will not be accepted for creating holds or debits.
+       This type of failure would occur when attempting to create a hold
+       on a card with insufficient funds.
+.. [#] Simulate a card that passes a LUHN check but is invalid. This type of failure
+       would occur when attempting to add a credit card which has been canceled.
 
 
 .. _resources.test-bank-accounts:
