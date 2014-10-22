@@ -484,7 +484,7 @@ Method Reference - Bank Accounts
   :param bankAccountDataObject.routing_number: *required*. The bank routing number to validate
   :param bankAccountDataObject.account_number: *required*. The account number to perform a sanity check on
   :param bankAccountDataObject.name: *optional*. The name on the bank account to perform a sanity check on
-  :param bankAccountDataObject.account_type: *optional*. The name on the bank account to perform a sanity check on
+  :param bankAccountDataObject.account_type: *optional*. The type of the bank account, ``checking`` or ``savings``. Defaults to ``checking``.
   :returns: ``{}`` if all fields are valid, else a dictionary of errors otherwise.
 
   .. warning::
