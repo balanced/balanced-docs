@@ -26,7 +26,7 @@ your marketplace being shut down.
 - Clearly convey your business model on your website
 - Host your site over SSL (HTTPS) with a valid, non self-signed certificate
 - Use :ref:`balanced.js <use_balanced_js>` to tokenize funding instruments
-- Use the :ref:`Orders <guides.orders>` resource for all transactions
+- Use the `Orders </1.1/guides/orders/>`_ resource for all transactions
 - Comply with `KYC <http://en.wikipedia.org/wiki/Know_your_customer>`_ requirements by :ref:`underwriting all merchants (sellers) <resources.test-identity-verification>` prior to issuing payouts to them
 - Include client terms snippet (#5) from `marketplace agreement <https://www.balancedpayments.com/terms/marketplaceagreement>`__ in your client terms and conditions
 
