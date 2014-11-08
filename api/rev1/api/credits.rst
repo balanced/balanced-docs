@@ -48,6 +48,14 @@ with a value of ``true``. The Card must have also included the name on the card 
 tokenization.
 
 .. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+
+  All new production marketplaces created after November 7th 2014, are
+  required to link all debits and credits via the Orders resource to remain
+  compliant. Not doing so can result in having your marketplace suspended.
+
+.. note::
   :header_class: alert alert-tab
   :body_class: alert alert-green
 
@@ -67,6 +75,14 @@ Create a Credit to a Bank Account
 ------------------------------------
 
 Send money to a bank account.
+
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+
+  All new production marketplaces created after November 7th 2014, are
+  required to link all debits and credits via the Orders resource to remain
+  compliant. Not doing so can result in having your marketplace suspended.
 
 .. note::
   :header_class: alert alert-tab

@@ -141,6 +141,14 @@ Charge a Card
 
 Charge a tokenized credit card.
 
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+
+  All new production marketplaces created after November 7th 2014, are
+  required to link all debits and credits via the Orders resource to remain
+  compliant. Not doing so can result in having your marketplace suspended.
+
 .. cssclass:: dl-horizontal dl-params
 
   .. dcode:: form debits.create
@@ -154,6 +162,15 @@ Credit a Card
 ------------------
 
 Issue a Credit to a tokenized credit card.
+
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+
+  All new production marketplaces created after November 7th 2014, are
+  required to link all debits and credits via the Orders resource to remain
+  compliant. Not doing so can result in having your marketplace suspended.
+
 
 .. cssclass:: dl-horizontal dl-params
 

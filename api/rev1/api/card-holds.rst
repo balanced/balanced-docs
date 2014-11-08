@@ -22,6 +22,15 @@ Create a New Card Hold
 
 Creates a hold on a card.
 
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+
+  All new production marketplaces created after November 7th 2014, are
+  required to link all debits (including the associated card holds) and
+  credits via the Orders resource to remain compliant. Not doing so can
+  result in having your marketplace suspended.
+
 .. cssclass:: dl-horizontal dl-params
 
   .. dcode:: form holds.create

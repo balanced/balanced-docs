@@ -15,6 +15,14 @@ If you issue a debit on an account, Balanced uses holds behinds the scenes
 but captures the funds immediately -- you will
 **always see an expanded hold resource returned on a debit representation**.
 
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+
+  All new production marketplaces created after November 7th 2014, are
+  required to link all debits and credits via the Orders resource to remain
+  compliant. Not doing so can result in having your marketplace suspended.
+
 .. warning::
   :header_class: alert alert-tab alert-tab-yellow
   :body_class: alert alert-yellow

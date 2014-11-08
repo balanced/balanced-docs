@@ -15,6 +15,14 @@ Debits have a ``status`` attribute representing the current status of the debit
 throughout the payout process. There are three possible ``status`` values:
 ``pending``, ``succeeded``, ``failed``
 
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+
+  All new production marketplaces created after November 7th 2014, are
+  required to link all debits and credits via the Orders resource to remain
+  compliant. Not doing so can result in having your marketplace suspended.
+
 |
 
 .. admonition:: References
