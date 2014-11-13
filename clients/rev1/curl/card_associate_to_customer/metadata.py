@@ -1,11 +1,11 @@
-ctx.storage.pop('card_create', None)
+ctx.storage.pop('card_create_creditable', None)
 
 customer = json.loads(
     storage['customer_create']['response']
 )
 
 card = json.loads(
-    storage['card_create']['response']
+    storage['card_create_creditable']['response']
 )
 
 request = {
