@@ -43,7 +43,7 @@ throughout the payout process. There are three possible ``status`` values:
 Create a Credit to a Card
 -----------------------------
 
-Send money to a supported credit card. The Card must have a ``can_credit`` attribute
+Send money to a supported credit card with a previously created order. The Card must have a ``can_credit`` attribute
 with a value of ``true``. The Card must have also included the name on the card during
 tokenization.
 
@@ -66,7 +66,7 @@ tokenization.
 Create a Credit to a Bank Account
 ------------------------------------
 
-Send money to a bank account.
+Credit a bank account with a previously created order.
 
 .. note::
   :header_class: alert alert-tab
@@ -81,21 +81,8 @@ Send money to a bank account.
 
 .. container:: code-white
 
-  .. dcode:: scenario bank_account_credit
-
-
-Create a Credit for an Order
-----------------------------
-
-Credit a previously created order.
-
-.. cssclass:: dl-horizontal dl-params
-
-  .. dcode:: form credits.create
-
-.. container:: code-white
-
   .. dcode:: scenario credit_order
+
 
 
 Fetch a Credit
