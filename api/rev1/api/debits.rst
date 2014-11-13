@@ -44,7 +44,7 @@ throughout the payout process. There are three possible ``status`` values:
 Create a Card Debit
 ----------------------
 
-Debit (charge) a tokenized credit card with a previously created order.
+Debit (charge) a tokenized credit card.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -52,7 +52,7 @@ Debit (charge) a tokenized credit card with a previously created order.
 
 .. container:: code-white
 
-  .. dcode:: scenario debit_order
+  .. dcode:: scenario card_debit
 
 
 .. _debits.debit-bank-account:
@@ -75,6 +75,20 @@ Debit (charge) a bank account.
 .. container:: code-white
 
    .. dcode:: scenario bank_account_debit
+
+
+Create a Debit for an Order
+---------------------------
+
+Debit a previously created order.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form debits.create
+
+.. container:: code-white
+
+  .. dcode:: scenario debit_order
 
 
 Fetch a Debit

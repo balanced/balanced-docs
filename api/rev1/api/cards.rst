@@ -139,7 +139,7 @@ a ``Customer``.
 Charge a Card
 ------------------
 
-Charge a previously created order.
+Charge a tokenized credit card.
 
 .. cssclass:: dl-horizontal dl-params
 
@@ -147,7 +147,7 @@ Charge a previously created order.
 
 .. container:: code-white
 
-  .. dcode:: scenario debit_order
+  .. dcode:: scenario card_debit
 
 
 Credit a Card
