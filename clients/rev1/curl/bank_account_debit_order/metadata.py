@@ -1,8 +1,8 @@
-card = json.loads(
-    storage['card_create']['response']
+bav_response = json.loads(
+    storage['bank_account_verification_update']['response']
 )
 
-card_debits_href = card['links']['cards.debits'].replace('{cards.id}', card['cards'][0]['id'])
+bank_account_href = bav_response['links']['bank_account_verifications.bank_account'].replace('{bank_account_verifications.bank_account}', bav_response['bank_account_verifications'][0]['links']['bank_account'])
 
 order = json.loads(
     storage['order_create']['response']
@@ -10,11 +10,11 @@ order = json.loads(
 
 
 request = {
-    'uri': card_debits_href,
+    'uri': bank_account_href + '/debits',
     'payload': {
         'amount': 5000,
         'order': order['href'],
     },
-    'card_href': card['cards'][0]['href'],
+    'bank_account_href': bank_account_href,
     'order_href': order['href'],
 }
