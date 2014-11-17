@@ -60,7 +60,7 @@ tokenization.
 
 .. container:: code-white
 
-  .. dcode:: scenario card_credit
+  .. dcode:: scenario card_credit_order
 
 
 Create a Credit to a Bank Account
@@ -78,20 +78,6 @@ Send money to a bank account.
 .. cssclass:: dl-horizontal dl-params
 
     .. dcode:: form credits.create
-
-.. container:: code-white
-
-  .. dcode:: scenario bank_account_credit
-
-
-Create a Credit for an Order
-----------------------------
-
-Credit a previously created order.
-
-.. cssclass:: dl-horizontal dl-params
-
-  .. dcode:: form credits.create
 
 .. container:: code-white
 

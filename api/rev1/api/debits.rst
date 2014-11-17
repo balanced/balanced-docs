@@ -52,7 +52,7 @@ Debit (charge) a tokenized credit card.
 
 .. container:: code-white
 
-  .. dcode:: scenario card_debit
+  .. dcode:: scenario debit_order
 
 
 .. _debits.debit-bank-account:
@@ -74,21 +74,7 @@ Debit (charge) a bank account.
 
 .. container:: code-white
 
-   .. dcode:: scenario bank_account_debit
-
-
-Create a Debit for an Order
----------------------------
-
-Debit a previously created order.
-
-.. cssclass:: dl-horizontal dl-params
-
-  .. dcode:: form debits.create
-
-.. container:: code-white
-
-  .. dcode:: scenario debit_order
+   .. dcode:: scenario bank_account_debit_order
 
 
 Fetch a Debit

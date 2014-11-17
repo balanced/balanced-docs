@@ -28,7 +28,7 @@ Creates a hold on a card.
 
 .. container:: code-white
 
-  .. dcode:: scenario card_hold_create
+  .. dcode:: scenario card_hold_order
 
 
 Fetch a Card Hold
