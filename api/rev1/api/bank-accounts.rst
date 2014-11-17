@@ -144,8 +144,8 @@ Debit a Bank Account
 
 Debit a bank account.
 
-  .. note::
-    :header_class: alert alert-tab-yellow
+.. note::
+  :header_class: alert alert-tab-yellow
   :body_class: alert alert-yellow
   
   A bank account must be verified with micro deposits before it can be debited. See :ref:`bank-account-verifications`.
