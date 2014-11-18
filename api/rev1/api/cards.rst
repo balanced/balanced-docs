@@ -147,7 +147,7 @@ Charge a tokenized credit card.
 
 .. container:: code-white
 
-  .. dcode:: scenario card_debit
+  .. dcode:: scenario debit_order
 
 
 Credit a Card
@@ -161,4 +161,4 @@ Issue a Credit to a tokenized credit card.
 
 .. container:: code-white
 
-  .. dcode:: scenario card_credit
+  .. dcode:: scenario card_credit_order

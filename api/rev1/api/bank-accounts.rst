@@ -156,4 +156,4 @@ Debit a bank account.
 
 .. container:: code-white
 
-   .. dcode:: scenario bank_account_debit
+   .. dcode:: scenario bank_account_debit_order
