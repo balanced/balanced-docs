@@ -22,7 +22,7 @@ your marketplace being shut down.
   - `Prohibited Use Cases <https://support.balancedpayments.com/hc/en-us/articles/200712784-What-businesses-are-prohibited-from-using-Balanced->`_
   - `Privacy Policy <https://www.balancedpayments.com/privacy>`_
 
-- Deploy a live site, neither in private beta or behind a password wall
+- Deploy a publicly accessible site
 - Clearly convey your business model on your website
 - Host your site over SSL (HTTPS) with a valid, non self-signed certificate
 - Use :ref:`balanced.js <use_balanced_js>` to tokenize funding instruments
