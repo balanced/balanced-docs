@@ -19,6 +19,7 @@ Guides
   guides/events
   guides/collecting-fees
   guides/taxes
+  guides/going-live-checklist
 ..  guides/merchant-dashboard
 
 
