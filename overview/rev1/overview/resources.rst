@@ -169,8 +169,7 @@ AVS, Address Verification Service, provides a means to verify that the address
 supplied during card tokenization matches the address of the credit card.
 
 Supplying an ``address`` object containing at least a ``postal_code`` attribute
-during tokenization will initiate an AVS check. Supplying ``line1`` in the address
-object will also initiate a street match check.
+during tokenization will initiate an AVS check.
 
 Additionally, ``avs_result`` may be examined to ascertain more detailed
 information about the address verification attempt. 
@@ -181,18 +180,6 @@ information about the address verification attempt.
 
   - ``postal_code`` is required when supplying an address object.
   - AVS is not reliable outside the U.S.
-
-
-``avs_street_match`` will be one of: ``yes``, ``no``, ``unsupported``
-
-.. cssclass:: dl-horizontal dl-params dl-param-values dd-noindent dd-marginbottom
-
-  ``yes``
-    The supplied street address matched the credit card's street address.
-  ``no``
-    The supplied street address did not match the credit card's street address.
-  ``unsupported``
-    No street address was supplied or a street address match was not supported.
 
 
 ``avs_postal_match`` will be one of: ``yes``, ``no``, ``unsupported``
@@ -221,20 +208,6 @@ Postal code test values:
   ``90210``        AVS Postal code does not match
   ``90211``        AVS Postal code is unsupported
   ============== ====================================
-
-
-Test AVS Addresses
-~~~~~~~~~~~~~~~~~~~~~
-
-.. cssclass:: table
-
-  =================== ================== ===========================
-  Address line1        Postal Code        Result             
-  =================== ================== ===========================
-  ``965 Mission St``   ``94103``          AVS street matches
-  ``21 Jump St``       ``90210``          AVS street does not match
-  =================== ================== ===========================
-
 
 
 .. _resources.card-verification-value:
