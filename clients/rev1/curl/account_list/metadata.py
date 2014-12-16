@@ -1,0 +1,3 @@
+request = {
+    'uri': '/accounts',
+}

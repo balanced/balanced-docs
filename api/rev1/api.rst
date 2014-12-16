@@ -3,6 +3,7 @@
   :glob:
 
   .
+  api/accounts
   api/authentication
   api/api-keys
   api/bank-accounts

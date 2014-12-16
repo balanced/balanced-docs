@@ -8548,7 +8548,27 @@
      "OPTIONS", 
      "GET"
     ]
-   }, 
+   },
+   {
+    "path": "/accounts", 
+    "description": "", 
+    "name": "accounts.index", 
+    "methods": [
+     "HEAD", 
+     "OPTIONS", 
+     "GET"
+    ]
+   },
+   {
+    "path": "/settlements", 
+    "description": "", 
+    "name": "accounts.index", 
+    "methods": [
+     "HEAD", 
+     "OPTIONS", 
+     "GET"
+    ]
+   },
    {
     "path": "/events", 
     "description": "", 
@@ -9345,7 +9365,17 @@
      "OPTIONS", 
      "GET"
     ]
-   }, 
+   },
+   {
+    "path": "/customers/:customer_id/accounts", 
+    "description": "", 
+    "name": "accounts.index", 
+    "methods": [
+     "HEAD", 
+     "OPTIONS", 
+     "GET"
+    ]
+   },
    {
     "path": "/customers/:customer_id/transactions", 
     "description": "", 
@@ -10271,7 +10301,27 @@
      "OPTIONS", 
      "DELETE"
     ]
-   }, 
+   },
+   {
+    "path": "/accounts/:account_id", 
+    "description": "", 
+    "name": "accounts.show", 
+    "methods": [
+     "HEAD", 
+     "OPTIONS", 
+     "GET"
+    ]
+   },
+   {
+    "path": "/settlements/:settlement_id", 
+    "description": "", 
+    "name": "settlements.show", 
+    "methods": [
+     "HEAD", 
+     "OPTIONS", 
+     "GET"
+    ]
+   },
    {
     "path": "/events/:event_id", 
     "description": "", 
@@ -11869,6 +11919,53 @@
      }
     ], 
     "name": "ReversalsIndex"
+   },
+   {
+    "fields": [
+     {
+      "default_op": "=", 
+      "ops": [
+       "=", 
+       "!=", 
+       "<", 
+       "<=", 
+       ">", 
+       ">="
+      ], 
+      "sortable": true, 
+      "description": "ISO-8601 formatted date-time type fields.", 
+      "name": "created_at"
+     },
+     {
+      "default_op": "contains", 
+      "ops": [
+       "contains", 
+       "!contains"
+      ], 
+      "sortable": false, 
+      "description": "A single level key-value structure where both key and value can only\nbe strings.\n\nThis example shows how to check if a key is in the field:\n\n    {'e[contains]': 'universe'}\n\nWhile this example shows how to check if a key in the field has a\nparticular value:\n\n    {'e.rating': 'ultra-shady'}\n\nAnd of course you can check many key, value pairs for a particular value:\n\n    {'e.rating': 'ultra-shady',\n     'e.street': 'band',\n     }", 
+      "name": "meta"
+     },
+     {
+      "default_op": "=", 
+      "ops": [
+       "=",
+       "!=",
+       "startswith",
+       "endswith",
+       "contains",
+       "!contains",
+       "in",
+       "!in",
+       "ilike",
+       "!ilike"
+      ], 
+      "sortable": true,
+      "description": "String fields.",
+      "name": "type"
+     },
+    ],
+    "name": "AccountsIndex"
    }
   ], 
   "enums": [
