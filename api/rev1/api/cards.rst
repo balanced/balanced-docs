@@ -47,7 +47,7 @@ Fetch a Card
 ---------------
 
 Fetches the details of a card that has previously been created.
-Supply the ``uri`` that was returned from your previous request, and
+Supply the ``href`` that was returned from your previous request, and
 the corresponding card information will be returned. The same
 information is returned when creating the card.
 
