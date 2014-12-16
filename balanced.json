@@ -9558,7 +9558,16 @@
      "OPTIONS", 
      "GET"
     ]
-   }, 
+   },
+   {
+    "path": "/accounts/:account_id/credits", 
+    "description": "", 
+    "name": "credits.create", 
+    "methods": [
+     "POST", 
+     "OPTIONS"
+    ]
+   },
    {
     "path": "/credits/:credit_id/reversals", 
     "description": "", 
@@ -11963,7 +11972,7 @@
       "sortable": true,
       "description": "String fields.",
       "name": "type"
-     },
+     }
     ],
     "name": "AccountsIndex"
    }

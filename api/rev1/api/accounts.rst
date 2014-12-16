@@ -61,3 +61,17 @@ Returns a list of all accounts for the specified ``Customer``.
 .. container:: code-white
 
   .. dcode:: scenario account_list_customer
+
+
+Credit an Account
+--------------------
+
+Move funds to an account.
+
+.. cssclass:: dl-horizontal dl-params
+
+  .. dcode:: form credits.create
+
+.. container:: code-white
+
+  .. dcode:: scenario account_credit
