@@ -145,7 +145,8 @@ directive above will result in this call:
 
 ### Run individual scenario
 
-```scripts/lang-scenario.py -d clients/{REVISION}/curl hold_create
+```bash
+scripts/lang-scenario.py -d clients/{REVISION}/curl hold_create
 ```
 
 ### Edit field descriptions for scenarios 
