@@ -19,6 +19,7 @@
   api/orders
   api/refunds
   api/reversals
+  api/settlements
 
 
 Balanced API Documentation

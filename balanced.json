@@ -8562,7 +8562,7 @@
    {
     "path": "/settlements", 
     "description": "", 
-    "name": "accounts.index", 
+    "name": "settlements.index", 
     "methods": [
      "HEAD", 
      "OPTIONS", 
@@ -9568,6 +9568,15 @@
      "OPTIONS"
     ]
    },
+   {
+    "path": "/accounts/:account_id/settlements", 
+    "description": "", 
+    "name": "settlements.create", 
+    "methods": [
+     "POST", 
+     "OPTIONS"
+    ]
+   }, 
    {
     "path": "/credits/:credit_id/reversals", 
     "description": "", 
