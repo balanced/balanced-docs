@@ -3,7 +3,7 @@
 Accounts
 =========
 
-An ``Account`` is a funding instrument resource which are able to store
+An ``Account`` is a funding instrument resource which is able to store
 a balance internally within the Balanced system.
 
 Accounts are created only by the Balanced system. Only one account type
