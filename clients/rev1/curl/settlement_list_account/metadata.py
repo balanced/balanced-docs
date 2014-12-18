@@ -1,8 +1,10 @@
 settlement = json.loads(
     storage['settlement_list']['response']
 )
+
 account_id = settlement['settlements'][0]['links']['source']
 
 request = {
-    'uri': '/accounts/' + account_id + '/settlements'
+    'uri': '/accounts/' + account_id + '/settlements',
+    'account_href': '/accounts/' + account_id
 }
