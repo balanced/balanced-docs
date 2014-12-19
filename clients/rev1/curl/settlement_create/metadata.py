@@ -23,5 +23,6 @@ request = {
             "group": "alpha"
         }
     },
-    'href': "/accounts/" + account_id
+    'href': "/accounts/" + account_id,
+    'account_href': "/accounts/" + account_id
 }

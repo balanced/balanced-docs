@@ -6,5 +6,5 @@ customer_accounts_href = customer['links']['customers.accounts'].replace('{custo
 
 request = {
     'uri': customer_accounts_href,
-    'customer_href':  customer['customers'][0]['href']
+    'customer_href': customer['customers'][0]['href']
 }
