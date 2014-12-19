@@ -161,7 +161,7 @@ throughout the payout process.
     rejection, the status is updated to ``failed``.
 
 
-Reversing a credit
+Reversing credits
 -------------------
 
 In the event that you need to cancel a payout, e.g. a user is not
@@ -169,7 +169,7 @@ satisfied with the product, you can create a ``Reversal``.
 
 
 Reverse a credit
-------------------
+~~~~~~~~~~~~~~~~~~~~~
 
 .. snippet:: reversal-create
 
@@ -185,7 +185,6 @@ create a ``Settlement`` to settle the account balance to 0.
 
 .. snippet:: settlement-create
 
-|
 
 Reversal status flow
 ~~~~~~~~~~~~~~~~~~~~~~~
