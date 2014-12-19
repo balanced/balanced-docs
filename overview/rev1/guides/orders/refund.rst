@@ -103,6 +103,13 @@ Reversing a credit that was originally to and account may send the account balan
 When this occurs, the marketplace should create another settlement for the account. Funds 
 will be debited from the specified bank account to settle the account balance back to 0.
 
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+
+  Marketplaces are responsible for settling negative account balances.
+
+
 Retrieve the merchant's payable account.
 
 .. snippet:: merchant-payable-account-fetch

@@ -53,8 +53,8 @@ Balanced currently supports payouts to:
 |
 
 
-Create a credit to a bank account
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create a credit to a BankAccount
+---------------------------------
 
 Let's issue a credit to the bank account. Note that bank accounts to which you only wish to credit
 do not need to be verified.
@@ -63,7 +63,7 @@ do not need to be verified.
 
 
 Create a credit to a Card
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------
 
 Initiating a credit (payout) to a card is simple, but there are a few requirements to be aware of.
 
@@ -82,6 +82,14 @@ Initiating a credit (payout) to a card is simple, but there are a few requiremen
 Assuming we have an existing and creditable ``Card`` we can do the following:
 
 .. snippet:: card-credit
+
+
+Create a credit to an Account
+---------------------------------
+
+Let's issue a credit to an account.
+
+.. snippet:: order-credit-merchant-payable-account
 
 
 Statement descriptor
@@ -121,7 +129,7 @@ Example usage:
 Payout status flow
 -------------------
 
-.. cssclass:: float-right diagram-subsection
+.. cssclass:: float-right diagram
 
   .. image:: https://www.balancedpayments.com/images/payouts/payouts_status-2x-37d77a93.png
     :width: 570px
@@ -165,11 +173,24 @@ Reverse a credit
 
 .. snippet:: reversal-create
 
+.. note::
+  :header_class: alert alert-tab-red
+  :body_class: alert alert-red
+  
+  Reversing a batch credit may cause an the Account balance to go negative.
+  Marketplaces are responsible for settling negative account balances.
+
+In the event that reversing a batched credit causes the Account balance to go negative,
+create a ``Settlement`` to settle the account balance to 0.
+
+.. snippet:: settlement-create
+
+|
 
 Reversal status flow
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. cssclass:: float-right diagram
+.. cssclass:: float-right diagram-subsection
 
   .. image:: https://www.balancedpayments.com/images/payouts/payouts_reversal_status-2x-6fa384aa.png
     :width: 570px

@@ -121,11 +121,7 @@ process.
 Negative account balance settlement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|
-
-|
-
-.. cssclass:: float-right diagram
+.. cssclass:: float-right diagram-subsection
 
   .. image:: https://www.balancedpayments.com/images/ach-debits/ach_debits_payment_status-01-2x-70527870.png
     :width: 570px

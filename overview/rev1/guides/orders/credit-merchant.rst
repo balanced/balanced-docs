@@ -73,8 +73,8 @@ Batch credit the merchant
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There are times when marketplaces wish to consolidate payouts to a merchant into a single payout.
-This is achieved through the use of the ``Account`` and ``Settlements``. Each ``Customer`` has a
-collection of accounts which currently contains one ``payable`` account.
+This is achieved through the use of the ``Account`` and ``Settlement`` resources. Each ``Customer``
+has a collection of accounts which currently contains one ``payable`` account.
 
 Begin by retrieving the payable account for the merchant you wish to batch credit.
 
@@ -84,20 +84,24 @@ Begin by retrieving the payable account for the merchant you wish to batch credi
 Next, for each order you wish batch payout for this merchant, credit the merchant's payable
 account. These credits are immediate and free of charge.
 
-.. snippet:: order-credit-merchant-account
+.. snippet:: order-credit-merchant-payable-account
+
 
 We can check the balance of the account to make sure funds are arriving as desired.
 
 .. snippet:: account-balance
+
 
 After all the funds desired have been credited to the merchant's payable account, to send them to
 one of the merchant's bank accounts, create a settlement.
 
 .. snippet:: settlement-create
 
+
 If we check the account balance, we'll now see that it is 0.
 
 .. snippet:: account-balance
+
 
 The timeline for funds availability is the same as a standard ``Credit``.
 
