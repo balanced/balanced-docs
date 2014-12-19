@@ -13,10 +13,12 @@ order = requests.get(ctx.storage['api_location'] + order_href,
 order_merchant_accounts_href = "/customers/" + order['orders'][0]['links']['merchant'] \
      + "/accounts?type%5Bcontains%5D=payable"
 
+
 accounts = requests.get(ctx.storage['api_location'] + order_merchant_accounts_href,
                      headers={'Accept-Type': ctx.storage.get('accept_type', '*/*')},
                      auth=(ctx.storage['secret'], '')).json()
 
+href = accounts['accounts'][0]['href']
 account_credits_href = accounts['links']['accounts.credits'].replace('{accounts.id}', accounts['accounts'][0]['id'])
 
 request = {
@@ -29,5 +31,6 @@ request = {
         "meta": {
             "rating": 8
         }
-    }
+    },
+    'href': href
 }

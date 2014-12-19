@@ -22,5 +22,6 @@ request = {
         "meta": {
             "group": "alpha"
         }
-    }
+    },
+    'href': "/accounts/" + account_id
 }
