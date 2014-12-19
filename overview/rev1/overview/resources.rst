@@ -103,14 +103,14 @@ Merchants (sellers) to whom you wish to pay out must be underwritten as per `KYC
 ``Customer`` resources have a ``merchant_status`` attribute for determining
 the Customer's underwritten status.
 
-``merchant_status`` will be one of: ``underwritten``, ``need-more-information``,
+``merchant_status`` will be one of: ``underwritten``, ``no-match``,
 or ``rejected``.
 
 .. cssclass:: dl-horizontal dl-params dl-param-values dd-noindent dd-marginbottom
 
   ``underwritten``
     An identity match was found.
-  ``need-more-information``
+  ``no-match``
     Based on the information supplied, an identity match was not found. Try supplying more information.
   ``rejected``
     The identity is restricted from transacting.
@@ -135,7 +135,7 @@ The following will set ``merchant_status`` to ``underwritten``
   }
 
 
-The following will set ``merchant_status`` to ``need-more-information``
+The following will set ``merchant_status`` to ``no-match``
 
 .. code-block:: javascript
 
