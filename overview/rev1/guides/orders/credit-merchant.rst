@@ -19,13 +19,17 @@ Crediting the Merchant
     Guides
 
   - `balanced.js </1.1/guides/balanced-js>`_
+  - `Settlements </1.1/guides/settlements>`_
 
   .. cssclass:: mini-header
 
     API Reference
 
   - `Create a Credit for an Order </1.1/api/debits/#create-a-credit-for-an-order>`_
+  - `Create a Credit to an Account </1.1/api/credits/#create-a-credit-to-an-account>`_
   - `Fetch an Order </1.1/api/orders/#fetch-an-order>`_
+  - `Fetch an Account </1.1/api/accounts/#fetch-an-account>`_
+  - `Create a Settlement </1.1/api/settlements/#create-a-settlement>`_
   
   .. cssclass:: mini-header
 
@@ -34,6 +38,10 @@ Crediting the Merchant
   - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
   - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
   - `Customer Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/customer.json>`_
+  - `Settlements Collection <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/settlements.json>`_
+  - `Settlement Resource <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/_models/settlement.json>`_
+  - `Accounts Collection <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/accounts.json>`_
+  - `Account Resource <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/_models/account.json>`_
 
 |
 
@@ -47,6 +55,8 @@ a buyer for the order. This topic demonstrates how to issue a payout from an ``O
 By the end of this topic, you should understand how to do following:
 
 - Issue a credit from an ``Order`` to the merchant
+- Batch credit funds from ``Orders`` to the merchant
+- Check the merchant's ``payable`` ``Account`` balance
 - Check an ``Order`` balance
 - Retrieve all ``Credits`` for an ``Order``
 
@@ -59,6 +69,39 @@ Let's issue a payout (credit) to our merchant so they can receive funds from the
 .. snippet:: order-credit
 
 
+Batch credit the merchant
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are times when marketplaces wish to consolidate payouts to a merchant into a single payout.
+This is achieved through the use of the ``Account`` and ``Settlements``. Each ``Customer`` has a
+collection of accounts which currently contains one ``payable`` account.
+
+Begin by retrieving the payable account for the merchant you wish to batch credit.
+
+.. snippet:: merchant-payable-account-fetch
+
+
+Next, for each order you wish batch payout for this merchant, credit the merchant's payable
+account. These credits are immediate and free of charge.
+
+.. snippet:: order-credit-merchant-account
+
+We can check the balance of the account to make sure funds are arriving as desired.
+
+.. snippet:: account-balance
+
+After all the funds desired have been credited to the merchant's payable account, to send them to
+one of the merchant's bank accounts, create a settlement.
+
+.. snippet:: settlement-create
+
+If we check the account balance, we'll now see that it is 0.
+
+.. snippet:: account-balance
+
+The timeline for funds availability is the same as a standard ``Credit``.
+
+
 Check the Order balance
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -66,7 +109,6 @@ Now when inspecting the order object we'll see it still has an ``amount`` of 100
 and ``amount_escrowed`` is now 2000.
 
 .. snippet:: order-amount-escrowed
-
 
 
 Examine Credits for an Order
@@ -85,6 +127,8 @@ You should understand how to do following:
 .. cssclass:: list-noindent list-style-none
 
   - ✓ Issue a credit from an ``Order`` to the merchant
+  - ✓ Batch credit funds from ``Orders`` to the merchant
+  - ✓ Check the merchant's ``payable`` ``Account`` balance
   - ✓ Check an ``Order`` balance
   - ✓ Retrieve all ``Credits`` for an ``Order``
 

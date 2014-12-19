@@ -13,6 +13,7 @@ Guides
   guides/debits
   guides/credits
   guides/cardholds
+  guides/settlements
   guides/escrow
   guides/disputes
   guides/mobile

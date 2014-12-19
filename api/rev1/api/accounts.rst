@@ -8,7 +8,11 @@ a balance internally within the Balanced system.
 
 Accounts are created only by the Balanced system. Only one account type
 is currently available, ``payable``. Each ``Customer`` instance has one
-payable account. 
+payable account. Accounts are not debitable.
+
+Reversals of credits issued to Accounts may cause the account balance to
+go negative. The marketplace is responsible for settling the negative
+account balance.
 
 |
 

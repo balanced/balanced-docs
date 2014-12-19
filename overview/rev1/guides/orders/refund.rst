@@ -7,11 +7,18 @@ Refunding an Order
 
   .. cssclass:: mini-header
 
+    Guides
+
+  - `Settlements </1.1/guides/settlements>`_
+
+  .. cssclass:: mini-header
+
     API Reference
 
   - `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
   - `Create a Refund </1.1/api/refunds/#create-a-refund>`_
   - `Fetch an Order </1.1/api/orders/#fetch-an-order>`_
+  - `Create a Settlement </1.1/api/settlements/#create-a-settlement>`_
 
   .. cssclass:: mini-header
 
@@ -23,6 +30,10 @@ Refunding an Order
   - `Reversal Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/reversal.json>`_
   - `Refunds Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/refunds.json>`_
   - `Refund Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/refund.json>`_
+  - `Settlements Collection <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/settlements.json>`_
+  - `Settlement Resource <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/_models/settlement.json>`_
+  - `Accounts Collection <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/accounts.json>`_
+  - `Account Resource <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/_models/account.json>`_
 
   
 Topic overview
@@ -36,6 +47,8 @@ By the end of this topic, you should understand how to do following:
 - Retrieve ``Debits`` for an ``Order``
 - Refund an ``Order`` ``Debit``
 - Check an ``Order`` balance
+- Reverse a batched ``Credit`` to an ``Order``
+- Settle a negative account balance
 
 
 Reverse credits
@@ -61,7 +74,6 @@ Determine which credits you wish to reverse and reverse each of them.
 
 You may also issue a partial reversal. Just supply an amount parameter in the request.
 
-
 Once the credit has been reversed, the Order's ``amount_escrowed`` will
 increase by the amount of the credit. Note that a reversal can take several
 days depending on the bank where the account resides. Marketplaces should utilize
@@ -69,6 +81,36 @@ a ``Callback`` to listen for ``Events`` from Balanced to be notified of ACH tran
 state changes. Please refer to the :doc:`Events <../events>` guide for more information.
 
 .. snippet:: order-amount-escrowed
+
+
+Reverse batched credits
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Reversing a credit that was originally to an account deducts the funds from the account
+and returns them to the original order. To reverse a batched credit, a credit to the
+merchant's ``payable`` ``Account``, we reverse it like a regular credit.
+
+.. snippet:: credit-reverse
+
+
+This reversal should succeed immediately. We can check the order balance and see the amount
+will have increased by the amount of the reversal.
+
+.. snippet:: order-amount-escrowed
+
+
+Reversing a credit that was originally to and account may send the account balance negative.
+When this occurs, the marketplace should create another settlement for the account. Funds 
+will be debited from the specified bank account to settle the account balance back to 0.
+
+Retrieve the merchant's payable account.
+
+.. snippet:: merchant-payable-account-fetch
+
+
+Settle the account's negative balance.
+
+.. snippet:: settlement-create
 
 
 Refund debits
@@ -103,6 +145,8 @@ You should understand how to do following:
   - ✓ Retrieve ``Debits`` for an ``Order``
   - ✓ Refund an ``Order`` ``Debit``
   - ✓ Check an ``Order`` balance
+  - ✓ Reverse a batched ``Credit`` to an ``Order``
+  - ✓ Settle a negative account balance
 
 |
 
