@@ -38,10 +38,10 @@ Crediting the Merchant
   - `Orders Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/orders.json>`_
   - `Order Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/order.json>`_
   - `Customer Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/customer.json>`_
-  - `Settlements Collection <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/settlements.json>`_
-  - `Settlement Resource <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/_models/settlement.json>`_
-  - `Accounts Collection <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/accounts.json>`_
-  - `Account Resource <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/_models/account.json>`_
+  - `Settlements Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/settlements.json>`_
+  - `Settlement Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/settlement.json>`_
+  - `Accounts Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/accounts.json>`_
+  - `Account Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/account.json>`_
 
 |
 
