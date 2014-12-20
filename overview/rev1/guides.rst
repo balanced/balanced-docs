@@ -13,6 +13,7 @@ Guides
   guides/debits
   guides/credits
   guides/cardholds
+  guides/settlements
   guides/escrow
   guides/disputes
   guides/mobile
@@ -139,6 +140,25 @@ Balanced API and client libraries.
       :icon-classes: icon icon-arrow
 
       :doc:`Read: Card Holds <guides/cardholds>`
+
+  .. clear::
+
+
+.. container:: section
+
+  .. container:: header2
+
+    Settlements
+
+  This guide demonstrates how to settle account balances.
+
+  .. container:: box-right
+
+    .. read-more-widget::
+      :box-classes: box box-block box-blue right
+      :icon-classes: icon icon-arrow
+
+      :doc:`Read: Settlements <guides/settlements>`
 
   .. clear::
 

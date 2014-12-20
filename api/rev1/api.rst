@@ -3,6 +3,7 @@
   :glob:
 
   .
+  api/accounts
   api/authentication
   api/api-keys
   api/bank-accounts
@@ -18,6 +19,7 @@
   api/orders
   api/refunds
   api/reversals
+  api/settlements
 
 
 Balanced API Documentation
