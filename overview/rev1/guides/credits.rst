@@ -29,6 +29,7 @@ Balanced currently supports payouts to:
 
   - `Create a Credit to a Bank Account </1.1/api/credits/#create-a-credit-to-a-bank-account>`_
   - `Create a Credit to a Card </1.1/api/credits/#create-a-credit-to-a-card>`_
+  - `Create a Credit to an Account </1.1/api/credits/#create-a-credit-to-an-account>`_
   - `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
   
   .. cssclass:: mini-header
@@ -41,6 +42,10 @@ Balanced currently supports payouts to:
   - `Credit Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/credit.json>`_
   - `Reversals Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/reversals.json>`_
   - `Reversal Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/reversal.json>`_
+  - `Settlements Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/settlements.json>`_
+  - `Settlement Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/settlement.json>`_
+  - `Accounts Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/accounts.json>`_
+  - `Account Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/account.json>`_
 
 |
 

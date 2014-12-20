@@ -30,10 +30,10 @@ Refunding an Order
   - `Reversal Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/reversal.json>`_
   - `Refunds Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/refunds.json>`_
   - `Refund Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/refund.json>`_
-  - `Settlements Collection <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/settlements.json>`_
-  - `Settlement Resource <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/_models/settlement.json>`_
-  - `Accounts Collection <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/accounts.json>`_
-  - `Account Resource <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/_models/account.json>`_
+  - `Settlements Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/settlements.json>`_
+  - `Settlement Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/settlement.json>`_
+  - `Accounts Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/accounts.json>`_
+  - `Account Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/account.json>`_
 
   
 Topic overview

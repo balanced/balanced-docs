@@ -34,10 +34,10 @@ settlement process. There are three possible ``status`` values:
 
     API Specification
 
-  - `Settlements Collection <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/settlements.json>`_
-  - `Settlement Resource <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/_models/settlement.json>`_
-  - `Accounts Collection <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/accounts.json>`_
-  - `Account Resource <https://github.com/balanced/balanced-api/blob/bulk-credits-sweep-account/fixtures/_models/account.json>`_
+  - `Settlements Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/settlements.json>`_
+  - `Settlement Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/settlement.json>`_
+  - `Accounts Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/accounts.json>`_
+  - `Account Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/account.json>`_
   - `Credits Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/credits.json>`_
   - `Credit Resource <https://github.com/balanced/balanced-api/blob/master/fixtures/_models/credit.json>`_
   - `Reversals Collection <https://github.com/balanced/balanced-api/blob/master/fixtures/refunds.json>`_
