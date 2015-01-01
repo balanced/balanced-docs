@@ -112,7 +112,7 @@ Pricing
 
   .. container:: header3
 
-    Check out the `pricing page`_ for out current pricing structure!
+    Check out the `pricing page`_ for our current pricing structure!
 
 Balanced will create invoices to collect fees daily. These invoices can be
 viewed under the My Marketplace -> Account statements area of the Balanced dashboard.
