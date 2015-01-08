@@ -26,9 +26,9 @@ settlement process. There are three possible ``status`` values:
   
     API Reference
 
-  - `Create a Settlement </1.1/api/debits/#create-a-settlement>`_
+  - `Create a Settlement </1.1/api/settlements/#create-a-settlement>`_
   - `Create a Credit to an Account </1.1/api/credits/#create-a-credit-to-an-account>`_
-  - `Create a Reversal </1.1/api/refunds/#create-a-reversal>`_
+  - `Create a Reversal </1.1/api/reversals/#create-a-reversal>`_
 
   .. cssclass:: mini-header
 
