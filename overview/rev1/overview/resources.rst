@@ -24,19 +24,19 @@ Test credit card numbers
 
 .. cssclass:: table
 
-  ============== =========================== ================ ==============================
-   Card Brand          Number                       CVV         Result
-  ============== =========================== ================ ==============================
-  ``VISA``        ``4111111111111111``            ``123``       Success
-  ``MasterCard``  ``5105105105105100``            ``123``       Success
-  ``AMEX``        ``341111111111111``             ``1234``      Success
-  ``VISA``        ``4342561111111118``            ``123``       Creditable Card
-  ``VISA``        ``4444444444444448`` [#]_       ``123``       Processor Failure
-  ``VISA``        ``4222222222222220`` [#]_       ``123``       Invalid Card
-  ``MasterCard``  ``5112000200000002``            ``200``       CVV Match Fail
-  ``VISA``        ``4457000300000007``            ``901``       CVV Unsupported
-  ``Discover``    ``6500000000000002``            ``123``       Disputed Charge
-  ============== =========================== ================ ==============================
+  ============== =========================== ================ ================= =====================
+   Card Brand          Number                       CVV          Type             Behavior
+  ============== =========================== ================ ================= =====================
+  ``VISA``        ``4111111111111111``            ``123``       Credit            Success
+  ``MasterCard``  ``5105105105105100``            ``123``       Credit            Success
+  ``AMEX``        ``341111111111111``             ``1234``      Credit            Success
+  ``VISA``        ``4342561111111118``            ``123``       Debit             Creditable Card
+  ``VISA``        ``4444444444444448`` [#]_       ``123``       Credit            Processor Failure
+  ``VISA``        ``4222222222222220`` [#]_       ``123``       Credit            Invalid Card
+  ``MasterCard``  ``5112000200000002``            ``200``       Debit             CVV Match Fail
+  ``VISA``        ``4457000300000007``            ``901``       Credit            CVV Unsupported
+  ``Discover``    ``6500000000000002``            ``123``       Debit             Disputed Charge
+  ============== =========================== ================ ================= =====================
 
 .. [#] Simulate a card which will not be accepted for creating holds or debits.
        This type of failure would occur when attempting to create a hold
