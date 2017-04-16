@@ -32,7 +32,10 @@ The ``Account`` resource, deprecated in 1.0 in favor of the ``Customer`` resourc
 Resource additions
 ~~~~~~~~~~~~~~~~~~~~
 
-The `Order </1.1/guides/orders>`_ resource has been added.
+The `Order </1.1/guides/orders>`_ resource has been added. All new production
+marketplaces created after November 7th 2014, are required to link all debits
+and credits via the Orders resource to remain compliant. Not doing so can result
+in having your marketplace suspended.
 
   An ``Order`` resource is a construct that logically groups related transaction operations for a
   particular merchant (Customer). The ``Order`` resource facilitates transaction reconciliation in the
