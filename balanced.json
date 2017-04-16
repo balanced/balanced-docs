@@ -11993,7 +11993,7 @@
      "credit.succeeded": "Occurs whenever a credit is successfully captured or deposited.", 
      "debit.failed": "Occurs whenever a debit is rejected.", 
      "bank_account_verification.deposited": "Occurs whenever bank account verification micro-deposits have been\nsuccessfully sent.", 
-     "account.updated": "Occurs whenever an account is updated.", 
+     "account.updated": "Occurs whenever a customer is updated.",
      "card.created": "Occurs whenever a new card is created.", 
      "hold.updated": "Occurs whenever a hold is updated.", 
      "debit.succeeded": "Occurs whenever a debit is successfully captured or withdrawn.", 
@@ -12014,9 +12014,9 @@
      "debit.created": "Occurs whenever a new debit is created.", 
      "credit.updated": "Occurs whenever a credit is updated.", 
      "bank_account.invalidated": "Occurs whenever a bank account is invalidated.", 
-     "account.created": "Occurs whenever a new account is created.", 
+     "account.created": "Occurs whenever a new customer is created.",
      "reversal.succeeded": "Occurs whenever a reversal is successfully completed.", 
-     "account.deleted": "Occurs whenever an account is successfully deleted.", 
+     "account.deleted": "Occurs whenever a customer is successfully deleted.",
      "hold.created": "Occurs whenever a new hold is created.", 
      "reversal.failed": "Occurs whenever a reversal is rejected.", 
      "bank_account_verification.failed": "Occurs whenever bank account verification has failed.", 
@@ -12025,8 +12025,16 @@
      "hold.captured": "Occurs whenever a hold is captured.", 
      "bank_account.created": "Occurs whenever a new bank account is created.", 
      "refund.failed": "Occurs whenever a refund is rejected.", 
-     "debit.canceled": "Occurs whenever a debit is canceled."
-    }, 
+     "debit.canceled": "Occurs whenever a debit is canceled.",
+     "dispute.created": "Occurs whenever a dispute is created.",
+     "dispute.updated": "Occurs whenever a dispute is updated.",
+     "order.created": "Occurs whenever an order is created.",
+     "order.updated": "Occurs whenever an order is updated.",
+     "settlement.created": "Occurs whenever an invoice settlement is created.",
+     "settlement.updated": "Occurs whenever an invoice settlement is updated.",
+     "settlement.failed": "Occurs whenever an invoice settlement has failed.",
+     "settlement.canceled": "Occurs whenever an invoice settlement is canceled."
+    },
     "name": "AuditEventType"
    }
   ]

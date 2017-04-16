@@ -46,6 +46,16 @@ an HTTP ``GET`` or ``POST`` request to the endpoint of your choice.
     :include: card.* bank_account.* bank_account_verification.*
 
 
+.. container:: header3
+
+  Other Events
+
+.. cssclass:: dl-horizontal dl-params filters
+
+  .. dcode:: enum audit_event_type
+    :include: account.* order.* dispute.* settlement.*
+
+
 Fetch an Event
 -----------------
 
